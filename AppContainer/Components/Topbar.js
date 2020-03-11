@@ -18,16 +18,9 @@ export default function Component_Topbar(param) {
                 <span class='home'>
                     <svg class="icon"><use href="./../Icons/symbol-defs.svg#icon-home"></use></svg>
                 </span>
-                <!--<span class="nav ${(route === "Projects") ? "nav-selected" : ""}" id="Projects">
-                    <svg class="icon"><use href="./../Icons/symbol-defs.svg#icon-terminal"></use></svg>
-                </span>
-                <span class="nav ${(route === "About") ? "nav-selected" : ""}" id="About">
-                    <svg class="icon"><use href="./../Icons/symbol-defs.svg#icon-barcode"></use></svg>
-                </span>-->
+                <!-- Add icons after home -->
                 <div class="settings-container">
-                    <span class="nav ${(route === "Settings") ? "nav-selected" : ""}" id="Settings">
-                        <svg class="icon"><use href="./../Icons/symbol-defs.svg#icon-cog "></use></svg>
-                    </span>
+                   <!-- Add icons to end of container -->
                 </div>
             </div>
         `,
