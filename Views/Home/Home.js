@@ -4,7 +4,7 @@ import Component_Card from '../../Components/Card.js';
 
 export default function View_Home(param) {
     const card = Component_Card({
-        title: 'Card',
+        title: 'Test', 
         innerContent: /*html*/ `
         `,
         adjacentElement: app.store.getMainContainer()
