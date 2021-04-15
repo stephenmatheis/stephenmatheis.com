@@ -19,7 +19,7 @@ const jobs = [
         dates: 'October 2017 - March 2018',
         bullets: [
             'Web development',
-            'Prototyped Single Page Application (SPA) application framework in JS'
+            'Prototyped Single Page Application (SPA) development framework in JS'
         ]
     },
     {
