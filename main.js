@@ -163,8 +163,10 @@ toggle.addEventListener('change', event => {
 
     if (state) {
         document.querySelector('html').classList.add('dark-mode');
+        document.querySelector('header img').src = 'github-profile-img_128x128.png';
     } else {
         document.querySelector('html').classList.remove('dark-mode');
+        document.querySelector('header img').src = 'photo_128x128.jpg';
     }
 });
 
