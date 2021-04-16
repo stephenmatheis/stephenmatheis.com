@@ -11,6 +11,7 @@
     -moz-appearance: none;
     appearance: none;
     outline: none;
+    border: none;
     cursor: pointer;
     width: var(--size);
     height: var(--size);
@@ -43,8 +44,9 @@
     --color: hsl(40, 100%, 50%);
 }
 
+/* TODO: too small on iPhone 12 Pro Max (probably on iPhone 12 as well) */
 @media screen and (max-width: 450px) {
-    .mode {
+    /* .mode {
         position: fixed;
         bottom: 5px;
         right: 5px;
@@ -52,14 +54,10 @@
 
     .toggle {
         --size: 1.3em;
-    }
+    } */
 }
 
 /* Dark Mode */
-
-/* TODO: Remember to apply transition: background 500ms; to all elements that will change */
-/* TODO: Remember to add .dark-mode classes to all elements that will change */
-
 header, section {
     transition: background-color 200ms;
 }
