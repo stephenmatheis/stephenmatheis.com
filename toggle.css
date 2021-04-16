@@ -46,15 +46,11 @@
 
 /* TODO: too small on iPhone 12 Pro Max (probably on iPhone 12 as well) */
 @media screen and (max-width: 450px) {
-    /* .mode {
-        position: fixed;
-        bottom: 5px;
-        right: 5px;
+    .mode {
+        position: initial;
+        padding-top: 20px;
+        margin: 0 auto;
     }
-
-    .toggle {
-        --size: 1.3em;
-    } */
 }
 
 /* Dark Mode */
