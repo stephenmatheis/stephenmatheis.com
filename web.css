@@ -1,9 +1,9 @@
 html {
     background: whitesmoke;
     font-family: 'Inter', sans-serif;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 * {
@@ -15,13 +15,10 @@ html {
 }
 
 body {
-    width: 8.5in;
-    height: 11in;
     margin: 0px;
     padding: 0px;
     display: flex;
     flex-direction: column;
-    background: white;
     padding: 40px;
 }
 
@@ -55,7 +52,7 @@ main {
 
 .right {
     padding-left: 37px;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     flex: 1;
 }
 

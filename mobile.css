@@ -1,0 +1,10 @@
+@media screen and (max-width: 850px) {
+    main {
+        display: block;
+    }
+
+    .right {
+        padding-left: 0px;
+        flex: 1;
+    }
+}
