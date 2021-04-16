@@ -44,17 +44,10 @@
     --color: hsl(40, 100%, 50%);
 }
 
-/* TODO: too small on iPhone 12 Pro Max (probably on iPhone 12 as well) */
-@media screen and (max-width: 450px) {
-    .mode {
-        position: initial;
-        padding-top: 20px;
-        margin: 0 auto;
-    }
-}
-
 /* Dark Mode */
-header, section {
+html,
+header, 
+section {
     transition: background-color 200ms;
 }
 
@@ -74,4 +67,17 @@ html.dark-mode {
 html.dark-mode header,
 html.dark-mode section {
     background: #333;
+}
+
+@media screen and (max-width: 450px) {
+    .mode {
+        position: initial;
+        padding-top: 20px;
+        margin: 0 auto;
+    }
+
+    html.dark-mode header,
+    html.dark-mode section {
+        background: inherit;
+    }
 }
