@@ -154,3 +154,12 @@ skills.forEach(skill => {
 
     skillsNode.insertAdjacentHTML('beforeend', html);
 });
+
+/**
+ * Automatically toggle light/dark mode based on local time of day
+ * {@link https://codepen.io/mrozilla/pen/OJJNjRb}
+ */
+const toggle = document.querySelector('.toggle');
+const hours = new Date().getHours();
+
+toggle.checked = hours > 7 && hours < 20;
