@@ -10,16 +10,12 @@ html {
     box-sizing: border-box;
 }
 
-*:not(h1, h2, h3, h4, h5, h6) {
-    font-size: 9.5pt;
-}
-
 body {
-    margin: 0px;
-    padding: 0px;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
     padding: 40px;
+    max-width: 1366px;
 }
 
 p, span, li {
@@ -27,12 +23,12 @@ p, span, li {
 }
 
 header {
-    margin-bottom: 20px;
+    padding: 30px;
 }
 
 header h1 {
     font-weight: 800;
-    font-size: 32pt;
+    font-size: 2.5em;
 }
 
 header h4 {
@@ -47,12 +43,12 @@ main {
 }
 
 .left {
+    padding: 30px;
     flex: 1;
 }
 
 .right {
-    padding-left: 37px;
-    /* white-space: nowrap; */
+    padding: 30px;
     flex: 1;
 }
 
@@ -76,7 +72,7 @@ main {
 .job-heading.title {
     font-weight: 600;
     margin-bottom: 5px;
-    white-space: nowrap;
+    /* white-space: nowrap; */
 }
 
 .job-heading.dates {

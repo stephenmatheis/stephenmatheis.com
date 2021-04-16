@@ -1,10 +1,35 @@
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1050px) {
+    body {
+        max-width: 750px;
+        margin: 0 auto;
+    }
+
     main {
         display: block;
     }
 
+    header,
+    .left,
     .right {
-        padding-left: 0px;
-        flex: 1;
+        padding: 0px;
+    }
+
+    h2, h3 {
+        margin-top: 30px;
+    }
+    
+    /* Mimic h2 */
+    h3 {
+        font-size: 1.5em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    header h1 {
+        font-size: 2em;
     }
 }
