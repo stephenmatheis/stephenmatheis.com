@@ -8,7 +8,7 @@ const jobs = [
         bullets: [
             'Leads a team of 3 developers and 2 administrators',
             'Creating client-side SharePoint applications with HTML, CSS, JS, and the SharePoint 2013 REST API',
-            'Migrating from an on premise environment to Amazon Web Services (AWS)',
+            'Migrating an on premise environment to Amazon Web Services (AWS)',
             'Led migration from SharePoint 2010 to 2013'
         ]
     },
