@@ -43,7 +43,7 @@
     --color: hsl(40, 100%, 50%);
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 450px) {
     .mode {
         position: fixed;
         bottom: 5px;
