@@ -1,9 +1,6 @@
 html {
     background: whitesmoke;
     font-family: 'Inter', sans-serif;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 
 * {
@@ -20,10 +17,6 @@ body {
 
 p, span, li {
     line-height: 1.25;
-}
-
-header {
-    padding: 30px;
 }
 
 header h1 {
@@ -43,12 +36,10 @@ main {
 }
 
 .left {
-    padding: 30px;
     flex: 1;
 }
 
 .right {
-    padding: 30px;
     flex: 1;
 }
 
@@ -177,4 +168,18 @@ a:active {
     font-weight: 500;
     color: darkgray;
     text-transform: uppercase;
+}
+
+/* Card */
+@media screen and (min-width: 1050px) {
+    .left {
+        flex: 2;
+    }
+
+    header, section {
+        border-radius: 4px;
+        background: white;
+        padding: 30px;
+        margin: 30px;
+    }
 }
