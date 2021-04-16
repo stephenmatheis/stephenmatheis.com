@@ -78,14 +78,16 @@ main {
 }
 
 /* Contact */
-.contact {
-    margin-bottom: 15px;
+.contact div,
+.contact a {
+    margin-bottom: 5px;
 }
 
 /* Links */
 .links {
     display: flex;
     flex-direction: column;
+    margin: 20px 0px;
 }
 
 a {
