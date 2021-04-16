@@ -17,7 +17,9 @@
     box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
     border-radius: 999px;
     color: darkgray;
-    transition: all 500ms;
+    /* Original value */
+    /* transition: all 500ms;  */
+    transition: all 200ms;
 }
 
 .toggle:checked {
@@ -39,4 +41,43 @@
 
 .toggle:checked ~ .title {
     --color: hsl(40, 100%, 50%);
+}
+
+@media screen and (max-width: 375px) {
+    .mode {
+        position: fixed;
+        bottom: 5px;
+        right: 5px;
+    }
+
+    .toggle {
+        --size: 1.3em;
+    }
+}
+
+/* Dark Mode */
+
+/* TODO: Remember to apply transition: background 500ms; to all elements that will change */
+/* TODO: Remember to add .dark-mode classes to all elements that will change */
+
+header, section {
+    transition: background-color 200ms;
+}
+
+html.dark-mode *:not(.date):not(#toggle) {
+    color: #ccc;
+}
+
+html.dark-mode .icon {
+    stroke: #ccc;
+    fill: #ccc;
+}
+
+html.dark-mode {
+    background: #1e1e1e;
+}
+
+html.dark-mode header,
+html.dark-mode section {
+    background: #333;
 }

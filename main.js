@@ -155,11 +155,24 @@ skills.forEach(skill => {
     skillsNode.insertAdjacentHTML('beforeend', html);
 });
 
+/** Toggle Dark Mode */
+const toggle = document.querySelector('#toggle');
+
+toggle.addEventListener('change', event => {
+    const state = event.target.checked;
+
+    if (state) {
+        document.querySelector('html').classList.add('dark-mode');
+    } else {
+        document.querySelector('html').classList.remove('dark-mode');
+    }
+});
+
 /**
  * Automatically toggle light/dark mode based on local time of day
  * {@link https://codepen.io/mrozilla/pen/OJJNjRb}
  */
-const toggle = document.querySelector('.toggle');
-const hours = new Date().getHours();
+// const toggle = document.querySelector('.toggle');
+// const hours = new Date().getHours();
 
-toggle.checked = hours > 7 && hours < 20;
+// toggle.checked = hours > 7 && hours < 20;
