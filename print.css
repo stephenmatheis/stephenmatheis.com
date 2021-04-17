@@ -18,15 +18,23 @@
         font-size: 9.5pt;
     }
     
+    @page {
+        size: letter;
+    }
+
     body {
-        width: 8.5in;
-        height: 11in;
+        /* width: 8.5in;
+        height: 11.75in; */
         margin: 0px;
         padding: 0px;
         display: flex;
         flex-direction: column;
         background: white;
-        padding: 40px;
+        /* padding: 40px; */
+    }
+
+    h1, h2, h3, h4, h5 {
+        page-break-after: avoid;
     }
     
     p, span, li {
@@ -35,7 +43,7 @@
     
     header {
         background: white !important;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     
     header h1 {
