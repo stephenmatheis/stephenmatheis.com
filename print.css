@@ -20,15 +20,14 @@
     
     @page {
         size: letter;
+        margin: .5in;
     }
 
     body {
-        margin: 0px;
-        padding: 0px;
+        padding: .5in;
         display: flex;
         flex-direction: column;
         background: white;
-        padding: 0px 40px;
     }
 
     h1, h2, h3, h4, h5 {

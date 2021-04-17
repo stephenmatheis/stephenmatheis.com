@@ -1,175 +1,177 @@
-html {
-    background: whitesmoke;
-    font-family: 'Inter', sans-serif;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    padding: 40px;
-    max-width: 1366px;
-}
-
-p, span, li {
-    line-height: 1.25;
-}
-
-header h1 {
-    font-weight: 800;
-    font-size: 2.5em;
-}
-
-header h4 {
-    font-weight: 400;
-    margin-top: 5px;
-    text-transform: uppercase;
-}
-
-main {
-    flex: 1;
-    display: flex;
-}
-
-.left {
-    flex: 1;
-}
-
-.right {
-    flex: 1;
-}
-
-/* Photo, Name, and Title */
-.photo-name-title {
-    display: flex;
-    align-items: center;
-}
-
-.photo {
-    border-radius: 50%;
-    margin-right: 40px;
-}
-
-.name {
-    margin-bottom: 0px;
-}
-
-
-/* Jobs */
-.job-heading.title {
-    font-weight: 600;
-    margin-bottom: 5px;
-    /* white-space: nowrap; */
-}
-
-.job-heading.dates {
-    font-weight: 500;
-    font-size: .9em;
-    color: darkgray;
-    text-transform: uppercase;
-}
-
-.job ul {
-    padding-inline-start: 30px;
-}
-
-/* Contact */
-.contact div,
-.contact a {
-    margin-bottom: 5px;
-}
-
-/* Links */
-.links {
-    display: flex;
-    flex-direction: column;
-    margin: 25px 0px;
-}
-
-a {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-a,
-a:hover,
-a:focus,
-a:active {
-    text-decoration: none;
-    color: initial;
-}
-
-/* Icons */
-.icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-}
-
-/* Skills */
-#skills {
-    margin-bottom: 20px;
-}
-
-.skill {
-    margin-bottom: 10px;
-}
-
-.skill-bar {
-    height: 8px;
-    border-radius: 2px;
-    margin-bottom: 5px;
-    background: mediumseagreen;
-}
-
-.name-years {
-    display: flex;
-    justify-content: space-between;
-}
-
-.skill .name {
-    font-weight: 600;
-}
-
-/* Certifications */
-#certs {
-    margin-bottom: 20px;
-}
-
-.cert div {
-    margin-bottom: 4px;
-}
-
-.cert-date {
-    display: flex;
-    justify-content: space-between;
-}
-
-.cert-name {
-    font-weight: 600;
-    font-size: 1.1em;
-}
-
-/* Education */
-.education:not(:last-child) {
-    margin-bottom: 4px;
-}
-
-.college {
-    font-weight: 600;
-}
-
-/* Date */
-.date {
-    font-size: .9em;
-    font-weight: 500;
-    color: darkgray;
-    text-transform: uppercase;
+@media screen {
+    html {
+        background: whitesmoke;
+        font-family: 'Inter', sans-serif;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        padding: 40px;
+        max-width: 1366px;
+    }
+    
+    p, span, li {
+        line-height: 1.25;
+    }
+    
+    header h1 {
+        font-weight: 800;
+        font-size: 2.5em;
+    }
+    
+    header h4 {
+        font-weight: 400;
+        margin-top: 5px;
+        text-transform: uppercase;
+    }
+    
+    main {
+        flex: 1;
+        display: flex;
+    }
+    
+    .left {
+        flex: 1;
+    }
+    
+    .right {
+        flex: 1;
+    }
+    
+    /* Photo, Name, and Title */
+    .photo-name-title {
+        display: flex;
+        align-items: center;
+    }
+    
+    .photo {
+        border-radius: 50%;
+        margin-right: 40px;
+    }
+    
+    .name {
+        margin-bottom: 0px;
+    }
+    
+    
+    /* Jobs */
+    .job-heading.title {
+        font-weight: 600;
+        margin-bottom: 5px;
+        /* white-space: nowrap; */
+    }
+    
+    .job-heading.dates {
+        font-weight: 500;
+        font-size: .9em;
+        color: darkgray;
+        text-transform: uppercase;
+    }
+    
+    .job ul {
+        padding-inline-start: 30px;
+    }
+    
+    /* Contact */
+    .contact div,
+    .contact a {
+        margin-bottom: 5px;
+    }
+    
+    /* Links */
+    .links {
+        display: flex;
+        flex-direction: column;
+        margin: 25px 0px;
+    }
+    
+    a {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+        color: initial;
+    }
+    
+    /* Icons */
+    .icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+    
+    /* Skills */
+    #skills {
+        margin-bottom: 20px;
+    }
+    
+    .skill {
+        margin-bottom: 10px;
+    }
+    
+    .skill-bar {
+        height: 8px;
+        border-radius: 2px;
+        margin-bottom: 5px;
+        background: mediumseagreen;
+    }
+    
+    .name-years {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .skill .name {
+        font-weight: 600;
+    }
+    
+    /* Certifications */
+    #certs {
+        margin-bottom: 20px;
+    }
+    
+    .cert div {
+        margin-bottom: 4px;
+    }
+    
+    .cert-date {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .cert-name {
+        font-weight: 600;
+        font-size: 1.1em;
+    }
+    
+    /* Education */
+    .education:not(:last-child) {
+        margin-bottom: 4px;
+    }
+    
+    .college {
+        font-weight: 600;
+    }
+    
+    /* Date */
+    .date {
+        font-size: .9em;
+        font-weight: 500;
+        color: darkgray;
+        text-transform: uppercase;
+    }
 }
 
 /* Card */
