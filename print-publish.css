@@ -1,9 +1,6 @@
 @media print {
     html {
         font-family: 'Inter', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     
     * {
@@ -20,15 +17,15 @@
     
     @page {
         size: letter;
+        /* margin: 0in .5in .5in .5in; */
+        margin: .5in;
     }
 
     body {
-        margin: 0px;
-        padding: 0px;
+        margin: 0;
+        padding: 0;
         display: flex;
         flex-direction: column;
-        background: white;
-        padding: 0px 40px;
     }
 
     h1, h2, h3, h4, h5 {
@@ -209,4 +206,8 @@
     .mode {
         display: none;
     }
+}
+
+@media print {
+
 }
