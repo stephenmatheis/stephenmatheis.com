@@ -178,3 +178,10 @@ toggle.addEventListener('change', event => {
 // const hours = new Date().getHours();
 
 // toggle.checked = hours > 7 && hours < 20;
+
+
+/**
+ * Detect CSS support
+ */
+console.log(`${CSS.supports('break-after', 'avoid') ? 'Supports' : `Doesn't support`} CSS rule 'breakafter: avoid'`);
+console.log(`Navigator platform: ${navigator.platform}`);
