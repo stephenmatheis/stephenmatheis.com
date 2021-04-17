@@ -148,8 +148,8 @@
     
     .skill-bar {
         height: 8px;
-        border-radius: 2px;
-        margin-bottom: 5px;
+        /* margin-bottom: 5px; */
+        margin-top: 5px;
         background: mediumseagreen;
     }
     
@@ -202,8 +202,4 @@
     .mode {
         display: none;
     }
-}
-
-@media print {
-
 }

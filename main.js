@@ -144,11 +144,11 @@ skills.forEach(skill => {
 
     let html = /*html*/`
         <div class="skill">
-            <div class="skill-bar" style="width: ${width}%"></div>
             <div class='name-years'>
                 <span class="name">${name}</span>
                 <span class="years">${years} years</span>
             </div>
+            <div class="skill-bar" style="width: ${width}%"></div>
         </div>
     `;
 
