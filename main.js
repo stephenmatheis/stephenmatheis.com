@@ -162,13 +162,37 @@ toggle.addEventListener('change', event => {
     const state = event.target.checked;
 
     if (state) {
-        document.querySelector('html').classList.add('dark-mode');
-        document.querySelector('header img').src = 'github-profile-img_128x128.png';
+        setMode('dark');
     } else {
-        document.querySelector('html').classList.remove('dark-mode');
-        document.querySelector('header img').src = 'photo_128x128.jpg';
+        setMode('light')
     }
 });
+
+function setMode(mode) {
+    if (mode === 'dark') {
+        setDark();
+    } else if (mode === 'light') {
+        setLight();
+    }
+
+    setFavicon(mode);
+}
+
+function setDark() {
+    document.querySelector('html').classList.add('dark-mode');
+    document.querySelector('header img').src = 'github-profile-img_128x128.png';
+}
+
+function setLight() {
+    document.querySelector('html').classList.remove('dark-mode');
+    document.querySelector('header img').src = 'photo_128x128.jpg';
+}
+
+function setFavicon(mode) {
+    document.querySelector("link[rel='apple-touch-icon']").href = `favicons/${mode}/apple-touch-icon.png`;
+    document.querySelector("link[rel='icon'][sizes='32x32']").href = `favicons/${mode}/favicon-32x32.png`;
+    document.querySelector("link[rel='icon'][sizes='16x16']").href = `favicons/${mode}/favicon-16x16.png`;
+}
 
 /**
  * Automatically toggle light/dark mode based on local time of day
