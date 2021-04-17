@@ -1,9 +1,6 @@
-@media print {
+@media print, screen {
     html {
         font-family: 'Inter', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     
     * {
@@ -20,14 +17,13 @@
     
     @page {
         size: letter;
+        /* margin: 0in .5in .5in .5in; */
         margin: .5in;
     }
 
     body {
-        padding: .5in;
         display: flex;
         flex-direction: column;
-        background: white;
     }
 
     h1, h2, h3, h4, h5 {
@@ -207,5 +203,30 @@
     /* Dark/Light Mode Toggle */
     .mode {
         display: none;
+    }
+}
+
+@media screen {
+    html {
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: ghostwhite;
+    }
+    
+    body {
+        width: 8.5in;
+        height: 11in;
+        background: white;
+        padding: .5in;
+        margin: 0 auto;
+    }
+}
+
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
     }
 }
