@@ -183,5 +183,5 @@ toggle.addEventListener('change', event => {
 /**
  * Detect CSS support
  */
-console.log(`${CSS.supports('break-after', 'avoid') ? 'Supports' : `Doesn't support`} CSS rule 'breakafter: avoid'`);
-console.log(`Navigator platform: ${navigator.platform}`);
+// console.log(`${CSS.supports('break-after', 'avoid') ? 'Supports' : `Doesn't support`} CSS rule 'breakafter: avoid'`);
+// console.log(`Navigator platform: ${navigator.platform}`);
