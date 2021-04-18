@@ -4,23 +4,9 @@
     html {
         font-family: 'Inter', sans-serif;
     }
-    
+        
     * {
         box-sizing: border-box;
-    }
-
-    *:not(.date):not(#toggle) {
-        color: initial !important;
-    }
-    
-    *:not(h1, h2, h3, h4, h5, h6) {
-        font-size: 9.5pt;
-    }
-    
-    @page {
-        size: letter;
-        /* margin: 0in .5in .5in .5in; */
-        margin: .5in;
     }
 
     body {
@@ -28,37 +14,23 @@
         flex-direction: column;
     }
 
-    h1, h2, h3, h4, h5 {
-        break-after: avoid;
-    }
-    
     p, span, li {
         line-height: 1.25;
     }
-    
-    header {
-        background: white !important;
-        margin-bottom: 10px;
-    }
-    
+
     header h1 {
         font-weight: 800;
-        font-size: 32pt;
     }
-    
+
     header h4 {
         font-weight: 400;
         margin-top: 5px;
         text-transform: uppercase;
     }
-    
+
     main {
         flex: 1;
         display: flex;
-    }
-    
-    section {
-        background: white !important;
     }
 
     .left {
@@ -66,11 +38,9 @@
     }
     
     .right {
-        padding-left: 37px;
-        white-space: nowrap;
         flex: 1;
     }
-    
+
     /* Photo, Name, and Title */
     .photo-name-title {
         display: flex;
@@ -85,43 +55,43 @@
     .name {
         margin-bottom: 0px;
     }
-    
-    
+
     /* Jobs */
     .job-heading.title {
         font-weight: 600;
         margin-bottom: 5px;
-        white-space: nowrap;
-    }
-    
-    .job-heading.dates {
-        font-weight: 500;
-        font-size: .9em;
-        color: darkgray;
-        text-transform: uppercase;
     }
     
     .job ul {
         padding-inline-start: 30px;
     }
-    
+
     /* Contact */
-    .contact div,
-    .contact a {
+    .contact {
         margin-bottom: 5px;
+    }
+
+    .contact.title {
+        font-weight: 600;
+    }
+
+    .contact.title {
+        margin-top: 5px;
     }
 
     /* Links */
     .links {
         display: flex;
-        flex-direction: column;
-        margin: 25px 0px;
+        margin-top: 20px;
+    }
+
+    .links a:not(:last-child) {
+        margin-right: 30px;
     }
     
     a {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
     }
     
     a,
@@ -131,21 +101,15 @@
         text-decoration: none;
         color: initial;
     }
-    
+
     /* Icons */
     .icon {
         width: 20px;
         height: 20px;
         margin-right: 5px;
-        stroke: initial !important;
-        fill: initial !important;
     }
-    
+
     /* Skills */
-    #skills {
-        margin-bottom: 20px;
-    }
-    
     .skill {
         margin-bottom: 10px;
     }
@@ -153,7 +117,7 @@
     .skill-bar {
         height: 8px;
         border-radius: 2px;
-        margin-bottom: 5px;
+        margin-top: 5px;
         background: mediumseagreen;
     }
     
@@ -182,7 +146,6 @@
     
     .cert-name {
         font-weight: 600;
-        font-size: 1.1em;
     }
     
     /* Education */
@@ -201,16 +164,10 @@
         color: darkgray;
         text-transform: uppercase;
     }
-
-    /* Dark/Light Mode Toggle */
-    .mode {
-        display: none;
-    }
 }
 
 @media screen {
     html {
-        font-family: 'Inter', sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -227,8 +184,55 @@
 }
 
 @media print {
+    *:not(.date):not(#toggle) {
+        color: initial !important; /* remove dark mode */
+    }
+    
+    *:not(h1, h2, h3, h4, h5, h6) {
+        font-size: 9.5pt;
+    }
+    
+    @page {
+        size: letter;
+        margin: .5in;
+    }
+
     body {
         margin: 0;
         padding: 0;
+    }
+
+    header {
+        background: white !important; /* remove dark mode */
+        margin-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 32pt;
+    }
+
+    section {
+        background: white !important; /* remove dark mode */
+    }
+
+    .right {
+        padding-left: 37px;
+        white-space: nowrap;
+    }
+
+    /* Jobs */
+    .job-heading.title {
+        white-space: nowrap;
+    }
+
+    /* Icons */
+    .icon {
+        stroke: initial !important; /* remove dark mode */
+        fill: initial !important; /* remove dark mode */
+    }
+
+    /* Dark/Light Mode Toggle */
+    .mode {
+        display: none;
     }
 }

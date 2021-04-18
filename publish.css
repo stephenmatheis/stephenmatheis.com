@@ -66,22 +66,31 @@
     }
 
     /* Contact */
-    .contact div,
-    .contact a {
+    .contact {
         margin-bottom: 5px;
     }
-    
+
+    .contact.title {
+        font-weight: 600;
+    }
+
+    .contact.title {
+        margin-top: 5px;
+    }
+
     /* Links */
     .links {
         display: flex;
-        flex-direction: column;
-        margin: 25px 0px;
+        margin-top: 20px;
+    }
+
+    .links a:not(:last-child) {
+        margin-right: 30px;
     }
     
     a {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
     }
     
     a,
@@ -100,10 +109,6 @@
     }
 
     /* Skills */
-    #skills {
-        margin-bottom: 20px;
-    }
-    
     .skill {
         margin-bottom: 10px;
     }
@@ -111,7 +116,6 @@
     .skill-bar {
         height: 8px;
         border-radius: 2px;
-        /* margin-bottom: 5px; */
         margin-top: 5px;
         background: mediumseagreen;
     }
@@ -141,7 +145,6 @@
     
     .cert-name {
         font-weight: 600;
-        font-size: 1.1em;
     }
     
     /* Education */
