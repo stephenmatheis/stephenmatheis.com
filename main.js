@@ -156,28 +156,18 @@ skills.forEach(skill => {
 });
 
 /** Time */
-const time = document.querySelector('#time');
-
-const dateString = new Date().toLocaleDateString('en-US', {
-    dateStyle: 'full'
-});
-
-const timeString = new Date().toLocaleTimeString('en-US', {
-    timeStyle: 'short'
-});
-
-console.log(dateString, timeString);
-
-const dateString_2 = new Date().toLocaleDateString('en-US', {
+const formattedDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     day: 'numeric',
     month: 'long',
     year: 'numeric'
 });
 
-console.log(dateString_2, timeString);
+const formattedTime = new Date().toLocaleTimeString('en-US', {
+    timeStyle: 'short'
+});
 
-time.innerText = `${dateString_2} ${timeString}`
+document.querySelector('#time').innerText = `${formattedDate} ${formattedTime}`
 
 /** Toggle Dark Mode */
 const toggle = document.querySelector('#toggle');
