@@ -163,6 +163,29 @@
         color: darkgray;
         text-transform: uppercase;
     }
+
+    /* Footer */
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+
+    footer .link {
+        color: gray;
+    }
+
+    footer .link:hover,
+    footer .link:active,
+    footer .link:focus {
+        color: gray;
+    }
+
+    .mode {
+        margin-bottom: 30px;
+    }
 }
 
 /* Web */
@@ -246,7 +269,7 @@
     }
 
     /* Dark/Light Mode Toggle */
-    .mode {
+    footer {
         display: none;
     }
 }
