@@ -118,7 +118,7 @@ const skills = [
         years: '18'
     },
     {
-        name: 'UNIX/Linux',
+        name: 'UNIX/Linux Shell',
         years: '14'
     },
     {
