@@ -81,7 +81,7 @@ jobs.forEach(job => {
     let html = /*html*/`
         <div class="job">
             <div class="job-heading title">${title}, ${company}, ${location}</div>
-            <div class="job-heading dates">${dates}</div>
+            <div class="job-heading date">${dates}</div>
             <ul>
     `;
 

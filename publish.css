@@ -1,41 +1,37 @@
-@media screen {
+/* Shared */
+@media screen, print {
     html {
-        background: whitesmoke;
         font-family: 'Inter', sans-serif;
     }
-    
+        
     * {
         box-sizing: border-box;
     }
-    
+
     body {
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
-        padding: 40px;
-        max-width: 1366px;
     }
-    
+
     p, span, li {
         line-height: 1.25;
     }
-    
+
     header h1 {
         font-weight: 800;
-        font-size: 2.5em;
     }
-    
+
     header h4 {
         font-weight: 400;
         margin-top: 5px;
         text-transform: uppercase;
     }
-    
+
     main {
         flex: 1;
         display: flex;
     }
-    
+
     .left {
         flex: 1;
     }
@@ -43,7 +39,7 @@
     .right {
         flex: 1;
     }
-    
+
     /* Photo, Name, and Title */
     .photo-name-title {
         display: flex;
@@ -58,26 +54,17 @@
     .name {
         margin-bottom: 0px;
     }
-    
-    
+
     /* Jobs */
     .job-heading.title {
         font-weight: 600;
         margin-bottom: 5px;
-        /* white-space: nowrap; */
-    }
-    
-    .job-heading.dates {
-        font-weight: 500;
-        font-size: .9em;
-        color: darkgray;
-        text-transform: uppercase;
     }
     
     .job ul {
         padding-inline-start: 30px;
     }
-    
+
     /* Contact */
     .contact div,
     .contact a {
@@ -104,14 +91,14 @@
         text-decoration: none;
         color: initial;
     }
-    
+
     /* Icons */
     .icon {
         width: 20px;
         height: 20px;
         margin-right: 5px;
     }
-    
+
     /* Skills */
     #skills {
         margin-bottom: 20px;
@@ -175,6 +162,23 @@
     }
 }
 
+/* Web */
+@media screen {
+    html {
+        background: whitesmoke;
+    }
+    
+    body {
+        margin: 0 auto;
+        padding: 40px;
+        max-width: 1366px;
+    }
+
+    header h1 {
+        font-size: 2.5em;
+    }
+}
+
 /* Card */
 @media screen and (min-width: 1050px) {
     .left {
@@ -186,5 +190,60 @@
         background: white;
         padding: 30px;
         margin: 30px;
+    }
+}
+
+/* Print */
+@media print {
+    *:not(.date):not(#toggle) {
+        color: initial !important; /* remove dark mode */
+    }
+    
+    *:not(h1, h2, h3, h4, h5, h6) {
+        font-size: 9.5pt;
+    }
+    
+    @page {
+        size: letter;
+        margin: .5in;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background: white !important; /* remove dark mode */
+        margin-bottom: 10px;
+    }
+
+    header h1 {
+        font-size: 32pt;
+    }
+
+    section {
+        background: white !important; /* remove dark mode */
+    }
+
+    .right {
+        padding-left: 37px;
+        white-space: nowrap;
+    }
+
+    /* Jobs */
+    .job-heading.title {
+        white-space: nowrap;
+    }
+
+    /* Icons */
+    .icon {
+        stroke: initial !important; /* remove dark mode */
+        fill: initial !important; /* remove dark mode */
+    }
+
+    /* Dark/Light Mode Toggle */
+    .mode {
+        display: none;
     }
 }
