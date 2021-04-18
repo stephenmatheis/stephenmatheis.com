@@ -155,6 +155,21 @@ skills.forEach(skill => {
     skillsNode.insertAdjacentHTML('beforeend', html);
 });
 
+/** Time */
+const time = document.querySelector('#time');
+
+const dateString = new Date().toLocaleDateString('en-US', {
+    dateStyle: 'full'
+});
+
+const timeString = new Date().toLocaleTimeString('en-US', {
+    timeStyle: 'short'
+});
+
+console.log(dateString, timeString);
+
+time.innerText = `${dateString} ${timeString}`
+
 /** Toggle Dark Mode */
 const toggle = document.querySelector('#toggle');
 
@@ -198,11 +213,19 @@ function setFavicon(mode) {
  * Automatically toggle light/dark mode based on local time of day
  * {@link https://codepen.io/mrozilla/pen/OJJNjRb}
  */
-// const toggle = document.querySelector('.toggle');
-// const hours = new Date().getHours();
+const hours = new Date().getHours();
 
-// toggle.checked = hours > 7 && hours < 20;
+// if (hours < 8 && hours > 2000) {
+//     toggle.checked = true;
 
+//     setMode('dark');
+// }
+
+if (hours > 8 && hours < 2000) {
+    toggle.checked = true;
+
+    setMode('dark');
+}
 
 /**
  * Detect CSS support
