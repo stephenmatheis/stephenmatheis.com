@@ -215,20 +215,8 @@ function setFavicon(mode) {
  */
 const hours = new Date().getHours();
 
-// if (hours < 8 && hours > 2000) {
-//     toggle.checked = true;
-
-//     setMode('dark');
-// }
-
-if (hours > 8 && hours < 2000) {
+if (hours < 8 && hours > 2000) {
     toggle.checked = true;
 
     setMode('dark');
 }
-
-/**
- * Detect CSS support
- */
-// console.log(`${CSS.supports('break-after', 'avoid') ? 'Supports' : `Doesn't support`} CSS rule 'breakafter: avoid'`);
-// console.log(`Navigator platform: ${navigator.platform}`);
