@@ -168,7 +168,16 @@ const timeString = new Date().toLocaleTimeString('en-US', {
 
 console.log(dateString, timeString);
 
-time.innerText = `${dateString} ${timeString}`
+const dateString_2 = new Date().toLocaleDateString('en-US', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+});
+
+console.log(dateString_2, timeString);
+
+time.innerText = `${dateString_2} ${timeString}`
 
 /** Toggle Dark Mode */
 const toggle = document.querySelector('#toggle');
