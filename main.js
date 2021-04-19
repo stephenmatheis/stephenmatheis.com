@@ -214,7 +214,7 @@ function setFavicon(mode) {
  */
 const hours = new Date().getHours();
 
-if (hours < 8 && hours > 20) {
+if (hours < 7 || hours > 19) {
     toggle.checked = true;
 
     setMode('dark');
