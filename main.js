@@ -110,7 +110,7 @@ const skills = [
         years: '18'
     },
     {
-        name: 'JS',
+        name: 'JavaScript (JS)',
         years: '18'
     },
     {
