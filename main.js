@@ -170,6 +170,7 @@ const formattedTime = new Date().toLocaleTimeString('en-US', {
 document.querySelector('#time').innerText = `${formattedDate} ${formattedTime}`
 
 /** Toggle Dark Mode */
+/** @todo I'm pretty sure this can all be done with css only
 const toggle = document.querySelector('#toggle');
 
 toggle.addEventListener('change', event => {
