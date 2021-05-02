@@ -7,7 +7,7 @@ const jobs = [
         dates: 'March 2018 - Present',
         bullets: [
             'Leads a team of 3 developers and 2 administrators',
-            'Creating client-side SharePoint applications with HTML, CSS, JS, and the SharePoint 2013 REST API',
+            'Creating client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
             'Migrating an on premise environment to Amazon Web Services (AWS)',
             'Led migration from SharePoint 2010 to 2013'
         ]
@@ -28,7 +28,7 @@ const jobs = [
         location: 'Austin, TX',
         dates: 'September 2016 - October 2017',
         bullets: [
-            'Created client-side SharePoint applications with HTML, CSS, JS, and the SharePoint 2013 REST API',
+            'Created client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
             'Migrated from SharePoint 2010 to 2013',
             'Migrated Lotus Notes wikis, data, and applications to SharePoint 2010'
         ]
@@ -50,7 +50,7 @@ const jobs = [
         location: 'Reston, VA',
         dates: 'November 2014 - May 2016',
         bullets: [
-            'Created client-side dashboards and applications with HTML, CSS, JS, and the SharePoint 2010 REST API',
+            'Created client-side dashboards and applications with HTML, CSS, JS, and the 2010 REST API',
             'Created PowerShell tools to generate automated reports and archive list data as XML',
             'Assisted in SharePoint 2010 to 2013 migrations for DoD and Federal agencies'
         ]
