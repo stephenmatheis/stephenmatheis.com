@@ -215,9 +215,12 @@
         flex: 2;
     }
 
-    header, section {
-        border-radius: 4px;
-        background: white;
+    header {
+        padding: 30px;
+        margin: 30px 30px 0px 30px;
+    }
+    
+    section {
         padding: 30px;
         margin: 30px;
     }
