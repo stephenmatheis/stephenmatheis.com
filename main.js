@@ -195,12 +195,12 @@ function setMode(mode) {
 
 function setDark() {
     document.querySelector('html').classList.add('dark-mode');
-    document.querySelector('header img').src = 'images/github-profile-img_128x128.png';
+    document.querySelector('header img').src = 'images/dark_128x128.png';
 }
 
 function setLight() {
     document.querySelector('html').classList.remove('dark-mode');
-    document.querySelector('header img').src = 'images/photo_128x128.jpg';
+    document.querySelector('header img').src = 'images/light_128x128.jpg';
 }
 
 function setFavicon(mode) {
