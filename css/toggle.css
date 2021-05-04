@@ -48,11 +48,6 @@
     html.dark-mode {
         background: #1e1e1e;
     }
-
-    html.dark-mode header,
-    html.dark-mode section {
-        background: #333;
-    }
 }
 
 @media screen and (max-width: 1050px) {
