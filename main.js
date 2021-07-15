@@ -2,13 +2,23 @@
 const jobs = [
     {
         title: 'SharePoint Developer',
+        company: 'Sehlke Consulting',
+        location: 'San Antonio, TX',
+        dates: 'May 2021 - Present',
+        bullets: [
+            'Supporting the Defense Health Agency (DHA) Analytics and Evaluation Divsion (AED) <span style="white-space: nowrap;">J-5</span> Knowledge Management (KM) Branch',
+            'Creating client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
+        ]
+    },
+    {
+        title: 'SharePoint Developer',
         company: 'T and T Consulting Services',
         location: 'San Antonio, TX',
-        dates: 'March 2018 - Present',
+        dates: 'March 2018 - May 2021',
         bullets: [
-            'Leads a team of 3 developers and 2 administrators',
-            'Creating client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
-            'Migrating an on premise environment to Amazon Web Services (AWS)',
+            'Lead a team of 3 developers and 2 administrators',
+            'Created client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
+            'Assisted with migrating an on premise SharePoint 2013 environment to Amazon Web Services (AWS)',
             'Led migration from SharePoint 2010 to 2013'
         ]
     },
