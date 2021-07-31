@@ -124,11 +124,7 @@ const skills = [
     {
         name: 'PowerShell',
         years: '7'
-    },
-    {
-        name: 'Python',
-        years: '3'
-    },
+    }
 ];
 
 const skillsNode = document.querySelector('#skills');
