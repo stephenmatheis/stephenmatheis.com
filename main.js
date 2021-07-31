@@ -2,13 +2,24 @@
 const jobs = [
     {
         title: 'SharePoint Developer',
+        company: 'Sehlke Consulting',
+        location: 'San Antonio, TX',
+        dates: 'May 2021 - Present',
+        bullets: [
+            'Supporting the Defense Health Agency (DHA) <span style="white-space: nowrap;">J-5</span> Analytics and Evaluation Divsion (AED) Knowledge Management (KM) Branch',
+            'Creating client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
+        ]
+    },
+    {
+        title: 'SharePoint Developer',
         company: 'T and T Consulting Services',
         location: 'San Antonio, TX',
-        dates: 'March 2018 - Present',
+        dates: 'March 2018 - May 2021',
         bullets: [
-            'Leads a team of 3 developers and 2 administrators',
-            'Creating client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
-            'Migrating an on premise environment to Amazon Web Services (AWS)',
+            'Supported Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Managment Division (IMD)',
+            'Lead a team of 3 developers and 2 administrators',
+            'Created client-side SharePoint applications with HTML, CSS, JS, and the 2010 and 2013 REST API',
+            'Assisted with migrating an on premise SharePoint 2013 environment to Amazon Web Services (AWS)',
             'Led migration from SharePoint 2010 to 2013'
         ]
     },
@@ -50,7 +61,8 @@ const jobs = [
         location: 'Reston, VA',
         dates: 'November 2014 - May 2016',
         bullets: [
-            'Created client-side dashboards and applications with HTML, CSS, JS, and the 2010 REST API',
+            'Supported the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP)',
+            'Created client-side dashboards and applications with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Created PowerShell tools to generate automated reports and archive list data as XML',
             'Assisted in SharePoint 2010 to 2013 migrations for DoD and Federal agencies'
         ]
