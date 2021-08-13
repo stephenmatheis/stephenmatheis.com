@@ -160,7 +160,7 @@
     .date {
         font-size: .9em;
         font-weight: 500;
-        color: darkgray;
+        color: darkslategray;
         text-transform: uppercase;
     }
 
@@ -195,7 +195,7 @@
 /* Web */
 @media screen {
     html {
-        background: whitesmoke;
+        background: ghostwhite;
     }
     
     body {
@@ -253,6 +253,10 @@
     .right {
         padding-left: 37px;
         white-space: nowrap;
+    }
+
+    .container {
+        page-break-inside: avoid;
     }
 
     /* Jobs */

@@ -136,6 +136,20 @@ const skills = [
     {
         name: 'PowerShell',
         years: '7'
+    },
+    {
+        name: 'Python',
+        years: '3'
+    },
+    {
+        name: 'React',
+        prefix: '< ',
+        years: '1'
+    },
+    {
+        name: 'Mobile App Development',
+        prefix: '< ',
+        years: '1'
     }
 ];
 
@@ -145,6 +159,7 @@ const max = Math.max(...skills.map(skill => parseInt(skill.years)));
 skills.forEach(skill => {
     const {
         name,
+        prefix,
         years
     } = skill;
     
@@ -154,7 +169,7 @@ skills.forEach(skill => {
         <div class="skill">
             <div class='name-years'>
                 <span class="name">${name}</span>
-                <span class="years">${years} years</span>
+                <span class="years">${prefix || ''}${years} ${parseInt(years) === 1 ? 'year' : 'years'}</span>
             </div>
             <div class="skill-bar" style="width: ${width}%"></div>
         </div>
