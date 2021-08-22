@@ -44,6 +44,7 @@
     .photo-name-title {
         display: flex;
         align-items: center;
+        margin-bottom: 20px;
     }
     
     .photo {
