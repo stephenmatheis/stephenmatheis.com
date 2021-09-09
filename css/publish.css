@@ -230,7 +230,7 @@
 /* Print */
 @media print {
     *:not(h1, h2, h3, h4, h5, h6) {
-        font-size: 9.5pt;
+        font-size: 9pt;
     }
     
     @page {
@@ -248,7 +248,7 @@
     }
 
     header h1 {
-        font-size: 32pt;
+        font-size: 28pt;
     }
 
     .right {
@@ -258,6 +258,10 @@
 
     .container {
         page-break-inside: avoid;
+    }
+
+    .job {
+        break-before: avoid-page;
     }
 
     /* Jobs */
