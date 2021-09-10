@@ -8,11 +8,6 @@
         box-sizing: border-box;
     }
 
-    body {
-        display: flex;
-        flex-direction: column;
-    }
-
     p, span, li {
         line-height: 1.25;
     }
@@ -230,7 +225,15 @@
 /* Print */
 @media print {
     *:not(h1, h2, h3, h4, h5, h6) {
-        font-size: 9pt;
+        font-size: 11px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 16px;
     }
     
     @page {
@@ -248,25 +251,39 @@
     }
 
     header h1 {
-        font-size: 28pt;
+        font-size: 28px;
     }
 
     .right {
-        padding-left: 37px;
+        padding-left: 30px;
         white-space: nowrap;
     }
 
-    .container {
-        page-break-inside: avoid;
-    }
-
+    .container,
     .job {
-        break-before: avoid-page;
+        break-inside: avoid;
     }
 
     /* Jobs */
     .job-heading.title {
         white-space: nowrap;
+    }
+
+    .job-heading.date {
+        font-size: 9px;
+    }
+
+    .job ul {
+        margin-top: 4px;
+    }
+
+    /* Skills */
+    .skill:not(:last-child) {
+        margin: 6px 0px;
+    }
+
+    .skill-bar {
+        display: none;
     }
 
     /* Footer */
