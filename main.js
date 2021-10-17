@@ -6,8 +6,8 @@ const jobs = [
         location: 'San Antonio, TX',
         dates: 'May 2021 - Present',
         bullets: [
-            'Supporting the Defense Health Agency (DHA) <span style="white-space: nowrap;">J-5</span> Analytics and Evaluation Divsion (AED) Knowledge Management (KM) Branch',
-            'Creating client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
+            'Developing a mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React Native, Expo, and Firebase',
+            'Creating client-side SharePoint applications for the Defense Health Agency (DHA) <span style="white-space: nowrap;">J-5</span> Analytics and Evaluation Divsion (AED) Knowledge Management (KM) Branchwith HTML, CSS, JS, and the 2013 REST API',
         ]
     },
     {
@@ -16,9 +16,8 @@ const jobs = [
         location: 'San Antonio, TX',
         dates: 'March 2018 - May 2021',
         bullets: [
-            'Supported Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Managment Division (IMD)',
             'Lead a team of 3 developers and 2 administrators',
-            'Created client-side SharePoint applications with HTML, CSS, JS, and the 2010 and 2013 REST API',
+            'Created client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Managment Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Assisted with migrating an on premise SharePoint 2013 environment to Amazon Web Services (AWS)',
             'Led migration from SharePoint 2010 to 2013'
         ]
@@ -61,8 +60,7 @@ const jobs = [
         location: 'Reston, VA',
         dates: 'November 2014 - May 2016',
         bullets: [
-            'Supported the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP)',
-            'Created client-side dashboards and applications with HTML, CSS, JS, and the 2010 and 2013 REST API',
+            'Created client-side dashboards and applications for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Created PowerShell tools to generate automated reports and archive list data as XML',
             'Assisted in SharePoint 2010 to 2013 migrations for DoD and Federal agencies'
         ]
@@ -136,6 +134,20 @@ const skills = [
     {
         name: 'PowerShell',
         years: '7'
+    },
+    {
+        name: 'Python',
+        years: '3'
+    },
+    {
+        name: 'React',
+        prefix: '< ',
+        years: '1'
+    },
+    {
+        name: 'Mobile App Development',
+        prefix: '< ',
+        years: '1'
     }
 ];
 
@@ -145,6 +157,7 @@ const max = Math.max(...skills.map(skill => parseInt(skill.years)));
 skills.forEach(skill => {
     const {
         name,
+        prefix,
         years
     } = skill;
     
@@ -154,7 +167,7 @@ skills.forEach(skill => {
         <div class="skill">
             <div class='name-years'>
                 <span class="name">${name}</span>
-                <span class="years">${years} years</span>
+                <span class="years">${prefix || ''}${years} ${parseInt(years) === 1 ? 'year' : 'years'}</span>
             </div>
             <div class="skill-bar" style="width: ${width}%"></div>
         </div>
