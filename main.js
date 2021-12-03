@@ -23,7 +23,7 @@ const jobs = [
         ]
     },
     {
-        title: 'Software Developer',
+        title: '',
         company: 'Self-Employed',
         location: 'Washington, D.C.',
         dates: 'October 2017 - March 2018',
@@ -90,7 +90,7 @@ jobs.forEach(job => {
 
     let html = /*html*/`
         <div class="job">
-            <div class="job-heading title">${title}, ${company}, ${location}</div>
+            <div class="job-heading title">${title ? `${title} •`: ''} ${company}, ${location}</div>
             <div class="job-heading date">${dates}</div>
             <ul>
     `;
@@ -120,7 +120,7 @@ const skills = [
         years: '18'
     },
     {
-        name: 'JavaScript (JS)',
+        name: 'JavaScript',
         years: '18'
     },
     {
@@ -140,13 +140,11 @@ const skills = [
         years: '3'
     },
     {
-        name: 'React',
-        prefix: '< ',
+        name: 'React, React Native',
         years: '1'
     },
     {
         name: 'Mobile App Development',
-        prefix: '< ',
         years: '1'
     }
 ];
