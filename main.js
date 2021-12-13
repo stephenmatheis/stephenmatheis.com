@@ -71,7 +71,7 @@ const jobs = [
         location: 'Charlottesville, VA',
         dates: 'February 2011 - November 2014',
         bullets: [
-            'Assisted SharePoint site administrator',
+            'SharePoint site administration',
             'Automated data collection and analysis with Excel and SharePoint 2007'
         ]
     }
