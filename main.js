@@ -16,7 +16,7 @@ const jobs = [
         location: 'San Antonio, TX',
         dates: 'March 2018 - May 2021',
         bullets: [
-            'Lead a team of 3 developers and 2 administrators',
+            'Technical lead to a team of 3 developers and 2 administrators',
             'Created client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Managment Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Assisted with migrating an on premise SharePoint 2013 environment to Amazon Web Services (AWS)',
             'Led migration from SharePoint 2010 to 2013'
@@ -60,9 +60,9 @@ const jobs = [
         location: 'Reston, VA',
         dates: 'November 2014 - May 2016',
         bullets: [
-            'Created client-side dashboards and applications for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP) with HTML, CSS, JS, and the 2010 and 2013 REST API',
+            'Created client-side applications for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Created PowerShell tools to generate automated reports and archive list data as XML',
-            'Assisted in SharePoint 2010 to 2013 migrations for DoD and Federal agencies'
+            'Migrated from SharePoint 2010 to 2013'
         ]
     },
     {
