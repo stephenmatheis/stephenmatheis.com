@@ -7,6 +7,7 @@ const jobs = [
         dates: 'May 2021 - Present',
         bullets: [
             'Developed and maintain a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React Native, Expo, and Firebase',
+            'Developed and maintain a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
             'Building client-side SharePoint applications for the Defense Health Agency (DHA) <span style="white-space: nowrap;">J-5</span> Analytics and Evaluation Divsion (AED) Knowledge Management (KM) Branch with HTML, CSS, JS, and the 2013 REST API to improve the flow and accuracy of mission-critical information to support military health and readiness',
         ]
     },

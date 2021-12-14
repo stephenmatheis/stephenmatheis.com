@@ -116,7 +116,7 @@
     
     .skill-bar {
         height: 8px;
-        border-radius: 2px;
+        border-radius: 4px;
         margin-top: 5px;
         background: mediumseagreen;
     }
@@ -213,7 +213,7 @@
 /* Card */
 @media screen and (min-width: 1050px) {
     .left {
-        flex: 2;
+        flex: 3;
     }
 
     header {
@@ -259,6 +259,16 @@
         font-size: 28px;
     }
 
+    /* Photo */
+    .photo {
+        height: 64px;
+        width: 64px;
+    }
+
+    .left {
+        flex: 3;
+    }
+
     .right {
         padding-left: 30px;
         white-space: nowrap;
@@ -270,6 +280,10 @@
     }
 
     /* Jobs */
+    .job:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
     .job-heading.title {
         white-space: nowrap;
     }
