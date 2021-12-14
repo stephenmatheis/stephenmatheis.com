@@ -7,7 +7,7 @@ const jobs = [
         dates: 'May 2021 - Present',
         bullets: [
             'Developed and maintain a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React Native, Expo, and Firebase',
-            'Creating client-side SharePoint applications for the Defense Health Agency (DHA) <span style="white-space: nowrap;">J-5</span> Analytics and Evaluation Divsion (AED) Knowledge Management (KM) Branch with HTML, CSS, JS, and the 2013 REST API to improve the flow and accuracy of mission-critical information to support military health and readiness',
+            'Building client-side SharePoint applications for the Defense Health Agency (DHA) <span style="white-space: nowrap;">J-5</span> Analytics and Evaluation Divsion (AED) Knowledge Management (KM) Branch with HTML, CSS, JS, and the 2013 REST API to improve the flow and accuracy of mission-critical information to support military health and readiness',
         ]
     },
     {
@@ -17,7 +17,7 @@ const jobs = [
         dates: 'March 2018 - May 2021',
         bullets: [
             'Technical lead to a team of 3 developers and 2 administrators',
-            'Created client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Managment Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
+            'Built client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Managment Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Assisted with migrating an on premise SharePoint 2013 environment to Amazon Web Services (AWS)',
             'Led migration from SharePoint 2010 to 2013'
         ]
@@ -37,7 +37,7 @@ const jobs = [
         location: 'Austin, TX',
         dates: 'September 2016 - October 2017',
         bullets: [
-            'Created client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
+            'Built client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
             'Migrated from SharePoint 2010 to 2013',
             'Migrated Lotus Notes wikis, data, and applications to SharePoint 2010'
         ]
@@ -59,8 +59,8 @@ const jobs = [
         location: 'Reston, VA',
         dates: 'November 2014 - May 2016',
         bullets: [
-            'Created client-side applications for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP) with HTML, CSS, JS, and the 2010 and 2013 REST API',
-            'Created PowerShell tools to generate automated reports and archive list data as XML',
+            'Built client-side applications for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP) with HTML, CSS, JS, and the 2010 and 2013 REST API',
+            'Wrote PowerShell tools to generate automated reports and archive list data as XML',
             'Migrated from SharePoint 2010 to 2013'
         ]
     },
