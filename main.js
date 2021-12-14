@@ -28,8 +28,7 @@ const jobs = [
         location: 'Washington, D.C.',
         dates: 'October 2017 - March 2018',
         bullets: [
-            'Web development',
-            'Prototyped a Single Page Application (SPA) development framework in JS'
+            'Prototyped a JavaScript Single Page Application framework'
         ]
     },
     {
