@@ -8,7 +8,7 @@ const jobs = [
         bullets: [
             'Developed and maintain a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React Native, Expo, and Firebase',
             'Developed and maintain a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
-            'Building client-side SharePoint applications for the Defense Health Agency (DHA) <span style="white-space: nowrap;">J-5</span> Analytics and Evaluation Divsion (AED) Knowledge Management (KM) Branch with HTML, CSS, JS, and the 2013 REST API to improve the flow and accuracy of mission-critical information to support military health and readiness',
+            'Building client-side SharePoint applications for the Defense Health Agency (DHA) with HTML, CSS, JS, and the 2013 REST API',
         ]
     },
     {
@@ -19,7 +19,6 @@ const jobs = [
         bullets: [
             'Technical Lead to a team of 3 developers and 2 administrators',
             'Built client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
-            'Assisted with migrating an on premise SharePoint 2013 environment to Amazon Web Services (AWS)',
             'Led migration from SharePoint 2010 to 2013'
         ]
     },
@@ -29,7 +28,7 @@ const jobs = [
         location: 'Washington, D.C.',
         dates: 'October 2017 - March 2018',
         bullets: [
-            'Prototyped a JavaScript Single Page Application framework'
+            'Prototyped a JavaScript single page application framework'
         ]
     },
     {
@@ -49,9 +48,9 @@ const jobs = [
         location: 'Herndon, VA',
         dates: 'March 2016 - August 2016',
         bullets: [
-            'Maintained Apple and Cisco certified training labs and equipment',
-            'Used in-house 4D RDBMS tools to manage students, courses, and equipment',
-            'Apple computer and mobile device management and support'
+            'Wrote bash and AppleScript tools',
+            'Supported Mac and iPhone end-user devices',
+            'Maintained Apple and Cisco certified training labs and equipment'
         ]
     },
     {
