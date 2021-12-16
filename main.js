@@ -18,7 +18,7 @@ const jobs = [
         dates: 'March 2018 - May 2021',
         bullets: [
             'Technical Lead to a team of 3 developers and 2 administrators',
-            'Built client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
+            'Built client-side SharePoint applications for Army Medical Command (MEDCOM) <span style="white-space: nowrap;">Regional Health Command - Central (RHC-C)</span> G-6 Information Management Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Led migration from SharePoint 2010 to 2013'
         ]
     },
@@ -87,21 +87,39 @@ jobs.forEach(job => {
         bullets
     } = job;
 
+    // let html = /*html*/`
+    //     <div class="job">
+    //         <div class="job-heading title">${title ? `${title} •`: ''} ${company}, ${location}</div>
+    //         <div class="job-heading date">${dates}</div>
+    //         <ul>
+    // `;
+
+    // bullets.forEach(bullet => {
+    //     html += /*html*/ `
+    //         <li>${bullet}</li>
+    //     `;
+    // });
+
+    // html += /*html*/ `
+    //         </ul>
+    //     </div>
+    // `;
+
     let html = /*html*/`
         <div class="job">
             <div class="job-heading title">${title ? `${title} •`: ''} ${company}, ${location}</div>
             <div class="job-heading date">${dates}</div>
-            <ul>
+            <div>
     `;
 
     bullets.forEach(bullet => {
         html += /*html*/ `
-            <li>${bullet}</li>
+            <p style="margin: 3px 0px;">${bullet}.</p>
         `;
     });
 
     html += /*html*/ `
-            </ul>
+            </div>
         </div>
     `;
 
