@@ -6,8 +6,8 @@ const jobs = [
         location: 'San Antonio, TX',
         dates: 'May 2021 - Present',
         bullets: [
-            'Developed and maintain a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React Native, Expo, and Firebase',
-            'Developed and maintain a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
+            'Develop and maintain a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with Expo, Firebase, and React Native',
+            'Develop and maintain a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
             'Building client-side SharePoint applications for the Defense Health Agency (DHA) with HTML, CSS, JS, and the 2013 REST API',
         ]
     },
