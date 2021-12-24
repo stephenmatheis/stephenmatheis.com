@@ -6,10 +6,15 @@
         
     * {
         box-sizing: border-box;
+        line-height: 1.5;
     }
 
     p, span, li {
         line-height: 1.5;
+    }
+
+    h2, h3 {
+        margin-top: 0px;
     }
 
     header h1 {
@@ -17,9 +22,10 @@
     }
 
     header h4 {
-        font-weight: 400;
+        font-weight: 500;
         margin-top: 5px;
         text-transform: uppercase;
+        color: gray;
     }
 
     main {
@@ -35,15 +41,25 @@
         flex: 1;
     }
 
+    /* Container */
+    .container {
+        margin-bottom: 30px;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 0px 0px 32px 0px rgb(0 0 0 / 10%);
+    }
+
     /* Photo, Name, and Title */
     .photo-name-title {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         margin-bottom: 20px;
     }
     
     .photo {
-        border-radius: 50%;
+        border-radius: 20px;
         margin-right: 40px;
     }
     
@@ -58,6 +74,7 @@
 
     .job-heading.title {
         font-weight: 600;
+        font-size: 18px;
     }
     
     .job ul {
@@ -106,6 +123,7 @@
         width: 20px;
         height: 20px;
         margin-right: 5px;
+        fill: mediumslateblue;
     }
 
     /* Skills */
@@ -117,7 +135,7 @@
         height: 8px;
         border-radius: 4px;
         margin-top: 5px;
-        background: mediumseagreen;
+        background: mediumslateblue;
     }
     
     .name-years {
@@ -130,10 +148,6 @@
     }
     
     /* Certifications */
-    #certs {
-        margin-bottom: 20px;
-    }
-    
     .cert div {
         margin-bottom: 4px;
     }
@@ -196,7 +210,7 @@
 /* Web */
 @media screen {
     html {
-        background: ghostwhite;
+        background: #F8F8FC;
     }
     
     body {
@@ -217,13 +231,11 @@
     }
 
     header {
-        padding: 30px 30px 0px 30px;
-        margin: 0px 30px;
+        padding: 15px 15px 0px 15px;
     }
     
     section {
-        padding: 30px;
-        margin: 0px 30px 30px 30px;
+        padding: 0px 15px 15px 15px;
     }
 }
 
