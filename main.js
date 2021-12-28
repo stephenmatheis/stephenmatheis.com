@@ -1,4 +1,4 @@
-/** Jobs */
+// Jobs
 const jobs = [
     {
         title: 'SharePoint Developer',
@@ -108,7 +108,7 @@ jobs.forEach(job => {
     experience.insertAdjacentHTML('beforeend', html);
 });
 
-/** Skills */
+// Skills
 const skills = [
     {
         name: 'HTML',
@@ -179,24 +179,18 @@ const toggle = document.querySelector('#toggle');
 // Detect user preference
 if (window.matchMedia) {
     if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-        document.querySelector('html').dataset.theme = 'light';
-        
-        toggle.checked = false;
+        toggleMode('light');
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.querySelector('html').dataset.theme = 'dark';
-
-        toggle.checked = true;
+        toggleMode('dark');
     }
 } else {
-    document.querySelector('html').dataset.theme = 'light';
-
-    toggle.checked = false;
+    toggleMode('light');
 }
 
 // Add theme override event listener
 toggle.addEventListener('change', event => {
     const state = event.target.checked;
-
+    
     if (state) {
         setMode('dark');
     } else {
@@ -204,39 +198,21 @@ toggle.addEventListener('change', event => {
     }
 });
 
-function setMode(mode) {
-    if (mode === 'dark') {
-        setDark();
-    } else if (mode === 'light') {
-        setLight();
-    }
-
-    setFavicon(mode);
-}
-
-function setDark() {
-    document.querySelector('html').dataset.theme = 'dark';
-}
-
-function setLight() {
-    document.querySelector('html').dataset.theme = 'light';
-}
-
-function setFavicon(mode) {
-    document.querySelector("link[rel='apple-touch-icon']").href = `favicons/${mode}/apple-touch-icon.png`;
-    document.querySelector("link[rel='icon'][sizes='32x32']").href = `favicons/${mode}/favicon-32x32.png`;
-    document.querySelector("link[rel='icon'][sizes='16x16']").href = `favicons/${mode}/favicon-16x16.png`;
-}
-
-/**
- * Automatically toggle light/dark mode based on local time of day
- * {@link https://codepen.io/mrozilla/pen/OJJNjRb}
- */
+// Automatically toggle light/dark mode based on local time of day - https://codepen.io/mrozilla/pen/OJJNjRb
 const hours = new Date().getHours();
 
 if (hours < 7 || hours > 19) {
-    toggle.checked = true;
+    toggleMode('dark');
+}
 
-    document.querySelector('html').dataset.theme = 'dark';
-    toggle.checked = true;
+function toggleMode(mode) {
+    toggle.checked = mode === 'light' ? false : true;
+    setMode(mode);
+}
+
+function setMode(mode) {
+    document.querySelector('html').dataset.theme = mode;
+    document.querySelector("link[rel='apple-touch-icon']").href = `favicons/${mode}/apple-touch-icon.png`;
+    document.querySelector("link[rel='icon'][sizes='32x32']").href = `favicons/${mode}/favicon-32x32.png`;
+    document.querySelector("link[rel='icon'][sizes='16x16']").href = `favicons/${mode}/favicon-16x16.png`;
 }

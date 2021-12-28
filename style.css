@@ -1,11 +1,11 @@
 /* Colors */
 :root {
-    --body-dark: #1e1e1e;
+    --body-dark: #2d2d2d;
     --body-light: #F8F8FC;
     --color-light: #1e1e1e;
     --color-dark: #d4d4d4;
     --container-light: white;
-    --container-dark: #333;
+    --container-dark: #1e1e1e;
     --container-shadow-light: 6px 6px 0px 0px rgb(0 0 0 / 5%);
     --container-shadow-dark: 6px 6px 0px 0px #252526;
     --accent-color-light: mediumslateblue;
@@ -226,7 +226,7 @@
             background-color: var(--accent-color-light);
         }
 
-        .toggle:not(:checked) {
+        .toggle {
             color: var(--accent-color-light);
         }
     }
@@ -256,8 +256,8 @@
             background-color: var(--accent-color-dark);
         }
 
-        .toggle:not(:checked) {
-            color: var(--accent-color-dark);
+        .toggle {
+            color: var(--color-dark);
         }
     }
 
@@ -319,10 +319,6 @@
         background-color: var(--accent-color-light);
     }
 
-    html[data-theme="light"] .toggle:not(:checked) {
-        color: var(--accent-color-light);
-    }
-
     /* Dark */
     html[data-theme="dark"] {
         background-color: var(--body-dark);
@@ -348,8 +344,8 @@
         background-color: var(--accent-color-dark);
     }
 
-    html[data-theme="dark"] .toggle:not(:checked) {
-        color: var(--accent-color-dark);
+    html[data-theme="dark"] .toggle {
+        color: var(--color-dark);
     }
 
     /* Shared */
@@ -363,7 +359,7 @@
         font-size: 2.5em;
     }
 
-    /* Modified from https://codepen.io/mrozilla/pen/OJJNjRb */
+    /* Toggle - https://codepen.io/mrozilla/pen/OJJNjRb */
     .toggle {
         --size: 2rem;
         -webkit-appearance: none;
@@ -376,41 +372,18 @@
         height: var(--size);
         box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
         border-radius: 999px;
-        color: darkgray;
+        color: var(--color-dark);
         transition: all 200ms;
+        z-index: 1;
     }
 
-    .toggle:not(:checked) {
+    html[data-theme="light"] .toggle {
         --ray-size: calc(var(--size) * -0.4);
         --offset-orthogonal: calc(var(--size) * 0.65);
         --offset-diagonal: calc(var(--size) * 0.45);
         transform: scale(0.75);
-        color: mediumslateblue;
+        color: var(--accent-color-light);
         box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size), var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
-    }
-
-    .toggle {
-        z-index: 1;
-    }
-
-    /* Dark Mode */
-    html,
-    header, 
-    section {
-        transition: background-color 200ms;
-    }
-
-    html.dark-mode *:not(.date):not(#toggle) {
-        color: #ccc;
-    }
-
-    html.dark-mode .icon {
-        stroke: #ccc;
-        fill: #ccc;
-    }
-
-    html.dark-mode {
-        background: #1e1e1e;
     }
 }
 
