@@ -5,7 +5,7 @@ const jobs = [
         company: 'Sehlke Consulting',
         location: 'San Antonio, TX',
         dates: 'May 2021 - Present',
-        bullets: [
+        lines: [
             'Develop and maintain a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with Expo, Firebase, and React Native',
             'Develop and maintain a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
             'Building client-side SharePoint applications for the Defense Health Agency (DHA) with HTML, CSS, JS, and the 2013 REST API',
@@ -16,7 +16,7 @@ const jobs = [
         company: 'T and T Consulting Services',
         location: 'San Antonio, TX',
         dates: 'March 2018 - May 2021',
-        bullets: [
+        lines: [
             'Technical Lead to a team of 3 developers and 2 administrators',
             'Built client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Led migration from SharePoint 2010 to 2013'
@@ -27,7 +27,7 @@ const jobs = [
         company: 'Self-Employed',
         location: 'Washington, D.C.',
         dates: 'October 2017 - March 2018',
-        bullets: [
+        lines: [
             'Prototyped a JavaScript single page application framework'
         ]
     },
@@ -36,7 +36,7 @@ const jobs = [
         company: 'HID Global',
         location: 'Austin, TX',
         dates: 'September 2016 - October 2017',
-        bullets: [
+        lines: [
             'Built client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
             'Migrated from SharePoint 2010 to 2013',
             'Migrated Lotus Notes wikis, data, and applications to SharePoint 2010'
@@ -47,7 +47,7 @@ const jobs = [
         company: 'Tech 2000',
         location: 'Herndon, VA',
         dates: 'March 2016 - August 2016',
-        bullets: [
+        lines: [
             'Wrote bash and AppleScript tools',
             'Supported Mac and iPhone end-user devices',
             'Maintained Apple and Cisco certified training labs and equipment'
@@ -58,7 +58,7 @@ const jobs = [
         company: 'Bravo Consulting Group',
         location: 'Reston, VA',
         dates: 'November 2014 - May 2016',
-        bullets: [
+        lines: [
             'Built client-side applications for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Wrote PowerShell tools to generate automated reports and archive list data as XML',
             'Migrated from SharePoint 2010 to 2013'
@@ -69,7 +69,7 @@ const jobs = [
         company: 'Applied Integrated Technologies',
         location: 'Charlottesville, VA',
         dates: 'February 2011 - November 2014',
-        bullets: [
+        lines: [
             'SharePoint site administration',
             'Automated data collection and analysis with Excel and SharePoint 2007'
         ]
@@ -84,26 +84,8 @@ jobs.forEach(job => {
         company,
         location,
         dates,
-        bullets
+        lines
     } = job;
-
-    // let html = /*html*/`
-    //     <div class="job">
-    //         <div class="job-heading title">${title ? `${title} •`: ''} ${company}, ${location}</div>
-    //         <div class="job-heading date">${dates}</div>
-    //         <ul>
-    // `;
-
-    // bullets.forEach(bullet => {
-    //     html += /*html*/ `
-    //         <li>${bullet}</li>
-    //     `;
-    // });
-
-    // html += /*html*/ `
-    //         </ul>
-    //     </div>
-    // `;
 
     let html = /*html*/`
         <div class="job">
@@ -112,7 +94,7 @@ jobs.forEach(job => {
             <div>
     `;
 
-    bullets.forEach(bullet => {
+    lines.forEach(bullet => {
         html += /*html*/ `
             <p>${bullet}.</p>
         `;
@@ -191,10 +173,27 @@ skills.forEach(skill => {
     skillsNode.insertAdjacentHTML('beforeend', html);
 });
 
-/** Toggle Dark Mode */
-/** @todo I'm pretty sure this can all be done with just css */
+// Toggle theme
 const toggle = document.querySelector('#toggle');
 
+// Detect user preference
+if (window.matchMedia) {
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.querySelector('html').dataset.theme = 'light';
+        
+        toggle.checked = false;
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector('html').dataset.theme = 'dark';
+
+        toggle.checked = true;
+    }
+} else {
+    document.querySelector('html').dataset.theme = 'light';
+
+    toggle.checked = false;
+}
+
+// Add theme override event listener
 toggle.addEventListener('change', event => {
     const state = event.target.checked;
 
@@ -216,13 +215,11 @@ function setMode(mode) {
 }
 
 function setDark() {
-    document.querySelector('html').classList.add('dark-mode');
-    document.querySelector('header img').src = 'images/dark_128x128.png';
+    document.querySelector('html').dataset.theme = 'dark';
 }
 
 function setLight() {
-    document.querySelector('html').classList.remove('dark-mode');
-    document.querySelector('header img').src = 'images/light_128x128.jpg';
+    document.querySelector('html').dataset.theme = 'light';
 }
 
 function setFavicon(mode) {
@@ -240,5 +237,6 @@ const hours = new Date().getHours();
 if (hours < 7 || hours > 19) {
     toggle.checked = true;
 
-    setMode('dark');
+    document.querySelector('html').dataset.theme = 'dark';
+    toggle.checked = true;
 }
