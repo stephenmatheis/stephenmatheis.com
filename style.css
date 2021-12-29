@@ -31,7 +31,7 @@
         line-height: 1.5;
     }
 
-    h2, h3 {
+    h1, h2, h3, h4, h5, h6 {
         margin-top: 0px;
     }
 
@@ -482,10 +482,6 @@
     a:focus,
     a:hover {
         color: black;
-    }
-
-    h3 {
-        font-size: 14px;
     }
 
     h2 {
