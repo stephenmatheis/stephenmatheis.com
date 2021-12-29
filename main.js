@@ -4,7 +4,8 @@ const jobs = [
         title: 'SharePoint Developer',
         company: 'Sehlke Consulting',
         location: 'San Antonio, TX',
-        dates: 'May 2021 - Present',
+        start: 'May 2021',
+        end: 'Present',
         lines: [
             'Develop and maintain a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with Expo, Firebase, and React Native',
             'Develop and maintain a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
@@ -15,7 +16,8 @@ const jobs = [
         title: 'SharePoint Developer',
         company: 'T and T Consulting Services',
         location: 'San Antonio, TX',
-        dates: 'March 2018 - May 2021',
+        start: 'March 2018',
+        end: 'May 2021',
         lines: [
             'Technical Lead to a team of 3 developers and 2 administrators',
             'Built client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
@@ -24,18 +26,20 @@ const jobs = [
     },
     {
         title: '',
-        company: 'Self-Employed',
+        company: '',
         location: 'Washington, D.C.',
-        dates: 'October 2017 - March 2018',
+        start: 'October 2017',
+        end: 'May 2021',
         lines: [
-            'Prototyped a JavaScript single page application framework'
+            `Started <a href='https://github.com/stephenmatheis/robi-starter' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single page application framework`
         ]
     },
     {
         title: 'SharePoint Developer',
         company: 'HID Global',
         location: 'Austin, TX',
-        dates: 'September 2016 - October 2017',
+        start: 'September 2016',
+        end: 'October 2017',
         lines: [
             'Built client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
             'Migrated from SharePoint 2010 to 2013',
@@ -46,7 +50,8 @@ const jobs = [
         title: 'System Administrator',
         company: 'Tech 2000',
         location: 'Herndon, VA',
-        dates: 'March 2016 - August 2016',
+        start: 'March 2016',
+        end: 'August 2016',
         lines: [
             'Wrote bash and AppleScript tools',
             'Supported Mac and iPhone end-user devices',
@@ -57,7 +62,8 @@ const jobs = [
         title: 'Senior Consultant',
         company: 'Bravo Consulting Group',
         location: 'Reston, VA',
-        dates: 'November 2014 - May 2016',
+        start: 'November 2014',
+        end: 'May 2016',
         lines: [
             'Built client-side applications for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP) with HTML, CSS, JS, and the 2010 and 2013 REST API',
             'Wrote PowerShell tools to generate automated reports and archive list data as XML',
@@ -68,7 +74,8 @@ const jobs = [
         title: 'Access Control Specialist',
         company: 'Applied Integrated Technologies',
         location: 'Charlottesville, VA',
-        dates: 'February 2011 - November 2014',
+        start: 'February 2011',
+        end: 'November 2014',
         lines: [
             'SharePoint site administration',
             'Automated data collection and analysis with Excel and SharePoint 2007'
@@ -83,24 +90,29 @@ jobs.forEach(job => {
         title,
         company,
         location,
-        dates,
+        start,
+        end,
         lines
     } = job;
 
+    // ➜
+    // <div class="job-heading date">${start} ⯈ ${end}</div>
     let html = /*html*/`
         <div class="job">
-            <div class="job-heading title">${title ? `${title} •`: ''} ${company} • ${location}</div>
-            <div class="job-heading date">${dates}</div>
-            <div>
+            <div class="job-heading title">${title ? `${title} •` : ''} ${company ? `${company} •` : ''} ${location}</div>
+            <div class="job-heading date">${start}<span style='padding: 0px 5px;'>➜</span>${end}</div>
+        <div>
+            <ul>
     `;
 
     lines.forEach(bullet => {
         html += /*html*/ `
-            <p>${bullet}.</p>
+            <li>${bullet}.</li>
         `;
     });
 
     html += /*html*/ `
+                </ul>
             </div>
         </div>
     `;
@@ -112,39 +124,48 @@ jobs.forEach(job => {
 const skills = [
     {
         name: 'HTML',
-        years: '18'
+        years: '18',
+        started: 2002
     },
     {
         name: 'CSS',
-        years: '18'
+        years: '18',
+        started: 2002
     },
     {
         name: 'JavaScript',
-        years: '18'
+        years: '18',
+        started: 2002
     },
     {
         name: 'SharePoint',
-        years: '18'
+        years: '18',
+        started: 2002
     },
     {
         name: 'Unix/Linux Shell',
-        years: '14'
+        years: '14',
+        started: 2002
     },
     {
         name: 'PowerShell',
-        years: '7'
+        years: '7',
+        started: 2002
     },
     {
         name: 'Python',
-        years: '3'
+        years: '3',
+        started: 2018
     },
     {
         name: 'React, React Native',
-        years: '1'
+        years: '1',
+        started: 2021
     },
     {
         name: 'Mobile App Development',
-        years: '1'
+        years: '1',
+        started: 2021
     }
 ];
 
@@ -154,9 +175,13 @@ const max = Math.max(...skills.map(skill => parseInt(skill.years)));
 skills.forEach(skill => {
     const {
         name,
-        prefix,
-        years
+        started
     } = skill;
+
+    const curentYear = new Date().getFullYear();
+    const years = curentYear - started || 1;
+
+    // console.log(curentYear, '-', started, '=', years);
     
     const width = Math.round((parseInt(years) / max) * 100);
 
@@ -164,7 +189,7 @@ skills.forEach(skill => {
         <div class="skill">
             <div class='name-years'>
                 <span class="name">${name}</span>
-                <span class="years">${prefix || ''}${years} ${parseInt(years) === 1 ? 'year' : 'years'}</span>
+                <span class="years">${years} ${parseInt(years) === 1 ? 'year' : 'years'}</span>
             </div>
             <div class="skill-bar" style="width: ${width}%"></div>
         </div>

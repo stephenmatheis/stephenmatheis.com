@@ -1,3 +1,22 @@
+/* Add <link rel="stylesheet" href="dev.css"> to index.html */
+
+@media screen {
+    html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: ghostwhite;
+    }
+    
+    body {
+        width: 8.5in;
+        height: 11in;
+        background: white;
+        padding: .5in;
+        margin: 0 auto;
+    }
+}
+
 /* Define light/dark values */
 :root {
     --body-dark: #2d2d2d;
@@ -44,6 +63,10 @@
         text-transform: uppercase;
     }
 
+    .name {
+        margin: 0px;
+    }
+
     main {
         flex: 1;
         display: flex;
@@ -66,19 +89,9 @@
         border-radius: 30px;
     }
 
-    .bold {
-        font-weight: 500;
-    }
-    
-    /* Profile */
-    .name {
-        margin: 0px;
-    }
-
-
     /* Jobs */
     .job:not(:last-child) {
-        margin-bottom: 45px;
+        margin-bottom: 30px;
     }
 
     .job-heading.title {
@@ -94,11 +107,7 @@
     
     .job ul {
         padding-inline-start: 30px;
-        padding-left: 20px;
-    }
-
-    .job ul li:not(:last-child) {
-        padding-bottom: 1em;
+        margin-top: 5px;
     }
 
     /* Contact */
@@ -205,9 +214,9 @@
 @media screen {
     @media (max-width: 1200px) {
         body {
-            max-width: 1024px !important;
-            padding: 25px !important;
-            margin: 0 auto !important;
+            max-width: 1024px;
+            padding: 25px;
+            margin: 0 auto;
         }
     
         main {
@@ -218,10 +227,6 @@
         .left,
         .right {
             padding: 0px;
-        }
-
-        header .container {
-            margin-bottom: 30px;
         }
     
         /* Mimic h2 */
@@ -237,14 +242,6 @@
     @media (max-width: 375px) {
         header h1 {
             font-size: 2em;
-        }
-
-        body {
-            padding: 0px !important;
-        }
-
-        .container {
-            padding: 30px !important;
         }
     }
 
@@ -436,6 +433,10 @@
         font-size: 11px;
     }
 
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0px;
+    }
+
     *,
     a,
     a:active,
@@ -450,6 +451,18 @@
 
     h2 {
         font-size: 16px;
+    }
+
+    p {
+        margin: 5px 0px 5px 15px;
+        position: relative;
+    }
+
+    p::before {
+        position: absolute;
+        top: 0px;
+        left: -15px;
+        content: '•';
     }
 
     p, span {
@@ -467,7 +480,7 @@
     }
 
     header {
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
     }
 
     header h1 {
