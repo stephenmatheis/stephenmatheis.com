@@ -303,7 +303,7 @@
         }
 
         * {
-            color: var(--color-light)
+            color: var(--color-light);
         }
 
         a,
@@ -319,7 +319,7 @@
         }
 
         .icon {
-            fill: var(--accent-color-light)
+            fill: var(--accent-color-light);
         }
 
         .skill-bar {
