@@ -2,7 +2,7 @@
 const jobs = [
     {
         title: 'SharePoint Developer',
-        company: 'Sehlke Consulting',
+        company: 'Aeyon',
         location: 'San Antonio, TX',
         start: 'May 2021',
         end: 'Present',
