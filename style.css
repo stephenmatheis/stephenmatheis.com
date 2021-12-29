@@ -427,7 +427,7 @@
         background-color: var(--accent-color-dark);
     }
 
-    html[data-theme="dark"] .toggle {
+    html[data-theme="dark"] #toggle {
         color: var(--accent-color-dark);
     }
 
