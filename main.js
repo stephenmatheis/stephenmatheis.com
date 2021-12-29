@@ -23,7 +23,7 @@ toggle.addEventListener('change', event => {
     }
 });
 
-// Automatically toggle light/dark mode based on local time of day - https://codepen.io/mrozilla/pen/OJJNjRb
+// Toggle theme based on local time of day - https://codepen.io/mrozilla/pen/OJJNjRb
 const hours = new Date().getHours();
 
 if (hours < 7 || hours > 19) {
