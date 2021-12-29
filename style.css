@@ -323,7 +323,7 @@
         }
 
         .toggle {
-            color: var(--color-dark);
+            color: var(--accent-color-light);
             transform: scale(1);
             box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
         }
@@ -360,9 +360,8 @@
         }
 
         .toggle {
-            color: goldenrod;
             transform: scale(0.75);
-            color: goldenrod;
+            color: var(--accent-color-dark);;
             box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size), var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
         }
     }
@@ -397,15 +396,9 @@
         background-color: var(--accent-color-light);
     }
 
-    html[data-theme="light"] #toggle {
-        color: var(--color-dark);
-        transform: scale(1);
-        box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
-    }
-
     html[data-theme="light"] .toggle { /* Moon */
         transform: scale(1);
-        color: var(--color-dark);
+        color: var(--accent-color-light);
         box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
     }
 
@@ -441,7 +434,7 @@
 
     html[data-theme="dark"] .toggle { /* Sun */
         transform: scale(0.75);
-        color: goldenrod;
+        color: var(--accent-color-dark);;
         box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size), var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
     }
 
