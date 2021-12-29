@@ -166,47 +166,38 @@ jobs.forEach(job => {
 const skills = [
     {
         name: 'HTML',
-        years: '18',
         started: 2002
     },
     {
         name: 'CSS',
-        years: '18',
         started: 2002
     },
     {
         name: 'JavaScript',
-        years: '18',
         started: 2002
     },
     {
         name: 'SharePoint',
-        years: '18',
         started: 2002
     },
     {
         name: 'Unix/Linux Shell',
-        years: '14',
         started: 2002
     },
     {
         name: 'PowerShell',
-        years: '7',
         started: 2002
     },
     {
         name: 'Python',
-        years: '3',
         started: 2018
     },
     {
         name: 'React, React Native',
-        years: '1',
         started: 2021
     },
     {
         name: 'Mobile App Development',
-        years: '1',
         started: 2021
     }
 ];
@@ -222,9 +213,6 @@ skills.forEach(skill => {
 
     const curentYear = new Date().getFullYear();
     const years = curentYear - started || 1;
-
-    // console.log(curentYear, '-', started, '=', years);
-    
     const width = Math.round((parseInt(years) / max) * 100);
 
     let html = /*html*/`
