@@ -95,7 +95,6 @@ jobs.forEach(job => {
         lines
     } = job;
 
-    // <div class="job-heading title">${title ? `${title} •` : ''} ${company ? `${company} •` : ''} ${location}</div>
     let html = /*html*/`
         <div class="job">
             <div class="job-heading title">${title ? `${title} at` : ''} ${company ? `${company} in` : ''} ${location}</div>
@@ -104,9 +103,9 @@ jobs.forEach(job => {
             <ul>
     `;
 
-    lines.forEach(bullet => {
+    lines.forEach(line => {
         html += /*html*/ `
-            <li>${bullet}.</li>
+            <li>${line}</li>
         `;
     });
 
