@@ -114,7 +114,7 @@
     }
 
     .job ul li:not(:last-child) {
-        padding-bottom: .75em;
+        padding-bottom: .5em;
     }
 
     /* Contact */
@@ -136,7 +136,7 @@
     }
 
     .links a:not(:last-child) {
-        margin-right: 30px;
+        margin-right: 20px;
     }
     
     .links a {
@@ -153,9 +153,8 @@
 
     /* Icons */
     .icon {
-        width: 20px;
-        height: 20px;
-        margin-right: 5px;
+        width: 30px;
+        height: 30px;
     }
 
     /* Skills */
