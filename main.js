@@ -1,7 +1,7 @@
 // Jobs
 const jobs = [
     {
-        title: 'SharePoint Developer',
+        title: 'Subject Matter Expert II',
         company: 'Aeyon',
         location: 'San Antonio, TX',
         start: 'May 2021',
@@ -95,11 +95,10 @@ jobs.forEach(job => {
         lines
     } = job;
 
-    // ➜
-    // <div class="job-heading date">${start} ⯈ ${end}</div>
+    // <div class="job-heading title">${title ? `${title} •` : ''} ${company ? `${company} •` : ''} ${location}</div>
     let html = /*html*/`
         <div class="job">
-            <div class="job-heading title">${title ? `${title} •` : ''} ${company ? `${company} •` : ''} ${location}</div>
+            <div class="job-heading title">${title ? `${title} at` : ''} ${company ? `${company} in` : ''} ${location}</div>
             <div class="job-heading date">${start}<span style='padding: 0px 5px;'>➜</span>${end}</div>
         <div>
             <ul>
