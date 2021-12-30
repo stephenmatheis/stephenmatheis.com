@@ -202,8 +202,9 @@ const skills = [
     }
 ];
 
+const curentYear = new Date().getFullYear();
 const skillsNode = document.querySelector('#skills');
-const max = Math.max(...skills.map(skill => parseInt(skill.years)));
+const max = Math.max(...skills.map(skill => parseInt(curentYear - skill.started)));
 
 skills.forEach(skill => {
     const {
@@ -211,7 +212,6 @@ skills.forEach(skill => {
         started
     } = skill;
 
-    const curentYear = new Date().getFullYear();
     const years = curentYear - started || 1;
     const width = Math.round((parseInt(years) / max) * 100);
 
