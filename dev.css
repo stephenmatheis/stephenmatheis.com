@@ -510,7 +510,7 @@
 
     .container,
     .job {
-        break-inside: avoid;
+        /* break-inside: avoid; */
     }
 
     /* Jobs */
