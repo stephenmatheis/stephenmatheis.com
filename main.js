@@ -52,7 +52,7 @@ const jobs = [
         end: 'Present',
         lines: [
             'Developing a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href="https://expo.dev/" target="_blank">Expo</a>, <a href="https://firebase.google.com/" target="_blank">Firebase</a>, and <a href="https://reactnative.dev/" target="_blank">React Native</a>',
-            'Developing a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
+            'Developing a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href="https://reactjs.org/" target="_blank">React</a> and <a href="https://firebase.google.com/" target="_blank">Firebase</a>',
             'Building client-side SharePoint applications for the Defense Health Agency (DHA) with <a href="https://github.com/stephenmatheis/robi-starter" target="_blank">Robi</a> and the <a href="https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service?tabs=http" target="_blank">SharePoint 2013 REST API</a>',
         ]
     },
@@ -65,7 +65,7 @@ const jobs = [
         lines: [
             'Technical Lead to 3 developers and 2 administrators',
             'Client-side application development and farm administration for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD)',
-            'Responisble for a growing catalogue of 33+ custom-built in-house applications',
+            'Responsible for a catalogue of 36+ custom-built in-house applications',
             'Led migration from SharePoint 2010 to 2013'
         ]
     },
