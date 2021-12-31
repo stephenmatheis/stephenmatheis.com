@@ -518,63 +518,19 @@
     }
 
     /* Animate load */
-    body {
-        opacity: 0;
-        overflow-x: hidden;
+    .grow-in {
+        animation: grow-in 1000ms ease-in-out 100ms;
     }
 
-    .slide-down {
-        animation: slide-down 800ms ease;
-    }
-
-    .slide-up {
-        animation: slide-up 800ms ease;
-    }
-
-    .slide-in-right {
-        animation: slide-in-right 800ms ease;
-    }
-
-    .slide-in-left {
-        animation: slide-in-left 800ms ease;
-    }
-
-    @keyframes slide-down {
+    @keyframes grow-in {
         from {
-            transform: translateY(-200px) scale(1.2);
+            opacity: 0;
+            transform: scale(.95);
         }
 
         to {
-            transform: translateY(0px) scale(1);
-        }
-    }
-
-    @keyframes slide-up {
-        from {
-            transform: translateY(400px) scale(1.2);
-        }
-
-        to {
-            transform: translateY(0px) scale(1);
-        }
-    }
-
-    @keyframes slide-in-right {
-        from {
-            transform: translateX(-200px) scale(.9);
-        }
-
-        to {
-            transform: translateX(0px) scale(1);
-        }
-    }
-    @keyframes slide-in-left {
-        from {
-            transform: translateX(200px) scale(.9);
-        }
-
-        to {
-            transform: translateX(0px) scale(1);
+            opacity: 1;
+            transform: scale(1);
         }
     }
 }
