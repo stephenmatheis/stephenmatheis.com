@@ -186,7 +186,7 @@ const skills = [
     },
     {
         name: 'PowerShell',
-        started: 2002
+        started: 2014
     },
     {
         name: 'Python',
