@@ -232,3 +232,16 @@ skills.forEach(skill => {
 
     skillsNode.insertAdjacentHTML('beforeend', html);
 });
+
+/* Show body */
+document.body.style.opacity = '1';
+
+/* Animate */
+document.querySelector('header').classList.add('slide-down');
+
+if (window.innerWidth > 1200) {
+    document.querySelector('.left').classList.add('slide-in-right');
+    document.querySelector('.right').classList.add('slide-in-left');
+} else {
+    document.querySelector('main').classList.add('slide-up');
+}

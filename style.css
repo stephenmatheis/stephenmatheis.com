@@ -14,7 +14,7 @@
     --offset-diagonal: calc(var(--size) * 0.45);    
     --ray-size: calc(var(--size) * -0.4);
     --size: 2rem;
-    --transition: background-color 500ms ease-in-out, box-shadow 500ms ease-in-out, color 500ms ease-in-out
+    --transition: background-color 500ms ease-in-out, box-shadow 500ms ease-in-out, color 500ms ease-in-out, opacity 1000ms ease-in-out;
 }
 
 /* Shared */
@@ -514,6 +514,67 @@
         color: var(--color-dark);
         transition: all 200ms;
         z-index: 1;
+    }
+
+    /* Animate load */
+    body {
+        opacity: 0;
+        overflow-x: hidden;
+    }
+
+    .slide-down {
+        animation: slide-down 800ms ease;
+    }
+
+    .slide-up {
+        animation: slide-up 800ms ease;
+    }
+
+    .slide-in-right {
+        animation: slide-in-right 800ms ease;
+    }
+
+    .slide-in-left {
+        animation: slide-in-left 800ms ease;
+    }
+
+    @keyframes slide-down {
+        from {
+            transform: translateY(-200px) scale(1.2);
+        }
+
+        to {
+            transform: translateY(0px) scale(1);
+        }
+    }
+
+    @keyframes slide-up {
+        from {
+            transform: translateY(400px) scale(1.2);
+        }
+
+        to {
+            transform: translateY(0px) scale(1);
+        }
+    }
+
+    @keyframes slide-in-right {
+        from {
+            transform: translateX(-200px) scale(.9);
+        }
+
+        to {
+            transform: translateX(0px) scale(1);
+        }
+    }
+    @keyframes slide-in-left {
+        from {
+            transform: translateX(200px) scale(.9);
+        }
+
+        to {
+            transform: translateX(0px) scale(1);
+        }
     }
 }
 
