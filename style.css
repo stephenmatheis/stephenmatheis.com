@@ -1,5 +1,7 @@
 /* Define light/dark values */
 :root {
+    --accent-color-light: mediumslateblue;
+    --accent-color-dark: mediumpurple;
     --body-dark: #2d2d2d;
     --body-light: #F8F8FC;
     --color-light: #1e1e1e;
@@ -8,12 +10,11 @@
     --container-dark: #1e1e1e;
     --container-shadow-light: 6px 6px 0px 0px rgb(0 0 0 / 5%);
     --container-shadow-dark: 6px 6px 0px 0px #252526;
-    --accent-color-light: mediumslateblue;
-    --accent-color-dark: mediumpurple;
-    --size: 2rem;
-    --ray-size: calc(var(--size) * -0.4);
     --offset-orthogonal: calc(var(--size) * 0.65);
-    --offset-diagonal: calc(var(--size) * 0.45);
+    --offset-diagonal: calc(var(--size) * 0.45);    
+    --ray-size: calc(var(--size) * -0.4);
+    --size: 2rem;
+    --transition: background-color 500ms ease-in-out, box-shadow 500ms ease-in-out, color 500ms ease-in-out
 }
 
 /* Shared */
@@ -122,7 +123,7 @@
     }
 
     .job ul li:not(:last-child) {
-        padding-bottom: 5px;
+        padding-bottom: 4px;
     }
 
     /* Contact */
@@ -468,6 +469,10 @@
     }
 
     /* Shared */
+    *:not(.toggle) {
+        transition: var(--transition);
+    }
+
     body {
         margin: 0 auto;
         padding: 45px;
@@ -571,11 +576,6 @@
 
     .right .container {
         margin-bottom: 30px;
-    }
-
-    .container,
-    .job {
-        break-inside: avoid;
     }
 
     /* Jobs */

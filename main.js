@@ -51,9 +51,9 @@ const jobs = [
         start: 'May 2021',
         end: 'Present',
         lines: [
-            'Develop a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with Expo, Firebase, and React Native',
-            'Develop a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
-            'Building client-side SharePoint applications for the Defense Health Agency (DHA) with HTML, CSS, JS, and the 2013 REST API',
+            'Developing a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href="https://expo.dev/" target="_blank">Expo</a>, <a href="https://firebase.google.com/" target="_blank">Firebase</a>, and <a href="https://reactnative.dev/" target="_blank">React Native</a>',
+            'Developing a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with React and Firebase',
+            'Building client-side SharePoint applications for the Defense Health Agency (DHA) with <a href="https://github.com/stephenmatheis/robi-starter" target="_blank">Robi</a> and the <a href="https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service?tabs=http" target="_blank">SharePoint 2013 REST API</a>',
         ]
     },
     {
@@ -63,8 +63,9 @@ const jobs = [
         start: 'March 2018',
         end: 'May 2021',
         lines: [
-            'Technical Lead to a team of 3 developers and 2 administrators',
-            'Built client-side SharePoint applications for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD) with HTML, CSS, JS, and the 2010 and 2013 REST API',
+            'Technical Lead to 3 developers and 2 administrators',
+            'Client-side application development and farm administration for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD)',
+            'Responisble for a growing catalogue of 33+ custom-built in-house applications',
             'Led migration from SharePoint 2010 to 2013'
         ]
     },
@@ -85,7 +86,7 @@ const jobs = [
         start: 'September 2016',
         end: 'October 2017',
         lines: [
-            'Built client-side SharePoint applications with HTML, CSS, JS, and the 2013 REST API',
+            'Client-side application development and farm administration',
             'Migrated from SharePoint 2010 to 2013',
             'Migrated Lotus Notes wikis, data, and applications to SharePoint 2010'
         ]
@@ -99,7 +100,7 @@ const jobs = [
         lines: [
             'Wrote bash and AppleScript tools',
             'Supported Mac and iPhone end-user devices',
-            'Maintained Apple and Cisco certified training labs and equipment'
+            'Maintained Apple and Cisco certified training lab equipment'
         ]
     },
     {
@@ -109,9 +110,9 @@ const jobs = [
         start: 'November 2014',
         end: 'May 2016',
         lines: [
-            'Built client-side applications for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP) with HTML, CSS, JS, and the 2010 and 2013 REST API',
-            'Wrote PowerShell tools to generate automated reports and archive list data as XML',
-            'Migrated from SharePoint 2010 to 2013'
+            'Client-side application development and farm administration for the Department of Veteran\'s Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP)',
+            'Wrote PowerShell tools to generate reports and archive list data as XML',
+            'Assisted in migrating Air National Guard (ANG) from SharePoint 2010 to 2013'
         ]
     },
     {
@@ -122,7 +123,7 @@ const jobs = [
         end: 'November 2014',
         lines: [
             'SharePoint site administration',
-            'Automated data collection and analysis with Excel and SharePoint 2007'
+            'Automated key performance indicator (KPI) data collection and analysis with Excel, VBA, and SharePoint 2007'
         ]
     }
 ];
@@ -187,6 +188,10 @@ const skills = [
     {
         name: 'PowerShell',
         started: 2014
+    },
+    {
+        name: 'Git/GitHub',
+        started: 2015
     },
     {
         name: 'Python',
