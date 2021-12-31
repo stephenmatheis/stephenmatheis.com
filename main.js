@@ -182,7 +182,7 @@ const skills = [
     },
     {
         name: 'Unix/Linux Shell',
-        started: 2002
+        started: 2006
     },
     {
         name: 'PowerShell',
