@@ -518,6 +518,10 @@
     }
 
     /* Animate load */
+    body {
+        opacity: 0;
+    }
+    
     .grow-in {
         animation: grow-in 1000ms ease-in-out 100ms;
     }
