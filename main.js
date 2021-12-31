@@ -236,12 +236,12 @@ skills.forEach(skill => {
 /* Show body */
 document.body.style.opacity = '1';
 
-/* Animate */
-document.querySelector('header').classList.add('slide-down');
+// /* Animate */
+// document.querySelector('header').classList.add('slide-down');
 
-if (window.innerWidth > 1200) {
-    document.querySelector('.left').classList.add('slide-in-right');
-    document.querySelector('.right').classList.add('slide-in-left');
-} else {
-    document.querySelector('main').classList.add('slide-up');
-}
+// if (window.innerWidth > 1200) {
+//     document.querySelector('.left').classList.add('slide-in-right');
+//     document.querySelector('.right').classList.add('slide-in-left');
+// } else {
+//     document.querySelector('main').classList.add('slide-up');
+// }
