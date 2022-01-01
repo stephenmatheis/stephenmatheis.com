@@ -234,4 +234,4 @@ skills.forEach(skill => {
 });
 
 /* Animate */
-document.querySelector('body').classList.add('grow-in');
+document.body.style.opacity = '1';
