@@ -28,7 +28,7 @@
         box-sizing: border-box;
         line-height: 1.5;
     }
-    
+
     a {
         font-weight: 500;
     }
@@ -470,10 +470,6 @@
     }
 
     /* Shared */
-    header, .container, li, h1, h2, h3 {
-        transition: var(--transition);
-    }
-
     body {
         margin: 0 auto;
         padding: 45px;
