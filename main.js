@@ -234,4 +234,4 @@ skills.forEach(skill => {
 });
 
 /* Animate */
-// document.body.style.opacity = '1';
+document.body.style.opacity = '1';
