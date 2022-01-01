@@ -1,3 +1,6 @@
+// Hide
+document.body.style.display = 'none';
+
 // Toggle theme
 const toggle = document.querySelector('#toggle');
 
@@ -232,3 +235,6 @@ skills.forEach(skill => {
 
     skillsNode.insertAdjacentHTML('beforeend', html);
 });
+
+// Show
+document.body.style.display = 'block';
