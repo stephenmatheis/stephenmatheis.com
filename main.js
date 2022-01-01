@@ -232,6 +232,3 @@ skills.forEach(skill => {
 
     skillsNode.insertAdjacentHTML('beforeend', html);
 });
-
-/* Animate */
-document.body.style.opacity = '1';

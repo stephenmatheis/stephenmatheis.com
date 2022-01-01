@@ -516,11 +516,6 @@
         transition: all 200ms;
         z-index: 1;
     }
-
-    /* Animate load */
-    body {
-        opacity: 0;
-    }
 }
 
 /* Print */
