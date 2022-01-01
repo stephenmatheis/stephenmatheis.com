@@ -14,8 +14,7 @@
     --offset-diagonal: calc(var(--size) * 0.45);    
     --ray-size: calc(var(--size) * -0.4);
     --size: 2rem;
-    --transition: background-color 500ms ease-in-out, box-shadow 500ms ease-in-out, color 500ms ease-in-out, opacity 1000ms ease-in 500ms;
-    /* --transition: background-color 500ms ease-in-out, box-shadow 500ms ease-in-out, color 500ms ease-in-out, opacity 1500ms ease-in-out; */
+    --transition: background-color 500ms ease-in-out, box-shadow 500ms ease-in-out, color 500ms ease-in-out;
 }
 
 /* Shared */
