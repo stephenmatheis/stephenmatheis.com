@@ -470,9 +470,9 @@
     }
 
     /* Shared */
-    /* *:not(.toggle):not(a) {
+    *:not(.toggle):not(a) {
         transition: var(--transition);
-    } */
+    }
 
     body {
         margin: 0 auto;
