@@ -470,7 +470,7 @@
     }
 
     /* Shared */
-    *:not(.toggle):not(a) {
+    header, .container, li, h1, h2, h3 {
         transition: var(--transition);
     }
 
