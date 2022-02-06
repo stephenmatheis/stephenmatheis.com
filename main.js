@@ -74,7 +74,7 @@ const jobs = [
         company: '',
         location: 'Washington, D.C.',
         start: 'October 2017',
-        end: 'May 2021',
+        end: 'Mar 2018',
         lines: [
             `Started <a href='https://github.com/stephenmatheis/robi-starter' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single page application framework`
         ]
