@@ -284,6 +284,10 @@
     }
 
     @media (max-width: 575px) {
+        body {
+            padding: 2px 4px !important;
+        }
+
         header h1 {
             font-size: 34px !important;
         }
@@ -295,9 +299,20 @@
         footer {
             margin-bottom: 30px;
         }
+
+        #profile {
+            margin-bottom: 12px;
+        }
+
+        .container {
+            margin: 4px 4px 12px 4px;
+            padding: 20px;
+            border-radius: 20px;
+        }
     }
     
     @media (max-width: 375px) {
+
         body {
             padding: 0px !important;
         }
