@@ -65,7 +65,7 @@ const jobs = [
         lines: [
             'Technical Lead to 3 developers and 2 administrators',
             'Client-side application development and farm administration for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD)',
-            'Responsible for a catalogue of 36+ custom-built in-house applications',
+            'Responsible for a catalog of 36+ custom-built in-house applications',
             'Led migration from SharePoint 2010 to 2013'
         ]
     },
