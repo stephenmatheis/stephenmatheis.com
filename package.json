@@ -1,0 +1,23 @@
+{
+  "name": "stephenmatheis.com",
+  "version": "1.0.0",
+  "description": "my personal website",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephenmatheis/stephenmatheis.com"
+  },
+  "keywords": [
+    "resume",
+    "portfolio"
+  ],
+  "author": "Stephen  Matheis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephenmatheis/stephenmatheis.com/issues"
+  },
+  "homepage": "https://stephenmatheis.com"
+}
