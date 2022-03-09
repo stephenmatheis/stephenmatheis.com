@@ -1,0 +1,42 @@
+[
+    {
+        "name": "HTML",
+        "started": 2002
+    },
+    {
+        "name": "CSS",
+        "started": 2002
+    },
+    {
+        "name": "JavaScript",
+        "started": 2002
+    },
+    {
+        "name": "SharePoint",
+        "started": 2002
+    },
+    {
+        "name": "Unix/Linux Shell",
+        "started": 2006
+    },
+    {
+        "name": "PowerShell",
+        "started": 2014
+    },
+    {
+        "name": "Git/GitHub",
+        "started": 2015
+    },
+    {
+        "name": "Python",
+        "started": 2018
+    },
+    {
+        "name": "React, React Native",
+        "started": 2021
+    },
+    {
+        "name": "Mobile App Development",
+        "started": 2021
+    }
+]

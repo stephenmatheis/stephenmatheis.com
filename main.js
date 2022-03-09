@@ -128,6 +128,8 @@ const jobs = [
     }
 ];
 
+console.log(jobs);
+
 const experience = document.querySelector('#experience');
 
 jobs.forEach(job => {
@@ -206,6 +208,8 @@ const skills = [
         started: 2021
     }
 ];
+
+console.log(skills);
 
 const curentYear = new Date().getFullYear();
 const skillsNode = document.querySelector('#skills');
