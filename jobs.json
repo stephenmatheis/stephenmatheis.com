@@ -1,10 +1,20 @@
 [
     {
+        "title": "Programmer",
+        "company": "Robi",
+        "location": "San Antonio, TX",
+        "start": "April 2021",
+        "end": "Present",
+        "lines": [
+            "Developing <a href='https://github.com/stephenmatheis/robi-starter' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single-page application framework"
+        ]
+    },
+    {
         "title": "Subject Matter Expert II",
         "company": "Aeyon",
         "location": "San Antonio, TX",
         "start": "May 2021",
-        "end": "Present",
+        "end": "April 2022",
         "lines": [
             "Developing a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href=\"https://expo.dev/\" target=\"_blank\">Expo</a>, <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>, and <a href=\"https://reactnative.dev/\" target=\"_blank\">React Native</a>",
             "Developing a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href=\"https://reactjs.org/\" target=\"_blank\">React</a> and <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>",
@@ -25,13 +35,13 @@
         ]
     },
     {
-        "title": "",
-        "company": "",
+        "title": "Programmer",
+        "company": "Robi",
         "location": "Washington, D.C.",
         "start": "October 2017",
         "end": "Mar 2018",
         "lines": [
-            "Started <a href='https://github.com/stephenmatheis/robi-starter' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single page application framework"
+            "Started <a href='https://github.com/stephenmatheis/robi-starter' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single-page application framework"
         ]
     },
     {
