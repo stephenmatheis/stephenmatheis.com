@@ -1,18 +1,18 @@
 [
     {
-        "title": "Programmer",
+        "title": "Founder and Software Engineer",
         "company": "Robi",
         "location": "San Antonio, TX",
         "start": "April 2021",
         "end": "Present",
         "languages": "JavaScript, HTML, CSS",
-        "stack": "Robi, Node",
+        "stack": "Netlify, Node, Robi",
         "lines": [
             "Developing <a href='https://github.com/stephenmatheis/robi-starter' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single-page application framework"
         ]
     },
     {
-        "title": "Subject Matter Expert II",
+        "title": "Senior Software Engineer",
         "company": "Aeyon",
         "location": "San Antonio, TX",
         "start": "May 2021",
@@ -20,36 +20,44 @@
         "languages": "TypeScript, JavaScript, HTML, CSS",
         "stack": "React, Expo, Firebase, Google Compute Platform, Node",
         "lines": [
+            "Individual contributer and subject matter expert in SharePoint and cross-platform mobile and web application development",
+            "Mentored junior developers in web and SharePoint aplication development, JavaScript, HTMl, CSS, working with RESTful APIs and JSON",
             "Developed a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href=\"https://expo.dev/\" target=\"_blank\">Expo</a>, <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>, and <a href=\"https://reactnative.dev/\" target=\"_blank\">React Native</a>",
             "Developed a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href=\"https://reactjs.org/\" target=\"_blank\">React</a> and <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>",
             "Built client-side SharePoint applications for the Defense Health Agency (DHA) with <a href=\"https://github.com/stephenmatheis/robi-starter\" target=\"_blank\">Robi</a> and the <a href=\"https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service?tabs=http\" target=\"_blank\">SharePoint 2013 REST API</a>"
         ]
     },
     {
-        "title": "SharePoint Developer",
+        "title": "Senior Software Engineer",
         "company": "T and T Consulting Services",
         "location": "San Antonio, TX",
         "start": "March 2018",
         "end": "May 2021",
+        "languages": "JavaScript, HTML, CSS",
+        "stack": "Robi, Node",
         "lines": [
-            "Technical Lead to 3 developers and 2 administrators",
+            "Senior SharePoint Developer",
+            "Technical Lead and mentor to 3 developers and 2 administrators",
+            "Mentored junior developers in web and SharePoint aplication development, JavaScript, HTMl, CSS, working with RESTful APIs and JSON",
             "Client-side application development and farm administration for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD)",
             "Responsible for a catalog of 36+ custom-built in-house applications",
             "Led migration from SharePoint 2010 to 2013"
         ]
     },
     {
-        "title": "Programmer",
+        "title": "Founder and Software Engineer",
         "company": "Robi",
         "location": "Washington, D.C.",
         "start": "October 2017",
         "end": "Mar 2018",
+        "languages": "JavaScript, HTML, CSS",
+        "stack": "Robi, Node",
         "lines": [
             "Started <a href='https://github.com/stephenmatheis/robi-starter' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single-page application framework"
         ]
     },
     {
-        "title": "SharePoint Developer",
+        "title": "Software Engineer (SharePoint Developer)",
         "company": "HID Global",
         "location": "Austin, TX",
         "start": "September 2016",
@@ -66,6 +74,8 @@
         "location": "Herndon, VA",
         "start": "March 2016",
         "end": "August 2016",
+        "languages": "JavaScript, HTML, CSS",
+        "stack": "Robi, Node",
         "lines": [
             "Wrote bash and AppleScript tools",
             "Supported Mac and iPhone end-user devices",
@@ -73,12 +83,16 @@
         ]
     },
     {
-        "title": "Senior Consultant",
+        "title": "Software Developer and System Administator",
         "company": "Bravo Consulting Group",
         "location": "Reston, VA",
         "start": "November 2014",
         "end": "May 2016",
+        "languages": "JavaScript, HTML, CSS",
+        "stack": "Robi, Node",
         "lines": [
+            "Senior consult, software developer, system adminstator, project manager, and individual contributor",
+            "Designed and wrote Client-side SharePoint web applications in JavaScript, HTML, and CSS with jQuery, the SharePoint 2010 and 2013 REST APIs, and JSON",
             "Client-side application development and farm administration for the Department of Veteran's Affairs (VA), the White House Communications Agency (WHCA), and the Executive Office of the President (EOP)",
             "Wrote PowerShell tools to generate reports and archive list data as XML",
             "Assisted in migrating Air National Guard (ANG) from SharePoint 2010 to 2013"
@@ -90,6 +104,8 @@
         "location": "Charlottesville, VA",
         "start": "February 2011",
         "end": "November 2014",
+        "languages": "JavaScript, HTML, CSS",
+        "stack": "Robi, Node",
         "lines": [
             "SharePoint site administration",
             "Automated key performance indicator (KPI) data collection and analysis with Excel, VBA, and SharePoint 2007"
