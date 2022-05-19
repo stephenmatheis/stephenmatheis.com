@@ -18,7 +18,7 @@
         "start": "May 2021",
         "end": "April 2022",
         "languages": "TypeScript, JavaScript, HTML, CSS",
-        "stack": "React, Expo, Firebase, Google Computer Platform, Node",
+        "stack": "React, Expo, Firebase, Google Compute Platform, Node",
         "lines": [
             "Developed a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href=\"https://expo.dev/\" target=\"_blank\">Expo</a>, <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>, and <a href=\"https://reactnative.dev/\" target=\"_blank\">React Native</a>",
             "Developed a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href=\"https://reactjs.org/\" target=\"_blank\">React</a> and <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>",
