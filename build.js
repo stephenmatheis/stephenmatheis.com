@@ -79,13 +79,17 @@ jobs.forEach(job => {
         languages
     } = job;
 
+    // ${location}
     index= index.concat([
         `                <div class="job">`,
         `                    <div class="job-heading title">`,
-        `                        ${title ? `<span style='font-weight: 800;'>${title}</span> at` : ''} ${company ? `${company} in` : ''} ${location}`,
+        `                        ${title ? `<span style='font-weight: 800;'>${title}</span> at` : ''} ${company || ''}`,
         `                    </div>`,
-        `                    <div class="job-heading date">${start}<span style='padding: 0px 5px;'>➜</span>${end}</div>`,
-        `                    <div style='font-size: 13px; margin-top: 5px;'>`,
+        `                    <div class="job-heading date">`,
+        `                        ${start}<span style='padding: 0px 5px;'>➜</span>${end}`,
+        `                        ${location ? `in ${location}` : ''}`,
+        `                    </div>`,
+        `                    <div style='font-size: 13px; margin-top: 4px;'>`,
         `                        <span style='font-weight: 600;'>Languages:</span>`,
         `                        <span>${languages || 'N/A'}</span>`,
         `                    </div>`,

@@ -35,7 +35,7 @@
 
     p, span, li {
         line-height: 1.5;
-        font-size: 13px;
+        font-size: 12px;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -109,18 +109,18 @@
     .job-heading.title,
     .job-heading.title span {
         font-weight: 600;
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .job-heading.date {
         font-weight: 500;
-        font-size: 12px;
+        font-size: 11px;
     }
     
     .job ul {
         padding-inline-start: 30px;
         padding-left: 20px;
-        margin-top: 10px;
+        margin-top: 4px;
     }
 
     .job ul li:not(:last-child) {
@@ -218,6 +218,11 @@
     
     .college {
         font-weight: 600;
+    }
+
+    .education,
+    .contact {
+        font-size: 12px;
     }
 
     /* Footer */
@@ -488,7 +493,7 @@
     /* Shared */
     body {
         margin: 0 auto;
-        padding: 45px;
+        padding: 15px 45px;
         max-width: 1024px;
     }
 
@@ -583,11 +588,11 @@
     }
 
     .left {
-        flex: 4;
+        flex: 5;
     }
 
     .right {
-        flex: 2;
+        flex: 3;
         padding-left: 30px;
         white-space: nowrap;
         justify-content: flex-start;
@@ -614,7 +619,6 @@
 
     .job-heading.date {
         font-size: 9px;
-        text-transform: uppercase;
     }
 
     .job ul {
