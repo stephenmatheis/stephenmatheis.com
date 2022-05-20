@@ -35,7 +35,7 @@
 
     p, span, li {
         line-height: 1.5;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -87,7 +87,7 @@
 
     .container {
         margin: 15px;
-        padding: 60px;
+        padding: 45px;
         border-radius: 30px;
     }
 
@@ -103,12 +103,13 @@
 
     /* Jobs */
     .job:not(:last-child) {
-        margin-bottom: 45px;
+        margin-bottom: 30px;
     }
 
-    .job-heading.title {
+    .job-heading.title,
+    .job-heading.title span {
         font-weight: 600;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .job-heading.date {
@@ -119,6 +120,7 @@
     .job ul {
         padding-inline-start: 30px;
         padding-left: 20px;
+        margin-top: 10px;
     }
 
     .job ul li:not(:last-child) {
@@ -486,7 +488,7 @@
     body {
         margin: 0 auto;
         padding: 45px;
-        max-width: 1366px;
+        max-width: 1024px;
     }
 
     ::-webkit-scrollbar {
@@ -543,6 +545,7 @@
 
     h2 {
         font-size: 16px;
+        font-weight: 800;
     }
 
     p, span, li {
@@ -567,6 +570,11 @@
         font-size: 28px;
     }
 
+    header h4 {
+        font-weight: 700;
+        margin-top: 0px;
+    }
+
     .container {
         box-shadow: none;
         margin: 0px;
@@ -589,11 +597,16 @@
     }
 
     /* Jobs */
+    .job {
+        break-inside: avoid;
+    }
+
     .job:not(:last-child) {
         margin-bottom: 17.5px;
     }
 
-    .job-heading.title {
+    .job-heading.title,
+    .job-heading.title span {
         white-space: nowrap;
         font-size: 12px;
     }
