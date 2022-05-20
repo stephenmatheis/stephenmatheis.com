@@ -241,7 +241,7 @@
 
 /* Web */
 @media screen {
-    @media (max-width: 1200px) {
+    @media (max-width: 1100px) {
         body {
             max-width: 1024px !important;
             padding: 25px !important;
