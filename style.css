@@ -346,7 +346,7 @@
 
         .container {
             background-color: var(--container-light);
-            box-shadow: var(--container-shadow-light);
+            /* box-shadow: var(--container-shadow-light); */
         }
 
         .icon {
@@ -360,7 +360,7 @@
         .toggle {
             color: var(--accent-color-light);
             transform: scale(1);
-            box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+            /* box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0; */
         }
     }
 
@@ -387,7 +387,7 @@
 
         .container {
             background-color: var(--container-dark);
-            box-shadow: var(--container-shadow-dark);
+            /* box-shadow: var(--container-shadow-dark); */
         }
         
         .icon {
@@ -401,7 +401,7 @@
         .toggle {
             transform: scale(0.75);
             color: var(--accent-color-dark);;
-            box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size), var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+            /* box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size), var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size); */
         }
     }
 
@@ -428,7 +428,7 @@
 
     html[data-theme="light"] .container {
         background-color: var(--container-light);
-        box-shadow: var(--container-shadow-light);
+        /* box-shadow: var(--container-shadow-light); */
     }
 
     html[data-theme="light"] .icon {
@@ -442,7 +442,7 @@
     html[data-theme="light"] .toggle { /* Moon */
         transform: scale(1);
         color: var(--accent-color-light);
-        box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+        /* box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0; */
     }
 
     /* Dark */
@@ -468,7 +468,7 @@
 
     html[data-theme="dark"] .container {
         background-color: var(--container-dark);
-        box-shadow: var(--container-shadow-dark);
+        /* box-shadow: var(--container-shadow-dark); */
     }
 
     html[data-theme="dark"] .icon {
@@ -482,7 +482,7 @@
     html[data-theme="dark"] .toggle { /* Sun */
         transform: scale(0.75);
         color: var(--accent-color-dark);;
-        box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size), var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size);
+        /* box-shadow: inset 0 0 0 var(--size), calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size), var(--offset-orthogonal) 0 0 var(--ray-size), 0 calc(var(--offset-orthogonal) * -1) 0 var(--ray-size), 0 var(--offset-orthogonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) calc(var(--offset-diagonal) * -1) 0 var(--ray-size), var(--offset-diagonal) var(--offset-diagonal) 0 var(--ray-size), calc(var(--offset-diagonal) * -1) var(--offset-diagonal) 0 var(--ray-size), var(--offset-diagonal) calc(var(--offset-diagonal) * -1) 0 var(--ray-size); */
     }
 
     /* Shared */
@@ -522,7 +522,7 @@
         cursor: pointer;
         width: var(--size);
         height: var(--size);
-        box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
+        /* box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0; */
         border-radius: 999px;
         color: var(--color-dark);
         transition: all 200ms;
