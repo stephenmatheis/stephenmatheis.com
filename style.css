@@ -35,6 +35,7 @@
 
     p, span, li {
         line-height: 1.5;
+        font-size: 14px;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -49,7 +50,6 @@
         font-weight: 500;
         margin-top: 5px;
         margin-bottom: 0px;
-        text-transform: uppercase;
     }
 
     main {
@@ -83,7 +83,6 @@
         flex: 2;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
     }
 
     .container {
@@ -115,7 +114,6 @@
     .job-heading.date {
         font-weight: 500;
         font-size: 12px;
-        text-transform: uppercase;
     }
     
     .job ul {

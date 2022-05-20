@@ -40,7 +40,7 @@ let index = [
     `                <a href="https://www.stephenmatheis.com">`,
     `                    <h1 class="name">Stephen Matheis</h1>`,
     `                </a>`,
-    `                <h4 class="title">Software Engineer</h4>`,
+    `                <h4 class="title">Software Developer</h4>`,
     `            </div>`,
     `            <div class="links">`,
     `                <a href="https://github.com/stephenmatheis" target="_blank" title='GitHub'>`,

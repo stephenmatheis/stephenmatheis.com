@@ -1,6 +1,6 @@
 [
     {
-        "title": "Founder and Software Engineer",
+        "title": "Founder and Software Developer",
         "company": "Robi",
         "location": "San Antonio, TX",
         "start": "April 2021",
@@ -12,7 +12,7 @@
         ]
     },
     {
-        "title": "Senior Software Engineer",
+        "title": "Senior Software Developer",
         "company": "Aeyon",
         "location": "San Antonio, TX",
         "start": "May 2021",
@@ -20,15 +20,15 @@
         "languages": "TypeScript, JavaScript, HTML, CSS",
         "stack": "React, Expo, Firebase, Google Compute Platform, Node",
         "lines": [
-            "Individual contributer and subject matter expert in SharePoint and cross-platform mobile and web application development",
-            "Mentored junior developers in web and SharePoint aplication development, JavaScript, HTMl, CSS, working with RESTful APIs and JSON",
-            "Developed a cross-platform mobile application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href=\"https://expo.dev/\" target=\"_blank\">Expo</a>, <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>, and <a href=\"https://reactnative.dev/\" target=\"_blank\">React Native</a>",
-            "Developed a web application for the United States Marine Corps (USMC) Defense Agencies Initiative (DAI) with <a href=\"https://reactjs.org/\" target=\"_blank\">React</a> and <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>",
-            "Built client-side SharePoint applications for the Defense Health Agency (DHA) with <a href=\"https://github.com/stephenmatheis/robi-starter\" target=\"_blank\">Robi</a> and the <a href=\"https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service?tabs=http\" target=\"_blank\">SharePoint 2013 REST API</a>"
+            "Individual contributer software developer and subject matter expert in web, SharePoint, and cross-platform mobile application development",
+            "Mentored junior developers in web and SharePoint application development, JavaScript, HTML, CSS, Git/GitHub, Agile, and building user interfaces and business logic with RESTful APIs and JSON",
+            "Cross-platform mobile application development in JavaScript with <a href=\"https://expo.dev/\" target=\"_blank\">Expo</a>, <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>, and <a href=\"https://reactnative.dev/\" target=\"_blank\">React Native</a>",
+            "Web Application development in JavaScript, HTML, CSS, with <a href=\"https://reactjs.org/\" target=\"_blank\">React</a>, <a href=\"https://firebase.google.com/\" target=\"_blank\">Firebase</a>, and <a href=\"https://reactjs.org/\" target=\"_blank\">Reac</a>",
+            "Built client-side SharePoint applications in JavaScript, HTML, CSS, with jQuery, Bootstrap, Chart.js, DataTables, <a href=\"https://github.com/stephenmatheis/robi-starter\" target=\"_blank\">Robi</a>, the <a href=\"https://docs.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service?tabs=http\" target=\"_blank\">SharePoint 2013 REST API</a>, and JSON"
         ]
     },
     {
-        "title": "Senior Software Engineer",
+        "title": "Senior Software Developer",
         "company": "T and T Consulting Services",
         "location": "San Antonio, TX",
         "start": "March 2018",
@@ -36,7 +36,6 @@
         "languages": "JavaScript, HTML, CSS",
         "stack": "Robi, Node",
         "lines": [
-            "Senior SharePoint Developer",
             "Technical Lead and mentor to 3 developers and 2 administrators",
             "Mentored junior developers in web and SharePoint aplication development, JavaScript, HTMl, CSS, working with RESTful APIs and JSON",
             "Client-side application development and farm administration for Army Medical Command (MEDCOM) Regional Health Command - Central (RHC-C) G-6 Information Management Division (IMD)",
@@ -45,7 +44,7 @@
         ]
     },
     {
-        "title": "Founder and Software Engineer",
+        "title": "Founder and Software Developer",
         "company": "Robi",
         "location": "Washington, D.C.",
         "start": "October 2017",
@@ -57,7 +56,7 @@
         ]
     },
     {
-        "title": "Software Engineer (SharePoint Developer)",
+        "title": "SharePoint Developer",
         "company": "HID Global",
         "location": "Austin, TX",
         "start": "September 2016",
@@ -83,7 +82,7 @@
         ]
     },
     {
-        "title": "Software Developer and System Administator",
+        "title": "Senior Consultant",
         "company": "Bravo Consulting Group",
         "location": "Reston, VA",
         "start": "November 2014",
