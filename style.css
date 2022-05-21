@@ -89,6 +89,13 @@
     .bold {
         font-weight: 500;
     }
+
+    .badge-gray {
+        font-weight: 600;
+        /* background: #e9ecef;
+        border-radius: 4px;
+        padding: 4px; */
+    }
     
     /* Profile */
     .name {
@@ -629,7 +636,7 @@
     }
 
     .job-heading.date {
-        font-size: 9px;
+        font-size: 11.5px;
     }
 
     .job ul {

@@ -92,11 +92,11 @@ jobs.forEach(job => {
         `                        ${location ? `in ${location}` : ''}`,
         `                    </div>`,
         `                    <div style='font-size: 12px; margin-top: 4px;'>`,
-        `                        <span style='font-weight: 500; background: #e9ecef; border-radius: 8px; padding: 4px;'>Languages</span>`,
+        `                        <span class='badge-gray'>Languages:</span>`,
         `                        <span>${languages || 'N/A'}</span>`,
         `                    </div>`,
         `                    <div style='font-size: 12px;'>`,
-        `                        <span style='font-weight: 500;'>Stack</span>`,
+        `                        <span class='badge-gray'>Stack:</span>`,
         `                        <span>${stack || 'N/A'}</span>`,
         `                    </div>`,
         `                <div>`,
@@ -234,5 +234,6 @@ if (!existsSync('dist')) {
 }
 
 await writeFile(`dist/index.html`, index.join('\n'));
+await writeFile(`index.html`, index.join('\n'));
 await copy('style.css', './dist/style.css');
 await copy('main.js', './dist/main.js');
