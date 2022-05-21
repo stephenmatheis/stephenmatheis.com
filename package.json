@@ -2,10 +2,10 @@
   "name": "stephenmatheis.com",
   "version": "1.0.0",
   "description": "my personal website",
-  "main": "main.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/stephenmatheis/stephenmatheis.com/issues"
   },
-  "homepage": "https://stephenmatheis.com"
+  "homepage": "https://stephenmatheis.com",
+  "devDependencies": {
+    "fs-extra": "^10.0.0"
+  }
 }

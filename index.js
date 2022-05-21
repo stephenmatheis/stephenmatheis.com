@@ -1,6 +1,4 @@
-import { existsSync } from 'fs'
 import { mkdir, readFile, writeFile } from 'fs/promises'
-import { copy } from 'fs-extra'
 
 let license = [
     '<!--',
@@ -66,7 +64,7 @@ let index = [
 ];
 
 // Jobs
-const jobsRes = await readFile('data/jobs.json');
+const jobsRes = await readFile('jobs.json');
 const jobs = JSON.parse(jobsRes);
 
 jobs.forEach(job => {
@@ -92,7 +90,7 @@ jobs.forEach(job => {
         `                        ${location ? `in ${location}` : ''}`,
         `                    </div>`,
         `                    <div style='font-size: 12px; margin-top: 4px;'>`,
-        `                        <span style='font-weight: 500; background: #e9ecef; border-radius: 8px; padding: 4px;'>Languages</span>`,
+        `                        <span style='font-weight: 500; background: lightgray;'>Languages</span>`,
         `                        <span>${languages || 'N/A'}</span>`,
         `                    </div>`,
         `                    <div style='font-size: 12px;'>`,
@@ -125,7 +123,7 @@ index = index.concat([
 ]);
 
 // Skills
-const skillsRes = await readFile('data/skills.json');
+const skillsRes = await readFile('skills.json');
 const skills = JSON.parse(skillsRes);
 
 const curentYear = new Date().getFullYear();
@@ -229,10 +227,6 @@ index = index.concat([
 
 index = license.concat(index);
 
-if (!existsSync('dist')) {
-    await mkdir('dist');
-}
-
+// Write to index.html
+await mkdir('dist');
 await writeFile(`dist/index.html`, index.join('\n'));
-await copy('style.css', './dist/style.css');
-await copy('main.js', './dist/main.js');
