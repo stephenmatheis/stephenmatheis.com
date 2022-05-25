@@ -12,15 +12,23 @@
         "started": 2002
     },
     {
-        "name": "SharePoint",
+        "name": "SharePoint Development",
         "started": 2002
     },
     {
-        "name": "Unix/Linux Shell",
-        "started": 2006
+        "name": "CI/CD",
+        "started": 2013
     },
     {
-        "name": "PowerShell",
+        "name": "Bash/PowerShell",
+        "started": 2014
+    },
+    {
+        "name": "C#",
+        "started": 2014
+    },
+    {
+        "name": ".NET",
         "started": 2014
     },
     {
@@ -32,11 +40,31 @@
         "started": 2018
     },
     {
-        "name": "React, React Native",
-        "started": 2021
+        "name": "React",
+        "started": 2018
+    },
+    {
+        "name": "GitLab",
+        "started": 2018
+    },
+    {
+        "name": "Docker",
+        "started": 2018
+    },
+    {
+        "name": "React Native",
+        "started": 2020
     },
     {
         "name": "Mobile App Development",
-        "started": 2021
+        "started": 2020
+    },
+    {
+        "name": "GitKraken",
+        "started": 2022
+    },
+    {
+        "name": "Unity",
+        "started": 2022
     }
 ]

@@ -1,6 +1,20 @@
 [
     {
-        "title": "Software Developer",
+        "title": "Software Engineer",
+        "company": "GovCIO",
+        "location": "San Antonio, TX",
+        "start": "May 2021",
+        "end": "Present",
+        "languages": "C#",
+        "stack": ".NET Core 6.0, Unity, MongoDB",
+        "lines": [
+            "Internal title: Software Progammer 5",
+            "Designing, developing, and programming 3D user interfaces in C# with .NET Core 6.0, MongoDB, and Unity",
+            "Designing, developing, and programming APIs and DLLs in C# to consume custom protocols in binary that feed data to 3D user interfaces"
+        ]
+    },
+    {
+        "title": "Software Engineer",
         "company": "Robi",
         "location": "San Antonio, TX",
         "start": "April 2021",
@@ -12,30 +26,31 @@
         ]
     },
     {
-        "title": "Senior Software Developer",
+        "title": "Senior Software Engineer",
         "company": "Aeyon",
         "location": "San Antonio, TX",
         "start": "May 2021",
         "end": "April 2022",
         "languages": "TypeScript, JavaScript, HTML, CSS",
-        "stack": "React, React Native, Expo, Firebase, Google Compute Platform, Node, Robi, SharePoint",
+        "stack": "React, React Native, Expo, Firebase, Google Compute Platform, Node, Robi, SharePoint, ASP.NET",
         "lines": [
             "Internal title: Subject Matter Expert II",
             "Mentored junior developers in web and SharePoint application development, Agile, and creating user interfaces and implementing business logic with RESTful APIs and JSON",
-            "Built a cross-platform mobile application in JavaScript with Expo, Firebase, and React Native, ",
-            "Built a web application in JavaScript with Firebase, Netlify, and React",
-            "Built web applications in JavaScript, HTML, and CSS hosted on SharePoint 2013 with Bootstrap, Chart.js, DataTables, JSON, jQuery, <a href=\"https://github.com/robijs/robi\" target=\"_blank\">Robi</a>, and RESTful APIs"
+            "Designed, developed, and programmed a cross-platform mobile application in JavaScript with Expo, Firebase, and React Native",
+            "Designed, developed, and programmed a web application in JavaScript with Firebase, Netlify, and React",
+            "Built web applications in JavaScript, HTML, and CSS hosted on SharePoint 2013 with ASP.NET, Bootstrap, Chart.js, DataTables, JSON, jQuery, <a href=\"https://github.com/robijs/robi\" target=\"_blank\">Robi</a>, and RESTful APIs"
         ]
     },
     {
-        "title": "Senior SharePoint Developer",
+        "title": "Senior Software Engineer",
         "company": "T and T Consulting Services",
         "location": "San Antonio, TX",
         "start": "March 2018",
         "end": "May 2021",
         "languages": "JavaScript, HTML, CSS",
-        "stack": "Node, Robi, SharePoint",
+        "stack": "Node, Robi, SharePoint, ASP.NET",
         "lines": [
+            "Internal Title: Senior SharePoint Developer",
             "Technical Lead to 3 developers and 2 administrators",
             "Mentored junior developers in web and SharePoint application development, Agile, and creating user interfaces and implementing business logic with RESTful APIs and JSON",
             "Built web applications in JavaScript, HTML, and CSS hosted on SharePoint 2013 with Bootstrap, Chart.js, DataTables, JSON, jQuery, <a href=\"https://github.com/robijs/robi\" target=\"_blank\">Robi</a>, and RESTful APIs",
@@ -44,7 +59,7 @@
         ]
     },
     {
-        "title": "Software Developer",
+        "title": "Software Engineer",
         "company": "Robi",
         "location": "Washington, D.C.",
         "start": "October 2017",
@@ -56,15 +71,16 @@
         ]
     },
     {
-        "title": "SharePoint Developer",
+        "title": "Software Engineer",
         "company": "HID Global",
         "location": "Austin, TX",
         "start": "September 2016",
         "end": "October 2017",
-        "languages": "JavaScript, HTML, CSS",
+        "languages": "JavaScript, HTML, CSS, ASP.NET",
         "stack": "SharePoint",
         "lines": [
-            "Built web applications in JavaScript, HTML, CSS hosted on SharePoint 2013 with JSON, jQuery, SPServices, and RESTful APIs",
+            "Internal titles: Systems Programmer 3, SharePoint Developer, SharePoint Administrator",
+            "Built web applications in JavaScript, HTML, CSS hosted on SharePoint 2013 with ASP.NET, JSON, jQuery, SPServices, and RESTful APIs",
             "SharePoint farm administration",
             "Migrated from SharePoint 2010 to 2013",
             "Migrated Lotus Notes wikis, data, and applications to SharePoint 2010"
@@ -85,19 +101,21 @@
         ]
     },
     {
-        "title": "Senior Consultant",
+        "title": "Software Developer",
         "company": "Bravo Consulting Group",
         "location": "Reston, VA",
         "start": "November 2014",
         "end": "May 2016",
-        "languages": "JavaScript, HTML, CSS",
-        "stack": "SharePoint",
+        "languages": "JavaScript, HTML, CSS, C#",
+        "stack": "SharePoint, .NET",
         "lines": [
-            "Senior consult, software developer, system administator, project manager, and individual contributor",
-            "Built web applications in JavaScript, HTML, CSS hosted on SharePoint 2010 and 2013 with JSON, jQuery, SPServices, and RESTful APIs",
+            "Internal title: Senior Consultant",
+            "Roles: Software Developer, Program Manager, Project manager, System Administator",
+            "Built web applications in JavaScript, HTML, CSS hosted on SharePoint 2010 and 2013 with ASP.NET, JSON, jQuery, SPServices, and RESTful APIs",
             "SharePoint 2010 and 2013 farm administration",
             "Wrote PowerShell tools to generate reports and archive SharePoint 2010 list data as XML",
-            "SharePoint 2010 to 2013 migrations"
+            "SharePoint 2010 to 2013 migrations",
+            "Deployed and supported C# ASP.NET server-side SharePoint 2010 apps and DLLs"
         ]
     },
     {

@@ -137,7 +137,7 @@ skills.forEach(skill => {
         started
     } = skill;
 
-    const years = curentYear - started || 1;
+    const years = (curentYear - started || 1);
     const width = Math.round((parseInt(years) / max) * 100);
 
     index = index.concat([
