@@ -1,6 +1,7 @@
 [
     {
         "title": "Software Engineer",
+        "internal": "Software Progammer 5",
         "company": "GovCIO",
         "location": "San Antonio, TX",
         "start": "May 2021",
@@ -8,7 +9,6 @@
         "languages": "C#",
         "stack": ".NET Core 6.0, Unity, MongoDB",
         "lines": [
-            "Internal title: Software Progammer 5",
             "Designing, developing, and programming 3D user interfaces in C# with .NET Core 6.0, MongoDB, and Unity",
             "Designing, developing, and programming APIs in C# to consume custom protocols in binary that feed data to 3D user interfaces"
         ]
@@ -27,6 +27,7 @@
     },
     {
         "title": "Senior Software Engineer",
+        "internal": "Subject Matter Expert II",
         "company": "Aeyon",
         "location": "San Antonio, TX",
         "start": "May 2021",
@@ -34,7 +35,6 @@
         "languages": "TypeScript, JavaScript, HTML, CSS",
         "stack": "React, React Native, Expo, Firebase, Google Compute Platform, Node, Robi, SharePoint, ASP.NET",
         "lines": [
-            "Internal title: Subject Matter Expert II",
             "Mentored junior developers in web and SharePoint application development, Agile, designing and programming user interfaces in JavaScript, HTML, and CSS, and implementing business logic with RESTful APIs and JSON",
             "Designed, developed, and programmed a cross-platform mobile application in JavaScript with Expo, Firebase, and React Native",
             "Designed, developed, and programmed a web application in JavaScript with Firebase, Netlify, and React",
@@ -43,6 +43,7 @@
     },
     {
         "title": "Senior Software Engineer",
+        "internal": "Senior SharePoint Developer",
         "company": "T and T Consulting Services",
         "location": "San Antonio, TX",
         "start": "March 2018",
@@ -50,7 +51,6 @@
         "languages": "JavaScript, HTML, CSS",
         "stack": "Node, Robi, SharePoint, ASP.NET",
         "lines": [
-            "Internal Title: Senior SharePoint Developer",
             "Technical Lead to 3 developers and 2 administrators",
             "Mentored junior developers in web and SharePoint application development, Agile, and creating user interfaces and implementing business logic with RESTful APIs and JSON",
             "Designed, developed, and programmed web applications in JavaScript, HTML, and CSS hosted on SharePoint 2013 with Bootstrap, Chart.js, DataTables, JSON, jQuery, <a href=\"https://github.com/robijs/robi\" target=\"_blank\">Robi</a>, and RESTful APIs",
@@ -72,6 +72,7 @@
     },
     {
         "title": "Software Engineer",
+        "internal": "Systems Programmer 3",
         "company": "HID Global",
         "location": "Austin, TX",
         "start": "September 2016",
@@ -79,7 +80,6 @@
         "languages": "JavaScript, HTML, CSS, ASP.NET",
         "stack": "SharePoint",
         "lines": [
-            "Internal titles: Systems Programmer 3, SharePoint Developer, SharePoint Administrator",
             "Designed, developed, and programmed web applications in JavaScript, HTML, CSS hosted on SharePoint 2013 with ASP.NET, JSON, jQuery, SPServices, and RESTful APIs",
             "SharePoint farm administration",
             "Migrated from SharePoint 2010 to 2013",
@@ -87,7 +87,8 @@
         ]
     },
     {
-        "title": "Programmer",
+        "title": "Software Developer",
+        "internal": "System Administrator",
         "company": "Tech 2000",
         "location": "Herndon, VA",
         "start": "March 2016",
@@ -95,7 +96,6 @@
         "languages": "AppleScript, Bash",
         "stack": "macOS",
         "lines": [
-            "Internal title: System Administrator",
             "Wrote bash and AppleScript tools to automate macOS installation, classroom set up, MDM, and macOS Server maintenance",
             "Supported Mac and iPhone end-user devices",
             "Maintained Apple and Cisco certified training lab equipment"
@@ -103,6 +103,7 @@
     },
     {
         "title": "Software Developer",
+        "internal": "Senior Consultant",
         "company": "Bravo Consulting Group",
         "location": "Reston, VA",
         "start": "November 2014",
@@ -110,7 +111,6 @@
         "languages": "JavaScript, HTML, CSS, C#",
         "stack": "SharePoint, .NET",
         "lines": [
-            "Internal title: Senior Consultant",
             "Roles: Software Developer, Program Manager, Project manager, System Administator",
             "Desgined, Developed, and programmed web applications in JavaScript, HTML, CSS hosted on SharePoint 2010 and 2013 with ASP.NET, JSON, jQuery, SPServices, and RESTful APIs",
             "Wrote PowerShell tools to generate reports and archive SharePoint 2010 list data as XML",
@@ -120,7 +120,8 @@
         ]
     },
     {
-        "title": "Programmer",
+        "title": "Software Developer",
+        "internal": "Access Control Specialist",
         "company": "Applied Integrated Technologies",
         "location": "Charlottesville, VA",
         "start": "February 2011",
@@ -128,7 +129,6 @@
         "languages": "VBA",
         "stack": "SharePoint",
         "lines": [
-            "Internal title: Access Control Specialist",
             "SharePoint site administration",
             "Data analysis with Excel, VBA, and SharePoint 2007"
         ]

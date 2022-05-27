@@ -522,8 +522,12 @@
         font-weight: 800;
     }
 
+    .left {
+        flex: 3;
+    }
+
     .right {
-        width: 70%;
+        flex: 2;
     }
 
     /* Dark/Light Mode */
