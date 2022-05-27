@@ -150,11 +150,11 @@ skills.forEach(skill => {
 
     index = index.concat([
         `                <div class="skill">`,
-        `                    <div class="skill-bar" style="width: ${width}%"></div>`,
         `                    <div class='name-years'>`,
         `                        <span class="name">${name}</span>`,
         `                        <span class="years">${years} ${parseInt(years) === 1 ? 'year' : 'years'}</span>`,
         `                    </div>`,
+        `                    <div class="skill-bar" style="width: ${width}%"></div>`,
         `                </div>`
     ]);
 });
