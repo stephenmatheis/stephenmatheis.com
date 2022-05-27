@@ -167,12 +167,6 @@
         text-decoration: none;
     }
 
-    /* Icons */
-    .icon {
-        width: 40px;
-        height: 40px;
-    }
-
     /* Skills */
     .skill {
         margin-bottom: 10px;
@@ -528,14 +522,11 @@
         font-weight: 800;
     }
 
-    .left {
-        flex: 5;
-    }
-    
     .right {
-        flex: 3;
+        width: 70%;
     }
 
+    /* Dark/Light Mode */
     .toggle {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -550,6 +541,12 @@
         color: var(--color-dark);
         transition: all 200ms;
         z-index: 1;
+    }
+
+    /* Icons */
+    .icon {
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -660,6 +657,8 @@
     /* Icons */
     .icon {
         fill: black;
+        width: 35px;
+        height: 35px;
     }
 
     /* Footer */
