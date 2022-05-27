@@ -1,7 +1,6 @@
 [
     {
-        "title": "Software Engineer",
-        "internal": "Software Progammer 5",
+        "title": "Software Progammer 5",
         "company": "GovCIO",
         "location": "San Antonio, TX",
         "start": "May 2021",
@@ -26,8 +25,7 @@
         ]
     },
     {
-        "title": "Senior Software Engineer",
-        "internal": "Subject Matter Expert II",
+        "title": "Subject Matter Expert II",
         "company": "Aeyon",
         "location": "San Antonio, TX",
         "start": "May 2021",
@@ -42,8 +40,7 @@
         ]
     },
     {
-        "title": "Senior Software Engineer",
-        "internal": "Senior SharePoint Developer",
+        "title": "Senior SharePoint Developer",
         "company": "T and T Consulting Services",
         "location": "San Antonio, TX",
         "start": "March 2018",
@@ -71,8 +68,7 @@
         ]
     },
     {
-        "title": "Software Engineer",
-        "internal": "Systems Programmer 3",
+        "title": "SharePoint Developer",
         "company": "HID Global",
         "location": "Austin, TX",
         "start": "September 2016",
@@ -87,8 +83,7 @@
         ]
     },
     {
-        "title": "Software Developer",
-        "internal": "System Administrator",
+        "title": "System Administator",
         "company": "Tech 2000",
         "location": "Herndon, VA",
         "start": "March 2016",
@@ -102,8 +97,7 @@
         ]
     },
     {
-        "title": "Software Developer",
-        "internal": "Senior Consultant",
+        "title": "Senior Consultant",
         "company": "Bravo Consulting Group",
         "location": "Reston, VA",
         "start": "November 2014",
@@ -120,8 +114,7 @@
         ]
     },
     {
-        "title": "Software Developer",
-        "internal": "Access Control Specialist",
+        "title": "Access Control Specialist",
         "company": "Applied Integrated Technologies",
         "location": "Charlottesville, VA",
         "start": "February 2011",

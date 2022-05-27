@@ -81,7 +81,6 @@ jobs.forEach(job => {
         languages
     } = job;
 
-    // ${location}
     index= index.concat([
         `                <div class="job">`,
         `                    <div class="job-heading title">`,
