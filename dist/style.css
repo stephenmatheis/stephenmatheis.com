@@ -198,6 +198,7 @@
     }
     
     .cert-name {
+        font-size: 14px;
         font-weight: 600;
     }
 
@@ -522,12 +523,8 @@
         font-weight: 800;
     }
 
-    .left {
-        flex: 3;
-    }
-
     .right {
-        flex: 2;
+        width: 35%;
     }
 
     /* Dark/Light Mode */

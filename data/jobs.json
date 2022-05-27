@@ -8,8 +8,7 @@
         "languages": "C#",
         "stack": ".NET Core 6.0, Unity, MongoDB",
         "lines": [
-            "Designing, developing, and programming 3D user interfaces in C# with .NET Core 6.0, MongoDB, and Unity",
-            "Designing, developing, and programming APIs in C# to consume custom protocols in binary that feed data to 3D user interfaces"
+
         ]
     },
     {
@@ -31,12 +30,11 @@
         "start": "May 2021",
         "end": "April 2022",
         "languages": "TypeScript, JavaScript, HTML, CSS",
-        "stack": "React, React Native, Expo, Firebase, Google Compute Platform, Node, Robi, SharePoint, ASP.NET",
+        "stack": "React, React Native, Expo, Firebase, Node, SharePoint",
         "lines": [
-            "Mentored junior developers in web and SharePoint application development, Agile, designing and programming user interfaces in JavaScript, HTML, and CSS, and implementing business logic with RESTful APIs and JSON",
-            "Designed, developed, and programmed a cross-platform mobile application in JavaScript with Expo, Firebase, and React Native",
-            "Designed, developed, and programmed a web application in JavaScript with Firebase, Netlify, and React",
-            "Built web applications in JavaScript, HTML, and CSS hosted on SharePoint 2013 with ASP.NET, Bootstrap, Chart.js, DataTables, JSON, jQuery, <a href=\"https://github.com/robijs/robi\" target=\"_blank\">Robi</a>, and RESTful APIs"
+            "Mentored junior developers",
+            "Built mobile apps in React Native with Expo and Firebase",
+            "Built web applications in JavaScript, HTML, CSS with RESTful APIs"
         ]
     },
     {
@@ -46,11 +44,10 @@
         "start": "March 2018",
         "end": "May 2021",
         "languages": "JavaScript, HTML, CSS",
-        "stack": "Node, Robi, SharePoint, ASP.NET",
+        "stack": "Node, SharePoint",
         "lines": [
-            "Technical Lead to 3 developers and 2 administrators",
-            "Mentored junior developers in web and SharePoint application development, Agile, and creating user interfaces and implementing business logic with RESTful APIs and JSON",
-            "Designed, developed, and programmed web applications in JavaScript, HTML, and CSS hosted on SharePoint 2013 with Bootstrap, Chart.js, DataTables, JSON, jQuery, <a href=\"https://github.com/robijs/robi\" target=\"_blank\">Robi</a>, and RESTful APIs",
+            "Mentored junior developers",
+            "Built web applications in JavaScript, HTML, CSS with RESTful APIs",
             "SharePoint 2010 and 2013 farm administration",
             "Led migration from SharePoint 2010 to 2013"
         ]
@@ -73,10 +70,10 @@
         "location": "Austin, TX",
         "start": "September 2016",
         "end": "October 2017",
-        "languages": "JavaScript, HTML, CSS, ASP.NET",
+        "languages": "JavaScript, HTML, CSS",
         "stack": "SharePoint",
         "lines": [
-            "Designed, developed, and programmed web applications in JavaScript, HTML, CSS hosted on SharePoint 2013 with ASP.NET, JSON, jQuery, SPServices, and RESTful APIs",
+            "Built web applications in JavaScript, HTML, CSS with RESTful APIs",
             "SharePoint farm administration",
             "Migrated from SharePoint 2010 to 2013",
             "Migrated Lotus Notes wikis, data, and applications to SharePoint 2010"
@@ -91,7 +88,7 @@
         "languages": "AppleScript, Bash",
         "stack": "macOS",
         "lines": [
-            "Wrote bash and AppleScript tools to automate macOS installation, classroom set up, MDM, and macOS Server maintenance",
+            "Wrote bash and AppleScript tools",
             "Supported Mac and iPhone end-user devices",
             "Maintained Apple and Cisco certified training lab equipment"
         ]
@@ -103,13 +100,12 @@
         "start": "November 2014",
         "end": "May 2016",
         "languages": "JavaScript, HTML, CSS, C#",
-        "stack": "SharePoint, .NET",
+        "stack": "SharePoint, ASP.NET",
         "lines": [
-            "Roles: Software Developer, Program Manager, Project manager, System Administator",
-            "Desgined, Developed, and programmed web applications in JavaScript, HTML, CSS hosted on SharePoint 2010 and 2013 with ASP.NET, JSON, jQuery, SPServices, and RESTful APIs",
-            "Wrote PowerShell tools to generate reports and archive SharePoint 2010 list data as XML",
-            "Deployed and supported ASP.NET server-side SharePoint 2010 apps and DLLs writtein in C#",
-            "SharePoint 2010 to 2013 migrations",
+            "Built web applications in JavaScript with RESTful APIs",
+            "Wrote PowerShell tools to export SharePoint 2010 data in XML",
+            "Deployed ASP.NET SharePoint 2010 apps and DLLs writtein in C#",
+            "Migrated clients from SharePoint 2010 to 2013",
             "SharePoint 2010 and 2013 farm administration"
         ]
     },

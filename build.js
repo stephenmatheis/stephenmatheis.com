@@ -99,14 +99,23 @@ jobs.forEach(job => {
         `                        <span>${stack || 'N/A'}</span>`,
         `                    </div>`,
         `                <div>`,
-        `                    <ul>`
     ]);
 
-    lines.forEach(line => {
+    if (lines.length) {
         index = index.concat([
-            `                        <li>${line}</li>`
+            `                    <ul>`,
         ]);
-    });
+
+        lines.forEach(line => {
+            index = index.concat([
+                `                        <li>${line}</li>`
+            ]);
+        });
+
+        index = index.concat([
+            `                    </ul>`,
+        ]);
+    }
 
     index = index.concat([
         `                    </ul>`,

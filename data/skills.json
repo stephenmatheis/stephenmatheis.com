@@ -1,14 +1,6 @@
 [
     {
-        "name": "HTML",
-        "started": 2002
-    },
-    {
-        "name": "CSS",
-        "started": 2002
-    },
-    {
-        "name": "JavaScript",
+        "name": "HTML, CSS, JavaScript",
         "started": 2002
     },
     {
@@ -16,11 +8,7 @@
         "started": 2002
     },
     {
-        "name": "C#",
-        "started": 2014
-    },
-    {
-        "name": ".NET",
+        "name": "C#, .NET, ASP.NET",
         "started": 2014
     },
     {
@@ -44,16 +32,12 @@
         "started": 2018
     },
     {
-        "name": "React",
+        "name": "React, React Native",
         "started": 2018
     },
     {
         "name": "Docker",
         "started": 2018
-    },
-    {
-        "name": "React Native",
-        "started": 2020
     },
     {
         "name": "Mobile App Development",
