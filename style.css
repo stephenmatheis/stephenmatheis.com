@@ -115,7 +115,7 @@
     }
 
     .job-heading.title {
-        margin-bottom: 4px;
+        margin-bottom: 2px;
     }
 
     .job-heading.title span {
@@ -173,7 +173,7 @@
 
     /* Skills */
     .skill {
-        margin-bottom: 10px;
+        margin-bottom: 14px;
     }
     
     .skill-bar {

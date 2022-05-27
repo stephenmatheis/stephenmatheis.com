@@ -8,7 +8,7 @@
         "languages": "C#",
         "stack": ".NET Core 6.0, Unity, MongoDB",
         "lines": [
-
+            ".NET Core cross-platform application development in C# with Unity and MongoDB"
         ]
     },
     {
@@ -33,7 +33,7 @@
         "stack": "React, React Native, Expo, Firebase, Node, SharePoint",
         "lines": [
             "Mentored junior developers",
-            "Built mobile apps in React Native with Expo and Firebase",
+            "Built cross-platform mobile apps in React Native with Expo and Firebase",
             "Built web applications in JavaScript, HTML, CSS with RESTful APIs"
         ]
     },
