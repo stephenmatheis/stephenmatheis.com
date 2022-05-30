@@ -1,9 +1,6 @@
 function component(param, options) {
     if (typeof param === 'string') {
-        return param
-            .split('\n')
-            .map(line => line.trim())
-            .join('\n');
+        return param;
     }
     
     if (typeof param === 'object') {
@@ -11,7 +8,7 @@ function component(param, options) {
 
         return data
             .map(render)
-            .join('')
+            .join('');
     }
 }
 

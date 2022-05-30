@@ -81,7 +81,7 @@ jobs.forEach(job => {
         languages
     } = job;
 
-    index= index.concat([
+    index = index.concat([
         `                <div class="job">`,
         `                    <div class="job-heading title">`,
         `                        ${title ? `<span style='font-weight: 800;'>${title}</span> at` : ''} ${company || ''}`,
@@ -214,8 +214,7 @@ index = index.concat([
     `        <a href="https://github.com/stephenmatheis/stephenmatheis.com" target="_blank">See how this site was made</a>`,
     `    </footer>`,
     `    <!-- SVG Icons | https://icomoon.io/app -->`,
-    `    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"`,
-    `        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">`,
+    `    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">`,
     `        <defs>`,
     `            <symbol id="icon-github" viewBox="0 0 32 32">`,
     `                <path`,
