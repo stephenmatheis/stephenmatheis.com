@@ -40,7 +40,7 @@ let index = [
     `        <div id="profile" class="container flex align-center justify-between">`,
     `            <div>`,
     `                <a href="https://www.stephenmatheis.com">`,
-    `                    <h1 class="name">Stephen Matheis</h1>`,
+    `                    <h1 class="name">Stephen Matheis (2022)</h1>`,
     `                </a>`,
     `                <h4 class="title">Software Engineer</h4>`,
     `            </div>`,
