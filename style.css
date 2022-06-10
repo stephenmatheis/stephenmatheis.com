@@ -247,6 +247,12 @@
 
 /* Web */
 @media screen {
+    @media (min-width: 1100px) {
+        .right {
+            width: 35%;
+        }    
+    }
+
     @media (max-width: 1100px) {
         body {
             max-width: 1024px !important;
@@ -525,10 +531,6 @@
 
     h2 {
         font-weight: 800;
-    }
-
-    .right {
-        width: 35%;
     }
 
     /* Dark/Light Mode */
