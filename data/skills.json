@@ -4,28 +4,12 @@
         "started": 2002
     },
     {
-        "name": "SharePoint Development",
-        "started": 2002
-    },
-    {
-        "name": "C#, .NET, ASP.NET",
+        "name": "C#, .NET",
         "started": 2014
     },
     {
-        "name": "Node.js/NPM",
+        "name": "Node.js",
         "started": 2014
-    },
-    {
-        "name": "CI/CD",
-        "started": 2015
-    },
-    {
-        "name": "Jamstack",
-        "started": 2015
-    },
-    {
-        "name": "Git/GitHub/GitLab",
-        "started": 2015
     },
     {
         "name": "Python",
@@ -36,15 +20,15 @@
         "started": 2018
     },
     {
-        "name": "Docker",
-        "started": 2018
-    },
-    {
         "name": "Mobile App Development",
         "started": 2020
     },
     {
-        "name": "Unity",
+        "name": "Firebase",
+        "started": 2020
+    },
+    {
+        "name": "Next.js",
         "started": 2022
     }
 ]
