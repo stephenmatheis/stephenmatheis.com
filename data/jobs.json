@@ -1,10 +1,22 @@
 [
     {
+        "title": "Front-end Developer",
+        "company": "TEKsystems",
+        "location": "Remote",
+        "start": "August 2022",
+        "end": "Present",
+        "languages": "HTML, CSS, JavaScrtip",
+        "stack": "React, Node, Next.js",
+        "lines": [
+            "Supporting Apple, Inc."
+        ]
+    },
+    {
         "title": "Software Progammer 5",
         "company": "GovCIO",
         "location": "San Antonio, TX",
         "start": "May 2022",
-        "end": "Present",
+        "end": "July 2022",
         "languages": "C#",
         "stack": ".NET Core 6.0, Unity, MongoDB",
         "lines": [
