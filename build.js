@@ -8,7 +8,7 @@ let license = [
     '',
     'Permission to use, copy, modify, and/or distribute this software for any',
     'purpose with or without fee is hereby granted, provided that the above',
-    'copyright notice and this permission notice appear in all copies.' ,
+    'copyright notice and this permission notice appear in all copies.',
     '',
     'THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES',
     'WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF',
@@ -42,7 +42,7 @@ let index = [
     `                <a href="https://www.stephenmatheis.com">`,
     `                    <h1 class="name">Stephen Matheis</h1>`,
     `                </a>`,
-    `                <h4 class="title">Software Engineer</h4>`,
+    `                <!-- <h4 class="title">Software Engineer</h4> -->`,
     `            </div>`,
     `            <div class="links">`,
     `                <a href="https://github.com/stephenmatheis" target="_blank" title='GitHub'>`,
@@ -236,11 +236,4 @@ index = index.concat([
 
 index = license.concat(index);
 
-if (!existsSync('dist')) {
-    await mkdir('dist');
-}
-
-await writeFile(`dist/index.html`, index.join('\n'));
 await writeFile(`index.html`, index.join('\n'));
-await copy('style.css', './dist/style.css');
-await copy('main.js', './dist/main.js');

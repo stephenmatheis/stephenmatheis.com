@@ -1,19 +1,19 @@
 [
     {
-        "name": "HTML, CSS, JavaScript",
+        "name": "HTML",
         "started": 2002
     },
     {
-        "name": "C#, .NET",
-        "started": 2014
+        "name": "CSS",
+        "started": 2002
+    },
+    {
+        "name": "JavaScript",
+        "started": 2002
     },
     {
         "name": "Node.js",
         "started": 2014
-    },
-    {
-        "name": "Python",
-        "started": 2018
     },
     {
         "name": "React",
@@ -26,6 +26,10 @@
     {
         "name": "Firebase",
         "started": 2021
+    },
+    {
+        "name": "C#, .NET",
+        "started": 2022
     },
     {
         "name": "Next.js",
