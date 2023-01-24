@@ -14,7 +14,7 @@ export default function Home() {
                 <title>Stephen Matheis | Resume</title>
                 <meta name="description" content="Stephen Matheis' resume" />
             </Head>
-            <>
+            <div id='resume'>
                 {/* Header */}
                 <header>
                     <div id="profile" className="container flex align-center justify-between">
@@ -147,7 +147,7 @@ export default function Home() {
                         </div>
                     </section>
                 </main>
-            </>
+            </div>
         </>
     )
 }
