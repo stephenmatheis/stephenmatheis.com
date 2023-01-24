@@ -1,0 +1,119 @@
+/* Shared */
+@media screen,
+print {
+    #header h4 {
+        h1 {
+            font-weight: 800;
+        }
+
+        h4 {
+            font-weight: 500;
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+    }
+}
+
+/* Web */
+@media screen {
+    @media (max-width: 1100px) {
+
+        #header,
+        .left,
+        .right {
+            padding: 0px;
+        }
+
+        #header {
+            .container {
+                margin-bottom: 30px;
+            }
+
+            .icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    @media (max-width: 750px) {
+        #header {
+            h4 {
+                margin-top: 5px;
+                margin-bottom: 25px;
+            }
+
+            #profile {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .links {
+                margin: 0px;
+            }
+        }
+    }
+
+    @media (max-width: 575px) {
+        #header {
+            h1 {
+                font-size: 34px !important;
+            }
+
+            .container {
+                margin: 4px 4px 12px 4px;
+                padding: 20px;
+                border-radius: 20px;
+            }
+        }
+    }
+
+    @media (max-width: 375px) {
+        .container {
+            padding: 30px !important;
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #header {
+            .container {
+                background-color: var(--container-dark);
+                /* box-shadow: var(--container-shadow-dark); */
+            }
+        }
+    }
+
+    #header {
+        h1 {
+            font-size: 2.5em;
+        }
+    }
+}
+
+/* Print */
+@media print {
+    #header {
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-weight: 700;
+            margin-top: 0px;
+        }
+
+        .container {
+            box-shadow: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .icon {
+            fill: black;
+            width: 35px;
+            height: 35px;
+        }
+    }
+}
