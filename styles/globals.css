@@ -16,16 +16,6 @@ html {
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
-}
-
 a {
     color: inherit;
     text-decoration: none;

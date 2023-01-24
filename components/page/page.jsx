@@ -7,7 +7,9 @@ import styles from './page.module.scss';
 export default function Header({ children }) {
     return (
         <div className={styles['page']}>
+            <div className={styles['content']}>
             {children}
+            </div>
         </div>
     )
 };
