@@ -251,6 +251,7 @@
 
     /* Web */
     @media screen {
+
         @media (min-width: 1100px) {
             .right {
                 width: 35%;
@@ -587,7 +588,7 @@
         p,
         span,
         li {
-            line-height: 1.3;
+            line-height: 1;
         }
 
         @page {
