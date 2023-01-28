@@ -1,7 +1,8 @@
 #resume {
 
     /* Print */
-    @media print {
+    @media print,
+    screen {
         @page {
             size: letter;
         }
