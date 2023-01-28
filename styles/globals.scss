@@ -47,8 +47,19 @@ screen {
     html {
         display: flex;
         justify-content: center;
-        width: 10.5in;
-        padding-top: 1in;
         margin: 0 auto;
+        padding-top: 1in;
+    }
+}
+
+@media screen and (min-width: 1010px) {
+    html {
+        width: 10.5in;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    html {
+        width: 100%;
     }
 }
