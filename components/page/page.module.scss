@@ -1,0 +1,42 @@
+/* Shared */
+@media screen,
+print {
+    .page {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .content {
+            background-color: pink;
+        }
+
+        // Viewport width is equal to or narrow than 1024px
+        @media (max-width: 1024px) {
+            & .content {
+                width: 980px;
+            }
+        }
+
+        // Viewport width is equal to or narrow than 1023px
+        @media (max-width: 1023px) {
+            & .content {
+                width: 865px;
+            }
+        }
+
+        // Viewport width is equal to or narrow than 865px
+        @media (max-width: 864px) {
+            & .content {
+                width: 600px;
+            }
+        }
+    }
+}
+
+/* Web */
+@media screen {}
+
+/* Print */
+@media print {}

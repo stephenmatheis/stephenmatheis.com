@@ -1,0 +1,127 @@
+#resume {
+
+    /* Print */
+    @media print,
+    screen {
+        @page {
+            size: letter;
+        }
+
+        * {
+            font-size: 12px;
+            line-height: 18px;
+        }
+
+        // Colors
+        .dark-blue {
+            color: #569cd6;
+        }
+
+        .blue {
+            color: #9cdcfe;
+        }
+
+        .yellow {
+            color: #d7ba7d;
+        }
+
+        .orange {
+            color: #ce9178;
+        }
+
+        a {
+
+            &,
+            &:hover {
+                color: #d4d4d4;
+                text-decoration: none;
+            }
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+
+            .name {
+                color: #c586c0;
+            }
+        }
+
+        main {
+            display: flex;
+            gap: 36px;
+        }
+
+        // Classes
+        .right {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .comment {
+            color: #6a9955;
+        }
+
+        .job {
+            break-inside: avoid;
+
+            &:not(:last-child) {
+                margin-bottom: 18px;
+            }
+
+            .title {
+                color: #569cd6;
+
+                .company {
+                    color: #dcdcaa
+                }
+            }
+
+            .date {
+                color: #9cdcfe;
+            }
+
+            .lines {
+                display: flex;
+                flex-direction: column;
+
+                .line {
+                    display: flex;
+                    color: #ce9178;
+
+                    svg {
+                        fill: #d4d4d4;
+                        transform: translateY(3.5px);
+                        margin-right: 3px;
+                        width: 11px;
+                        height: 11px;
+                    }
+                }
+            }
+        }
+
+        #skills {
+            .skill {
+                display: flex;
+                justify-content: space-between;
+
+                .name {
+                    color: #9cdcfe;
+                }
+            }
+
+        }
+
+        #education {
+            .college {
+
+                a,
+                a:hover {
+                    color: #9cdcfe;
+                }
+            }
+        }
+    }
+}

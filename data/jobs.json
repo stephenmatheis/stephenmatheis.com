@@ -3,10 +3,8 @@
         "title": "Front-end Developer",
         "company": "TEKsystems",
         "location": "Remote",
-        "start": "August 2022",
+        "start": "Aug 2022",
         "end": "Present",
-        "languages": "HTML, CSS, JavaScript",
-        "stack": "React, Node, Next.js",
         "lines": [
             "Supporting Apple, Inc."
         ]
@@ -16,23 +14,19 @@
         "company": "GovCIO",
         "location": "San Antonio, TX",
         "start": "May 2022",
-        "end": "July 2022",
-        "languages": "C#",
-        "stack": ".NET Core 6.0, Unity, MongoDB",
+        "end": "Jul 2022",
         "lines": [
-            ".NET Core cross-platform application development in C# with Unity and MongoDB"
+            "Cross-platform application development in C# with .NET Core, Unity, and MongoDB"
         ]
     },
     {
         "title": "Software Engineer",
         "company": "Robi",
         "location": "San Antonio, TX",
-        "start": "April 2021",
+        "start": "Apr 2021",
         "end": "Present",
-        "languages": "JavaScript, HTML, CSS",
-        "stack": "Netlify, Node, Robi",
         "lines": [
-            "Developing <a href='https://github.com/robijs/robi' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single-page application framework"
+            "Developed <a href='https://github.com/robijs/robi' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single-page application framework"
         ]
     },
     {
@@ -40,13 +34,12 @@
         "company": "Aeyon",
         "location": "San Antonio, TX",
         "start": "May 2021",
-        "end": "April 2022",
+        "end": "Apr 2022",
         "languages": "TypeScript, JavaScript, HTML, CSS",
         "stack": "React, React Native, Expo, Firebase, Node, SharePoint",
         "lines": [
-            "Mentored junior developers",
-            "Built cross-platform mobile apps in React Native with Expo and Firebase",
-            "Built web applications in JavaScript, HTML, and CSS with RESTful APIs"
+            "Devoloped a mobile app in React Native with Expo and Firebase",
+            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs"
         ]
     },
     {
@@ -58,10 +51,8 @@
         "languages": "JavaScript, HTML, CSS",
         "stack": "Node, SharePoint",
         "lines": [
-            "Mentored junior developers",
-            "Built web applications in JavaScript, HTML, and CSS with RESTful APIs",
-            "SharePoint 2010 and 2013 farm administration",
-            "Led migration from SharePoint 2010 to 2013"
+            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs",
+            "SharePoint 2010 and 2013 farm administration"
         ]
     },
     {
@@ -81,57 +72,32 @@
         "company": "HID Global",
         "location": "Austin, TX",
         "start": "September 2016",
-        "end": "October 2017",
-        "languages": "JavaScript, HTML, CSS",
-        "stack": "SharePoint",
+        "end": "Oct 2017",
         "lines": [
             "Built web applications in JavaScript, HTML, and CSS with RESTful APIs",
-            "SharePoint farm administration",
-            "Migrated from SharePoint 2010 to 2013",
-            "Migrated Lotus Notes wikis, data, and applications to SharePoint 2010"
+            "Wrote Node.js tools to migrate Lotus Notes applications to SharePoint 2010"
         ]
     },
     {
         "title": "System Administator",
         "company": "Tech 2000",
         "location": "Herndon, VA",
-        "start": "March 2016",
-        "end": "August 2016",
-        "languages": "AppleScript, Bash",
-        "stack": "macOS",
+        "start": "Mar 2016",
+        "end": "Aug 2016",
         "lines": [
-            "Wrote bash and AppleScript tools",
-            "Supported Mac and iPhone end-user devices",
-            "Maintained Apple and Cisco certified training lab equipment"
+            "Supported Apple end-user devices",
+            "Set up and maintained Apple and Cisco certified training lab equipment"
         ]
     },
     {
         "title": "Senior Consultant",
         "company": "Bravo Consulting Group",
         "location": "Reston, VA",
-        "start": "November 2014",
+        "start": "Nov 2014",
         "end": "May 2016",
-        "languages": "JavaScript, HTML, CSS, C#",
-        "stack": "SharePoint, ASP.NET",
         "lines": [
-            "Built web applications in JavaScript, HTML, and CSS with RESTful APIs",
-            "Wrote PowerShell tools to export SharePoint 2010 data in XML",
-            "Deployed ASP.NET SharePoint 2010 apps and DLLs writtein in C#",
-            "Migrated clients from SharePoint 2010 to 2013",
-            "SharePoint 2010 and 2013 farm administration"
-        ]
-    },
-    {
-        "title": "Access Control Specialist",
-        "company": "Applied Integrated Technologies",
-        "location": "Charlottesville, VA",
-        "start": "February 2011",
-        "end": "November 2014",
-        "languages": "VBA",
-        "stack": "SharePoint",
-        "lines": [
-            "SharePoint site administration",
-            "Data analysis with Excel, VBA, and SharePoint 2007"
+            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs",
+            "Wrote PowerShell tools to export SharePoint 2010 data in XML"
         ]
     }
 ]

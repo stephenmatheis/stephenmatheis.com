@@ -1,0 +1,113 @@
+import Head from 'next/head';
+import jobs from '../data/jobs';
+import skills from '../data/skills';
+
+export default function Home() {
+    const curentYear = new Date().getFullYear();
+
+    return (
+        <>
+            <Head>
+                <title>Stephen Matheis - Resume</title>
+                <meta name="description" content="Stephen Matheis' resume" />
+            </Head>
+            <div id='resume'>
+                {/* Header */}
+                <header>
+                    <a href="https://www.stephenmatheis.com">
+                        <div className="name">
+                            Stephen Matheis <span className="blue">|</span> <span className="orange">Front-end Software Engineer</span>
+                        </div>
+                    </a>
+                </header>
+                {/* Main */}
+                <main>
+                    {/* Left */}
+                    <section className='left'>
+                        <div id="experience">
+                            <div className="comment">{'// Experience'}</div>
+                            {
+                                jobs.map(({ title, company, location, start, end, lines }, index) => {
+                                    return (
+                                        <div key={index} className="job">
+                                            <div className="title">
+                                                <span>{title}</span> <span className="company">@ {company}</span>
+                                            </div>
+                                            <div className="date">
+                                                {start} - {end} | {location}
+                                            </div>
+                                            <div className='lines'>
+                                                {lines.map((line, index) => {
+                                                    return (
+                                                        <span key={index} className="line">
+                                                            ᐅ <span style={{ marginLeft: '6px' }} dangerouslySetInnerHTML={{ __html: line }} />
+                                                        </span>
+                                                    )
+                                                })}
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </section>
+                    {/* Right */}
+                    <section className="right">
+                        <div id="skills">
+                            <div className="comment">{'// Skills'}</div>
+                            {
+                                skills.map(({ name, started }, index) => {
+                                    const years = (curentYear - started || 1);
+
+                                    return (
+                                        <div key={index} className="skill">
+                                            <span className="name">{name}</span>
+                                            <span className="years">{years} {parseInt(years) === 1 ? 'year' : 'years'}</span>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        {/* Education */}
+                        <div id="education">
+                            <div className="comment">{'// Education'}</div>
+                            <div className="college">
+                                <a href="https://www.georgiasouthern.edu/campuses/armstrong-campus/" target="_blank" rel="noreferrer">
+                                    Armstrong Atlantic
+                                    <br />
+                                    State University
+                                </a>
+                            </div>
+                            <div className="major">Computer Science</div>
+                            <div className="date">2006 - 2007</div>
+                        </div>
+                        {/* Contact */}
+                        <div id="contacts">
+                            <div className="comment">{'// Contact'}</div>
+                            <div>
+                                <a href="tel:9124922522">
+                                    (912) 492-2522
+                                </a>
+                            </div>
+                            <div>
+                                <a href="mailto:stephen.a.matheis@gmail.com">
+                                    stephen.a.matheis@gmail.com
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub'>
+                                    github.com/stephenmatheis
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn'>
+                                    linkedin.com/in/stephenmatheis
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </>
+    )
+}
