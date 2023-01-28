@@ -138,6 +138,7 @@
     @media screen {
         main {
             display: flex;
+            flex-direction: row-reverse;
             gap: 72px;
 
             @media screen and (max-width: 765px) {
@@ -146,7 +147,7 @@
                 }
             }
 
-            @media screen and (max-width: 800px) {
+            @media screen and (max-width: 1010px) {
                 & {
                     gap: 36px;
                 }
