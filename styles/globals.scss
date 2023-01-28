@@ -45,6 +45,9 @@ screen {
 
 @media screen {
     html {
+        display: flex;
+        justify-content: center;
+        width: 10.5in;
         padding-top: 1in;
         margin: 0 auto;
     }

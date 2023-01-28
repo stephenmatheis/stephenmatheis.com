@@ -134,4 +134,11 @@
             }
         }
     }
+
+    @media screen {
+        main {
+            display: flex;
+            gap: 72px;
+        }
+    }
 }
