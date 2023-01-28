@@ -14,33 +14,51 @@ export default function Home() {
             <div id='resume'>
                 {/* Header */}
                 <header>
-                    <a href="https://www.stephenmatheis.com">
-                        <div className="name">
-                            Stephen Matheis <span className="blue">|</span> <span className="orange">Front-end Software Engineer</span>
-                        </div>
-                    </a>
+                    <div className='profile'>
+                        <a href="https://www.stephenmatheis.com">
+                            <h1 className="name">Stephen Matheis</h1>
+                            <h2 className="name">Front-end Software Engineer</h2>
+                        </a>
+                    </div>
+                    <div className="links">
+                        <a href="tel:9124922522">
+                            (912) 492-2522
+                        </a>
+                        <a href="mailto:stephen.a.matheis@gmail.com">
+                            stephen.a.matheis@gmail.com
+                        </a>
+                        <a href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub'>
+                            github.com/stephenmatheis
+                        </a>
+                        <a href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn'>
+                            linkedin.com/in/stephenmatheis
+                        </a>
+                    </div>
                 </header>
                 {/* Main */}
                 <main>
                     {/* Left */}
                     <section className='left'>
                         <div id="experience">
-                            <div className="comment">{'// Experience'}</div>
+                            <h2>Experience</h2>
                             {
                                 jobs.map(({ title, company, location, start, end, lines }, index) => {
                                     return (
                                         <div key={index} className="job">
-                                            <div className="title">
-                                                <span>{title}</span> <span className="company">@ {company}</span>
+                                            <div className="job-heading title">
+                                                <span style={{ fontWeight: '800' }}>{title}</span> @ {company}
                                             </div>
-                                            <div className="date">
+                                            <div className="job-heading date">
                                                 {start} - {end} | {location}
                                             </div>
                                             <div className='lines'>
                                                 {lines.map((line, index) => {
                                                     return (
                                                         <span key={index} className="line">
-                                                            ᐅ <span style={{ marginLeft: '6px' }} dangerouslySetInnerHTML={{ __html: line }} />
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                                                <path d="M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z" />
+                                                            </svg>
+                                                            <span dangerouslySetInnerHTML={{ __html: line }} />
                                                         </span>
                                                     )
                                                 })}
@@ -52,9 +70,9 @@ export default function Home() {
                         </div>
                     </section>
                     {/* Right */}
-                    <section className="right">
+                    <section className='right'>
                         <div id="skills">
-                            <div className="comment">{'// Skills'}</div>
+                            <h2>Skills</h2>
                             {
                                 skills.map(({ name, started }, index) => {
                                     const years = (curentYear - started || 1);
@@ -70,40 +88,15 @@ export default function Home() {
                         </div>
                         {/* Education */}
                         <div id="education">
-                            <div className="comment">{'// Education'}</div>
-                            <div className="college">
+                            <h2>Education</h2>
+                            <div className="education college">
                                 <a href="https://www.georgiasouthern.edu/campuses/armstrong-campus/" target="_blank" rel="noreferrer">
                                     Armstrong Atlantic
-                                    <br />
                                     State University
                                 </a>
                             </div>
-                            <div className="major">Computer Science</div>
-                            <div className="date">2006 - 2007</div>
-                        </div>
-                        {/* Contact */}
-                        <div id="contacts">
-                            <div className="comment">{'// Contact'}</div>
-                            <div>
-                                <a href="tel:9124922522">
-                                    (912) 492-2522
-                                </a>
-                            </div>
-                            <div>
-                                <a href="mailto:stephen.a.matheis@gmail.com">
-                                    stephen.a.matheis@gmail.com
-                                </a>
-                            </div>
-                            <div>
-                                <a href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub'>
-                                    github.com/stephenmatheis
-                                </a>
-                            </div>
-                            <div>
-                                <a href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn'>
-                                    linkedin.com/in/stephenmatheis
-                                </a>
-                            </div>
+                            <div className="education major">Computer Science</div>
+                            <div className="education date">2006 - 2007</div>
                         </div>
                     </section>
                 </main>
