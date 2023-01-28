@@ -82,27 +82,29 @@ export default function Home() {
                             <div className="date">2006 - 2007</div>
                         </div>
                         {/* Contact */}
-                        <div id="contacts">
+                        <div id="contact">
                             <div className="comment">{'// Contact'}</div>
-                            <div>
-                                <a href="tel:9124922522">
-                                    (912) 492-2522
-                                </a>
-                            </div>
-                            <div>
-                                <a href="mailto:stephen.a.matheis@gmail.com">
-                                    stephen.a.matheis@gmail.com
-                                </a>
-                            </div>
-                            <div>
-                                <a href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub'>
-                                    github.com/stephenmatheis
-                                </a>
-                            </div>
-                            <div>
-                                <a href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn'>
-                                    linkedin.com/in/stephenmatheis
-                                </a>
+                            <div className="info">
+                                <div>
+                                    <a href="tel:9124922522">
+                                        📱 (912) 492-2522
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="mailto:stephen.a.matheis@gmail.com">
+                                        ✉️ stephen.a.matheis@gmail.com
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub'>
+                                        🧑‍💻 github.com/stephenmatheis
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn'>
+                                        💼 linkedin.com/in/stephenmatheis
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </section>

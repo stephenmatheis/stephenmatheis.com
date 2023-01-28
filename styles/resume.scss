@@ -62,6 +62,7 @@
 
         .comment {
             color: #6a9955;
+            margin-bottom: 18px;
         }
 
         .job {
@@ -121,6 +122,15 @@
                 a:hover {
                     color: #9cdcfe;
                 }
+            }
+        }
+
+        #contact {
+            .info {
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+                white-space: nowrap;
             }
         }
     }

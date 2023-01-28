@@ -26,7 +26,7 @@
         "start": "Apr 2021",
         "end": "Present",
         "lines": [
-            "Developed <a href='https://github.com/robijs/robi' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single-page application framework"
+            "Developed Robi, a JavaScript single-page application framework"
         ]
     },
     {
@@ -51,8 +51,7 @@
         "languages": "JavaScript, HTML, CSS",
         "stack": "Node, SharePoint",
         "lines": [
-            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs",
-            "SharePoint 2010 and 2013 farm administration"
+            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs"
         ]
     },
     {
@@ -64,7 +63,7 @@
         "languages": "JavaScript, HTML, CSS",
         "stack": "Netlify, Node, Robi",
         "lines": [
-            "Started <a href='https://github.com/robijs/robi' target='_blank' data-text='Robi'>Robi</a>, a JavaScript single-page application framework"
+            "Started Robi, a JavaScript single-page application framework"
         ]
     },
     {
@@ -86,7 +85,7 @@
         "end": "Aug 2016",
         "lines": [
             "Supported Apple end-user devices",
-            "Set up and maintained Apple and Cisco certified training lab equipment"
+            "Maintained Apple and Cisco certified training lab equipment"
         ]
     },
     {
@@ -97,7 +96,7 @@
         "end": "May 2016",
         "lines": [
             "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs",
-            "Wrote PowerShell tools to export SharePoint 2010 data in XML"
+            "Developed tools to export SharePoint 2010 sites in XML"
         ]
     }
 ]
