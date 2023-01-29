@@ -73,13 +73,10 @@ export default function Home() {
                             <div className="comment">{'// Education'}</div>
                             <div className="college">
                                 <a href="https://www.georgiasouthern.edu/campuses/armstrong-campus/" target="_blank" rel="noreferrer">
-                                    Armstrong Atlantic
-                                    <br />
-                                    State University
+                                    Armstrong Atlantic State University
                                 </a>
                             </div>
-                            <div className="major">Computer Science</div>
-                            <div className="date">2006 - 2007</div>
+                            <div className="major">2006 - 2007 | Computer Science</div>
                         </div>
                         {/* Contact */}
                         <div id="contact">
