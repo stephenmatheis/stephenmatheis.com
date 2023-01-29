@@ -1,5 +1,4 @@
 import Head from 'next/head';
-// import Paralax from '@/components/paralax/paralax';
 import jobs from '../data/jobs';
 import skills from '../data/skills';
 
@@ -12,7 +11,6 @@ export default function Home() {
                 <title>Stephen Matheis - Resume</title>
                 <meta name="description" content="Stephen Matheis' resume" />
             </Head>
-            {/* <Paralax /> */}
             <div id='resume'>
                 {/* Header */}
                 <header>
