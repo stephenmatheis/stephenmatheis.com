@@ -1,0 +1,26 @@
+// html {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 100vh;
+//     width: 100vw;
+// }
+
+// #resume {
+//     header {
+//         .name {
+//             scale: 2;
+//             // animation: scale 1000ms ease-in-out 1500ms forwards;
+//         }
+//     }
+// }
+
+@keyframes scale {
+    from {
+        scale: 2;
+    }
+
+    to {
+        scale: 1;
+    }
+}
