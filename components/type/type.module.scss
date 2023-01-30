@@ -1,0 +1,30 @@
+.type-wrapper {
+    position: relative;
+
+    .type {
+        position: absolute;
+        margin: 0px 0ch;
+
+        &:blink::after {
+            content: "█";
+            animation: 1s blink step-end infinite;
+        }
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+}
+
+// Animations
+@keyframes blink {
+
+    from,
+    to {
+        color: transparent;
+    }
+
+    50% {
+        color: inherit;
+    }
+}
