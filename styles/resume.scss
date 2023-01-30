@@ -13,6 +13,14 @@
         }
 
         // Colors
+        .gray {
+            color: #808080;
+        }
+
+        .dark-pink {
+            color: #da70d6;
+        }
+
         .dark-blue {
             color: #569cd6;
         }
@@ -27,6 +35,22 @@
 
         .orange {
             color: #ce9178;
+        }
+
+        .gold {
+            color: #ffd700;
+        }
+
+        .lime {
+            color: #4ec9b0;
+        }
+
+        .const {
+            color: #4fc1ff;
+        }
+
+        .light {
+            color: #d4d4d4;
         }
 
         a {
@@ -66,7 +90,7 @@
 
         .comment {
             color: #6a9955;
-            margin-bottom: 18px;
+            // margin-bottom: 18px;
         }
 
         .job {
@@ -113,7 +137,11 @@
                 justify-content: space-between;
 
                 .name {
-                    color: #9cdcfe;
+                    color: #569cd6;
+                }
+
+                .years {
+                    color: #4fc1ff;
                 }
             }
 
@@ -124,8 +152,12 @@
 
                 a,
                 a:hover {
-                    color: #9cdcfe;
+                    color: #569cd6;
                 }
+            }
+
+            .major {
+                color: #dcdcaa;
             }
         }
 
@@ -133,8 +165,13 @@
             .info {
                 display: flex;
                 flex-direction: column;
-                gap: 18px;
+                // gap: 18px;
                 white-space: nowrap;
+
+                a,
+                a:hover {
+                    color: #4ec9b0;
+                }
             }
         }
     }

@@ -1,10 +1,14 @@
 .paralax {
-    background-color: red;
     z-index: -1;
-
     position: fixed;
     top: 0px;
     right: 0px;
     height: 100vh;
     width: 100vw;
+
+    // background-image: linear-gradient(#2e2e2e 20%, transparent 20%);
+    // background-size: 10px 10px;
+
+    background-image: linear-gradient(#232323 20%, transparent 20%);
+    background-size: 7.5px 7.5px;
 }
