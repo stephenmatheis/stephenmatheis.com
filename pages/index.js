@@ -6,11 +6,12 @@ import skills from '../data/skills';
 
 export default function Home() {
     const curentYear = new Date().getFullYear();
-    const name = 'Stephen Matheis ';
-    const title = 'Front-end Software Engineer';
     const speed = 60;
 
     function Header({ type = false }) {
+        const name = 'Stephen Matheis ';
+        const title = 'Front-end Software Engineer';
+
         return (
             <header>
                 <a href="https://www.stephenmatheis.com">
@@ -19,12 +20,8 @@ export default function Home() {
                             type ?
                                 <>
                                     <Type content={name} speed={40} />
-
                                     <Type content={'| '} speed={speed} className='blue spacer' />
-                                    {/* <Type content={'| '} speed={speed} delay={(name.length * speed) + (80)} className='blue' /> */}
-
                                     <Type content={title} speed={40} className='orange' wrapperClass='nowrap' />
-                                    {/* <Type content={title} speed={speed} delay={((name.length + 3) * speed) + 160} className='orange' /> */}
                                 </> :
                                 <>
                                     Stephen Matheis <span className="blue">|</span> <span className="orange">Front-end Software Engineer</span>
@@ -70,7 +67,6 @@ export default function Home() {
                                             {lines.map((line, index) => {
                                                 return (
                                                     <span key={index} className="line">
-                                                        {/* <span style={{ marginRight: '6px' }} >ᐅ</span> */}
                                                         <span style={{ marginRight: '6px' }} >❯</span>
                                                         {
                                                             type ?
@@ -132,7 +128,7 @@ export default function Home() {
                                     <>
                                         <Type content="2006 - 2007 " speed={speed} className="blue" />
                                         <Type content={'| '} speed={speed} className="light" />
-                                        <Type content="Computer Science" speed={speed} className="light" />
+                                        <Type content="Computer Science" speed={speed} className="light" wrapperClass="nowrap" />
                                         <span></span>
                                     </>
                                     :
