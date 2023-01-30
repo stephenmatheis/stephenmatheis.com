@@ -20,10 +20,10 @@ export default function Home() {
                                 <>
                                     <Type content={name} speed={40} />
 
-                                    <Type content={'| '} speed={speed} className='blue' />
+                                    <Type content={'| '} speed={speed} className='blue spacer' />
                                     {/* <Type content={'| '} speed={speed} delay={(name.length * speed) + (80)} className='blue' /> */}
 
-                                    <Type content={title} speed={40} className='orange' />
+                                    <Type content={title} speed={40} className='orange' wrapperClass='nowrap' />
                                     {/* <Type content={title} speed={speed} delay={((name.length + 3) * speed) + 160} className='orange' /> */}
                                 </> :
                                 <>
