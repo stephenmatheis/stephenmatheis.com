@@ -78,6 +78,10 @@
         }
 
         // Classes
+        .nowrap {
+            white-space: nowrap;
+        }
+
         .right {
             display: flex;
             flex-direction: column;
@@ -182,6 +186,8 @@
             flex-direction: row-reverse;
             gap: 72px;
 
+
+
             @media screen and (max-width: 765px) {
                 & {
                     flex-direction: column;
@@ -191,7 +197,14 @@
             @media screen and (max-width: 1010px) {
                 & {
                     gap: 36px;
+                    gap: 18px;
                 }
+            }
+        }
+
+        @media screen and (max-width: 421px) {
+            .spacer {
+                display: none;
             }
         }
     }

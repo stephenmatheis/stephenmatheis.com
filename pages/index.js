@@ -20,10 +20,10 @@ export default function Home() {
                                 <>
                                     <Type content={name} speed={40} />
 
-                                    <Type content={'| '} speed={speed} className='blue' />
+                                    <Type content={'| '} speed={speed} className='blue spacer' />
                                     {/* <Type content={'| '} speed={speed} delay={(name.length * speed) + (80)} className='blue' /> */}
 
-                                    <Type content={title} speed={40} className='orange' />
+                                    <Type content={title} speed={40} className='orange' wrapperClass='nowrap' />
                                     {/* <Type content={title} speed={speed} delay={((name.length + 3) * speed) + 160} className='orange' /> */}
                                 </> :
                                 <>
@@ -50,15 +50,15 @@ export default function Home() {
                                         <div className="title">
                                             {type ? <Type content={title} speed={speed / 2} /> : <span>{title}</span>}
                                             <span> </span>
-                                            {type ? <Type content={`@ ${company}`} speed={speed / 2} className='company' /> : <span className="company">@ {company}</span>}
+                                            {type ? <Type content={`@ ${company}`} speed={speed / 2} className='company' wrapperClass='nowrap' /> : <span className="company">@ {company}</span>}
                                         </div>
                                         <div className="date">
                                             {
                                                 type ?
                                                     <>
                                                         <Type content={`${start} - ${end} `} speed={speed / 2} />
-                                                        <Type content={'| '} speed={speed} className='gray' />
-                                                        <Type content={location} speed={speed / 2} className='gray' />
+                                                        <Type content={'| '} speed={speed} className='gray' wrapperClass='nowrap' />
+                                                        <Type content={location} speed={speed / 2} className='gray' wrapperClass='nowrap' />
                                                         <span></span>
                                                     </> :
                                                     <>

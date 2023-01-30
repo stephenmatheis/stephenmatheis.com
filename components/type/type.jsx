@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './type.module.scss';
 
-export default function Type({ content, className, startAtChar = 0, speed = 0, delay = 0, blink = false }) {
+export default function Type({ content, className, wrapperClass, startAtChar = 0, speed = 0, delay = 0, blink = false }) {
     const [delayed, setDelayed] = useState(delay > 0 ? true : false);
     const [text, setText] = useState('');
     const [index, setIndex] = useState(startAtChar);
@@ -35,7 +35,7 @@ export default function Type({ content, className, startAtChar = 0, speed = 0, d
     }, [content, speed, index, text, delayed, startAtChar]);
 
     return (
-        <span className={styles['type-wrapper']}>
+        <span className={classNames(styles['type-wrapper'], wrapperClass)}>
             {
                 !delayed &&
                 <span className={
