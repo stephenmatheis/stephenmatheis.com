@@ -35,24 +35,43 @@ export default function Type({ content, className, wrapperClass, startAtChar = 0
     }, [content, speed, index, text, delayed, startAtChar]);
 
     return (
-        <span className={classNames(styles['type-wrapper'], wrapperClass)}>
+        <>
             {
-                !delayed &&
-                <span className={
-                    classNames(
-                        styles['type'],
-                        { [styles['blink']]: blink },
-                        className
-                    )
-                }>
-                    {text}
-                </span>
+                index === content.length ?
+                    <span className={
+                        classNames(
+                            styles['type'],
+                            [styles['set']],
+                            { [styles['blink']]: blink },
+                            className
+                        )
+                    }>
+                        {text}
+                    </span>
+                    :
+                    <span className={classNames(styles['type-wrapper'], wrapperClass)}>
+                        {
+                            !delayed &&
+                            <span className={
+                                classNames(
+                                    styles['type'],
+                                    {
+                                        [styles['blink']]: blink,
+                                        [styles['set']]: index === content.length
+                                    },
+                                    className
+                                )
+                            }>
+                                {text}
+                            </span>
+                        }
+                        {
+                            <span className={styles['hidden']}>
+                                {content}
+                            </span>
+                        }
+                    </span>
             }
-            {
-                <span className={styles['hidden']}>
-                    {content}
-                </span>
-            }
-        </span>
+        </>
     )
 }

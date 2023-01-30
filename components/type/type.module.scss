@@ -2,8 +2,9 @@
     position: relative;
 
     .type {
-        position: absolute;
-        margin: 0px 0ch;
+        &:not(.set) {
+            position: absolute;
+        }
 
         &:blink::after {
             content: "█";
