@@ -4,6 +4,19 @@
         padding: 0in .5in;
     }
 
+    @media screen and (min-width: 1010px) {
+        &.loading {
+            width: 10.5in;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        &.loading {
+            width: 100%;
+            padding: 0px;
+        }
+    }
+
     .overlay {
         position: fixed;
         top: 0px;
@@ -14,6 +27,7 @@
         justify-content: center;
         height: 100vh;
         width: 100vw;
+        padding: 0in .5in;
         // background-color: #ff22ff15;
 
         .ctr {
@@ -37,6 +51,28 @@
             font-size: 32px;
             line-height: 1;
             color: dodgerblue;
+        }
+
+        @media screen and (max-width: 679px) {
+            .name {
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 414px) {
+            .name {
+                font-size: 35px;
+                margin-bottom: 8.75px;
+            }
+
+            .title {
+                font-size: 17.5px;
+            }
         }
     }
 }

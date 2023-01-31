@@ -52,7 +52,7 @@ export default function Home() {
             async function anim(from, to, duration) {
                 // Animate Name
                 const fromName = from.current
-                const { fontSize } = getComputedStyle(fromName);
+                const { fontSize, marginBottom } = getComputedStyle(fromName);
                 const fromNamePos = fromName.getBoundingClientRect();
                 const toNamePos = to.current.getBoundingClientRect();
 
@@ -61,7 +61,7 @@ export default function Home() {
                 fromName.style.left = `${fromNamePos.left}px`;
 
                 const animateName = fromName.animate([
-                    { top: `${fromNamePos.top}px`, left: `${fromNamePos.left}px`, fontSize: fontSize, marginBottom: '16px' },
+                    { top: `${fromNamePos.top}px`, left: `${fromNamePos.left}px`, fontSize, marginBottom },
                     { top: `${toNamePos.top}px`, left: `${toNamePos.left}px`, fontSize: '12px', marginBottom: '0px' }
                 ], {
                     duration: duration || 0,
