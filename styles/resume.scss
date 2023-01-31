@@ -67,8 +67,19 @@
             flex-direction: column;
             margin-bottom: 18px;
 
-            .name {
-                color: #c586c0;
+            .profile {
+                &.loading {
+                    visibility: hidden;
+                }
+
+                .name {
+                    color: #c586c0;
+                }
+
+                .title {
+                    color: #ce9178;
+                    white-space: nowrap;
+                }
             }
         }
 
