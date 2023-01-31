@@ -1,36 +1,115 @@
 import Head from 'next/head';
+import classNames from 'classnames';
 import Type from '@/components/type';
 import jobs from '../data/jobs';
 import skills from '../data/skills';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
+    // State
+    const [loading, setLoading] = useState(true);
+
+    // Data
     const curentYear = new Date().getFullYear();
     const name = 'Stephen Matheis ';
     const title = 'Front-end Software Engineer';
     const speed = 60;
 
+    function delayAfter(text, speed) {
+        return (text.length * speed) + (speed * 2);
+    }
+
     function Header({ type = false }) {
+        const overlay = useRef();
+        const ctr = useRef();
+        const toName = useRef();
+        const toTitle = useRef();
+        const fromName = useRef();
+        const fromTitle = useRef();
+
+        useEffect(() => {
+            setTimeout(async () => {
+                if (!overlay.current || !ctr.current) {
+                    return;
+                }
+
+                // Set ctr height
+                const { height, width } = ctr.current.getBoundingClientRect();
+
+                ctr.current.style.height = `${height}px`;
+                ctr.current.style.width = `${width}px`;
+
+                // Set starting position
+                const { top, left } = overlay.current.getBoundingClientRect();
+
+                overlay.current.style.position = 'absolute';
+                overlay.current.style.top = `${top}px`;
+                overlay.current.style.left = `${left}px`;
+
+                const anims = await Promise.all([
+                    anim(fromName, toName, 450),
+                    anim(fromTitle, toTitle, 450)
+                ]);
+
+                setLoading(false);
+
+
+            }, (delayAfter(name, speed) + delayAfter(title, speed)));
+
+            async function anim(from, to, duration) {
+                // Animate Name
+                const fromName = from.current
+                const { fontSize } = getComputedStyle(fromName);
+                const fromNamePos = fromName.getBoundingClientRect();
+                const toNamePos = to.current.getBoundingClientRect();
+
+                fromName.style.position = 'absolute';
+                fromName.style.top = `${fromNamePos.top}px`;
+                fromName.style.left = `${fromNamePos.left}px`;
+
+                const animateName = fromName.animate([
+                    { top: `${fromNamePos.top}px`, left: `${fromNamePos.left}px`, fontSize: fontSize, marginBottom: '16px' },
+                    { top: `${toNamePos.top}px`, left: `${toNamePos.left}px`, fontSize: '12px', marginBottom: '0px' }
+                ], {
+                    duration: duration || 0,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+
+                // TODO: Wait for all animations to finish
+                const isNameFinished = await animateName.finished;
+
+                if (isNameFinished.playState === 'finished') {
+                    // fromName.remove();
+
+                    // resume.current.classList.remove('fixed');
+                    // profile.current.removeAttribute('style');
+
+                    // animateProfile.commitStyles();
+                    // animateName.commitStyles();
+                    // animateTitle.commitStyles();
+
+                    return 'done';
+                }
+            }
+        }, []);
+
         return (
             <header>
                 <a href="https://www.stephenmatheis.com">
-                    <div className="name">
-                        {
-                            type ?
-                                <>
-                                    <Type content={name} speed={40} />
-
-                                    <Type content={'| '} speed={speed} className='blue' />
-                                    {/* <Type content={'| '} speed={speed} delay={(name.length * speed) + (80)} className='blue' /> */}
-
-                                    <Type content={title} speed={40} className='orange' />
-                                    {/* <Type content={title} speed={speed} delay={((name.length + 3) * speed) + 160} className='orange' /> */}
-                                </> :
-                                <>
-                                    Stephen Matheis <span className="blue">|</span> <span className="orange">Front-end Software Engineer</span>
-                                </>
-                        }
+                    <div className={classNames('profile', { loading })}>
+                        <span ref={toName} className='name'>Stephen Matheis</span> <span className="blue">|</span> <span ref={toTitle} className="title">Front-end Software Engineer</span>
                     </div>
                 </a>
+                {
+                    loading &&
+                    <div ref={overlay} className="overlay">
+                        <div ref={ctr} className="ctr">
+                            <Type ref={fromName} content={name} speed={40} className="name" />
+                            <Type ref={fromTitle} content={title} speed={40} delay={delayAfter(name, speed)} className='title' />
+                        </div>
+                    </div>
+                }
             </header>
         )
     }
@@ -182,7 +261,7 @@ export default function Home() {
             {/* <Paralax /> */}
             <div id="resume">
                 <Header type={true} />
-                {/* <Main type={true} /> */}
+                {!loading && <Main type={true} />}
             </div>
         </>
     )

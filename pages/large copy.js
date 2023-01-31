@@ -1,31 +1,127 @@
 import Head from 'next/head';
-import Paralax from '@/components/paralax/paralax';
+import classNames from 'classnames';
 import Type from '@/components/type';
 import jobs from '../data/jobs';
 import skills from '../data/skills';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
+    // State
+    const [loading, setLoading] = useState(true);
+
+    // Data
     const curentYear = new Date().getFullYear();
+    const name = 'Stephen Matheis ';
+    const title = 'Front-end Software Engineer';
     const speed = 60;
 
+    // Refs
+    const resume = useRef();
+
+    function delayAfter(text, speed) {
+        return (text.length * speed) + (speed * 2);
+    }
+
     function Header({ type = false }) {
-        const name = 'Stephen Matheis ';
-        const title = 'Front-end Software Engineer';
+        const profile = useRef();
+
+        useEffect(() => {
+            setTimeout(async () => {
+                console.log('animate');
+
+                if (profile.current) {
+                    const { top, left } = profile.current.getBoundingClientRect();
+                    const windowStyles = getComputedStyle(document.querySelector('html'));
+
+                    console.log(windowStyles.marginLeft);
+
+                    // Set starting position
+                    profile.current.style.position = 'absolute';
+                    profile.current.style.top = `${top}px`;
+                    profile.current.style.left = `${left}px`;
+
+                    // Animate move profile to top left corner
+                    const toLeft = parseInt(windowStyles.paddingLeft.replace('px', '')) + parseInt(windowStyles.marginLeft.replace('px', '')) + 'px';
+                    const animateProfile = profile.current.animate([
+                        { top: `${top}px`, left: `${left}px` },
+                        { top: windowStyles.paddingTop, left: toLeft }
+                    ], {
+                        duration: 300,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+
+                    // Animate name font size from 64px to 12px, remove bottom margin
+                    const animateName = profile.current.querySelector('.name').animate([
+                        { fontSize: '64px', marginBottom: '16px' },
+                        { fontSize: '12px', marginBottom: '0px' }
+                    ], {
+                        duration: 300,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+
+                    // Animate title font size from 32px to 12px
+                    const animateTitle = profile.current.querySelector('.title').animate([
+                        { fontSize: '32px' },
+                        { fontSize: '12px' }
+                    ], {
+                        duration: 300,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    });
+
+                    // TODO: Wait for all animations to finish
+                    const isFinished = await animateProfile.finished;
+
+                    if (isFinished.playState === 'finished') {
+
+                        // reset ctr styles
+                        resume.current.classList.remove('fixed');
+                        profile.current.removeAttribute('style');
+
+                        // setLoading(false);
+
+                        animateProfile.commitStyles();
+                        animateName.commitStyles();
+                        animateTitle.commitStyles();
+                    }
+                }
+
+            }, (delayAfter(name, speed) + delayAfter(title, speed)));
+        }, []);
 
         return (
             <header>
                 <a href="https://www.stephenmatheis.com">
-                    <div className="profile">
+                    <div ref={profile} className="profile">
                         {
-                            type ?
-                                <>
-                                    <Type content={name} speed={40} className='name' />
-                                    <Type content={'| '} speed={speed} className='blue spacer' />
-                                    <Type content={title} speed={40} className='title' wrapperClass='nowrap' />
-                                </> :
-                                <>
-                                    <span className="name">Stephen Matheis</span> <span className="blue">|</span> <span className="orange">Front-end Software Engineer</span>
-                                </>
+                            <>
+                                <div>
+                                    <Type content={name} speed={40} className="name" />
+                                </div>
+                                <div>
+                                    <Type content={title} speed={40} delay={delayAfter(name, speed)} className='title' />
+                                </div>
+                                <span className={classNames({ loading })}>
+                                    Stephen Matheis <span className="blue">|</span> <span className="orange">Front-end Software Engineer</span>
+                                </span>
+                                {/* {
+                                    loading ?
+                                        <>
+                                            <div>
+                                                <Type content={name} speed={40} className="name" />
+                                            </div>
+                                            <div>
+                                                <Type content={title} speed={40} delay={delayAfter(name, speed)} className='title' />
+                                            </div>
+                                        </>
+                                        :
+                                        <>
+                                            Stephen Matheis <span className="blue">|</span> <span className="orange">Front-end Software Engineer</span>
+                                        </>
+                                } */}
+                            </>
                         }
                     </div>
                 </a>
@@ -47,15 +143,15 @@ export default function Home() {
                                         <div className="title">
                                             {type ? <Type content={title} speed={speed / 2} /> : <span>{title}</span>}
                                             <span> </span>
-                                            {type ? <Type content={`@ ${company}`} speed={speed / 2} className='company' wrapperClass='nowrap' /> : <span className="company">@ {company}</span>}
+                                            {type ? <Type content={`@ ${company}`} speed={speed / 2} className='company' /> : <span className="company">@ {company}</span>}
                                         </div>
                                         <div className="date">
                                             {
                                                 type ?
                                                     <>
                                                         <Type content={`${start} - ${end} `} speed={speed / 2} />
-                                                        <Type content={'| '} speed={speed} className='gray' wrapperClass='nowrap' />
-                                                        <Type content={location} speed={speed / 2} className='gray' wrapperClass='nowrap' />
+                                                        <Type content={'| '} speed={speed} className='gray' />
+                                                        <Type content={location} speed={speed / 2} className='gray' />
                                                         <span></span>
                                                     </> :
                                                     <>
@@ -67,6 +163,7 @@ export default function Home() {
                                             {lines.map((line, index) => {
                                                 return (
                                                     <span key={index} className="line">
+                                                        {/* <span style={{ marginRight: '6px' }} >ᐅ</span> */}
                                                         <span style={{ marginRight: '6px' }} >❯</span>
                                                         {
                                                             type ?
@@ -97,7 +194,7 @@ export default function Home() {
 
                                 return (
                                     <div key={index} className="skill">
-                                        <span className="name">
+                                        <span className="profile">
                                             {type ? <Type content={name} speed={speed} /> : name}
                                         </span>
                                         <span className="years">
@@ -128,7 +225,7 @@ export default function Home() {
                                     <>
                                         <Type content="2006 - 2007 " speed={speed} className="blue" />
                                         <Type content={'| '} speed={speed} className="light" />
-                                        <Type content="Computer Science" speed={speed} className="light" wrapperClass="nowrap" />
+                                        <Type content="Computer Science" speed={speed} className="light" />
                                         <span></span>
                                     </>
                                     :
@@ -177,9 +274,9 @@ export default function Home() {
                 <meta name="description" content="Stephen Matheis Resume" />
             </Head>
             {/* <Paralax /> */}
-            <div id="resume">
+            <div id="resume" ref={resume} className="fixed">
                 <Header type={true} />
-                <Main type={true} />
+                {/* <Main type={true} /> */}
             </div>
         </>
     )

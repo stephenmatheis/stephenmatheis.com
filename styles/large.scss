@@ -1,26 +1,41 @@
-// html {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     height: 100vh;
-//     width: 100vw;
-// }
+#resume {
+    // DEV: May remove this
+    width: 8.5in;
+    padding: 0in .5in;
 
-// #resume {
-//     header {
-//         .name {
-//             scale: 2;
-//             // animation: scale 1000ms ease-in-out 1500ms forwards;
-//         }
-//     }
-// }
+    .overlay {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        // background-color: #ff22ff15;
 
-@keyframes scale {
-    from {
-        scale: 2;
-    }
+        .ctr {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
 
-    to {
-        scale: 1;
+        .name,
+        .title {
+            display: inline-block;
+        }
+
+        .name {
+            font-size: 64px;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 32px;
+            line-height: 1;
+            color: dodgerblue;
+        }
     }
 }
