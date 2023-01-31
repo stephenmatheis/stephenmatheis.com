@@ -1,7 +1,8 @@
 #resume {
-    // DEV: May remove this
-    width: 8.5in;
-    padding: 0in .5in;
+    &.loading {
+        width: 8.5in;
+        padding: 0in .5in;
+    }
 
     .overlay {
         position: fixed;

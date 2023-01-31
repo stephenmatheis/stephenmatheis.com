@@ -39,21 +39,14 @@ export default function Home() {
                 ctr.current.style.height = `${height}px`;
                 ctr.current.style.width = `${width}px`;
 
-                // Set starting position
-                const { top, left } = overlay.current.getBoundingClientRect();
-
-                overlay.current.style.position = 'absolute';
-                overlay.current.style.top = `${top}px`;
-                overlay.current.style.left = `${left}px`;
-
+                // Animate name and title
                 const anims = await Promise.all([
                     anim(fromName, toName, 450),
                     anim(fromTitle, toTitle, 450)
                 ]);
 
+                // Load complete after animation
                 setLoading(false);
-
-
             }, (delayAfter(name, speed) + delayAfter(title, speed)));
 
             async function anim(from, to, duration) {
@@ -259,7 +252,7 @@ export default function Home() {
                 <meta name="description" content="Stephen Matheis Resume" />
             </Head>
             {/* <Paralax /> */}
-            <div id="resume">
+            <div id="resume" className={classNames({ loading })}>
                 <Header type={true} />
                 {!loading && <Main type={true} />}
             </div>
