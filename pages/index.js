@@ -1,34 +1,108 @@
 import Head from 'next/head';
-import Paralax from '@/components/paralax/paralax';
+import classNames from 'classnames';
 import Type from '@/components/type';
 import jobs from '../data/jobs';
 import skills from '../data/skills';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Home() {
+    // State
+    const [loading, setLoading] = useState(true);
+
+    // Data
     const curentYear = new Date().getFullYear();
+    const name = 'Stephen Matheis ';
+    const title = 'Front-end Software Engineer';
     const speed = 60;
 
+    function delayAfter(text, speed) {
+        return (text.length * speed) + (speed * 2);
+    }
+
     function Header({ type = false }) {
-        const name = 'Stephen Matheis ';
-        const title = 'Front-end Software Engineer';
+        const overlay = useRef();
+        const ctr = useRef();
+        const toName = useRef();
+        const toTitle = useRef();
+        const fromName = useRef();
+        const fromTitle = useRef();
+
+        useEffect(() => {
+            setTimeout(async () => {
+                if (!overlay.current || !ctr.current) {
+                    return;
+                }
+
+                // Set ctr height
+                const { height, width } = ctr.current.getBoundingClientRect();
+
+                ctr.current.style.height = `${height}px`;
+                ctr.current.style.width = `${width}px`;
+
+                // Animate name and title
+                const anims = await Promise.all([
+                    anim(fromName, toName, 450),
+                    anim(fromTitle, toTitle, 450)
+                ]);
+
+                // Load complete after animation
+                setLoading(false);
+            }, (delayAfter(name, speed) + delayAfter(title, speed)));
+
+            async function anim(from, to, duration) {
+                // Animate Name
+                const fromName = from.current
+                const { fontSize, marginBottom } = getComputedStyle(fromName);
+                const fromNamePos = fromName.getBoundingClientRect();
+                const toNamePos = to.current.getBoundingClientRect();
+
+                fromName.style.position = 'absolute';
+                fromName.style.top = `${fromNamePos.top}px`;
+                fromName.style.left = `${fromNamePos.left}px`;
+
+                const animateName = fromName.animate([
+                    { top: `${fromNamePos.top}px`, left: `${fromNamePos.left}px`, fontSize, marginBottom },
+                    { top: `${toNamePos.top}px`, left: `${toNamePos.left}px`, fontSize: '12px', marginBottom: '0px' }
+                ], {
+                    duration: duration || 0,
+                    easing: 'ease-in-out',
+                    fill: 'forwards'
+                });
+
+                // TODO: Wait for all animations to finish
+                const isNameFinished = await animateName.finished;
+
+                if (isNameFinished.playState === 'finished') {
+                    // fromName.remove();
+
+                    // resume.current.classList.remove('fixed');
+                    // profile.current.removeAttribute('style');
+
+                    // animateProfile.commitStyles();
+                    // animateName.commitStyles();
+                    // animateTitle.commitStyles();
+
+                    return 'done';
+                }
+            }
+        }, []);
 
         return (
             <header>
                 <a href="https://www.stephenmatheis.com">
-                    <div className="profile">
-                        {
-                            type ?
-                                <>
-                                    <Type content={name} speed={40} className='name' />
-                                    <Type content={'| '} speed={speed} className='blue spacer' />
-                                    <Type content={title} speed={40} className='title' wrapperClass='nowrap' />
-                                </> :
-                                <>
-                                    <span className="name">Stephen Matheis</span> <span className="blue">|</span> <span className="orange">Front-end Software Engineer</span>
-                                </>
-                        }
+                    <div className={classNames('profile', { loading })}>
+                        <span ref={toName} className='name'>Stephen Matheis</span> <span className="blue">|</span> <span ref={toTitle} className="title">Front-end Software Engineer</span>
                     </div>
                 </a>
+                {
+                    loading &&
+                    <div ref={overlay} className="overlay">
+                        <div ref={ctr} className="ctr">
+                            <Type ref={fromName} content={name} speed={40} className="name" />
+                            <Type ref={fromTitle} content={title} speed={40} delay={delayAfter(name, speed)} className='title' />
+                        </div>
+                    </div>
+                }
             </header>
         )
     }
@@ -47,15 +121,15 @@ export default function Home() {
                                         <div className="title">
                                             {type ? <Type content={title} speed={speed / 2} /> : <span>{title}</span>}
                                             <span> </span>
-                                            {type ? <Type content={`@ ${company}`} speed={speed / 2} className='company' wrapperClass='nowrap' /> : <span className="company">@ {company}</span>}
+                                            {type ? <Type content={`@ ${company}`} speed={speed / 2} className='company' /> : <span className="company">@ {company}</span>}
                                         </div>
                                         <div className="date">
                                             {
                                                 type ?
                                                     <>
                                                         <Type content={`${start} - ${end} `} speed={speed / 2} />
-                                                        <Type content={'| '} speed={speed} className='gray' wrapperClass='nowrap' />
-                                                        <Type content={location} speed={speed / 2} className='gray' wrapperClass='nowrap' />
+                                                        <Type content={'| '} speed={speed} className='gray' />
+                                                        <Type content={location} speed={speed / 2} className='gray' />
                                                         <span></span>
                                                     </> :
                                                     <>
@@ -67,6 +141,7 @@ export default function Home() {
                                             {lines.map((line, index) => {
                                                 return (
                                                     <span key={index} className="line">
+                                                        {/* <span style={{ marginRight: '6px' }} >ᐅ</span> */}
                                                         <span style={{ marginRight: '6px' }} >❯</span>
                                                         {
                                                             type ?
@@ -128,7 +203,7 @@ export default function Home() {
                                     <>
                                         <Type content="2006 - 2007 " speed={speed} className="blue" />
                                         <Type content={'| '} speed={speed} className="light" />
-                                        <Type content="Computer Science" speed={speed} className="light" wrapperClass="nowrap" />
+                                        <Type content="Computer Science" speed={speed} className="light" />
                                         <span></span>
                                     </>
                                     :
@@ -177,9 +252,9 @@ export default function Home() {
                 <meta name="description" content="Stephen Matheis Resume" />
             </Head>
             {/* <Paralax /> */}
-            <div id="resume">
+            <div id="resume" className={classNames({ loading })}>
                 <Header type={true} />
-                <Main type={true} />
+                {!loading && <Main type={true} />}
             </div>
         </>
     )
