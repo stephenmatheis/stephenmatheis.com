@@ -40,9 +40,10 @@ export default function Home() {
                 ctr.current.style.width = `${width}px`;
 
                 // Animate name and title
+                const duration = 450;
                 const anims = await Promise.all([
-                    anim(fromName, toName, 450),
-                    anim(fromTitle, toTitle, 450)
+                    anim(fromName, toName, duration),
+                    anim(fromTitle, toTitle, duration)
                 ]);
 
                 // Load complete after animation
@@ -52,7 +53,8 @@ export default function Home() {
             async function anim(from, to, duration) {
                 // Animate Name
                 const fromName = from.current
-                const { fontSize, marginBottom } = getComputedStyle(fromName);
+                const { fontSize, marginBottom, color: fromColor } = getComputedStyle(fromName);
+                const { color: toColor } = getComputedStyle(to.current);
                 const fromNamePos = fromName.getBoundingClientRect();
                 const toNamePos = to.current.getBoundingClientRect();
 
@@ -61,8 +63,8 @@ export default function Home() {
                 fromName.style.left = `${fromNamePos.left}px`;
 
                 const animateName = fromName.animate([
-                    { top: `${fromNamePos.top}px`, left: `${fromNamePos.left}px`, fontSize, marginBottom },
-                    { top: `${toNamePos.top}px`, left: `${toNamePos.left}px`, fontSize: '12px', marginBottom: '0px' }
+                    { color: fromColor, top: `${fromNamePos.top}px`, left: `${fromNamePos.left}px`, fontSize, marginBottom },
+                    { color: toColor, top: `${toNamePos.top}px`, left: `${toNamePos.left}px`, fontSize: '12px', marginBottom: '0px' }
                 ], {
                     duration: duration || 0,
                     easing: 'ease-in-out',
