@@ -106,12 +106,12 @@ export default function Home() {
                     </div>
                 }
             </header>
-        )
+        );
     }
 
     function Main({ type = false }) {
         return (
-            <main>
+            <main className={classNames({ loading })}>
                 {/* Left */}
                 <section className='left'>
                     <div id="experience">
@@ -244,7 +244,7 @@ export default function Home() {
                     </div>
                 </section>
             </main>
-        )
+        );
     }
 
     return (
@@ -256,7 +256,7 @@ export default function Home() {
             {/* <Paralax /> */}
             <div id="resume" className={classNames({ loading })}>
                 <Header type={true} />
-                {!loading && <Main type={true} />}
+                <Main type={true} />
             </div>
         </>
     )
