@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import classNames from 'classnames';
-import Type from '@/components/type';
+// import Type from '@/components/type';
+import Type from '@/components/type2';
 import jobs from '../data/jobs';
 import skills from '../data/skills';
 import { useEffect, useRef, useState } from 'react';

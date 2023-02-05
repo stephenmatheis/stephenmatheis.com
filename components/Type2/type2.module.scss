@@ -1,0 +1,28 @@
+.type {
+    .suffix {
+        color: transparent;
+    }
+
+    .cursor {
+        color: #2e8b5750;
+        width: 0px;
+        display: inline-block;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+// Animations
+@keyframes blink {
+
+    from,
+    to {
+        color: transparent;
+    }
+
+    50% {
+        color: inherit;
+    }
+}
