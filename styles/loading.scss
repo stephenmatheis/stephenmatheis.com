@@ -1,7 +1,5 @@
 #resume {
     &.loading {
-        // width: 8.5in;
-
         .line-wrapper {
             line-height: 1 !important;
         }
@@ -28,7 +26,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+
+        // NOTE: In Safari on mobile, 100vh is too tall (clips behind bottom tool bar I think?)
+        height: 100%;
         width: 100vw;
         padding: 0in .5in;
 
@@ -41,8 +41,8 @@
 
         .name,
         .title {
-            // display: inline-block;
-            line-height: 1; // animate from 1 (dynamic) to 14px;
+            // NOTE:  Will animate from 1 (dynamic) to 14px;
+            line-height: 1;
         }
 
         .name {
@@ -55,6 +55,7 @@
             color: dodgerblue;
         }
 
+        // Narrow desktop + tablet
         @media screen and (max-width: 679px) {
             .ctr {
                 gap: 10px;
@@ -69,11 +70,28 @@
             }
         }
 
+        // Narrow desktop + tablet
+        @media screen and (max-width: 430px) {
+            .ctr {
+                gap: 9px;
+            }
+
+            .name {
+                font-size: 36px;
+            }
+
+            .title {
+                font-size: 18px;
+            }
+        }
+
+
+        // iPhone 14
         @media screen and (max-width: 414px) {
             .ctr {
                 gap: 7.5px;
             }
-            
+
             .name {
                 font-size: 30px;
             }
