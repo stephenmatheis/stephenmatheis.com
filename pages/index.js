@@ -100,8 +100,8 @@ function Header({ loading, setLoading }) {
                 loading &&
                 <div ref={overlay} className="overlay">
                     <div ref={ctr} className="ctr">
-                        <Type ref={fromName} content={name} speed={40} className="name" wrapperClass={'line-wrapper'} />
-                        <Type ref={fromTitle} content={title} speed={40} delay={delayAfter(name, speed)} className='title' wrapperClass={'line-wrapper'} />
+                        <Type ref={fromName} content={name} speed={speed * 2/3} className="name" wrapperClass={'line-wrapper'} />
+                        <Type ref={fromTitle} content={title} speed={speed * 2/3} delay={delayAfter(name, speed)} className='title' wrapperClass={'line-wrapper'} />
                     </div>
                 </div>
             }
@@ -222,22 +222,22 @@ function Main({ type }) {
                     <div className="info">
                         <div>
                             <a href="tel:9124922522">
-                                <Type content="📱 (912) 492-2522" speed={40} startAtChar={2} />
+                                <Type content="📱 (912) 492-2522" speed={speed * 2 / 3} startAtChar={2} />
                             </a>
                         </div>
                         <div>
                             <a href="mailto:stephen.a.matheis@gmail.com">
-                                <Type content="📧 stephen.a.matheis@gmail.com" speed={30} startAtChar={2} />
+                                <Type content="📧 stephen.a.matheis@gmail.com" speed={speed / 2} startAtChar={2} />
                             </a>
                         </div>
                         <div>
                             <a href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub'>
-                                <Type content="👩‍💻 github.com/stephenmatheis" speed={30} startAtChar={5} />
+                                <Type content="👩‍💻 github.com/stephenmatheis" speed={speed / 2} startAtChar={5} />
                             </a>
                         </div>
                         <div>
                             <a href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn'>
-                                <Type content="💼 linkedin.com/in/stephenmatheis" speed={30} startAtChar={2} />
+                                <Type content="💼 linkedin.com/in/stephenmatheis" speed={speed / 2} startAtChar={2} />
                             </a>
                         </div>
                     </div>
