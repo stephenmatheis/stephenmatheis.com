@@ -1,18 +1,14 @@
 import Head from 'next/head';
 import classNames from 'classnames';
-// import Type from '@/components/type';
-import Type from '@/components/type2';
+import Type from '@/components/type';
 import jobs from '../data/jobs';
 import skills from '../data/skills';
 import { useEffect, useRef, useState } from 'react';
 
-
-// Data
 const curentYear = new Date().getFullYear();
 const name = 'Stephen Matheis';
 const title = 'Front-end Software Engineer';
 const speed = 60;
-// const speed = 1000;
 
 function delayAfter(text, speed) {
     return (text.length * speed) + (speed * 2);
@@ -40,12 +36,11 @@ function Header({ loading, setLoading }) {
 
             // Animate name and title
             const duration = speed * 5;
-            const anims = await Promise.all([
+
+            await Promise.all([
                 anim(fromName, toName, duration),
                 anim(fromTitle, toTitle, duration)
             ]);
-
-            // return;
 
             // Load complete after animation
             setLoading(false);
@@ -97,7 +92,6 @@ function Header({ loading, setLoading }) {
         <header>
             <a href="https://www.stephenmatheis.com">
                 <div className={classNames('profile', { loading })}>
-                    {/* <span ref={toName} className='name'>Stephen Matheis</span> <span className={classNames('blue', { 'fade-in': !loading })}>|</span> <span ref={toTitle} className="title">Front-end Software Engineer</span> */}
                     <span ref={toName} className='name'>Stephen Matheis</span> <span ref={toTitle} className="title">Front-end Software Engineer</span>
                 </div>
             </a>
@@ -253,7 +247,6 @@ function Main({ type }) {
 }
 
 export default function Home() {
-    // State
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -272,14 +265,9 @@ export default function Home() {
                 <title>Stephen Matheis</title>
                 <meta name="description" content="Stephen Matheis" />
             </Head>
-            {/* <Paralax /> */}
             <div id="resume" className={classNames({ loading })}>
                 <Header loading={loading} setLoading={setLoading} />
                 {!loading && <Main type={true} />}
-
-
-                {/* TEST */}
-                {/* <Main type={true} /> */}
             </div>
         </>
     )
