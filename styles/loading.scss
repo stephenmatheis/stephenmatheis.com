@@ -2,6 +2,8 @@
     &.loading {
         .line-wrapper {
             line-height: 1 !important;
+            width: min-content;
+            // display: inline-block; // not sure if this is needed yet
         }
     }
 
@@ -35,7 +37,6 @@
         .ctr {
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
             gap: 16px;
         }
 
@@ -47,57 +48,55 @@
 
         .name {
             font-size: 64px;
-            margin-bottom: 16px;
         }
 
         .title {
             font-size: 32px;
-            color: dodgerblue;
+            color: #868686;
         }
 
         // Narrow desktop + tablet
-        @media screen and (max-width: 679px) {
+        @media screen and (max-width: 719px) {
             .ctr {
-                gap: 10px;
+                gap: 0px;
             }
 
             .name {
-                font-size: 40px;
+                font-size: 90px;
             }
 
             .title {
-                font-size: 20px;
+                font-size: 90px;
             }
         }
 
-        // Narrow desktop + tablet
+        // iphone 14 Pro Max
         @media screen and (max-width: 430px) {
             .ctr {
-                gap: 9px;
+                gap: 0px;
             }
 
             .name {
-                font-size: 36px;
+                font-size: 80px;
             }
 
             .title {
-                font-size: 18px;
+                font-size: 80px;
             }
         }
 
-
-        // iPhone 14
+        // iPhone 14 Pro
         @media screen and (max-width: 414px) {
             .ctr {
-                gap: 7.5px;
+                gap: 0px;
             }
 
             .name {
-                font-size: 30px;
+                font-size: 72px;
             }
 
             .title {
-                font-size: 15px;
+                font-size: 72px;
             }
         }
     }

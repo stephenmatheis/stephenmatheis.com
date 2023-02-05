@@ -28,7 +28,7 @@ function Header({ loading, setLoading }) {
                 return;
             }
 
-            return;
+            // return;
 
             // Set ctr height
             const { height, width } = ctr.current.getBoundingClientRect();
@@ -43,6 +43,8 @@ function Header({ loading, setLoading }) {
                 anim(fromName, toName, duration),
                 anim(fromTitle, toTitle, duration)
             ]);
+
+            return;
 
             // Load complete after animation
             setLoading(false);
@@ -102,7 +104,7 @@ function Header({ loading, setLoading }) {
                 <div ref={overlay} className="overlay">
                     <div ref={ctr} className="ctr">
                         <Type ref={fromName} content={name} speed={speed * 2 / 3} className="name" wrapperClass={'line-wrapper'} />
-                        <Type ref={fromTitle} content={title} speed={speed * 2 / 3} delay={delayAfter(name, speed)} className='title' wrapperClass={'line-wrapper'} />
+                        <Type ref={fromTitle} content={title} speed={speed * 2 / 3} delay={delayAfter(name, speed)} className='title' wrapperClass="line-wrapper" />
                     </div>
                 </div>
             }
