@@ -1,12 +1,13 @@
 #resume {
     &.loading {
         width: 8.5in;
-        padding: 0in .5in;
+        // padding: 0in .5in;
     }
 
     @media screen and (min-width: 1010px) {
         &.loading {
-            width: 10.5in;
+            // width: 10.5in;
+            width: 100%;
         }
     }
 
@@ -50,9 +51,10 @@
 
         .title {
             font-size: 32px;
-            line-height: 1;
+            // line-height: 18px; // doesn't work
+            // line-height: 1; // sets height = 2px, doesn't work
+            line-height: 1; // animate from 1 to 14px; why does this work?
             color: dodgerblue;
-            // color: #ce9178;
         }
 
         @media screen and (max-width: 679px) {
