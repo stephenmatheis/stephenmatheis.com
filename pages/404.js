@@ -1,7 +1,7 @@
 import Type from '@/components/type';
 
 export default function Custom404() {
-    const speed = 80;
+    const speed = 60;
     const style = { textAlign: 'center' };
 
     return (

@@ -5,10 +5,8 @@ import jobs from '../data/jobs';
 import skills from '../data/skills';
 import { useEffect, useRef, useState } from 'react';
 
-
-// Data
 const curentYear = new Date().getFullYear();
-const name = 'Stephen Matheis ';
+const name = 'Stephen Matheis';
 const title = 'Front-end Software Engineer';
 const speed = 60;
 
@@ -37,8 +35,9 @@ function Header({ loading, setLoading }) {
             ctr.current.style.width = `${width}px`;
 
             // Animate name and title
-            const duration = 300;
-            const anims = await Promise.all([
+            const duration = speed * 5;
+
+            await Promise.all([
                 anim(fromName, toName, duration),
                 anim(fromTitle, toTitle, duration)
             ]);
@@ -93,15 +92,15 @@ function Header({ loading, setLoading }) {
         <header>
             <a href="https://www.stephenmatheis.com">
                 <div className={classNames('profile', { loading })}>
-                    <span ref={toName} className='name'>Stephen Matheis</span> <span className="blue">|</span> <span ref={toTitle} className="title">Front-end Software Engineer</span>
+                    <span ref={toName} className='name'>Stephen Matheis</span> <span ref={toTitle} className="title">Front-end Software Engineer</span>
                 </div>
             </a>
             {
                 loading &&
                 <div ref={overlay} className="overlay">
                     <div ref={ctr} className="ctr">
-                        <Type ref={fromName} content={name} speed={speed * 2/3} className="name" wrapperClass={'line-wrapper'} />
-                        <Type ref={fromTitle} content={title} speed={speed * 2/3} delay={delayAfter(name, speed)} className='title' wrapperClass={'line-wrapper'} />
+                        <Type ref={fromName} content={name} speed={speed * 2 / 3} className="name" wrapperClass={'line-wrapper'} />
+                        <Type ref={fromTitle} content={title} speed={speed * 2 / 3} delay={delayAfter(name, speed)} className='title' wrapperClass={'line-wrapper'} />
                     </div>
                 </div>
             }
@@ -148,7 +147,7 @@ function Main({ type }) {
                                                     {
                                                         type ?
                                                             <>
-                                                                <Type content={line} speed={10} />
+                                                                <Type content={line} speed={speed / 6} />
                                                             </> :
                                                             <>
                                                                 <span dangerouslySetInnerHTML={{ __html: line }} />
@@ -248,7 +247,6 @@ function Main({ type }) {
 }
 
 export default function Home() {
-    // State
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -267,7 +265,6 @@ export default function Home() {
                 <title>Stephen Matheis</title>
                 <meta name="description" content="Stephen Matheis" />
             </Head>
-            {/* <Paralax /> */}
             <div id="resume" className={classNames({ loading })}>
                 <Header loading={loading} setLoading={setLoading} />
                 {!loading && <Main type={true} />}

@@ -1,6 +1,6 @@
 #resume {
     &.loading {
-        width: 8.5in;
+        // width: 8.5in;
 
         .line-wrapper {
             line-height: 1 !important;
@@ -36,11 +36,12 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            gap: 16px;
         }
 
         .name,
         .title {
-            display: inline-block;
+            // display: inline-block;
             line-height: 1; // animate from 1 (dynamic) to 14px;
         }
 
@@ -55,9 +56,12 @@
         }
 
         @media screen and (max-width: 679px) {
+            .ctr {
+                gap: 10px;
+            }
+
             .name {
                 font-size: 40px;
-                margin-bottom: 10px;
             }
 
             .title {
@@ -66,9 +70,12 @@
         }
 
         @media screen and (max-width: 414px) {
+            .ctr {
+                gap: 7.5px;
+            }
+            
             .name {
                 font-size: 30px;
-                margin-bottom: 7.5px;
             }
 
             .title {

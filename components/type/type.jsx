@@ -2,14 +2,11 @@ import { forwardRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './type.module.scss';
 
-const Type = forwardRef(function Type({ content, className, wrapperClass, startAtChar = 0, speed = 0, delay = 0, blink = false }, ref) {
+const Type = forwardRef(function Type2({ content, className, wrapperClass, startAtChar = 0, speed = 0, delay = 0, blink, cursor }, ref) {
     const [delayed, setDelayed] = useState(delay > 0 ? true : false);
-    const [text, setText] = useState('');
-    const [index, setIndex] = useState(startAtChar);
-
-    useEffect(() => {
-        setText(content.substring(0, startAtChar));
-    }, [content, startAtChar]);
+    const [prefix, setPrefix] = useState('');
+    const [suffix, setSuffix] = useState(content);
+    const [index, setIndex] = useState(startAtChar > 0 ? startAtChar - 1 : startAtChar);
 
     useEffect(() => {
         setTimeout(() => {
@@ -22,85 +19,60 @@ const Type = forwardRef(function Type({ content, className, wrapperClass, startA
             return;
         }
 
-        if (startAtChar && text.length < startAtChar) {
-            return;
-        }
-
         if (index < content.length) {
             setTimeout(() => {
-                setText(text + content[index]);
-                setIndex(index + 1);
+                const nextIndex = index + 1;
+                const prefix = content.substring(0, nextIndex);
+                const suffix = content.substring(nextIndex);
+
+                // console.log(prefix, index, suffix);
+
+                setPrefix(prefix);
+                setSuffix(suffix);
+                setIndex(nextIndex);
             }, speed);
         }
-    }, [content, speed, index, text, delayed, startAtChar]);
+    }, [content, speed, index, delayed, cursor]);
 
     return (
         <>
-            {
-                index === content.length ?
-                    <span
-                        ref={ref}
-                        className={
-                            classNames(
-                                styles['type'],
-                                [styles['set']],
-                                { [styles['blink']]: blink },
-                                className
-                            )
-                        }
-                    >
-                        {text}
-                    </span>
-                    :
-                    <span className={classNames(styles['type-wrapper'], wrapperClass)}>
-                        {
-                            !delayed &&
+            <span
+                ref={ref}
+                className={classNames(styles['type'], wrapperClass)}
+            >
+                {
+                    index === content.length ?
+                        <span
+                            ref={ref}
+                            className={className}
+                        >
+                            {content}
+                        </span>
+                        :
+                        <>
+                            <span
+                                // ref={ref}
+                                className={classNames(styles['prefix'], className)}
+                            >
+                                {prefix}
+                            </span>
                             <span
                                 ref={ref}
-                                className={
-                                    classNames(
-                                        styles['type'],
-                                        {
-                                            [styles['blink']]: blink,
-                                            [styles['set']]: index === content.length
-                                        },
-                                        className
-                                    )
-                                }
+                                className={classNames(styles['suffix'], className)}
                             >
-                                {text}
+                                {suffix}
                             </span>
-                        }
-                        {
-                            <span className={classNames(styles['hidden'], className)}>
-                                {content}
-                            </span>
-                        }
-                    </span>
-            }
+                        </>
+                }
+            </span>
 
             {/* TESTING */}
-            {/* <span className={classNames(styles['type-wrapper'], wrapperClass)}>
+            {/* <span
+                ref={ref}
+                className={classNames(styles['type'], wrapperClass)}
+            >
                 {
-                    !delayed &&
-                    <span
-                        ref={ref}
-                        className={
-                            classNames(
-                                styles['type'],
-                                {
-                                    [styles['blink']]: blink,
-                                    // [styles['set']]: index === content.length
-                                },
-                                className
-                            )
-                        }
-                    >
-                        {text}
-                    </span>
-                }
-                {
-                    <span className={classNames(styles['hidden'], className)}>
+                    <span className={classNames(styles['prefix'], className)}>
                         {content}
                     </span>
                 }

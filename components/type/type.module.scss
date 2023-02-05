@@ -1,19 +1,6 @@
-.type-wrapper {
-    position: relative;
-
-    .type {
-        &:not(.set) {
-            position: absolute;
-        }
-
-        &:blink::after {
-            content: "█";
-            animation: 1s blink step-end infinite;
-        }
-    }
-
-    .hidden {
-        visibility: hidden;
+.type {
+    .suffix {
+        color: transparent !important;
     }
 }
 
