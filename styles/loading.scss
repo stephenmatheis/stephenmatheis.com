@@ -1,12 +1,14 @@
 #resume {
     &.loading {
         width: 8.5in;
-        // padding: 0in .5in;
+
+        .line-wrapper {
+            line-height: 1 !important;
+        }
     }
 
     @media screen and (min-width: 1010px) {
         &.loading {
-            // width: 10.5in;
             width: 100%;
         }
     }
@@ -29,7 +31,6 @@
         height: 100vh;
         width: 100vw;
         padding: 0in .5in;
-        // background-color: #ff22ff15;
 
         .ctr {
             display: flex;
@@ -40,20 +41,16 @@
         .name,
         .title {
             display: inline-block;
+            line-height: 1; // animate from 1 (dynamic) to 14px;
         }
 
         .name {
             font-size: 64px;
-            line-height: 1;
             margin-bottom: 16px;
-            // color: #c586c0;
         }
 
         .title {
             font-size: 32px;
-            // line-height: 18px; // doesn't work
-            // line-height: 1; // sets height = 2px, doesn't work
-            line-height: 1; // animate from 1 to 14px; why does this work?
             color: dodgerblue;
         }
 
@@ -70,19 +67,13 @@
 
         @media screen and (max-width: 414px) {
             .name {
-                font-size: 32px;
-                margin-bottom: 8.75px;
+                font-size: 30px;
+                margin-bottom: 7.5px;
             }
 
             .title {
-                font-size: 17.5px;
+                font-size: 15px;
             }
-        }
-    }
-
-    main {
-        &.loading {
-            visibility: hidden;
         }
     }
 }

@@ -100,8 +100,8 @@ function Header({ loading, setLoading }) {
                 loading &&
                 <div ref={overlay} className="overlay">
                     <div ref={ctr} className="ctr">
-                        <Type ref={fromName} content={name} speed={40} className="name" />
-                        <Type ref={fromTitle} content={title} speed={40} delay={delayAfter(name, speed)} className='title' />
+                        <Type ref={fromName} content={name} speed={40} className="name" wrapperClass={'line-wrapper'} />
+                        <Type ref={fromTitle} content={title} speed={40} delay={delayAfter(name, speed)} className='title' wrapperClass={'line-wrapper'} />
                     </div>
                 </div>
             }
@@ -109,9 +109,9 @@ function Header({ loading, setLoading }) {
     );
 }
 
-function Main({ loading, setLoading, type }) {
+function Main({ type }) {
     return (
-        <main className={classNames({ loading })}>
+        <main>
             {/* Left */}
             <section className='left'>
                 <div id="experience">
@@ -270,7 +270,7 @@ export default function Home() {
             {/* <Paralax /> */}
             <div id="resume" className={classNames({ loading })}>
                 <Header loading={loading} setLoading={setLoading} />
-                <Main loading={loading} setLoading={setLoading} type={true} />
+                {!loading && <Main type={true} />}
             </div>
         </>
     )

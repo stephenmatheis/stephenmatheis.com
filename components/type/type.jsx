@@ -39,6 +39,7 @@ const Type = forwardRef(function Type({ content, className, wrapperClass, startA
             {
                 index === content.length ?
                     <span
+                        ref={ref}
                         className={
                             classNames(
                                 styles['type'],
@@ -47,7 +48,6 @@ const Type = forwardRef(function Type({ content, className, wrapperClass, startA
                                 className
                             )
                         }
-                        ref={ref}
                     >
                         {text}
                     </span>
@@ -78,6 +78,33 @@ const Type = forwardRef(function Type({ content, className, wrapperClass, startA
                         }
                     </span>
             }
+
+            {/* TESTING */}
+            {/* <span className={classNames(styles['type-wrapper'], wrapperClass)}>
+                {
+                    !delayed &&
+                    <span
+                        ref={ref}
+                        className={
+                            classNames(
+                                styles['type'],
+                                {
+                                    [styles['blink']]: blink,
+                                    // [styles['set']]: index === content.length
+                                },
+                                className
+                            )
+                        }
+                    >
+                        {text}
+                    </span>
+                }
+                {
+                    <span className={classNames(styles['hidden'], className)}>
+                        {content}
+                    </span>
+                }
+            </span> */}
         </>
     )
 });
