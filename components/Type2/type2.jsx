@@ -1,14 +1,12 @@
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './type2.module.scss';
 
-const Type = forwardRef(function Type2({ content, className, startAtChar = 0, speed = 0, delay = 0, blink, cursor }, ref) {
+const Type = forwardRef(function Type2({ content, className, wrapperClass, startAtChar = 0, speed = 0, delay = 0, blink, cursor }, ref) {
     const [delayed, setDelayed] = useState(delay > 0 ? true : false);
     const [prefix, setPrefix] = useState('');
-    const [suffix, setSuffix] = useState('');
-    const [index, setIndex] = useState(startAtChar - 1);
-    const prefixRef = useRef();
-    const cursorRef = useRef();
+    const [suffix, setSuffix] = useState(content);
+    const [index, setIndex] = useState(startAtChar > 0 ? startAtChar - 1 : startAtChar);
 
     useEffect(() => {
         setTimeout(() => {
@@ -27,6 +25,8 @@ const Type = forwardRef(function Type2({ content, className, startAtChar = 0, sp
                 const prefix = content.substring(0, nextIndex);
                 const suffix = content.substring(nextIndex);
 
+                // console.log(prefix, index, suffix);
+
                 setPrefix(prefix);
                 setSuffix(suffix);
                 setIndex(nextIndex);
@@ -38,18 +38,45 @@ const Type = forwardRef(function Type2({ content, className, startAtChar = 0, sp
         <>
             <span
                 ref={ref}
-                className={classNames(styles['type'], className)}
+                className={classNames(styles['type'], wrapperClass)}
             >
-                <span
-                    ref={prefixRef}
-                    className={styles['prefix']}
-                >
-                    {prefix}
-                </span>
-                <span className={styles['suffix']}>
-                    {suffix}
-                </span>
+                {
+                    index === content.length ?
+                        <span
+                            ref={ref}
+                            className={className}
+                        >
+                            {content}
+                        </span>
+                        :
+                        <>
+                            <span
+                                // ref={ref}
+                                className={classNames(styles['prefix'], className)}
+                            >
+                                {prefix}
+                            </span>
+                            <span
+                                ref={ref}
+                                className={classNames(styles['suffix'], className)}
+                            >
+                                {suffix}
+                            </span>
+                        </>
+                }
             </span>
+
+            {/* TESTING */}
+            {/* <span
+                ref={ref}
+                className={classNames(styles['type'], wrapperClass)}
+            >
+                {
+                    <span className={classNames(styles['prefix'], className)}>
+                        {content}
+                    </span>
+                }
+            </span> */}
         </>
     )
 });
