@@ -1,4 +1,4 @@
-import Type from '@/components/type';
+import Type from '@/components/main/main';
 
 export default function Custom404() {
     const speed = 60;

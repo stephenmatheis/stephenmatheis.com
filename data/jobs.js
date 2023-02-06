@@ -1,4 +1,4 @@
-[
+const jobs = [
     {
         "title": "Front-end Developer",
         "company": "TEKsystems",
@@ -99,3 +99,5 @@
         ]
     }
 ]
+
+export default jobs;
