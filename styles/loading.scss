@@ -1,9 +1,7 @@
 #resume {
     &.loading {
         .line-wrapper {
-            line-height: 1 !important;
-            width: min-content;
-            // display: inline-block; // not sure if this is needed yet
+            line-height: normal;
         }
     }
 
@@ -37,66 +35,196 @@
         .ctr {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            justify-content: flex-end;
         }
 
         .name,
         .title {
-            // NOTE:  Will animate from 1 (dynamic) to 14px;
-            line-height: 1;
+            line-height: unset;
+            transition: font-size 300ms ease-in-out;
         }
 
         .name {
-            font-size: 64px;
+            font-size: 120px;
         }
 
         .title {
-            font-size: 32px;
-            color: #868686;
+            font-size: 120px;
+            color: #808080;
         }
 
-        // Narrow desktop + tablet
-        @media screen and (max-width: 719px) {
-            .ctr {
-                gap: 0px;
-            }
+        // VIEWPORT: Heights
 
+        @media screen and (max-height: 705px) {
             .name {
-                font-size: 90px;
+                font-size: 100px;
             }
 
             .title {
-                font-size: 90px;
+                font-size: 100px;
+            }
+        }
+
+        @media screen and (max-height: 600px) {
+            .name {
+                font-size: 80px;
+            }
+
+            .title {
+                font-size: 80px;
+            }
+        }
+
+        @media screen and (max-height: 500px) {
+            .name {
+                font-size: 70px;
+            }
+
+            .title {
+                font-size: 70px;
+            }
+        }
+
+        @media screen and (max-height: 430px) {
+            .name {
+                font-size: 60px;
+            }
+
+            .title {
+                font-size: 60px;
+            }
+        }
+
+
+        @media screen and (max-height: 414px) {
+            .name {
+                font-size: 58px;
+            }
+
+            .title {
+                font-size: 58px;
+            }
+        }
+
+        @media screen and (max-height: 350px) {
+            .name {
+                font-size: 50px;
+            }
+
+            .title {
+                font-size: 50px;
+            }
+        }
+
+        // VIEWPORT: Widths
+
+        // Narrow desktop + tablet
+        @media screen and (max-width: 719px) {
+            .name {
+                font-size: 100px;
+            }
+
+            .title {
+                font-size: 100px;
             }
         }
 
         // iphone 14 Pro Max
         @media screen and (max-width: 430px) {
-            .ctr {
-                gap: 0px;
-            }
-
             .name {
-                font-size: 80px;
+                font-size: 62px;
             }
 
             .title {
-                font-size: 80px;
+                font-size: 62px;
             }
         }
 
         // iPhone 14 Pro
         @media screen and (max-width: 414px) {
-            .ctr {
-                gap: 0px;
-            }
-
             .name {
-                font-size: 72px;
+                font-size: 58px;
             }
 
             .title {
-                font-size: 72px;
+                font-size: 58px;
+            }
+        }
+
+        // iPhone 12
+        @media screen and (max-width: 410px) {
+            .name {
+                font-size: 54px;
+            }
+
+            .title {
+                font-size: 54px;
+            }
+        }
+
+        // iPhone 12
+        @media screen and (max-width: 389px) {
+            .name {
+                font-size: 50px;
+            }
+
+            .title {
+                font-size: 50px;
+            }
+        }
+
+        // Smaller phones
+        @media screen and (max-width: 369px) {
+            .name {
+                font-size: 45px;
+            }
+
+            .title {
+                font-size: 45px;
+            }
+        }
+
+        // Smallest phones
+        @media screen and (max-width: 340px) {
+            .name {
+                font-size: 40px;
+            }
+
+            .title {
+                font-size: 40px;
+            }
+        }
+
+        // Smallester phones
+        @media screen and (max-width: 313px) {
+            .name {
+                font-size: 35px;
+            }
+
+            .title {
+                font-size: 35px;
+            }
+        }
+
+        // Smallesterest phones
+        @media screen and (max-width: 286px) {
+            .name {
+                font-size: 30px;
+            }
+
+            .title {
+                font-size: 30px;
+            }
+        }
+
+        // Smallesterester phones
+        @media screen and (max-width: 260px) {
+            .name {
+                font-size: 25px;
+            }
+
+            .title {
+                font-size: 25px;
             }
         }
     }

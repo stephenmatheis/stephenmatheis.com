@@ -22,13 +22,30 @@ function Header({ loading, setLoading }) {
     const fromName = useRef();
     const fromTitle = useRef();
 
+    // DEV:
+    const firstName = 'Stephen';
+    const lastName = 'Matheis';
+    const frontEnd = 'Front-end';
+    const software = 'Software';
+    const engineer = 'Engineer';
+
+    const fromFirstName = useRef();
+    const fromLastName = useRef();
+    const fromFrontEnd = useRef();
+    const fromSoftware = useRef();
+    const fromEngineer = useRef();
+
+    const toFirstName = useRef();
+    const toLastName = useRef();
+    const toFrontEnd = useRef();
+    const toSoftware = useRef();
+    const toEngineer = useRef();
+
     useEffect(() => {
         setTimeout(async () => {
             if (!overlay.current || !ctr.current) {
                 return;
             }
-
-            return;
 
             // Set ctr height
             const { height, width } = ctr.current.getBoundingClientRect();
@@ -40,8 +57,11 @@ function Header({ loading, setLoading }) {
             const duration = speed * 5;
 
             await Promise.all([
-                anim(fromName, toName, duration),
-                anim(fromTitle, toTitle, duration)
+                anim(fromFirstName, toFirstName, duration),
+                anim(fromLastName, toLastName, duration),
+                anim(fromFrontEnd, toFrontEnd, duration),
+                anim(fromSoftware, toSoftware, duration),
+                anim(fromEngineer, toEngineer, duration),
             ]);
 
             // Load complete after animation
@@ -51,11 +71,12 @@ function Header({ loading, setLoading }) {
         async function anim(from, to, duration) {
             // Animate Name
             const fromName = from.current
-            const { fontSize, marginBottom, color: fromColor, lineHeight } = getComputedStyle(fromName);
+            const { color: fromColor, fontSize, height, lineHeight, marginBottom } = getComputedStyle(fromName);
             const { color: toColor } = getComputedStyle(to.current);
             const fromNamePos = fromName.getBoundingClientRect();
             const toNamePos = to.current.getBoundingClientRect();
 
+            fromName.style.height = `${height}px`;
             fromName.style.position = 'absolute';
             fromName.style.top = `${fromNamePos.top}px`;
             fromName.style.left = `${fromNamePos.left}px`;
@@ -66,7 +87,6 @@ function Header({ loading, setLoading }) {
                     left: `${fromNamePos.left}px`,
                     fontSize,
                     marginBottom,
-                    lineHeight
                 },
                 {
                     color: toColor,
@@ -74,7 +94,6 @@ function Header({ loading, setLoading }) {
                     left: `${toNamePos.left}px`,
                     fontSize: '12px',
                     marginBottom: '0px',
-                    lineHeight: '14px'
                 }
             ], {
                 duration: duration || 0,
@@ -94,15 +113,33 @@ function Header({ loading, setLoading }) {
         <header>
             <a href="https://www.stephenmatheis.com">
                 <div className={classNames('profile', { loading })}>
-                    <span ref={toName} className='name'>Stephen Matheis</span> <span ref={toTitle} className="title">Front-end Software Engineer</span>
+                    {/* <span ref={toName} className='name'>Stephen Matheis</span> <span ref={toTitle} className="title">Front-end Software Engineer</span> */}
+                    <span ref={toFirstName} className='name'>Stephen</span>
+                    <span className='space'> </span>
+                    <span ref={toLastName} className='name'>Matheis</span>
+                    <span className='space'> </span>
+                    <span ref={toFrontEnd} className="title">Front-end</span>
+                    <span className='space'> </span>
+                    <span ref={toSoftware} className="title">Software</span>
+                    <span className='space'> </span>
+                    <span ref={toEngineer} className="title">Engineer</span>
                 </div>
             </a>
             {
                 loading &&
                 <div ref={overlay} className="overlay">
                     <div ref={ctr} className="ctr">
-                        <Type ref={fromName} content={name} speed={speed * 2 / 3} className="name" wrapperClass={'line-wrapper'} />
-                        <Type ref={fromTitle} content={title} speed={speed * 2 / 3} delay={delayAfter(name, speed)} className='title' wrapperClass={'line-wrapper'} />
+                        {/* <Type ref={fromName} content={name} speed={speed * 2 / 3} className="name" wrapperClass={'line-wrapper'} />
+                        <Type ref={fromTitle} content={title} speed={speed * 2 / 3} delay={delayAfter(name, speed)} className='title' wrapperClass="line-wrapper" /> */}
+
+                        {/* Name */}
+                        <Type ref={fromFirstName} content={firstName} speed={speed * 2 / 3} className="name" wrapperClass={'line-wrapper'} />
+                        <Type ref={fromLastName} content={lastName} speed={speed * 2 / 3} delay={delayAfter(firstName, speed)} className="name" wrapperClass={'line-wrapper'} />
+
+                        {/* Title */}
+                        <Type ref={fromFrontEnd} content={frontEnd} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName, speed)} className='title' wrapperClass="line-wrapper" />
+                        <Type ref={fromSoftware} content={software} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName + frontEnd, speed)} className='title' wrapperClass="line-wrapper" />
+                        <Type ref={fromEngineer} content={engineer} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName + frontEnd + software, speed)} className='title' wrapperClass="line-wrapper" />
                     </div>
                 </div>
             }
