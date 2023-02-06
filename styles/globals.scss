@@ -1,26 +1,14 @@
-:root {
-    --color: #1e1e1e;
-    --background-color: whitesmoke;
-}
-
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    flex: 1;
-}
-
 html {
-    color: var(--color);
-    background: var(--background-color);
     font-family:
         -apple-system, BlinkMacSystemFont,
         "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
+    background-color: #1e1e1e;
+    color: #d4d4d4;
     scrollbar-width: none; // Firefox
     -ms-overflow-style: none; // IE 10+
 
@@ -31,47 +19,7 @@ html {
     }
 }
 
-// TODO: Design a real light and dark mode
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color: whitesmoke;
-        --background-color: #1e1e1e;
-    }
-
-    html {
-        color-scheme: dark;
-    }
-}
-
-@media print,
-screen {
-    html {
-        background-color: #1e1e1e;
-        color: #d4d4d4;
-        width: 8.5in;
-        padding: .5in;
-        font-family: Menlo, Monaco, 'Courier New', monospace;
-    }
-}
-
-@media screen {
-    html {
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        padding-top: 1in;
-        padding-bottom: 1in;
-    }
-}
-
-@media screen and (min-width: 1010px) {
-    html {
-        width: 10.5in;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    html {
-        width: 100%;
-    }
+body {
+    margin: 0;
+    padding: 0;
 }
