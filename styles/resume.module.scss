@@ -1,30 +1,34 @@
 #resume {
+    font-family: Menlo, Monaco, 'Courier New', monospace;
+    width: 10.5in;
+    padding: .5in;
 
-    @media print,
-    screen {
-        @page {
-            size: letter;
-        }
+    a {
 
-        a {
-
-            &,
-            &:hover {
-                text-decoration: none;
-            }
+        &,
+        &:hover {
+            text-decoration: none;
         }
     }
 
-    @media screen and (min-width: 1010px) {
+    @media screen {
+        & {
+            margin: 0 auto;
+            padding-top: 1in;
+            padding-bottom: 1in;
+        }
+    }
+
+    @media screen and (max-width: 1010px) {
         &.loading {
-            width: 100%;
+            width: 8.5in;
         }
     }
 
     @media screen and (max-width: 800px) {
         &.loading {
             width: 100%;
-            padding: 0px;
+            // padding: 0px;
         }
     }
 }
