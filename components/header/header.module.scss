@@ -1,24 +1,29 @@
-#resume {
-    &.loading {
-        .line-wrapper {
-            line-height: normal;
-        }
-    }
+@import '../../styles/utilities.module.scss';
 
-    @media screen and (min-width: 1010px) {
+.header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+
+    .profile {
+        font-size: 12px;
+        line-height: 18px;
+
         &.loading {
-            width: 100%;
+            visibility: hidden;
+        }
+
+        .name {
+            color: #c586c0;
+        }
+
+        .title {
+            color: #4ec9b0;
+            white-space: nowrap;
         }
     }
 
-    @media screen and (max-width: 800px) {
-        &.loading {
-            width: 100%;
-            padding: 0px;
-        }
-    }
-
-    .overlay {
+    .loading-overlay {
         position: fixed;
         top: 0px;
         left: 0px;
@@ -27,7 +32,7 @@
         align-items: center;
         justify-content: center;
 
-        // NOTE: In Safari on mobile, 100vh is too tall (clips behind bottom tool bar I think?)
+        // NOTE: In mobile Safari, 100vh is too tall (clips behind bottom tool bar)
         height: 100%;
         width: 100vw;
         padding: 0in .5in;
@@ -36,6 +41,10 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+        }
+
+        .line-wrapper {
+            line-height: normal;
         }
 
         .name,

@@ -30,6 +30,7 @@ html {
     }
 }
 
+// TODO: Design a real light and dark mode
 @media (prefers-color-scheme: dark) {
     :root {
         --color: whitesmoke;
