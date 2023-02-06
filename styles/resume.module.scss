@@ -20,15 +20,10 @@
     }
 
     @media screen and (max-width: 1010px) {
-        &.loading {
-            width: 8.5in;
-        }
+        width: 8.5in;
     }
 
     @media screen and (max-width: 800px) {
-        &.loading {
-            width: 100%;
-            // padding: 0px;
-        }
+        width: 100%;
     }
 }
