@@ -1,0 +1,169 @@
+@import '../../styles/utilities.module.scss';
+
+.main {
+    display: flex;
+    gap: 36px;
+
+    * {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    // Colors
+    // Colors
+    .gray {
+        color: #808080;
+    }
+
+    .dark-pink {
+        color: #da70d6;
+    }
+
+    .dark-blue {
+        color: #569cd6;
+    }
+
+    .blue {
+        color: #9cdcfe;
+    }
+
+    .yellow {
+        color: #d7ba7d;
+    }
+
+    .orange {
+        color: #ce9178;
+    }
+
+    .gold {
+        color: #ffd700;
+    }
+
+    .lime {
+        color: #4ec9b0;
+    }
+
+    .const {
+        color: #4fc1ff;
+    }
+
+    .light {
+        color: #d4d4d4;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .left {
+        flex: 2;
+    }
+
+    .comment {
+        color: #6a9955;
+    }
+
+    .job {
+        break-inside: avoid;
+
+        &:not(:last-child) {
+            margin-bottom: 18px;
+        }
+
+        .title {
+            color: #569cd6;
+
+            .company {
+                color: #dcdcaa
+            }
+        }
+
+        .date {
+            color: #9cdcfe;
+        }
+
+        .lines {
+            display: flex;
+            flex-direction: column;
+
+            .line {
+                display: flex;
+                color: #ce9178;
+
+                svg {
+                    fill: #d4d4d4;
+                    transform: translateY(3.5px);
+                    margin-right: 3px;
+                    width: 11px;
+                    height: 11px;
+                }
+            }
+        }
+    }
+
+    #skills {
+        .skill {
+            display: flex;
+            justify-content: space-between;
+
+            .name {
+                color: #569cd6;
+            }
+
+            .years {
+                color: #4fc1ff;
+            }
+        }
+
+    }
+
+    #education {
+        .college {
+
+            a,
+            a:hover {
+                color: #569cd6;
+            }
+        }
+
+        .major {
+            color: #dcdcaa;
+        }
+    }
+
+    #contact {
+        .info {
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+
+            a,
+            a:hover {
+                color: #4ec9b0;
+            }
+        }
+    }
+
+    @media screen {
+        & {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 72px;
+
+            @media screen and (max-width: 765px) {
+                & {
+                    flex-direction: column;
+                }
+            }
+
+            @media screen and (max-width: 1010px) {
+                & {
+                    gap: 36px;
+                    gap: 18px;
+                }
+            }
+        }
+    }
+}

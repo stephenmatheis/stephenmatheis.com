@@ -1,0 +1,30 @@
+#resume {
+
+    @media print,
+    screen {
+        @page {
+            size: letter;
+        }
+
+        a {
+
+            &,
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1010px) {
+        &.loading {
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        &.loading {
+            width: 100%;
+            padding: 0px;
+        }
+    }
+}

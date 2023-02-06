@@ -3,6 +3,7 @@ import Head from 'next/head';
 import classNames from 'classnames';
 import Header from '@/components/header/header';
 import Main from '@/components/main/main';
+import styles from '../styles/resume.module.scss';
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
@@ -24,7 +25,7 @@ export default function Home() {
                 <title>Stephen Matheis</title>
                 <meta name="description" content="Stephen Matheis" />
             </Head>
-            <div id="resume" className={classNames({ loading })}>
+            <div id={styles['resume']} className={classNames({ [styles['loading']]: loading })}>
                 <Header speed={speed} loading={loading} setLoading={setLoading} />
                 {!loading && <Main speed={speed} type={true} />}
             </div>

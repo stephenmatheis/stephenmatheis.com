@@ -2,27 +2,31 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import Type from '@/components/type/type';
-
-function delayAfter(text, speed) {
-    return (text.length * speed) + (speed * 2);
-}
+import styles from './header.module.scss';
 
 export default function Header({ loading, setLoading, speed }) {
-    const overlay = useRef();
-    const ctr = useRef();
+    // Modifiers
+    const titleMod = 0;
 
+    // Name and Title
     const firstName = 'Stephen';
     const lastName = 'Matheis';
     const frontEnd = 'Front-end';
     const software = 'Software';
     const engineer = 'Engineer';
 
+    // Container refs
+    const overlay = useRef();
+    const ctr = useRef();
+
+    // From refs
     const fromFirstName = useRef();
     const fromLastName = useRef();
     const fromFrontEnd = useRef();
     const fromSoftware = useRef();
     const fromEngineer = useRef();
 
+    // To refs
     const toFirstName = useRef();
     const toLastName = useRef();
     const toFrontEnd = useRef();
@@ -97,35 +101,41 @@ export default function Header({ loading, setLoading, speed }) {
     }, [loading, setLoading, speed]);
 
     return (
-        <header>
+        <header className={styles['header']}>
             <Link href="/" aria-label="Stephen Matheis' personal website">
-                <div className={classNames('profile', { loading })}>
-                    <span ref={toFirstName} className='name'>Stephen</span>
+                <div className={classNames(styles['profile'], { [styles['loading']]: loading })}>
+                    <span ref={toFirstName} className={styles['name']}>Stephen</span>
                     <span className='space'> </span>
-                    <span ref={toLastName} className='name'>Matheis</span>
+                    <span ref={toLastName} className={styles['name']}>Matheis</span>
                     <span className='space'> </span>
-                    <span ref={toFrontEnd} className="title">Front-end</span>
-                    <span className='space'> </span>
-                    <span ref={toSoftware} className="title">Software</span>
-                    <span className='space'> </span>
-                    <span ref={toEngineer} className="title">Engineer</span>
+                    <span className={styles['nowrap']}>
+                        <span ref={toFrontEnd} className={styles['title']}>Front-end</span>
+                        <span className='space'> </span>
+                        <span ref={toSoftware} className={styles['title']}>Software</span>
+                        <span className='space'> </span>
+                        <span ref={toEngineer} className={styles['title']}>Engineer</span>
+                    </span>
                 </div>
             </Link>
             {
                 loading &&
-                <div ref={overlay} className="overlay">
-                    <div ref={ctr} className="ctr">
+                <div ref={overlay} className={styles['loading-overlay']}>
+                    <div ref={ctr} className={styles['ctr']}>
                         {/* Name */}
-                        <Type ref={fromFirstName} content={firstName} speed={speed * 2 / 3} className="name" wrapperClass={'line-wrapper'} />
-                        <Type ref={fromLastName} content={lastName} speed={speed * 2 / 3} delay={delayAfter(firstName, speed)} className="name" wrapperClass={'line-wrapper'} />
+                        <Type ref={fromFirstName} content={firstName} speed={speed * 2 / 3} className={styles['name']} wrapperClass={styles['line-wrapper']} />
+                        <Type ref={fromLastName} content={lastName} speed={speed * 2 / 3} delay={delayAfter(firstName, speed)} className={styles['name']} wrapperClass={styles['line-wrapper']} />
 
                         {/* Title */}
-                        <Type ref={fromFrontEnd} content={frontEnd} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName, speed)} className='title' wrapperClass="line-wrapper" />
-                        <Type ref={fromSoftware} content={software} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName + frontEnd, speed)} className='title' wrapperClass="line-wrapper" />
-                        <Type ref={fromEngineer} content={engineer} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName + frontEnd + software, speed)} className='title' wrapperClass="line-wrapper" />
+                        <Type ref={fromFrontEnd} content={frontEnd} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName, speed, titleMod)} className={styles['title']} wrapperClass={styles['line-wrapper']} />
+                        <Type ref={fromSoftware} content={software} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName + frontEnd, speed, titleMod)} className={styles['title']} wrapperClass={styles['line-wrapper']} />
+                        <Type ref={fromEngineer} content={engineer} speed={speed * 2 / 3} delay={delayAfter(firstName + lastName + frontEnd + software, speed, titleMod)} className={styles['title']} wrapperClass={styles['line-wrapper']} />
                     </div>
                 </div>
             }
         </header>
     );
+}
+
+function delayAfter(text, speed, modifier = 0) {
+    return ((text.length + modifier) * speed) + (speed * 2);
 }
