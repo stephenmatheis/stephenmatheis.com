@@ -1,4 +1,4 @@
-[
+const skills = [
     {
         "name": "HTML",
         "started": 2002
@@ -35,4 +35,6 @@
         "name": "Next.js",
         "started": 2022
     }
-]
+];
+
+export default skills;
