@@ -37,11 +37,9 @@ export default function Header({ loading, setLoading, speed }) {
     const toEngineer = useRef();
 
     useEffect(() => {
-        return;
-
         setTimeout(() => {
             setIsBlinking(false);
-        }, 1000);
+        }, 1000 * 2);
     }, [isBlinking]);
 
     useEffect(() => {
@@ -140,7 +138,8 @@ export default function Header({ loading, setLoading, speed }) {
                             isBlinking ?
                                 <>
                                     <span className={classNames(styles['name'], styles['blink'])}>
-                                        █
+                                        {/* █ */}
+                                        |
                                         <span className={styles['hidden']}>
                                             {firstName.substring(1)}
                                         </span>

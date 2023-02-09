@@ -37,10 +37,15 @@
         width: 100vw;
         padding: 0in .5in;
 
+        // .blink {
+        //     animation:
+        //         fade-in 1000ms ease-in-out 1500ms forwards,
+        //         blink 1000ms step-end 3000ms infinite;
+        // }
+
         .blink {
-            animation:
-                fade-in 1000ms ease-in-out 1500ms forwards,
-                blink 1000ms step-end 3000ms infinite;
+            color: transparent;
+            animation: blink 1000ms step-end infinite;
         }
 
         @keyframes grow-in {
@@ -85,7 +90,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            animation: grow-in 1000ms ease-in-out forwards;
+            // animation: grow-in 1000ms ease-in-out forwards;
         }
 
         .line-wrapper {
