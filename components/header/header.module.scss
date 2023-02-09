@@ -37,10 +37,55 @@
         width: 100vw;
         padding: 0in .5in;
 
+        .blink {
+            animation:
+                fade-in 1000ms ease-in-out 1500ms forwards,
+                blink 1000ms step-end 3000ms infinite;
+        }
+
+        @keyframes grow-in {
+            from {
+                opacity: 0;
+                scale: 0;
+            }
+
+            to {
+                opacity: 1;
+                scale: 1;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                color: transparent;
+            }
+
+            50% {
+                color: inherit;
+            }
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
         .ctr {
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            animation: grow-in 1000ms ease-in-out forwards;
         }
 
         .line-wrapper {
