@@ -9,7 +9,7 @@ export default function Header({ loading, setLoading, speed }) {
     const [isBlinking, setIsBlinking] = useState(true);
 
     // Modifiers
-    const titleMod = 0;
+    const titleMod = 12.5;
 
     // Name and Title
     const firstName = 'Stephen';
@@ -71,7 +71,7 @@ export default function Header({ loading, setLoading, speed }) {
 
             // Loading is complete after animation
             setLoading(false);
-        }, (delayAfter(firstName + lastName, speed) + delayAfter(frontEnd + software + engineer, speed)));
+        }, (delayAfter(firstName + lastName, speed) + delayAfter(frontEnd + software + engineer, speed, titleMod * 1.5)));
 
         async function anim(from, to, duration) {
             const fromName = from.current
