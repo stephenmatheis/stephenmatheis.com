@@ -39,7 +39,7 @@ export default function Header({ loading, setLoading, speed }) {
     useEffect(() => {
         setTimeout(() => {
             setIsBlinking(false);
-        }, 1000 * 2);
+        }, 1000 * 3);
     }, [isBlinking]);
 
     useEffect(() => {
@@ -138,7 +138,6 @@ export default function Header({ loading, setLoading, speed }) {
                             isBlinking ?
                                 <>
                                     <span className={classNames(styles['name'], styles['blink'])}>
-                                        {/* █ */}
                                         |
                                         <span className={styles['hidden']}>
                                             {firstName.substring(1)}
