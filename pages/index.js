@@ -7,7 +7,7 @@ import styles from '../styles/resume.module.scss';
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
-    const speed = 60;
+    const speed = 70;
 
     useEffect(() => {
         if (loading) {

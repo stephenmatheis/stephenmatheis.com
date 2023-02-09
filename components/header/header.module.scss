@@ -37,6 +37,27 @@
         width: 100vw;
         padding: 0in .5in;
 
+        .blink {
+            color: transparent;
+            animation: blink 1000ms step-end infinite;
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                color: transparent;
+            }
+
+            50% {
+                color: inherit;
+            }
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
         .ctr {
             display: flex;
             flex-direction: column;
