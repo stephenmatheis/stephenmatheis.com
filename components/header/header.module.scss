@@ -240,7 +240,7 @@
         }
 
         // VIEWPORT: Heights (override widths)
-        @media screen and (max-width: 980px) {
+        @media screen and (min-width: 980px) {
             @media screen and (max-height: 705px) {
                 .name {
                     font-size: 90px;
