@@ -96,14 +96,58 @@
             }
         }
 
-        // iphone 14 Pro Max
-        @media screen and (max-width: 430px) {
+        // Extra narrow desktop + tablet
+        @media screen and (max-width: 600px) {
+            .name {
+                font-size: 90px;
+            }
+
+            .title {
+                font-size: 90px;
+            }
+        }
+
+        // Extra extra narrow desktop + tablet
+        @media screen and (max-width: 585px) {
+            .name {
+                font-size: 80px;
+            }
+
+            .title {
+                font-size: 80px;
+            }
+        }
+
+        // Extra extra narrow desktop + tablet
+        @media screen and (max-width: 550px) {
+            .name {
+                font-size: 70px;
+            }
+
+            .title {
+                font-size: 70px;
+            }
+        }
+
+        // Extra extra narrow desktop + tablet
+        @media screen and (max-width: 510px) {
             .name {
                 font-size: 62px;
             }
 
             .title {
                 font-size: 62px;
+            }
+        }
+
+        // iphone 14 Pro Max
+        @media screen and (max-width: 430px) {
+            .name {
+                font-size: 60px;
+            }
+
+            .title {
+                font-size: 60px;
             }
         }
 
@@ -196,65 +240,86 @@
         }
 
         // VIEWPORT: Heights (override widths)
+        @media screen and (max-width: 980px) {
+            @media screen and (max-height: 705px) {
+                .name {
+                    font-size: 90px;
+                }
 
-        @media screen and (max-height: 705px) {
-            .name {
-                font-size: 100px;
+                .title {
+                    font-size: 90px;
+                }
             }
 
-            .title {
-                font-size: 100px;
-            }
-        }
+            @media screen and (max-height: 525px) {
+                .name {
+                    font-size: 70px;
+                }
 
-        @media screen and (max-height: 600px) {
-            .name {
-                font-size: 80px;
-            }
-
-            .title {
-                font-size: 80px;
-            }
-        }
-
-        @media screen and (max-height: 500px) {
-            .name {
-                font-size: 70px;
-            }
-
-            .title {
-                font-size: 70px;
+                .title {
+                    font-size: 70px;
+                }
             }
         }
 
-        @media screen and (max-height: 430px) {
-            .name {
-                font-size: 60px;
-            }
+        // @media screen and (max-height: 705px) {
+        //     .name {
+        //         font-size: 100px;
+        //     }
 
-            .title {
-                font-size: 60px;
-            }
-        }
+        //     .title {
+        //         font-size: 100px;
+        //     }
+        // }
 
-        @media screen and (max-height: 414px) {
-            .name {
-                font-size: 58px;
-            }
+        // @media screen and (max-height: 600px) {
+        //     .name {
+        //         font-size: 80px;
+        //     }
 
-            .title {
-                font-size: 58px;
-            }
-        }
+        //     .title {
+        //         font-size: 80px;
+        //     }
+        // }
 
-        @media screen and (max-height: 350px) {
-            .name {
-                font-size: 50px;
-            }
+        // @media screen and (max-height: 500px) {
+        //     .name {
+        //         font-size: 70px;
+        //     }
 
-            .title {
-                font-size: 50px;
-            }
-        }
+        //     .title {
+        //         font-size: 70px;
+        //     }
+        // }
+
+        // @media screen and (max-height: 430px) {
+        //     .name {
+        //         font-size: 60px;
+        //     }
+
+        //     .title {
+        //         font-size: 60px;
+        //     }
+        // }
+
+        // @media screen and (max-height: 414px) {
+        //     .name {
+        //         font-size: 58px;
+        //     }
+
+        //     .title {
+        //         font-size: 58px;
+        //     }
+        // }
+
+        // @media screen and (max-height: 350px) {
+        //     .name {
+        //         font-size: 50px;
+        //     }
+
+        //     .title {
+        //         font-size: 50px;
+        //     }
+        // }
     }
 }
