@@ -264,13 +264,25 @@
 
         // 720
         @media screen and (max-width: 500px) {
-            @media screen and (max-height: 525px) {
+            @media screen and (max-height: 705px) {
+                // & {
+                //     padding: 0 .1in;
+                // }
+
+                // .name {
+                //     font-size: 88px;
+                // }
+
+                // .title {
+                //     font-size: 68px;
+                // }
+
                 .name {
-                    font-size: 65px;
+                    font-size: 54px;
                 }
 
                 .title {
-                    font-size: 65px;
+                    font-size: 54px;
                 }
             }
         }
