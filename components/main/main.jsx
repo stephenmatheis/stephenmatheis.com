@@ -107,9 +107,7 @@ export default function Main({ type, speed }) {
                         <Type content={'// Education'} speed={speed / 2} />
                     </div>
                     <div className={styles['college']}>
-                        <a href="https://www.georgiasouthern.edu/campuses/armstrong-campus/" target="_blank" rel="noreferrer">
-                            <Type content="Armstrong Atlantic State University" speed={speed / 2} />
-                        </a>
+                        <Type content="Armstrong Atlantic State University" speed={speed / 2} />
                     </div>
                     <div className={styles['major']}>
                         {
