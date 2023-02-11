@@ -26,7 +26,7 @@ export default function Main({ type, speed }) {
                                         {
                                             type ?
                                                 <>
-                                                    <Type content={`${start} - ${end} `} speed={speed / 2} />
+                                                    <Type content={`${start} - ${end} `} speed={speed / 2} className={styles['date']} />
                                                     <Type content={'| '} speed={speed} className={styles['gray']} />
                                                     <Type content={location} speed={speed / 2} className={styles['gray']} />
                                                     <span></span>

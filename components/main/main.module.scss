@@ -48,7 +48,7 @@
     }
 
     .light {
-        color: #d4d4d4;
+        color: var(--color);
     }
 
     .right {
@@ -81,7 +81,7 @@
         }
 
         .date {
-            color: #9cdcfe;
+            color: var(--color);
         }
 
         .lines {
@@ -91,14 +91,6 @@
             .line {
                 display: flex;
                 color: #ce9178;
-
-                svg {
-                    fill: #d4d4d4;
-                    transform: translateY(3.5px);
-                    margin-right: 3px;
-                    width: 11px;
-                    height: 11px;
-                }
             }
         }
     }
