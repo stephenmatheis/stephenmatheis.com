@@ -52,8 +52,6 @@ export default function Header({ loading, setLoading, speed }) {
                 return;
             }
             
-            return;
-
             // Set ctr height
             const { height, width } = ctr.current.getBoundingClientRect();
 
