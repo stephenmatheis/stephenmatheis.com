@@ -239,8 +239,8 @@
             }
         }
 
-        // VIEWPORT: Heights (override widths)
-        @media screen and (min-width: 980px) {
+        // 980
+        @media screen and (max-width: 980px) {
             @media screen and (max-height: 705px) {
                 .name {
                     font-size: 90px;
@@ -262,64 +262,19 @@
             }
         }
 
-        // @media screen and (max-height: 705px) {
-        //     .name {
-        //         font-size: 100px;
-        //     }
+        // 720
+        @media screen and (max-width: 500px) {
+            @media screen and (max-height: 525px) {
+                .name {
+                    font-size: 65px;
+                }
 
-        //     .title {
-        //         font-size: 100px;
-        //     }
-        // }
+                .title {
+                    font-size: 65px;
+                }
+            }
+        }
 
-        // @media screen and (max-height: 600px) {
-        //     .name {
-        //         font-size: 80px;
-        //     }
-
-        //     .title {
-        //         font-size: 80px;
-        //     }
-        // }
-
-        // @media screen and (max-height: 500px) {
-        //     .name {
-        //         font-size: 70px;
-        //     }
-
-        //     .title {
-        //         font-size: 70px;
-        //     }
-        // }
-
-        // @media screen and (max-height: 430px) {
-        //     .name {
-        //         font-size: 60px;
-        //     }
-
-        //     .title {
-        //         font-size: 60px;
-        //     }
-        // }
-
-        // @media screen and (max-height: 414px) {
-        //     .name {
-        //         font-size: 58px;
-        //     }
-
-        //     .title {
-        //         font-size: 58px;
-        //     }
-        // }
-
-        // @media screen and (max-height: 350px) {
-        //     .name {
-        //         font-size: 50px;
-        //     }
-
-        //     .title {
-        //         font-size: 50px;
-        //     }
-        // }
+        // NOTE: I still don't understand media min max width and height queries.
     }
 }

@@ -51,6 +51,8 @@ export default function Header({ loading, setLoading, speed }) {
             if (!overlay.current || !ctr.current) {
                 return;
             }
+            
+            return;
 
             // Set ctr height
             const { height, width } = ctr.current.getBoundingClientRect();
