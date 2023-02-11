@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import Type from '@/components/type/type';
 import styles from './header.module.scss';
 
+// TODO: Trigger link background on all animation end (make it the last thing to load)
+// NOTE: Currently tited to loading class on or off
 export default function Header({ loading, setLoading, speed }) {
     // State
     const [isBlinking, setIsBlinking] = useState(true);

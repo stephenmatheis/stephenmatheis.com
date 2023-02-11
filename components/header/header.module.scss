@@ -20,6 +20,18 @@
 
         &.loading {
             visibility: hidden;
+
+            .name {
+                &::before {
+                    background-color: transparent;
+                }
+            }
+
+            .title {
+                &::before {
+                    background-color: transparent;
+                }
+            }
         }
 
         .name {

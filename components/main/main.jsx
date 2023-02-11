@@ -3,12 +3,22 @@ import Type from '@/components/type/type';
 import jobs from '@/data/jobs';
 import skills from '@/data/skills';
 import styles from './main.module.scss';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 export default function Main({ type, speed }) {
     const curentYear = new Date().getFullYear();
+    const [showLinkBackground, setShowLinkBackground] = useState(false)
+
+    // TODO: Trigger link background on all animation end (make it the last thing to load)
+    useEffect(() => {
+        setTimeout(() => {
+            setShowLinkBackground(true);
+        }, ('linkedin.com/in/stephenmatheis'.length + 5) * (speed / 2));
+    }, [speed]);
 
     return (
-        <main className={styles['main']}>
+        <main className={classNames(styles['main'], { [styles['link-background']]: showLinkBackground })}>
             {/* Left */}
             <section className={styles['left']}>
                 <div id={styles['experience']}>
@@ -125,26 +135,27 @@ export default function Main({ type, speed }) {
                     </div>
                     <div className={styles['info']}>
                         <div className={styles['link-ctr']}>
-                            <span className={styles['emoji']}>📱 </span>
                             <Link href="tel:9124922522" aria-label="My phone number">
+                                <span className={styles['emoji']}>📱</span>
                                 <Type content="(912) 492-2522" speed={speed * 2 / 3} className={styles['link-text']} />
                             </Link>
                         </div>
                         <div className={styles['link-ctr']}>
-                            <span className={styles['emoji']}>📧 </span>
                             <Link href="mailto:stephen.a.matheis@gmail.com" aria-label="My email address">
+                                <span className={styles['emoji']}>📧</span>
                                 <Type content="stephen.a.matheis@gmail.com" speed={speed / 2} className={styles['link-text']} />
                             </Link>
                         </div>
                         <div className={styles['link-ctr']}>
-                            <span className={styles['emoji']}>👩‍💻 </span>
+
                             <Link href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub' aria-label="My GitHub profile">
+                                <span className={styles['emoji']}>👩‍💻</span>
                                 <Type content="github.com/stephenmatheis" speed={speed / 2} className={styles['link-text']} />
                             </Link>
                         </div>
                         <div className={styles['link-ctr']}>
-                            <span className={styles['emoji']}>💼 </span>
                             <Link href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn' aria-label="My LinkedIn profile">
+                                <span className={styles['emoji']}>💼</span>
                                 <Type content="linkedin.com/in/stephenmatheis" speed={speed / 2} className={styles['link-text']} />
                             </Link>
                         </div>
