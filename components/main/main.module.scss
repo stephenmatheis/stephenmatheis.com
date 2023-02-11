@@ -1,12 +1,14 @@
 @import '../../styles/utilities.module.scss';
 
+$line-height: 18px;
+
 .main {
     display: flex;
     gap: 36px;
 
     * {
         font-size: 12px;
-        line-height: 18px;
+        line-height: $line-height;
     }
 
     // Colors
@@ -54,7 +56,7 @@
     .right {
         display: flex;
         flex-direction: column;
-        gap: 18px;
+        gap: $line-height;
     }
 
     .left {
@@ -69,7 +71,7 @@
         break-inside: avoid;
 
         &:not(:last-child) {
-            margin-bottom: 18px;
+            margin-bottom: $line-height;
         }
 
         .title {
@@ -81,7 +83,7 @@
         }
 
         .date {
-            color: var(--color);
+            color: #9cdcfe;
         }
 
         .lines {
@@ -121,7 +123,10 @@
         }
 
         .major {
-            color: #dcdcaa;
+            .date {
+                color: #9cdcfe;
+                ;
+            }
         }
     }
 
@@ -130,11 +135,31 @@
             display: flex;
             flex-direction: column;
             white-space: nowrap;
+            gap: $line-height;
+            margin-top: $line-height;
 
-            a,
-            a:hover {
-                color: #4ec9b0;
+            a {
+
+                &,
+                &:hover {
+                    color: #4ec9b0;
+                }
             }
+
+        }
+    }
+
+    .link-ctr {
+        display: flex;
+        height: 18px;
+
+        .emoji {
+            font-size: 18px;
+            margin-right: 9px;
+        }
+
+        .link-text {
+            border-bottom: solid 1px #4ec9b0;
         }
     }
 
@@ -144,16 +169,15 @@
             flex-direction: row-reverse;
             gap: 72px;
 
-            @media screen and (max-width: 765px) {
-                & {
-                    flex-direction: column;
-                }
-            }
-
             @media screen and (max-width: 1010px) {
                 & {
                     gap: 36px;
-                    gap: 18px;
+                }
+            }
+
+            @media screen and (max-width: 765px) {
+                & {
+                    flex-direction: column;
                 }
             }
         }

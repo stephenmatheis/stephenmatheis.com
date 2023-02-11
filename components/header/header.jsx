@@ -118,14 +118,14 @@ export default function Header({ loading, setLoading, speed }) {
             <Link href="/" aria-label="Stephen Matheis' personal website">
                 <div className={classNames(styles['profile'], { [styles['loading']]: loading })}>
                     <span ref={toFirstName} className={styles['name']}>Stephen</span>
-                    <span className='space'> </span>
+                    <span className={styles['name']}> </span>
                     <span ref={toLastName} className={styles['name']}>Matheis</span>
-                    <span className='space'> </span>
+                    <span className={styles['name']}> </span>
                     <span className={styles['nowrap']}>
                         <span ref={toFrontEnd} className={styles['title']}>Front-end</span>
-                        <span className='space'> </span>
+                        <span className={styles['title']}> </span>
                         <span ref={toSoftware} className={styles['title']}>Software</span>
-                        <span className='space'> </span>
+                        <span className={styles['title']}> </span>
                         <span ref={toEngineer} className={styles['title']}>Engineer</span>
                     </span>
                 </div>
