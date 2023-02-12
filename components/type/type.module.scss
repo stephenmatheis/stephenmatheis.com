@@ -1,7 +1,8 @@
 .type {
     .suffix {
         color: transparent !important;
-        border-bottom: solid 1px var(--background-color) !important;
+        // border-bottom: solid 1px var(--background-color) !important;
+        border-bottom: solid 1px inherit !important;
     }
 }
 

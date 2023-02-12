@@ -21,6 +21,7 @@ $color: var(--color);
         .link-ctr {
 
             .link-text {
+                border-bottom-color: #4ec9b0;
 
                 &::before {
                     background-color: #4ec9b020;
@@ -140,7 +141,9 @@ $color: var(--color);
 
         .link-text {
             position: relative;
-            border-bottom: solid 1px #4ec9b0;
+            border-bottom: solid 1px;
+            border-bottom-color: transparent;
+            transition: border-bottom-color 450ms ease-in-out;
 
             &:hover {
                 &::before {

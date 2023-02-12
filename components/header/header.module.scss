@@ -25,12 +25,16 @@
         &.link-background {
 
             .name {
+                border-bottom-color: #c586c0;
+
                 &::before {
                     background-color: #c586c020;
                 }
             }
 
             .title {
+                border-bottom-color: #4ec9b0;
+
                 &::before {
                     background-color: #4ec9b020;
                 }
@@ -40,6 +44,8 @@
         .name,
         .title {
             position: relative;
+            border-bottom: solid 1px;
+            transition: border-bottom-color 450ms ease-in-out;
 
             &::before {
                 content: '';
@@ -57,15 +63,14 @@
         }
 
         .name {
-            position: relative;
             color: #c586c0;
-            border-bottom: solid 1px #c586c0;
+            border-bottom-color: transparent;
         }
 
         .title {
             color: #4ec9b0;
             white-space: nowrap;
-            border-bottom: solid 1px #4ec9b0;
+            border-bottom-color: transparent;
         }
     }
 
@@ -77,11 +82,17 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: #000;
 
         // NOTE: In mobile Safari, 100vh is too tall (clips behind bottom tool bar)
         height: 100%;
         width: 100vw;
         padding: 0in .5in;
+        transition: background-color 490ms ease-in-out;
+
+        &.background-color {
+            background-color: var(--background-color);
+        }
 
         .blink {
             color: transparent;
@@ -121,12 +132,14 @@
         }
 
         .name {
+            color: #fff;
             font-size: 120px;
         }
 
         .title {
             font-size: 120px;
-            color: #808080;
+            // color: #808080;
+            color: dimgray;
         }
 
         // VIEWPORT: Widths

@@ -7,6 +7,7 @@ import styles from './header.module.scss';
 export default function Header({ loading, setLoading, speed, showLinkBackground }) {
     // State
     const [isBlinking, setIsBlinking] = useState(true);
+    const [transitionBackgroundColor, setTransitionBackgroundColor] = useState(false);
 
     // Modifiers
     const titleMod = 12.5;
@@ -52,6 +53,8 @@ export default function Header({ loading, setLoading, speed, showLinkBackground 
                 return;
             }
 
+            setTransitionBackgroundColor(true);
+
             // Set ctr height
             const { height, width } = ctr.current.getBoundingClientRect();
 
@@ -59,7 +62,7 @@ export default function Header({ loading, setLoading, speed, showLinkBackground 
             ctr.current.style.width = `${width}px`;
 
             // Animate name and title
-            const duration = speed * 5;
+            const duration = speed * 7;
 
             await Promise.all([
                 anim(fromFirstName, toFirstName, duration),
@@ -132,7 +135,7 @@ export default function Header({ loading, setLoading, speed, showLinkBackground 
             </Link>
             {
                 loading &&
-                <div ref={overlay} className={styles['loading-overlay']}>
+                <div ref={overlay} className={classNames(styles['loading-overlay'], { [styles['background-color']]: transitionBackgroundColor })}>
                     <div ref={ctr} className={styles['ctr']}>
                         {
                             isBlinking ?
