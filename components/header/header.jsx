@@ -4,9 +4,7 @@ import classNames from 'classnames';
 import Type from '@/components/type/type';
 import styles from './header.module.scss';
 
-// TODO: Trigger link background on all animation end (make it the last thing to load)
-// NOTE: Currently tited to loading class on or off
-export default function Header({ loading, setLoading, speed }) {
+export default function Header({ loading, setLoading, speed, showLinkBackground }) {
     // State
     const [isBlinking, setIsBlinking] = useState(true);
 
@@ -118,7 +116,7 @@ export default function Header({ loading, setLoading, speed }) {
     return (
         <header className={styles['header']}>
             <Link href="/" aria-label="Stephen Matheis' personal website">
-                <div className={classNames(styles['profile'], { [styles['loading']]: loading })}>
+                <div className={classNames(styles['profile'], { [styles['loading']]: loading, [styles['link-background']]: showLinkBackground })}>
                     <span ref={toFirstName} className={styles['name']}>Stephen</span>
                     <span className={styles['name']}> </span>
                     <span ref={toLastName} className={styles['name']}>Matheis</span>

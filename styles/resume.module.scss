@@ -1,7 +1,10 @@
 #resume {
     font-family: Menlo, Monaco, 'Courier New', monospace;
-    width: 10.5in;
+    width: 8.5in;
     padding: .5in;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
 
     a {
 
@@ -14,16 +17,12 @@
     @media screen {
         & {
             margin: 0 auto;
-            padding-top: 1in;
-            padding-bottom: 1in;
+            padding-top: .75in;
+            padding-bottom: .75in;
         }
-    }
 
-    @media screen and (max-width: 1010px) {
-        width: 8.5in;
-    }
-
-    @media screen and (max-width: 800px) {
-        width: 100%;
+        @media (max-width: 816px) {
+            width: 100%;
+        }
     }
 }

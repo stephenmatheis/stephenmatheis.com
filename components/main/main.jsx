@@ -6,16 +6,24 @@ import styles from './main.module.scss';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-export default function Main({ type, speed }) {
+export default function Main({ type, speed, showLinkBackground, setShowLinkBackground }) {
     const curentYear = new Date().getFullYear();
-    const [showLinkBackground, setShowLinkBackground] = useState(false)
+
 
     // TODO: Trigger link background on all animation end (make it the last thing to load)
     useEffect(() => {
+        const longestLineLength = Math.max(
+            ...jobs
+                .flatMap(({ lines }) => lines)
+                .map(line => line.length)
+        );
+
+        console.log(longestLineLength);
+
         setTimeout(() => {
             setShowLinkBackground(true);
-        }, ('linkedin.com/in/stephenmatheis'.length + 5) * (speed / 2));
-    }, [speed]);
+        }, (longestLineLength + 10) * (speed / 4));
+    }, [speed, showLinkBackground, setShowLinkBackground]);
 
     return (
         <main className={classNames(styles['main'], { [styles['link-background']]: showLinkBackground })}>

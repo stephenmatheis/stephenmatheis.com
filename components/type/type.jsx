@@ -25,8 +25,6 @@ const Type = forwardRef(function Type2({ content, className, wrapperClass, start
                 const prefix = content.substring(0, nextIndex);
                 const suffix = content.substring(nextIndex);
 
-                // console.log(prefix, index, suffix);
-
                 setPrefix(prefix);
                 setSuffix(suffix);
                 setIndex(nextIndex);

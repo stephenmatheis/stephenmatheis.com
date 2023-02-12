@@ -7,6 +7,7 @@ import styles from '../styles/resume.module.scss';
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
+    const [showLinkBackground, setShowLinkBackground] = useState(false);
     const speed = 70;
 
     useEffect(() => {
@@ -26,8 +27,21 @@ export default function Home() {
                 <meta name="description" content="Stephen Matheis" />
             </Head>
             <div id={styles['resume']} className={classNames({ [styles['loading']]: loading })}>
-                <Header speed={speed} loading={loading} setLoading={setLoading} />
-                {!loading && <Main speed={speed} type={true} />}
+                <Header
+                    speed={speed}
+                    showLinkBackground={showLinkBackground}
+                    loading={loading}
+                    setLoading={setLoading}
+                />
+                {
+                    !loading &&
+                    <Main
+                        speed={speed}
+                        type={true}
+                        showLinkBackground={showLinkBackground}
+                        setShowLinkBackground={setShowLinkBackground}
+                    />
+                }
             </div>
         </>
     )
