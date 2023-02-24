@@ -34,7 +34,10 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
     const toEngineer = useRef();
 
     useEffect(() => {
-        const delay = type ? delayAfter(firstName + lastName, speed) + delayAfter(frontEnd + software + engineer, speed, titleMod * 1.5) : 2000;
+        const delay = type ?
+            delayAfter(firstName + lastName, speed) +
+            delayAfter(frontEnd + software + engineer, speed, titleMod * 1.5) :
+            2000;
 
         setTimeout(async () => {
             if (!overlay.current || !ctr.current) {
