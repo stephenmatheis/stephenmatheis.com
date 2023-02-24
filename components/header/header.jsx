@@ -6,7 +6,7 @@ import styles from './header.module.scss';
 
 export default function Header({ loading, setLoading, speed, showLinkBackground }) {
     // State
-    const [isBlinking, setIsBlinking] = useState(true);
+    const [isBlinking, setIsBlinking] = useState(false); // OFF
     const [transitionBackgroundColor, setTransitionBackgroundColor] = useState(false);
 
     // Modifiers
