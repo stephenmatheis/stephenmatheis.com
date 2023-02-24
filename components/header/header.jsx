@@ -35,7 +35,7 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
 
     useEffect(() => {
         const delay = type ? delayAfter(firstName + lastName, speed) + delayAfter(frontEnd + software + engineer, speed, titleMod * 1.5) : 2000;
-        
+
         setTimeout(async () => {
             if (!overlay.current || !ctr.current) {
                 return;
@@ -109,7 +109,7 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
                     <span ref={toFirstName} className={styles['name']}>{firstName}</span>
                     <span className={styles['name']}> </span>
                     <span ref={toLastName} className={styles['name']}>{lastName}</span>
-                    <span className={styles['name']}> </span>
+                    <span> </span>
                     <span className={styles['nowrap']}>
                         <span ref={toFrontEnd} className={styles['title']}>{frontEnd}</span>
                         <span className={styles['title']}> </span>
