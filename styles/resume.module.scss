@@ -24,5 +24,9 @@
         @media (max-width: 816px) {
             width: 100%;
         }
+
+        @media (max-width: 675px) {
+            gap: 18px;
+        }
     }
 }

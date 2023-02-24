@@ -14,7 +14,7 @@ $color: var(--color);
 
 .main {
     display: flex;
-    gap: 36px;
+    gap: 4ch;
 
     &.link-background {
 
@@ -136,7 +136,7 @@ $color: var(--color);
 
         .emoji {
             font-size: 18px;
-            margin-right: 9px;
+            margin-right: 1ch;
         }
 
         .link-text {
@@ -177,6 +177,7 @@ $color: var(--color);
             @media (max-width: 675px) {
                 & {
                     flex-direction: column;
+                    gap: 18px;
                 }
             }
         }
