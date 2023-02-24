@@ -133,56 +133,12 @@
 
         .name {
             color: #fff;
-            font-size: 120px;
+            font-size: 12vmin;
         }
 
         .title {
-            font-size: 120px;
+            font-size: 12vmin;
             color: dimgray;
-        }
-
-        // iPad
-        @media screen and (max-width: 719px) {
-            .name {
-                font-size: 100px;
-            }
-
-            .title {
-                font-size: 100px;
-            }
-        }
-
-        // iphone 14 Pro Max
-        @media screen and (max-width: 430px) {
-            .name {
-                font-size: 60px;
-            }
-
-            .title {
-                font-size: 60px;
-            }
-        }
-
-        // iPhone 14 Pro
-        @media screen and (max-width: 414px) {
-            .name {
-                font-size: 58px;
-            }
-
-            .title {
-                font-size: 58px;
-            }
-        }
-
-        // iPhone 12
-        @media screen and (max-width: 410px) {
-            .name {
-                font-size: 54px;
-            }
-
-            .title {
-                font-size: 54px;
-            }
         }
     }
 }
