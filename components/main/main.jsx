@@ -3,7 +3,7 @@ import Type from '@/components/type/type';
 import jobs from '@/data/jobs';
 import skills from '@/data/skills';
 import styles from './main.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import classNames from 'classnames';
 
 export default function Main({ type, speed, showLinkBackground, setShowLinkBackground }) {
@@ -31,7 +31,7 @@ export default function Main({ type, speed, showLinkBackground, setShowLinkBackg
             <section className={styles['left']}>
                 <div id={styles['experience']}>
                     <div className={styles['comment']}>
-                        <Type content={'// Experience'} speed={speed / 2} />
+                        {type ? <Type content={'// Experience'} speed={speed / 2} /> : <span>{'// Experience'}</span>}
                     </div>
                     {
                         jobs.map(({ title, company, location, start, end, lines }, index) => {
@@ -84,7 +84,7 @@ export default function Main({ type, speed, showLinkBackground, setShowLinkBackg
             <section className={styles['right']}>
                 <div id={styles['skills']}>
                     <div className={styles['comment']}>
-                        <Type content={'// Skills'} speed={speed} />
+                        {type ? <Type content={'// Skills'} speed={speed / 2} /> : <span>{'// Skills'}</span>}
                     </div>
                     {
                         skills.map(({ name, started }, index) => {
@@ -112,10 +112,10 @@ export default function Main({ type, speed, showLinkBackground, setShowLinkBackg
                 {/* Education */}
                 <div id={styles['education']}>
                     <div className={styles['comment']}>
-                        <Type content={'// Education'} speed={speed / 2} />
+                        {type ? <Type content={'// Education'} speed={speed / 2} /> : <span>{'// Education'}</span>}
                     </div>
                     <div className={styles['college']}>
-                        <Type content="Armstrong Atlantic State University" speed={speed / 2} />
+                        {type ? <Type content="Armstrong Atlantic State University" speed={speed / 2} /> : <span>Armstrong Atlantic State University</span>}
                     </div>
                     <div className={styles['major']}>
                         {
@@ -137,32 +137,47 @@ export default function Main({ type, speed, showLinkBackground, setShowLinkBackg
                 {/* Contact */}
                 <div id={styles['contact']}>
                     <div className={styles['comment']}>
-                        <Type content={'// Contact'} speed={speed / 2} />
+                        {type ? <Type content={'// Contact'} speed={speed / 2} /> : <span>{'// Contact'}</span>}
                     </div>
                     <div className={styles['info']}>
                         <div className={styles['link-ctr']}>
                             <Link href="tel:9124922522" aria-label="My phone number">
                                 <span className={styles['emoji']}>📱</span>
-                                <Type content="(912) 492-2522" speed={speed * 2 / 3} className={styles['link-text']} />
+                                {
+                                    type ?
+                                        <Type content="(912) 492-2522" speed={speed * 2 / 3} className={styles['link-text']} /> :
+                                        <span className={styles['link-text']}>(912) 492-2522</span>
+                                }
                             </Link>
                         </div>
                         <div className={styles['link-ctr']}>
                             <Link href="mailto:stephen.a.matheis@gmail.com" aria-label="My email address">
                                 <span className={styles['emoji']}>📧</span>
-                                <Type content="stephen.a.matheis@gmail.com" speed={speed / 2} className={styles['link-text']} />
+                                {
+                                    type ?
+                                        <Type content="stephen.a.matheis@gmail.com" speed={speed / 2} className={styles['link-text']} /> :
+                                        <span className={styles['link-text']}>stephen.a.matheis@gmail.com</span>
+                                }
                             </Link>
                         </div>
                         <div className={styles['link-ctr']}>
-
                             <Link href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub' aria-label="My GitHub profile">
                                 <span className={styles['emoji']}>👩‍💻</span>
-                                <Type content="github.com/stephenmatheis" speed={speed / 2} className={styles['link-text']} />
+                                {
+                                    type ?
+                                        <Type content="github.com/stephenmatheis" speed={speed / 2} className={styles['link-text']} /> :
+                                        <span className={styles['link-text']}>github.com/stephenmatheis</span>
+                                }
                             </Link>
                         </div>
                         <div className={styles['link-ctr']}>
                             <Link href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn' aria-label="My LinkedIn profile">
                                 <span className={styles['emoji']}>💼</span>
-                                <Type content="linkedin.com/in/stephenmatheis" speed={speed / 2} className={styles['link-text']} />
+                                {
+                                    type ?
+                                        <Type content="linkedin.com/in/stephenmatheis" speed={speed / 2} className={styles['link-text']} /> :
+                                        <span className={styles['link-text']}>linkedin.com/in/stephenmatheis</span>
+                                }
                             </Link>
                         </div>
                     </div>

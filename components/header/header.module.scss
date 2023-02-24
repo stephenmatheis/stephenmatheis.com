@@ -5,6 +5,10 @@
     flex-direction: column;
     width: 100%;
 
+    a {
+        width: fit-content;
+    }
+
     .profile {
         font-size: 12px;
         line-height: 18px;
@@ -39,10 +43,6 @@
                     background-color: #4ec9b020;
                 }
             }
-        }
-
-        a {
-            width: fit-content;
         }
 
         .name,
