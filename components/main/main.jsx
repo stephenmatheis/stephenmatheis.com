@@ -1,29 +1,12 @@
+import classNames from 'classnames';
 import Link from 'next/link';
 import Type from '@/components/type/type';
 import jobs from '@/data/jobs';
 import skills from '@/data/skills';
 import styles from './main.module.scss';
-import { useEffect } from 'react';
-import classNames from 'classnames';
 
-export default function Main({ type, speed, showLinkBackground, setShowLinkBackground }) {
+export default function Main({ type, speed, showLinkBackground }) {
     const curentYear = new Date().getFullYear();
-
-
-    // TODO: Trigger link background on all animation end (make it the last thing to load)
-    useEffect(() => {
-        const longestLineLength = Math.max(
-            ...jobs
-                .flatMap(({ lines }) => lines)
-                .map(line => line.length)
-        );
-
-        console.log(longestLineLength);
-
-        setTimeout(() => {
-            setShowLinkBackground(true);
-        }, (longestLineLength + 10) * (speed / 4));
-    }, [speed, showLinkBackground, setShowLinkBackground]);
 
     return (
         <main className={classNames(styles['main'], { [styles['link-background']]: showLinkBackground })}>

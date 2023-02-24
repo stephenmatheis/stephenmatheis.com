@@ -16,6 +16,7 @@ export default function Home() {
             document.body.style.overflow = 'hidden'
         } else {
             document.body.removeAttribute('style');
+            setShowLinkBackground(true);
         }
 
         return () => document.body.removeAttribute('style');
@@ -41,7 +42,6 @@ export default function Home() {
                         type={shouldType}
                         speed={speed}
                         showLinkBackground={showLinkBackground}
-                        setShowLinkBackground={setShowLinkBackground}
                     />
                 }
             </div>
