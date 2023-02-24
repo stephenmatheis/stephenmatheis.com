@@ -41,6 +41,10 @@
             }
         }
 
+        a {
+            width: fit-content;
+        }
+
         .name,
         .title {
             position: relative;
@@ -75,6 +79,8 @@
     }
 
     .loading-overlay {
+        user-select: none;
+        pointer-events: none;
         position: fixed;
         top: 0px;
         left: 0px;
