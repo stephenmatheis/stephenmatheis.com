@@ -16,6 +16,7 @@ html {
     color: var(--color);
     scrollbar-width: none; // Firefox
     -ms-overflow-style: none; // IE 10+
+    -webkit-text-size-adjust: 100%;
 
     // Blink (Chrome) & WebKit (Safari)
     &::-webkit-scrollbar {
