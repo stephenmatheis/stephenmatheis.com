@@ -88,15 +88,14 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
-        // NOTE: In mobile Safari, 100vh is too tall (clips behind bottom tool bar)
+        background-color: #000;
         height: 100%;
         width: 100vw;
         padding: 0in .5in;
+        transition: background-color 490ms ease-in-out;
 
-        .blink {
-            color: transparent;
-            animation: blink 1000ms step-end infinite;
+        &.background-color {
+            background-color: var(--background-color);
         }
 
         @keyframes blink {

@@ -1,10 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import Type from '@/components/type/type';
 import styles from './header.module.scss';
 
 export default function Header({ loading, setLoading, speed, type, showLinkBackground }) {
+    // // State
+    const [transitionBackgroundColor, setTransitionBackgroundColor] = useState(false);
+
     // Modifiers
     const titleMod = 12.5;
 
@@ -43,6 +46,9 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
             if (!overlay.current || !ctr.current) {
                 return;
             }
+
+            // Fade overlay background
+            setTransitionBackgroundColor(true);
 
             // Set ctr height
             const { height, width } = ctr.current.getBoundingClientRect();
@@ -124,7 +130,7 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
             </Link>
             {
                 loading &&
-                <div ref={overlay} className={styles['loading-overlay']}>
+                <div ref={overlay} className={classNames(styles['loading-overlay'], { [styles['background-color']]: transitionBackgroundColor })}>
                     <div ref={ctr} className={styles['ctr']}>
                         {
                             type ?
