@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 36px;
+    transition: padding 500ms ease-in-out;
 
     a {
 
@@ -21,12 +22,18 @@
             padding-bottom: .75in;
         }
 
-        @media (max-width: 816px) {
+        @media (max-width: 980px) {
+            padding-right: 8ch;
+            padding-left: 8ch
+        }
+
+        @media (max-width: 815px) {
             width: 100%;
         }
 
         @media (max-width: 675px) {
             gap: 18px;
+            padding: 54px 4ch;
         }
     }
 }

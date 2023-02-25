@@ -42,6 +42,21 @@ $color: var(--color);
         }
     }
 
+    @media screen {
+        & {
+            display: flex;
+            flex-direction: row-reverse;
+
+            // @media (max-width: 675px) {
+            @media (max-width: 1024px) {
+                & {
+                    flex-direction: column;
+                    gap: 18px;
+                }
+            }
+        }
+    }
+
     * {
         font-size: 12px;
         line-height: $line-height;
@@ -177,20 +192,6 @@ $color: var(--color);
                     background-color 450ms ease-in-out,
                     top 250ms ease-in-out,
                     left 250ms ease-in-out;
-            }
-        }
-    }
-
-    @media screen {
-        & {
-            display: flex;
-            flex-direction: row-reverse;
-
-            @media (max-width: 675px) {
-                & {
-                    flex-direction: column;
-                    gap: 18px;
-                }
             }
         }
     }
