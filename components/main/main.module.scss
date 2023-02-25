@@ -14,7 +14,19 @@ $color: var(--color);
 
 .main {
     display: flex;
-    gap: 36px;
+    gap: 4ch;
+    opacity: 0;
+    animation: fade-in 450ms ease-in-out 0ms forwards;
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
 
     &.link-background {
 
@@ -25,6 +37,21 @@ $color: var(--color);
 
                 &::before {
                     background-color: #4ec9b020;
+                }
+            }
+        }
+    }
+
+    @media screen {
+        & {
+            display: flex;
+            flex-direction: row-reverse;
+
+            // @media (max-width: 675px) {
+            @media (max-width: 1024px) {
+                & {
+                    flex-direction: column;
+                    gap: 18px;
                 }
             }
         }
@@ -136,7 +163,7 @@ $color: var(--color);
 
         .emoji {
             font-size: 18px;
-            margin-right: 9px;
+            margin-right: 1ch;
         }
 
         .link-text {
@@ -165,19 +192,6 @@ $color: var(--color);
                     background-color 450ms ease-in-out,
                     top 250ms ease-in-out,
                     left 250ms ease-in-out;
-            }
-        }
-    }
-
-    @media screen {
-        & {
-            display: flex;
-            flex-direction: row-reverse;
-
-            @media (max-width: 675px) {
-                & {
-                    flex-direction: column;
-                }
             }
         }
     }
