@@ -36,14 +36,12 @@ export default function Home() {
                     loading={loading}
                     setLoading={setLoading}
                 />
-                {
-                    !loading &&
-                    <Main
-                        type={shouldType}
-                        speed={speed}
-                        showLinkBackground={showLinkBackground}
-                    />
-                }
+                <Main
+                    loading={loading}
+                    type={shouldType}
+                    speed={speed}
+                    showLinkBackground={showLinkBackground}
+                />
             </div>
         </>
     )

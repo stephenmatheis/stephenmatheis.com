@@ -5,9 +5,18 @@ import jobs from '@/data/jobs';
 import skills from '@/data/skills';
 import styles from './main.module.scss';
 
-export default function Main({ type, speed, showLinkBackground }) {
+export default function Main({ type, speed, loading, showLinkBackground }) {
     return (
-        <main className={classNames(styles['main'], { [styles['link-background']]: showLinkBackground })}>
+        <main
+            className={
+                classNames(styles['main'],
+                    {
+                        [styles['link-background']]: showLinkBackground,
+                        [styles['loading']]: loading
+                    }
+                )
+            }
+        >
             {/* Left */}
             <section className={styles['left']}>
                 <div id={styles['experience']}>

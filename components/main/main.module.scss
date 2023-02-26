@@ -16,19 +16,13 @@ $color: var(--color);
     display: flex;
     gap: 4ch;
     opacity: 0;
-    animation: fade-in 450ms ease-in-out 0ms forwards;
 
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
+    &.loading {
+        opacity: 0;
     }
 
     &.link-background {
+        animation: fade-in 450ms ease-in-out 0ms forwards;
 
         .link-ctr {
 
@@ -42,18 +36,13 @@ $color: var(--color);
         }
     }
 
-    @media screen {
-        & {
-            display: flex;
-            flex-direction: row-reverse;
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
 
-            // @media (max-width: 675px) {
-            @media (max-width: 1024px) {
-                & {
-                    flex-direction: column;
-                    gap: 18px;
-                }
-            }
+        to {
+            opacity: 1;
         }
     }
 
@@ -66,11 +55,8 @@ $color: var(--color);
         display: flex;
         flex-direction: column;
         gap: $line-height;
-        max-width: 35ch; // Length of longest line "Armstrong Atlantic State University"
-    }
-
-    .left {
-        flex: 2;
+        // Length of longest line "Armstrong Atlantic State University"
+        max-width: 35ch;
     }
 
     .comment {
@@ -92,8 +78,6 @@ $color: var(--color);
             }
         }
 
- 
-
         .lines {
             display: flex;
             flex-direction: column;
@@ -110,7 +94,7 @@ $color: var(--color);
         .groups-ctr {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: $line-height;
 
             .group {
                 .name {
@@ -125,10 +109,10 @@ $color: var(--color);
                     .item {
                         display: inline-block;
                         border-radius: 4px;
-                        // padding: 0px 1ch;
-                        // background-color: red;
-                        // background-color: #9cdcfe25;
                         color: #9cdcfe;
+                        // Badge style: OFF
+                        // padding: 0px 1ch;
+                        // background-color: #9cdcfe25;
                     }
                 }
             }
@@ -170,21 +154,21 @@ $color: var(--color);
 
     .date {
         color: #9cdcfe;
-        
+
         .location {
             color: var(--color);
         }
     }
 
     .link-ctr {
-        height: 18px;
+        height: $line-height;
 
         a {
             display: flex;
         }
 
         .emoji {
-            font-size: 18px;
+            font-size: $line-height;
             margin-right: 1ch;
         }
 
@@ -201,7 +185,6 @@ $color: var(--color);
                 }
             }
 
-            // TODO: Animate in - shows up as full width while still typing in
             &::before {
                 content: '';
                 position: absolute;
@@ -214,6 +197,31 @@ $color: var(--color);
                     background-color 450ms ease-in-out,
                     top 250ms ease-in-out,
                     left 250ms ease-in-out;
+            }
+        }
+    }
+
+    @media screen {
+        display: flex;
+        flex-direction: row-reverse;
+
+        // NOTE: 
+        // If the viewport is less than 912px wide, the combined left and right 
+        // padding and margin will be less than 96px, or 1 inch on either side.
+        // So we will set the `flex-direction` to `column`. We also unset the
+        // `max-width` property on the right container because it can now span
+        // the full width of the page.  
+        //
+        // There is a corresponding media query in `styles/resume.module.scss that 
+        // removes the 8.5in width on the page and horizontally centers main. 
+        // The main container may now be less than 720px so the page  `width` is
+        // set to `fit-content`.
+        @media (max-width: 911px) {
+            flex-direction: column;
+            gap: $line-height;
+
+            .right {
+                max-width: unset;
             }
         }
     }
