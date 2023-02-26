@@ -16,24 +16,23 @@
     }
 
     @media screen {
-        & {
-            margin: 0 auto;
-            padding-top: .75in;
-            padding-bottom: .75in;
-        }
+        margin: 0 auto;
+        padding-top: .75in;
+        padding-bottom: .75in;
 
-        @media (max-width: 980px) {
-            padding-right: 8ch;
-            padding-left: 8ch
-        }
-
-        @media (max-width: 815px) {
-            width: 100%;
-        }
-
-        @media (max-width: 675px) {
-            gap: 18px;
-            padding: 54px 4ch;
+        // NOTE: 
+        // If the viewport is less than 912px wide, the combined left and right 
+        // padding and margin will be less than 96px, or 1 inch on either side.
+        // So, once the viewport is 911px or less wide, remove the 8.5in width
+        // and horizontally center flex children. 
+        //
+        // There is a corresponding media
+        // query in `components/main/main.module.scss` that will set the
+        // `flex-direction` to `column`. The main container may now be less than 720px
+        // or 8.5in wide so we also set the `width` to `fit-content`.
+        @media (max-width: 911px) {
+            width: fit-content;
+            align-items: center;
         }
     }
 }
