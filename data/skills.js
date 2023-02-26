@@ -1,40 +1,61 @@
 const skills = [
     {
-        "name": "HTML",
-        "started": 2002
+        group: 'Programming Languages',
+        items: [
+            'JavaScript',
+            'TypeScript',
+            'HTML',
+            'CSS',
+            'C#',
+            'PowerShell'
+        ]
     },
     {
-        "name": "CSS",
-        "started": 2002
+        group: 'Frameworks',
+        items: [
+            'React',
+            'React Native',
+            'Next.js',
+            'Node.js'
+        ]
     },
     {
-        "name": "JavaScript",
-        "started": 2002
+        group: 'Libraries',
+        items: [
+            'jQuery',
+            'Bootstrap',
+            'Chart.js',
+            'PnPjs',
+        ]
     },
     {
-        "name": "Node.js",
-        "started": 2014
+        group: 'Tools',
+        items: [
+            'Webpack',
+            'Prettier',
+            'ESlint'
+        ]
     },
     {
-        "name": "React",
-        "started": 2018
+        group: 'Platforms',
+        items: [
+            'Netlify',
+            'Firebase',
+            'Expo',
+            'SharePoint'
+        ]
     },
     {
-        "name": "React Native",
-        "started": 2021
+        group: 'Applications',
+        items: [
+            'VS Code',
+            'Visual Studio',
+            'JetBrains',
+            'Sketch',
+            'Figma',
+            'Principle',
+        ]
     },
-    {
-        "name": "Firebase",
-        "started": 2021
-    },
-    {
-        "name": "C#",
-        "started": 2022
-    },
-    {
-        "name": "Next.js",
-        "started": 2022
-    }
 ];
 
 export default skills;
