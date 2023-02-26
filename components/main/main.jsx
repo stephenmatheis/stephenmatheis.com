@@ -6,8 +6,6 @@ import skills from '@/data/skills';
 import styles from './main.module.scss';
 
 export default function Main({ type, speed, showLinkBackground }) {
-    const curentYear = new Date().getFullYear();
-
     return (
         <main className={classNames(styles['main'], { [styles['link-background']]: showLinkBackground })}>
             {/* Left */}
@@ -70,28 +68,31 @@ export default function Main({ type, speed, showLinkBackground }) {
                     <div className={styles['comment']}>
                         {type ? <Type content={'// Skills'} speed={speed / 2} /> : <span>{'// Skills'}</span>}
                     </div>
-                    {
-                        skills.map(({ name, started }, index) => {
-                            const years = (curentYear - started || 1);
-
-                            return (
-                                <div key={index} className={styles['skill']}>
-                                    <span className={styles['name']}>
-                                        {type ? <Type content={name} speed={speed} /> : name}
-                                    </span>
-                                    <span className={styles['years']}>
-                                        {
-                                            type ?
-                                                <Type content={`${years} ${parseInt(years) === 1 ? 'year' : 'years'}`} speed={speed} /> :
-                                                <>
-                                                    {years} {parseInt(years) === 1 ? 'year' : 'years'}
-                                                </>
-                                        }
-                                    </span>
-                                </div>
-                            )
-                        })
-                    }
+                    <div className={styles['groups-ctr']}>
+                        {
+                            skills.map(({ group, items }, index) => {
+                                return (
+                                    <div key={index} className={styles['group']}>
+                                        <div className={styles['name']}>
+                                            {type ? <Type content={group} speed={speed} /> : group}
+                                        </div>
+                                        <span className={styles['items-ctr']}>
+                                            {
+                                                items.map((item, index) => {
+                                                    return (
+                                                        <span key={item} className={styles['item']}>
+                                                            {type ? <Type content={item} speed={speed} /> : item}
+                                                            {index !== items.length - 1 ? ',' : ''}
+                                                        </span>
+                                                    )
+                                                })
+                                            }
+                                        </span>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
                 {/* Education */}
                 <div id={styles['education']}>

@@ -66,6 +66,7 @@ $color: var(--color);
         display: flex;
         flex-direction: column;
         gap: $line-height;
+        max-width: 35ch; // Length of longest line "Armstrong Atlantic State University"
     }
 
     .left {
@@ -105,16 +106,31 @@ $color: var(--color);
     }
 
     #skills {
-        .skill {
+
+        .groups-ctr {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 18px;
 
-            .name {
-                color: #569cd6;
-            }
+            .group {
+                .name {
+                    color: #569cd6;
+                }
 
-            .years {
-                color: #4fc1ff;
+                .items-ctr {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 1ch;
+
+                    .item {
+                        display: inline-block;
+                        border-radius: 4px;
+                        // padding: 0px 1ch;
+                        // background-color: red;
+                        // background-color: #9cdcfe25;
+                        color: #9cdcfe;
+                    }
+                }
             }
         }
 
