@@ -25,17 +25,18 @@ export default function Main({ type, speed, showLinkBackground }) {
                                         <span> </span>
                                         {type ? <Type content={`@ ${company}`} speed={speed / 2} className={styles['company']} /> : <span className={styles['company']}>@ {company}</span>}
                                     </div>
-                                    <div className="date">
+                                    <div className={styles['date']}>
                                         {
                                             type ?
                                                 <>
                                                     <Type content={`${start} - ${end} `} speed={speed / 2} className={styles['date']} />
-                                                    <Type content={'| '} speed={speed} />
+                                                    <Type content={'| '} speed={speed} className={styles['location']} />
                                                     <Type content={location} speed={speed / 2} />
                                                     <span></span>
                                                 </> :
                                                 <>
-                                                    {start} - {end} | {location}
+                                                    {start} - {end}
+                                                    <span className={styles['location']}> | {location}</span>
                                                 </>
                                         }
                                     </div>
@@ -105,14 +106,14 @@ export default function Main({ type, speed, showLinkBackground }) {
                             type ?
                                 <>
                                     <Type content="2006 - 2007 " speed={speed} className={styles['date']} />
-                                    <Type content={'| '} speed={speed} />
-                                    <Type content="Computer Science" speed={speed} />
+                                    <Type content={'| '} speed={speed} className={styles['location']} />
+                                    <Type content="Computer Science" speed={speed} className={styles['location']} />
                                     <span></span>
                                 </>
                                 :
                                 <>
-                                    <span>2006 - 2007</span>
-                                    <span> | Computer Science</span>
+                                    <span className={styles['date']}>2006 - 2007</span>
+                                    <span className={styles['location']}> | Computer Science</span>
                                 </>
                         }
                     </div>
