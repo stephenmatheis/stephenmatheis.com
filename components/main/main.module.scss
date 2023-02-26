@@ -91,9 +91,7 @@ $color: var(--color);
             }
         }
 
-        .date {
-            color: #9cdcfe;
-        }
+ 
 
         .lines {
             display: flex;
@@ -151,6 +149,14 @@ $color: var(--color);
                 }
             }
 
+        }
+    }
+
+    .date {
+        color: #9cdcfe;
+        
+        .location {
+            color: var(--color);
         }
     }
 
