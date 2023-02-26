@@ -61,6 +61,7 @@ $color: var(--color);
 
     .comment {
         color: #6a9955;
+        margin-bottom: $line-height;
     }
 
     .job {
@@ -104,7 +105,7 @@ $color: var(--color);
                 .items-ctr {
                     display: flex;
                     flex-wrap: wrap;
-                    gap: 1ch;
+                    gap: 0ch 1ch;
 
                     .item {
                         display: inline-block;
@@ -139,7 +140,6 @@ $color: var(--color);
             flex-direction: column;
             white-space: nowrap;
             gap: $line-height;
-            margin-top: $line-height;
 
             a {
 
