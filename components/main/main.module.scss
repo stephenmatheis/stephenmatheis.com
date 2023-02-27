@@ -1,15 +1,7 @@
 @import '../../styles/utilities.module.scss';
+@import '../../styles/dark.theme.module.scss';
 
 $line-height: 18px;
-$gray: #808080;
-$dark-pink: #da70d6;
-$dark-blue: #569cd6;
-$blue: #9cdcfe;
-$yellow: #d7ba7d;
-$orange: #ce9178;
-$gold: #ffd700;
-$lime: #4ec9b0;
-$light-blue: #4fc1ff;
 $color: var(--color);
 
 .main {
@@ -27,10 +19,10 @@ $color: var(--color);
         .link-ctr {
 
             .link-text {
-                border-bottom-color: #4ec9b0;
+                border-bottom-color: $lime;
 
                 &::before {
-                    background-color: #4ec9b020;
+                    background-color: $lime-20;
                 }
             }
         }
@@ -64,7 +56,7 @@ $color: var(--color);
     }
 
     .comment {
-        color: #6a9955;
+        color: $green;
         margin-bottom: $line-height;
     }
 
@@ -76,10 +68,10 @@ $color: var(--color);
         }
 
         .title {
-            color: #569cd6;
+            color: $dark-blue;
 
             .company {
-                color: #dcdcaa
+                color: $light-yellow;
             }
         }
 
@@ -89,7 +81,7 @@ $color: var(--color);
 
             .line {
                 display: flex;
-                color: #ce9178;
+                color: $orange;
             }
         }
     }
@@ -103,7 +95,7 @@ $color: var(--color);
 
             .group {
                 .name {
-                    color: #569cd6;
+                    color: $dark-blue;
                 }
 
                 .items-ctr {
@@ -114,10 +106,10 @@ $color: var(--color);
                     .item {
                         display: inline-block;
                         border-radius: 4px;
-                        color: #9cdcfe;
+                        color: $blue;
                         // Badge style: OFF
                         // padding: 0px 1ch;
-                        // background-color: #9cdcfe25;
+                        // background-color: $blue-20;
                     }
                 }
             }
@@ -127,12 +119,12 @@ $color: var(--color);
 
     #education {
         .college {
-            color: #569cd6;
+            color: $dark-blue;
         }
 
         .major {
             .date {
-                color: #9cdcfe;
+                color: $blue;
                 ;
             }
         }
@@ -149,7 +141,7 @@ $color: var(--color);
 
                 &,
                 &:hover {
-                    color: #4ec9b0;
+                    color: $lime;
                 }
             }
 
@@ -157,7 +149,7 @@ $color: var(--color);
     }
 
     .date {
-        color: #9cdcfe;
+        color: $blue;
 
         .location {
             color: var(--color);

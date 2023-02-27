@@ -1,4 +1,5 @@
 @import '../../styles/utilities.module.scss';
+@import '../../styles/dark.theme.module.scss';
 
 .header {
     display: flex;
@@ -29,18 +30,18 @@
         &.link-background {
 
             .name {
-                border-bottom-color: #c586c0;
+                border-bottom-color: $dark-pink;
 
                 &::before {
-                    background-color: #c586c020;
+                    background-color: $dark-pink-20;
                 }
             }
 
             .title {
-                border-bottom-color: #4ec9b0;
+                border-bottom-color: $lime;
 
                 &::before {
-                    background-color: #4ec9b020;
+                    background-color: $lime-20;
                 }
             }
         }
@@ -137,7 +138,7 @@
 
         .title {
             font-size: 12vmin;
-            color: dimgray;
+            color: $gray;
         }
     }
 }
