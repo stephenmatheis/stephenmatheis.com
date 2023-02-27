@@ -4,8 +4,13 @@
     padding: .5in;
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 54px;
     transition: padding 500ms ease-in-out;
+
+
+    @media print {
+        gap: 36px;
+    }
 
     a {
 
@@ -33,6 +38,11 @@
         @media (max-width: 911px) {
             width: fit-content;
             align-items: center;
+        }
+
+        @media (max-width: 500px) {
+            padding-left: .25in;
+            padding-right: .25in;
         }
     }
 }

@@ -54,9 +54,13 @@ $color: var(--color);
     .right {
         display: flex;
         flex-direction: column;
-        gap: $line-height;
+        gap: $line-height * 2;
         // Length of longest line "Armstrong Atlantic State University"
         max-width: 35ch;
+    }
+
+    .ctr:not(:only-child) {
+        margin-bottom: $line-height;
     }
 
     .comment {
@@ -202,23 +206,23 @@ $color: var(--color);
     }
 
     @media screen {
-        display: flex;
         flex-direction: row-reverse;
 
         // NOTE: 
         // If the viewport is less than 912px wide, the combined left and right 
-        // padding and margin will be less than 96px, or 1 inch on either side.
-        // So we will set the `flex-direction` to `column`. We also unset the
-        // `max-width` property on the right container because it can now span
-        // the full width of the page.  
+        // padding and margin will be less than 96px (1 inch) on either side.
+        // So, we'll set `flex-direction` to `column` and `max-width` to unset
+        // because it can now span the full width of the page.  
         //
-        // There is a corresponding media query in `styles/resume.module.scss that 
-        // removes the 8.5in width on the page and horizontally centers main. 
+        // There is a corresponding media query in `styles/resume.module.scss` that 
+        // replaces the 8.5in width with `fit-content` and add `align-items: center`
+        // which horizontally centers main. 
+        // 
         // The main container may now be less than 720px so the page  `width` is
         // set to `fit-content`.
         @media (max-width: 911px) {
             flex-direction: column;
-            gap: $line-height;
+            gap: $line-height * 2;
 
             .right {
                 max-width: unset;
