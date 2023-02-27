@@ -46,11 +46,8 @@ const skills = [
         ]
     },
     {
-        group: 'Applications',
+        group: 'Design',
         items: [
-            'VS Code',
-            'Visual Studio',
-            'JetBrains',
             'Sketch',
             'Figma',
             'Principle',
