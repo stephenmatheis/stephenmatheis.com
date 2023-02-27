@@ -12,10 +12,8 @@ export default function Home() {
     const shouldType = false;
 
     useEffect(() => {
-        if (loading) {
-            document.body.style.overflow = 'hidden'
-        } else {
-            document.body.removeAttribute('style');
+        if (!loading) {
+            document.body.classList.remove('hidden');
             setShowLinkBackground(true);
         }
 

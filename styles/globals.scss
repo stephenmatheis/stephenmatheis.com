@@ -17,16 +17,15 @@ html {
     scrollbar-width: none; // Firefox
     -ms-overflow-style: none; // IE 10+
     -webkit-text-size-adjust: 100%;
-
-    // Blink (Chrome) & WebKit (Safari)
-    &::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-    }
 }
 
 body {
     background-color: var(--background-color);
     margin: 0;
     padding: 0;
+    overflow: overlay;
+
+    &.hidden {
+        overflow: hidden;
+    }
 }
