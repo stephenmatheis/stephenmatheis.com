@@ -14,9 +14,10 @@ const skills = [
         group: 'Frameworks',
         items: [
             'React',
-            'React Native',
             'Next.js',
-            'Node.js'
+            'Node.js',
+            'React Native',
+            'Expo',
         ]
     },
     {
@@ -41,7 +42,6 @@ const skills = [
         items: [
             'Netlify',
             'Firebase',
-            'Expo',
             'SharePoint'
         ]
     },
