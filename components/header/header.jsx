@@ -5,10 +5,10 @@ import Type from '@/components/type/type';
 import styles from './header.module.scss';
 
 export default function Header({ loading, setLoading, speed, type, showLinkBackground }) {
-    // // State
+    // State
     const [transitionBackgroundColor, setTransitionBackgroundColor] = useState(false);
 
-    // Modifiers
+    // Typing speed modifiers
     const titleMod = 12.5;
 
     // Name and Title
@@ -37,6 +37,8 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
     const toEngineer = useRef();
 
     useEffect(() => {
+        return;
+
         const delay = type ?
             delayAfter(firstName + lastName, speed) +
             delayAfter(frontEnd + software + engineer, speed, titleMod * 1.5) :
@@ -112,22 +114,24 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
     }, [loading, setLoading, speed, type]);
 
     return (
-        <header className={styles['header']}>
-            <Link href="/" aria-label="Stephen Matheis' personal website">
-                <div className={classNames(styles['profile'], { [styles['loading']]: loading, [styles['link-background']]: showLinkBackground })}>
-                    <span ref={toFirstName} className={styles['name']}>{firstName}</span>
-                    <span className={styles['name']}> </span>
-                    <span ref={toLastName} className={styles['name']}>{lastName}</span>
-                    <span> </span>
-                    <span className={styles['nowrap']}>
-                        <span ref={toFrontEnd} className={styles['title']}>{frontEnd}</span>
-                        <span className={styles['title']}> </span>
-                        <span ref={toSoftware} className={styles['title']}>{software}</span>
-                        <span className={styles['title']}> </span>
-                        <span ref={toEngineer} className={styles['title']}>{engineer}</span>
-                    </span>
-                </div>
-            </Link>
+        <>
+            <header className={styles['header']}>
+                <Link href="/" aria-label="Stephen Matheis' personal website">
+                    <div className={classNames(styles['profile'], { [styles['loading']]: loading, [styles['link-background']]: showLinkBackground })}>
+                        <span ref={toFirstName} className={styles['name']}>{firstName}</span>
+                        <span className={styles['name']}> </span>
+                        <span ref={toLastName} className={styles['name']}>{lastName}</span>
+                        <span> </span>
+                        <span className={styles['nowrap']}>
+                            <span ref={toFrontEnd} className={styles['title']}>{frontEnd}</span>
+                            <span className={styles['title']}> </span>
+                            <span ref={toSoftware} className={styles['title']}>{software}</span>
+                            <span className={styles['title']}> </span>
+                            <span ref={toEngineer} className={styles['title']}>{engineer}</span>
+                        </span>
+                    </div>
+                </Link>
+            </header>
             {
                 loading &&
                 <div ref={overlay} className={classNames(styles['loading-overlay'], { [styles['background-color']]: transitionBackgroundColor })}>
@@ -155,7 +159,7 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
                     </div>
                 </div>
             }
-        </header>
+        </>
     );
 }
 

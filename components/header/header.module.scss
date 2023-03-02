@@ -78,67 +78,67 @@
             border-bottom-color: transparent;
         }
     }
+}
 
-    .loading-overlay {
-        user-select: none;
-        pointer-events: none;
-        position: fixed;
-        top: 0px;
-        left: 0px;
+.loading-overlay {
+    user-select: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    height: 100%;
+    width: 100vw;
+    padding: 0in .5in;
+    transition: background-color 490ms ease-in-out;
+    z-index: 10;
+
+    &.background-color {
+        background-color: var(--background-color);
+    }
+
+    @keyframes blink {
+
+        from,
+        to {
+            color: transparent;
+        }
+
+        50% {
+            color: inherit;
+        }
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+
+    .ctr {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: #000;
-        height: 100%;
-        width: 100vw;
-        padding: 0in .5in;
-        transition: background-color 490ms ease-in-out;
+        justify-content: flex-end;
+    }
 
-        &.background-color {
-            background-color: var(--background-color);
-        }
+    .line-wrapper {
+        line-height: normal;
+    }
 
-        @keyframes blink {
+    .name,
+    .title {
+        line-height: unset;
+        transition: font-size 300ms ease-in-out;
+    }
 
-            from,
-            to {
-                color: transparent;
-            }
+    .name {
+        color: #fff;
+        font-size: 12vmin;
+    }
 
-            50% {
-                color: inherit;
-            }
-        }
-
-        .hidden {
-            visibility: hidden;
-        }
-
-        .ctr {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
-
-        .line-wrapper {
-            line-height: normal;
-        }
-
-        .name,
-        .title {
-            line-height: unset;
-            transition: font-size 300ms ease-in-out;
-        }
-
-        .name {
-            color: #fff;
-            font-size: 12vmin;
-        }
-
-        .title {
-            font-size: 12vmin;
-            color: $gray;
-        }
+    .title {
+        font-size: 12vmin;
+        color: $gray;
     }
 }
