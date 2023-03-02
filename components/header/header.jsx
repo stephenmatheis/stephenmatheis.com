@@ -37,8 +37,6 @@ export default function Header({ loading, setLoading, speed, type, showLinkBackg
     const toEngineer = useRef();
 
     useEffect(() => {
-        return;
-
         const delay = type ?
             delayAfter(firstName + lastName, speed) +
             delayAfter(frontEnd + software + engineer, speed, titleMod * 1.5) :
