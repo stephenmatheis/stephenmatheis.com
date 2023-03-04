@@ -1,6 +1,10 @@
 @import '../../styles/utilities.module.scss';
 @import '../../styles/dark.theme.module.scss';
 
+$font-size: var(--font-size);
+$line-height: var(--line-height);
+$color: var(--color);
+
 .header {
     display: flex;
     flex-direction: column;
@@ -11,8 +15,8 @@
     }
 
     .profile {
-        font-size: 12px;
-        line-height: 18px;
+        font-size: $font-size;
+        line-height: $line-height;
 
         &:hover {
 

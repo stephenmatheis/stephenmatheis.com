@@ -1,7 +1,7 @@
 @import '../../styles/utilities.module.scss';
 @import '../../styles/dark.theme.module.scss';
 
-$line-height: 18px;
+$line-height: var(--line-height);
 $color: var(--color);
 
 .main {
@@ -46,7 +46,7 @@ $color: var(--color);
     .right {
         display: flex;
         flex-direction: column;
-        gap: $line-height * 2;
+        gap: calc($line-height * 2);
         max-width: 34ch;
     }
 
@@ -213,7 +213,7 @@ $color: var(--color);
         // set to `fit-content`.
         @media (max-width: 911px) {
             flex-direction: column;
-            gap: $line-height * 2;
+            gap: calc($line-height * 2);
 
             .right {
                 max-width: unset;
