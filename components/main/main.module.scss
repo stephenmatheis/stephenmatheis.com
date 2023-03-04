@@ -47,8 +47,7 @@ $color: var(--color);
         display: flex;
         flex-direction: column;
         gap: $line-height * 2;
-        // Length of longest line "Armstrong Atlantic State University"
-        max-width: 35ch;
+        max-width: 34ch;
     }
 
     .ctr:not(:only-child) {
