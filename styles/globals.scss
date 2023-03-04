@@ -3,6 +3,11 @@
     --color: #d4d4d4;
     --line-height: 18px;
     --font-size: 12px;
+
+    @media print {
+        --line-height: 16.5px;
+        --font-size: 11px;
+    }
 }
 
 * {

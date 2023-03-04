@@ -1,6 +1,7 @@
 @import '../../styles/utilities.module.scss';
 @import '../../styles/dark.theme.module.scss';
 
+$font-size: var(--font-size);
 $line-height: var(--line-height);
 $color: var(--color);
 
@@ -39,7 +40,7 @@ $color: var(--color);
     }
 
     * {
-        font-size: 12px;
+        font-size: $font-size;
         line-height: $line-height;
     }
 
