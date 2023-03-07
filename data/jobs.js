@@ -16,7 +16,7 @@ const jobs = [
         "start": "May 2022",
         "end": "Jul 2022",
         "lines": [
-            "Application development in C# with .NET Core, Unity, and MongoDB"
+            "Application development in C#"
         ]
     },
     {
@@ -26,7 +26,7 @@ const jobs = [
         "start": "Apr 2021",
         "end": "Present",
         "lines": [
-            "Developed Robi, a JavaScript single-page application framework"
+            "Developed Robi"
         ]
     },
     {
@@ -38,8 +38,8 @@ const jobs = [
         "languages": "TypeScript, JavaScript, HTML, CSS",
         "stack": "React, React Native, Expo, Firebase, Node, SharePoint",
         "lines": [
-            "Developed a mobile application with React Native, Expo and Firebase, and a companion web app with React and Firebase hosted on Netlify",
-            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs"
+            "Developed a mobile application with React Native",
+            "Developed web applications"
         ]
     },
     {
@@ -51,7 +51,7 @@ const jobs = [
         "languages": "JavaScript, HTML, CSS",
         "stack": "Node, SharePoint",
         "lines": [
-            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs"
+            "Developed web applications"
         ]
     },
     {
@@ -63,7 +63,7 @@ const jobs = [
         "languages": "JavaScript, HTML, CSS",
         "stack": "Netlify, Node, Robi",
         "lines": [
-            "Started Robi, a JavaScript single-page application framework"
+            "Started Robi, a SPA framework"
         ]
     },
     {
@@ -73,8 +73,7 @@ const jobs = [
         "start": "September 2016",
         "end": "Oct 2017",
         "lines": [
-            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs",
-            "Developed Node.js tools to migrate Lotus Notes applications to SharePoint 2010"
+            "Developed web applications",
         ]
     },
     {
@@ -94,8 +93,7 @@ const jobs = [
         "start": "Nov 2014",
         "end": "May 2016",
         "lines": [
-            "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs",
-            "Developed tools to export SharePoint 2010 sites in XML"
+            "Developed web applications",
         ]
     }
 ]
