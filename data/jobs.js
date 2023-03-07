@@ -38,7 +38,7 @@ const jobs = [
         "languages": "TypeScript, JavaScript, HTML, CSS",
         "stack": "React, React Native, Expo, Firebase, Node, SharePoint",
         "lines": [
-            "Devoloped a mobile app in React Native with Expo and Firebase",
+            "Developed a mobile application with React Native, Expo and Firebase, and a companion web app with React and Firebase hosted on Netlify",
             "Developed web applications in JavaScript, HTML, and CSS with RESTful APIs"
         ]
     },
