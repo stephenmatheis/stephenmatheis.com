@@ -58,6 +58,7 @@ $color: var(--color);
 
             &::before {
                 content: '';
+                pointer-events: none;
                 position: absolute;
                 top: 6px;
                 left: 3px;
