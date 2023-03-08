@@ -4,7 +4,7 @@ const projects = [
         link: 'https://github.com/robijs',
         gif: '',
         image: '',
-        description: 'Create client-side SharePoint apps. Supports ES6 modules. Built-in methods for working with the SharePoint REST API. Develop locally with HMR and JSON Server.'
+        description: 'Create client-side SharePoint apps. Supports ES modules. Built-in methods for working with the SharePoint REST API. Develop locally with HMR and JSON Server.'
     },
     {
         name: 'Command Palette',
