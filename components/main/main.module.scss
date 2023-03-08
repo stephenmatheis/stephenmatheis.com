@@ -141,10 +141,11 @@ $color: var(--color);
     }
 
     .date {
-        color: $blue;
+        color: $light-green;
 
         .location {
-            color: var(--color);
+            // color: var(--color);
+            color: $muted;
         }
     }
 
