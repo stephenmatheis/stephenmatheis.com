@@ -108,7 +108,7 @@ function Projects({ type, speed }) {
                     return (
                         <div key={index} className={styles['project-ctr']}>
                             <div className={styles['link-ctr']}>
-                                <Link href={link} aria-label={name}>
+                                <Link href={link} aria-label={name} target="_blank">
                                     {
                                         type ?
                                             <Type content={name} speed={speed * 2 / 3} className={styles['link-text']} /> :
