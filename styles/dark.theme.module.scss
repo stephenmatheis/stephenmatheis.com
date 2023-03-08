@@ -1,5 +1,6 @@
 $blue: #9cdcfe;
-$blue-20: #9cdcfe;
+$blue-10: #9cdcfe10;
+$blue-20: #9cdcfe20;
 $dark-blue: #569cd6;
 $gold: #ffd700;
 $gray: #696969;
@@ -13,3 +14,13 @@ $dark-pink: #c586c0;
 $dark-pink-20: #c586c020;
 $yellow: #d7ba7d;
 $light-yellow: #dcdcaa;
+
+// DEV: Simplify colors
+
+// $blue: var(--color);
+// $dark-blue: f5f5f5;
+// $green: #696969;
+// $lime: #569cd6;
+// $dark-pink: #569cd6;
+// $lime-20: #569cd620;
+// $dark-pink-20: #569cd620;

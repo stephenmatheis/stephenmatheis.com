@@ -72,12 +72,12 @@ $color: var(--color);
         }
 
         .name {
-            color: #c586c0;
+            color: $dark-pink;
             border-bottom-color: transparent;
         }
 
         .title {
-            color: #4ec9b0;
+            color: $lime;
             white-space: nowrap;
             border-bottom-color: transparent;
         }

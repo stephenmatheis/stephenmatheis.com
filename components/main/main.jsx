@@ -25,13 +25,13 @@ function Experience({ type, speed }) {
                                     type ?
                                         <>
                                             <Type content={`${start} - ${end} `} speed={speed / 2} className={styles['date']} />
-                                            <Type content={'| '} speed={speed} className={styles['location']} />
+                                            <Type content={'• '} speed={speed} className={styles['location']} />
                                             <Type content={location} speed={speed / 2} />
                                             <span></span>
                                         </> :
                                         <>
                                             {start} - {end}
-                                            <span className={styles['location']}> | {location}</span>
+                                            <span className={styles['location']}> • {location}</span>
                                         </>
                                 }
                             </div>
