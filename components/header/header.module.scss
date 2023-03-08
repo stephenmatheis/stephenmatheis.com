@@ -34,18 +34,18 @@ $color: var(--color);
         &.link-background {
 
             .name {
-                border-bottom-color: $dark-pink;
+                border-bottom-color: $name;
 
                 &::before {
-                    background-color: $dark-pink-20;
+                    background-color: $name-20;
                 }
             }
 
             .title {
-                border-bottom-color: $lime;
+                border-bottom-color: $link;
 
                 &::before {
-                    background-color: $lime-20;
+                    background-color: $link-20;
                 }
             }
         }
@@ -73,12 +73,12 @@ $color: var(--color);
         }
 
         .name {
-            color: $dark-pink;
+            color: $name;
             border-bottom-color: transparent;
         }
 
         .title {
-            color: $lime;
+            color: $link;
             white-space: nowrap;
             border-bottom-color: transparent;
         }
@@ -144,6 +144,6 @@ $color: var(--color);
 
     .title {
         font-size: 12vmin;
-        color: $gray;
+        color: $title;
     }
 }

@@ -1,28 +1,21 @@
-$blue: #9cdcfe;
-$blue-10: #9cdcfe10;
-$blue-20: #9cdcfe20;
-$dark-blue: #569cd6;
-$gold: #ffd700;
-$gray: #696969;
+$skill: #9cdcfe;
+$skill-10: #9cdcfe10;
+$skill-20: #9cdcfe20;
+$heading: #569cd6;
+$title: #696969;
 $muted: #808080;
-$green: #6a9955;
-$light-green: #b5cea8;
-$light-blue: #4fc1ff;
-$lime: #4ec9b0;
-$lime-20: #4ec9b020;
-$orange: #ce9178;
-$pink: #da70d6;
-$dark-pink: #c586c0;
-$dark-pink-20: #c586c020;
-$yellow: #d7ba7d;
-$light-yellow: #dcdcaa;
+$comment: #6a9955;
+$date: #b5cea8;
+$link: #4ec9b0;
+$link-20: #4ec9b020;
+$text: #ce9178;
+$name: #c586c0;
+$name-20: #c586c020;
+$company: #dcdcaa;
 
 // DEV: Simplify colors
 
-// $blue: var(--color);
-// $dark-blue: f5f5f5;
-// $green: #696969;
-// $lime: #569cd6;
-// $dark-pink: #569cd6;
-// $lime-20: #569cd620;
-// $dark-pink-20: #569cd620;
+// $skill: var(--color);
+// $text: var(--color);
+// $company: var(--color);
+// $date: var(--color);

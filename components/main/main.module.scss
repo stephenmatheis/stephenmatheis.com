@@ -21,10 +21,10 @@ $color: var(--color);
         .link-ctr {
 
             .link-text {
-                border-bottom-color: $lime;
+                border-bottom-color: $link;
 
                 &::before {
-                    background-color: $lime-20;
+                    background-color: $link-20;
                 }
             }
         }
@@ -57,7 +57,7 @@ $color: var(--color);
     }
 
     .comment {
-        color: $green;
+        color: $comment;
         margin-bottom: $line-height;
     }
 
@@ -69,10 +69,10 @@ $color: var(--color);
         }
 
         .title {
-            color: $dark-blue;
+            color: $heading;
 
             .company {
-                color: $light-yellow;
+                color: $company;
             }
         }
 
@@ -82,7 +82,7 @@ $color: var(--color);
 
             .line {
                 display: flex;
-                color: $orange;
+                color: $text;
             }
         }
     }
@@ -96,7 +96,7 @@ $color: var(--color);
 
             .group {
                 .name {
-                    color: $dark-blue;
+                    color: $heading;
                 }
 
                 .items-ctr {
@@ -107,7 +107,7 @@ $color: var(--color);
                     .item {
                         display: inline-block;
                         border-radius: 4px;
-                        color: $blue;
+                        color: $skill;
                     }
                 }
             }
@@ -129,19 +129,15 @@ $color: var(--color);
             display: flex;
             flex-direction: column;
             gap: $line-height;
-            
+
             &:not(:last-child) {
                 margin-bottom: $line-height;
             }
-
-            // .description {
-            //     color: $blue;
-            // }
         }
     }
 
     .date {
-        color: $light-green;
+        color: $date;
 
         .location {
             // color: var(--color);
@@ -163,7 +159,7 @@ $color: var(--color);
 
             &,
             &:hover {
-                color: $lime;
+                color: $link;
             }
         }
 
