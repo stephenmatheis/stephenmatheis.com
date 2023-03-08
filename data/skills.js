@@ -6,7 +6,8 @@ const skills = [
             'HTML',
             'CSS/Sass',
             'C#',
-            'PowerShell'
+            'PowerShell',
+            'Python'
         ]
     },
     {
@@ -14,7 +15,6 @@ const skills = [
         items: [
             'React',
             'Next.js',
-            'Node.js',
             'React Native',
             'Expo',
         ]
@@ -25,14 +25,17 @@ const skills = [
             'jQuery',
             'Bootstrap',
             'Chart.js',
+            'PnPjs',
         ]
     },
     {
         group: 'Tools',
         items: [
+            'Git',
+            'Node.js',
             'Webpack',
             'Prettier',
-            'ESlint'
+            'ESLint'
         ]
     },
     {

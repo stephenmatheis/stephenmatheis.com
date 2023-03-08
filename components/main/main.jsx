@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Type from '@/components/type/type';
 import jobs from '@/data/jobs';
 import skills from '@/data/skills';
+import projects from '@/data/projects';
 import styles from './main.module.scss';
 
 function Experience({ type, speed }) {
@@ -96,31 +97,30 @@ function Skills({ type, speed }) {
     );
 }
 
-function Education({ type, speed }) {
+function Projects({ type, speed }) {
     return (
-        <div id={styles['education']}>
+        <div id={styles['projects']}>
             <div className={styles['comment']}>
-                {type ? <Type content={'// Education'} speed={speed / 2} /> : <span>{'// Education'}</span>}
+                {type ? <Type content={'// Projects'} speed={speed / 2} /> : <span>{'// Projects'}</span>}
             </div>
-            <div className={styles['college']}>
-                {type ? <Type content="Armstrong Atlantic State University" speed={speed / 2} /> : <span>Armstrong Atlantic State University</span>}
-            </div>
-            <div className={styles['major']}>
-                {
-                    type ?
-                        <>
-                            <Type content="2006 - 2007 " speed={speed} className={styles['date']} />
-                            <Type content={'| '} speed={speed} className={styles['location']} />
-                            <Type content="Computer Science" speed={speed} className={styles['location']} />
-                            <span></span>
-                        </>
-                        :
-                        <>
-                            <span className={styles['date']}>2006 - 2007</span>
-                            <span className={styles['location']}> | Computer Science</span>
-                        </>
-                }
-            </div>
+            {
+                projects.map(({ name, link, description }, index) => {
+                    return (
+                        <div key={index} className={styles['project-ctr']}>
+                            <div className={styles['link-ctr']}>
+                                <Link href={link} aria-label={name}>
+                                    {
+                                        type ?
+                                            <Type content={name} speed={speed * 2 / 3} className={styles['link-text']} /> :
+                                            <span className={styles['link-text']}>{name}</span>
+                                    }
+                                </Link>
+                            </div>
+                            <div className={styles['description']}>{description}</div>
+                        </div>
+                    )
+                })
+            }
         </div>
     );
 }
@@ -194,7 +194,7 @@ export default function Main({ type, speed, loading, showLinkBackground }) {
             </section>
             <section className={styles['right']}>
                 <Skills type={type} speed={speed} />
-                {/* <Education type={type} speed={speed} /> */}
+                <Projects type={type} speed={speed} />
                 <Contact type={type} speed={speed} />
             </section>
         </main>

@@ -115,34 +115,28 @@ $color: var(--color);
 
     }
 
-    #education {
-        .college {
-            color: $dark-blue;
-        }
-
-        .major {
-            .date {
-                color: $blue;
-                ;
-            }
-        }
-    }
-
     #contact {
         .info {
             display: flex;
             flex-direction: column;
             white-space: nowrap;
             gap: $line-height;
+        }
+    }
 
-            a {
-
-                &,
-                &:hover {
-                    color: $lime;
-                }
+    #projects {
+        .project-ctr {
+            display: flex;
+            flex-direction: column;
+            gap: $line-height;
+            
+            &:not(:last-child) {
+                margin-bottom: $line-height;
             }
 
+            // .description {
+            //     color: $blue;
+            // }
         }
     }
 
@@ -154,16 +148,22 @@ $color: var(--color);
         }
     }
 
+    .emoji {
+        font-size: $line-height;
+        margin-right: 1ch;
+    }
+
+
     .link-ctr {
         height: $line-height;
 
         a {
             display: flex;
-        }
 
-        .emoji {
-            font-size: $line-height;
-            margin-right: 1ch;
+            &,
+            &:hover {
+                color: $lime;
+            }
         }
 
         .link-text {
