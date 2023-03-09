@@ -14,11 +14,11 @@ const projects = [
         description: 'Embeddable React component to search for and run commands from within an app.'
     },
     {
-        name: 'Cities',
-        link: 'https://cities-react.netlify.app',
+        name: 'Samepage',
+        link: 'https://samepage.dev',
         gif: '',
         image: '',
-        description: 'A simple animated world clock.'
+        description: 'A shameless proof-of-concept Basecamp clone.'
     }
 ]
 
