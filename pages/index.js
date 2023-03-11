@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-// import { Space_Mono } from 'next/font/google';
 import classNames from 'classnames';
 import Header from '@/components/header/header';
 import Main from '@/components/main/main';
 import styles from '../styles/resume.module.scss';
-
-// const font = Space_Mono({ subsets: ['latin'] })
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
