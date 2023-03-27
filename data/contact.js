@@ -7,8 +7,8 @@ const contact = [
     },
     {
         emoji: '📧',
-        href: 'mailto:stephen.a.matheis@gmail.com',
-        text: 'stephen.a.matheis@gmail.com',
+        href: 'mailto:stephen@matheis.email',
+        text: 'stephen@matheis.email',
         label: 'My email address'
     },
     {
