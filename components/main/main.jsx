@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import Link from 'next/link';
-import Type from '@/components/type/type';
+import LinkCtr from '@/components/link-ctr';
+import Type from '@/components/type';
 import jobs from '@/data/jobs';
 import skills from '@/data/skills';
 import projects from '@/data/projects';
@@ -108,15 +108,7 @@ function Projects({ type, speed }) {
                 projects.map(({ name, link, description }, index) => {
                     return (
                         <div key={index} className={styles['project-ctr']}>
-                            <div className={styles['link-ctr']}>
-                                <Link href={link} aria-label={name} target="_blank">
-                                    {
-                                        type ?
-                                            <Type content={name} speed={speed * 2 / 3} className={styles['link-text']} /> :
-                                            <span className={styles['link-text']}>{name}</span>
-                                    }
-                                </Link>
-                            </div>
+                            <LinkCtr text={name} href={link} />
                             <div className={styles['description']}>{description}</div>
                         </div>
                     )
@@ -126,7 +118,7 @@ function Projects({ type, speed }) {
     );
 }
 
-function Contact({ type, speed }) {
+function Contact({ type, speed, fade }) {
     return (
         <div id={styles['contact']}>
             <div className={styles['comment']}>
@@ -136,16 +128,16 @@ function Contact({ type, speed }) {
                 {
                     contact.map(({ emoji, href, text, label }) => {
                         return (
-                            <div key={text} className={styles['link-ctr']}>
-                                <Link href={href} aria-label={label}>
-                                    {emoji && <span className={styles['emoji']}>{emoji}</span>}
-                                    {
-                                        type ?
-                                            <Type content={text} speed={speed * 2 / 3} className={styles['link-text']} /> :
-                                            <span className={styles['link-text']}>{text}</span>
-                                    }
-                                </Link>
-                            </div>
+                            <LinkCtr
+                                key={text}
+                                emoji={emoji}
+                                href={href}
+                                text={text}
+                                label={label}
+                                type={type}
+                                speed={speed}
+                                showLinkBackground={fade}
+                            />
                         )
                     })
                 }
@@ -154,13 +146,13 @@ function Contact({ type, speed }) {
     );
 }
 
-export default function Main({ type, speed, loading, showLinkBackground }) {
+export default function Main({ type, speed, loading, fade }) {
     return (
         <main
             className={
                 classNames(styles['main'],
                     {
-                        [styles['link-background']]: showLinkBackground,
+                        [styles['fade']]: fade,
                         [styles['loading']]: loading
                     }
                 )
@@ -172,7 +164,7 @@ export default function Main({ type, speed, loading, showLinkBackground }) {
             <section className={styles['right']}>
                 <Skills type={type} speed={speed} />
                 <Projects type={type} speed={speed} />
-                <Contact type={type} speed={speed} />
+                <Contact type={type} speed={speed} fade={fade} />
             </section>
         </main>
     );

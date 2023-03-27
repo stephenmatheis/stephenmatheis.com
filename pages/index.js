@@ -7,14 +7,14 @@ import styles from '../styles/resume.module.scss';
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
-    const [showLinkBackground, setShowLinkBackground] = useState(false);
+    const [fade, setFade] = useState(false);
     const speed = 70;
     const shouldType = false;
 
     useEffect(() => {
         if (!loading) {
             document.body.classList.remove('hidden');
-            setShowLinkBackground(true);
+            setFade(true);
         }
 
         return () => document.body.removeAttribute('style');
@@ -30,7 +30,7 @@ export default function Home() {
                 <Header
                     type={shouldType}
                     speed={speed}
-                    showLinkBackground={showLinkBackground}
+                    showLinkBackground={fade}
                     loading={loading}
                     setLoading={setLoading}
                 />
@@ -38,7 +38,7 @@ export default function Home() {
                     loading={loading}
                     type={shouldType}
                     speed={speed}
-                    showLinkBackground={showLinkBackground}
+                    fade={fade}
                 />
             </div>
         </>
