@@ -1,10 +1,6 @@
 @import '../../styles/utilities.module.scss';
 @import '../../styles/dark.theme.module.scss';
 
-$font-size: var(--font-size);
-$line-height: var(--line-height);
-$color: var(--color);
-
 .main {
     display: flex;
     justify-content: space-between;
