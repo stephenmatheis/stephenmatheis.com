@@ -1,5 +1,5 @@
-@import '../../styles/utilities.module.scss';
-@import '../../styles/dark.theme.module.scss';
+@use '../../styles/utilities.module.scss' as utilities;
+@use '../../styles/dark.theme.module.scss' as theme;
 
 .main {
     display: flex;
@@ -17,10 +17,10 @@
         .link-ctr {
 
             .link-text {
-                border-bottom-color: $link;
+                border-bottom-color: theme.$link;
 
                 &::before {
-                    background-color: $link-20;
+                    background-color: theme.$link-20;
                 }
             }
         }
@@ -37,38 +37,38 @@
     }
 
     * {
-        font-size: $font-size;
-        line-height: $line-height;
+        font-size: utilities.$font-size;
+        line-height: utilities.$line-height;
     }
 
     .right {
         display: flex;
         flex-direction: column;
-        gap: calc($line-height * 2);
+        gap: calc(utilities.$line-height * 2);
         max-width: 34ch;
     }
 
     .ctr:not(:only-child) {
-        margin-bottom: $line-height;
+        margin-bottom: utilities.$line-height;
     }
 
     .comment {
-        color: $comment;
-        margin-bottom: $line-height;
+        color: theme.$comment;
+        margin-bottom: utilities.$line-height;
     }
 
     .job {
         break-inside: avoid;
 
         &:not(:last-child) {
-            margin-bottom: $line-height;
+            margin-bottom: utilities.$line-height;
         }
 
         .title {
-            color: $heading;
+            color: theme.$heading;
 
             .company {
-                color: $company;
+                color: theme.$company;
             }
         }
 
@@ -78,7 +78,7 @@
 
             .line {
                 display: flex;
-                color: $text;
+                color: theme.$text;
             }
         }
     }
@@ -88,11 +88,11 @@
         .groups-ctr {
             display: flex;
             flex-direction: column;
-            gap: $line-height;
+            gap: utilities.$line-height;
 
             .group {
                 .name {
-                    color: $heading;
+                    color: theme.$heading;
                 }
 
                 .items-ctr {
@@ -103,7 +103,7 @@
                     .item {
                         display: inline-block;
                         border-radius: 4px;
-                        color: $skill;
+                        color: theme.$skill;
                     }
                 }
             }
@@ -116,7 +116,7 @@
             display: flex;
             flex-direction: column;
             white-space: nowrap;
-            gap: $line-height;
+            gap: utilities.$line-height;
         }
     }
 
@@ -124,38 +124,37 @@
         .project-ctr {
             display: flex;
             flex-direction: column;
-            gap: $line-height;
+            gap: utilities.$line-height;
 
             &:not(:last-child) {
-                margin-bottom: $line-height;
+                margin-bottom: utilities.$line-height;
             }
         }
     }
 
     .date {
-        color: $date;
+        color: theme.$date;
 
         .location {
-            // color: var(--color);
-            color: $muted;
+            color: theme.$muted;
         }
     }
 
     .emoji {
-        font-size: $line-height;
+        font-size: utilities.$line-height;
         margin-right: 1ch;
     }
 
 
     .link-ctr {
-        height: $line-height;
+        height: utilities.$line-height;
 
         a {
             display: flex;
 
             &,
             &:hover {
-                color: $link;
+                color: theme.$link;
             }
         }
 
@@ -206,7 +205,7 @@
         // set to `fit-content`.
         @media (max-width: 911px) {
             flex-direction: column;
-            gap: calc($line-height * 2);
+            gap: calc(utilities.$line-height * 2);
 
             .right {
                 max-width: unset;
