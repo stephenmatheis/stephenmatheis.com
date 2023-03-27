@@ -1,13 +1,12 @@
 import Type from '@/components/type';
 import skills from '@/data/skills';
+import Comment from '../comment';
 import styles from './skills.module.scss';
 
 export default function Skills({ type, speed }) {
     return (
         <div className={styles['skills']}>
-            <div className={styles['comment']}>
-                {type ? <Type content={'// Skills'} speed={speed / 2} /> : <span>{'// Skills'}</span>}
-            </div>
+            <Comment type={type} speed={speed} text={'Skills'} />
             <div className={styles['groups-ctr']}>
                 {
                     skills.map(({ group, items }, index) => {

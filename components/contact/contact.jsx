@@ -1,14 +1,12 @@
 import LinkCtr from '@/components/link-ctr';
-import Type from '@/components/type';
 import contact from '@/data/contact';
+import Comment from '../comment';
 import styles from './contact.module.scss';
 
 export default function Contact({ type, speed, fade }) {
     return (
         <div className={styles['contact']}>
-            <div className={styles['comment']}>
-                {type ? <Type content={'// Contact'} speed={speed / 2} /> : <span>{'// Contact'}</span>}
-            </div>
+            <Comment type={type} speed={speed} text={'Contact'} />
             <div className={styles['info']}>
                 {
                     contact.map(({ emoji, href, text, label }) => {

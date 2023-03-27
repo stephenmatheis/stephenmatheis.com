@@ -1,13 +1,12 @@
 import Type from '@/components/type';
 import jobs from '@/data/jobs';
+import Comment from '@/components/comment';
 import styles from './experience.module.scss';
 
 export default function Experience({ type, speed }) {
     return (
         <div className={styles['experience']}>
-            <div className={styles['comment']}>
-                {type ? <Type content={'// Experience'} speed={speed / 2} /> : <span>{'// Experience'}</span>}
-            </div>
+            <Comment type={type} speed={speed} text={'Experience'} />
             {
                 jobs.map(({ title, company, location, start, end, lines }, index) => {
                     return (

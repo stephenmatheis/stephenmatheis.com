@@ -1,14 +1,12 @@
 import LinkCtr from '@/components/link-ctr';
-import Type from '@/components/type';
 import projects from '@/data/projects';
+import Comment from '../comment';
 import styles from './projects.module.scss';
 
 export default function Projects({ type, speed }) {
     return (
         <div className={styles['projects']}>
-            <div className={styles['comment']}>
-                {type ? <Type content={'// Projects'} speed={speed / 2} /> : <span>{'// Projects'}</span>}
-            </div>
+            <Comment type={type} speed={speed} text={'Projects'} />
             {
                 projects.map(({ name, link, description }, index) => {
                     return (
