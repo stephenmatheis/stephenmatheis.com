@@ -4,6 +4,7 @@ import Type from '@/components/type/type';
 import jobs from '@/data/jobs';
 import skills from '@/data/skills';
 import projects from '@/data/projects';
+import contact from '@/data/contact';
 import styles from './main.module.scss';
 
 function Experience({ type, speed }) {
@@ -132,46 +133,22 @@ function Contact({ type, speed }) {
                 {type ? <Type content={'// Contact'} speed={speed / 2} /> : <span>{'// Contact'}</span>}
             </div>
             <div className={styles['info']}>
-                <div className={styles['link-ctr']}>
-                    <Link href="tel:9124922522" aria-label="My phone number">
-                        <span className={styles['emoji']}>📱</span>
-                        {
-                            type ?
-                                <Type content="(912) 492-2522" speed={speed * 2 / 3} className={styles['link-text']} /> :
-                                <span className={styles['link-text']}>(912) 492-2522</span>
-                        }
-                    </Link>
-                </div>
-                <div className={styles['link-ctr']}>
-                    <Link href="mailto:stephen.a.matheis@gmail.com" aria-label="My email address">
-                        <span className={styles['emoji']}>📧</span>
-                        {
-                            type ?
-                                <Type content="stephen.a.matheis@gmail.com" speed={speed / 2} className={styles['link-text']} /> :
-                                <span className={styles['link-text']}>stephen.a.matheis@gmail.com</span>
-                        }
-                    </Link>
-                </div>
-                <div className={styles['link-ctr']}>
-                    <Link href="https://github.com/stephenmatheis" target="_blank" rel="noreferrer" title='GitHub' aria-label="My GitHub profile">
-                        <span className={styles['emoji']}>👩‍💻</span>
-                        {
-                            type ?
-                                <Type content="github.com/stephenmatheis" speed={speed / 2} className={styles['link-text']} /> :
-                                <span className={styles['link-text']}>github.com/stephenmatheis</span>
-                        }
-                    </Link>
-                </div>
-                <div className={styles['link-ctr']}>
-                    <Link href="https://www.linkedin.com/in/stephenmatheis/" target="_blank" rel="noreferrer" title='LinkedIn' aria-label="My LinkedIn profile">
-                        <span className={styles['emoji']}>💼</span>
-                        {
-                            type ?
-                                <Type content="linkedin.com/in/stephenmatheis" speed={speed / 2} className={styles['link-text']} /> :
-                                <span className={styles['link-text']}>linkedin.com/in/stephenmatheis</span>
-                        }
-                    </Link>
-                </div>
+                {
+                    contact.map(({ emoji, href, text, label }) => {
+                        return (
+                            <div key={text} className={styles['link-ctr']}>
+                                <Link href={href} aria-label={label}>
+                                    {emoji && <span className={styles['emoji']}>{emoji}</span>}
+                                    {
+                                        type ?
+                                            <Type content={text} speed={speed * 2 / 3} className={styles['link-text']} /> :
+                                            <span className={styles['link-text']}>{text}</span>
+                                    }
+                                </Link>
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>
     );
