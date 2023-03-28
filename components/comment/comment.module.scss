@@ -1,0 +1,7 @@
+@use '../../styles/utilities.module.scss' as utilities;
+@use '../../styles/dark.theme.module.scss' as theme;
+
+.comment {
+    color: theme.$comment;
+    margin-bottom: utilities.$line-height;
+}

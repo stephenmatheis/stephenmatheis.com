@@ -1,0 +1,16 @@
+@use '../../styles/utilities.module.scss' as utilities;
+@use '../../styles/dark.theme.module.scss' as theme;
+
+.comment {
+    color: theme.$comment;
+    margin-bottom: utilities.$line-height;
+}
+
+.contact {
+    .info {
+        display: flex;
+        flex-direction: column;
+        white-space: nowrap;
+        gap: utilities.$line-height;
+    }
+}

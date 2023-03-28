@@ -4,7 +4,7 @@ const projects = [
         link: 'https://github.com/robijs',
         gif: '',
         image: '',
-        description: 'A framework for creating single-page client-side SharePoint apps. Supports ES modules. Develop locally with HMR and JSON Server.'
+        description: 'A client-side single-page-application framework for SharePoint. Supports ES modules and local development.'
     },
     {
         name: 'Command Palette',
@@ -18,7 +18,7 @@ const projects = [
         link: 'https://samepage.dev',
         gif: '',
         image: '',
-        description: 'A Basecamp clone.'
+        description: 'A Basecamp clone built with Robi.'
     }
 ]
 

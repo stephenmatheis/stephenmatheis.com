@@ -1,0 +1,35 @@
+@use '../../styles/utilities.module.scss' as utilities;
+@use '../../styles/dark.theme.module.scss' as theme;
+
+.comment {
+    color: theme.$comment;
+    margin-bottom: utilities.$line-height;
+}
+
+.skills {
+
+    .groups-ctr {
+        display: flex;
+        flex-direction: column;
+        gap: utilities.$line-height;
+
+        .group {
+            .name {
+                color: theme.$heading;
+            }
+
+            .items-ctr {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0ch 1ch;
+
+                .item {
+                    display: inline-block;
+                    border-radius: 4px;
+                    color: theme.$skill;
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,43 @@
+@use '../../styles/utilities.module.scss' as utilities;
+@use '../../styles/dark.theme.module.scss' as theme;
+
+.comment {
+    color: theme.$comment;
+    margin-bottom: utilities.$line-height;
+}
+
+.date {
+    color: theme.$date;
+
+    .location {
+        color: theme.$muted;
+    }
+}
+
+.experience {
+    .job {
+        break-inside: avoid;
+
+        &:not(:last-child) {
+            margin-bottom: utilities.$line-height;
+        }
+
+        .title {
+            color: theme.$heading;
+
+            .company {
+                color: theme.$company;
+            }
+        }
+
+        .lines {
+            display: flex;
+            flex-direction: column;
+
+            .line {
+                display: flex;
+                color: theme.$text;
+            }
+        }
+    }
+}
