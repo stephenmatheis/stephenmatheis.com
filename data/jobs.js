@@ -29,8 +29,8 @@ const jobs = [
         start: 'Apr 2022',
         end: 'May 2022',
         lines: [
-            'Developed a React version of Robi with PnPjs',
-            'Developed a Command Palette for Robi as an embeddable React component'
+            'Developed a React version of Robi with support for PnPjs',
+            'Developed an embeddable Command Palette for React apps'
         ]
     },
     {
@@ -94,7 +94,7 @@ const jobs = [
         end: 'May 2016',
         lines: [
             'Developed web applications with jQuery and Bootstrap hosted on SharePoint 2010 and 2013',
-            'Developed tools to export SharePoint 2010 sites in XML',
+            'Developed PowerShell tools to automate SharePoint site and farm administration, migration, and data export',
             'Supported SharePoint 2010 to 2013 migrations',
         ]
     }
