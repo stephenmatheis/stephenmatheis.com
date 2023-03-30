@@ -1,0 +1,22 @@
+@use '../../styles/utilities.module.scss' as utilities;
+@use '../../styles/dark.theme.module.scss' as theme;
+
+.footer {
+    * {
+        font-size: utilities.$font-size;
+        line-height: utilities.$line-height;
+    }
+
+    nav {
+        ol {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    @media print {
+        display: none;
+    }
+}
