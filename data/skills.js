@@ -7,52 +7,28 @@ const skills = [
             'CSS/Sass',
             'C#',
             'PowerShell',
-            'Python'
-        ]
+            'Python',
+        ],
     },
     {
         group: 'Frameworks',
-        items: [
-            'React',
-            'Next.js',
-            'React Native',
-            'Expo',
-        ]
+        items: ['React', 'Next.js', 'React Native', 'Expo'],
     },
     {
         group: 'Libraries',
-        items: [
-            'jQuery',
-            'Bootstrap',
-            'Chart.js',
-            'PnPjs',
-        ]
+        items: ['jQuery', 'Bootstrap', 'Chart.js', 'PnPjs'],
     },
     {
         group: 'Tools',
-        items: [
-            'Git',
-            'Node.js',
-            'Webpack',
-            'Prettier',
-            'ESLint'
-        ]
+        items: ['Git', 'Node.js', 'Webpack', 'Prettier', 'ESLint'],
     },
     {
         group: 'Platforms',
-        items: [
-            'Netlify',
-            'Firebase',
-            'SharePoint'
-        ]
+        items: ['Netlify', 'Firebase', 'SharePoint'],
     },
     {
         group: 'Design',
-        items: [
-            'Sketch',
-            'Figma',
-            'Principle',
-        ]
+        items: ['Sketch', 'Figma', 'Principle'],
     },
 ];
 

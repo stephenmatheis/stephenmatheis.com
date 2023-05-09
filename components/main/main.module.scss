@@ -7,6 +7,33 @@
     gap: 4ch;
     opacity: 0;
 
+    @media screen {
+        flex-direction: row-reverse;
+
+        // NOTE:
+        // If the viewport is less than 912px wide, the combined left and right
+        // padding and margin will be less than 96px (1 inch) on either side.
+        // So, we'll set `flex-direction` to `column` and `max-width` to unset
+        // because it can now span the full width of the page.
+        //
+        // There is a corresponding media query in `styles/resume.module.scss` that
+        // replaces the 8.5in width with `fit-content` and add `align-items: center`
+        // which horizontally centers main.
+        //
+        // The main container may now be less than 720px so the page  `width` is
+        // set to `fit-content`.
+
+        // @media (max-width: 911px) {
+        @media (max-width: 911px) {
+            flex-direction: column;
+            gap: calc(utilities.$line-height * 2);
+
+            .right {
+                max-width: unset;
+            }
+        }
+    }
+
     &.loading {
         opacity: 0;
     }
@@ -35,6 +62,10 @@
         flex-direction: column;
         gap: calc(utilities.$line-height * 2);
         max-width: 34ch;
+
+        @media screen and (max-width: 911px) {
+            max-width: none;
+        }
     }
 
     .ctr:not(:only-child) {
@@ -73,7 +104,6 @@
     }
 
     #skills {
-
         .groups-ctr {
             display: flex;
             flex-direction: column;
@@ -97,7 +127,6 @@
                 }
             }
         }
-
     }
 
     #contact {
@@ -126,31 +155,6 @@
 
         .location {
             color: theme.$muted;
-        }
-    }
-
-    @media screen {
-        flex-direction: row-reverse;
-
-        // NOTE: 
-        // If the viewport is less than 912px wide, the combined left and right 
-        // padding and margin will be less than 96px (1 inch) on either side.
-        // So, we'll set `flex-direction` to `column` and `max-width` to unset
-        // because it can now span the full width of the page.  
-        //
-        // There is a corresponding media query in `styles/resume.module.scss` that 
-        // replaces the 8.5in width with `fit-content` and add `align-items: center`
-        // which horizontally centers main. 
-        // 
-        // The main container may now be less than 720px so the page  `width` is
-        // set to `fit-content`.
-        @media (max-width: 911px) {
-            flex-direction: column;
-            gap: calc(utilities.$line-height * 2);
-
-            .right {
-                max-width: unset;
-            }
         }
     }
 }
