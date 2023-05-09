@@ -1,7 +1,7 @@
 #resume {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     width: 8.5in;
-    padding: .5in;
+    padding: 0.5in;
     display: flex;
     flex-direction: column;
     gap: 54px;
@@ -12,7 +12,6 @@
     }
 
     a {
-
         &,
         &:hover {
             text-decoration: none;
@@ -21,19 +20,20 @@
 
     @media screen {
         margin: 0 auto;
-        padding-top: .75in;
-        padding-bottom: .75in;
+        padding-top: 0.75in;
+        padding-bottom: 0.75in;
 
-        // NOTE: 
-        // If the viewport is less than 912px wide, the combined left and right 
+        // NOTE:
+        // If the viewport is less than 912px wide, the combined left and right
         // padding and margin will be less than 96px, or 1 inch on either side.
         // So, once the viewport is 911px or less wide, remove the 8.5in width
-        // and horizontally center flex children. 
+        // and horizontally center flex children.
         //
         // There is a corresponding media
         // query in `components/main/main.module.scss` that will set the
         // `flex-direction` to `column`. The main container may now be less than 720px
         // or 8.5in wide so we also set the `width` to `fit-content`.
+
         @media (max-width: 911px) {
             width: fit-content;
             align-items: center;
@@ -41,8 +41,8 @@
         }
 
         @media (max-width: 500px) {
-            padding-left: .25in;
-            padding-right: .25in;
+            padding-left: 0.25in;
+            padding-right: 0.25in;
         }
     }
 }

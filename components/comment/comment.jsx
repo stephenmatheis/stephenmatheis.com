@@ -6,7 +6,11 @@ export default function Comment({ text, type, speed }) {
 
     return (
         <div className={styles['comment']}>
-            {type ? <Type content={content} speed={speed / 2} /> : <span>{content}</span>}
+            {type ? (
+                <Type content={content} speed={speed / 2} />
+            ) : (
+                <span>{content}</span>
+            )}
         </div>
     );
 }

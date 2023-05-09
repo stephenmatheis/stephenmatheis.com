@@ -27,7 +27,10 @@ export default function Home() {
                 <title>Stephen Matheis</title>
                 <meta name="description" content="Stephen Matheis" />
             </Head>
-            <div id={styles['resume']} className={classNames({ [styles['loading']]: loading })}>
+            <div
+                id={styles['resume']}
+                className={classNames({ [styles['loading']]: loading })}
+            >
                 <Header
                     type={shouldType}
                     speed={speed}
@@ -44,5 +47,5 @@ export default function Home() {
                 <Footer />
             </div>
         </>
-    )
+    );
 }

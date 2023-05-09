@@ -8,14 +8,10 @@ import styles from './main.module.scss';
 export default function Main({ type, speed, loading, fade }) {
     return (
         <main
-            className={
-                classNames(styles['main'],
-                    {
-                        [styles['fade']]: fade,
-                        [styles['loading']]: loading
-                    }
-                )
-            }
+            className={classNames(styles['main'], {
+                [styles['fade']]: fade,
+                [styles['loading']]: loading,
+            })}
         >
             <section className={styles['left']}>
                 <Experience type={type} speed={speed} />

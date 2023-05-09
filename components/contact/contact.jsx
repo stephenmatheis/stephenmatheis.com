@@ -8,22 +8,20 @@ export default function Contact({ type, speed, fade }) {
         <div className={styles['contact']}>
             <Comment type={type} speed={speed} text={'Contact'} />
             <div className={styles['info']}>
-                {
-                    contact.map(({ emoji, href, text, label }) => {
-                        return (
-                            <LinkCtr
-                                key={text}
-                                emoji={emoji}
-                                href={href}
-                                text={text}
-                                label={label}
-                                type={type}
-                                speed={speed}
-                                showLinkBackground={fade}
-                            />
-                        )
-                    })
-                }
+                {contact.map(({ emoji, href, text, label }) => {
+                    return (
+                        <LinkCtr
+                            key={text}
+                            emoji={emoji}
+                            href={href}
+                            text={text}
+                            label={label}
+                            type={type}
+                            speed={speed}
+                            showLinkBackground={fade}
+                        />
+                    );
+                })}
             </div>
         </div>
     );

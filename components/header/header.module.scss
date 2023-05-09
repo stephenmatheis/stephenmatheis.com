@@ -15,7 +15,6 @@
         line-height: utilities.$line-height;
 
         &:hover {
-
             .name::before,
             .title::before {
                 top: 0px;
@@ -28,7 +27,6 @@
         }
 
         &.link-background {
-
             .name {
                 border-bottom-color: theme.$name;
 
@@ -61,10 +59,8 @@
                 width: 100%;
                 height: 100%;
                 background-color: transparent;
-                transition:
-                    background-color 450ms ease-in-out,
-                    top 250ms ease-in-out,
-                    left 250ms ease-in-out;
+                transition: background-color 450ms ease-in-out,
+                    top 250ms ease-in-out, left 250ms ease-in-out;
             }
         }
 
@@ -97,7 +93,7 @@
     background-color: #000;
     height: 100%;
     width: 100vw;
-    padding: 0in .5in;
+    padding: 0in 0.5in;
     transition: background-color 490ms ease-in-out;
     z-index: 10;
 
@@ -106,7 +102,6 @@
     }
 
     @keyframes blink {
-
         from,
         to {
             color: transparent;
