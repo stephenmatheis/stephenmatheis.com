@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Type from '@/components/type/type';
 import styles from './link-ctr.module.scss';
 import classNames from 'classnames';
 

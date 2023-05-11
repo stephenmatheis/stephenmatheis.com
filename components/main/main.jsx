@@ -5,7 +5,7 @@ import Projects from '@/components/projects';
 import Contact from '@/components/contact';
 import styles from './main.module.scss';
 
-export default function Main({ type, speed, loading, fade }) {
+export default function Main({ speed, loading, fade }) {
     return (
         <main
             className={classNames(styles['main'], {
@@ -14,12 +14,12 @@ export default function Main({ type, speed, loading, fade }) {
             })}
         >
             <section className={styles['left']}>
-                <Experience type={type} speed={speed} />
+                <Experience speed={speed} />
             </section>
             <section className={styles['right']}>
-                <Skills type={type} speed={speed} />
-                <Projects type={type} speed={speed} />
-                <Contact type={type} speed={speed} fade={fade} />
+                <Skills speed={speed} />
+                <Projects speed={speed} />
+                <Contact speed={speed} fade={fade} />
             </section>
         </main>
     );

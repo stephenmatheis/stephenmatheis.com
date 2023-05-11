@@ -3,10 +3,10 @@ import contact from '@/data/contact';
 import Comment from '../comment';
 import styles from './contact.module.scss';
 
-export default function Contact({ type, speed, fade }) {
+export default function Contact({ speed, fade }) {
     return (
         <div className={styles['contact']}>
-            <Comment type={type} speed={speed} text={'Contact'} />
+            <Comment text={'Contact'} />
             <div className={styles['info']}>
                 {contact.map(({ emoji, href, text, label }) => {
                     return (
@@ -16,7 +16,6 @@ export default function Contact({ type, speed, fade }) {
                             href={href}
                             text={text}
                             label={label}
-                            type={type}
                             speed={speed}
                             showLinkBackground={fade}
                         />

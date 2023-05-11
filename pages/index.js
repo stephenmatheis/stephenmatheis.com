@@ -10,7 +10,6 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
     const [fade, setFade] = useState(false);
     const speed = 70;
-    const shouldType = false;
 
     useEffect(() => {
         if (!loading) {
@@ -32,7 +31,6 @@ export default function Home() {
                 className={classNames({ [styles['loading']]: loading })}
             >
                 <Header
-                    type={shouldType}
                     speed={speed}
                     showLinkBackground={fade}
                     loading={loading}
@@ -40,7 +38,6 @@ export default function Home() {
                 />
                 <Main
                     loading={loading}
-                    type={shouldType}
                     speed={speed}
                     fade={fade}
                 />
