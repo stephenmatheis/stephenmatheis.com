@@ -7,15 +7,11 @@ export default function Header({
     loading,
     setLoading,
     speed,
-    type,
     showLinkBackground,
 }) {
     // State
     const [transitionBackgroundColor, setTransitionBackgroundColor] =
         useState(false);
-
-    // Typing speed modifiers
-    const titleMod = 12.5;
 
     // Name and Title
     const firstName = 'Stephen';
@@ -121,7 +117,7 @@ export default function Header({
                 return 'done';
             }
         }
-    }, [loading, setLoading, speed, type]);
+    }, [loading, setLoading, speed]);
 
     return (
         <>

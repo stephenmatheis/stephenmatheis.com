@@ -101,17 +101,6 @@
         background-color: utilities.$background;
     }
 
-    @keyframes blink {
-        from,
-        to {
-            color: transparent;
-        }
-
-        50% {
-            color: inherit;
-        }
-    }
-
     .hidden {
         visibility: hidden;
     }
@@ -122,10 +111,6 @@
         justify-content: flex-end;
     }
 
-    .line-wrapper {
-        line-height: normal;
-    }
-
     .name,
     .title {
         line-height: unset;
@@ -134,11 +119,11 @@
 
     .name {
         color: #fff;
-        font-size: 12vmin;
+        // font-size: 12vmin;
     }
 
     .title {
-        font-size: 12vmin;
+        // font-size: 12vmin;
         color: theme.$title;
     }
 }
