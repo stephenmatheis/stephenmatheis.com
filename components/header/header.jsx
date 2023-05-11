@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
-import Type from '@/components/type/type';
 import styles from './header.module.scss';
 
 export default function Header({
@@ -44,10 +43,7 @@ export default function Header({
     const toEngineer = useRef();
 
     useEffect(() => {
-        const delay = type
-            ? delayAfter(firstName + lastName, speed) +
-              delayAfter(frontEnd + software + engineer, speed, titleMod * 1.5)
-            : 2000;
+        const delay = 2000;
 
         setTimeout(async () => {
             if (!overlay.current || !ctr.current) {
@@ -169,67 +165,7 @@ export default function Header({
                     })}
                 >
                     <div ref={ctr} className={styles['ctr']}>
-                        {type ? (
-                            <>
-                                {/* Name */}
-                                <Type
-                                    ref={fromFirstName}
-                                    content={firstName}
-                                    speed={(speed * 2) / 3}
-                                    className={styles['name']}
-                                    wrapperClass={styles['line-wrapper']}
-                                />
-                                <Type
-                                    ref={fromLastName}
-                                    content={lastName}
-                                    speed={(speed * 2) / 3}
-                                    delay={delayAfter(firstName, speed)}
-                                    className={styles['name']}
-                                    wrapperClass={styles['line-wrapper']}
-                                />
-
-                                {/* Title */}
-                                <Type
-                                    ref={fromFrontEnd}
-                                    content={frontEnd}
-                                    speed={(speed * 2) / 3}
-                                    delay={delayAfter(
-                                        firstName + lastName,
-                                        speed,
-                                        titleMod
-                                    )}
-                                    className={styles['title']}
-                                    wrapperClass={styles['line-wrapper']}
-                                />
-                                <Type
-                                    ref={fromSoftware}
-                                    content={software}
-                                    speed={(speed * 2) / 3}
-                                    delay={delayAfter(
-                                        firstName + lastName + frontEnd,
-                                        speed,
-                                        titleMod
-                                    )}
-                                    className={styles['title']}
-                                    wrapperClass={styles['line-wrapper']}
-                                />
-                                <Type
-                                    ref={fromEngineer}
-                                    content={engineer}
-                                    speed={(speed * 2) / 3}
-                                    delay={delayAfter(
-                                        firstName +
-                                            lastName +
-                                            frontEnd +
-                                            software,
-                                        speed,
-                                        titleMod
-                                    )}
-                                    className={styles['title']}
-                                    wrapperClass={styles['line-wrapper']}
-                                />
-                            </>
-                        ) : (
+                        {
                             <>
                                 <span
                                     ref={fromFirstName}
@@ -262,14 +198,10 @@ export default function Header({
                                     {engineer}
                                 </span>
                             </>
-                        )}
+                        }
                     </div>
                 </div>
             )}
         </>
     );
-}
-
-function delayAfter(text, speed, modifier = 0) {
-    return (text.length + modifier) * speed + speed * 2;
 }
