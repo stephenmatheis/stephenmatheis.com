@@ -14,12 +14,12 @@ export default function Main({ speed, loading, fade }) {
             })}
         >
             <section className={styles['left']}>
-                <Experience speed={speed} />
+                <Experience />
             </section>
             <section className={styles['right']}>
-                <Skills speed={speed} />
-                <Projects speed={speed} />
-                <Contact speed={speed} fade={fade} />
+                <Skills />
+                <Projects />
+                <Contact fade={fade} />
             </section>
         </main>
     );

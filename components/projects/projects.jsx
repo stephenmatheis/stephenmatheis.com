@@ -3,10 +3,10 @@ import projects from '@/data/projects';
 import Comment from '../comment';
 import styles from './projects.module.scss';
 
-export default function Projects({ type, speed }) {
+export default function Projects({}) {
     return (
         <div className={styles['projects']}>
-            <Comment type={type} speed={speed} text={'Projects'} />
+            <Comment text={'Projects'} />
             {projects.map(({ name, link, description }, index) => {
                 return (
                     <div key={index} className={styles['project-ctr']}>
