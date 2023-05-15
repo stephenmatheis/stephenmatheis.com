@@ -1,10 +1,12 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import classNames from 'classnames';
 import Header from '@/components/header/header';
 import Main from '@/components/main/main';
-import styles from '../styles/resume.module.scss';
 import Footer from '@/components/footer';
+import styles from '@/styles/resume.module.scss';
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
@@ -36,11 +38,7 @@ export default function Home() {
                     loading={loading}
                     setLoading={setLoading}
                 />
-                <Main
-                    loading={loading}
-                    speed={speed}
-                    fade={fade}
-                />
+                <Main loading={loading} speed={speed} fade={fade} />
                 <Footer />
             </div>
         </>
