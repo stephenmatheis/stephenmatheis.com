@@ -5,7 +5,7 @@ import Projects from '@/components/projects';
 import Contact from '@/components/contact';
 import styles from './main.module.scss';
 
-export default function Main({ speed, loading, fade }) {
+export default function Main({ loading, fade }) {
     return (
         <main
             className={classNames(styles['main'], {
