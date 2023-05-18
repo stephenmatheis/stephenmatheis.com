@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Head from 'next/head';
 import classNames from 'classnames';
 import Header from '@/components/header/header';
 import Main from '@/components/main/main';
@@ -23,24 +22,18 @@ export default function Home() {
     }, [loading]);
 
     return (
-        <>
-            <Head>
-                <title>Stephen Matheis</title>
-                <meta name="description" content="Stephen Matheis" />
-            </Head>
-            <div
-                id={styles['resume']}
-                className={classNames({ [styles['loading']]: loading })}
-            >
-                <Header
-                    speed={speed}
-                    showLinkBackground={fade}
-                    loading={loading}
-                    setLoading={setLoading}
-                />
-                <Main loading={loading} speed={speed} fade={fade} />
-                <Footer />
-            </div>
-        </>
+        <div
+            id={styles['resume']}
+            className={classNames({ [styles['loading']]: loading })}
+        >
+            <Header
+                speed={speed}
+                showLinkBackground={fade}
+                loading={loading}
+                setLoading={setLoading}
+            />
+            <Main loading={loading} speed={speed} fade={fade} />
+            <Footer />
+        </div>
     );
 }

@@ -11,9 +11,14 @@
             "src": "/favicon/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/favicon/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
         }
     ],
     "theme_color": "#1e1e1e",
-    "background_color": "#1e1e1e",
+    "background_color": "#1f1f1f",
     "display": "standalone"
 }
