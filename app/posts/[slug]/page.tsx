@@ -1,80 +1,26 @@
-import { Code } from 'bright';
-import { getPostBySlug, getAllPosts } from '@/lib/api';
-import markdownToHtml from '@/lib/markdownToHtml';
-import Date from '@/components/date';
-
-// function ResponsiveImage(props: any) {
-//     return (
-//         <Image
-//             alt={props.alt}
-//             sizes="100vw"
-//             style={{ width: '100%', height: 'auto' }}
-//             {...props}
-//         />
-//     );
-// }
-
-// const components = {
-//     a: ({ children, ...props }: any) => {
-//         return (
-//             <Link {...props} href={props.href || ''}>
-//                 {children}
-//             </Link>
-//         );
-//     },
-//     img: ResponsiveImage,
-//     pre: Code,
-// };
-
-type PostParams = {
-    author: string;
-    content: string;
-    date: string;
-    title: string;
-};
-
-async function getData(slug: string): Promise<PostParams> {
-    const { title, date, author, content } = getPostBySlug(slug, [
-        'title',
-        'date',
-        'slug',
-        'author',
-        'content',
-    ]);
-
-    const html = await markdownToHtml(content || '');
-
-    return {
-        title,
-        date,
-        author,
-        content: html,
-    };
-}
+import getPosts, { getPost } from '@/lib/get-posts';
+import { PostBody } from '../components/post-body';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
-    const posts = getAllPosts(['slug']);
-
-    return posts.map(({ slug }) => ({
-        slug,
+    const posts = await getPosts();
+    // The params to pre-render the page with.
+    // Without this, the page will be rendered at runtime
+    return posts.map((post: { slug: string }) => ({
+        params: { slug: post.slug },
     }));
 }
 
-type Props = {
+export default async function Page({
+    params,
+}: {
     params: {
         slug: string;
     };
-};
+}) {
+    const post = await getPost(params.slug);
 
-export default async function Page({ params: { slug } }: Props) {
-    const { content, title, date, author } = await getData(slug);
+    if (!post) return notFound();
 
-    return (
-        <main>
-            <h1>{title}</h1>
-            <div>{author}</div>
-            <Date dateString={date} />
-            <article dangerouslySetInnerHTML={{ __html: content }} />
-        </main>
-    );
+    return <PostBody>{post?.body}</PostBody>;
 }
