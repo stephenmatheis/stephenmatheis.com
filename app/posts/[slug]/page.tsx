@@ -1,6 +1,30 @@
+import { Code } from 'bright';
 import { getPostBySlug, getAllPosts } from '@/lib/api';
 import markdownToHtml from '@/lib/markdownToHtml';
 import Date from '@/components/date';
+
+// function ResponsiveImage(props: any) {
+//     return (
+//         <Image
+//             alt={props.alt}
+//             sizes="100vw"
+//             style={{ width: '100%', height: 'auto' }}
+//             {...props}
+//         />
+//     );
+// }
+
+// const components = {
+//     a: ({ children, ...props }: any) => {
+//         return (
+//             <Link {...props} href={props.href || ''}>
+//                 {children}
+//             </Link>
+//         );
+//     },
+//     img: ResponsiveImage,
+//     pre: Code,
+// };
 
 type PostParams = {
     author: string;
