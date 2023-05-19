@@ -5,7 +5,8 @@ export const metadata: Metadata = {
     title: 'Stephen Matheis',
     description: "Stephen Matheis' portfolio, resume, and blog.",
     viewport: 'width=device-width, initial-scale=1,  viewport-fit=cover',
-    icons: 'manifest.json',
+    manifest: '/manifest.json',
+    themeColor: '#1f1f1f',
 };
 
 export default function RootLayout({
@@ -14,8 +15,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body suppressHydrationWarning>{children}</body>
+        <html lang="en" suppressHydrationWarning>
+            <body>{children}</body>
         </html>
     );
 }
