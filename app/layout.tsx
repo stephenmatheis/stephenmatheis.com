@@ -7,6 +7,11 @@ export const metadata: Metadata = {
     viewport: 'width=device-width, initial-scale=1,  viewport-fit=cover',
     manifest: '/manifest.json',
     themeColor: '#1f1f1f',
+    icons: {
+        shortcut: '/favicons/favicon.ico',
+        icon: '/favicons/icon.png',
+        apple: '/favicons/apple-icon.png',
+    },
 };
 
 export default function RootLayout({
