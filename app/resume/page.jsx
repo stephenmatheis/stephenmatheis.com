@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import Header from '@/components/header/header';
-import Main from '@/components/main/main';
-import Footer from '@/components/footer';
+import Header from './components/header/header';
+import Main from './components/main/main';
+import Footer from './components/footer';
 import styles from './resume.module.scss';
 
 export default function Home() {
@@ -16,8 +16,6 @@ export default function Home() {
         if (!loading) {
             document.body.classList.remove('hidden');
             setFade(true);
-        } else {
-            document.body.classList.add('hidden');
         }
 
         return () => document.body.removeAttribute('style');

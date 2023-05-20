@@ -14,6 +14,7 @@ type Props = {
     label?: string;
     showLinkBackground?: Boolean;
     newTab?: Boolean;
+    className?: string;
 };
 
 export default function LinkCtr({
@@ -23,13 +24,18 @@ export default function LinkCtr({
     label,
     showLinkBackground = true,
     newTab,
+    className,
 }: Props) {
     return (
         <div
             key={text}
-            className={classNames(styles['link-ctr'], {
-                [styles['hide-background']]: !showLinkBackground,
-            })}
+            className={classNames(
+                styles['link-ctr'],
+                {
+                    [styles['hide-background']]: !showLinkBackground,
+                },
+                className
+            )}
         >
             {newTab ? (
                 <a
