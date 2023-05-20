@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import getPosts from '@/lib/get-posts';
 import Date from '@/components/date';
-// import Navigation from './post/navigation'
-// import PostFooter from './post/post-footer'
+import Nav from './components/nav';
 import styles from './layout.module.scss';
 
 export async function generateStaticParams() {
     const posts = await getPosts();
+
     return posts.map((post) => ({ slug: post.slug }));
 }
 
@@ -63,17 +63,18 @@ export default async function PostLayout({
     const { previous, next, title, date, lastModified } = post;
 
     return (
-        <main>
+        <main className={styles.layout}>
             <h1>{title}</h1>
-            <Date dateString={date} />
-            <article>{children}</article>
+            <article>
+                <Date className={styles.date} dateString={date} />
+                {children}
+            </article>
             {lastModified && (
-                <div>
+                <div className={styles.date}>
                     Last modified <Date dateString={lastModified} />
                 </div>
             )}
-            {/* <PostFooter /> */}
-            {/* <Navigation previous={previous} next={next} /> */}
+            <Nav previous={previous} next={next} />
         </main>
     );
 }

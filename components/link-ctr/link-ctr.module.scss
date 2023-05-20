@@ -54,4 +54,9 @@
 .emoji {
     font-size: utilities.$line-height;
     margin-right: 1ch;
+
+    &.left {
+        margin-right: 0ch;
+        margin-left: 1ch;
+    }
 }

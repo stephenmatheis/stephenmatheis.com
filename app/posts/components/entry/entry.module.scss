@@ -1,0 +1,35 @@
+@use '../../../../styles/utilities.module.scss' as utilities;
+@use '../../../../styles/dark.theme.module.scss' as theme;
+
+.item {
+    list-style-type: none;
+}
+
+.link {
+    color: inherit;
+    display: block;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.title,
+.description {
+    word-break: break-word;
+    margin: 0;
+}
+
+.title-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+        font-weight: bold;
+        color: theme.$link;
+    }
+
+    .date {
+        margin-right: 2ch;
+        color: theme.$muted;
+    }
+}
