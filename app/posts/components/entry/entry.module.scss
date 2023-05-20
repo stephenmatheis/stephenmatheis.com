@@ -3,6 +3,25 @@
 
 .item {
     list-style-type: none;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+        content: '';
+        width: calc(100% + 40px);
+        height: calc(100% + 20px);
+        position: absolute;
+        top: -10px;
+        left: -20px;
+        background-color: theme.$link-20;
+        border-radius: 6px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &:hover::after {
+        opacity: 1;
+    }
 }
 
 .link {
@@ -24,12 +43,10 @@
     justify-content: space-between;
 
     .title {
-        font-weight: bold;
         color: theme.$link;
     }
 
     .date {
-        margin-right: 2ch;
         color: theme.$muted;
     }
 }
