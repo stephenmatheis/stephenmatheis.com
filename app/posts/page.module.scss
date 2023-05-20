@@ -1,0 +1,17 @@
+@use '../../styles/utilities.module.scss' as utilities;
+@use '../../styles/dark.theme.module.scss' as theme;
+
+.page {
+    width: fit-content;
+    align-items: center;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1in 0.5in;
+
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+    * {
+        font-size: utilities.$font-size;
+        line-height: utilities.$line-height;
+    }
+}

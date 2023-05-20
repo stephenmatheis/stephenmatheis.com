@@ -1,0 +1,32 @@
+@use '../../../../../styles/utilities.module.scss' as utilities;
+@use '../../../../../styles/dark.theme.module.scss' as theme;
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        display: flex;
+        text-decoration: none;
+
+        &,
+        &:hover {
+            color: theme.$link;
+        }
+    }
+
+    .previous,
+    .next {
+        display: flex;
+        width: 100%;
+    }
+
+    .previous {
+        justify-content: flex-start;
+    }
+
+    .next {
+        justify-content: flex-end;
+    }
+}

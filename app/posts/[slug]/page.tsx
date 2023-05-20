@@ -1,5 +1,5 @@
 import getPosts, { getPost } from '@/lib/get-posts';
-import { PostBody } from '../components/post-body';
+import Body from './components/body';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -22,5 +22,5 @@ export default async function Page({
 
     if (!post) return notFound();
 
-    return <PostBody>{post?.body}</PostBody>;
+    return <Body>{post?.body}</Body>;
 }

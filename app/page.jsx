@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Header from '@/components/header/header';
 import Main from '@/components/main/main';
 import Footer from '@/components/footer';
-import styles from '@/styles/resume.module.scss';
+import styles from './resume.module.scss';
 
 export default function Home() {
     const [loading, setLoading] = useState(true);

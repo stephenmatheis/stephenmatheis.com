@@ -32,7 +32,7 @@ const components = {
     pre: Code,
 };
 
-export function PostBody({ children }: { children: string }) {
+export default function Body({ children }: { children: string }) {
     return (
         // @ts-expect-error RSC
         <MDXRemote
