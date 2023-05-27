@@ -25,11 +25,13 @@
 }
 
 .link {
+    cursor: pointer;
     color: inherit;
-    display: block;
+    display: flex;
+    flex-direction: column;
     text-decoration: none;
     outline: none;
-    cursor: pointer;
+    gap: utilities.$line-height;
 }
 
 .title,

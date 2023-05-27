@@ -9,7 +9,7 @@
     padding: 1in 0.5in;
     display: flex;
     flex-direction: column;
-    gap: 54px;
+    gap: calc(utilities.$line-height * 3);
 
     * {
         font-size: utilities.$font-size;
