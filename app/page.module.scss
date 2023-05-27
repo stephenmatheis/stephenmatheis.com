@@ -1,4 +1,7 @@
-#resume {
+@use 'styles/utilities.module.scss' as utilities;
+@use 'styles/dark.theme.module.scss' as theme;
+
+.page {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     width: 8.5in;
     padding: 0.5in;
@@ -6,17 +9,6 @@
     flex-direction: column;
     gap: 54px;
     transition: padding 500ms ease-in-out;
-
-    @media print {
-        gap: 36px;
-    }
-
-    a {
-        &,
-        &:hover {
-            text-decoration: none;
-        }
-    }
 
     @media screen {
         margin: 0 auto;
@@ -44,5 +36,17 @@
             padding-left: 0.25in;
             padding-right: 0.25in;
         }
+    }
+
+    a {
+        &,
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    * {
+        font-size: utilities.$font-size;
+        line-height: utilities.$line-height;
     }
 }
