@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import styles from './header.module.scss';
+// FIXME: Replace name and title
 import LinkCtr from '@/components/link-ctr/link-ctr';
 
 export default function Header({
