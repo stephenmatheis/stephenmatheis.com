@@ -1,9 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import classNames from 'classnames';
 import LinkCtr from '@/components/link-ctr/link-ctr';
+import PostsList from '@/app/posts/components/posts-list';
+import getPosts from '@/lib/get-posts';
 import styles from './main.module.scss';
 
-export default function Main({}) {
+export default async function Main({}) {
+    const posts = await getPosts();
+
     return (
         <main className={classNames(styles.main, styles.fade)}>
             <section className={styles.left}>
@@ -15,7 +19,9 @@ export default function Main({}) {
                 </nav>
             </section>
             <section className={styles.right}>
-                <p>
+                <PostsList posts={posts} />
+
+                {/* <p>
                     Look again at that dot. That's here. That's home. That's us.
                     On it everyone you love, everyone you know, everyone you
                     ever heard of, every human being who ever was, lived out
@@ -49,7 +55,6 @@ export default function Main({}) {
                     obscurity, in all this vastness, there is no hint that help
                     will come from elsewhere to save us from ourselves.
                 </p>
-                {/* heading */}
                 <h2>One</h2>
                 <p>
                     The Earth is the only world known so far to harbor life.
@@ -67,7 +72,7 @@ export default function Main({}) {
                     preserve and cherish the pale blue dot, the only home we've
                     ever known.
                 </p>
-                <p></p>
+                */}
             </section>
         </main>
     );
