@@ -1,14 +1,16 @@
+@use 'styles/utilities.module.scss' as utilities;
+
 #resume {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     width: 8.5in;
     padding: 0.5in;
     display: flex;
     flex-direction: column;
-    gap: 54px;
+    gap: calc(utilities.$line-height * 3);
     transition: padding 500ms ease-in-out;
 
     @media print {
-        gap: 36px;
+        gap: calc(utilities.$line-height * 2);
     }
 
     a {
