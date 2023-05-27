@@ -10,7 +10,7 @@ export default function Skills({}) {
                 {skills.map(({ group, items }, index) => {
                     return (
                         <div key={index} className={styles['group']}>
-                            <div className={styles['name']}>group</div>
+                            <div className={styles['name']}>{group}</div>
                             <span className={styles['items-ctr']}>
                                 {items.map((item, index) => {
                                     return (
