@@ -2,6 +2,7 @@
 @use '../../styles/dark.theme.module.scss' as theme;
 
 .link-ctr {
+    width: fit-content;
     height: utilities.$line-height;
     cursor: pointer;
 

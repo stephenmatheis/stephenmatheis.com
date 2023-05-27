@@ -57,19 +57,20 @@
         // 27 - 18 = 9
         //  9 / 2 = 4.5
         /* prettier-ignore */
-        transform: translateY(
-            calc(
-                -1 * 
-                (
-                    (
-                        utilities.$line-height *
-                        utilities.$p-line-height-modifier
-                    ) 
-                    - utilities.$line-height
-                )
-                / 2
-            )
-        );
+
+        // transform: translateY(
+        //     calc(
+        //         -1 *
+        //         (
+        //             (
+        //                 utilities.$line-height *
+        //                 utilities.$p-line-height-modifier
+        //             )
+        //             - utilities.$line-height
+        //         )
+        //         / 2
+        //     )
+        // );
 
         @media screen and (max-width: 911px) {
             max-width: unset;
@@ -80,6 +81,7 @@
     nav {
         display: flex;
         flex-direction: column;
+        align-items: flex-end;
         gap: utilities.$line-height;
 
         @media screen and (max-width: 911px) {

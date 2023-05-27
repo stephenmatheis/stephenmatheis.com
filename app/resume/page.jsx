@@ -1,6 +1,6 @@
 import Header from '@/components/header';
 import Main from './components/main/main';
-import Footer from './components/footer';
+import Footer from '@/components/footer';
 import styles from './resume.module.scss';
 
 export default function Page() {
@@ -8,7 +8,9 @@ export default function Page() {
         <div id={styles['resume']}>
             <Header />
             <Main />
-            <Footer />
+            <Footer
+                links={[{ label: 'Donwload a copy', path: '/resume.pdf' }]}
+            />
         </div>
     );
 }

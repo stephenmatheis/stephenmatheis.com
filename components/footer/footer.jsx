@@ -1,9 +1,11 @@
 import LinkCtr from '@/components/link-ctr';
 import styles from './footer.module.scss';
 
-export default function Footer({ links }) {
+export default function Footer({ links, text }) {
+    const copyright = `Copyright (C) ${new Date().getFullYear()} Stephen Matheis`;
+
     return (
-        <footer className={styles['footer']}>
+        <footer className={styles.footer}>
             <nav>
                 <ol>
                     {links?.length &&
@@ -20,6 +22,8 @@ export default function Footer({ links }) {
                         })}
                 </ol>
             </nav>
+            {text && <div className={styles.text}>{text}</div>}
+            <div className={styles.copyright}>{copyright}</div>
         </footer>
     );
 }
