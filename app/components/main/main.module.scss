@@ -5,6 +5,7 @@
     flex: 2;
     display: flex;
     justify-content: space-between;
+    // NOTE: Do I like this?
     gap: 8ch;
 
     @media screen {
@@ -47,6 +48,9 @@
     }
 
     .right {
+        // NOTE: Do I like this?
+        max-width: 80ch;
+
         // NOTE:
         // line-height * 1.5 = 18px * 1.5 = 27px
         // 27 - 18 = 9
