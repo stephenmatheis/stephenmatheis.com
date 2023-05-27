@@ -22,7 +22,7 @@
 
         // @media (max-width: 911px) {
         @media (max-width: 911px) {
-            flex-direction: column;
+            flex-direction: column-reverse;
             gap: calc(utilities.$line-height * 2);
 
             .right {
