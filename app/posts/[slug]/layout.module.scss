@@ -1,5 +1,5 @@
-@use '../../../styles/utilities.module.scss' as utilities;
-@use '../../../styles/dark.theme.module.scss' as theme;
+@use 'styles/utilities.module.scss' as utilities;
+@use 'styles/dark.theme.module.scss' as theme;
 
 .layout {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -43,6 +43,12 @@
         .date {
             display: inline-block;
             margin-bottom: 0px;
+        }
+
+        p {
+            &:first-of-type {
+                margin-top: utilities.$line-height;
+            }
         }
     }
 }
