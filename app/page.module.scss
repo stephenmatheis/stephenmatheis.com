@@ -5,11 +5,10 @@
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     min-height: 100dvh;
     width: 8.5in;
-    padding: 1in 0.5in;
+    padding: utilities.$page-padding;
     display: flex;
     flex-direction: column;
-    gap: calc(utilities.$line-height * 6);
-    transition: padding 500ms ease-in-out;
+    gap: utilities.$page-gap;
 
     @media screen {
         margin: 0 auto;
@@ -29,6 +28,7 @@
             width: fit-content;
             align-items: center;
             max-width: 680px;
+            gap: calc(utilities.$line-height * 4);
         }
 
         @media (max-width: 500px) {

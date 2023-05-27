@@ -3,11 +3,10 @@
 #resume {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     width: 8.5in;
-    padding: 1in 0.5in;
+    padding: utilities.$page-padding;
     display: flex;
     flex-direction: column;
     gap: calc(utilities.$line-height * 3);
-    transition: padding 500ms ease-in-out;
 
     @media print {
         padding: 0.5in;
