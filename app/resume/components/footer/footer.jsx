@@ -7,7 +7,7 @@ export default function Footer({}) {
             <nav>
                 <ol>
                     <li>
-                        <LinkCtr text="Resume" href="/resume.pdf" newTab />
+                        <LinkCtr text="Download a copy" href="/resume.pdf" newTab />
                     </li>
                 </ol>
             </nav>

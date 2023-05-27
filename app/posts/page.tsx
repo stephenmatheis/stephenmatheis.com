@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import classNames from 'classnames';
 import PostsList from './components/posts-list';
 import getPosts from '@/lib/get-posts';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 import styles from './page.module.scss';
 
 export default async function Blog() {
@@ -9,22 +9,11 @@ export default async function Blog() {
 
     return (
         <div className={styles.page}>
-            <Link href="/" aria-label="Stephen Matheis' personal website">
-                <div
-                    className={classNames([
-                        styles['profile'],
-                        styles['link-background'],
-                    ])}
-                >
-                    <span className={styles['name']}>Stephen Matheis</span>{' '}
-                    <span className={styles['title']}>
-                        Front-end Software Engineer
-                    </span>
-                </div>
-            </Link>
+            <Header />
             <main>
                 <PostsList posts={posts} />
             </main>
+            <Footer links={[{ label: 'Home', path: '/' }]} />
         </div>
     );
 }
