@@ -8,7 +8,7 @@
     padding: 0.5in;
     display: flex;
     flex-direction: column;
-    gap: calc(utilities.$line-height * 3);
+    gap: calc(utilities.$line-height * 6);
     transition: padding 500ms ease-in-out;
 
     @media screen {
