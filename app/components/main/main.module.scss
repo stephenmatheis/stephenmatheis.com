@@ -2,10 +2,10 @@
 @use 'styles/dark.theme.module.scss' as theme;
 
 .main {
+    flex: 2;
     display: flex;
     justify-content: space-between;
-    gap: 4ch;
-    opacity: 0;
+    gap: 8ch;
 
     @media screen {
         // NOTE:
@@ -36,37 +36,45 @@
         flex-direction: row-reverse;
     }
 
-    &.loading {
-        opacity: 0;
-    }
-
-    &.fade {
-        animation: fade-in 450ms ease-in-out 0ms forwards;
-    }
-
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    * {
-        font-size: utilities.$font-size;
-        line-height: utilities.$line-height;
-    }
-
     .left {
         display: flex;
         flex-direction: column;
         gap: calc(utilities.$line-height * 2);
-        max-width: 34ch;
 
         @media screen and (max-width: 911px) {
-            max-width: none;
+            width: none;
+        }
+    }
+
+    .right {
+        // NOTE:
+        // line-height * 1.5 = 18px * 1.5 = 27px
+        // 27 - 18 = 9
+        //  9 / 2 = 4.5
+        /* prettier-ignore */
+        transform: translateY(
+            calc(
+                -1 * 
+                (
+                    (
+                        utilities.$line-height *
+                        utilities.$p-line-height-modifier
+                    ) 
+                    - utilities.$line-height
+                )
+                / 2
+            )
+        );
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: utilities.$line-height;
+
+        @media screen and (max-width: 911px) {
+            flex-direction: row;
+            justify-content: space-between;
         }
     }
 

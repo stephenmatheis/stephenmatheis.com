@@ -10,11 +10,6 @@
     flex-direction: column;
     gap: 54px;
 
-    * {
-        font-size: utilities.$font-size;
-        line-height: utilities.$line-height;
-    }
-
     @media screen {
         margin: 0 auto;
         padding-top: 0.75in;
@@ -38,25 +33,6 @@
             margin-top: clamp(0px, 15vh, 200px);
             margin-bottom: clamp(0px, 7.5vh, 100px);
         }
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-weight: normal;
-        color: theme.$heading;
-    }
-
-    h2 {
-        margin-top: 3em;
-    }
-
-    p {
-        line-height: 1.75;
-        text-align: justify;
     }
 
     .date {

@@ -4,16 +4,6 @@
 .link-ctr {
     height: utilities.$line-height;
 
-    &.hide-background {
-        .link-text {
-            border-bottom-color: transparent;
-
-            &::before {
-                background-color: transparent;
-            }
-        }
-    }
-
     a {
         display: flex;
 
@@ -26,8 +16,8 @@
     .link-text {
         position: relative;
         border-bottom: solid 1px;
-        border-bottom-color: theme.$link;
-        transition: border-bottom-color 450ms ease-in-out;
+        border-bottom-color: transparent;
+        animation: fade-in-border-color 450ms ease-in-out forwards;
 
         &:hover {
             &::before {
@@ -44,9 +34,30 @@
             left: 3px;
             width: 100%;
             height: 100%;
-            background-color: theme.$link-20;
+            background-color: transparent;
             transition: background-color 450ms ease-in-out,
                 top 250ms ease-in-out, left 250ms ease-in-out;
+            animation: fade-in-background 450ms ease-in-out forwards;
+        }
+
+        @keyframes fade-in-background {
+            from {
+                background-color: transparent;
+            }
+
+            to {
+                background-color: theme.$link-20;
+            }
+        }
+
+        @keyframes fade-in-border-color {
+            from {
+                border-bottom-color: transparent;
+            }
+
+            to {
+                border-bottom-color: theme.$link;
+            }
         }
     }
 }

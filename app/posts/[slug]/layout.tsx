@@ -4,6 +4,7 @@ import getPosts from '@/lib/get-posts';
 import Date from '@/components/date';
 import Nav from './components/nav';
 import styles from './layout.module.scss';
+import '@/styles/globals.scss';
 
 export async function generateStaticParams() {
     const posts = await getPosts();

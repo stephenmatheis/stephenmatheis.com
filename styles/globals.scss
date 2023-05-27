@@ -1,3 +1,6 @@
+@use 'styles/utilities.module.scss' as utilities;
+@use 'styles/dark.theme.module.scss' as theme;
+
 :root {
     --background-color: #1f1f1f;
     --color: #d4d4d4;
@@ -12,6 +15,8 @@
 
 * {
     box-sizing: border-box;
+    font-size: utilities.$font-size;
+    line-height: utilities.$line-height;
 }
 
 html {
@@ -34,4 +39,32 @@ body {
     &.hidden {
         overflow: hidden;
     }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    color: theme.$heading;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: calc(utilities.$line-height * 2);
+    margin-bottom: utilities.$line-height;
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: utilities.$line-height;
+    line-height: calc(
+        utilities.$line-height * utilities.$p-line-height-modifier
+    );
+    text-align: justify;
 }

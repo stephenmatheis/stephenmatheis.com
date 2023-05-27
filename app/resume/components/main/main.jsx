@@ -14,12 +14,12 @@ export default function Main({ loading, fade }) {
             })}
         >
             <section className={styles['left']}>
-                <Experience />
-            </section>
-            <section className={styles['right']}>
                 <Skills />
                 <Projects />
                 <Contact fade={fade} />
+            </section>
+            <section className={styles['right']}>
+                <Experience />
             </section>
         </main>
     );
