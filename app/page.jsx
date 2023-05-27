@@ -1,9 +1,14 @@
+import Header from './components/header';
+import Main from './components/main';
+import Footer from './components/footer';
 import styles from './page.module.scss';
 
 export default function Page() {
     return (
         <div className={styles.page}>
-            <h1>page.jsx</h1>
+            <Header />
+            <Main />
+            <Footer />
         </div>
     );
 }
