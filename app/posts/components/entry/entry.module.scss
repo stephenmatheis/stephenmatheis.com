@@ -1,5 +1,5 @@
-@use '../../../../styles/utilities.module.scss' as utilities;
-@use '../../../../styles/dark.theme.module.scss' as theme;
+@use 'styles/utilities.module.scss' as utilities;
+@use 'styles/dark.theme.module.scss' as theme;
 
 .item {
     list-style-type: none;
@@ -52,3 +52,4 @@
         color: theme.$muted;
     }
 }
+

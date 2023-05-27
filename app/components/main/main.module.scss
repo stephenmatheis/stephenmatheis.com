@@ -25,7 +25,8 @@
         // @media (max-width: 911px) {
         @media (max-width: 911px) {
             flex-direction: column;
-            gap: calc(utilities.$line-height * 2);
+            gap: calc(utilities.$line-height * 4);
+            justify-content: unset;
 
             .right {
                 max-width: unset;
@@ -69,6 +70,11 @@
                 / 2
             )
         );
+
+        @media screen and (max-width: 911px) {
+            max-width: unset;
+            transform: unset;
+        }
     }
 
     nav {
@@ -78,7 +84,6 @@
 
         @media screen and (max-width: 911px) {
             flex-direction: row;
-            justify-content: space-between;
         }
     }
 
