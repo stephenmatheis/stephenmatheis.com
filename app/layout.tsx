@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     description: "Stephen Matheis' portfolio, resume, and blog.",
     viewport: 'width=device-width, initial-scale=1,  viewport-fit=cover',
     manifest: '/manifest.json',
-    themeColor: '#1f1f1f',
+    themeColor: '#221d29',
     icons: {
         shortcut: '/favicons/favicon.ico',
         icon: '/favicons/icon.png',
