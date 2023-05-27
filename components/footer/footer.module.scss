@@ -2,6 +2,10 @@
 @use 'styles/dark.theme.module.scss' as theme;
 
 .footer {
+    display: flex;
+    flex-direction: column;
+    gap: utilities.$line-height;
+
     * {
         font-size: utilities.$font-size;
         line-height: utilities.$line-height;
@@ -18,6 +22,11 @@
                 color: theme.$heading;
             }
         }
+    }
+
+    .copyright {
+        text-align: center;
+        color: theme.$muted;
     }
 
     @media print {
