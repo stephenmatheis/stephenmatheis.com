@@ -4,21 +4,38 @@
 .page {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     width: fit-content;
-    max-width: 680px;
+    // max-width: 680px;
+    max-width: 8.5in;
     margin: 0 auto;
     padding: 1in 0.5in;
     display: flex;
     flex-direction: column;
     gap: calc(utilities.$line-height * 3);
 
-    * {
-        font-size: utilities.$font-size;
-        line-height: utilities.$line-height;
-    }
+    @media screen {
+        margin: 0 auto;
 
-    a,
-    a:hover {
-        text-decoration: none;
+        // NOTE:
+        // If the viewport is less than 912px wide, the combined left and right
+        // padding and margin will be less than 96px, or 1 inch on either side.
+        // So, once the viewport is 911px or less wide, remove the 8.5in width
+        // and horizontally center flex children.
+        //
+        // There is a corresponding media
+        // query in `components/main/main.module.scss` that will set the
+        // `flex-direction` to `column`. The main container may now be less than 720px
+        // or 8.5in wide so we also set the `width` to `fit-content`.
+
+        @media (max-width: 911px) {
+            width: fit-content;
+            align-items: center;
+            max-width: 680px;
+        }
+
+        @media (max-width: 500px) {
+            padding-left: 0.25in;
+            padding-right: 0.25in;
+        }
     }
 
     .profile {

@@ -3,27 +3,19 @@
 #resume {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     width: 8.5in;
-    padding: 0.5in;
+    padding: 1in 0.5in;
     display: flex;
     flex-direction: column;
     gap: calc(utilities.$line-height * 3);
     transition: padding 500ms ease-in-out;
 
     @media print {
+        padding: 0.5in;
         gap: calc(utilities.$line-height * 2);
-    }
-
-    a {
-        &,
-        &:hover {
-            text-decoration: none;
-        }
     }
 
     @media screen {
         margin: 0 auto;
-        padding-top: 0.75in;
-        padding-bottom: 0.75in;
 
         // NOTE:
         // If the viewport is less than 912px wide, the combined left and right
