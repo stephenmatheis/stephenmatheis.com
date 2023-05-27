@@ -9,7 +9,7 @@ export default async function Blog() {
 
     return (
         <div className={styles.page}>
-            <Link href="/resume" aria-label="Stephen Matheis' personal website">
+            <Link href="/" aria-label="Stephen Matheis' personal website">
                 <div
                     className={classNames([
                         styles['profile'],
