@@ -1,12 +1,9 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import LinkCtr from '@/components/link-ctr/link-ctr';
-import getPosts from '@/lib/get-posts';
 import styles from './main.module.scss';
 
 export default async function Main({}) {
-    const posts = await getPosts();
-
     return (
         <main className={classNames(styles.main, styles.fade)}>
             <section className={styles.left}>
@@ -28,10 +25,12 @@ export default async function Main({}) {
                 {/* Video */}
                 <video
                     autoPlay
+                    playsInline
                     loop
                     muted
+                    preload
                     style={{ width: 640 / 2, height: 480 / 2 }}
-                    src="/memoji-loop-22s.mov#t=3"
+                    src="/memoji-loop-22s.mov"
                 />
             </section>
             <section className={styles.right}>
