@@ -4,7 +4,7 @@
 .main {
     flex: 2;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     // NOTE: Do I like this?
     gap: 8ch;
 
@@ -48,44 +48,67 @@
         }
     }
 
+    // DEV:
+
+    .left,
     .right {
-        // NOTE: Do I like this?
-        max-width: 80ch;
-
-        // NOTE:
-        // line-height * 1.5 = 18px * 1.5 = 27px
-        // 27 - 18 = 9
-        //  9 / 2 = 4.5
-        /* prettier-ignore */
-
-        // transform: translateY(
-        //     calc(
-        //         -1 *
-        //         (
-        //             (
-        //                 utilities.$line-height *
-        //                 utilities.$p-line-height-modifier
-        //             )
-        //             - utilities.$line-height
-        //         )
-        //         / 2
-        //     )
-        // );
-
-        @media screen and (max-width: 911px) {
-            max-width: unset;
-            transform: unset;
-        }
+        display: flex;
+        width: 100%;
     }
 
-    nav {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: utilities.$line-height;
+    .left {
+        justify-content: flex-start;
+    }
 
-        @media screen and (max-width: 911px) {
-            flex-direction: row;
+    .right {
+        justify-content: flex-end;
+    }
+
+    // DEV:
+
+    // .right {
+    //     // NOTE: Do I like this?
+    //     flex: 2;
+    //     display: flex;
+    //     justify-content: center;
+
+    //     // NOTE:
+    //     // line-height * 1.5 = 18px * 1.5 = 27px
+    //     // 27 - 18 = 9
+    //     //  9 / 2 = 4.5
+    //     /* prettier-ignore */
+
+    //     // transform: translateY(
+    //     //     calc(
+    //     //         -1 *
+    //     //         (
+    //     //             (
+    //     //                 utilities.$line-height *
+    //     //                 utilities.$p-line-height-modifier
+    //     //             )
+    //     //             - utilities.$line-height
+    //     //         )
+    //     //         / 2
+    //     //     )
+    //     // );
+
+    //     @media screen and (max-width: 911px) {
+    //         max-width: unset;
+    //         transform: unset;
+    //     }
+    // }
+
+    .left {
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: fit-content;
+            gap: utilities.$line-height;
+
+            @media screen and (max-width: 911px) {
+                flex-direction: row;
+            }
         }
     }
 
