@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import LinkCtr from '@/components/link-ctr/link-ctr';
-import PostsList from '@/app/posts/components/posts-list';
 import getPosts from '@/lib/get-posts';
 import styles from './main.module.scss';
 

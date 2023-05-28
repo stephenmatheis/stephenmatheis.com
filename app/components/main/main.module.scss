@@ -32,6 +32,10 @@
                 max-width: unset;
             }
         }
+
+        @media (max-width: 500px) {
+            gap: calc(utilities.$line-height * 2);
+        }
     }
 
     @media print {
@@ -44,11 +48,9 @@
         gap: calc(utilities.$line-height * 2);
 
         @media screen and (max-width: 911px) {
-            width: none;
+            width: unset;
         }
     }
-
-    // DEV:
 
     .left,
     .right {
@@ -58,47 +60,7 @@
 
     .left {
         justify-content: flex-start;
-    }
 
-    .right {
-        justify-content: flex-end;
-    }
-
-    // DEV:
-
-    // .right {
-    //     // NOTE: Do I like this?
-    //     flex: 2;
-    //     display: flex;
-    //     justify-content: center;
-
-    //     // NOTE:
-    //     // line-height * 1.5 = 18px * 1.5 = 27px
-    //     // 27 - 18 = 9
-    //     //  9 / 2 = 4.5
-    //     /* prettier-ignore */
-
-    //     // transform: translateY(
-    //     //     calc(
-    //     //         -1 *
-    //     //         (
-    //     //             (
-    //     //                 utilities.$line-height *
-    //     //                 utilities.$p-line-height-modifier
-    //     //             )
-    //     //             - utilities.$line-height
-    //     //         )
-    //     //         / 2
-    //     //     )
-    //     // );
-
-    //     @media screen and (max-width: 911px) {
-    //         max-width: unset;
-    //         transform: unset;
-    //     }
-    // }
-
-    .left {
         nav {
             display: flex;
             flex-direction: column;
@@ -109,6 +71,27 @@
             @media screen and (max-width: 911px) {
                 flex-direction: row;
             }
+
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    }
+
+    .middle {
+        @media screen and (max-width: 500px) {
+            flex: 2;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .right {
+        justify-content: flex-end;
+
+        @media screen and (max-width: 500px) {
+            display: none;
         }
     }
 

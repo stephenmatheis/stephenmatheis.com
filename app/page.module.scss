@@ -32,8 +32,10 @@
         }
 
         @media (max-width: 500px) {
+            padding-top: 1in;;
             padding-left: 0.25in;
             padding-right: 0.25in;
+            gap: calc(utilities.$line-height * 2);
         }
     }
 }
