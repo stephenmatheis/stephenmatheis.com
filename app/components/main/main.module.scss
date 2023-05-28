@@ -8,6 +8,9 @@
     // NOTE: Do I like this?
     gap: 8ch;
 
+    // DEV:
+    min-width: none;
+
     @media screen {
         // NOTE:
         // If the viewport is less than 912px wide, the combined left and right

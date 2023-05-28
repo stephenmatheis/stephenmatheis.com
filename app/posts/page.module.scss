@@ -3,14 +3,12 @@
 
 .page {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    width: fit-content;
+    min-height: 100dvh;
     max-width: 8.5in;
-    margin: 0 auto;
     padding: utilities.$page-padding;
     display: flex;
     flex-direction: column;
-    gap: calc(utilities.$line-height * 4);
-    // gap: calc((utilities.$page-gap + (utilities.$line-height * 2)));
+    gap: utilities.$page-gap;
 
     @media screen {
         margin: 0 auto;
@@ -30,11 +28,14 @@
             width: fit-content;
             align-items: center;
             max-width: 680px;
+            gap: calc(utilities.$line-height * 4);
         }
 
         @media (max-width: 500px) {
+            padding-top: 1in;
             padding-left: 0.25in;
             padding-right: 0.25in;
+            gap: calc(utilities.$line-height * 3);
         }
     }
 }
