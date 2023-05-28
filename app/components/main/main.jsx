@@ -1,5 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
 import classNames from 'classnames';
+import Image from 'next/image';
 import LinkCtr from '@/components/link-ctr/link-ctr';
 import PostsList from '@/app/posts/components/posts-list';
 import getPosts from '@/lib/get-posts';
@@ -17,8 +17,18 @@ export default async function Main({}) {
                     <LinkCtr text="About" href="/resume" />
                 </nav>
             </section>
+            <section className={styles.middle}>
+                <div className={styles.memoji}>
+                    <Image
+                        src="/memoji.png"
+                        width={280 / 2}
+                        height={350 / 2}
+                        alt="My memoji"
+                    />
+                </div>
+            </section>
             <section className={styles.right}>
-                <PostsList posts={posts} />
+                {/* Intentionally empty */}
             </section>
         </main>
     );
