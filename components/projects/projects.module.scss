@@ -9,16 +9,21 @@
 
         &:not(:last-child) {
             margin-bottom: utilities.$line-height;
+
+            &.display-images {
+                margin-bottom: calc(utilities.$line-height * 3);
+            }
         }
     }
 
     .img {
-        height: 250px;
+        width: 450px;
+        margin: utilities.$line-height 0px;
 
         img {
             border-radius: 10px;
-            height: 100%;
-            width: auto;
+            width: 100%;
+            height: auto;
         }
     }
 }

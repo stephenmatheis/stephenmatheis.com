@@ -3,25 +3,43 @@ import LinkCtr from '@/components/link-ctr';
 import Comment from '../comment';
 import projects from '@/data/projects';
 import styles from './projects.module.scss';
+import classNames from 'classnames';
 
-export default function Projects({}) {
+type Props = {
+    displayImages?: boolean;
+};
+
+type ImageProps = {
+    src: string;
+    width?: number;
+    height?: number;
+};
+
+export default function Projects({ displayImages }: Props) {
     return (
         <div className={styles['projects']}>
             <Comment text={'Projects'} />
             {projects.map(({ name, link, description, image }, index) => {
+                const { src, width, height }: ImageProps = image;
+
                 return (
-                    <div key={index} className={styles['project-ctr']}>
+                    <div
+                        key={index}
+                        className={classNames(styles['project-ctr'], {
+                            [styles['display-images']]: displayImages,
+                        })}
+                    >
                         <LinkCtr text={name} href={link} />
-                        {/* {image && (
+                        {displayImages && src && (
                             <div className={styles.img}>
                                 <Image
-                                    src={image}
+                                    src={src}
                                     alt="Command Palette"
-                                    width={1444}
-                                    height={908}
+                                    width={width}
+                                    height={height}
                                 />
                             </div>
-                        )} */}
+                        )}
                         <div className={styles.description}>{description}</div>
                     </div>
                 );

@@ -7,7 +7,7 @@ export default function Page() {
     return (
         <div className={styles.page}>
             <Header />
-            <Projects />
+            <Projects displayImages={true} />
             <Footer
                 links={[{ label: 'Donwload a copy', path: '/resume.pdf' }]}
             />
