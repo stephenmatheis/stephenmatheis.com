@@ -3,7 +3,11 @@ const projects = [
         name: 'Robi',
         link: 'https://github.com/robijs',
         gif: '',
-        image: '',
+        image: {
+            src: '/robi.png',
+            width: 1400,
+            height: 868,
+        },
         description:
             'A client-side single-page-application framework for SharePoint. Supports ES modules and local development.',
     },
@@ -11,7 +15,11 @@ const projects = [
         name: 'Command Palette',
         link: 'https://robi-command-palette.netlify.app',
         gif: '',
-        image: '/command-palette.png',
+        image: {
+            src: '/command-palette.png',
+            width: 1400,
+            height: 868,
+        },
         description:
             'An embeddable React component to search for and run commands from within an app.',
     },
@@ -19,7 +27,11 @@ const projects = [
         name: 'Samepage',
         link: 'https://samepage.dev',
         gif: '',
-        image: '',
+        image: {
+            src: '/samepage.png',
+            width: 1400,
+            height: 1066,
+        },
         description: 'A Basecamp clone built with Robi.',
     },
 ];
