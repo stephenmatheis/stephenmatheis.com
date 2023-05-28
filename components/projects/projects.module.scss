@@ -20,6 +20,10 @@
         width: 450px;
         margin: utilities.$line-height 0px;
 
+        @media screen and (max-width: 500px) {
+            width: 100%;
+        }
+
         img {
             border-radius: 10px;
             width: 100%;
