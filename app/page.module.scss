@@ -10,6 +10,9 @@
     flex-direction: column;
     gap: utilities.$page-gap;
 
+    // Home page only
+    min-width: 100%;
+
     @media screen {
         margin: 0 auto;
 
@@ -32,10 +35,10 @@
         }
 
         @media (max-width: 500px) {
-            padding-top: 1in;;
+            padding-top: 1in;
             padding-left: 0.25in;
             padding-right: 0.25in;
-            gap: calc(utilities.$line-height * 2);
+            gap: calc(utilities.$line-height * 3);
         }
     }
 }
