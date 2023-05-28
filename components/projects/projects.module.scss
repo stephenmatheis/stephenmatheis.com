@@ -1,10 +1,5 @@
-@use '../../styles/utilities.module.scss' as utilities;
-@use '../../styles/dark.theme.module.scss' as theme;
-
-.comment {
-    color: theme.$comment;
-    margin-bottom: utilities.$line-height;
-}
+@use 'styles/utilities.module.scss' as utilities;
+@use 'styles/dark.theme.module.scss' as theme;
 
 .projects {
     .project-ctr {
@@ -14,6 +9,16 @@
 
         &:not(:last-child) {
             margin-bottom: utilities.$line-height;
+        }
+    }
+
+    .img {
+        height: 250px;
+
+        img {
+            border-radius: 10px;
+            height: 100%;
+            width: auto;
         }
     }
 }

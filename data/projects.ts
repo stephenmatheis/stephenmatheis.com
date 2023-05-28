@@ -11,7 +11,7 @@ const projects = [
         name: 'Command Palette',
         link: 'https://robi-command-palette.netlify.app',
         gif: '',
-        image: '',
+        image: '/command-palette.png',
         description:
             'An embeddable React component to search for and run commands from within an app.',
     },
