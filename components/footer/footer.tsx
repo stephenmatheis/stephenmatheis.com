@@ -1,7 +1,18 @@
 import LinkCtr from '@/components/link-ctr';
 import styles from './footer.module.scss';
 
-export default function Footer({ links, text }) {
+type Link = {
+    label: string;
+    path: string;
+    external?: boolean;
+};
+
+type Props = {
+    links: Link[];
+    text?: string;
+};
+
+export default function Footer({ links, text }: Props) {
     const copyright = `Copyright (C) ${new Date().getFullYear()} Stephen Matheis`;
 
     return (
