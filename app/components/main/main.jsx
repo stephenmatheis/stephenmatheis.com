@@ -18,14 +18,22 @@ export default async function Main({}) {
                 </nav>
             </section>
             <section className={styles.middle}>
-                <div className={styles.memoji}>
+                {/* <div className={styles.memoji}>
                     <Image
                         src="/memoji.png"
                         width={280 / 2}
                         height={350 / 2}
                         alt="My memoji"
                     />
-                </div>
+                </div> */}
+                {/* Video */}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    style={{ width: 640 / 2, height: 480 / 2 }}
+                    src="/memoji-loop-22s.mov#t=3"
+                />
             </section>
             <section className={styles.right}>
                 {/* Intentionally empty */}
