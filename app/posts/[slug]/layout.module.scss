@@ -51,4 +51,8 @@
             }
         }
     }
+
+    .footer-wrapper {
+        margin-top: calc(utilities.$line-height * 4);
+    }
 }
