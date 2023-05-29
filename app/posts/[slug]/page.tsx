@@ -2,10 +2,10 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import getPosts from '@/lib/get-posts';
 import Date from '@/components/date';
-import Nav from './components/nav';
 import Body from './components/body';
+import Nav from './components/nav';
+import Footer from '@/components/footer';
 import styles from './layout.module.scss';
-import '@/styles/globals.scss';
 
 export async function generateStaticParams() {
     const posts = await getPosts();
@@ -69,12 +69,15 @@ export default async function Page({ params }: PageProps) {
                 <Date className={styles.date} dateString={date} />
                 <Body>{body}</Body>
             </article>
-            {lastModified && (
+            {/* {lastModified && (
                 <div className={styles.date}>
                     Last modified <Date dateString={lastModified} />
                 </div>
-            )}
+            )} */}
             <Nav previous={previous} next={next} />
+            <div className={styles['footer-wrapper']}>
+                <Footer />
+            </div>
         </main>
     );
 }

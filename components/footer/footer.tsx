@@ -8,7 +8,7 @@ type Link = {
 };
 
 type Props = {
-    links: Link[];
+    links?: Link[];
     text?: string;
 };
 
@@ -17,10 +17,10 @@ export default function Footer({ links, text }: Props) {
 
     return (
         <footer className={styles.footer}>
-            <nav>
-                <ol>
-                    {links?.length &&
-                        links.map(({ label, path, external }) => {
+            {links?.length && (
+                <nav>
+                    <ol>
+                        {links.map(({ label, path, external }) => {
                             return (
                                 <li key="label">
                                     <LinkCtr
@@ -31,8 +31,9 @@ export default function Footer({ links, text }: Props) {
                                 </li>
                             );
                         })}
-                </ol>
-            </nav>
+                    </ol>
+                </nav>
+            )}
             {text && <div className={styles.text}>{text}</div>}
             <div className={styles.copyright}>{copyright}</div>
         </footer>
