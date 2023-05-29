@@ -8,12 +8,12 @@
     padding: 0.5in;
     display: flex;
     flex-direction: column;
-    gap: 54px;
+    gap: calc(utilities.$line-height * 3);
 
     @media screen {
         margin: 0 auto;
         padding-top: 0.75in;
-        padding-bottom: 0.75in;
+        padding-bottom: 0.25in;
 
         @media (max-width: 500px) {
             padding-left: 0.25in;
@@ -53,6 +53,6 @@
     }
 
     .footer-wrapper {
-        margin-top: calc(utilities.$line-height * 4);
+        margin-top: calc(utilities.$line-height * 5);
     }
 }
