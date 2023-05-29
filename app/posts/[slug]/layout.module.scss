@@ -3,8 +3,12 @@
 
 .layout {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    width: fit-content;
-    max-width: 680px;
+
+    // width: fit-content;
+    // max-width: 680px;
+
+    width: 680px;
+
     padding: 0.5in;
     display: flex;
     flex-direction: column;
