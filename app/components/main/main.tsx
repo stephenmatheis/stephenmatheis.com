@@ -16,13 +16,15 @@ export default function Main({}: Props) {
             </section>
             <section className={styles.middle}>
                 <video
-                    {...(process.env.NODE_ENV === 'production'
-                        ? {
-                              autoPlay: true,
-                              playsInline: true,
-                              loop: true,
-                          }
-                        : {})}
+                    // {...(process.env.NODE_ENV === 'production'
+                    //     ? {
+                    //           autoPlay: true,
+                    //           loop: true,
+                    //       }
+                    //     : {})}
+                    autoPlay
+                    loop
+                    playsInline
                     muted
                     preload="auto"
                     style={{ width: 640 / 2, height: 480 / 2 }}
