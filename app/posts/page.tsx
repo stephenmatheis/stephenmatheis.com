@@ -1,17 +1,11 @@
 import Page from '@/components/page';
-import PostsList from './components/posts-list';
-import getPosts from '@/lib/get-posts';
-import Comment from '@/components/comment';
+import Main from './components/main';
 
 export default async function PostsPage() {
-    const posts = await getPosts();
-
     return (
         <Page links={[{ label: 'Home', path: '/' }]}>
-            <main>
-                <Comment text="Posts" />
-                <PostsList posts={posts} />
-            </main>
+            {/* @ts-expect-error Async Server Component */}
+            <Main />
         </Page>
     );
 }
