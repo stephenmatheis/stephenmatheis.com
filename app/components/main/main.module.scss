@@ -84,7 +84,9 @@
     }
 
     .middle {
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         video {
             opacity: 0;
@@ -103,18 +105,15 @@
             }
         }
 
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 911px) {
             flex: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
     }
 
     .right {
         justify-content: flex-end;
 
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 911px) {
             display: none;
         }
     }
