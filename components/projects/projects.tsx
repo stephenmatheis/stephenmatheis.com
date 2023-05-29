@@ -4,6 +4,7 @@ import Comment from '../comment';
 import projects from '@/data/projects';
 import styles from './projects.module.scss';
 import classNames from 'classnames';
+import Link from 'next/link';
 
 type Props = {
     displayImages?: boolean;
@@ -31,13 +32,15 @@ export default function Projects({ displayImages }: Props) {
                     >
                         <LinkCtr text={name} href={link} />
                         {displayImages && src && (
-                            <div className={styles.img}>
-                                <Image
-                                    src={src}
-                                    alt="Command Palette"
-                                    width={width}
-                                    height={height}
-                                />
+                            <div className={styles['img-ctr']}>
+                                <Link href={src}>
+                                    <Image
+                                        src={src}
+                                        alt="Command Palette"
+                                        width={width}
+                                        height={height}
+                                    />
+                                </Link>
                             </div>
                         )}
                         <div className={styles.description}>{description}</div>
