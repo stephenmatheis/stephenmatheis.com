@@ -29,7 +29,19 @@ const components = {
         );
     },
     img: ResponsiveImage,
-    pre: Code,
+    pre: ({ children, ...props }: any) => {
+        Code.theme = 'light-plus';
+
+        return (
+            // https://github.com/vercel/next.js/issues/43537#issuecomment-1331054397
+            // Related issue: https://github.com/microsoft/TypeScript/pull/51328
+            // Next.js Doc: https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#async-and-await-in-server-components
+            // @ts-expect-error Async Server Component
+            <Code lineNumbers {...props}>
+                {children}
+            </Code>
+        );
+    },
 };
 
 export default function Body({ children }: { children: string }) {
