@@ -1,10 +1,9 @@
-@use '../../styles/utilities.module.scss' as utilities;
-@use '../../styles/dark.theme.module.scss' as theme;
+@use 'styles/utilities.module.scss' as utilities;
 
 .page {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     min-height: 100dvh;
-    max-width: 8.5in;
+    width: 8.5in;
     padding: utilities.$page-padding;
     display: flex;
     flex-direction: column;
@@ -32,6 +31,7 @@
         }
 
         @media (max-width: 500px) {
+            min-width: 100%;
             padding-top: 1in;
             padding-left: 0.25in;
             padding-right: 0.25in;
