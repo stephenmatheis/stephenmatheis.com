@@ -3,7 +3,7 @@ import contact from '@/data/contact';
 import Comment from '../comment';
 import styles from './contact.module.scss';
 
-export default function Contact({ fade }) {
+export default function Contact({}) {
     return (
         <div className={styles['contact']}>
             <Comment text={'Contact'} />
@@ -16,7 +16,6 @@ export default function Contact({ fade }) {
                             href={href}
                             text={text}
                             label={label}
-                            showLinkBackground={fade}
                         />
                     );
                 })}

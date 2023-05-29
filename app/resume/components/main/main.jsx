@@ -5,20 +5,15 @@ import Projects from '@/components/projects';
 import Contact from '@/components/contact';
 import styles from './main.module.scss';
 
-export default function Main({ loading, fade }) {
+export default function Main({}) {
     return (
-        <main
-            className={classNames(styles['main'], {
-                [styles['fade']]: fade,
-                [styles['loading']]: loading,
-            })}
-        >
-            <section className={styles['left']}>
+        <main className={styles.main}>
+            <section className={styles.left}>
                 <Skills />
                 <Projects />
-                <Contact fade={fade} />
+                <Contact />
             </section>
-            <section className={styles['right']}>
+            <section className={styles.right}>
                 <Experience />
             </section>
         </main>
