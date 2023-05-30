@@ -1,10 +1,9 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 import LinkCtr from '@/components/link-ctr';
 import Comment from '../comment';
 import projects from '@/data/projects';
 import styles from './projects.module.scss';
-import classNames from 'classnames';
-import Link from 'next/link';
 
 type Props = {
     displayImages?: boolean;
@@ -33,14 +32,14 @@ export default function Projects({ displayImages }: Props) {
                         <LinkCtr text={name} href={link} />
                         {displayImages && src && (
                             <div className={styles['img-ctr']}>
-                                <Link href={src}>
+                                <a href={link} target="_blank">
                                     <Image
                                         src={src}
-                                        alt="Command Palette"
+                                        alt={description}
                                         width={width}
                                         height={height}
                                     />
-                                </Link>
+                                </a>
                             </div>
                         )}
                         <div className={styles.description}>{description}</div>
