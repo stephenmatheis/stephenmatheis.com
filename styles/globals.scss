@@ -106,16 +106,30 @@ p {
 }
 
 pre {
-    --background: #{theme.$skill-10};
-    --hightlighted-background: #{theme.$skill-15};
+    // 🚫 Blue
+    // --background: #{theme.$skill-10};
+    // --hightlighted-background: #{theme.$skill-15};
+    // --highlighted-border-color: #{theme.$skill};
+
+    // 🚫 Pink
+    // --background: #{theme.$name-10};
+    // --hightlighted-background: #{theme.$name-15};
+    // --highlighted-border-color: #{theme.$skill};
+
+    // ✅ Green
+    --background: #{theme.$link-10};
+    --hightlighted-background: #{theme.$link-15};
+    --highlighted-border-color: #{theme.$link};
 
     overflow-x: auto;
     font-weight: 400;
     margin: calc(utilities.$line-height * 1.5) 0px;
-    border-radius: 6px;
-    padding: 4ch utilities.$line-height;
+    padding: calc(utilities.$line-height * 1);
     opacity: 0.98;
     background: var(--background);
+
+    // NOTE: Experimenting with no border radius
+    // border-radius: 10px;
 
     &,
     & * {
@@ -134,7 +148,9 @@ pre {
             // Highlight line
             &.highlighted {
                 background: var(--hightlighted-background);
-                border-left-color: #60a5fa;
+                border-left-color: var(--highlighted-border-color);
+                // border-left-color: theme.$name;
+                // border-left-color: #60a5fa;
             }
 
             &::before {
