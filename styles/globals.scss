@@ -42,9 +42,38 @@ body {
 }
 
 a {
+    position: relative;
+
+    &.anchor {
+        display: block;
+
+        &:hover {
+            * {
+                color: theme.$link;
+            }
+        }
+
+        * {
+            transition: color 150ms ease-in-out;
+        }
+    }
+
     &,
     &:hover {
         text-decoration: none;
+
+        .anchor-link {
+            opacity: 1;
+        }
+    }
+
+    .anchor-link {
+        position: absolute;
+        bottom: 0px;
+        left: -2ch;
+        color: theme.$link;
+        opacity: 0;
+        transition: opacity 150ms ease-in-out;
     }
 }
 
