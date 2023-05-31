@@ -7,7 +7,25 @@ import rehypePrettyCode from 'rehype-pretty-code';
 // import rehypeSlug from 'rehype-slug'
 // import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 // import remarkA11yEmoji from '@fec/remark-a11y-emoji'
-// import remarkToc from 'remark-toc'
+
+function getAnchor(text) {
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9 ]/g, '')
+        .replace(/[ ]/g, '-');
+}
+
+function Heading({ Tag, children }) {
+    const anchor = getAnchor(children);
+    const link = `#${anchor}`;
+
+    return (
+        <a href={link} className="anchor">
+            <span className="anchor-link">#</span>
+            <Tag id={anchor}>{children}</Tag>
+        </a>
+    );
+}
 
 function ResponsiveImage(props: any) {
     return (
@@ -21,7 +39,34 @@ function ResponsiveImage(props: any) {
 }
 
 const components = {
+    h2: ({ children }: any) => (
+        <Heading Tag={({ children, id }) => <h2 id={id}>{children}</h2>}>
+            {children}
+        </Heading>
+    ),
+    h3: ({ children }: any) => (
+        <Heading Tag={({ children, id }) => <h3 id={id}>{children}</h3>}>
+            {children}
+        </Heading>
+    ),
+    h4: ({ children }: any) => (
+        <Heading Tag={({ children, id }) => <h4 id={id}>{children}</h4>}>
+            {children}
+        </Heading>
+    ),
+    h5: ({ children }: any) => (
+        <Heading Tag={({ children, id }) => <h5 id={id}>{children}</h5>}>
+            {children}
+        </Heading>
+    ),
+    h6: ({ children }: any) => (
+        <Heading Tag={({ children, id }) => <h6 id={id}>{children}</h6>}>
+            {children}
+        </Heading>
+    ),
     a: ({ children, ...props }: any) => {
+        const anchor = getAnchor(children);
+
         return (
             <Link {...props} href={props.href || ''}>
                 {children}
