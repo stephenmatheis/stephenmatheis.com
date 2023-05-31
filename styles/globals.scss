@@ -7,7 +7,8 @@
     --color: #d4d4d4;
     --line-height: 18px;
     --font-size: 12px;
-    --font-code: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        Liberation Mono, 'Courier New', monospace;
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
         Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol';
@@ -28,8 +29,8 @@ html {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
-    scrollbar-width: none; // Firefox
-    -ms-overflow-style: none; // IE 10+
+    // scrollbar-width: none; // Firefox
+    // -ms-overflow-style: none; // IE 10+
     -webkit-text-size-adjust: 100%;
 }
 
@@ -38,10 +39,6 @@ body {
     margin: 0;
     padding: 0;
     overflow: overlay;
-
-    &.hidden {
-        overflow: hidden;
-    }
 }
 
 a {
@@ -79,6 +76,96 @@ p {
     text-align: justify;
 }
 
-code {
-    font-family: var(--font-code);
+pre {
+    --background: #{theme.$skill-10};
+    --hightlighted-background: #{theme.$skill-15};
+
+    overflow-x: auto;
+    font-weight: 400;
+    margin: calc(utilities.$line-height * 1.5) 0px;
+    border-radius: 6px;
+    padding: 4ch utilities.$line-height;
+    opacity: 0.98;
+    background: var(--background);
+
+    &,
+    & * {
+        line-height: 2;
+    }
+
+    & > code {
+        font-family: var(--font-code);
+        display: grid;
+        counter-reset: line;
+
+        & > .line {
+            padding: 0 1.25rem;
+            border-left: 2px solid transparent;
+
+            // Highlight line
+            &.highlighted {
+                background: var(--hightlighted-background);
+                border-left-color: #60a5fa;
+            }
+
+            &::before {
+                // Line numbers
+                counter-increment: line;
+                content: counter(line);
+
+                /* Other styling */
+                display: inline-block;
+                width: 1rem;
+                margin-right: 2rem;
+                text-align: right;
+                color: gray;
+            }
+        }
+
+        // Line numbers
+        & > .line &[data-line-numbers-max-digits='2'] > .line::before {
+            width: 2rem;
+        }
+
+        & code {
+            code {
+                &[data-line-numbers-max-digits='3'] > .line::before {
+                    width: 3rem;
+                }
+            }
+        }
+
+        // Highlight word
+        .word {
+            border-radius: 0.25rem;
+            background-color: rgba(82, 82, 91, 0.5);
+            box-shadow: 0 0 0 4px rgba(82, 82, 91, 0.5);
+
+            &[data-word-id] {
+                padding: 0.25rem;
+                --tw-shadow: 0 0 #0000;
+                --tw-shadow-colored: 0 0 #0000;
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+                    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+                font-weight: 700;
+                --tw-text-opacity: 1;
+            }
+
+            &[data-word-id='r'] {
+                background-color: rgba(159, 18, 57, 0.5);
+                color: rgb(249 168 212 / var(--tw-text-opacity));
+            }
+
+            &[data-word-id='g'] {
+                background-color: rgba(17, 94, 89, 0.5);
+                color: rgb(94 234 212 / var(--tw-text-opacity));
+            }
+
+            &[data-word-id='b'] {
+                background-color: rgba(30, 64, 175, 0.5);
+                color: rgb(191 219 254 / var(--tw-text-opacity));
+            }
+        }
+    }
 }
