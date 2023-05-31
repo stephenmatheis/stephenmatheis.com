@@ -2,28 +2,25 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
+import { CopyToClipboard } from '../copy-to-clipboard';
 
-// import remarkGfm from 'remark-gfm'
-// import rehypeSlug from 'rehype-slug'
-// import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-// import remarkA11yEmoji from '@fec/remark-a11y-emoji'
-
-function getAnchor(text) {
+function getAnchor(text: string) {
     return text
         .toLowerCase()
         .replace(/[^a-z0-9 ]/g, '')
         .replace(/[ ]/g, '-');
 }
 
-function Heading({ Tag, children }) {
+function Heading({ as, children, ...props }) {
+    const As = as;
     const anchor = getAnchor(children);
     const link = `#${anchor}`;
 
     return (
-        <a href={link} className="anchor">
+        <Link href={link} className="anchor" {...props}>
             <span className="anchor-link">#</span>
-            <Tag id={anchor}>{children}</Tag>
-        </a>
+            <As id={anchor}>{children}</As>
+        </Link>
     );
 }
 
@@ -39,34 +36,12 @@ function ResponsiveImage(props: any) {
 }
 
 const components = {
-    h2: ({ children }: any) => (
-        <Heading Tag={({ children, id }) => <h2 id={id}>{children}</h2>}>
-            {children}
-        </Heading>
-    ),
-    h3: ({ children }: any) => (
-        <Heading Tag={({ children, id }) => <h3 id={id}>{children}</h3>}>
-            {children}
-        </Heading>
-    ),
-    h4: ({ children }: any) => (
-        <Heading Tag={({ children, id }) => <h4 id={id}>{children}</h4>}>
-            {children}
-        </Heading>
-    ),
-    h5: ({ children }: any) => (
-        <Heading Tag={({ children, id }) => <h5 id={id}>{children}</h5>}>
-            {children}
-        </Heading>
-    ),
-    h6: ({ children }: any) => (
-        <Heading Tag={({ children, id }) => <h6 id={id}>{children}</h6>}>
-            {children}
-        </Heading>
-    ),
+    h2: ({ children }: any) => <Heading as={'h2'}>{children}</Heading>,
+    h3: ({ children }: any) => <Heading as={'h3'}>{children}</Heading>,
+    h4: ({ children }: any) => <Heading as={'h4'}>{children}</Heading>,
+    h5: ({ children }: any) => <Heading as={'h5'}>{children}</Heading>,
+    h6: ({ children }: any) => <Heading as={'h6'}>{children}</Heading>,
     a: ({ children, ...props }: any) => {
-        const anchor = getAnchor(children);
-
         return (
             <Link {...props} href={props.href || ''}>
                 {children}
@@ -74,6 +49,13 @@ const components = {
         );
     },
     img: ResponsiveImage,
+    pre: ({ children }) => {
+        return (
+            <CopyToClipboard>
+                <pre>{children}</pre>
+            </CopyToClipboard>
+        );
+    },
 };
 
 export default function Body({ children }: { children: string }) {
