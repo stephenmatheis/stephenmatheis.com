@@ -9,9 +9,9 @@ export default function Main({}: Props) {
         <main className={classNames(styles.main, styles.fade)}>
             <section className={styles.left}>
                 <nav>
-                    <LinkCtr text="Posts" href="/posts" />
-                    <LinkCtr text="Projects" href="/projects" />
-                    <LinkCtr text="About" href="/resume" />
+                    <LinkCtr href="/posts">Posts</LinkCtr>
+                    <LinkCtr href="/projects">Projects</LinkCtr>
+                    <LinkCtr href="/resume">About</LinkCtr>
                 </nav>
             </section>
             <section className={styles.middle}>

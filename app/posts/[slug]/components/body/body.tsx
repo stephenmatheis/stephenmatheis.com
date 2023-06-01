@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { CopyToClipboard } from '../copy-to-clipboard';
+import LinkCtr from '@/components/link-ctr/link-ctr';
 
 function getAnchor(text: string) {
     return text
@@ -42,11 +43,8 @@ const components = {
     h5: ({ children }: any) => <Heading as={'h5'}>{children}</Heading>,
     h6: ({ children }: any) => <Heading as={'h6'}>{children}</Heading>,
     a: ({ children, ...props }: any) => {
-        return (
-            <Link {...props} href={props.href || ''}>
-                {children}
-            </Link>
-        );
+        console.log(children);
+        return <LinkCtr href={props.href || ''}>{children}</LinkCtr>;
     },
     img: ResponsiveImage,
     pre: ({ children }) => {

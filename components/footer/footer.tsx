@@ -23,11 +23,9 @@ export default function Footer({ links, text }: Props) {
                         {links.map(({ label, path, external }) => {
                             return (
                                 <li key="label">
-                                    <LinkCtr
-                                        text={label}
-                                        href={path}
-                                        newTab={external}
-                                    />
+                                    <LinkCtr href={path} newTab={external}>
+                                        {label}
+                                    </LinkCtr>
                                 </li>
                             );
                         })}

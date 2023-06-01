@@ -29,7 +29,7 @@ export default function Projects({ displayImages }: Props) {
                             [styles['display-images']]: displayImages,
                         })}
                     >
-                        <LinkCtr text={name} href={link} />
+                        <LinkCtr href={link}>{name}</LinkCtr>
                         {displayImages && src && (
                             <div className={styles['img-ctr']}>
                                 <a href={link} target="_blank">
