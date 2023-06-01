@@ -2,23 +2,26 @@
 @use 'styles/dark.theme.module.scss' as theme;
 
 .copy-to-clipboard {
-    position: relative;
-
     button {
-        --label-color: #276558;
-        --background-color: #d3f2eb;
-        --shadow-color: #276558;
+        --background-color: #276558;
+
+        // --label-color: #d3f2eb;
+        // --shadow-color: #d3f2eb;
+
+        --label-color: #a7e4d7;
+        --shadow-color: var(--label-color);
 
         z-index: 1;
         cursor: pointer;
         position: absolute;
-        right: 8px;
-        top: 8px;
+
+        right: 7px;
+        top: 3px;
+
         border: none;
         background-color: var(--background-color);
         box-shadow: 4px 4px 0px 0px var(--shadow-color);
         color: var(--label-color);
-        height: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -30,14 +33,57 @@
 
         &:hover {
             background-color: var(--shadow-color);
+
+            // box-shadow: 0px 0px 0px 0px var(--shadow-color);
             box-shadow: 0px 0px 0px 0px var(--shadow-color);
+            transform: translate(2px, 2px);
+
             color: var(--background-color);
         }
 
         &.copied {
             background-color: var(--shadow-color);
+
+            // box-shadow: 0px 0px 0px 0px var(--shadow-color);
             box-shadow: 0px 0px 0px 0px var(--shadow-color);
+            transform: translate(2px, 2px);
+
             color: var(--background-color);
+
+            span {
+                animation: scale-in 300ms ease-in-out forwards;
+            }
+        }
+
+        &.fade {
+            span {
+                animation: scale-out 300ms ease-in-out forwards,
+                    scale-in 300ms ease-in-out 3300ms forwards;
+            }
+        }
+
+        @keyframes scale-in {
+            from {
+                scale: 0;
+                opacity: 0;
+            }
+
+            to {
+                scale: 1;
+                opacity: 1;
+            }
+        }
+
+        @keyframes scale-out {
+            from {
+                scale: 1;
+                opacity: 1;
+            }
+
+            to {
+                scale: 0;
+                opacity: 0;
+            }
         }
     }
 }

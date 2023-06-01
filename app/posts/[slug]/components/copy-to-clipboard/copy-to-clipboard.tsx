@@ -10,6 +10,7 @@ interface ICopyToClipboard {
 
 export const CopyToClipboard = ({ children }: ICopyToClipboard) => {
     const textInput = useRef<HTMLDivElement>(null);
+    const [fadeBtn, seteFadeBtn] = useState(false);
     const [copied, setCopied] = useState(false);
 
     function onCopy() {
@@ -23,7 +24,15 @@ export const CopyToClipboard = ({ children }: ICopyToClipboard) => {
         }
 
         setTimeout(() => {
-            setCopied(false);
+            seteFadeBtn(true);
+
+            setTimeout(() => {
+                setCopied(false);
+
+                setTimeout(() => {
+                    seteFadeBtn(false);
+                }, 300);
+            }, 300);
         }, 3000);
     }
 
@@ -34,6 +43,7 @@ export const CopyToClipboard = ({ children }: ICopyToClipboard) => {
                 type="button"
                 className={classNames({
                     [styles.copied]: copied,
+                    [styles.fade]: fadeBtn,
                 })}
                 onClick={onCopy}
             >

@@ -40,7 +40,7 @@ This is [an inline link](https://localhost:3000) mixed in with other content.
 
 This is a block of code.
 
-```js {1-3,4}
+```js title="index.js" {1-3,4}
 export async function generateStaticParams() {
     const posts = await getPosts();
 
@@ -48,7 +48,7 @@ export async function generateStaticParams() {
 }
 ```
 
-```js /age/#r /name/#r /setAge/#g /setName/#g /50/#b /'Taylor'/#b
+```js title="main.js" /const/ /age/#r /name/#r /setAge/#g /setName/#g /50/#b /'Taylor'/#b
 const [age, setAge] = useState(50);
 const [name, setName] = useState('Taylor');
 ```
