@@ -6,77 +6,112 @@ $distance: 10px;
 $outer-radius: calc($inner-radius + $distance);
 
 .projects {
-    .project-ctr {
+    .projects-wrapper {
         display: flex;
         flex-direction: column;
-        gap: utilities.$line-height;
+        gap: calc(utilities.$line-height * 2);
 
-        &:not(:last-child) {
-            margin-bottom: utilities.$line-height;
+        .project-ctr {
+            display: flex;
+            flex-direction: column;
+            gap: calc(utilities.$line-height * 2);
 
-            &.display-images {
-                margin-bottom: calc(utilities.$line-height * 3);
+            // &:not(:last-child) {
+            //     margin-bottom: utilities.$line-height;
+
+            //     &.display-images {
+            //         margin-bottom: calc(utilities.$line-height * 3);
+            //     }
+            // }
+
+            .description-ctr {
+                display: flex;
+                gap: 6ch;
+
+                @media (max-width: 500px) {
+                    flex-direction: column;
+                }
+
+                .img-ctr,
+                .description {
+                    flex: 1;
+                }
+
+                .img-ctr {
+                    --shadow-color: #3b9784;
+                    --img-width: 250px;
+
+                    z-index: 0;
+                    position: relative;
+                    margin: 0px;
+                    transition: all 300ms;
+                    height: fit-content;
+
+                    @media (max-width: 500px) {
+                        min-width: calc(100% - 10px);
+                        max-width: calc(100% - 10px);
+                    }
+
+                    &::after {
+                        z-index: -1;
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: $distance;
+                        left: $distance;
+                        background-color: var(--shadow-color);
+                        transition: all 300ms;
+
+                        // NOTE: Experimenting with no border radius
+
+                        // NOTE: Option #1: Only modify the border radius in the bottom right corner, where the two corners meet.
+                        // border-radius: $inner-radius $inner-radius $outer-radius
+                        //     $inner-radius;
+
+                        // NOTE: Option #2: Modify all border radii.
+                        // border-radius: $outer-radius;
+
+                        // NOTE: Option #1: No change.
+                        // border-radius: $inner-radius;
+                    }
+
+                    &:hover {
+                        --hover-offset: 3px;
+                        --translate-offset: calc(var(--hover-offset) * -1);
+
+                        translate: var(--translate-offset)
+                            var(--translate-offset);
+
+                        &::after {
+                            top: calc($distance + (var(--hover-offset) * 2));
+                            left: calc($distance + (var(--hover-offset) * 2));
+                        }
+                    }
+
+                    @media screen and (max-width: 500px) {
+                        width: 100%;
+                    }
+
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        // border: solid 2px theme.$link;
+
+                        // NOTE: Experimenting with no border radius
+                        // border-radius: $inner-radius;
+                    }
+                }
+
+                // .description {
+                //     text-align: justify;
+
+                //     @media (max-width: 500px) {
+                //         text-align: left;
+                //     }
+                // }
             }
-        }
-    }
-
-    .img-ctr {
-        --shadow-color: #3b9784;
-
-        z-index: 0;
-        position: relative;
-        width: 450px;
-        margin: utilities.$line-height 0px;
-        transition: all 300ms;
-
-        &::after {
-            z-index: -1;
-            content: '';
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: $distance;
-            left: $distance;
-            background-color: var(--shadow-color);
-            transition: all 300ms;
-
-            // NOTE: Experimenting with no border radius
-
-            // NOTE: Option #1: Only modify the border radius in the bottom right corner, where the two corners meet.
-            // border-radius: $inner-radius $inner-radius $outer-radius
-            //     $inner-radius;
-
-            // NOTE: Option #2: Modify all border radii.
-            // border-radius: $outer-radius;
-
-            // NOTE: Option #1: No change.
-            // border-radius: $inner-radius;
-        }
-
-        &:hover {
-            --hover-offset: 3px;
-            --translate-offset: calc(var(--hover-offset) * -1);
-
-            translate: var(--translate-offset) var(--translate-offset);
-
-            &::after {
-                top: calc($distance + (var(--hover-offset) * 2));
-                left: calc($distance + (var(--hover-offset) * 2));
-            }
-        }
-
-        @media screen and (max-width: 500px) {
-            width: 100%;
-        }
-
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-            // border: solid 2px theme.$link;
-
-            // NOTE: Experimenting with no border radius
-            // border-radius: $inner-radius;
         }
     }
 }
