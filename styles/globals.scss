@@ -106,7 +106,7 @@ p {
     text-align: justify;
 }
 
-pre {
+[data-rehype-pretty-code-fragment] {
     // 🚫 Blue
     // --background: #{theme.$skill-10};
     // --hightlighted-background: #{theme.$skill-15};
@@ -122,96 +122,103 @@ pre {
     --hightlighted-background: #{theme.$link-15};
     --highlighted-border-color: #{theme.$link};
 
-    overflow-x: auto;
-    font-weight: 400;
+    position: relative;
     margin: calc(utilities.$line-height * 1.5) 0px;
-    padding: calc(utilities.$line-height * 1);
-    opacity: 0.98;
-    background: var(--background);
 
-    // NOTE: Experimenting with no border radius
-    // border-radius: 10px;
-
-    &,
-    & * {
-        line-height: 2;
+    [data-rehype-pretty-code-title] {
+        // width: fit-content;
+        // background: var(--background);
+        background: theme.$link-20;
+        line-height: 30px;
+        padding: 0px 2ch;
     }
 
-    & > code {
-        font-family: var(--font-code);
-        display: grid;
-        counter-reset: line;
+    pre {
+        overflow-x: auto;
+        font-weight: 400;
+        margin: 0px;
+        padding: calc(utilities.$line-height * 1) 0px;
+        opacity: 0.98;
+        background: var(--background);
 
-        & > .line {
-            padding-left: 2ch;
-            padding-right: calc(2ch + 62px);
-            border-left: 2px solid transparent;
+        // NOTE: Experimenting with no border radius
+        // border-radius: 10px;
 
-            // Highlight line
-            &.highlighted {
-                background: var(--hightlighted-background);
-                border-left-color: var(--highlighted-border-color);
-                // border-left-color: theme.$name;
-                // border-left-color: #60a5fa;
-            }
-
-            &::before {
-                // Line numbers
-                counter-increment: line;
-                content: counter(line);
-
-                /* Other styling */
-                display: inline-block;
-                width: 1rem;
-                margin-right: 2rem;
-                text-align: right;
-                color: gray;
-            }
+        &,
+        & * {
+            line-height: 2;
         }
 
-        // Line numbers
-        & > .line &[data-line-numbers-max-digits='2'] > .line::before {
-            width: 2rem;
-        }
+        & > code {
+            font-family: var(--font-code);
+            display: grid;
+            counter-reset: line;
 
-        & code {
-            code {
-                &[data-line-numbers-max-digits='3'] > .line::before {
-                    width: 3rem;
+            & > .line {
+                padding-left: 2ch;
+                padding-right: calc(2ch + 62px);
+                border-left: 2px solid transparent;
+
+                // Highlight line
+                &.highlighted {
+                    background: var(--hightlighted-background);
+                    border-left-color: var(--highlighted-border-color);
+                    // border-left-color: theme.$name;
+                    // border-left-color: #60a5fa;
+                }
+
+                &::before {
+                    // Line numbers
+                    counter-increment: line;
+                    content: counter(line);
+
+                    /* Other styling */
+                    display: inline-block;
+                    width: 1rem;
+                    margin-right: 2rem;
+                    text-align: right;
+                    color: gray;
+                }
+
+                &::selection,
+                & *::selection {
+                    color: inherit;
+                    background: theme.$link-30; /* WebKit/Blink Browsers */
                 }
             }
-        }
 
-        // Highlight word
-        .word {
-            border-radius: 0.25rem;
-            background-color: rgba(82, 82, 91, 0.5);
-            box-shadow: 0 0 0 4px rgba(82, 82, 91, 0.5);
-
-            &[data-word-id] {
-                padding: 0.25rem;
-                --tw-shadow: 0 0 #0000;
-                --tw-shadow-colored: 0 0 #0000;
-                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-                    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-
-                font-weight: 700;
-                --tw-text-opacity: 1;
+            // Line numbers
+            & > .line &[data-line-numbers-max-digits='2'] > .line::before {
+                width: 2rem;
             }
 
-            &[data-word-id='r'] {
-                background-color: rgba(159, 18, 57, 0.5);
-                color: rgb(249 168 212 / var(--tw-text-opacity));
+            & code {
+                code {
+                    &[data-line-numbers-max-digits='3'] > .line::before {
+                        width: 3rem;
+                    }
+                }
             }
 
-            &[data-word-id='g'] {
-                background-color: rgba(17, 94, 89, 0.5);
-                color: rgb(94 234 212 / var(--tw-text-opacity));
-            }
+            // Highlight word
+            .word {
+                --background-color: #63341d;
 
-            &[data-word-id='b'] {
-                background-color: rgba(30, 64, 175, 0.5);
-                color: rgb(191 219 254 / var(--tw-text-opacity));
+                border-top: solid 3px var(--background-color);
+                border-bottom: solid 3px var(--background-color);
+                background-color: var(--background-color);
+
+                &[data-word-id='r'] {
+                    --background-color: #9f1239;
+                }
+
+                &[data-word-id='g'] {
+                    --background-color: #115e59;
+                }
+
+                &[data-word-id='b'] {
+                    --background-color: #1e40af;
+                }
             }
         }
     }
