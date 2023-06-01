@@ -7,8 +7,6 @@
     cursor: pointer;
 
     a {
-        display: flex;
-
         &,
         &:hover {
             color: theme.$link;

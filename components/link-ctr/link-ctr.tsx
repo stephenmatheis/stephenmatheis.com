@@ -10,9 +10,8 @@ type EmojiProps = {
 type Props = {
     emoji?: EmojiProps | string;
     href: string;
-    text: string;
+    children: React.ReactNode;
     label?: string;
-    showLinkBackground?: Boolean;
     newTab?: Boolean;
     className?: string;
 };
@@ -20,23 +19,13 @@ type Props = {
 export default function LinkCtr({
     emoji,
     href,
-    text,
+    children,
     label,
-    showLinkBackground = true,
     newTab,
     className,
 }: Props) {
     return (
-        <div
-            key={text}
-            className={classNames(
-                styles['link-ctr'],
-                {
-                    [styles['hide-background']]: !showLinkBackground,
-                },
-                className
-            )}
-        >
+        <span className={classNames(styles['link-ctr'], className)}>
             {newTab ? (
                 <a
                     className={styles['link-text']}
@@ -44,7 +33,7 @@ export default function LinkCtr({
                     target="_blank"
                     aria-label={label}
                 >
-                    {text}
+                    {children}
                 </a>
             ) : (
                 <Link href={href} aria-label={label}>
@@ -54,7 +43,7 @@ export default function LinkCtr({
                             {typeof emoji === 'string' ? emoji : emoji.value}
                         </span>
                     )}
-                    <span className={styles['link-text']}>{text}</span>
+                    <span className={styles['link-text']}>{children}</span>
                     {typeof emoji === 'object' &&
                         emoji.position === 'right' && (
                             <span
@@ -70,6 +59,6 @@ export default function LinkCtr({
                         )}
                 </Link>
             )}
-        </div>
+        </span>
     );
 }

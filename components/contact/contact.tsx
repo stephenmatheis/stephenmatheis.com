@@ -14,9 +14,10 @@ export default function Contact({}) {
                             key={text}
                             emoji={emoji}
                             href={href}
-                            text={text}
                             label={label}
-                        />
+                        >
+                            {text}
+                        </LinkCtr>
                     );
                 })}
             </div>
