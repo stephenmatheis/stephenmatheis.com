@@ -15,7 +15,9 @@
             top: -10px;
             left: -20px;
             background-color: theme.$link-20;
-            border-radius: 6px;
+
+            // NOTE: Experimenting with no border radius
+            // border-radius: 6px;
             opacity: 0;
             pointer-events: none;
         }
