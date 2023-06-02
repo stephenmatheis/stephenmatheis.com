@@ -43,7 +43,6 @@ const components = {
     h5: ({ children }: any) => <Heading as={'h5'}>{children}</Heading>,
     h6: ({ children }: any) => <Heading as={'h6'}>{children}</Heading>,
     a: ({ children, ...props }: any) => {
-        console.log(children);
         return <LinkCtr href={props.href || ''}>{children}</LinkCtr>;
     },
     img: ResponsiveImage,
