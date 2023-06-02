@@ -155,8 +155,8 @@ p {
             counter-reset: line;
 
             & > .line {
-                padding-left: 2ch;
-                padding-right: calc(2ch + 62px);
+                padding: 0px 2ch;
+                // padding-right: calc(2ch + 62px);
                 border-left: 2px solid transparent;
 
                 // Highlight line
