@@ -1,4 +1,4 @@
-import LinkCtr from '@/components/link-ctr';
+import { LinkCtr } from '@/components/link-ctr';
 
 export default function NotFound() {
     return (

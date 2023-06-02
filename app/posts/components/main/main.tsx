@@ -1,9 +1,9 @@
-import PostsList from '../posts-list';
+import { PostsList } from '../posts-list';
 import getPosts from '@/lib/get-posts';
-import Comment from '@/components/comment';
+import { Comment } from '@/components/comment';
 import styles from './main.module.scss';
 
-export default async function Main({}) {
+export async function Main({}) {
     const posts = await getPosts();
 
     return (

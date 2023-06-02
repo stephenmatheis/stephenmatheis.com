@@ -1,8 +1,8 @@
+import { Comment } from '@/components/comment';
 import jobs from '@/data/jobs';
-import Comment from '@/components/comment';
 import styles from './experience.module.scss';
 
-export default function Experience({}) {
+export function Experience({}) {
     return (
         <div className={styles['experience']}>
             <Comment text={'Experience'} />

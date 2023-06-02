@@ -8,7 +8,7 @@ interface ICopyToClipboard {
     children: React.ReactNode;
 }
 
-export const CopyToClipboard = ({ children }: ICopyToClipboard) => {
+export function CopyToClipboard({ children }: ICopyToClipboard) {
     const textInput = useRef<HTMLDivElement>(null);
     const [fadeBtn, seteFadeBtn] = useState(false);
     const [copied, setCopied] = useState(false);
@@ -52,4 +52,4 @@ export const CopyToClipboard = ({ children }: ICopyToClipboard) => {
             <div ref={textInput}>{children}</div>
         </div>
     );
-};
+}

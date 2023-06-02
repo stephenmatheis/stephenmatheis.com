@@ -1,5 +1,5 @@
-import Page from '@/components/page';
-import Main from './components/main';
+import { Page } from '@/components/page';
+import { Main } from './components/main';
 
 export default async function PostsPage() {
     return (

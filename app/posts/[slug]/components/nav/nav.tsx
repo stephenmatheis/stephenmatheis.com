@@ -1,8 +1,8 @@
 import { Post } from '@/lib/types';
-import LinkCtr from '@/components/link-ctr';
+import {LinkCtr} from '@/components/link-ctr';
 import styles from './nav.module.scss';
 
-export default function Nav({
+export function Nav({
     previous,
     next,
 }: {

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import Image from 'next/image';
-import LinkCtr from '@/components/link-ctr';
-import Comment from '../comment';
+import { LinkCtr } from '@/components/link-ctr';
+import { Comment } from '@/components/comment';
 import projects from '@/data/projects';
 import styles from './projects.module.scss';
 
@@ -15,7 +15,7 @@ type ImageProps = {
     height?: number;
 };
 
-export default function Projects({ displayImages }: Props) {
+export function Projects({ displayImages }: Props) {
     return (
         <div className={styles['projects']}>
             <Comment text={'Projects'} />

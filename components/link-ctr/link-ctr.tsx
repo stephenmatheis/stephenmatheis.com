@@ -16,7 +16,7 @@ type Props = {
     className?: string;
 };
 
-export default function LinkCtr({
+export function LinkCtr({
     emoji,
     href,
     children,
