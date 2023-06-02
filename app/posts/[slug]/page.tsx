@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { DateTime } from '@/components/date-time';
+import { Footer } from '@/components/footer';
+import { Body } from './components/body';
+import { Nav } from './components/nav';
 import getPosts from '@/lib/get-posts';
-import Date from '@/components/date';
-import Body from './components/body';
-import Nav from './components/nav';
-import Footer from '@/components/footer';
 import styles from './layout.module.scss';
 
 export async function generateStaticParams() {
@@ -66,7 +66,7 @@ export default async function Page({ params }: PageProps) {
         <main className={styles.layout}>
             <h1>{title}</h1>
             <article>
-                <Date className={styles.date} dateString={date} />
+                <DateTime className={styles.date} dateString={date} />
                 <Body>{body}</Body>
             </article>
             {/* {lastModified && (

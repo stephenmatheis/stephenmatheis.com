@@ -1,8 +1,8 @@
-import Header from '@/components/header';
-import Footer from '@/components/footer';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 import styles from './page.module.scss';
 
-export default function Page({ children, ...props }) {
+export function Page({ children, ...props }) {
     const { links, text } = props;
 
     return (

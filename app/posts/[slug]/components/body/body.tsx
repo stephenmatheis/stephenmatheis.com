@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { CopyToClipboard } from '../copy-to-clipboard';
-import LinkCtr from '@/components/link-ctr/link-ctr';
+import { LinkCtr } from '@/components/link-ctr/link-ctr';
 
 function getAnchor(text: string) {
     return text
@@ -56,7 +56,7 @@ const components = {
     },
 };
 
-export default function Body({ children }: { children: string }) {
+export function Body({ children }: { children: string }) {
     const options = {
         // Use one of Shiki's packaged themes
         theme: 'dark-plus',

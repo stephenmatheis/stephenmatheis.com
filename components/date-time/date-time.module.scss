@@ -1,7 +1,6 @@
 @use '../../styles/utilities.module.scss' as utilities;
 @use '../../styles/dark.theme.module.scss' as theme;
 
-.date {
-    // color: theme.$comment;
-    // margin-bottom: utilities.$line-height;
+.date-time {
+    color: theme.$muted;
 }

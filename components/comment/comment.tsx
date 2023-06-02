@@ -1,6 +1,6 @@
 import styles from './comment.module.scss';
 
-export default function Comment({ text }) {
+export function Comment({ text }) {
     const content = `// ${text}`;
 
     return (

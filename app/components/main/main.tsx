@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import LinkCtr from '@/components/link-ctr/link-ctr';
+import { LinkCtr } from '@/components/link-ctr/link-ctr';
 import styles from './main.module.scss';
 
 type Props = {};
 
-export default function Main({}: Props) {
+export function Main({}: Props) {
     return (
         <main className={classNames(styles.main, styles.fade)}>
             <section className={styles.left}>

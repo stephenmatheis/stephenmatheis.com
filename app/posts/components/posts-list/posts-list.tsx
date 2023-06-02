@@ -1,8 +1,8 @@
 import type { Post } from '@/lib/types';
-import Entry from '../entry';
+import { Entry } from '../entry';
 import styles from './posts-list.module.scss';
 
-export default function Posts({ posts }: { posts: Post[] }) {
+export function PostsList({ posts }: { posts: Post[] }) {
     return (
         <ul className={styles.container}>
             {posts.map(({ slug, title, date, description, excerpt }) => {

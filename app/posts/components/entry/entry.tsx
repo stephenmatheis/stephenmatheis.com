@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Date from '@/components/date';
+import { DateTime } from '@/components/date-time';
 import styles from './entry.module.scss';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
     date?: string;
 };
 
-export default function Entry({
+export  function Entry({
     title,
     description,
     excerpt,
@@ -30,7 +30,9 @@ export default function Entry({
                 {type && <div className={styles.type}>{type}</div>}
                 <div className={styles['title-wrapper']}>
                     <span className={`${styles.title}`}>{title}</span>
-                    {date && <Date className={styles.date} dateString={date} />}
+                    {date && (
+                        <DateTime className={styles.date} dateString={date} />
+                    )}
                 </div>
                 {description && (
                     <p className={styles.description}>{description}</p>

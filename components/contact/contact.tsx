@@ -1,9 +1,9 @@
-import LinkCtr from '@/components/link-ctr';
+import { LinkCtr } from '@/components/link-ctr';
+import { Comment } from '../comment';
 import contact from '@/data/contact';
-import Comment from '../comment';
 import styles from './contact.module.scss';
 
-export default function Contact({}) {
+export function Contact({}) {
     return (
         <div className={styles['contact']}>
             <Comment text={'Contact'} />
