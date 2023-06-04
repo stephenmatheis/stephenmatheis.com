@@ -11,7 +11,7 @@ type Props = {
     date?: string;
 };
 
-export  function Entry({
+export function Entry({
     title,
     description,
     excerpt,
