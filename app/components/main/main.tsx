@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { LinkCtr } from '@/components/link-ctr/link-ctr';
+import { LinkCtr } from '@/components/link-ctr';
 import styles from './main.module.scss';
 
 type Props = {};
