@@ -4,6 +4,12 @@ import path, { join } from 'path';
 import fs from 'fs/promises';
 import type { Post } from './types';
 
+function getFirstTwoSentences(str: string): string {
+    const sentences = str.match(/(.*?[.!?])\s+/g)?.join(' ');
+
+    return sentences ? sentences.slice(0, 80 * 3) + '' : '';
+}
+
 export const getPosts = cache(async (): Promise<any> => {
     const postsDirectory = join(process.cwd(), '_posts');
     const posts = await fs.readdir(postsDirectory);
@@ -22,6 +28,7 @@ export const getPosts = cache(async (): Promise<any> => {
 
                 return {
                     ...data,
+                    excerpt: getFirstTwoSentences(content),
                     body: content,
                     slug: path.parse(file).name,
                 } as Post;
