@@ -4,13 +4,18 @@
     font-family: var(--font-code);
     min-height: 100dvh;
     width: 8.5in;
-    padding: utilities.$page-padding;
+    padding: 0.5in;
     display: flex;
     flex-direction: column;
     gap: utilities.$page-gap;
 
+    @media print {
+        gap: calc(utilities.$line-height * 2);
+    }
+
     @media screen {
         margin: 0 auto;
+        padding: utilities.$page-padding;
 
         // NOTE:
         // If the viewport is less than 912px wide, the combined left and right

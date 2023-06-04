@@ -9,20 +9,21 @@ $outer-radius: calc($inner-radius + $distance);
     .projects-wrapper {
         display: flex;
         flex-direction: column;
-        gap: calc(utilities.$line-height * 2);
+        gap: calc(utilities.$line-height * 4);
+        margin-top: calc(utilities.$line-height * 2);
+
+        @media print {
+            gap: calc(utilities.$line-height * 1);
+        }
 
         .project-ctr {
             display: flex;
             flex-direction: column;
             gap: calc(utilities.$line-height * 2);
 
-            // &:not(:last-child) {
-            //     margin-bottom: utilities.$line-height;
-
-            //     &.display-images {
-            //         margin-bottom: calc(utilities.$line-height * 3);
-            //     }
-            // }
+            @media print {
+                gap: calc(utilities.$line-height * 1);
+            }
 
             .description-ctr {
                 display: flex;
