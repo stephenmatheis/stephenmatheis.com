@@ -16,6 +16,15 @@ $outer-radius: calc($inner-radius + $distance);
             gap: calc(utilities.$line-height * 1);
         }
 
+        &.compact {
+            gap: utilities.$line-height;
+            margin-top: utilities.$line-height;
+
+            .project-ctr {
+                gap: utilities.$line-height;
+            }
+        }
+
         .project-ctr {
             display: flex;
             flex-direction: column;
