@@ -11,7 +11,7 @@ export function DateTime({ dateString, className = '' }: Props) {
 
     return (
         <time
-            className={[styles['date'], className].join(' ')}
+            className={[styles['date-time'], className].join(' ')}
             dateTime={dateString}
         >
             {format(date, 'LLLL	d, yyyy')}

@@ -48,6 +48,7 @@ export function CopyToClipboard({ children }: ICopyToClipboard) {
                 onClick={onCopy}
             >
                 <span>{copied ? '✔' : 'Copy'}</span>
+                {/* <span>{copied ? '✔' : '📋'}</span> */}
             </button>
             <div ref={textInput}>{children}</div>
         </div>

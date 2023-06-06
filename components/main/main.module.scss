@@ -39,4 +39,105 @@
     @media print {
         flex-direction: row-reverse;
     }
+
+    &.col-2 {
+        .left,
+        .right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left {
+            justify-content: flex-start;
+            gap: calc(utilities.$line-height * 2);
+
+            @media screen and (max-width: 911px) {
+                width: unset;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                width: fit-content;
+                gap: utilities.$line-height;
+
+                @media screen and (max-width: 911px) {
+                    flex-direction: row;
+                }
+
+                @media screen and (max-width: 500px) {
+                    width: 100%;
+                }
+            }
+        }
+
+        .right {
+            // gap: calc(utilities.$line-height * 7);
+
+            @media screen and (max-width: 911px) {
+                flex: 2;
+            }
+
+            h2 {
+                &:first-child {
+                    margin-top: 0px;
+                }
+            }
+        }
+    }
+
+    &.col-3 {
+        .left,
+        .right {
+            display: flex;
+            width: 100%;
+        }
+
+        .left {
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: calc(utilities.$line-height * 2);
+
+            @media screen and (max-width: 911px) {
+                width: unset;
+            }
+        }
+
+        .middle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            // FIXME:
+            video {
+                opacity: 0;
+                animation: fade-in 450ms ease-in-out forwards;
+            }
+
+            @keyframes fade-in {
+                from {
+                    scale: 0;
+                    opacity: 0;
+                }
+
+                to {
+                    scale: 1;
+                    opacity: 1;
+                }
+            }
+
+            @media screen and (max-width: 911px) {
+                flex: 2;
+            }
+        }
+
+        .right {
+            justify-content: flex-end;
+
+            @media screen and (max-width: 911px) {
+                display: none;
+            }
+        }
+    }
 }
