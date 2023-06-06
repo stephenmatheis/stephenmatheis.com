@@ -5,12 +5,7 @@
     flex: 2;
     display: flex;
     width: 100%;
-    // justify-content: space-between;
-    // NOTE: Do I like this?
     gap: 8ch;
-
-    // DEV:
-    min-width: none;
 
     @media screen {
         // NOTE:
@@ -30,7 +25,6 @@
         @media (max-width: 911px) {
             flex-direction: column;
             gap: calc(utilities.$line-height * 4);
-            justify-content: unset;
 
             .right {
                 max-width: unset;
@@ -46,16 +40,6 @@
         flex-direction: row-reverse;
     }
 
-    .left {
-        display: flex;
-        flex-direction: column;
-        gap: calc(utilities.$line-height * 2);
-
-        @media screen and (max-width: 911px) {
-            width: unset;
-        }
-    }
-
     .left,
     .right {
         display: flex;
@@ -63,7 +47,15 @@
     }
 
     .left {
+        display: flex;
+        flex-direction: column;
         justify-content: flex-start;
+
+        gap: calc(utilities.$line-height * 2);
+
+        @media screen and (max-width: 911px) {
+            width: unset;
+        }
 
         nav {
             display: flex;

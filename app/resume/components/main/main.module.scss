@@ -2,8 +2,9 @@
 @use 'styles/dark.theme.module.scss' as theme;
 
 .main {
+    flex: 2;
     display: flex;
-    justify-content: space-between;
+    width: 100%;
     gap: 4ch;
 
     @media screen {
