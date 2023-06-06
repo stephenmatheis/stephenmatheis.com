@@ -4,3 +4,9 @@
 .title {
     margin-bottom: calc(utilities.$line-height * 4);
 }
+
+.post {
+    &:not(:last-child) {
+        margin-bottom: calc(utilities.$line-height * 7);
+    }
+}

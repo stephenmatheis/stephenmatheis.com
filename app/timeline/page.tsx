@@ -1,11 +1,16 @@
 import { Page } from '@/components/page';
-import { Main } from './components/main';
+import { Main } from '@/components/main';
+import { Posts } from './components/posts';
+import getPosts from '@/lib/get-posts';
 
 export default async function TimelinePage() {
+    const posts = await getPosts();
+
     return (
         <Page links={[{ label: 'Home', path: '/' }]}>
-            {/* @ts-expect-error Async Server Component */}
-            <Main />
+            <Main columns={2}>
+                <Posts posts={posts} />
+            </Main>
         </Page>
     );
 }

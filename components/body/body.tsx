@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { LinkCtr } from '@/components/link-ctr';
-import { CopyToClipboard } from '../copy-to-clipboard';
+import { CopyToClipboard } from '@/components/copy-to-clipboard';
 
 function getAnchor(text: string) {
     return text
