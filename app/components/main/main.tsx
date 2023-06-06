@@ -9,6 +9,7 @@ export function Main({}: Props) {
         <main className={classNames(styles.main, styles.fade)}>
             <section className={styles.left}>
                 <nav>
+                    <LinkCtr href="/timeline">Timeline</LinkCtr>
                     <LinkCtr href="/posts">Posts</LinkCtr>
                     <LinkCtr href="/projects">Projects</LinkCtr>
                     <LinkCtr href="/resume">About</LinkCtr>
