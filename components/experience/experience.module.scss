@@ -19,7 +19,11 @@
         break-inside: avoid;
 
         &:not(:last-child) {
-            margin-bottom: utilities.$line-height;
+            margin-bottom: calc((utilities.$line-height * 2));
+
+            @media print {
+                margin-bottom: utilities.$line-height;
+            }
         }
 
         .title {
