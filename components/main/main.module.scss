@@ -7,37 +7,9 @@
     width: 100%;
     gap: 16ch;
 
-    @media screen {
-        // NOTE:
-        // If the viewport is less than 912px wide, the combined left and right
-        // padding and margin will be less than 96px (1 inch) on either side.
-        // So, we'll set `flex-direction` to `column` and `max-width` to unset
-        // because it can now span the full width of the page.
-        //
-        // There is a corresponding media query in `styles/resume.module.scss` that
-        // replaces the 8.5in width with `fit-content` and add `align-items: center`
-        // which horizontally centers main.
-        //
-        // The main container may now be less than 720px so the page  `width` is
-        // set to `fit-content`.
-
-        // @media (max-width: 911px) {
-        @media (max-width: 911px) {
-            flex-direction: column;
-            gap: calc(utilities.$line-height * 4);
-
-            .right {
-                max-width: unset;
-            }
-        }
-
-        @media (max-width: 500px) {
-            gap: calc(utilities.$line-height * 2);
-        }
-    }
-
-    @media print {
-        flex-direction: row-reverse;
+    @media (max-width: 911px) {
+        flex-direction: column;
+        gap: calc(utilities.$line-height * 4);
     }
 
     &.col-2 {
