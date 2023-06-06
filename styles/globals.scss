@@ -123,7 +123,8 @@ p {
     --highlighted-border-color: #{theme.$link};
 
     position: relative;
-    margin: calc(utilities.$line-height * 1.5) 0px;
+    margin-top: 0;
+    margin-bottom: calc(utilities.$line-height * 2);
 
     [data-rehype-pretty-code-title] {
         // width: fit-content;
