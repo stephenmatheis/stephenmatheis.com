@@ -17,9 +17,13 @@ type ImageProps = {
 
 export function Projects({ displayImages }: Props) {
     return (
-        <div className={styles['projects']}>
+        <div className={styles.projects}>
             <Comment text={'Projects'} />
-            <div className={styles['projects-wrapper']}>
+            <div
+                className={classNames(styles['projects-wrapper'], {
+                    [styles['compact']]: !displayImages,
+                })}
+            >
                 {projects.map(({ name, link, description, image }, index) => {
                     const { src, width, height }: ImageProps = image;
 
