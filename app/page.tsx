@@ -1,6 +1,6 @@
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
-import { LinkCtr } from '@/components/link-ctr';
+import { Sidebar } from '@/components/sidebar';
 import styles from './page.module.scss';
 
 export default function RootPage() {
@@ -16,12 +16,7 @@ export default function RootPage() {
         >
             <Main>
                 <section className={styles.left}>
-                    <nav>
-                        <LinkCtr href="/timeline">Timeline</LinkCtr>
-                        <LinkCtr href="/posts">Posts</LinkCtr>
-                        <LinkCtr href="/projects">Projects</LinkCtr>
-                        <LinkCtr href="/resume">About</LinkCtr>
-                    </nav>
+                    <Sidebar />
                 </section>
                 <section className={styles.middle}>
                     <video
@@ -34,9 +29,8 @@ export default function RootPage() {
                         src="/memoji-loop-22s.mov"
                     />
                 </section>
-                <section className={styles.right}>
-                    {/* Intentionally empty to center `section.middle`. */}
-                </section>
+                {/* Intentionally empty to center `section.middle`. */}
+                <section className={styles.right} />
             </Main>
         </Page>
     );
