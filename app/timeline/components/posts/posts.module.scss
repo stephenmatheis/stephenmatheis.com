@@ -1,12 +1,12 @@
 @use 'styles/utilities.module.scss' as utilities;
 @use 'styles/dark.theme.module.scss' as theme;
 
-.title {
-    margin-bottom: calc(utilities.$line-height * 4);
-}
-
 .post {
     &:not(:last-child) {
+        margin-bottom: calc(utilities.$line-height * 14);
+    }
+
+    .title {
         margin-bottom: calc(utilities.$line-height * 7);
     }
 }
