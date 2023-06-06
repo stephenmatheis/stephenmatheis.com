@@ -1,3 +1,4 @@
+import { Main } from '@/components/main';
 import { Page } from '@/components/page';
 import { Projects } from '@/components/projects';
 
@@ -12,7 +13,9 @@ export default function ProjectsPage({}) {
                 },
             ]}
         >
-            <Projects displayImages={true} />
+            <Main>
+                <Projects displayImages={true} />
+            </Main>
         </Page>
     );
 }
