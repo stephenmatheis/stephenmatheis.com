@@ -1,12 +1,29 @@
 @use 'styles/utilities.module.scss' as utilities;
 @use 'styles/dark.theme.module.scss' as theme;
 
-.post {
-    &:not(:last-child) {
-        margin-bottom: calc(utilities.$line-height * 14);
+.posts-ctr {
+    // display: flex;
+    // flex-direction: column;
+    // gap: calc(35vh - (utilities.$line-height * 4));
+
+    .date {
+        display: block;
+        text-align: right;
+        // margin-top: calc(utilities.$line-height * 3);
     }
 
-    .title {
-        margin-bottom: calc(utilities.$line-height * 7);
+    .posts {
+        display: flex;
+        flex-direction: column;
+
+        .post {
+            &:not(:last-child) {
+                margin-bottom: calc(35vh - (utilities.$line-height * 4));
+            }
+
+            .title {
+                margin-bottom: calc(15vh);
+            }
+        }
     }
 }
