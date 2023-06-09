@@ -3,43 +3,64 @@ import { LinkCtr } from '@/components/link-ctr';
 import { Body } from '@/components/body';
 import type { Post } from '@/lib/types';
 import styles from './posts.module.scss';
+import classNames from 'classnames';
 
 export function Posts({ posts }: { posts: Post[] }) {
     const dates = [...new Set(posts.map(({ date }) => date.split('T')[0]))];
 
     return (
         <>
-            {dates.map((date) => {
+            {dates.map((date, dateIndex) => {
                 return (
                     <div
                         key={date}
                         className={styles['posts-ctr']}
                         data-date={date}
                     >
-                        <DateTime className={styles.date} dateString={date} />
+                        {dateIndex !== 0 && (
+                            <DateTime
+                                className={styles.date}
+                                dateString={date}
+                            />
+                        )}
                         <div className={styles.posts}>
                             {posts
                                 .filter(
                                     (post) => post.date.split('T')[0] === date
                                 )
-                                .map(({ slug, title, date, body }) => {
-                                    return (
-                                        <article
-                                            key={slug}
-                                            className={styles.post}
-                                        >
-                                            <h2 className={styles.title}>
-                                                <LinkCtr
-                                                    href={`/timeline/${slug}`}
+                                .map(
+                                    (
+                                        { slug, title, date, body },
+                                        postIndex
+                                    ) => {
+                                        return (
+                                            <article
+                                                key={slug}
+                                                className={styles.post}
+                                            >
+                                                <h2
+                                                    className={classNames(
+                                                        styles.title,
+                                                        {
+                                                            [styles.first]:
+                                                                dateIndex ===
+                                                                    0 &&
+                                                                postIndex === 0,
+                                                        }
+                                                    )}
                                                 >
-                                                    {title}
-                                                </LinkCtr>
-                                            </h2>
+                                                    <LinkCtr
+                                                        href={`/timeline/${slug}`}
+                                                    >
+                                                        {title}
+                                                    </LinkCtr>
+                                                </h2>
 
-                                            <Body>{body}</Body>
-                                        </article>
-                                    );
-                                })}
+                                                <Body>{body}</Body>
+                                            </article>
+                                        );
+                                    }
+                                )}
                         </div>
                     </div>
                 );

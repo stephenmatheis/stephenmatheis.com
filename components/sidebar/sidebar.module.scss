@@ -8,11 +8,13 @@
     width: fit-content;
     gap: utilities.$line-height;
 
-    @media screen and (max-width: utilities.$medium-width) {
+    @media (max-width: utilities.$medium-width) {
         flex-direction: row;
+        justify-content: center;
+        width: 100%;
     }
 
-    @media screen and (max-width: 500px) {
+    @media (max-width: 500px) {
         width: 100%;
     }
 }

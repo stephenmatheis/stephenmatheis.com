@@ -26,46 +26,10 @@
             @media screen and (max-width: utilities.$medium-width) {
                 width: unset;
             }
-
-            nav {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                width: fit-content;
-                gap: utilities.$line-height;
-
-                @media screen and (max-width: utilities.$medium-width) {
-                    flex-direction: row;
-                }
-
-                @media screen and (max-width: 500px) {
-                    width: 100%;
-                }
-            }
         }
 
         .right {
             flex: 2;
-
-            @media (min-width: utilities.$medium-width) {
-                h2 {
-                    &:first-child {
-                        margin-top: 0px;
-                    }
-                }
-            }
-
-            @media (max-width: utilities.$medium-width) {
-                article {
-                    &:first-child {
-                        h2 {
-                            &:first-child {
-                                margin-top: calc(utilities.$line-height * 3);
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 

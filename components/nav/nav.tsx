@@ -2,7 +2,15 @@ import { Post } from '@/lib/types';
 import { LinkCtr } from '@/components/link-ctr';
 import styles from './nav.module.scss';
 
-export function Nav({ previous, next }: { previous?: Post; next?: Post }) {
+export function Nav({
+    previous,
+    next,
+    home = '/posts',
+}: {
+    previous?: Post;
+    next?: Post;
+    home?: string;
+}) {
     return (
         <div className={styles.navigation}>
             {/* Prev */}
@@ -16,7 +24,7 @@ export function Nav({ previous, next }: { previous?: Post; next?: Post }) {
 
             {/* Posts */}
             <div className={styles.posts}>
-                <LinkCtr href="/posts">Posts</LinkCtr>
+                <LinkCtr href={home}>Posts</LinkCtr>
             </div>
 
             {/* Next */}

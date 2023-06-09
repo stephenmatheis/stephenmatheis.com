@@ -2,14 +2,9 @@
 @use 'styles/dark.theme.module.scss' as theme;
 
 .posts-ctr {
-    // display: flex;
-    // flex-direction: column;
-    // gap: calc(35vh - (utilities.$line-height * 4));
-
     .date {
         display: block;
         text-align: right;
-        // margin-top: calc(utilities.$line-height * 3);
     }
 
     .posts {
@@ -23,6 +18,12 @@
 
             .title {
                 margin-bottom: calc(15vh);
+
+                @media (min-width: utilities.$medium-width) {
+                    &.first {
+                        margin-top: 0px;
+                    }
+                }
             }
         }
     }
