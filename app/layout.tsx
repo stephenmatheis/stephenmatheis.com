@@ -21,7 +21,19 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body suppressHydrationWarning>{children}</body>
+            <body suppressHydrationWarning>
+                <div
+                    style={{
+                        width: '100vw',
+                        height: 2,
+                        backgroundColor: 'red',
+                        position: 'fixed',
+                        top: 'calc(50% - 2px)',
+                    }}
+                />
+
+                {children}
+            </body>
         </html>
     );
 }

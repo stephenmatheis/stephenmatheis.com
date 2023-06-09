@@ -13,11 +13,11 @@
 
         .post {
             &:not(:last-child) {
-                margin-bottom: calc(35vh - (utilities.$line-height * 4));
+                margin-bottom: calc(utilities.$line-height * 9);
             }
 
             .title {
-                margin-bottom: calc(15vh);
+                margin-bottom: calc(utilities.$line-height * 5);
 
                 @media (min-width: utilities.$medium-width) {
                     &.first {
