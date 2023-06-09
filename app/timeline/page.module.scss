@@ -1,0 +1,5 @@
+@use 'styles/utilities.module.scss' as utilities;
+
+.gap {
+    gap: calc(35vh - (utilities.$line-height * 4));
+}

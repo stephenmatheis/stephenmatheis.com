@@ -37,6 +37,7 @@
 
         @media (max-width: 500px) {
             min-width: 100%;
+            padding-top: calc(utilities.$line-height * 3);
             padding-left: 0.25in;
             padding-right: 0.25in;
         }

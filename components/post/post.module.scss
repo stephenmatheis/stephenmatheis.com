@@ -22,7 +22,7 @@
     }
 
     h1 {
-        margin-top: calc(35vh - (0.75in + utilities.$line-height));
+        margin-top: calc(35vh - (utilities.$line-height * 5));
         margin-bottom: calc(15vh - (utilities.$line-height * 3));
     }
 
