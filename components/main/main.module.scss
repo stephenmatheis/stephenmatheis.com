@@ -7,7 +7,7 @@
     width: 100%;
     gap: 16ch;
 
-    @media (max-width: 911px) {
+    @media (max-width: utilities.$medium-width) {
         flex-direction: column;
         gap: calc(utilities.$line-height * 4);
     }
@@ -23,7 +23,7 @@
             justify-content: flex-start;
             gap: calc(utilities.$line-height * 2);
 
-            @media screen and (max-width: 911px) {
+            @media screen and (max-width: utilities.$medium-width) {
                 width: unset;
             }
 
@@ -34,7 +34,7 @@
                 width: fit-content;
                 gap: utilities.$line-height;
 
-                @media screen and (max-width: 911px) {
+                @media screen and (max-width: utilities.$medium-width) {
                     flex-direction: row;
                 }
 
@@ -47,7 +47,7 @@
         .right {
             flex: 2;
 
-            @media (min-width: 911px) {
+            @media (min-width: utilities.$medium-width) {
                 h2 {
                     &:first-child {
                         margin-top: 0px;
@@ -55,7 +55,7 @@
                 }
             }
 
-            @media (max-width: 911px) {
+            @media (max-width: utilities.$medium-width) {
                 article {
                     &:first-child {
                         h2 {
@@ -81,7 +81,7 @@
             justify-content: flex-start;
             gap: calc(utilities.$line-height * 2);
 
-            @media screen and (max-width: 911px) {
+            @media screen and (max-width: utilities.$medium-width) {
                 width: unset;
             }
         }
@@ -109,7 +109,7 @@
                 }
             }
 
-            @media screen and (max-width: 911px) {
+            @media screen and (max-width: utilities.$medium-width) {
                 flex: 2;
             }
         }
@@ -117,7 +117,7 @@
         .right {
             justify-content: flex-end;
 
-            @media screen and (max-width: 911px) {
+            @media screen and (max-width: utilities.$medium-width) {
                 display: none;
             }
         }

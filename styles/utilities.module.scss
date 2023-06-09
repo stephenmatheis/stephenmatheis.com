@@ -5,3 +5,15 @@ $color: var(--color);
 $background: var(--background);
 $page-padding: calc($line-height * 7) 0.5in calc($line-height * 2);
 $page-gap: calc($line-height * 5);
+
+// NOTE:
+// If the viewport is less than 912px wide, the combined left and right
+// padding and margin will be less than 96px, or 1 inch on either side.
+// So, once the viewport is 911px or less wide, remove the 8.5in width
+// and horizontally center flex children.
+//
+// There is a corresponding media
+// query in `components/main/main.module.scss` that will set the
+// `flex-direction` to `column`. The main container may now be less than 720px
+// or 8.5in wide so we also set the `width` to `fit-content`.
+$medium-width: 1024px;

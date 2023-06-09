@@ -8,7 +8,7 @@
     width: fit-content;
     gap: utilities.$line-height;
 
-    @media screen and (max-width: 911px) {
+    @media screen and (max-width: utilities.$medium-width) {
         flex-direction: row;
     }
 
