@@ -17,3 +17,5 @@ $page-gap: calc($line-height * 5);
 // `flex-direction` to `column`. The main container may now be less than 720px
 // or 8.5in wide so we also set the `width` to `fit-content`.
 $medium-width: 1024px;
+$large-width: 1025px;
+$max-width: 680px;

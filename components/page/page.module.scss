@@ -3,7 +3,7 @@
 .page {
     font-family: var(--font-code);
     min-height: 100dvh;
-    width: 8.5in;
+    width: utilities.$max-width;
     padding: 0.5in;
     display: flex;
     flex-direction: column;
@@ -11,6 +11,7 @@
 
     @media print {
         gap: calc(utilities.$line-height * 2);
+        width: 8.5in;
     }
 
     @media screen {
@@ -20,7 +21,7 @@
         @media (max-width: utilities.$medium-width) {
             width: 100%;
             align-items: center;
-            max-width: 680px;
+            max-width: utilities.$max-width;
             gap: calc(utilities.$line-height * 4);
         }
 
