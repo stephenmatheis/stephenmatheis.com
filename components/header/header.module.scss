@@ -5,7 +5,7 @@
     display: flex;
     width: 100%;
 
-    @media (max-width: utilities.$medium-width) {
+    @media screen and (max-width: utilities.$medium-width) {
         justify-content: center;
     }
 

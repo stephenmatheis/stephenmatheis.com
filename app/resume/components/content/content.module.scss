@@ -1,33 +1,30 @@
 @use 'styles/utilities.module.scss' as utilities;
 @use 'styles/dark.theme.module.scss' as theme;
 
-.main {
+.resume {
     flex: 2;
     display: flex;
     width: 100%;
-    gap: 4ch;
 
     @media screen {
         gap: 16ch;
+        flex-direction: column-reverse;
+        gap: calc(utilities.$line-height * 4);
 
-        @media (max-width: utilities.$medium-width) {
-            flex-direction: column-reverse;
-            gap: calc(utilities.$line-height * 4);
-
-            .right {
-                max-width: unset;
-            }
+        .right {
+            max-width: unset;
         }
     }
 
     @media print {
         flex-direction: row-reverse;
+        gap: 4ch;
     }
 
     .left {
         display: flex;
         flex-direction: column;
-        max-width: 34ch;
+
         gap: calc(utilities.$line-height * 2);
 
         @media screen {
@@ -36,6 +33,10 @@
             @media (max-width: utilities.$medium-width) {
                 max-width: none;
             }
+        }
+
+        @media print {
+            max-width: 34ch;
         }
     }
 }

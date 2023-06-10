@@ -19,7 +19,7 @@
             .title {
                 margin-bottom: calc(utilities.$line-height * 5);
 
-                @media (min-width: utilities.$medium-width) {
+                @media (min-width: utilities.$large-width) {
                     &.first {
                         margin-top: 0px;
                     }
