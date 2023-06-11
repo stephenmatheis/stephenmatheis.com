@@ -2,6 +2,90 @@
 @use 'styles/dark.theme.module.scss' as dark-theme;
 @use 'styles/light.theme.module.scss' as light-theme;
 
+@mixin dark-mode {
+    --color: #{dark-theme.$color};
+    --background-color: #{dark-theme.$background-color};
+    --skill: #{dark-theme.$skill};
+    --skill-05: #{dark-theme.$skill-05};
+    --skill-10: #{dark-theme.$skill-10};
+    --skill-15: #{dark-theme.$skill-15};
+    --skill-20: #{dark-theme.$skill-20};
+    --skill-50: #{dark-theme.$skill-50};
+    --heading: #{dark-theme.$heading};
+    --heading-05: #{dark-theme.$heading-05};
+    --heading-10: #{dark-theme.$heading-10};
+    --heading-15: #{dark-theme.$heading-15};
+    --heading-20: #{dark-theme.$heading-20};
+    --heading-50: #{dark-theme.$heading-50};
+    --muted: #{dark-theme.$muted};
+    --comment: #{dark-theme.$comment};
+    --date: #{dark-theme.$date};
+    --link: #{dark-theme.$link};
+    --link-05: #{dark-theme.$link-05};
+    --link-10: #{dark-theme.$link-10};
+    --link-15: #{dark-theme.$link-15};
+    --link-20: #{dark-theme.$link-20};
+    --link-30: #{dark-theme.$link-30};
+    --link-50: #{dark-theme.$link-50};
+    --link-darker: #{dark-theme.$link-darker};
+    --name: #{dark-theme.$name};
+    --name-05: #{dark-theme.$name-05};
+    --name-10: #{dark-theme.$name-10};
+    --name-15: #{dark-theme.$name-15};
+    --name-20: #{dark-theme.$name-20};
+    --name-50: #{dark-theme.$name-50};
+    --text: #{dark-theme.$text};
+    --company: #{dark-theme.$company};
+    --copy-background-color: #{dark-theme.$copy-background-color};
+    --copy-label-color: #{dark-theme.$copy-label-color};
+    --word-background-color: #{dark-theme.$word-background-color};
+    --r-word-background-color: #{dark-theme.$r-word-background-color};
+    --g-word-background-color: #{dark-theme.$g-word-background-color};
+    --b-word-background-color: #{dark-theme.$b-word-background-color};
+}
+
+@mixin light-mode {
+    --color: #{light-theme.$color};
+    --background-color: #{light-theme.$background-color};
+    --skill: #{light-theme.$skill};
+    --skill-05: #{light-theme.$skill-05};
+    --skill-10: #{light-theme.$skill-10};
+    --skill-15: #{light-theme.$skill-15};
+    --skill-20: #{light-theme.$skill-20};
+    --skill-50: #{light-theme.$skill-50};
+    --heading: #{light-theme.$heading};
+    --heading-05: #{dark-theme.$heading-05};
+    --heading-10: #{dark-theme.$heading-10};
+    --heading-15: #{dark-theme.$heading-15};
+    --heading-20: #{dark-theme.$heading-20};
+    --heading-50: #{dark-theme.$heading-50};
+    --muted: #{light-theme.$muted};
+    --comment: #{light-theme.$comment};
+    --date: #{light-theme.$date};
+    --link: #{light-theme.$link};
+    --link-05: #{light-theme.$link-05};
+    --link-10: #{light-theme.$link-10};
+    --link-15: #{light-theme.$link-15};
+    --link-20: #{light-theme.$link-20};
+    --link-30: #{light-theme.$link-30};
+    --link-50: #{light-theme.$link-50};
+    --link-darker: #{light-theme.$link-darker};
+    --name: #{light-theme.$name};
+    --name-05: #{light-theme.$name-05};
+    --name-10: #{light-theme.$name-10};
+    --name-15: #{light-theme.$name-15};
+    --name-20: #{light-theme.$name-20};
+    --name-50: #{light-theme.$name-50};
+    --text: #{light-theme.$text};
+    --company: #{light-theme.$company};
+    --copy-background-color: #{light-theme.$copy-background-color};
+    --copy-label-color: #{light-theme.$copy-label-color};
+    --word-background-color: #{light-theme.$word-background-color};
+    --r-word-background-color: #{light-theme.$r-word-background-color};
+    --g-word-background-color: #{light-theme.$g-word-background-color};
+    --b-word-background-color: #{light-theme.$b-word-background-color};
+}
+
 :root {
     --line-height: utilities.$line-height;
     --font-size: utilities.$font-size;
@@ -17,88 +101,12 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        --color: #{dark-theme.$color};
-        --background-color: #{dark-theme.$background-color};
-        --skill: #{dark-theme.$skill};
-        --skill-05: #{dark-theme.$skill-05};
-        --skill-10: #{dark-theme.$skill-10};
-        --skill-15: #{dark-theme.$skill-15};
-        --skill-20: #{dark-theme.$skill-20};
-        --skill-50: #{dark-theme.$skill-50};
-        --heading: #{dark-theme.$heading};
-        --heading-05: #{dark-theme.$heading-05};
-        --heading-10: #{dark-theme.$heading-10};
-        --heading-15: #{dark-theme.$heading-15};
-        --heading-20: #{dark-theme.$heading-20};
-        --heading-50: #{dark-theme.$heading-50};
-        --muted: #{dark-theme.$muted};
-        --comment: #{dark-theme.$comment};
-        --date: #{dark-theme.$date};
-        --link: #{dark-theme.$link};
-        --link-05: #{dark-theme.$link-05};
-        --link-10: #{dark-theme.$link-10};
-        --link-15: #{dark-theme.$link-15};
-        --link-20: #{dark-theme.$link-20};
-        --link-30: #{dark-theme.$link-30};
-        --link-50: #{dark-theme.$link-50};
-        --link-darker: #{dark-theme.$link-darker};
-        --name: #{dark-theme.$name};
-        --name-05: #{dark-theme.$name-05};
-        --name-10: #{dark-theme.$name-10};
-        --name-15: #{dark-theme.$name-15};
-        --name-20: #{dark-theme.$name-20};
-        --name-50: #{dark-theme.$name-50};
-        --text: #{dark-theme.$text};
-        --company: #{dark-theme.$company};
-        --copy-background-color: #{dark-theme.$copy-background-color};
-        --copy-label-color: #{dark-theme.$copy-label-color};
-        --word-background-color: #{dark-theme.$word-background-color};
-        --r-word-background-color: #{dark-theme.$r-word-background-color};
-        --g-word-background-color: #{dark-theme.$g-word-background-color};
-        --b-word-background-color: #{dark-theme.$b-word-background-color};
+        @include dark-mode;
     }
 
     @media (prefers-color-scheme: light),
         (prefers-color-scheme: no-preference) {
-        --color: #{light-theme.$color};
-        --background-color: #{light-theme.$background-color};
-        --skill: #{light-theme.$skill};
-        --skill-05: #{light-theme.$skill-05};
-        --skill-10: #{light-theme.$skill-10};
-        --skill-15: #{light-theme.$skill-15};
-        --skill-20: #{light-theme.$skill-20};
-        --skill-50: #{light-theme.$skill-50};
-        --heading: #{light-theme.$heading};
-        --heading-05: #{dark-theme.$heading-05};
-        --heading-10: #{dark-theme.$heading-10};
-        --heading-15: #{dark-theme.$heading-15};
-        --heading-20: #{dark-theme.$heading-20};
-        --heading-50: #{dark-theme.$heading-50};
-        --muted: #{light-theme.$muted};
-        --comment: #{light-theme.$comment};
-        --date: #{light-theme.$date};
-        --link: #{light-theme.$link};
-        --link-05: #{light-theme.$link-05};
-        --link-10: #{light-theme.$link-10};
-        --link-15: #{light-theme.$link-15};
-        --link-20: #{light-theme.$link-20};
-        --link-30: #{light-theme.$link-30};
-        --link-50: #{light-theme.$link-50};
-        --link-darker: #{light-theme.$link-darker};
-        --name: #{light-theme.$name};
-        --name-05: #{light-theme.$name-05};
-        --name-10: #{light-theme.$name-10};
-        --name-15: #{light-theme.$name-15};
-        --name-20: #{light-theme.$name-20};
-        --name-50: #{light-theme.$name-50};
-        --text: #{light-theme.$text};
-        --company: #{light-theme.$company};
-        --copy-background-color: #{light-theme.$copy-background-color};
-        --copy-label-color: #{light-theme.$copy-label-color};
-        --word-background-color: #{light-theme.$word-background-color};
-        --r-word-background-color: #{light-theme.$r-word-background-color};
-        --g-word-background-color: #{light-theme.$g-word-background-color};
-        --b-word-background-color: #{light-theme.$b-word-background-color};
+        @include light-mode;
     }
 }
 
@@ -168,7 +176,7 @@ h4,
 h5,
 h6 {
     font-weight: normal;
-    color: var(--heading);
+    color: var(--link);
 }
 
 h2,
@@ -189,16 +197,70 @@ p {
     text-align: justify;
 }
 
+article {
+    --theme-color: var(--link);
+
+    .date {
+        display: inline-block;
+        margin-bottom: 0px;
+    }
+
+    p {
+        &:first-of-type {
+            margin-top: utilities.$line-height;
+        }
+    }
+
+    ul,
+    ol {
+        padding-left: 2ch;
+        margin: utilities.$line-height 0px;
+
+        li {
+            &::marker {
+                color: var(--theme-color);
+            }
+        }
+    }
+
+    ol {
+        list-style-position: inside;
+    }
+
+    ul {
+        list-style: inside square;
+    }
+
+    blockquote {
+        // 🚫 Heading
+        border-left: 2px solid var(--theme-color);
+
+        // ✅ Link
+        // background: var(--link-15);
+        // border-left: 10px solid var(--link);
+
+        margin: utilities.$line-height * 2 2ch;
+        padding: utilities.$line-height * 0.5 2ch;
+
+        p {
+            color: var(--theme-color);
+        }
+    }
+}
+
+// Code block
 [data-rehype-pretty-code-fragment] {
     // 🚫 Blue
-    // --background: #{theme.$skill-10};
-    // --hightlighted-background: #{theme.$skill-15};
-    // --highlighted-border-color: #{theme.$skill};
+    // --background: var(--skill-10);
+    // --hightlighted-background: var(--skill-15);
+    // --title-background: var(--skill-20);
+    // --highlighted-border-color: var(--skill);
 
     // 🚫 Pink
-    // --background: #{theme.$name-10};
-    // --hightlighted-background: #{theme.$name-15};
-    // --highlighted-border-color: #{theme.$skill};
+    // --background: var(--name-10);
+    // --hightlighted-background: var(--name-15);
+    // --title-background: var(--link-20);
+    // --highlighted-border-color: var(--name);
 
     // 🚫 Green
     --background: var(--link-10);
@@ -224,6 +286,19 @@ p {
         background: var(--title-background);
         line-height: 30px;
         padding: 0px 2ch;
+
+        @media (prefers-color-scheme: dark) {
+            &[data-theme='light'] {
+                display: none;
+            }
+        }
+
+        @media (prefers-color-scheme: light),
+            (prefers-color-scheme: no-preference) {
+            &[data-theme='dark'] {
+                display: none;
+            }
+        }
     }
 
     pre {
@@ -245,23 +320,6 @@ p {
         & > code {
             font-family: var(--font-code);
             display: grid;
-
-            > .line {
-                padding: 0px 2ch;
-                border-left: 2px solid transparent;
-
-                // Highlight line
-                &.highlighted {
-                    background: var(--hightlighted-background);
-                    border-left-color: var(--highlighted-border-color);
-                }
-
-                &::selection,
-                & *::selection {
-                    color: inherit;
-                    background: var(--link-30);
-                }
-            }
 
             // Line numbers
             &[data-line-numbers] {
@@ -289,6 +347,24 @@ p {
                 }
             }
 
+            // Line
+            > .line {
+                padding: 0px 2ch;
+                border-left: 2px solid transparent;
+
+                // Highlight line
+                &.highlighted {
+                    background: var(--hightlighted-background);
+                    border-left-color: var(--highlighted-border-color);
+                }
+
+                &::selection,
+                & *::selection {
+                    color: inherit;
+                    background: var(--link-30);
+                }
+            }
+
             // Highlight word
             .word {
                 --background-color: var(--word-background-color);
@@ -313,23 +389,20 @@ p {
     }
 }
 
-// Conditionally show or hide dark and light theme code blocks
-@media (prefers-color-scheme: dark) {
-    div[data-rehype-pretty-code-title][data-theme='light'] {
-        display: none;
-    }
-
-    div[data-code-block]:has([data-theme='light']) {
-        display: none;
+// Conditionally show or hide light and dark theme code blocks
+div[data-code-block] {
+    &:has([data-theme='light']) {
+        @media (prefers-color-scheme: dark) {
+            display: none;
+        }
     }
 }
 
-@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
-    div[data-rehype-pretty-code-title][data-theme='dark'] {
-        display: none;
-    }
-
-    div[data-code-block]:has([data-theme='dark']) {
-        display: none;
+div[data-code-block] {
+    &:has([data-theme='dark']) {
+        @media (prefers-color-scheme: light),
+            (prefers-color-scheme: no-preference) {
+            display: none;
+        }
     }
 }
