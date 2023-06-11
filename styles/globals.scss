@@ -96,7 +96,7 @@
         'Segoe UI Symbol';
 
     @media print {
-        --line-height: 16.5px;
+        --line-height: 16px;
         --font-size: 11px;
     }
 
@@ -112,8 +112,8 @@
 
 * {
     box-sizing: border-box;
-    font-size: utilities.$font-size;
-    line-height: utilities.$line-height;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
 }
 
 html {

@@ -5,6 +5,10 @@ $distance: 10px;
 $outer-radius: calc($inner-radius + $distance);
 
 .projects {
+    @media screen {
+        display: none;
+    }
+
     .projects-wrapper {
         display: flex;
         flex-direction: column;
