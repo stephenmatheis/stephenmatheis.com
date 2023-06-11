@@ -50,7 +50,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                     )}
                                                 >
                                                     <LinkCtr
-                                                        href={`/timeline/${slug}`}
+                                                        href={`/links/${slug}`}
                                                     >
                                                         {title}
                                                     </LinkCtr>

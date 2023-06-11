@@ -3,6 +3,7 @@
 .post {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
     max-width: 100%;
+    min-height: 100dvh;
     width: utilities.$max-width;
     padding: 0.5in;
     display: flex;
@@ -24,6 +25,10 @@
         margin-top: calc(35vh - (utilities.$line-height * 5));
         margin-top: calc(35vh - (utilities.$line-height * 5));
         margin-bottom: calc(15vh - (utilities.$line-height * 3));
+    }
+    
+    article {
+        flex: 2;
     }
 
     .footer-wrapper {
