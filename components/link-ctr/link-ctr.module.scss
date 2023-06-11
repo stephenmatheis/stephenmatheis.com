@@ -26,7 +26,7 @@
 
         &:hover {
             &::before {
-                top: 0px;
+                top: 3px;
                 left: 0px;
             }
         }
@@ -35,10 +35,10 @@
             content: '';
             pointer-events: none;
             position: absolute;
-            top: 6px;
+            top: 10px;
             left: 3px;
             width: 100%;
-            height: 100%;
+            height: calc(utilities.$font-size + 2px);
             background-color: transparent;
             transition: background-color 450ms ease-in-out,
                 top 250ms ease-in-out, left 250ms ease-in-out;
