@@ -4,7 +4,7 @@ import { Posts } from './components/posts';
 import getPosts from '@/lib/get-posts';
 import styles from './page.module.scss';
 
-export default async function TimelinePage() {
+export default async function LinksPage() {
     const posts = await getPosts();
 
     return (
