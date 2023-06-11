@@ -239,11 +239,12 @@ article {
         // background: var(--link-15);
         // border-left: 10px solid var(--link);
 
-        margin: utilities.$line-height * 2 2ch;
-        padding: utilities.$line-height * 0.5 2ch;
+        margin: calc(utilities.$line-height * 2) 1ch;
+        padding-left: 2ch;
 
         p {
             color: var(--theme-color);
+            margin-top: 0px !important;
         }
     }
 }
