@@ -1,6 +1,5 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .date-time {
-    color: theme.$muted;
+    color: var(--muted);
 }

@@ -1,5 +1,4 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .navigation {
     display: flex;
@@ -12,7 +11,7 @@
 
         &,
         &:hover {
-            color: theme.$link;
+            color: var(--link);
         }
     }
 

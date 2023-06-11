@@ -58,7 +58,10 @@ const components = {
 export function Body({ children }: { children: string }) {
     const options = {
         // Use one of Shiki's packaged themes
-        theme: 'dark-plus',
+        theme: {
+            dark: 'dark-plus',
+            light: 'github-light',
+        },
         // Or your own JSON theme
         // theme: JSON.parse(
         //     fs.readFileSync(require.resolve('./themes/dark.json'), 'utf-8')

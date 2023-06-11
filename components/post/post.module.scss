@@ -1,5 +1,4 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .post {
     font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
@@ -23,11 +22,12 @@
 
     h1 {
         margin-top: calc(35vh - (utilities.$line-height * 5));
+        margin-top: calc(35vh - (utilities.$line-height * 5));
         margin-bottom: calc(15vh - (utilities.$line-height * 3));
     }
 
     .date {
-        color: theme.$muted;
+        color: var(--muted);
     }
 
     article {
@@ -40,6 +40,39 @@
             &:first-of-type {
                 margin-top: utilities.$line-height;
             }
+        }
+
+        ul,
+        ol {
+            padding-left: 2ch;
+            margin: utilities.$line-height 0px;
+
+            li {
+                &::marker {
+                    color: var(--heading);
+                }
+            }
+        }
+
+        ol {
+            list-style-position: inside;
+        }
+
+        ul {
+            list-style: inside square;
+        }
+
+        blockquote {
+            // 🚫 Heading
+            // background: var(--heading-15);
+            // border-left: 10px solid var(--heading);
+
+            // ✅ Link
+            background: var(--link-15);
+            border-left: 10px solid var(--link);
+
+            margin: utilities.$line-height * 2 auto;
+            padding: 0.5em 10px;
         }
     }
 

@@ -1,5 +1,4 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .link-ctr {
     width: fit-content;
@@ -7,13 +6,13 @@
     cursor: pointer;
 
     a {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         height: utilities.$line-height;
 
         &,
         &:hover {
-            color: theme.$link;
+            color: var(--link);
         }
     }
 
@@ -51,7 +50,7 @@
             }
 
             to {
-                background-color: theme.$link-20;
+                background-color: var(--link-20);
             }
         }
 
@@ -61,7 +60,7 @@
             }
 
             to {
-                border-bottom-color: theme.$link;
+                border-bottom-color: var(--link);
             }
         }
     }

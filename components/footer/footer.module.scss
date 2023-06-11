@@ -1,5 +1,4 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .footer {
     display: flex;
@@ -19,14 +18,14 @@
             justify-content: center;
 
             li {
-                color: theme.$heading;
+                color: var(--heading);
             }
         }
     }
 
     .copyright {
         text-align: center;
-        color: theme.$muted;
+        color: var(--muted);
     }
 
     @media print {

@@ -1,6 +1,5 @@
 $color: #d4d4d4;
 $background-color: #221d29;
-
 $skill: #9cdcfe;
 $skill-05: #9cdcfe05;
 $skill-10: #9cdcfe10;
@@ -8,7 +7,12 @@ $skill-15: #9cdcfe15;
 $skill-20: #9cdcfe20;
 $skill-50: #9cdcfe20;
 $heading: #569cd6;
-$title: #696969;
+$heading-05: #569cd605;
+$heading-10: #569cd610;
+$heading-15: #569cd615;
+$heading-20: #569cd620;
+$heading-30: #569cd630;
+$heading-50: #569cd650;
 $muted: #808080;
 $comment: #6a9955;
 $date: #b5cea8;
@@ -30,20 +34,7 @@ $text: #ce9178;
 $company: #dcdcaa;
 $copy-background-color: #276558;
 $copy-label-color: #a7e4d7;
-
-// DEV: Simplify colors
-
-// $skill: var(--color);
-// $skill-10: var(--color);
-// $skill-20: var(--color);
-// $heading: var(--color);
-// // $title: var(--color);
-// $muted: var(--color);
-// $comment: #808080;
-// $date: var(--color);
-// // $link: var(--color);
-// // $link-20: transparent;
-// $name: #4ec9b0;
-// $name-20: #4ec9b020;
-// $text: var(--color);
-// $company: var(--color);
+$word-background-color: #63341d;
+$r-word-background-color: #ffc2d3;
+$g-word-background-color: #115e59;
+$b-word-background-color: #1e40af;

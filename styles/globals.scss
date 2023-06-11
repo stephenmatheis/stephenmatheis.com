@@ -1,11 +1,10 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
+@use 'styles/dark.theme.module.scss' as dark-theme;
+@use 'styles/light.theme.module.scss' as light-theme;
 
 :root {
-    --background-color: #{theme.$background-color};
-    --color: #{theme.$color};
-    --line-height: 18px;
-    --font-size: 12px;
+    --line-height: utilities.$line-height;
+    --font-size: utilities.$font-size;
     --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         Liberation Mono, 'Courier New', monospace;
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
@@ -15,6 +14,91 @@
     @media print {
         --line-height: 16.5px;
         --font-size: 11px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        --color: #{dark-theme.$color};
+        --background-color: #{dark-theme.$background-color};
+        --skill: #{dark-theme.$skill};
+        --skill-05: #{dark-theme.$skill-05};
+        --skill-10: #{dark-theme.$skill-10};
+        --skill-15: #{dark-theme.$skill-15};
+        --skill-20: #{dark-theme.$skill-20};
+        --skill-50: #{dark-theme.$skill-50};
+        --heading: #{dark-theme.$heading};
+        --heading-05: #{dark-theme.$heading-05};
+        --heading-10: #{dark-theme.$heading-10};
+        --heading-15: #{dark-theme.$heading-15};
+        --heading-20: #{dark-theme.$heading-20};
+        --heading-50: #{dark-theme.$heading-50};
+        --muted: #{dark-theme.$muted};
+        --comment: #{dark-theme.$comment};
+        --date: #{dark-theme.$date};
+        --link: #{dark-theme.$link};
+        --link-05: #{dark-theme.$link-05};
+        --link-10: #{dark-theme.$link-10};
+        --link-15: #{dark-theme.$link-15};
+        --link-20: #{dark-theme.$link-20};
+        --link-30: #{dark-theme.$link-30};
+        --link-50: #{dark-theme.$link-50};
+        --link-darker: #{dark-theme.$link-darker};
+        --name: #{dark-theme.$name};
+        --name-05: #{dark-theme.$name-05};
+        --name-10: #{dark-theme.$name-10};
+        --name-15: #{dark-theme.$name-15};
+        --name-20: #{dark-theme.$name-20};
+        --name-50: #{dark-theme.$name-50};
+        --text: #{dark-theme.$text};
+        --company: #{dark-theme.$company};
+        --copy-background-color: #{dark-theme.$copy-background-color};
+        --copy-label-color: #{dark-theme.$copy-label-color};
+        --word-background-color: #{dark-theme.$word-background-color};
+        --r-word-background-color: #{dark-theme.$r-word-background-color};
+        --g-word-background-color: #{dark-theme.$g-word-background-color};
+        --b-word-background-color: #{dark-theme.$b-word-background-color};
+    }
+
+    @media (prefers-color-scheme: light),
+        (prefers-color-scheme: no-preference) {
+        --color: #{light-theme.$color};
+        --background-color: #{light-theme.$background-color};
+        --skill: #{light-theme.$skill};
+        --skill-05: #{light-theme.$skill-05};
+        --skill-10: #{light-theme.$skill-10};
+        --skill-15: #{light-theme.$skill-15};
+        --skill-20: #{light-theme.$skill-20};
+        --skill-50: #{light-theme.$skill-50};
+        --heading: #{light-theme.$heading};
+        --heading-05: #{dark-theme.$heading-05};
+        --heading-10: #{dark-theme.$heading-10};
+        --heading-15: #{dark-theme.$heading-15};
+        --heading-20: #{dark-theme.$heading-20};
+        --heading-50: #{dark-theme.$heading-50};
+        --muted: #{light-theme.$muted};
+        --comment: #{light-theme.$comment};
+        --date: #{light-theme.$date};
+        --link: #{light-theme.$link};
+        --link-05: #{light-theme.$link-05};
+        --link-10: #{light-theme.$link-10};
+        --link-15: #{light-theme.$link-15};
+        --link-20: #{light-theme.$link-20};
+        --link-30: #{light-theme.$link-30};
+        --link-50: #{light-theme.$link-50};
+        --link-darker: #{light-theme.$link-darker};
+        --name: #{light-theme.$name};
+        --name-05: #{light-theme.$name-05};
+        --name-10: #{light-theme.$name-10};
+        --name-15: #{light-theme.$name-15};
+        --name-20: #{light-theme.$name-20};
+        --name-50: #{light-theme.$name-50};
+        --text: #{light-theme.$text};
+        --company: #{light-theme.$company};
+        --copy-background-color: #{light-theme.$copy-background-color};
+        --copy-label-color: #{light-theme.$copy-label-color};
+        --word-background-color: #{light-theme.$word-background-color};
+        --r-word-background-color: #{light-theme.$r-word-background-color};
+        --g-word-background-color: #{light-theme.$g-word-background-color};
+        --b-word-background-color: #{light-theme.$b-word-background-color};
     }
 }
 
@@ -42,14 +126,14 @@ body {
 
 a {
     position: relative;
-    color: theme.$link;
+    color: var(--link);
 
     &.anchor {
         display: block;
 
         &:hover {
             * {
-                color: theme.$link;
+                color: var(--link);
             }
         }
 
@@ -71,7 +155,7 @@ a {
         position: absolute;
         bottom: 0px;
         left: -2ch;
-        color: theme.$link;
+        color: var(--link);
         opacity: 0;
         transition: opacity 150ms ease-in-out;
     }
@@ -84,7 +168,7 @@ h4,
 h5,
 h6 {
     font-weight: normal;
-    color: theme.$heading;
+    color: var(--heading);
 }
 
 h2,
@@ -116,19 +200,28 @@ p {
     // --hightlighted-background: #{theme.$name-15};
     // --highlighted-border-color: #{theme.$skill};
 
-    // ✅ Green
-    --background: #{theme.$link-10};
-    --hightlighted-background: #{theme.$link-15};
-    --highlighted-border-color: #{theme.$link};
+    // 🚫 Green
+    --background: var(--link-10);
+    --hightlighted-background: var(--link-15);
+    --title-background: var(--link-20);
+    --highlighted-border-color: var(--link);
+
+    // ✅ Heading
+    // --background: var(--heading-10);
+    // --hightlighted-background: var(--heading-15);
+    // --title-background: var(--heading-20);
+    // --highlighted-border-color: var(--heading);
 
     position: relative;
     margin-top: 0;
     margin-bottom: calc(utilities.$line-height * 2);
 
     [data-rehype-pretty-code-title] {
+        // Tabbed
         // width: fit-content;
         // background: var(--background);
-        background: theme.$link-20;
+
+        background: var(--title-background);
         line-height: 30px;
         padding: 0px 2ch;
     }
@@ -152,27 +245,33 @@ p {
         & > code {
             font-family: var(--font-code);
             display: grid;
-            counter-reset: line;
 
-            & > .line {
+            > .line {
                 padding: 0px 2ch;
-                // padding-right: calc(2ch + 62px);
                 border-left: 2px solid transparent;
 
                 // Highlight line
                 &.highlighted {
                     background: var(--hightlighted-background);
                     border-left-color: var(--highlighted-border-color);
-                    // border-left-color: theme.$name;
-                    // border-left-color: #60a5fa;
                 }
 
-                &::before {
-                    // Line numbers
+                &::selection,
+                & *::selection {
+                    color: inherit;
+                    background: var(--link-30);
+                }
+            }
+
+            // Line numbers
+            &[data-line-numbers] {
+                counter-reset: line;
+
+                > .line::before {
                     counter-increment: line;
                     content: counter(line);
 
-                    /* Other styling */
+                    // Other styling
                     display: inline-block;
                     width: 1rem;
                     margin-right: 2rem;
@@ -180,46 +279,57 @@ p {
                     color: gray;
                 }
 
-                &::selection,
-                & *::selection {
-                    color: inherit;
-                    background: theme.$link-30; /* WebKit/Blink Browsers */
+                // Line numbers
+                > .line &[data-line-numbers-max-digits='2'] > .line::before {
+                    width: 2rem;
                 }
-            }
 
-            // Line numbers
-            & > .line &[data-line-numbers-max-digits='2'] > .line::before {
-                width: 2rem;
-            }
-
-            & code {
-                code {
-                    &[data-line-numbers-max-digits='3'] > .line::before {
-                        width: 3rem;
-                    }
+                > .line &[data-line-numbers-max-digits='3'] > .line::before {
+                    width: 3rem;
                 }
             }
 
             // Highlight word
             .word {
-                --background-color: #63341d;
+                --background-color: var(--word-background-color);
 
                 border-top: solid 3px var(--background-color);
                 border-bottom: solid 3px var(--background-color);
                 background-color: var(--background-color);
 
                 &[data-word-id='r'] {
-                    --background-color: #9f1239;
+                    --background-color: var(--r-word-background-color);
                 }
 
                 &[data-word-id='g'] {
-                    --background-color: #115e59;
+                    --background-color: var(--g-word-background-color);
                 }
 
                 &[data-word-id='b'] {
-                    --background-color: #1e40af;
+                    --background-color: var(--b-word-background-color);
                 }
             }
         }
+    }
+}
+
+// Conditionally show or hide dark and light theme code blocks
+@media (prefers-color-scheme: dark) {
+    div[data-rehype-pretty-code-title][data-theme='light'] {
+        display: none;
+    }
+
+    div[data-code-block]:has([data-theme='light']) {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
+    div[data-rehype-pretty-code-title][data-theme='dark'] {
+        display: none;
+    }
+
+    div[data-code-block]:has([data-theme='dark']) {
+        display: none;
     }
 }

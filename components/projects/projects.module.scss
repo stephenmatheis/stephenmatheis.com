@@ -1,5 +1,4 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 $inner-radius: 10px;
 $distance: 10px;
@@ -48,7 +47,7 @@ $outer-radius: calc($inner-radius + $distance);
                 }
 
                 .img-ctr {
-                    --shadow-color: #{theme.$link-darker};
+                    --shadow-color: var(--link-darker);
                     --img-width: 250px;
 
                     z-index: 0;
@@ -108,7 +107,6 @@ $outer-radius: calc($inner-radius + $distance);
                         display: block;
                         width: 100%;
                         height: auto;
-                        // border: solid 2px theme.$link;
 
                         // NOTE: Experimenting with no border radius
                         // border-radius: $inner-radius;
