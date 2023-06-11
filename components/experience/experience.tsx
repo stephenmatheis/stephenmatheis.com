@@ -18,14 +18,11 @@ export function Experience({}) {
                                 </span>
                             </div>
                             <div className={styles['date']}>
-                                {/* <> */}
-                                {/* {start} - {end} */}
-                                {start}
-                                {/* <span className={styles['location']}>
-                                        {' '}
-                                        • {location}
-                                    </span> */}
-                                {/* </> */}
+                                {start} - {end}
+                                <span className={styles['location']}>
+                                    {' '}
+                                    • {location}
+                                </span>
                             </div>
                             <div className={styles['lines']}>
                                 {lines.map((line, index) => {
