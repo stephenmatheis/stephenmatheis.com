@@ -1,9 +1,9 @@
+import classNames from 'classnames';
 import { DateTime } from '@/components/date-time';
 import { LinkCtr } from '@/components/link-ctr';
 import { Body } from '@/components/body';
 import type { Post } from '@/lib/types';
 import styles from './posts.module.scss';
-import classNames from 'classnames';
 
 export function Posts({ posts }: { posts: Post[] }) {
     const dates = [...new Set(posts.map(({ date }) => date.split('T')[0]))];

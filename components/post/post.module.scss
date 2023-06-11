@@ -26,56 +26,6 @@
         margin-bottom: calc(15vh - (utilities.$line-height * 3));
     }
 
-    .date {
-        color: var(--muted);
-    }
-
-    article {
-        .date {
-            display: inline-block;
-            margin-bottom: 0px;
-        }
-
-        p {
-            &:first-of-type {
-                margin-top: utilities.$line-height;
-            }
-        }
-
-        ul,
-        ol {
-            padding-left: 2ch;
-            margin: utilities.$line-height 0px;
-
-            li {
-                &::marker {
-                    color: var(--heading);
-                }
-            }
-        }
-
-        ol {
-            list-style-position: inside;
-        }
-
-        ul {
-            list-style: inside square;
-        }
-
-        blockquote {
-            // 🚫 Heading
-            background: var(--heading-15);
-            border-left: 10px solid var(--heading);
-
-            // ✅ Link
-            // background: var(--link-15);
-            // border-left: 10px solid var(--link);
-
-            margin: utilities.$line-height * 2 auto;
-            padding: 0.5em 10px;
-        }
-    }
-
     .footer-wrapper {
         margin-top: calc(utilities.$line-height * 5);
     }
