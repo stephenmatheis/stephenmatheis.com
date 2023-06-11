@@ -64,12 +64,12 @@
 
         blockquote {
             // 🚫 Heading
-            // background: var(--heading-15);
-            // border-left: 10px solid var(--heading);
+            background: var(--heading-15);
+            border-left: 10px solid var(--heading);
 
             // ✅ Link
-            background: var(--link-15);
-            border-left: 10px solid var(--link);
+            // background: var(--link-15);
+            // border-left: 10px solid var(--link);
 
             margin: utilities.$line-height * 2 auto;
             padding: 0.5em 10px;
