@@ -1,5 +1,4 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .item {
     list-style-type: none;
@@ -14,7 +13,7 @@
             position: absolute;
             top: -10px;
             left: -20px;
-            background-color: theme.$link-20;
+            background-color: var(--link-20);
 
             // NOTE: Experimenting with no border radius
             // border-radius: 6px;
@@ -54,7 +53,7 @@
             position: absolute;
             right: 0px;
             bottom: 0px;
-            color: theme.$link;
+            color: var(--link);
             content: '...';
             // font-size: utilities.$line-height;
             width: fit-content;
@@ -85,10 +84,10 @@
     justify-content: space-between;
 
     .title {
-        color: theme.$link;
+        color: var(--link);
     }
 
     .date {
-        color: theme.$muted;
+        color: var(--muted);
     }
 }

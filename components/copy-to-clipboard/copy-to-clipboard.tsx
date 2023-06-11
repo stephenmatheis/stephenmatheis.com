@@ -37,7 +37,7 @@ export function CopyToClipboard({ children }: ICopyToClipboard) {
     }
 
     return (
-        <div className={styles['copy-to-clipboard']}>
+        <div className={styles['copy-to-clipboard']} data-code-block>
             <button
                 aria-label="Copy code"
                 type="button"

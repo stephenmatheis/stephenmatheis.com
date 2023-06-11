@@ -1,8 +1,7 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .comment {
-    color: theme.$comment;
+    color: var(--comment);
     margin-bottom: utilities.$line-height;
 }
 
@@ -14,7 +13,7 @@
 
         .group {
             .name {
-                color: theme.$heading;
+                color: var(--heading);
             }
 
             .items-ctr {
@@ -25,7 +24,7 @@
                 .item {
                     display: inline-block;
                     border-radius: 4px;
-                    color: theme.$skill;
+                    color: var(--skill);
                 }
             }
         }

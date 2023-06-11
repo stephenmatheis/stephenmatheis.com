@@ -1,16 +1,15 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .comment {
-    color: theme.$comment;
+    color: var(--comment);
     margin-bottom: utilities.$line-height;
 }
 
 .date {
-    color: theme.$date;
+    color: var(--date);
 
     .location {
-        color: theme.$muted;
+        color: var(--muted);
     }
 }
 
@@ -27,10 +26,10 @@
         }
 
         .title {
-            color: theme.$heading;
+            color: var(--heading);
 
             .company {
-                color: theme.$company;
+                color: var(--company);
             }
         }
 
@@ -40,7 +39,7 @@
 
             .line {
                 display: flex;
-                color: theme.$text;
+                color: var(--text);
             }
         }
     }

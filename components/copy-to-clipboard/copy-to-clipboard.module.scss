@@ -1,10 +1,9 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/theme.module.scss' as theme;
 
 .copy-to-clipboard {
     button {
-        --background-color: #{theme.$copy-background-color};
-        --label-color: #{theme.$copy-label-color};
+        --background-color: var(--copy-background-color);
+        --label-color: var(--copy-label-color);
         --shadow-color: var(--label-color);
 
         z-index: 1;
