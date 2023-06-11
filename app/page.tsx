@@ -22,7 +22,7 @@ export default function RootPage() {
                     style={{
                         width: 640 / 2,
                         height: 480 / 2,
-                        margin: '0 auto',
+                        margin: 'auto auto',
                     }}
                     src="/memoji-loop-22s.mov"
                 />

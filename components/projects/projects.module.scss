@@ -9,7 +9,7 @@ $outer-radius: calc($inner-radius + $distance);
         display: flex;
         flex-direction: column;
         gap: calc(utilities.$line-height * 4);
-        margin-top: calc(utilities.$line-height * 4);
+        margin-top: calc(utilities.$line-height * 3);
 
         @media print {
             gap: utilities.$line-height;

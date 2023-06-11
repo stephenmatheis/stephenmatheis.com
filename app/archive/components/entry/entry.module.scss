@@ -8,11 +8,11 @@
     @media (hover: hover) {
         &::after {
             content: '';
-            width: calc(100% + 40px);
-            height: calc(100% + 20px);
+            width: calc(100% + 4ch);
+            height: calc(100% + utilities.$line-height);
             position: absolute;
-            top: -10px;
-            left: -20px;
+            left: -2ch;
+            top: calc((utilities.$line-height / 2) * -1);
             background-color: var(--link-20);
 
             // NOTE: Experimenting with no border radius
@@ -55,7 +55,6 @@
             bottom: 0px;
             color: var(--link);
             content: '...';
-            // font-size: utilities.$line-height;
             width: fit-content;
             height: calc(utilities.$line-height * 1.5);
             z-index: 2;
@@ -64,7 +63,6 @@
 }
 
 .link {
-    cursor: pointer;
     color: inherit;
     display: flex;
     flex-direction: column;
@@ -82,12 +80,21 @@
 .title-wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 
     .title {
         color: var(--link);
     }
 
-    .date {
+    .dots {
         color: var(--muted);
+        flex: 2;
+        display: inline-block;
+        border-bottom: dotted 2px var(--link-50);
+        margin: 0px 1ch 3px;
+    }
+
+    .date {
+        color: var(--color);
     }
 }

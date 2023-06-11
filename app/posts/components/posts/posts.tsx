@@ -6,7 +6,10 @@ import type { Post } from '@/lib/types';
 import styles from './posts.module.scss';
 
 export function Posts({ posts }: { posts: Post[] }) {
-    const dates = [...new Set(posts.map(({ date }) => date.split('T')[0]))];
+    const last20Posts = posts.slice(0, 21);
+    const dates = [
+        ...new Set(last20Posts.map(({ date }) => date.split('T')[0])),
+    ];
 
     return (
         <>
@@ -24,7 +27,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                             />
                         )}
                         <div className={styles.posts}>
-                            {posts
+                            {last20Posts
                                 .filter(
                                     (post) => post.date.split('T')[0] === date
                                 )
@@ -50,7 +53,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                     )}
                                                 >
                                                     <LinkCtr
-                                                        href={`/links/${slug}`}
+                                                        href={`/posts/${slug}`}
                                                     >
                                                         {title}
                                                     </LinkCtr>
