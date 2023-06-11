@@ -1,16 +1,15 @@
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
-import { Posts } from './components/posts';
+import { PostsList } from './components/posts-list';
 import getPosts from '@/lib/get-posts';
-import styles from './page.module.scss';
 
-export default async function LinksPage() {
+export default async function PostsPage() {
     const posts = await getPosts();
 
     return (
         <Page links={[{ label: 'Home', path: '/' }]}>
-            <Main columns={2} right={{ className: styles.gap }}>
-                <Posts posts={posts} />
+            <Main columns={2}>
+                <PostsList posts={posts} />
             </Main>
         </Page>
     );
