@@ -23,7 +23,7 @@ export function PostsList({ posts }: { posts: Post[] }) {
     return (
         <>
             <div className={styles.title}>
-                <Comment text="Posts" />
+                <Comment text="Archive" />
                 <Search posts={posts} setPosts={setFilteredPosts} />
             </div>
             <ul className={styles.container}>
