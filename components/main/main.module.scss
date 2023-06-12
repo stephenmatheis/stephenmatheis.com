@@ -69,24 +69,6 @@
             align-items: center;
             justify-content: center;
 
-            // FIXME:
-            video {
-                opacity: 0;
-                animation: fade-in 450ms ease-in-out forwards;
-            }
-
-            @keyframes fade-in {
-                from {
-                    scale: 0;
-                    opacity: 0;
-                }
-
-                to {
-                    scale: 1;
-                    opacity: 1;
-                }
-            }
-
             @media screen and (max-width: utilities.$medium-width) {
                 flex: 2;
             }
