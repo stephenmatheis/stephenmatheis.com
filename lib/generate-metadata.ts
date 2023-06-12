@@ -11,12 +11,7 @@ export async function generateMetadata({
     const post = (await getPosts()).find((p) => p?.slug === params.slug);
 
     return {
-        title: post?.title,
+        title: `Posts | ${post?.title}`,
         description: post?.description,
-
-        // FIXME: Pass /posts/ or /timeline/ from getPosts()?
-        // alternates: {
-        //     canonical: `https://stephenmatheis.com/posts/${params.slug}`,
-        // },
     };
 }
