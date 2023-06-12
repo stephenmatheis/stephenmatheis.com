@@ -1,0 +1,16 @@
+.memoji {
+    opacity: 0;
+    animation: fade-in 450ms ease-in-out forwards;
+}
+
+@keyframes fade-in {
+    from {
+        scale: 0;
+        opacity: 0;
+    }
+
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
