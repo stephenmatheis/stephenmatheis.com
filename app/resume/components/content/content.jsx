@@ -9,7 +9,7 @@ export function Content({}) {
         <div className={styles.resume}>
             <section className={styles.left}>
                 <Skills />
-                <Projects />
+                <Projects printOnly />
                 <Contact />
             </section>
             <section className={styles.right}>

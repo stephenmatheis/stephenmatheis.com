@@ -5,8 +5,10 @@ $distance: 10px;
 $outer-radius: calc($inner-radius + $distance);
 
 .projects {
-    @media screen {
-        display: none;
+    &.print-only {
+        @media screen {
+            display: none;
+        }
     }
 
     .projects-wrapper {

@@ -7,6 +7,7 @@ import styles from './projects.module.scss';
 
 type Props = {
     displayImages?: boolean;
+    printOnly?: boolean;
 };
 
 type ImageProps = {
@@ -15,9 +16,13 @@ type ImageProps = {
     height?: number;
 };
 
-export function Projects({ displayImages }: Props) {
+export function Projects({ displayImages, printOnly }: Props) {
     return (
-        <div className={styles.projects}>
+        <div
+            className={classNames(styles.projects, {
+                [styles['print-only']]: printOnly,
+            })}
+        >
             <Comment text={'Projects'} />
             <div
                 className={classNames(styles['projects-wrapper'], {
