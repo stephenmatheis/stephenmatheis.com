@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import Link from 'next/link';
 import { DateTime } from '@/components/date-time';
 import { Comment } from '@/components/comment';
 import { LinkCtr } from '@/components/link-ctr';
@@ -41,7 +42,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                     )
                                     .map(
                                         (
-                                            { slug, title, date, body },
+                                            { slug, title, date, link, body },
                                             postIndex
                                         ) => {
                                             return (
@@ -58,14 +59,37 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                                         0 &&
                                                                     postIndex ===
                                                                         0,
+                                                                [styles.external]:
+                                                                    link,
                                                             }
                                                         )}
                                                     >
-                                                        <LinkCtr
-                                                            href={`/posts/${slug}`}
-                                                        >
-                                                            {title}
-                                                        </LinkCtr>
+                                                        {link ? (
+                                                            <>
+                                                                <LinkCtr
+                                                                    href={link}
+                                                                    newTab
+                                                                >
+                                                                    {title}
+                                                                </LinkCtr>
+                                                                <Link
+                                                                    href={`/posts/${slug}`}
+                                                                    className={
+                                                                        styles[
+                                                                            'post-link'
+                                                                        ]
+                                                                    }
+                                                                >
+                                                                    {/* ⚹ */}#
+                                                                </Link>
+                                                            </>
+                                                        ) : (
+                                                            <LinkCtr
+                                                                href={`/posts/${slug}`}
+                                                            >
+                                                                {title}
+                                                            </LinkCtr>
+                                                        )}
                                                     </h2>
 
                                                     <Body>{body}</Body>
