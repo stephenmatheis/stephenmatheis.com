@@ -63,12 +63,12 @@
 }
 
 .link {
-    color: inherit;
     display: flex;
     flex-direction: column;
+    gap: utilities.$line-height;
     text-decoration: none;
     outline: none;
-    gap: utilities.$line-height;
+    color: inherit;
 }
 
 .title,
