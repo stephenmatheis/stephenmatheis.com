@@ -26,8 +26,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body suppressHydrationWarning>{children}</body>
+        <html lang="en" suppressHydrationWarning>
+            <body suppressHydrationWarning>
+                {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+                <script src="set-theme.js" />
+                {children}
+            </body>
         </html>
     );
 }

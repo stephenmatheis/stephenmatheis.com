@@ -1,94 +1,358 @@
 @use 'styles/utilities.module.scss' as utilities;
-@use 'styles/dark.theme.module.scss' as dark-theme;
-@use 'styles/light.theme.module.scss' as light-theme;
+@use 'styles/dark.theme.green.module.scss' as dark-theme-green;
+@use 'styles/light.theme.green.module.scss' as light-theme-green;
+@use 'styles/dark.theme.blue.module.scss' as dark-theme-blue;
+@use 'styles/light.theme.blue.module.scss' as light-theme-blue;
+@use 'styles/dark.theme.red.module.scss' as dark-theme-red;
+@use 'styles/light.theme.red.module.scss' as light-theme-red;
+@use 'styles/dark.theme.monochrome.module.scss' as dark-theme-monochrome;
+@use 'styles/light.theme.monochrome.module.scss' as light-theme-monochrome;
 
-@mixin dark-mode {
-    --color: #{dark-theme.$color};
-    --background-color: #{dark-theme.$background-color};
-    --skill: #{dark-theme.$skill};
-    --skill-05: #{dark-theme.$skill-05};
-    --skill-10: #{dark-theme.$skill-10};
-    --skill-15: #{dark-theme.$skill-15};
-    --skill-20: #{dark-theme.$skill-20};
-    --skill-50: #{dark-theme.$skill-50};
-    --heading: #{dark-theme.$heading};
-    --heading-05: #{dark-theme.$heading-05};
-    --heading-10: #{dark-theme.$heading-10};
-    --heading-15: #{dark-theme.$heading-15};
-    --heading-20: #{dark-theme.$heading-20};
-    --heading-50: #{dark-theme.$heading-50};
-    --muted: #{dark-theme.$muted};
-    --comment: #{dark-theme.$comment};
-    --date: #{dark-theme.$date};
-    --link: #{dark-theme.$link};
-    --link-05: #{dark-theme.$link-05};
-    --link-10: #{dark-theme.$link-10};
-    --link-15: #{dark-theme.$link-15};
-    --link-20: #{dark-theme.$link-20};
-    --link-30: #{dark-theme.$link-30};
-    --link-50: #{dark-theme.$link-50};
-    --link-darker: #{dark-theme.$link-darker};
-    --name: #{dark-theme.$name};
-    --name-05: #{dark-theme.$name-05};
-    --name-10: #{dark-theme.$name-10};
-    --name-15: #{dark-theme.$name-15};
-    --name-20: #{dark-theme.$name-20};
-    --name-50: #{dark-theme.$name-50};
-    --text: #{dark-theme.$text};
-    --company: #{dark-theme.$company};
-    --copy-background-color: #{dark-theme.$copy-background-color};
-    --copy-label-color: #{dark-theme.$copy-label-color};
-    --word-background-color: #{dark-theme.$word-background-color};
-    --r-word-background-color: #{dark-theme.$r-word-background-color};
-    --g-word-background-color: #{dark-theme.$g-word-background-color};
-    --b-word-background-color: #{dark-theme.$b-word-background-color};
+// Green (default)
+@mixin dark-mode-green {
+    --color: #{dark-theme-green.$color};
+    --background-color: #{dark-theme-green.$background-color};
+    --skill: #{dark-theme-green.$skill};
+    --skill-05: #{dark-theme-green.$skill-05};
+    --skill-10: #{dark-theme-green.$skill-10};
+    --skill-15: #{dark-theme-green.$skill-15};
+    --skill-20: #{dark-theme-green.$skill-20};
+    --skill-50: #{dark-theme-green.$skill-50};
+    --heading: #{dark-theme-green.$heading};
+    --heading-05: #{dark-theme-green.$heading-05};
+    --heading-10: #{dark-theme-green.$heading-10};
+    --heading-15: #{dark-theme-green.$heading-15};
+    --heading-20: #{dark-theme-green.$heading-20};
+    --heading-50: #{dark-theme-green.$heading-50};
+    --muted: #{dark-theme-green.$muted};
+    --comment: #{dark-theme-green.$comment};
+    --date: #{dark-theme-green.$date};
+    --link: #{dark-theme-green.$link};
+    --link-05: #{dark-theme-green.$link-05};
+    --link-10: #{dark-theme-green.$link-10};
+    --link-15: #{dark-theme-green.$link-15};
+    --link-20: #{dark-theme-green.$link-20};
+    --link-30: #{dark-theme-green.$link-30};
+    --link-50: #{dark-theme-green.$link-50};
+    --link-darker: #{dark-theme-green.$link-darker};
+    --name: #{dark-theme-green.$name};
+    --name-05: #{dark-theme-green.$name-05};
+    --name-10: #{dark-theme-green.$name-10};
+    --name-15: #{dark-theme-green.$name-15};
+    --name-20: #{dark-theme-green.$name-20};
+    --name-50: #{dark-theme-green.$name-50};
+    --text: #{dark-theme-green.$text};
+    --company: #{dark-theme-green.$company};
+    --copy-background-color: #{dark-theme-green.$copy-background-color};
+    --copy-label-color: #{dark-theme-green.$copy-label-color};
+    --word-background-color: #{dark-theme-green.$word-background-color};
+    --r-word-background-color: #{dark-theme-green.$r-word-background-color};
+    --g-word-background-color: #{dark-theme-green.$g-word-background-color};
+    --b-word-background-color: #{dark-theme-green.$b-word-background-color};
 }
 
-@mixin light-mode {
-    --color: #{light-theme.$color};
-    --background-color: #{light-theme.$background-color};
-    --skill: #{light-theme.$skill};
-    --skill-05: #{light-theme.$skill-05};
-    --skill-10: #{light-theme.$skill-10};
-    --skill-15: #{light-theme.$skill-15};
-    --skill-20: #{light-theme.$skill-20};
-    --skill-50: #{light-theme.$skill-50};
-    --heading: #{light-theme.$heading};
-    --heading-05: #{dark-theme.$heading-05};
-    --heading-10: #{dark-theme.$heading-10};
-    --heading-15: #{dark-theme.$heading-15};
-    --heading-20: #{dark-theme.$heading-20};
-    --heading-50: #{dark-theme.$heading-50};
-    --muted: #{light-theme.$muted};
-    --comment: #{light-theme.$comment};
-    --date: #{light-theme.$date};
-    --link: #{light-theme.$link};
-    --link-05: #{light-theme.$link-05};
-    --link-10: #{light-theme.$link-10};
-    --link-15: #{light-theme.$link-15};
-    --link-20: #{light-theme.$link-20};
-    --link-30: #{light-theme.$link-30};
-    --link-50: #{light-theme.$link-50};
-    --link-darker: #{light-theme.$link-darker};
-    --name: #{light-theme.$name};
-    --name-05: #{light-theme.$name-05};
-    --name-10: #{light-theme.$name-10};
-    --name-15: #{light-theme.$name-15};
-    --name-20: #{light-theme.$name-20};
-    --name-50: #{light-theme.$name-50};
-    --text: #{light-theme.$text};
-    --company: #{light-theme.$company};
-    --copy-background-color: #{light-theme.$copy-background-color};
-    --copy-label-color: #{light-theme.$copy-label-color};
-    --word-background-color: #{light-theme.$word-background-color};
-    --r-word-background-color: #{light-theme.$r-word-background-color};
-    --g-word-background-color: #{light-theme.$g-word-background-color};
-    --b-word-background-color: #{light-theme.$b-word-background-color};
+@mixin light-mode-green {
+    --color: #{light-theme-green.$color};
+    --background-color: #{light-theme-green.$background-color};
+    --skill: #{light-theme-green.$skill};
+    --skill-05: #{light-theme-green.$skill-05};
+    --skill-10: #{light-theme-green.$skill-10};
+    --skill-15: #{light-theme-green.$skill-15};
+    --skill-20: #{light-theme-green.$skill-20};
+    --skill-50: #{light-theme-green.$skill-50};
+    --heading: #{light-theme-green.$heading};
+    --heading-05: #{dark-theme-green.$heading-05};
+    --heading-10: #{dark-theme-green.$heading-10};
+    --heading-15: #{dark-theme-green.$heading-15};
+    --heading-20: #{dark-theme-green.$heading-20};
+    --heading-50: #{dark-theme-green.$heading-50};
+    --muted: #{light-theme-green.$muted};
+    --comment: #{light-theme-green.$comment};
+    --date: #{light-theme-green.$date};
+    --link: #{light-theme-green.$link};
+    --link-05: #{light-theme-green.$link-05};
+    --link-10: #{light-theme-green.$link-10};
+    --link-15: #{light-theme-green.$link-15};
+    --link-20: #{light-theme-green.$link-20};
+    --link-30: #{light-theme-green.$link-30};
+    --link-50: #{light-theme-green.$link-50};
+    --link-darker: #{light-theme-green.$link-darker};
+    --name: #{light-theme-green.$name};
+    --name-05: #{light-theme-green.$name-05};
+    --name-10: #{light-theme-green.$name-10};
+    --name-15: #{light-theme-green.$name-15};
+    --name-20: #{light-theme-green.$name-20};
+    --name-50: #{light-theme-green.$name-50};
+    --text: #{light-theme-green.$text};
+    --company: #{light-theme-green.$company};
+    --copy-background-color: #{light-theme-green.$copy-background-color};
+    --copy-label-color: #{light-theme-green.$copy-label-color};
+    --word-background-color: #{light-theme-green.$word-background-color};
+    --r-word-background-color: #{light-theme-green.$r-word-background-color};
+    --g-word-background-color: #{light-theme-green.$g-word-background-color};
+    --b-word-background-color: #{light-theme-green.$b-word-background-color};
+}
+
+// Blue
+@mixin dark-mode-blue {
+    --color: #{dark-theme-blue.$color};
+    --background-color: #{dark-theme-blue.$background-color};
+    --skill: #{dark-theme-blue.$skill};
+    --skill-05: #{dark-theme-blue.$skill-05};
+    --skill-10: #{dark-theme-blue.$skill-10};
+    --skill-15: #{dark-theme-blue.$skill-15};
+    --skill-20: #{dark-theme-blue.$skill-20};
+    --skill-50: #{dark-theme-blue.$skill-50};
+    --heading: #{dark-theme-blue.$heading};
+    --heading-05: #{dark-theme-blue.$heading-05};
+    --heading-10: #{dark-theme-blue.$heading-10};
+    --heading-15: #{dark-theme-blue.$heading-15};
+    --heading-20: #{dark-theme-blue.$heading-20};
+    --heading-50: #{dark-theme-blue.$heading-50};
+    --muted: #{dark-theme-blue.$muted};
+    --comment: #{dark-theme-blue.$comment};
+    --date: #{dark-theme-blue.$date};
+    --link: #{dark-theme-blue.$link};
+    --link-05: #{dark-theme-blue.$link-05};
+    --link-10: #{dark-theme-blue.$link-10};
+    --link-15: #{dark-theme-blue.$link-15};
+    --link-20: #{dark-theme-blue.$link-20};
+    --link-30: #{dark-theme-blue.$link-30};
+    --link-50: #{dark-theme-blue.$link-50};
+    --link-darker: #{dark-theme-blue.$link-darker};
+    --name: #{dark-theme-blue.$name};
+    --name-05: #{dark-theme-blue.$name-05};
+    --name-10: #{dark-theme-blue.$name-10};
+    --name-15: #{dark-theme-blue.$name-15};
+    --name-20: #{dark-theme-blue.$name-20};
+    --name-50: #{dark-theme-blue.$name-50};
+    --text: #{dark-theme-blue.$text};
+    --company: #{dark-theme-blue.$company};
+    --copy-background-color: #{dark-theme-blue.$copy-background-color};
+    --copy-label-color: #{dark-theme-blue.$copy-label-color};
+    --word-background-color: #{dark-theme-blue.$word-background-color};
+    --r-word-background-color: #{dark-theme-blue.$r-word-background-color};
+    --g-word-background-color: #{dark-theme-blue.$g-word-background-color};
+    --b-word-background-color: #{dark-theme-blue.$b-word-background-color};
+}
+
+@mixin light-mode-blue {
+    --color: #{light-theme-blue.$color};
+    --background-color: #{light-theme-blue.$background-color};
+    --skill: #{light-theme-blue.$skill};
+    --skill-05: #{light-theme-blue.$skill-05};
+    --skill-10: #{light-theme-blue.$skill-10};
+    --skill-15: #{light-theme-blue.$skill-15};
+    --skill-20: #{light-theme-blue.$skill-20};
+    --skill-50: #{light-theme-blue.$skill-50};
+    --heading: #{light-theme-blue.$heading};
+    --heading-05: #{dark-theme-blue.$heading-05};
+    --heading-10: #{dark-theme-blue.$heading-10};
+    --heading-15: #{dark-theme-blue.$heading-15};
+    --heading-20: #{dark-theme-blue.$heading-20};
+    --heading-50: #{dark-theme-blue.$heading-50};
+    --muted: #{light-theme-blue.$muted};
+    --comment: #{light-theme-blue.$comment};
+    --date: #{light-theme-blue.$date};
+    --link: #{light-theme-blue.$link};
+    --link-05: #{light-theme-blue.$link-05};
+    --link-10: #{light-theme-blue.$link-10};
+    --link-15: #{light-theme-blue.$link-15};
+    --link-20: #{light-theme-blue.$link-20};
+    --link-30: #{light-theme-blue.$link-30};
+    --link-50: #{light-theme-blue.$link-50};
+    --link-darker: #{light-theme-blue.$link-darker};
+    --name: #{light-theme-blue.$name};
+    --name-05: #{light-theme-blue.$name-05};
+    --name-10: #{light-theme-blue.$name-10};
+    --name-15: #{light-theme-blue.$name-15};
+    --name-20: #{light-theme-blue.$name-20};
+    --name-50: #{light-theme-blue.$name-50};
+    --text: #{light-theme-blue.$text};
+    --company: #{light-theme-blue.$company};
+    --copy-background-color: #{light-theme-blue.$copy-background-color};
+    --copy-label-color: #{light-theme-blue.$copy-label-color};
+    --word-background-color: #{light-theme-blue.$word-background-color};
+    --r-word-background-color: #{light-theme-blue.$r-word-background-color};
+    --g-word-background-color: #{light-theme-blue.$g-word-background-color};
+    --b-word-background-color: #{light-theme-blue.$b-word-background-color};
+}
+
+// Red
+@mixin dark-mode-red {
+    --color: #{dark-theme-red.$color};
+    --background-color: #{dark-theme-red.$background-color};
+    --skill: #{dark-theme-red.$skill};
+    --skill-05: #{dark-theme-red.$skill-05};
+    --skill-10: #{dark-theme-red.$skill-10};
+    --skill-15: #{dark-theme-red.$skill-15};
+    --skill-20: #{dark-theme-red.$skill-20};
+    --skill-50: #{dark-theme-red.$skill-50};
+    --heading: #{dark-theme-red.$heading};
+    --heading-05: #{dark-theme-red.$heading-05};
+    --heading-10: #{dark-theme-red.$heading-10};
+    --heading-15: #{dark-theme-red.$heading-15};
+    --heading-20: #{dark-theme-red.$heading-20};
+    --heading-50: #{dark-theme-red.$heading-50};
+    --muted: #{dark-theme-red.$muted};
+    --comment: #{dark-theme-red.$comment};
+    --date: #{dark-theme-red.$date};
+    --link: #{dark-theme-red.$link};
+    --link-05: #{dark-theme-red.$link-05};
+    --link-10: #{dark-theme-red.$link-10};
+    --link-15: #{dark-theme-red.$link-15};
+    --link-20: #{dark-theme-red.$link-20};
+    --link-30: #{dark-theme-red.$link-30};
+    --link-50: #{dark-theme-red.$link-50};
+    --link-darker: #{dark-theme-red.$link-darker};
+    --name: #{dark-theme-red.$name};
+    --name-05: #{dark-theme-red.$name-05};
+    --name-10: #{dark-theme-red.$name-10};
+    --name-15: #{dark-theme-red.$name-15};
+    --name-20: #{dark-theme-red.$name-20};
+    --name-50: #{dark-theme-red.$name-50};
+    --text: #{dark-theme-red.$text};
+    --company: #{dark-theme-red.$company};
+    --copy-background-color: #{dark-theme-red.$copy-background-color};
+    --copy-label-color: #{dark-theme-red.$copy-label-color};
+    --word-background-color: #{dark-theme-red.$word-background-color};
+    --r-word-background-color: #{dark-theme-red.$r-word-background-color};
+    --g-word-background-color: #{dark-theme-red.$g-word-background-color};
+    --b-word-background-color: #{dark-theme-red.$b-word-background-color};
+}
+
+@mixin light-mode-red {
+    --color: #{light-theme-red.$color};
+    --background-color: #{light-theme-red.$background-color};
+    --skill: #{light-theme-red.$skill};
+    --skill-05: #{light-theme-red.$skill-05};
+    --skill-10: #{light-theme-red.$skill-10};
+    --skill-15: #{light-theme-red.$skill-15};
+    --skill-20: #{light-theme-red.$skill-20};
+    --skill-50: #{light-theme-red.$skill-50};
+    --heading: #{light-theme-red.$heading};
+    --heading-05: #{dark-theme-red.$heading-05};
+    --heading-10: #{dark-theme-red.$heading-10};
+    --heading-15: #{dark-theme-red.$heading-15};
+    --heading-20: #{dark-theme-red.$heading-20};
+    --heading-50: #{dark-theme-red.$heading-50};
+    --muted: #{light-theme-red.$muted};
+    --comment: #{light-theme-red.$comment};
+    --date: #{light-theme-red.$date};
+    --link: #{light-theme-red.$link};
+    --link-05: #{light-theme-red.$link-05};
+    --link-10: #{light-theme-red.$link-10};
+    --link-15: #{light-theme-red.$link-15};
+    --link-20: #{light-theme-red.$link-20};
+    --link-30: #{light-theme-red.$link-30};
+    --link-50: #{light-theme-red.$link-50};
+    --link-darker: #{light-theme-red.$link-darker};
+    --name: #{light-theme-red.$name};
+    --name-05: #{light-theme-red.$name-05};
+    --name-10: #{light-theme-red.$name-10};
+    --name-15: #{light-theme-red.$name-15};
+    --name-20: #{light-theme-red.$name-20};
+    --name-50: #{light-theme-red.$name-50};
+    --text: #{light-theme-red.$text};
+    --company: #{light-theme-red.$company};
+    --copy-background-color: #{light-theme-red.$copy-background-color};
+    --copy-label-color: #{light-theme-red.$copy-label-color};
+    --word-background-color: #{light-theme-red.$word-background-color};
+    --r-word-background-color: #{light-theme-red.$r-word-background-color};
+    --g-word-background-color: #{light-theme-red.$g-word-background-color};
+    --b-word-background-color: #{light-theme-red.$b-word-background-color};
+}
+
+// Monochrome
+@mixin dark-mode-monochrome {
+    --color: #{dark-theme-monochrome.$color};
+    --background-color: #{dark-theme-monochrome.$background-color};
+    --skill: #{dark-theme-monochrome.$skill};
+    --skill-05: #{dark-theme-monochrome.$skill-05};
+    --skill-10: #{dark-theme-monochrome.$skill-10};
+    --skill-15: #{dark-theme-monochrome.$skill-15};
+    --skill-20: #{dark-theme-monochrome.$skill-20};
+    --skill-50: #{dark-theme-monochrome.$skill-50};
+    --heading: #{dark-theme-monochrome.$heading};
+    --heading-05: #{dark-theme-monochrome.$heading-05};
+    --heading-10: #{dark-theme-monochrome.$heading-10};
+    --heading-15: #{dark-theme-monochrome.$heading-15};
+    --heading-20: #{dark-theme-monochrome.$heading-20};
+    --heading-50: #{dark-theme-monochrome.$heading-50};
+    --muted: #{dark-theme-monochrome.$muted};
+    --comment: #{dark-theme-monochrome.$comment};
+    --date: #{dark-theme-monochrome.$date};
+    --link: #{dark-theme-monochrome.$link};
+    --link-05: #{dark-theme-monochrome.$link-05};
+    --link-10: #{dark-theme-monochrome.$link-10};
+    --link-15: #{dark-theme-monochrome.$link-15};
+    --link-20: #{dark-theme-monochrome.$link-20};
+    --link-30: #{dark-theme-monochrome.$link-30};
+    --link-50: #{dark-theme-monochrome.$link-50};
+    --link-darker: #{dark-theme-monochrome.$link-darker};
+    --name: #{dark-theme-monochrome.$name};
+    --name-05: #{dark-theme-monochrome.$name-05};
+    --name-10: #{dark-theme-monochrome.$name-10};
+    --name-15: #{dark-theme-monochrome.$name-15};
+    --name-20: #{dark-theme-monochrome.$name-20};
+    --name-50: #{dark-theme-monochrome.$name-50};
+    --text: #{dark-theme-monochrome.$text};
+    --company: #{dark-theme-monochrome.$company};
+    --copy-background-color: #{dark-theme-monochrome.$copy-background-color};
+    --copy-label-color: #{dark-theme-monochrome.$copy-label-color};
+    --word-background-color: #{dark-theme-monochrome.$word-background-color};
+    --r-word-background-color: #{dark-theme-monochrome.$r-word-background-color};
+    --g-word-background-color: #{dark-theme-monochrome.$g-word-background-color};
+    --b-word-background-color: #{dark-theme-monochrome.$b-word-background-color};
+}
+
+@mixin light-mode-monochrome {
+    --color: #{light-theme-monochrome.$color};
+    --background-color: #{light-theme-monochrome.$background-color};
+    --skill: #{light-theme-monochrome.$skill};
+    --skill-05: #{light-theme-monochrome.$skill-05};
+    --skill-10: #{light-theme-monochrome.$skill-10};
+    --skill-15: #{light-theme-monochrome.$skill-15};
+    --skill-20: #{light-theme-monochrome.$skill-20};
+    --skill-50: #{light-theme-monochrome.$skill-50};
+    --heading: #{light-theme-monochrome.$heading};
+    --heading-05: #{dark-theme-monochrome.$heading-05};
+    --heading-10: #{dark-theme-monochrome.$heading-10};
+    --heading-15: #{dark-theme-monochrome.$heading-15};
+    --heading-20: #{dark-theme-monochrome.$heading-20};
+    --heading-50: #{dark-theme-monochrome.$heading-50};
+    --muted: #{light-theme-monochrome.$muted};
+    --comment: #{light-theme-monochrome.$comment};
+    --date: #{light-theme-monochrome.$date};
+    --link: #{light-theme-monochrome.$link};
+    --link-05: #{light-theme-monochrome.$link-05};
+    --link-10: #{light-theme-monochrome.$link-10};
+    --link-15: #{light-theme-monochrome.$link-15};
+    --link-20: #{light-theme-monochrome.$link-20};
+    --link-30: #{light-theme-monochrome.$link-30};
+    --link-50: #{light-theme-monochrome.$link-50};
+    --link-darker: #{light-theme-monochrome.$link-darker};
+    --name: #{light-theme-monochrome.$name};
+    --name-05: #{light-theme-monochrome.$name-05};
+    --name-10: #{light-theme-monochrome.$name-10};
+    --name-15: #{light-theme-monochrome.$name-15};
+    --name-20: #{light-theme-monochrome.$name-20};
+    --name-50: #{light-theme-monochrome.$name-50};
+    --text: #{light-theme-monochrome.$text};
+    --company: #{light-theme-monochrome.$company};
+    --copy-background-color: #{light-theme-monochrome.$copy-background-color};
+    --copy-label-color: #{light-theme-monochrome.$copy-label-color};
+    --word-background-color: #{light-theme-monochrome.$word-background-color};
+    --r-word-background-color: #{light-theme-monochrome.$r-word-background-color};
+    --g-word-background-color: #{light-theme-monochrome.$g-word-background-color};
+    --b-word-background-color: #{light-theme-monochrome.$b-word-background-color};
 }
 
 :root {
     --line-height: #{utilities.$line-height};
     --font-size: #{utilities.$font-size};
+    --prefers-color-scheme-transition-speed: 250ms;
+    // --prefers-color-scheme-transition-speed: 0ms;
     --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         Liberation Mono, 'Courier New', monospace;
     --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
@@ -101,12 +365,51 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        @include dark-mode;
+        @include dark-mode-green;
     }
 
     @media (prefers-color-scheme: light),
         (prefers-color-scheme: no-preference) {
-        @include light-mode;
+        @include light-mode-green;
+    }
+
+    // Green (default)
+    &[data-prefers-color-scheme='Dark'] {
+        @include dark-mode-green;
+
+        // Blue
+        &[data-dark-theme='Blue'] {
+            @include dark-mode-blue;
+        }
+
+        // Red
+        &[data-dark-theme='Red'] {
+            @include dark-mode-red;
+        }
+
+        // Monochrome
+        &[data-dark-theme='Monochrome'] {
+            @include dark-mode-monochrome();
+        }
+    }
+
+    &[data-prefers-color-scheme='Light'] {
+        @include light-mode-green;
+
+        // Blue
+        &[data-light-theme='Blue'] {
+            @include light-mode-blue;
+        }
+
+        // Red
+        &[data-light-theme='Red'] {
+            @include light-mode-red;
+        }
+
+        // Monochrome
+        &[data-light-theme='Monochrome'] {
+            @include light-mode-monochrome();
+        }
     }
 }
 
@@ -130,6 +433,12 @@ body {
     margin: 0;
     padding: 0;
     overflow: overlay;
+
+    &.can-transition {
+        transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
+            background-color var(--prefers-color-scheme-transition-speed) ease
+                0s;
+    }
 }
 
 a {
@@ -177,6 +486,8 @@ h5,
 h6 {
     font-weight: normal;
     color: var(--link);
+
+    // TODO: Look at max-width to mimic text-wrap: balance;
 }
 
 h2,
