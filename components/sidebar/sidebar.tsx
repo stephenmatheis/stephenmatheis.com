@@ -8,6 +8,7 @@ export function Sidebar({}) {
             <LinkCtr href="/archive">Archive</LinkCtr>
             <LinkCtr href="/projects">Projects</LinkCtr>
             <LinkCtr href="/resume">About</LinkCtr>
+            <LinkCtr href="/settings">Settings</LinkCtr>
         </nav>
     );
 }

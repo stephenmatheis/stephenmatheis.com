@@ -1,0 +1,59 @@
+@use 'styles/utilities.module.scss' as utilities;
+
+.toggle {
+    --modifier: 0;
+    --indicator-width: 0px;
+    --offset: 3px;
+
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    display: grid;
+    border: none;
+    padding: 0px;
+    width: 100%;
+    background-color: var(--link-20);
+    z-index: 0;
+
+    [data-option] {
+        color: var(--link);
+        text-align: center;
+        padding: 3px 6px;
+        position: relative;
+        z-index: 2;
+
+        &:not(:nth-last-child(2))::after {
+            position: absolute;
+            top: 3px;
+            right: -0.5px;
+            content: '';
+            width: 1px;
+            height: calc(100% - 6px);
+            background-color: var(--link-50);
+        }
+
+        &:last-child:after {
+            background-color: red;
+        }
+    }
+
+    .indicator {
+        display: block;
+        width: calc(var(--indicator-width) - 6px);
+        height: calc(100% - 6px);
+        background-color: var(--background-color);
+        position: absolute;
+        top: 3px;
+        left: calc((var(--indicator-width) * var(--modifier)) + var(--offset));
+        transition: left calc(var(--prefers-color-scheme-transition-speed) / 2)
+                linear,
+            opacity var(--prefers-color-scheme-transition-speed) linear
+                calc(var(--prefers-color-scheme-transition-speed) / 2);
+        z-index: 1;
+
+        &.hidden {
+            opacity: 0;
+            scale: 0;
+        }
+    }
+}

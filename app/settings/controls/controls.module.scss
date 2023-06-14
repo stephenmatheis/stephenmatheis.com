@@ -1,0 +1,12 @@
+.controls {
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content auto;
+    gap: var(--line-height) 4ch;
+    align-items: center;
+
+    .label {
+        color: var(--link);
+        text-align: right;
+    }
+}

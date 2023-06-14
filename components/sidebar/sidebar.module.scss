@@ -10,10 +10,45 @@
     @media (max-width: utilities.$medium-width) {
         flex-direction: row;
         justify-content: center;
+        align-items: center;
         width: 100%;
+        height: var(--line-height);
     }
 
-    @media (max-width: 500px) {
-        width: 100%;
+    // DEV: Toggle Light/Dark mode
+    .toggle {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        background-color: var(--link-30);
+        z-index: 0;
+
+        .left,
+        .right {
+            color: var(--link);
+            text-align: center;
+            padding: 3px 6px;
+            z-index: 2;
+        }
+
+        .indicator {
+            display: block;
+            width: calc(50% - 6px);
+            height: calc(100% - 6px);
+            background-color: var(--link-50);
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: left 300ms linear;
+            z-index: 1;
+
+            &.right {
+                left: calc(50% + 3px);
+            }
+        }
+
+        // &:hover .indicator {
+        //     left: calc(50% + 3px);
+        // }
     }
 }
