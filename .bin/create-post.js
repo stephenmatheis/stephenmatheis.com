@@ -12,12 +12,19 @@ if (!name) {
     process.exit();
 }
 
-const slug = name.toLowerCase().replaceAll(' ', '-');
+// FIXME: Replace characters or encode URI
+const slug = name
+    .toLowerCase()
+    .replaceAll(' ', '-')
+    .replaceAll(',', '')
+    .replaceAll('.', '_');
 const path = `./_posts/${slug}.mdx`;
 const doesExist = await exists(path);
 
 if (doesExist) {
-    console.log(`\nA post titled "${name}" already exists at: \n\n\t_posts/${slug}.mdx.\n`);
+    console.log(
+        `\nA post titled "${name}" already exists at: \n\n\t_posts/${slug}.mdx.\n`
+    );
     process.exit();
 }
 
