@@ -82,10 +82,10 @@ export function Toggle({
     }, [setWidth, shouldResize]);
 
     useEffect(() => {
-        const localMode = localStorage.getItem(localStorageKey);
+        const localValue = localStorage.getItem(localStorageKey);
 
-        if (localMode) {
-            setSelectedValue(localMode);
+        if (localValue) {
+            setSelectedValue(localValue);
         } else {
             setSelectedValue(defaultOption || options[0]);
         }

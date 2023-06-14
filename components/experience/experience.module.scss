@@ -1,18 +1,5 @@
 @use 'styles/utilities.module.scss' as utilities;
 
-.comment {
-    color: var(--title-color);
-    margin-bottom: utilities.$line-height;
-}
-
-.date {
-    color: var(--date);
-
-    .location {
-        color: var(--muted);
-    }
-}
-
 .experience {
     .job {
         break-inside: avoid;
@@ -26,18 +13,30 @@
         }
 
         .title {
-            color: var(--secondary);
+            // color: var(--secondary);
+            color: var(--primary);
 
             .company {
-                color: var(--company);
+                // color: var(--company);
+                color: var(--accent);
             }
         }
 
         .lines {
             .line {
                 display: flex;
-                color: var(--text);
+                // color: var(--text);
             }
+        }
+    }
+
+    .date {
+        // color: var(--date);
+        color: var(--secondary);
+
+        .location {
+            // color: var(--muted);
+            color: var(--tertiary);
         }
     }
 }
