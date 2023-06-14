@@ -50,7 +50,7 @@
         }
 
         .name {
-            color: var(--name);
+            color: var(--accent);
             border-bottom-color: transparent;
             animation: name-fade-in-border-color 450ms ease-in-out forwards;
 
@@ -65,7 +65,7 @@
             }
 
             to {
-                background-color: var(--name-20);
+                background-color: var(--accent-20);
             }
         }
 
@@ -75,12 +75,12 @@
             }
 
             to {
-                border-bottom-color: var(--name);
+                border-bottom-color: var(--accent);
             }
         }
 
         .title {
-            color: var(--link);
+            color: var(--primary);
             white-space: nowrap;
             border-bottom-color: transparent;
             animation: title-fade-in-border-color 450ms ease-in-out forwards;
@@ -96,7 +96,7 @@
             }
 
             to {
-                background-color: var(--link-20);
+                background-color: var(--primary-20);
             }
         }
 
@@ -106,7 +106,7 @@
             }
 
             to {
-                border-bottom-color: var(--link);
+                border-bottom-color: var(--primary);
             }
         }
     }

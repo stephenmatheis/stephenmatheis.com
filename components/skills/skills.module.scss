@@ -1,7 +1,7 @@
 @use 'styles/utilities.module.scss' as utilities;
 
 .comment {
-    color: var(--comment);
+    color: var(--title-color);
     margin-bottom: utilities.$line-height;
 }
 
@@ -13,7 +13,7 @@
 
         .group {
             .name {
-                color: var(--heading);
+                color: var(--secondary);
             }
 
             .items-ctr {
@@ -24,7 +24,7 @@
                 .item {
                     display: inline-block;
                     border-radius: 4px;
-                    color: var(--skill);
+                    color: var(--tertiary);
                 }
             }
         }

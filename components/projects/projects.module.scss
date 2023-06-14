@@ -53,7 +53,7 @@ $outer-radius: calc($inner-radius + $distance);
                 }
 
                 .img-ctr {
-                    --shadow-color: var(--link-darker);
+                    --shadow-color: var(--primary-darker);
                     --img-width: 250px;
 
                     z-index: 0;
