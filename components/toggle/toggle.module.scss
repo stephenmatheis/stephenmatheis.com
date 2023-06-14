@@ -12,11 +12,11 @@
     border: none;
     padding: 0px;
     width: 100%;
-    background-color: var(--link-20);
+    background-color: var(--primary-20);
     z-index: 0;
 
     [data-option] {
-        color: var(--link);
+        color: var(--primary);
         text-align: center;
         padding: 3px 6px;
         position: relative;
@@ -29,7 +29,7 @@
             content: '';
             width: 1px;
             height: calc(100% - 6px);
-            background-color: var(--link-50);
+            background-color: var(--primary-50);
         }
 
         &:last-child:after {

@@ -1,7 +1,7 @@
 @use 'styles/utilities.module.scss' as utilities;
 
 .comment {
-    color: var(--comment);
+    color: var(--title-color);
     margin-bottom: utilities.$line-height;
 }
 
@@ -26,7 +26,7 @@
         }
 
         .title {
-            color: var(--heading);
+            color: var(--secondary);
 
             .company {
                 color: var(--company);

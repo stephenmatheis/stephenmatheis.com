@@ -12,35 +12,35 @@
 @mixin dark-mode-green {
     --color: #{dark-theme-green.$color};
     --background-color: #{dark-theme-green.$background-color};
-    --skill: #{dark-theme-green.$skill};
-    --skill-05: #{dark-theme-green.$skill-05};
-    --skill-10: #{dark-theme-green.$skill-10};
-    --skill-15: #{dark-theme-green.$skill-15};
-    --skill-20: #{dark-theme-green.$skill-20};
-    --skill-50: #{dark-theme-green.$skill-50};
-    --heading: #{dark-theme-green.$heading};
-    --heading-05: #{dark-theme-green.$heading-05};
-    --heading-10: #{dark-theme-green.$heading-10};
-    --heading-15: #{dark-theme-green.$heading-15};
-    --heading-20: #{dark-theme-green.$heading-20};
-    --heading-50: #{dark-theme-green.$heading-50};
+    --tertiary: #{dark-theme-green.$tertiary};
+    --tertiary-05: #{dark-theme-green.$tertiary-05};
+    --tertiary-10: #{dark-theme-green.$tertiary-10};
+    --tertiary-15: #{dark-theme-green.$tertiary-15};
+    --tertiary-20: #{dark-theme-green.$tertiary-20};
+    --tertiary-50: #{dark-theme-green.$tertiary-50};
+    --secondary: #{dark-theme-green.$secondary};
+    --secondary-05: #{dark-theme-green.$secondary-05};
+    --secondary-10: #{dark-theme-green.$secondary-10};
+    --secondary-15: #{dark-theme-green.$secondary-15};
+    --secondary-20: #{dark-theme-green.$secondary-20};
+    --secondary-50: #{dark-theme-green.$secondary-50};
     --muted: #{dark-theme-green.$muted};
-    --comment: #{dark-theme-green.$comment};
+    --title-color: #{dark-theme-green.$title-color};
     --date: #{dark-theme-green.$date};
-    --link: #{dark-theme-green.$link};
-    --link-05: #{dark-theme-green.$link-05};
-    --link-10: #{dark-theme-green.$link-10};
-    --link-15: #{dark-theme-green.$link-15};
-    --link-20: #{dark-theme-green.$link-20};
-    --link-30: #{dark-theme-green.$link-30};
-    --link-50: #{dark-theme-green.$link-50};
-    --link-darker: #{dark-theme-green.$link-darker};
-    --name: #{dark-theme-green.$name};
-    --name-05: #{dark-theme-green.$name-05};
-    --name-10: #{dark-theme-green.$name-10};
-    --name-15: #{dark-theme-green.$name-15};
-    --name-20: #{dark-theme-green.$name-20};
-    --name-50: #{dark-theme-green.$name-50};
+    --primary: #{dark-theme-green.$primary};
+    --primary-05: #{dark-theme-green.$primary-05};
+    --primary-10: #{dark-theme-green.$primary-10};
+    --primary-15: #{dark-theme-green.$primary-15};
+    --primary-20: #{dark-theme-green.$primary-20};
+    --primary-30: #{dark-theme-green.$primary-30};
+    --primary-50: #{dark-theme-green.$primary-50};
+    --primary-darker: #{dark-theme-green.$primary-darker};
+    --accent: #{dark-theme-green.$accent};
+    --accent-05: #{dark-theme-green.$accent-05};
+    --accent-10: #{dark-theme-green.$accent-10};
+    --accent-15: #{dark-theme-green.$accent-15};
+    --accent-20: #{dark-theme-green.$accent-20};
+    --accent-50: #{dark-theme-green.$accent-50};
     --text: #{dark-theme-green.$text};
     --company: #{dark-theme-green.$company};
     --copy-background-color: #{dark-theme-green.$copy-background-color};
@@ -54,35 +54,35 @@
 @mixin light-mode-green {
     --color: #{light-theme-green.$color};
     --background-color: #{light-theme-green.$background-color};
-    --skill: #{light-theme-green.$skill};
-    --skill-05: #{light-theme-green.$skill-05};
-    --skill-10: #{light-theme-green.$skill-10};
-    --skill-15: #{light-theme-green.$skill-15};
-    --skill-20: #{light-theme-green.$skill-20};
-    --skill-50: #{light-theme-green.$skill-50};
-    --heading: #{light-theme-green.$heading};
-    --heading-05: #{dark-theme-green.$heading-05};
-    --heading-10: #{dark-theme-green.$heading-10};
-    --heading-15: #{dark-theme-green.$heading-15};
-    --heading-20: #{dark-theme-green.$heading-20};
-    --heading-50: #{dark-theme-green.$heading-50};
+    --tertiary: #{light-theme-green.$tertiary};
+    --tertiary-05: #{light-theme-green.$tertiary-05};
+    --tertiary-10: #{light-theme-green.$tertiary-10};
+    --tertiary-15: #{light-theme-green.$tertiary-15};
+    --tertiary-20: #{light-theme-green.$tertiary-20};
+    --tertiary-50: #{light-theme-green.$tertiary-50};
+    --secondary: #{light-theme-green.$secondary};
+    --secondary-05: #{dark-theme-green.$secondary-05};
+    --secondary-10: #{dark-theme-green.$secondary-10};
+    --secondary-15: #{dark-theme-green.$secondary-15};
+    --secondary-20: #{dark-theme-green.$secondary-20};
+    --secondary-50: #{dark-theme-green.$secondary-50};
     --muted: #{light-theme-green.$muted};
-    --comment: #{light-theme-green.$comment};
+    --title-color: #{light-theme-green.$title-color};
     --date: #{light-theme-green.$date};
-    --link: #{light-theme-green.$link};
-    --link-05: #{light-theme-green.$link-05};
-    --link-10: #{light-theme-green.$link-10};
-    --link-15: #{light-theme-green.$link-15};
-    --link-20: #{light-theme-green.$link-20};
-    --link-30: #{light-theme-green.$link-30};
-    --link-50: #{light-theme-green.$link-50};
-    --link-darker: #{light-theme-green.$link-darker};
-    --name: #{light-theme-green.$name};
-    --name-05: #{light-theme-green.$name-05};
-    --name-10: #{light-theme-green.$name-10};
-    --name-15: #{light-theme-green.$name-15};
-    --name-20: #{light-theme-green.$name-20};
-    --name-50: #{light-theme-green.$name-50};
+    --primary: #{light-theme-green.$primary};
+    --primary-05: #{light-theme-green.$primary-05};
+    --primary-10: #{light-theme-green.$primary-10};
+    --primary-15: #{light-theme-green.$primary-15};
+    --primary-20: #{light-theme-green.$primary-20};
+    --primary-30: #{light-theme-green.$primary-30};
+    --primary-50: #{light-theme-green.$primary-50};
+    --primary-darker: #{light-theme-green.$primary-darker};
+    --accent: #{light-theme-green.$accent};
+    --accent-05: #{light-theme-green.$accent-05};
+    --accent-10: #{light-theme-green.$accent-10};
+    --accent-15: #{light-theme-green.$accent-15};
+    --accent-20: #{light-theme-green.$accent-20};
+    --accent-50: #{light-theme-green.$accent-50};
     --text: #{light-theme-green.$text};
     --company: #{light-theme-green.$company};
     --copy-background-color: #{light-theme-green.$copy-background-color};
@@ -97,35 +97,35 @@
 @mixin dark-mode-blue {
     --color: #{dark-theme-blue.$color};
     --background-color: #{dark-theme-blue.$background-color};
-    --skill: #{dark-theme-blue.$skill};
-    --skill-05: #{dark-theme-blue.$skill-05};
-    --skill-10: #{dark-theme-blue.$skill-10};
-    --skill-15: #{dark-theme-blue.$skill-15};
-    --skill-20: #{dark-theme-blue.$skill-20};
-    --skill-50: #{dark-theme-blue.$skill-50};
-    --heading: #{dark-theme-blue.$heading};
-    --heading-05: #{dark-theme-blue.$heading-05};
-    --heading-10: #{dark-theme-blue.$heading-10};
-    --heading-15: #{dark-theme-blue.$heading-15};
-    --heading-20: #{dark-theme-blue.$heading-20};
-    --heading-50: #{dark-theme-blue.$heading-50};
+    --tertiary: #{dark-theme-blue.$tertiary};
+    --tertiary-05: #{dark-theme-blue.$tertiary-05};
+    --tertiary-10: #{dark-theme-blue.$tertiary-10};
+    --tertiary-15: #{dark-theme-blue.$tertiary-15};
+    --tertiary-20: #{dark-theme-blue.$tertiary-20};
+    --tertiary-50: #{dark-theme-blue.$tertiary-50};
+    --secondary: #{dark-theme-blue.$secondary};
+    --secondary-05: #{dark-theme-blue.$secondary-05};
+    --secondary-10: #{dark-theme-blue.$secondary-10};
+    --secondary-15: #{dark-theme-blue.$secondary-15};
+    --secondary-20: #{dark-theme-blue.$secondary-20};
+    --secondary-50: #{dark-theme-blue.$secondary-50};
     --muted: #{dark-theme-blue.$muted};
-    --comment: #{dark-theme-blue.$comment};
+    --title-color: #{dark-theme-blue.$title-color};
     --date: #{dark-theme-blue.$date};
-    --link: #{dark-theme-blue.$link};
-    --link-05: #{dark-theme-blue.$link-05};
-    --link-10: #{dark-theme-blue.$link-10};
-    --link-15: #{dark-theme-blue.$link-15};
-    --link-20: #{dark-theme-blue.$link-20};
-    --link-30: #{dark-theme-blue.$link-30};
-    --link-50: #{dark-theme-blue.$link-50};
-    --link-darker: #{dark-theme-blue.$link-darker};
-    --name: #{dark-theme-blue.$name};
-    --name-05: #{dark-theme-blue.$name-05};
-    --name-10: #{dark-theme-blue.$name-10};
-    --name-15: #{dark-theme-blue.$name-15};
-    --name-20: #{dark-theme-blue.$name-20};
-    --name-50: #{dark-theme-blue.$name-50};
+    --primary: #{dark-theme-blue.$primary};
+    --primary-05: #{dark-theme-blue.$primary-05};
+    --primary-10: #{dark-theme-blue.$primary-10};
+    --primary-15: #{dark-theme-blue.$primary-15};
+    --primary-20: #{dark-theme-blue.$primary-20};
+    --primary-30: #{dark-theme-blue.$primary-30};
+    --primary-50: #{dark-theme-blue.$primary-50};
+    --primary-darker: #{dark-theme-blue.$primary-darker};
+    --accent: #{dark-theme-blue.$accent};
+    --accent-05: #{dark-theme-blue.$accent-05};
+    --accent-10: #{dark-theme-blue.$accent-10};
+    --accent-15: #{dark-theme-blue.$accent-15};
+    --accent-20: #{dark-theme-blue.$accent-20};
+    --accent-50: #{dark-theme-blue.$accent-50};
     --text: #{dark-theme-blue.$text};
     --company: #{dark-theme-blue.$company};
     --copy-background-color: #{dark-theme-blue.$copy-background-color};
@@ -139,35 +139,35 @@
 @mixin light-mode-blue {
     --color: #{light-theme-blue.$color};
     --background-color: #{light-theme-blue.$background-color};
-    --skill: #{light-theme-blue.$skill};
-    --skill-05: #{light-theme-blue.$skill-05};
-    --skill-10: #{light-theme-blue.$skill-10};
-    --skill-15: #{light-theme-blue.$skill-15};
-    --skill-20: #{light-theme-blue.$skill-20};
-    --skill-50: #{light-theme-blue.$skill-50};
-    --heading: #{light-theme-blue.$heading};
-    --heading-05: #{dark-theme-blue.$heading-05};
-    --heading-10: #{dark-theme-blue.$heading-10};
-    --heading-15: #{dark-theme-blue.$heading-15};
-    --heading-20: #{dark-theme-blue.$heading-20};
-    --heading-50: #{dark-theme-blue.$heading-50};
+    --tertiary: #{light-theme-blue.$tertiary};
+    --tertiary-05: #{light-theme-blue.$tertiary-05};
+    --tertiary-10: #{light-theme-blue.$tertiary-10};
+    --tertiary-15: #{light-theme-blue.$tertiary-15};
+    --tertiary-20: #{light-theme-blue.$tertiary-20};
+    --tertiary-50: #{light-theme-blue.$tertiary-50};
+    --secondary: #{light-theme-blue.$secondary};
+    --secondary-05: #{dark-theme-blue.$secondary-05};
+    --secondary-10: #{dark-theme-blue.$secondary-10};
+    --secondary-15: #{dark-theme-blue.$secondary-15};
+    --secondary-20: #{dark-theme-blue.$secondary-20};
+    --secondary-50: #{dark-theme-blue.$secondary-50};
     --muted: #{light-theme-blue.$muted};
-    --comment: #{light-theme-blue.$comment};
+    --title-color: #{light-theme-blue.$title-color};
     --date: #{light-theme-blue.$date};
-    --link: #{light-theme-blue.$link};
-    --link-05: #{light-theme-blue.$link-05};
-    --link-10: #{light-theme-blue.$link-10};
-    --link-15: #{light-theme-blue.$link-15};
-    --link-20: #{light-theme-blue.$link-20};
-    --link-30: #{light-theme-blue.$link-30};
-    --link-50: #{light-theme-blue.$link-50};
-    --link-darker: #{light-theme-blue.$link-darker};
-    --name: #{light-theme-blue.$name};
-    --name-05: #{light-theme-blue.$name-05};
-    --name-10: #{light-theme-blue.$name-10};
-    --name-15: #{light-theme-blue.$name-15};
-    --name-20: #{light-theme-blue.$name-20};
-    --name-50: #{light-theme-blue.$name-50};
+    --primary: #{light-theme-blue.$primary};
+    --primary-05: #{light-theme-blue.$primary-05};
+    --primary-10: #{light-theme-blue.$primary-10};
+    --primary-15: #{light-theme-blue.$primary-15};
+    --primary-20: #{light-theme-blue.$primary-20};
+    --primary-30: #{light-theme-blue.$primary-30};
+    --primary-50: #{light-theme-blue.$primary-50};
+    --primary-darker: #{light-theme-blue.$primary-darker};
+    --accent: #{light-theme-blue.$accent};
+    --accent-05: #{light-theme-blue.$accent-05};
+    --accent-10: #{light-theme-blue.$accent-10};
+    --accent-15: #{light-theme-blue.$accent-15};
+    --accent-20: #{light-theme-blue.$accent-20};
+    --accent-50: #{light-theme-blue.$accent-50};
     --text: #{light-theme-blue.$text};
     --company: #{light-theme-blue.$company};
     --copy-background-color: #{light-theme-blue.$copy-background-color};
@@ -182,35 +182,35 @@
 @mixin dark-mode-red {
     --color: #{dark-theme-red.$color};
     --background-color: #{dark-theme-red.$background-color};
-    --skill: #{dark-theme-red.$skill};
-    --skill-05: #{dark-theme-red.$skill-05};
-    --skill-10: #{dark-theme-red.$skill-10};
-    --skill-15: #{dark-theme-red.$skill-15};
-    --skill-20: #{dark-theme-red.$skill-20};
-    --skill-50: #{dark-theme-red.$skill-50};
-    --heading: #{dark-theme-red.$heading};
-    --heading-05: #{dark-theme-red.$heading-05};
-    --heading-10: #{dark-theme-red.$heading-10};
-    --heading-15: #{dark-theme-red.$heading-15};
-    --heading-20: #{dark-theme-red.$heading-20};
-    --heading-50: #{dark-theme-red.$heading-50};
+    --tertiary: #{dark-theme-red.$tertiary};
+    --tertiary-05: #{dark-theme-red.$tertiary-05};
+    --tertiary-10: #{dark-theme-red.$tertiary-10};
+    --tertiary-15: #{dark-theme-red.$tertiary-15};
+    --tertiary-20: #{dark-theme-red.$tertiary-20};
+    --tertiary-50: #{dark-theme-red.$tertiary-50};
+    --secondary: #{dark-theme-red.$secondary};
+    --secondary-05: #{dark-theme-red.$secondary-05};
+    --secondary-10: #{dark-theme-red.$secondary-10};
+    --secondary-15: #{dark-theme-red.$secondary-15};
+    --secondary-20: #{dark-theme-red.$secondary-20};
+    --secondary-50: #{dark-theme-red.$secondary-50};
     --muted: #{dark-theme-red.$muted};
-    --comment: #{dark-theme-red.$comment};
+    --title-color: #{dark-theme-red.$title-color};
     --date: #{dark-theme-red.$date};
-    --link: #{dark-theme-red.$link};
-    --link-05: #{dark-theme-red.$link-05};
-    --link-10: #{dark-theme-red.$link-10};
-    --link-15: #{dark-theme-red.$link-15};
-    --link-20: #{dark-theme-red.$link-20};
-    --link-30: #{dark-theme-red.$link-30};
-    --link-50: #{dark-theme-red.$link-50};
-    --link-darker: #{dark-theme-red.$link-darker};
-    --name: #{dark-theme-red.$name};
-    --name-05: #{dark-theme-red.$name-05};
-    --name-10: #{dark-theme-red.$name-10};
-    --name-15: #{dark-theme-red.$name-15};
-    --name-20: #{dark-theme-red.$name-20};
-    --name-50: #{dark-theme-red.$name-50};
+    --primary: #{dark-theme-red.$primary};
+    --primary-05: #{dark-theme-red.$primary-05};
+    --primary-10: #{dark-theme-red.$primary-10};
+    --primary-15: #{dark-theme-red.$primary-15};
+    --primary-20: #{dark-theme-red.$primary-20};
+    --primary-30: #{dark-theme-red.$primary-30};
+    --primary-50: #{dark-theme-red.$primary-50};
+    --primary-darker: #{dark-theme-red.$primary-darker};
+    --accent: #{dark-theme-red.$accent};
+    --accent-05: #{dark-theme-red.$accent-05};
+    --accent-10: #{dark-theme-red.$accent-10};
+    --accent-15: #{dark-theme-red.$accent-15};
+    --accent-20: #{dark-theme-red.$accent-20};
+    --accent-50: #{dark-theme-red.$accent-50};
     --text: #{dark-theme-red.$text};
     --company: #{dark-theme-red.$company};
     --copy-background-color: #{dark-theme-red.$copy-background-color};
@@ -224,35 +224,35 @@
 @mixin light-mode-red {
     --color: #{light-theme-red.$color};
     --background-color: #{light-theme-red.$background-color};
-    --skill: #{light-theme-red.$skill};
-    --skill-05: #{light-theme-red.$skill-05};
-    --skill-10: #{light-theme-red.$skill-10};
-    --skill-15: #{light-theme-red.$skill-15};
-    --skill-20: #{light-theme-red.$skill-20};
-    --skill-50: #{light-theme-red.$skill-50};
-    --heading: #{light-theme-red.$heading};
-    --heading-05: #{dark-theme-red.$heading-05};
-    --heading-10: #{dark-theme-red.$heading-10};
-    --heading-15: #{dark-theme-red.$heading-15};
-    --heading-20: #{dark-theme-red.$heading-20};
-    --heading-50: #{dark-theme-red.$heading-50};
+    --tertiary: #{light-theme-red.$tertiary};
+    --tertiary-05: #{light-theme-red.$tertiary-05};
+    --tertiary-10: #{light-theme-red.$tertiary-10};
+    --tertiary-15: #{light-theme-red.$tertiary-15};
+    --tertiary-20: #{light-theme-red.$tertiary-20};
+    --tertiary-50: #{light-theme-red.$tertiary-50};
+    --secondary: #{light-theme-red.$secondary};
+    --secondary-05: #{dark-theme-red.$secondary-05};
+    --secondary-10: #{dark-theme-red.$secondary-10};
+    --secondary-15: #{dark-theme-red.$secondary-15};
+    --secondary-20: #{dark-theme-red.$secondary-20};
+    --secondary-50: #{dark-theme-red.$secondary-50};
     --muted: #{light-theme-red.$muted};
-    --comment: #{light-theme-red.$comment};
+    --title-color: #{light-theme-red.$title-color};
     --date: #{light-theme-red.$date};
-    --link: #{light-theme-red.$link};
-    --link-05: #{light-theme-red.$link-05};
-    --link-10: #{light-theme-red.$link-10};
-    --link-15: #{light-theme-red.$link-15};
-    --link-20: #{light-theme-red.$link-20};
-    --link-30: #{light-theme-red.$link-30};
-    --link-50: #{light-theme-red.$link-50};
-    --link-darker: #{light-theme-red.$link-darker};
-    --name: #{light-theme-red.$name};
-    --name-05: #{light-theme-red.$name-05};
-    --name-10: #{light-theme-red.$name-10};
-    --name-15: #{light-theme-red.$name-15};
-    --name-20: #{light-theme-red.$name-20};
-    --name-50: #{light-theme-red.$name-50};
+    --primary: #{light-theme-red.$primary};
+    --primary-05: #{light-theme-red.$primary-05};
+    --primary-10: #{light-theme-red.$primary-10};
+    --primary-15: #{light-theme-red.$primary-15};
+    --primary-20: #{light-theme-red.$primary-20};
+    --primary-30: #{light-theme-red.$primary-30};
+    --primary-50: #{light-theme-red.$primary-50};
+    --primary-darker: #{light-theme-red.$primary-darker};
+    --accent: #{light-theme-red.$accent};
+    --accent-05: #{light-theme-red.$accent-05};
+    --accent-10: #{light-theme-red.$accent-10};
+    --accent-15: #{light-theme-red.$accent-15};
+    --accent-20: #{light-theme-red.$accent-20};
+    --accent-50: #{light-theme-red.$accent-50};
     --text: #{light-theme-red.$text};
     --company: #{light-theme-red.$company};
     --copy-background-color: #{light-theme-red.$copy-background-color};
@@ -267,35 +267,35 @@
 @mixin dark-mode-monochrome {
     --color: #{dark-theme-monochrome.$color};
     --background-color: #{dark-theme-monochrome.$background-color};
-    --skill: #{dark-theme-monochrome.$skill};
-    --skill-05: #{dark-theme-monochrome.$skill-05};
-    --skill-10: #{dark-theme-monochrome.$skill-10};
-    --skill-15: #{dark-theme-monochrome.$skill-15};
-    --skill-20: #{dark-theme-monochrome.$skill-20};
-    --skill-50: #{dark-theme-monochrome.$skill-50};
-    --heading: #{dark-theme-monochrome.$heading};
-    --heading-05: #{dark-theme-monochrome.$heading-05};
-    --heading-10: #{dark-theme-monochrome.$heading-10};
-    --heading-15: #{dark-theme-monochrome.$heading-15};
-    --heading-20: #{dark-theme-monochrome.$heading-20};
-    --heading-50: #{dark-theme-monochrome.$heading-50};
+    --tertiary: #{dark-theme-monochrome.$tertiary};
+    --tertiary-05: #{dark-theme-monochrome.$tertiary-05};
+    --tertiary-10: #{dark-theme-monochrome.$tertiary-10};
+    --tertiary-15: #{dark-theme-monochrome.$tertiary-15};
+    --tertiary-20: #{dark-theme-monochrome.$tertiary-20};
+    --tertiary-50: #{dark-theme-monochrome.$tertiary-50};
+    --secondary: #{dark-theme-monochrome.$secondary};
+    --secondary-05: #{dark-theme-monochrome.$secondary-05};
+    --secondary-10: #{dark-theme-monochrome.$secondary-10};
+    --secondary-15: #{dark-theme-monochrome.$secondary-15};
+    --secondary-20: #{dark-theme-monochrome.$secondary-20};
+    --secondary-50: #{dark-theme-monochrome.$secondary-50};
     --muted: #{dark-theme-monochrome.$muted};
-    --comment: #{dark-theme-monochrome.$comment};
+    --title-color: #{dark-theme-monochrome.$title-color};
     --date: #{dark-theme-monochrome.$date};
-    --link: #{dark-theme-monochrome.$link};
-    --link-05: #{dark-theme-monochrome.$link-05};
-    --link-10: #{dark-theme-monochrome.$link-10};
-    --link-15: #{dark-theme-monochrome.$link-15};
-    --link-20: #{dark-theme-monochrome.$link-20};
-    --link-30: #{dark-theme-monochrome.$link-30};
-    --link-50: #{dark-theme-monochrome.$link-50};
-    --link-darker: #{dark-theme-monochrome.$link-darker};
-    --name: #{dark-theme-monochrome.$name};
-    --name-05: #{dark-theme-monochrome.$name-05};
-    --name-10: #{dark-theme-monochrome.$name-10};
-    --name-15: #{dark-theme-monochrome.$name-15};
-    --name-20: #{dark-theme-monochrome.$name-20};
-    --name-50: #{dark-theme-monochrome.$name-50};
+    --primary: #{dark-theme-monochrome.$primary};
+    --primary-05: #{dark-theme-monochrome.$primary-05};
+    --primary-10: #{dark-theme-monochrome.$primary-10};
+    --primary-15: #{dark-theme-monochrome.$primary-15};
+    --primary-20: #{dark-theme-monochrome.$primary-20};
+    --primary-30: #{dark-theme-monochrome.$primary-30};
+    --primary-50: #{dark-theme-monochrome.$primary-50};
+    --primary-darker: #{dark-theme-monochrome.$primary-darker};
+    --accent: #{dark-theme-monochrome.$accent};
+    --accent-05: #{dark-theme-monochrome.$accent-05};
+    --accent-10: #{dark-theme-monochrome.$accent-10};
+    --accent-15: #{dark-theme-monochrome.$accent-15};
+    --accent-20: #{dark-theme-monochrome.$accent-20};
+    --accent-50: #{dark-theme-monochrome.$accent-50};
     --text: #{dark-theme-monochrome.$text};
     --company: #{dark-theme-monochrome.$company};
     --copy-background-color: #{dark-theme-monochrome.$copy-background-color};
@@ -309,35 +309,35 @@
 @mixin light-mode-monochrome {
     --color: #{light-theme-monochrome.$color};
     --background-color: #{light-theme-monochrome.$background-color};
-    --skill: #{light-theme-monochrome.$skill};
-    --skill-05: #{light-theme-monochrome.$skill-05};
-    --skill-10: #{light-theme-monochrome.$skill-10};
-    --skill-15: #{light-theme-monochrome.$skill-15};
-    --skill-20: #{light-theme-monochrome.$skill-20};
-    --skill-50: #{light-theme-monochrome.$skill-50};
-    --heading: #{light-theme-monochrome.$heading};
-    --heading-05: #{dark-theme-monochrome.$heading-05};
-    --heading-10: #{dark-theme-monochrome.$heading-10};
-    --heading-15: #{dark-theme-monochrome.$heading-15};
-    --heading-20: #{dark-theme-monochrome.$heading-20};
-    --heading-50: #{dark-theme-monochrome.$heading-50};
+    --tertiary: #{light-theme-monochrome.$tertiary};
+    --tertiary-05: #{light-theme-monochrome.$tertiary-05};
+    --tertiary-10: #{light-theme-monochrome.$tertiary-10};
+    --tertiary-15: #{light-theme-monochrome.$tertiary-15};
+    --tertiary-20: #{light-theme-monochrome.$tertiary-20};
+    --tertiary-50: #{light-theme-monochrome.$tertiary-50};
+    --secondary: #{light-theme-monochrome.$secondary};
+    --secondary-05: #{dark-theme-monochrome.$secondary-05};
+    --secondary-10: #{dark-theme-monochrome.$secondary-10};
+    --secondary-15: #{dark-theme-monochrome.$secondary-15};
+    --secondary-20: #{dark-theme-monochrome.$secondary-20};
+    --secondary-50: #{dark-theme-monochrome.$secondary-50};
     --muted: #{light-theme-monochrome.$muted};
-    --comment: #{light-theme-monochrome.$comment};
+    --title-color: #{light-theme-monochrome.$title-color};
     --date: #{light-theme-monochrome.$date};
-    --link: #{light-theme-monochrome.$link};
-    --link-05: #{light-theme-monochrome.$link-05};
-    --link-10: #{light-theme-monochrome.$link-10};
-    --link-15: #{light-theme-monochrome.$link-15};
-    --link-20: #{light-theme-monochrome.$link-20};
-    --link-30: #{light-theme-monochrome.$link-30};
-    --link-50: #{light-theme-monochrome.$link-50};
-    --link-darker: #{light-theme-monochrome.$link-darker};
-    --name: #{light-theme-monochrome.$name};
-    --name-05: #{light-theme-monochrome.$name-05};
-    --name-10: #{light-theme-monochrome.$name-10};
-    --name-15: #{light-theme-monochrome.$name-15};
-    --name-20: #{light-theme-monochrome.$name-20};
-    --name-50: #{light-theme-monochrome.$name-50};
+    --primary: #{light-theme-monochrome.$primary};
+    --primary-05: #{light-theme-monochrome.$primary-05};
+    --primary-10: #{light-theme-monochrome.$primary-10};
+    --primary-15: #{light-theme-monochrome.$primary-15};
+    --primary-20: #{light-theme-monochrome.$primary-20};
+    --primary-30: #{light-theme-monochrome.$primary-30};
+    --primary-50: #{light-theme-monochrome.$primary-50};
+    --primary-darker: #{light-theme-monochrome.$primary-darker};
+    --accent: #{light-theme-monochrome.$accent};
+    --accent-05: #{light-theme-monochrome.$accent-05};
+    --accent-10: #{light-theme-monochrome.$accent-10};
+    --accent-15: #{light-theme-monochrome.$accent-15};
+    --accent-20: #{light-theme-monochrome.$accent-20};
+    --accent-50: #{light-theme-monochrome.$accent-50};
     --text: #{light-theme-monochrome.$text};
     --company: #{light-theme-monochrome.$company};
     --copy-background-color: #{light-theme-monochrome.$copy-background-color};
@@ -443,14 +443,14 @@ body {
 
 a {
     position: relative;
-    color: var(--link);
+    color: var(--primary);
 
     &.anchor {
         display: block;
 
         &:hover {
             * {
-                color: var(--link);
+                color: var(--primary);
             }
         }
 
@@ -472,7 +472,7 @@ a {
         position: absolute;
         bottom: 0px;
         left: -2ch;
-        color: var(--link);
+        color: var(--primary);
         opacity: 0;
         transition: opacity 150ms ease-in-out;
     }
@@ -485,7 +485,7 @@ h4,
 h5,
 h6 {
     font-weight: normal;
-    color: var(--link);
+    color: var(--primary);
 
     // TODO: Look at max-width to mimic text-wrap: balance;
 }
@@ -509,7 +509,7 @@ p {
 }
 
 article {
-    --theme-color: var(--link);
+    --theme-color: var(--primary);
 
     .date {
         display: inline-block;
@@ -547,8 +547,8 @@ article {
         border-left: 2px solid var(--theme-color);
 
         // ✅ Link
-        // background: var(--link-15);
-        // border-left: 10px solid var(--link);
+        // background: var(--primary-15);
+        // border-left: 10px solid var(--primary);
 
         margin: calc(utilities.$line-height * 2) 1ch;
         padding-left: 2ch;
@@ -563,28 +563,28 @@ article {
 // Code block
 [data-rehype-pretty-code-fragment] {
     // 🚫 Blue
-    // --background: var(--skill-10);
-    // --hightlighted-background: var(--skill-15);
-    // --title-background: var(--skill-20);
-    // --highlighted-border-color: var(--skill);
+    // --background: var(--tertiary-10);
+    // --hightlighted-background: var(--tertiary-15);
+    // --title-background: var(--tertiary-20);
+    // --highlighted-border-color: var(--tertiary);
 
     // 🚫 Pink
-    // --background: var(--name-10);
-    // --hightlighted-background: var(--name-15);
-    // --title-background: var(--link-20);
-    // --highlighted-border-color: var(--name);
+    // --background: var(--accent-10);
+    // --hightlighted-background: var(--accent-15);
+    // --title-background: var(--primary-20);
+    // --highlighted-border-color: var(--accent);
 
     // 🚫 Green
-    --background: var(--link-10);
-    --hightlighted-background: var(--link-15);
-    --title-background: var(--link-20);
-    --highlighted-border-color: var(--link);
+    --background: var(--primary-10);
+    --hightlighted-background: var(--primary-15);
+    --title-background: var(--primary-20);
+    --highlighted-border-color: var(--primary);
 
     // ✅ Heading
-    // --background: var(--heading-10);
-    // --hightlighted-background: var(--heading-15);
-    // --title-background: var(--heading-20);
-    // --highlighted-border-color: var(--heading);
+    // --background: var(--secondary-10);
+    // --hightlighted-background: var(--secondary-15);
+    // --title-background: var(--secondary-20);
+    // --highlighted-border-color: var(--secondary);
 
     position: relative;
     margin-top: 0;
@@ -673,7 +673,7 @@ article {
                 &::selection,
                 & *::selection {
                     color: inherit;
-                    background: var(--link-30);
+                    background: var(--primary-30);
                 }
             }
 

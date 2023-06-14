@@ -13,7 +13,7 @@
             position: absolute;
             left: -2ch;
             top: calc((utilities.$line-height / 2) * -1);
-            background-color: var(--link-20);
+            background-color: var(--primary-20);
 
             // NOTE: Experimenting with no border radius
             // border-radius: 6px;
@@ -53,7 +53,7 @@
             position: absolute;
             right: 0px;
             bottom: 0px;
-            color: var(--link);
+            color: var(--primary);
             content: '...';
             width: fit-content;
             height: calc(utilities.$line-height * 1.5);
@@ -83,14 +83,21 @@
     align-items: flex-end;
 
     .title {
-        color: var(--link);
+        max-width: 50ch;
+        color: var(--primary);
+        position: relative;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        z-index: 0;
     }
 
     .dots {
         color: var(--muted);
         flex: 2;
         display: inline-block;
-        border-bottom: dotted 2px var(--link-50);
+        border-bottom: dotted 2px var(--primary-50);
         margin: 0px 1ch 3px;
     }
 

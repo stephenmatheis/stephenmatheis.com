@@ -12,7 +12,7 @@
 
         &,
         &:hover {
-            color: var(--link);
+            color: var(--primary);
         }
     }
 
@@ -50,7 +50,7 @@
             }
 
             to {
-                background-color: var(--link-20);
+                background-color: var(--primary-20);
             }
         }
 
@@ -60,7 +60,7 @@
             }
 
             to {
-                border-bottom-color: var(--link);
+                border-bottom-color: var(--primary);
             }
         }
     }
