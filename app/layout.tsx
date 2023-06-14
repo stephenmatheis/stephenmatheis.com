@@ -29,7 +29,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <body suppressHydrationWarning>
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-                <script src="set-theme.js" />
+                <script src="/set-theme.js" />
                 {children}
             </body>
         </html>
