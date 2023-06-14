@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { DateTime } from '@/components/date-time';
+import { LinkCtr } from '@/components/link-ctr';
 import { Footer } from '@/components/footer';
 import { Body } from '@/components/body';
 import { Nav } from '@/components/nav';
@@ -17,11 +19,21 @@ export async function Post({
 
     if (!post) return notFound();
 
-    const { previous, next, title, body, date, lastModified } = post;
+    const { previous, next, title, body, date, link, slug, lastModified } =
+        post;
+
+    console.log(link);
 
     return (
         <main className={styles.post}>
-            <h1>{title}</h1>
+            {/* <h1>{title}</h1> */}
+            {link && (
+                <h1>
+                    <LinkCtr href={link} newTab>
+                        {title}
+                    </LinkCtr>
+                </h1>
+            )}
             <article>
                 <DateTime className={styles.date} dateString={date} />
                 <Body>{body}</Body>

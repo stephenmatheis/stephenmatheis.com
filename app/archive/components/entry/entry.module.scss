@@ -91,6 +91,10 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
         z-index: 0;
+
+        @media (max-width: utilities.$small-width) {
+            max-width: 30ch;
+        }
     }
 
     .dots {
