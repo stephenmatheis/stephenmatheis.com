@@ -34,9 +34,6 @@
         }
 
         .lines {
-            display: flex;
-            flex-direction: column;
-
             .line {
                 display: flex;
                 color: var(--text);
