@@ -13,11 +13,9 @@
         }
 
         .title {
-            // color: var(--secondary);
             color: var(--primary);
 
             .company {
-                // color: var(--company);
                 color: var(--accent);
             }
         }
@@ -25,17 +23,14 @@
         .lines {
             .line {
                 display: flex;
-                // color: var(--text);
             }
         }
     }
 
     .date {
-        // color: var(--date);
         color: var(--secondary);
 
         .location {
-            // color: var(--muted);
             color: var(--tertiary);
         }
     }
