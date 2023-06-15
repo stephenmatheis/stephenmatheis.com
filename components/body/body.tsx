@@ -103,7 +103,6 @@ export function Body({ children }: { children: string }) {
     };
 
     return (
-        // @ts-expect-error RSC
         <MDXRemote
             source={children}
             options={{
