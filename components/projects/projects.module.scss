@@ -1,3 +1,5 @@
+@use 'styles/utilities.module.scss' as utilities;
+
 $inner-radius: 10px;
 $distance: 10px;
 $outer-radius: calc($inner-radius + $distance);
@@ -41,7 +43,7 @@ $outer-radius: calc($inner-radius + $distance);
                 display: flex;
                 gap: 6ch;
 
-                @media (max-width: 500px) {
+                @media (max-width: utilities.$small-width) {
                     flex-direction: column;
                 }
 
@@ -61,7 +63,7 @@ $outer-radius: calc($inner-radius + $distance);
                     height: fit-content;
                     border: solid 1px var(--shadow-color);
 
-                    @media (max-width: 500px) {
+                    @media (max-width: utilities.$small-width) {
                         min-width: calc(100% - 10px);
                         max-width: calc(100% - 10px);
                     }
@@ -103,7 +105,7 @@ $outer-radius: calc($inner-radius + $distance);
                         }
                     }
 
-                    @media screen and (max-width: 500px) {
+                    @media screen and (max-width: utilities.$small-width) {
                         width: 100%;
                     }
 
