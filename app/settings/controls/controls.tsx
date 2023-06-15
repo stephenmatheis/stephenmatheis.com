@@ -20,14 +20,6 @@ export function Controls({}) {
                 setShouldResize={setShouldResize}
                 addDataAttr
             />
-            <div className={styles.label}>Font Size</div>
-            <Toggle
-                options={['12px', '16px', '20px']}
-                localStorageKey={'font-size'}
-                shouldResize={shouldResize}
-                setShouldResize={setShouldResize}
-                addCssVariable
-            />
             <div className={styles.label}>Light theme</div>
             <Toggle
                 options={['Green', 'Blue', 'Red', 'Monochrome']}
@@ -45,6 +37,22 @@ export function Controls({}) {
                 shouldResize={shouldResize}
                 setShouldResize={setShouldResize}
                 addDataAttr
+            />
+              <div className={styles.label}>Font Family</div>
+            <Toggle
+                options={['Monospace', 'Sans Serif', 'Serif']}
+                localStorageKey={'font-family'}
+                shouldResize={shouldResize}
+                setShouldResize={setShouldResize}
+                addDataAttr
+            />
+            <div className={styles.label}>Font Size</div>
+            <Toggle
+                options={['12px', '16px', '20px']}
+                localStorageKey={'font-size'}
+                shouldResize={shouldResize}
+                setShouldResize={setShouldResize}
+                addCssVariable
             />
         </div>
     );
