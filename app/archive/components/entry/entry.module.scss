@@ -85,15 +85,10 @@
     .title {
         max-width: 50ch;
         color: var(--primary);
-        position: relative;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        z-index: 0;
+        text-align: justify;
 
         @media (max-width: utilities.$small-width) {
-            max-width: 30ch;
+            max-width: 29ch;
         }
     }
 
