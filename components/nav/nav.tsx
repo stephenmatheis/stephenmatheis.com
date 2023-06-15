@@ -23,7 +23,8 @@ export function Nav({
             </div>
 
             {/* Posts */}
-            <div className={styles.posts}>
+            <div className={styles.center}>
+                {/* <LinkCtr href={home} emoji="❬"> */}
                 <LinkCtr href={home}>Posts</LinkCtr>
             </div>
 
