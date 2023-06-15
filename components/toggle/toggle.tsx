@@ -18,7 +18,7 @@ type Props = {
     addDataAttr?: boolean;
     addCssVariable?: boolean;
     shouldResize: boolean;
-    setShouldResize: Dispatch<SetStateAction<boolean>>;
+    resize: () => void;
 };
 
 export function Toggle({
@@ -28,7 +28,7 @@ export function Toggle({
     addDataAttr = false,
     addCssVariable = false,
     shouldResize,
-    setShouldResize,
+    resize,
 }: Props) {
     const ref = useRef<HTMLButtonElement>(null);
     const [selectedOption, setSelectedOption] = useState('');
@@ -74,14 +74,7 @@ export function Toggle({
 
         ref.current.style.setProperty('--indicator-width', `${width}px`);
     }, []);
-
-    useEffect(() => {
-        if (shouldResize) {
-            setWidth();
-        }
-    }, [setWidth, shouldResize]);
-
-    useEffect(() => {
+    const updateValue = useCallback(() => {
         const localValue = localStorage.getItem(localStorageKey);
 
         if (localValue) {
@@ -89,13 +82,24 @@ export function Toggle({
         } else {
             setSelectedValue(defaultOption || options[0]);
         }
+    }, [defaultOption, localStorageKey, options, setSelectedValue]);
+
+    useEffect(() => {
+        if (shouldResize) {
+            updateValue();
+            setWidth();
+        }
+    }, [setWidth, shouldResize, updateValue]);
+
+    useEffect(() => {
+        updateValue();
 
         if (!ref.current) {
             return;
         }
 
         setWidth();
-    }, [setSelectedValue, options, localStorageKey, defaultOption, setWidth]);
+    }, [setWidth, updateValue]);
 
     // 3px
 
@@ -104,14 +108,7 @@ export function Toggle({
             ref={ref}
             onClick={(event: any) => {
                 setSelectedValue(event.target.dataset.option);
-
-                // Set indicator width
-                setShouldResize(true);
-
-                // Reset state
-                setTimeout(() => {
-                    setShouldResize(false);
-                }, 0);
+                resize();
             }}
             className={classNames(styles.toggle, {
                 [styles.hidden]: selectedOption === '',
