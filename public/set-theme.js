@@ -2,6 +2,7 @@ setMode();
 setLocalSetting('font-size');
 setDataAttribute('light-theme');
 setDataAttribute('dark-theme');
+setDataAttribute('font-family');
 
 setTimeout(() => {
     document.body.classList.add('can-transition');

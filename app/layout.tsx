@@ -1,5 +1,13 @@
 import type { Metadata } from 'next';
+import { Libre_Baskerville } from 'next/font/google';
 import '@/styles/globals.scss';
+
+const serif = Libre_Baskerville({
+    subsets: ['latin'],
+    variable: '--font-serif',
+    display: 'swap',
+    weight: '400',
+});
 
 export const metadata: Metadata = {
     title: {
@@ -26,7 +34,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" className={serif.variable} suppressHydrationWarning>
             <body suppressHydrationWarning>
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
                 <script src="/set-theme.js" />

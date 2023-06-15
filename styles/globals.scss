@@ -330,11 +330,9 @@
 
     // Defaults
     --prefers-color-scheme-transition-speed: 250ms;
-    --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         Liberation Mono, 'Courier New', monospace;
-    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-        Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol';
+    --font-family: var(--font-monospace);
 
     @media print {
         --line-height: 16px !important;
@@ -387,6 +385,18 @@
         &[data-light-theme='Monochrome'] {
             @include light-mode-monochrome();
         }
+    }
+
+    // Sans Serif
+    &[data-font-family='Sans Serif'] {
+        --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+            Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol';
+    }
+
+    // Sans Serif
+    &[data-font-family='Serif'] {
+        --font-family: var(--font-serif);
     }
 }
 
@@ -535,6 +545,10 @@ article {
     }
 }
 
+button {
+    font-family: var(--font-family);
+}
+
 // Code block
 [data-rehype-pretty-code-fragment] {
     // 🚫 Blue
@@ -605,7 +619,7 @@ article {
         }
 
         & > code {
-            font-family: var(--font-code);
+            font-family: var(--font-monospace);
             display: grid;
 
             // Line numbers
