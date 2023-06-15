@@ -1,14 +1,12 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .experience {
     .job {
         break-inside: avoid;
 
         &:not(:last-child) {
-            margin-bottom: calc((utilities.$line-height * 2));
+            margin-bottom: calc((var(--line-height) * 2));
 
             @media print {
-                margin-bottom: utilities.$line-height;
+                margin-bottom: var(--line-height);
             }
         }
 

@@ -22,8 +22,6 @@ export async function Post({
     const { previous, next, title, body, date, link, slug, lastModified } =
         post;
 
-    console.log(link);
-
     return (
         <main className={styles.post}>
             <h1>

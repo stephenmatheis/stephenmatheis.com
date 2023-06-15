@@ -1,5 +1,3 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .resume {
     flex: 2;
     display: flex;
@@ -8,7 +6,7 @@
     @media screen {
         gap: 16ch;
         flex-direction: column-reverse;
-        gap: calc(utilities.$line-height * 4);
+        gap: calc(var(--line-height) * 4);
 
         .right {
             max-width: unset;
@@ -23,12 +21,12 @@
     .left {
         display: flex;
         flex-direction: column;
-        gap: calc(utilities.$line-height * 1.5);
+        gap: calc(var(--line-height) * 1.5);
 
         @media screen {
-            gap: calc(utilities.$line-height * 3);
+            gap: calc(var(--line-height) * 3);
 
-            @media (max-width: utilities.$medium-width) {
+            @media (max-width: var(--medium-width)) {
                 max-width: none;
             }
         }

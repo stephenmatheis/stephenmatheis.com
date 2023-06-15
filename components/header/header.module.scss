@@ -1,23 +1,21 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .header {
     display: flex;
     width: 100%;
 
-    @media screen and (max-width: utilities.$medium-width) {
+    @media screen and (max-width: var(--medium-width)) {
         justify-content: center;
     }
 
     a {
         display: flex;
         align-items: center;
-        height: utilities.$line-height;
+        height: var(--line-height);
         width: fit-content;
     }
 
     .profile {
-        font-size: utilities.$font-size;
-        line-height: utilities.$line-height;
+        font-size: var(--font-size);
+        line-height: var(--line-height);
 
         &:hover {
             .name::before,
@@ -32,7 +30,7 @@
             position: relative;
             border-bottom: solid 1px;
             display: inline-block;
-            height: utilities.$line-height;
+            height: var(--line-height);
             transition: border-bottom-color 450ms ease-in-out;
 
             &::before {
@@ -42,7 +40,7 @@
                 top: 10px;
                 left: 3px;
                 width: 100%;
-                height: calc(utilities.$font-size + 2px);
+                height: calc(var(--font-size) + 2px);
                 background-color: transparent;
                 transition: background-color 450ms ease-in-out,
                     top 250ms ease-in-out, left 250ms ease-in-out;

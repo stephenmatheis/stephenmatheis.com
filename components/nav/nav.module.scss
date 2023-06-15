@@ -1,5 +1,3 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 // FIXME: Link ctr internals leaking into nav
 @mixin button {
     position: absolute;

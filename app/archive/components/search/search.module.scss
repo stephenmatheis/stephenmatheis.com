@@ -1,5 +1,3 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .search-row {
     display: flex;
     justify-content: flex-end;
@@ -20,8 +18,8 @@
         .search {
             font-family: var(--font-code);
             border: none;
-            font-size: utilities.$font-size;
-            height: calc(utilities.$line-height * 1.5);
+            font-size: var(--font-size);
+            height: calc(var(--line-height) * 1.5);
             padding: 0px 2ch;
             color: var(--primary);
             background-color: transparent;

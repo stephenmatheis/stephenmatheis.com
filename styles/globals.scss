@@ -328,6 +328,7 @@
     --large-width: #{utilities.$large-width};
     --max-width: #{utilities.$max-width};
 
+    // Defaults
     --prefers-color-scheme-transition-speed: 250ms;
     --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         Liberation Mono, 'Courier New', monospace;
@@ -336,8 +337,8 @@
         'Segoe UI Symbol';
 
     @media print {
-        --line-height: 16px;
-        --font-size: 11px;
+        --line-height: 16px !important;
+        --font-size: 11px !important;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -471,16 +472,14 @@ h3,
 h4,
 h5,
 h6 {
-    margin-top: calc(utilities.$line-height * 2);
-    margin-bottom: utilities.$line-height;
+    margin-top: calc(var(--line-height) * 2);
+    margin-bottom: var(--line-height);
 }
 
 p {
     margin-top: 0px;
-    margin-bottom: utilities.$line-height;
-    line-height: calc(
-        utilities.$line-height * utilities.$p-line-height-modifier
-    );
+    margin-bottom: var(--line-height);
+    line-height: calc(var(--line-height) * var(--p-line-height-modifier));
     text-align: justify;
 }
 
@@ -494,14 +493,14 @@ article {
 
     p {
         &:first-of-type {
-            margin-top: utilities.$line-height;
+            margin-top: var(--line-height);
         }
     }
 
     ul,
     ol {
         padding-left: 2ch;
-        margin: utilities.$line-height 0px;
+        margin: var(--line-height) 0px;
 
         li {
             &::marker {
@@ -526,7 +525,7 @@ article {
         // background: var(--primary-15);
         // border-left: 10px solid var(--primary);
 
-        margin: calc(utilities.$line-height * 2) 1ch;
+        margin: calc(var(--line-height) * 2) 1ch;
         padding-left: 2ch;
 
         p {
@@ -564,7 +563,7 @@ article {
 
     position: relative;
     margin-top: 0;
-    margin-bottom: calc(utilities.$line-height * 2);
+    margin-bottom: calc(var(--line-height) * 2);
 
     [data-rehype-pretty-code-title] {
         // Tabbed
@@ -593,7 +592,7 @@ article {
         overflow-x: auto;
         font-weight: 400;
         margin: 0px;
-        padding: calc(utilities.$line-height * 1) 0px;
+        padding: calc(var(--line-height) * 1) 0px;
         opacity: 0.98;
         background: var(--background);
 

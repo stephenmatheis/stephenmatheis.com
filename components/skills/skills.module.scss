@@ -1,15 +1,13 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .comment {
     color: var(--title-color);
-    margin-bottom: utilities.$line-height;
+    margin-bottom: var(--line-height);
 }
 
 .skills {
     .groups-ctr {
         display: flex;
         flex-direction: column;
-        gap: utilities.$line-height;
+        gap: var(--line-height);
 
         .group {
             .name {

@@ -1,13 +1,11 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .sidebar {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     width: fit-content;
-    gap: utilities.$line-height;
+    gap: var(--line-height);
 
-    @media (max-width: utilities.$medium-width) {
+    @media (max-width: var(--medium-width)) {
         flex-direction: row;
         justify-content: center;
         align-items: center;
