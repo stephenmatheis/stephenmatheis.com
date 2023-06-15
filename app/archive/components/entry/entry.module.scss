@@ -83,12 +83,12 @@
     align-items: flex-end;
 
     .title {
-        max-width: 50ch;
+        max-width: 50%;
         color: var(--primary);
         text-align: justify;
 
         @media (max-width: utilities.$small-width) {
-            max-width: 29ch;
+            max-width: 60%;
         }
     }
 
