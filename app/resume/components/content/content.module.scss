@@ -1,3 +1,5 @@
+@use 'styles/utilities.module.scss' as utilities;
+
 .resume {
     flex: 2;
     display: flex;
@@ -26,7 +28,7 @@
         @media screen {
             gap: calc(var(--line-height) * 3);
 
-            @media (max-width: var(--medium-width)) {
+            @media (max-width: utilities.$medium-width) {
                 max-width: none;
             }
         }

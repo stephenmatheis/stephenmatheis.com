@@ -1,8 +1,10 @@
+@use 'styles/utilities.module.scss' as utilities;
+
 .header {
     display: flex;
     width: 100%;
 
-    @media screen and (max-width: var(--medium-width)) {
+    @media screen and (max-width: utilities.$medium-width) {
         justify-content: center;
     }
 
