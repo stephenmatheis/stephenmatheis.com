@@ -1,33 +1,31 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .page {
     font-family: var(--font-code);
     min-height: 100dvh;
-    width: utilities.$max-width;
+    width: var(--max-width);
     padding: 0.5in;
     display: flex;
     flex-direction: column;
-    gap: utilities.$page-gap;
+    gap: var(--page-gap);
 
     @media print {
-        gap: calc(utilities.$line-height * 2);
+        gap: calc(var(--line-height) * 2);
         width: 8.5in;
     }
 
     @media screen {
         margin: 0 auto;
-        padding: utilities.$page-padding;
+        padding: var(--page-padding);
 
-        @media (max-width: utilities.$medium-width) {
+        @media (max-width: var(--medium-width)) {
             width: 100%;
             align-items: center;
-            max-width: utilities.$max-width;
-            gap: calc(utilities.$line-height * 4);
+            max-width: var(--max-width);
+            gap: calc(var(--line-height) * 4);
         }
 
         @media (max-width: 500px) {
             min-width: 100%;
-            padding-top: calc(utilities.$line-height * 3);
+            padding-top: calc(var(--line-height) * 3);
             padding-left: 0.25in;
             padding-right: 0.25in;
         }

@@ -21,8 +21,6 @@ export function Search({ posts, setPosts }) {
     }
 
     function filterPosts(query: string) {
-        console.log('=> ', query);
-
         const filteredPosts = posts.filter((post) => {
             const { title, date, description, body } = post;
 

@@ -1,5 +1,3 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 $inner-radius: 10px;
 $distance: 10px;
 $outer-radius: calc($inner-radius + $distance);
@@ -14,29 +12,29 @@ $outer-radius: calc($inner-radius + $distance);
     .projects-wrapper {
         display: flex;
         flex-direction: column;
-        gap: calc(utilities.$line-height * 4);
-        margin-top: calc(utilities.$line-height * 3);
+        gap: calc(var(--line-height) * 4);
+        margin-top: calc(var(--line-height) * 3);
 
         @media print {
-            gap: utilities.$line-height;
+            gap: var(--line-height);
         }
 
         &.compact {
-            gap: utilities.$line-height;
-            margin-top: utilities.$line-height;
+            gap: var(--line-height);
+            margin-top: var(--line-height);
 
             .project-ctr {
-                gap: utilities.$line-height;
+                gap: var(--line-height);
             }
         }
 
         .project-ctr {
             display: flex;
             flex-direction: column;
-            gap: calc(utilities.$line-height * 2);
+            gap: calc(var(--line-height) * 2);
 
             @media print {
-                gap: calc(utilities.$line-height * 1);
+                gap: calc(var(--line-height) * 1);
             }
 
             .description-ctr {

@@ -1,6 +1,4 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .comment {
     color: var(--muted);
-    margin-bottom: utilities.$line-height;
+    margin-bottom: var(--line-height);
 }

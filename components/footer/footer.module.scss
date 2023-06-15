@@ -1,13 +1,11 @@
-@use 'styles/utilities.module.scss' as utilities;
-
 .footer {
     display: flex;
     flex-direction: column;
-    gap: utilities.$line-height;
+    gap: var(--line-height);
 
     * {
-        font-size: utilities.$font-size;
-        line-height: utilities.$line-height;
+        font-size: var(--font-size);
+        line-height: var(--line-height);
     }
 
     nav {
