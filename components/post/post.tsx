@@ -26,14 +26,15 @@ export async function Post({
 
     return (
         <main className={styles.post}>
-            {/* <h1>{title}</h1> */}
-            {link && (
-                <h1>
+            <h1>
+                {link ? (
                     <LinkCtr href={link} newTab>
                         {title}
                     </LinkCtr>
-                </h1>
-            )}
+                ) : (
+                    title
+                )}
+            </h1>
             <article>
                 <DateTime className={styles.date} dateString={date} />
                 <Body>{body}</Body>

@@ -25,10 +25,10 @@ export function LinkCtr({
     className,
 }: Props) {
     return (
-        <span className={classNames(styles['link-ctr'], className)}>
+        <>
             {newTab ? (
                 <a
-                    className={styles['link-text']}
+                    className={classNames(styles['link'], className)}
                     href={href}
                     target="_blank"
                     aria-label={label}
@@ -36,14 +36,18 @@ export function LinkCtr({
                     {children}
                 </a>
             ) : (
-                <Link href={href} aria-label={label}>
+                <Link
+                    href={href}
+                    aria-label={label}
+                    className={classNames(styles['link'], className)}
+                >
                     {(typeof emoji === 'string' ||
                         emoji?.position === 'left') && (
                         <span className={styles['emoji']}>
                             {typeof emoji === 'string' ? emoji : emoji.value}
                         </span>
                     )}
-                    <span className={styles['link-text']}>{children}</span>
+                    <span className={styles['text']}>{children}</span>
                     {typeof emoji === 'object' &&
                         emoji.position === 'right' && (
                             <span
@@ -59,6 +63,6 @@ export function LinkCtr({
                         )}
                 </Link>
             )}
-        </span>
+        </>
     );
 }

@@ -1,77 +1,62 @@
 @use 'styles/utilities.module.scss' as utilities;
 
-.link-ctr {
-    width: fit-content;
-    height: utilities.$line-height;
+.link {
     cursor: pointer;
 
-    a {
-        display: inline-flex;
-        align-items: center;
-        height: utilities.$line-height;
+    &,
+    &:hover {
+        color: var(--primary);
+    }
 
-        &,
+    .text {
+        --shadow-1: var(--background-color);
+        --shadow-2: var(--primary-20);
+        --shadow-3: var(--primary-20);
+        --x: 3px;
+        --y: 7px;
+
+        border-bottom: solid 1px var(--primary);
+        box-shadow: 
+            // 1
+            inset var(--x) 0px 0px 0px var(--shadow-1),
+            // 2
+            inset 0px calc(var(--y) * -1) 0px 0px var(--shadow-2),
+            // 3
+            var(--x) var(--y) 0px 0px var(--shadow-3);
+
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        transition: all 250ms linear;
+
+        // FIXME: Only fade in on load, not on page transition
+        // animation: fade-in-border-color 450ms ease-in-out forwards;
+
         &:hover {
-            color: var(--primary);
+            box-shadow: 
+                // 1
+                inset 0px 0px 0px 0px var(--shadow-1),
+                // 2
+                inset 0px calc(var(--y) * -2) 0px 0px var(--shadow-2),
+                // 3
+                0px 0px 0px 0px var(--shadow-3);
         }
     }
 
-    .link-text {
-        position: relative;
-        border-bottom: solid 1px;
-        border-bottom-color: transparent;
-        height: utilities.$line-height;
-        animation: fade-in-border-color 450ms ease-in-out forwards;
+    .emoji {
+        font-size: utilities.$line-height;
 
-        &:hover {
-            &::before {
-                top: 3px;
-                left: 0px;
-            }
+        margin-right: 1ch;
+        // FIXME: 
+        // I'm not sure if there is a good default.
+        // The only component using this right now is <Contacts />.
+        transform: translateY(3px);
+        // transform: translateY(1.5px);
+        display: inline-block;
+        line-height: 0px;
+
+        &.left {
+            margin-right: 0ch;
+            margin-left: 1ch;
         }
-
-        &::before {
-            content: '';
-            pointer-events: none;
-            position: absolute;
-            top: 10px;
-            left: 3px;
-            width: 100%;
-            height: calc(utilities.$font-size + 2px);
-            background-color: transparent;
-            transition: background-color 450ms ease-in-out,
-                top 250ms ease-in-out, left 250ms ease-in-out;
-            animation: fade-in-background 450ms ease-in-out forwards;
-        }
-
-        @keyframes fade-in-background {
-            from {
-                background-color: transparent;
-            }
-
-            to {
-                background-color: var(--primary-20);
-            }
-        }
-
-        @keyframes fade-in-border-color {
-            from {
-                border-bottom-color: transparent;
-            }
-
-            to {
-                border-bottom-color: var(--primary);
-            }
-        }
-    }
-}
-
-.emoji {
-    font-size: utilities.$line-height;
-    margin-right: 1ch;
-
-    &.left {
-        margin-right: 0ch;
-        margin-left: 1ch;
     }
 }
