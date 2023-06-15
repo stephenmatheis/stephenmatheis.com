@@ -10,3 +10,19 @@
         text-align: right;
     }
 }
+
+.reset-btn-ctr {
+    margin-top: calc(var(--line-height) * 3);
+    text-align: center;
+
+    .reset {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        color: var(--primary);
+
+        // border: solid 1px var(--primary);
+        // padding: calc(var(--line-height) / 2) 2ch;
+        // background-color: var(--primary-10);
+    }
+}
