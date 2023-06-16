@@ -1,13 +1,6 @@
 'use client';
 
-import {
-    Dispatch,
-    SetStateAction,
-    useCallback,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import styles from './toggle.module.scss';
 
@@ -17,6 +10,7 @@ type Props = {
     defaultOption?: string | undefined;
     addDataAttr?: boolean;
     addCssVariable?: boolean;
+    vertical?: boolean;
     shouldResize: boolean;
     resize: () => void;
 };
@@ -27,6 +21,7 @@ export function Toggle({
     defaultOption,
     addDataAttr = false,
     addCssVariable = false,
+    vertical = false,
     shouldResize,
     resize,
 }: Props) {
@@ -70,8 +65,10 @@ export function Toggle({
             return;
         }
 
-        const { width } = ref.current.children[0].getBoundingClientRect();
+        const { width, height } =
+            ref.current.children[0].getBoundingClientRect();
 
+        ref.current.style.setProperty('--indicator-height', `${height}px`);
         ref.current.style.setProperty('--indicator-width', `${width}px`);
     }, []);
     const updateValue = useCallback(() => {
@@ -112,11 +109,14 @@ export function Toggle({
             }}
             className={classNames(styles.toggle, {
                 [styles.hidden]: selectedOption === '',
+                [styles.vertical]: vertical,
             })}
             aria-label={`Activate ${selectedOption} mode`}
             title={`Activate ${selectedOption} mode`}
             style={{
-                gridTemplateColumns: `repeat(${options.length}, 1fr)`,
+                gridTemplateColumns: vertical
+                    ? undefined
+                    : `repeat(${options.length}, 1fr)`,
             }}
         >
             {options.map((option: string, index: number) => {

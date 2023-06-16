@@ -5,9 +5,19 @@ import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
 import styles from './controls.module.scss';
 
+type ControlProps = {
+    label: string;
+    key: string;
+    options: string[];
+    defaultOption: string;
+    addDataAttr?: boolean;
+    addCssVariable?: boolean;
+    vertical?: boolean;
+};
+
 export function Controls({}) {
     const [shouldResize, setShouldResize] = useState(false);
-    const controls = useMemo(() => {
+    const controls = useMemo((): ControlProps[] => {
         return [
             {
                 label: 'Mode',
@@ -22,6 +32,7 @@ export function Controls({}) {
                 options: ['Green', 'Blue', 'Red', 'Monochrome'],
                 defaultOption: 'Green',
                 addDataAttr: true,
+                vertical: true,
             },
             {
                 label: 'Dark Theme',
@@ -29,6 +40,7 @@ export function Controls({}) {
                 options: ['Green', 'Blue', 'Red', 'Monochrome'],
                 defaultOption: 'Green',
                 addDataAttr: true,
+                vertical: true,
             },
             {
                 label: 'Font Family',
@@ -68,6 +80,7 @@ export function Controls({}) {
                         defaultOption,
                         addDataAttr,
                         addCssVariable,
+                        vertical,
                     }) => {
                         return (
                             <Fragment key={label}>
@@ -80,6 +93,7 @@ export function Controls({}) {
                                     resize={resize}
                                     addDataAttr={addDataAttr}
                                     addCssVariable={addCssVariable}
+                                    vertical={vertical}
                                 />
                             </Fragment>
                         );
