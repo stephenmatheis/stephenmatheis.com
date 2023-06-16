@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import Link from 'next/link';
 import styles from './header.module.scss';
 
@@ -7,17 +6,14 @@ export function Header({}) {
         <>
             <header className={styles['header']}>
                 <Link href="/" aria-label="Stephen Matheis' personal website">
-                    <div
-                        className={classNames([
-                            styles['profile'],
-                            styles['link-background'],
-                        ])}
-                    >
-                        <span className={styles['name']}>Stephen Matheis</span>{' '}
-                        <span className={styles['title']}>
+                    <span className={styles.text}>
+                        <span className={[styles.name, styles.part].join(' ')}>
+                            Stephen Matheis
+                        </span>{' '}
+                        <span className={[styles.title, styles.part].join(' ')}>
                             Front-end Software Engineer
                         </span>
-                    </div>
+                    </span>
                 </Link>
             </header>
         </>
