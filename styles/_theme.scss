@@ -1,0 +1,87 @@
+@use 'sass:map';
+
+@mixin defaultColor($variableName, $value, $mode, $options) {
+    @if $value {
+        --#{$variableName}: #{$value};
+    } @else {
+        --#{$variableName}: #{map.get($options, $mode)};
+    }
+}
+
+@mixin create(
+    $mode,
+    $primary,
+    $secondary,
+    $tertiary,
+    $accent,
+    $background-color: null,
+    $color: null,
+    $muted: null
+) {
+    // Page
+    @include defaultColor(
+        'background-color',
+        $background-color,
+        $mode,
+        (
+            'light': #ffffff,
+            'dark': #221d29,
+        )
+    );
+
+    @include defaultColor(
+        'color',
+        $color,
+        $mode,
+        (
+            'light': #242424,
+            'dark': #d4d4d4,
+        )
+    );
+
+    @include defaultColor(
+        'muted',
+        $muted,
+        $mode,
+        (
+            'light': #757575,
+            'dark': #808080,
+        )
+    );
+
+    $opacities: '05', '10', '15', '20', '30', '50';
+
+    $colors: (
+        'primary': $primary,
+        'secondary': $secondary,
+        'tertiary': $tertiary,
+        'accent': $accent,
+    );
+
+    @each $name, $color in $colors {
+        --#{$name}: #{$color};
+
+        @each $opacity in $opacities {
+            --#{$name}-#{$opacity}: #{$color}#{$opacity};
+        }
+
+        @if $mode == 'light' {
+            --#{$name}-variant: #{mix(white, $color, 10%)};
+        } @else if $mode == 'dark' {
+            --#{$name}-variant: #{mix(black, $color, 10%)};
+        }
+    }
+
+    // Code block word highlights
+    @if $mode == 'light' {
+        $word-background-color: #ffdcc2;
+        $r-word-background-color: #ffc2d3;
+        $g-word-background-color: #c2ffce;
+        $b-word-background-color: #c2efff;
+    } @else if $mode == 'dark' {
+        $word-background-color: #63341d;
+        $r-word-background-color: #9f1239;
+        $g-word-background-color: #115e59;
+        $b-word-background-color: #1e40af;
+    }
+}
