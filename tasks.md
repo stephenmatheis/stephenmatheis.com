@@ -1,3 +1,23 @@
 # Tasks
 
-- https://www.adamcollier.co.uk/posts/adding-an-updated-date-to-markdown-and-mdx-posts/
+-   https://www.adamcollier.co.uk/posts/adding-an-updated-date-to-markdown-and-mdx-posts/
+-   Move domain to vecel (if Netlify bug isn't fixed soon)
+-   Update header to use <LinkCtr />
+-   Add `color` property to <LinkCtr />
+    -   Primary
+    -   Secondary
+    -   Tertiary
+    -   Reorder theme variables
+-   Add line height \* 1.25 or 1.5 to posts titles
+-   Add palette with hex values to settings
+-   Add UI to create your own palette
+-   Fix next post title max width on mobile
+-   Add vertical toggle for long lists (themes)
+-   Add themes with different background colors
+-   Add Gameboy theme
+-   Add retro theme - amber
+-   Add retro theme - green
+-   Add high contrast theme
+-   Add unformatted view (simple html and css) that looks good in cli browsers
+-   Add some playgrounds (html/css)
+-   Find some kind of library that embeds interactive code blocks

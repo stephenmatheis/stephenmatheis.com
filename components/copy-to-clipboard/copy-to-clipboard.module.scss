@@ -1,7 +1,7 @@
 .copy-to-clipboard {
     button {
-        --background-color: var(--copy-background-color);
-        --label-color: var(--copy-label-color);
+        --background-color: var(--background-color);
+        --label-color: var(--primary);
         --shadow-color: var(--label-color);
 
         z-index: 1;

@@ -1,320 +1,6 @@
-@use 'styles/utilities.module.scss' as utilities;
-@use 'styles/dark.theme.green.module.scss' as dark-theme-green;
-@use 'styles/light.theme.green.module.scss' as light-theme-green;
-@use 'styles/dark.theme.blue.module.scss' as dark-theme-blue;
-@use 'styles/light.theme.blue.module.scss' as light-theme-blue;
-@use 'styles/dark.theme.red.module.scss' as dark-theme-red;
-@use 'styles/light.theme.red.module.scss' as light-theme-red;
-@use 'styles/dark.theme.monochrome.module.scss' as dark-theme-monochrome;
-@use 'styles/light.theme.monochrome.module.scss' as light-theme-monochrome;
-
-// Green (default)
-@mixin dark-mode-green {
-    --color: #{dark-theme-green.$color};
-    --background-color: #{dark-theme-green.$background-color};
-    --tertiary: #{dark-theme-green.$tertiary};
-    --tertiary-05: #{dark-theme-green.$tertiary-05};
-    --tertiary-10: #{dark-theme-green.$tertiary-10};
-    --tertiary-15: #{dark-theme-green.$tertiary-15};
-    --tertiary-20: #{dark-theme-green.$tertiary-20};
-    --tertiary-50: #{dark-theme-green.$tertiary-50};
-    --secondary: #{dark-theme-green.$secondary};
-    --secondary-05: #{dark-theme-green.$secondary-05};
-    --secondary-10: #{dark-theme-green.$secondary-10};
-    --secondary-15: #{dark-theme-green.$secondary-15};
-    --secondary-20: #{dark-theme-green.$secondary-20};
-    --secondary-50: #{dark-theme-green.$secondary-50};
-    --muted: #{dark-theme-green.$muted};
-    --primary: #{dark-theme-green.$primary};
-    --primary-05: #{dark-theme-green.$primary-05};
-    --primary-10: #{dark-theme-green.$primary-10};
-    --primary-15: #{dark-theme-green.$primary-15};
-    --primary-20: #{dark-theme-green.$primary-20};
-    --primary-30: #{dark-theme-green.$primary-30};
-    --primary-50: #{dark-theme-green.$primary-50};
-    --primary-variant: #{dark-theme-green.$primary-variant};
-    --accent: #{dark-theme-green.$accent};
-    --accent-05: #{dark-theme-green.$accent-05};
-    --accent-10: #{dark-theme-green.$accent-10};
-    --accent-15: #{dark-theme-green.$accent-15};
-    --accent-20: #{dark-theme-green.$accent-20};
-    --accent-50: #{dark-theme-green.$accent-50};
-    --copy-background-color: #{dark-theme-green.$copy-background-color};
-    --copy-label-color: #{dark-theme-green.$copy-label-color};
-    --word-background-color: #{dark-theme-green.$word-background-color};
-    --r-word-background-color: #{dark-theme-green.$r-word-background-color};
-    --g-word-background-color: #{dark-theme-green.$g-word-background-color};
-    --b-word-background-color: #{dark-theme-green.$b-word-background-color};
-}
-
-@mixin light-mode-green {
-    --color: #{light-theme-green.$color};
-    --background-color: #{light-theme-green.$background-color};
-    --tertiary: #{light-theme-green.$tertiary};
-    --tertiary-05: #{light-theme-green.$tertiary-05};
-    --tertiary-10: #{light-theme-green.$tertiary-10};
-    --tertiary-15: #{light-theme-green.$tertiary-15};
-    --tertiary-20: #{light-theme-green.$tertiary-20};
-    --tertiary-50: #{light-theme-green.$tertiary-50};
-    --secondary: #{light-theme-green.$secondary};
-    --secondary-05: #{dark-theme-green.$secondary-05};
-    --secondary-10: #{dark-theme-green.$secondary-10};
-    --secondary-15: #{dark-theme-green.$secondary-15};
-    --secondary-20: #{dark-theme-green.$secondary-20};
-    --secondary-50: #{dark-theme-green.$secondary-50};
-    --muted: #{light-theme-green.$muted};
-    --primary: #{light-theme-green.$primary};
-    --primary-05: #{light-theme-green.$primary-05};
-    --primary-10: #{light-theme-green.$primary-10};
-    --primary-15: #{light-theme-green.$primary-15};
-    --primary-20: #{light-theme-green.$primary-20};
-    --primary-30: #{light-theme-green.$primary-30};
-    --primary-50: #{light-theme-green.$primary-50};
-    --primary-variant: #{light-theme-green.$primary-variant};
-    --accent: #{light-theme-green.$accent};
-    --accent-05: #{light-theme-green.$accent-05};
-    --accent-10: #{light-theme-green.$accent-10};
-    --accent-15: #{light-theme-green.$accent-15};
-    --accent-20: #{light-theme-green.$accent-20};
-    --accent-50: #{light-theme-green.$accent-50};
-    --copy-background-color: #{light-theme-green.$copy-background-color};
-    --copy-label-color: #{light-theme-green.$copy-label-color};
-    --word-background-color: #{light-theme-green.$word-background-color};
-    --r-word-background-color: #{light-theme-green.$r-word-background-color};
-    --g-word-background-color: #{light-theme-green.$g-word-background-color};
-    --b-word-background-color: #{light-theme-green.$b-word-background-color};
-}
-
-// Blue
-@mixin dark-mode-blue {
-    --color: #{dark-theme-blue.$color};
-    --background-color: #{dark-theme-blue.$background-color};
-    --tertiary: #{dark-theme-blue.$tertiary};
-    --tertiary-05: #{dark-theme-blue.$tertiary-05};
-    --tertiary-10: #{dark-theme-blue.$tertiary-10};
-    --tertiary-15: #{dark-theme-blue.$tertiary-15};
-    --tertiary-20: #{dark-theme-blue.$tertiary-20};
-    --tertiary-50: #{dark-theme-blue.$tertiary-50};
-    --secondary: #{dark-theme-blue.$secondary};
-    --secondary-05: #{dark-theme-blue.$secondary-05};
-    --secondary-10: #{dark-theme-blue.$secondary-10};
-    --secondary-15: #{dark-theme-blue.$secondary-15};
-    --secondary-20: #{dark-theme-blue.$secondary-20};
-    --secondary-50: #{dark-theme-blue.$secondary-50};
-    --muted: #{dark-theme-blue.$muted};
-    --primary: #{dark-theme-blue.$primary};
-    --primary-05: #{dark-theme-blue.$primary-05};
-    --primary-10: #{dark-theme-blue.$primary-10};
-    --primary-15: #{dark-theme-blue.$primary-15};
-    --primary-20: #{dark-theme-blue.$primary-20};
-    --primary-30: #{dark-theme-blue.$primary-30};
-    --primary-50: #{dark-theme-blue.$primary-50};
-    --primary-variant: #{dark-theme-blue.$primary-variant};
-    --accent: #{dark-theme-blue.$accent};
-    --accent-05: #{dark-theme-blue.$accent-05};
-    --accent-10: #{dark-theme-blue.$accent-10};
-    --accent-15: #{dark-theme-blue.$accent-15};
-    --accent-20: #{dark-theme-blue.$accent-20};
-    --accent-50: #{dark-theme-blue.$accent-50};
-    --copy-background-color: #{dark-theme-blue.$copy-background-color};
-    --copy-label-color: #{dark-theme-blue.$copy-label-color};
-    --word-background-color: #{dark-theme-blue.$word-background-color};
-    --r-word-background-color: #{dark-theme-blue.$r-word-background-color};
-    --g-word-background-color: #{dark-theme-blue.$g-word-background-color};
-    --b-word-background-color: #{dark-theme-blue.$b-word-background-color};
-}
-
-@mixin light-mode-blue {
-    --color: #{light-theme-blue.$color};
-    --background-color: #{light-theme-blue.$background-color};
-    --tertiary: #{light-theme-blue.$tertiary};
-    --tertiary-05: #{light-theme-blue.$tertiary-05};
-    --tertiary-10: #{light-theme-blue.$tertiary-10};
-    --tertiary-15: #{light-theme-blue.$tertiary-15};
-    --tertiary-20: #{light-theme-blue.$tertiary-20};
-    --tertiary-50: #{light-theme-blue.$tertiary-50};
-    --secondary: #{light-theme-blue.$secondary};
-    --secondary-05: #{dark-theme-blue.$secondary-05};
-    --secondary-10: #{dark-theme-blue.$secondary-10};
-    --secondary-15: #{dark-theme-blue.$secondary-15};
-    --secondary-20: #{dark-theme-blue.$secondary-20};
-    --secondary-50: #{dark-theme-blue.$secondary-50};
-    --muted: #{light-theme-blue.$muted};
-    --primary: #{light-theme-blue.$primary};
-    --primary-05: #{light-theme-blue.$primary-05};
-    --primary-10: #{light-theme-blue.$primary-10};
-    --primary-15: #{light-theme-blue.$primary-15};
-    --primary-20: #{light-theme-blue.$primary-20};
-    --primary-30: #{light-theme-blue.$primary-30};
-    --primary-50: #{light-theme-blue.$primary-50};
-    --primary-variant: #{light-theme-blue.$primary-variant};
-    --accent: #{light-theme-blue.$accent};
-    --accent-05: #{light-theme-blue.$accent-05};
-    --accent-10: #{light-theme-blue.$accent-10};
-    --accent-15: #{light-theme-blue.$accent-15};
-    --accent-20: #{light-theme-blue.$accent-20};
-    --accent-50: #{light-theme-blue.$accent-50};
-    --copy-background-color: #{light-theme-blue.$copy-background-color};
-    --copy-label-color: #{light-theme-blue.$copy-label-color};
-    --word-background-color: #{light-theme-blue.$word-background-color};
-    --r-word-background-color: #{light-theme-blue.$r-word-background-color};
-    --g-word-background-color: #{light-theme-blue.$g-word-background-color};
-    --b-word-background-color: #{light-theme-blue.$b-word-background-color};
-}
-
-// Red
-@mixin dark-mode-red {
-    --color: #{dark-theme-red.$color};
-    --background-color: #{dark-theme-red.$background-color};
-    --tertiary: #{dark-theme-red.$tertiary};
-    --tertiary-05: #{dark-theme-red.$tertiary-05};
-    --tertiary-10: #{dark-theme-red.$tertiary-10};
-    --tertiary-15: #{dark-theme-red.$tertiary-15};
-    --tertiary-20: #{dark-theme-red.$tertiary-20};
-    --tertiary-50: #{dark-theme-red.$tertiary-50};
-    --secondary: #{dark-theme-red.$secondary};
-    --secondary-05: #{dark-theme-red.$secondary-05};
-    --secondary-10: #{dark-theme-red.$secondary-10};
-    --secondary-15: #{dark-theme-red.$secondary-15};
-    --secondary-20: #{dark-theme-red.$secondary-20};
-    --secondary-50: #{dark-theme-red.$secondary-50};
-    --muted: #{dark-theme-red.$muted};
-    --primary: #{dark-theme-red.$primary};
-    --primary-05: #{dark-theme-red.$primary-05};
-    --primary-10: #{dark-theme-red.$primary-10};
-    --primary-15: #{dark-theme-red.$primary-15};
-    --primary-20: #{dark-theme-red.$primary-20};
-    --primary-30: #{dark-theme-red.$primary-30};
-    --primary-50: #{dark-theme-red.$primary-50};
-    --primary-variant: #{dark-theme-red.$primary-variant};
-    --accent: #{dark-theme-red.$accent};
-    --accent-05: #{dark-theme-red.$accent-05};
-    --accent-10: #{dark-theme-red.$accent-10};
-    --accent-15: #{dark-theme-red.$accent-15};
-    --accent-20: #{dark-theme-red.$accent-20};
-    --accent-50: #{dark-theme-red.$accent-50};
-    --copy-background-color: #{dark-theme-red.$copy-background-color};
-    --copy-label-color: #{dark-theme-red.$copy-label-color};
-    --word-background-color: #{dark-theme-red.$word-background-color};
-    --r-word-background-color: #{dark-theme-red.$r-word-background-color};
-    --g-word-background-color: #{dark-theme-red.$g-word-background-color};
-    --b-word-background-color: #{dark-theme-red.$b-word-background-color};
-}
-
-@mixin light-mode-red {
-    --color: #{light-theme-red.$color};
-    --background-color: #{light-theme-red.$background-color};
-    --tertiary: #{light-theme-red.$tertiary};
-    --tertiary-05: #{light-theme-red.$tertiary-05};
-    --tertiary-10: #{light-theme-red.$tertiary-10};
-    --tertiary-15: #{light-theme-red.$tertiary-15};
-    --tertiary-20: #{light-theme-red.$tertiary-20};
-    --tertiary-50: #{light-theme-red.$tertiary-50};
-    --secondary: #{light-theme-red.$secondary};
-    --secondary-05: #{dark-theme-red.$secondary-05};
-    --secondary-10: #{dark-theme-red.$secondary-10};
-    --secondary-15: #{dark-theme-red.$secondary-15};
-    --secondary-20: #{dark-theme-red.$secondary-20};
-    --secondary-50: #{dark-theme-red.$secondary-50};
-    --muted: #{light-theme-red.$muted};
-    --primary: #{light-theme-red.$primary};
-    --primary-05: #{light-theme-red.$primary-05};
-    --primary-10: #{light-theme-red.$primary-10};
-    --primary-15: #{light-theme-red.$primary-15};
-    --primary-20: #{light-theme-red.$primary-20};
-    --primary-30: #{light-theme-red.$primary-30};
-    --primary-50: #{light-theme-red.$primary-50};
-    --primary-variant: #{light-theme-red.$primary-variant};
-    --accent: #{light-theme-red.$accent};
-    --accent-05: #{light-theme-red.$accent-05};
-    --accent-10: #{light-theme-red.$accent-10};
-    --accent-15: #{light-theme-red.$accent-15};
-    --accent-20: #{light-theme-red.$accent-20};
-    --accent-50: #{light-theme-red.$accent-50};
-    --copy-background-color: #{light-theme-red.$copy-background-color};
-    --copy-label-color: #{light-theme-red.$copy-label-color};
-    --word-background-color: #{light-theme-red.$word-background-color};
-    --r-word-background-color: #{light-theme-red.$r-word-background-color};
-    --g-word-background-color: #{light-theme-red.$g-word-background-color};
-    --b-word-background-color: #{light-theme-red.$b-word-background-color};
-}
-
-// Monochrome
-@mixin dark-mode-monochrome {
-    --color: #{dark-theme-monochrome.$color};
-    --background-color: #{dark-theme-monochrome.$background-color};
-    --tertiary: #{dark-theme-monochrome.$tertiary};
-    --tertiary-05: #{dark-theme-monochrome.$tertiary-05};
-    --tertiary-10: #{dark-theme-monochrome.$tertiary-10};
-    --tertiary-15: #{dark-theme-monochrome.$tertiary-15};
-    --tertiary-20: #{dark-theme-monochrome.$tertiary-20};
-    --tertiary-50: #{dark-theme-monochrome.$tertiary-50};
-    --secondary: #{dark-theme-monochrome.$secondary};
-    --secondary-05: #{dark-theme-monochrome.$secondary-05};
-    --secondary-10: #{dark-theme-monochrome.$secondary-10};
-    --secondary-15: #{dark-theme-monochrome.$secondary-15};
-    --secondary-20: #{dark-theme-monochrome.$secondary-20};
-    --secondary-50: #{dark-theme-monochrome.$secondary-50};
-    --muted: #{dark-theme-monochrome.$muted};
-    --primary: #{dark-theme-monochrome.$primary};
-    --primary-05: #{dark-theme-monochrome.$primary-05};
-    --primary-10: #{dark-theme-monochrome.$primary-10};
-    --primary-15: #{dark-theme-monochrome.$primary-15};
-    --primary-20: #{dark-theme-monochrome.$primary-20};
-    --primary-30: #{dark-theme-monochrome.$primary-30};
-    --primary-50: #{dark-theme-monochrome.$primary-50};
-    --primary-variant: #{dark-theme-monochrome.$primary-variant};
-    --accent: #{dark-theme-monochrome.$accent};
-    --accent-05: #{dark-theme-monochrome.$accent-05};
-    --accent-10: #{dark-theme-monochrome.$accent-10};
-    --accent-15: #{dark-theme-monochrome.$accent-15};
-    --accent-20: #{dark-theme-monochrome.$accent-20};
-    --accent-50: #{dark-theme-monochrome.$accent-50};
-    --copy-background-color: #{dark-theme-monochrome.$copy-background-color};
-    --copy-label-color: #{dark-theme-monochrome.$copy-label-color};
-    --word-background-color: #{dark-theme-monochrome.$word-background-color};
-    --r-word-background-color: #{dark-theme-monochrome.$r-word-background-color};
-    --g-word-background-color: #{dark-theme-monochrome.$g-word-background-color};
-    --b-word-background-color: #{dark-theme-monochrome.$b-word-background-color};
-}
-
-@mixin light-mode-monochrome {
-    --color: #{light-theme-monochrome.$color};
-    --background-color: #{light-theme-monochrome.$background-color};
-    --tertiary: #{light-theme-monochrome.$tertiary};
-    --tertiary-05: #{light-theme-monochrome.$tertiary-05};
-    --tertiary-10: #{light-theme-monochrome.$tertiary-10};
-    --tertiary-15: #{light-theme-monochrome.$tertiary-15};
-    --tertiary-20: #{light-theme-monochrome.$tertiary-20};
-    --tertiary-50: #{light-theme-monochrome.$tertiary-50};
-    --secondary: #{light-theme-monochrome.$secondary};
-    --secondary-05: #{dark-theme-monochrome.$secondary-05};
-    --secondary-10: #{dark-theme-monochrome.$secondary-10};
-    --secondary-15: #{dark-theme-monochrome.$secondary-15};
-    --secondary-20: #{dark-theme-monochrome.$secondary-20};
-    --secondary-50: #{dark-theme-monochrome.$secondary-50};
-    --muted: #{light-theme-monochrome.$muted};
-    --primary: #{light-theme-monochrome.$primary};
-    --primary-05: #{light-theme-monochrome.$primary-05};
-    --primary-10: #{light-theme-monochrome.$primary-10};
-    --primary-15: #{light-theme-monochrome.$primary-15};
-    --primary-20: #{light-theme-monochrome.$primary-20};
-    --primary-30: #{light-theme-monochrome.$primary-30};
-    --primary-50: #{light-theme-monochrome.$primary-50};
-    --primary-variant: #{light-theme-monochrome.$primary-variant};
-    --accent: #{light-theme-monochrome.$accent};
-    --accent-05: #{light-theme-monochrome.$accent-05};
-    --accent-10: #{light-theme-monochrome.$accent-10};
-    --accent-15: #{light-theme-monochrome.$accent-15};
-    --accent-20: #{light-theme-monochrome.$accent-20};
-    --accent-50: #{light-theme-monochrome.$accent-50};
-    --copy-background-color: #{light-theme-monochrome.$copy-background-color};
-    --copy-label-color: #{light-theme-monochrome.$copy-label-color};
-    --word-background-color: #{light-theme-monochrome.$word-background-color};
-    --r-word-background-color: #{light-theme-monochrome.$r-word-background-color};
-    --g-word-background-color: #{light-theme-monochrome.$g-word-background-color};
-    --b-word-background-color: #{light-theme-monochrome.$b-word-background-color};
-}
+@use 'styles/utilities';
+@use 'dark';
+@use 'light';
 
 :root {
     // Utilities
@@ -340,50 +26,51 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        @include dark-mode-green;
+        @include dark.green;
     }
 
     @media (prefers-color-scheme: light),
         (prefers-color-scheme: no-preference) {
-        @include light-mode-green;
+        @include light.green;
     }
 
-    // Green (default)
+    // Dark
     &[data-prefers-color-scheme='Dark'] {
-        @include dark-mode-green;
+        @include dark.green;
 
         // Blue
         &[data-dark-theme='Blue'] {
-            @include dark-mode-blue;
+            @include dark.blue;
         }
 
         // Red
         &[data-dark-theme='Red'] {
-            @include dark-mode-red;
+            @include dark.red;
         }
 
         // Monochrome
         &[data-dark-theme='Monochrome'] {
-            @include dark-mode-monochrome();
+            @include dark.monochrome();
         }
     }
 
+    // Light
     &[data-prefers-color-scheme='Light'] {
-        @include light-mode-green;
+        @include light.green;
 
         // Blue
         &[data-light-theme='Blue'] {
-            @include light-mode-blue;
+            @include light.blue;
         }
 
         // Red
         &[data-light-theme='Red'] {
-            @include light-mode-red;
+            @include light.red;
         }
 
         // Monochrome
         &[data-light-theme='Monochrome'] {
-            @include light-mode-monochrome();
+            @include light.monochrome();
         }
     }
 

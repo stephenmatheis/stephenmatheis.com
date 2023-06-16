@@ -1,0 +1,43 @@
+@use 'theme';
+
+$mode: 'light';
+
+@mixin green() {
+    @include theme.create(
+        $mode,
+        $primary: #216d92,
+        $secondary: #494bdf,
+        $tertiary: #3e77bb,
+        $accent: #ad3da4
+    );
+}
+
+@mixin blue() {
+    @include theme.create(
+        $mode,
+        $primary: #6651fa,
+        $secondary: #494bdf,
+        $tertiary: #3e77bb,
+        $accent: #e60012
+    );
+}
+
+@mixin red() {
+    @include theme.create(
+        $mode,
+        $primary: #e60012,
+        $secondary: #494bdf,
+        $tertiary: #3e77bb,
+        $accent: #6651fa
+    );
+}
+
+@mixin monochrome() {
+    @include theme.create(
+        $mode,
+        $primary: #242424,
+        $secondary: #242424,
+        $tertiary: #242424,
+        $accent: #242424
+    );
+}
