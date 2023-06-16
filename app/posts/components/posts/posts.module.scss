@@ -15,8 +15,9 @@
             }
 
             .title {
-                display: flex;
-                align-items: center;
+                line-height: calc(
+                    var(--line-height) * var(--p-line-height-modifier)
+                );
                 margin-bottom: calc(var(--line-height) * 5);
 
                 &.first {
