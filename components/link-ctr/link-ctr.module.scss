@@ -1,3 +1,5 @@
+@use 'styles/utilities';
+
 .link {
     cursor: pointer;
 
@@ -7,36 +9,11 @@
     }
 
     .text {
-        --shadow-1: var(--background-color);
-        --shadow-2: var(--primary-20);
-        --shadow-3: var(--primary-20);
-        --x: 3px;
-        --y: 7px;
-
-        border-bottom: solid 1px var(--primary);
-        box-shadow: 
-            // 1
-            inset var(--x) 0px 0px 0px var(--shadow-1),
-            // 2
-            inset 0px calc(var(--y) * -1) 0px 0px var(--shadow-2),
-            // 3
-            var(--x) var(--y) 0px 0px var(--shadow-3);
-
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-        transition: all 250ms linear;
-
-        // FIXME: Only fade in on load, not on page transition
-        // animation: fade-in-border-color 450ms ease-in-out forwards;
+        @include utilities.shadow-variables;
+        @include utilities.shadow-base;
 
         &:hover {
-            box-shadow: 
-                // 1
-                inset 0px 0px 0px 0px var(--shadow-1),
-                // 2
-                inset 0px calc(var(--y) * -2) 0px 0px var(--shadow-2),
-                // 3
-                0px 0px 0px 0px var(--shadow-3);
+            @include utilities.shadow-hover;
         }
     }
 
@@ -44,7 +21,7 @@
         font-size: var(--line-height);
 
         margin-right: 1ch;
-        // FIXME: 
+        // FIXME:
         // I'm not sure if there is a good default.
         // The only component using this right now is <Contacts />.
         transform: translateY(3px);
