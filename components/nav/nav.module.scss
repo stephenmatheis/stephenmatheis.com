@@ -1,3 +1,5 @@
+@use 'styles/utilities';
+
 // FIXME: Link ctr internals leaking into nav
 @mixin button {
     position: absolute;
@@ -38,6 +40,10 @@
             line-height: calc(
                 var(--line-height) * var(--p-line-height-modifier)
             );
+
+            @media (max-width: utilities.$small-width) {
+                max-width: 15ch;
+            }
         }
     }
 
