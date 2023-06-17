@@ -6,15 +6,15 @@
     &,
     &:hover {
         color: var(--primary);
+
+        .text {
+            @include utilities.shadow-hover;
+        }
     }
 
     .text {
         @include utilities.shadow-variables;
         @include utilities.shadow-base;
-
-        &:hover {
-            @include utilities.shadow-hover;
-        }
     }
 
     .emoji {
