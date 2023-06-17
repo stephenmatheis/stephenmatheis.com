@@ -15,10 +15,8 @@
             }
 
             .title {
-                line-height: calc(
-                    var(--line-height) * var(--p-line-height-modifier)
-                );
                 margin-bottom: calc(var(--line-height) * 5);
+                display: flex;
 
                 &.first {
                     margin-top: 0px;
@@ -28,18 +26,10 @@
                     margin-bottom: calc(var(--line-height) * 2);
                 }
 
-                .post-link {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-left: 2ch;
-                    font-size: calc(var(--font-size) + 2px);
-                    width: 28px;
-                    transition: background-color 250ms ease-in-out;
-
-                    &:hover {
-                        background-color: var(--primary-20);
-                    }
+                a {
+                    line-height: calc(
+                        var(--line-height) * var(--p-line-height-modifier)
+                    );
                 }
             }
         }
