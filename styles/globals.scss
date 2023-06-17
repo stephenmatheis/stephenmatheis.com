@@ -1,5 +1,4 @@
-@use 'styles/utilities';
-@use 'themes';
+@use 'utilities';
 
 :root {
     // Utilities
@@ -190,29 +189,10 @@ button {
 
 // Code block
 [data-rehype-pretty-code-fragment] {
-    // 🚫 Blue
-    // --background: var(--tertiary-10);
-    // --hightlighted-background: var(--tertiary-15);
-    // --title-background: var(--tertiary-20);
-    // --highlighted-border-color: var(--tertiary);
-
-    // 🚫 Pink
-    // --background: var(--accent-10);
-    // --hightlighted-background: var(--accent-15);
-    // --title-background: var(--primary-20);
-    // --highlighted-border-color: var(--accent);
-
-    // 🚫 Green
     --background: var(--primary-10);
     --hightlighted-background: var(--primary-15);
     --title-background: var(--primary-20);
     --highlighted-border-color: var(--primary);
-
-    // ✅ Heading
-    // --background: var(--secondary-10);
-    // --hightlighted-background: var(--secondary-15);
-    // --title-background: var(--secondary-20);
-    // --highlighted-border-color: var(--secondary);
 
     position: relative;
     margin-top: 0;
@@ -248,9 +228,6 @@ button {
         padding: calc(var(--line-height) * 1) 0px;
         opacity: 0.98;
         background: var(--background);
-
-        // NOTE: Experimenting with no border radius
-        // border-radius: 10px;
 
         &,
         & * {

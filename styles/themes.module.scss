@@ -1,0 +1,144 @@
+$default: 'Green';
+$themes: (
+    'Dark': (
+        'Green': (
+            'primary': #4ec9b0,
+            'secondary': #569cd6,
+            'tertiary': #9cdcfe,
+            'accent': #c586c0,
+        ),
+        'Blue': (
+            'primary': #00c3e3,
+            'secondary': #569cd6,
+            'tertiary': #9cdcfe,
+            'accent': #ff4554,
+        ),
+        'Red': (
+            'primary': #ff4554,
+            'secondary': #569cd6,
+            'tertiary': #9cdcfe,
+            'accent': #00c3e3,
+        ),
+        'Terminal': (
+            'primary': #33ff33,
+            'secondary': #33ff33,
+            'tertiary': #33ff33,
+            'accent': #33ff33,
+            'background-color': #282828,
+        ),
+        'Amber': (
+            'primary': #ffb000,
+            'secondary': #ffb000,
+            'tertiary': #ffb000,
+            'accent': #ffb000,
+            'background-color': #282828,
+        ),
+        '8-bit': (
+            'primary': #c7beff,
+            'secondary': #c7beff,
+            'tertiary': #c7beff,
+            'accent': #c7beff,
+            'background-color': #50459b,
+            'muted': #adadad,
+        ),
+        'Retro': (
+            'primary': #c7beff,
+            'secondary': #a9be03,
+            'tertiary': #ffdbf9,
+            'accent': #ff5ebf,
+            'background-color': #292d52,
+        ),
+        'High Contrast': (
+            'primary': #ffffff,
+            'secondary': #ffffff,
+            'tertiary': #ffffff,
+            'accent': #ffffff,
+            'background-color': #000000,
+        ),
+        'Monochrome': (
+            'primary': #d4d4d4,
+            'secondary': #d4d4d4,
+            'tertiary': #d4d4d4,
+            'accent': #d4d4d4,
+        ),
+    ),
+    'Light': (
+        'Green': (
+            'primary': #216d92,
+            'secondary': #494bdf,
+            'tertiary': #3e77bb,
+            'accent': #ad3da4,
+        ),
+        'Blue': (
+            'primary': #6651fa,
+            'secondary': #494bdf,
+            'tertiary': #3e77bb,
+            'accent': #e60012,
+        ),
+        'Red': (
+            'primary': #e60012,
+            'secondary': #494bdf,
+            'tertiary': #3e77bb,
+            'accent': #6651fa,
+        ),
+        'Terminal': (
+            'primary': #008b00,
+            'secondary': #008b00,
+            'tertiary': #008b00,
+            'accent': #008b00,
+        ),
+        'Amber': (
+            'primary': #ff8503,
+            'secondary': #ff8503,
+            'tertiary': #ff8503,
+            'accent': #ff8503,
+        ),
+        '8-bit': (
+            'primary': #50459b,
+            'secondary': #50459b,
+            'tertiary': #50459b,
+            'accent': #50459b,
+            'background-color': #c7beff,
+        ),
+        'Retro': (
+            'primary': #7b2659,
+            'secondary': #606b79,
+            'tertiary': #616d02,
+            'accent': #383e6f,
+            'background-color': #cdd4e0,
+        ),
+        'High Contrast': (
+            'primary': #000000,
+            'secondary': #000000,
+            'tertiary': #000000,
+            'accent': #000000,
+            'background-color': #ffffff,
+        ),
+        'Monochrome': (
+            'primary': #242424,
+            'secondary': #242424,
+            'tertiary': #242424,
+            'accent': #242424,
+        ),
+    ),
+);
+
+// # Palette Ideas
+
+// ## Orange and Mint
+// 'primary': #ff8503,
+// 'secondary': #d53600,
+// 'tertiary': #07b1bc,
+// 'accent': #2b8180
+
+// ## Ambers
+// #ffbf00
+// #ffb000
+// #db8e0f
+// #a1683c
+// #ff8503
+// #d53600
+
+// # Terminal Greens
+// #4af626
+// #00ff00s
