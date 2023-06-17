@@ -1,6 +1,4 @@
 @use 'styles/utilities';
-@use 'dark';
-@use 'light';
 @use 'themes';
 
 :root {
@@ -26,16 +24,7 @@
         --font-size: 11px !important;
     }
 
-    @media (prefers-color-scheme: dark) {
-        @include themes.prefers-dark;
-    }
-
-    @media (prefers-color-scheme: light),
-        (prefers-color-scheme: no-preference) {
-        @include themes.prefers-light;
-    }
-
-    @include themes.colors('&');
+    @include utilities.init-themes();
 
     // Sans Serif
     &[data-font-family='Sans Serif'] {
