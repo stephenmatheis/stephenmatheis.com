@@ -2,8 +2,10 @@
 
 $mode: 'light';
 
-@mixin green() {
+@mixin green($type: null, $prefix: null) {
     @include theme.create(
+        $type, 
+        $prefix,
         $mode,
         $primary: #216d92,
         $secondary: #494bdf,
@@ -12,8 +14,10 @@ $mode: 'light';
     );
 }
 
-@mixin blue() {
+@mixin blue($type: null, $prefix: null) {
     @include theme.create(
+        $type,
+        $prefix,
         $mode,
         $primary: #6651fa,
         $secondary: #494bdf,
@@ -22,8 +26,10 @@ $mode: 'light';
     );
 }
 
-@mixin red() {
+@mixin red($type: null, $prefix: null) {
     @include theme.create(
+        $type,
+        $prefix,
         $mode,
         $primary: #e60012,
         $secondary: #494bdf,
@@ -32,8 +38,10 @@ $mode: 'light';
     );
 }
 
-@mixin monochrome() {
+@mixin monochrome($type: null, $prefix: null) {
     @include theme.create(
+        $type,
+        $prefix,
         $mode,
         $primary: #242424,
         $secondary: #242424,

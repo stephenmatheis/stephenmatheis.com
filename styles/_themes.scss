@@ -1,0 +1,155 @@
+@use 'sass:map';
+@use 'sass:string';
+@use 'theme';
+
+$default: 'Green';
+
+$themes: (
+    'Dark': (
+        'Green': (
+            'primary': #4ec9b0,
+            'secondary': #569cd6,
+            'tertiary': #9cdcfe,
+            'accent': #c586c0,
+        ),
+        'Blue': (
+            'primary': #00c3e3,
+            'secondary': #569cd6,
+            'tertiary': #9cdcfe,
+            'accent': #ff4554,
+        ),
+        'Red': (
+            'primary': #ff4554,
+            'secondary': #569cd6,
+            'tertiary': #9cdcfe,
+            'accent': #00c3e3,
+        ),
+        'Monochrome': (
+            'primary': #d4d4d4,
+            'secondary': #d4d4d4,
+            'tertiary': #d4d4d4,
+            'accent': #d4d4d4,
+        ),
+    ),
+    'Light': (
+        'Green': (
+            'primary': #216d92,
+            'secondary': #494bdf,
+            'tertiary': #3e77bb,
+            'accent': #ad3da4,
+        ),
+        'Blue': (
+            'primary': #6651fa,
+            'secondary': #494bdf,
+            'tertiary': #3e77bb,
+            'accent': #e60012,
+        ),
+        'Red': (
+            'primary': #e60012,
+            'secondary': #494bdf,
+            'tertiary': #3e77bb,
+            'accent': #6651fa,
+        ),
+        'Monochrome': (
+            'primary': #242424,
+            'secondary': #242424,
+            'tertiary': #242424,
+            'accent': #242424,
+        ),
+    ),
+);
+
+@mixin prefers-dark {
+    @include theme.create(
+        $type: null,
+        $prefix: null,
+        $mode: 'Dark',
+        $primary: map.get($themes, 'Dark', $default, 'primary'),
+        $secondary: map.get($themes, 'Dark', $default, 'secondary'),
+        $tertiary: map.get($themes, 'Dark', $default, 'tertiary'),
+        $accent: map.get($themes, 'Dark', $default, 'accent')
+    );
+
+    @include theme.create(
+        $type: 'strings',
+        $prefix: null,
+        $mode: 'Light',
+        $primary: map.get($themes, 'Dark', $default, 'primary'),
+        $secondary: map.get($themes, 'Dark', $default, 'secondary'),
+        $tertiary: map.get($themes, 'Dark', $default, 'tertiary'),
+        $accent: map.get($themes, 'Dark', $default, 'accent')
+    );
+}
+
+@mixin prefers-light {
+    @include theme.create(
+        $type: null,
+        $prefix: null,
+        $mode: 'Light',
+        $primary: map.get($themes, 'Light', $default, 'primary'),
+        $secondary: map.get($themes, 'Light', $default, 'secondary'),
+        $tertiary: map.get($themes, 'Light', $default, 'tertiary'),
+        $accent: map.get($themes, 'Light', $default, 'accent')
+    );
+
+    @include theme.create(
+        $type: 'strings',
+        $prefix: null,
+        $mode: 'Dark',
+        $primary: map.get($themes, 'Light', $default, 'primary'),
+        $secondary: map.get($themes, 'Light', $default, 'secondary'),
+        $tertiary: map.get($themes, 'Light', $default, 'tertiary'),
+        $accent: map.get($themes, 'Light', $default, 'accent')
+    );
+}
+
+@mixin colors($selector: '') {
+    @each $name, $mode in $themes {
+        #{$selector}[data-prefers-color-scheme='#{$name}'] {
+            @include theme.create(
+                $type: null,
+                $prefix: null,
+                $mode: $name,
+                $primary: map.get($mode, $default, 'primary'),
+                $secondary: map.get($mode, $default, 'secondary'),
+                $tertiary: map.get($mode, $default, 'tertiary'),
+                $accent: map.get($mode, $default, 'accent')
+            );
+
+            @include theme.create(
+                $type: 'strings',
+                $prefix: null,
+                $mode: if($name == 'Light', 'Dark', 'Light'),
+                $primary: map.get($mode, $default, 'primary'),
+                $secondary: map.get($mode, $default, 'secondary'),
+                $tertiary: map.get($mode, $default, 'tertiary'),
+                $accent: map.get($mode, $default, 'accent')
+            );
+
+            @each $color, $colors in $mode {
+                // Blue
+                &[data-#{string.to-lower-case($name)}-theme='#{$color}'] {
+                    @include theme.create(
+                        $type: null,
+                        $prefix: null,
+                        $mode: $name,
+                        $primary: map.get($colors, 'primary'),
+                        $secondary: map.get($colors, 'secondary'),
+                        $tertiary: map.get($colors, 'tertiary'),
+                        $accent: map.get($colors, 'accent')
+                    );
+
+                    @include theme.create(
+                        $type: 'strings',
+                        $prefix: null,
+                        $mode: if($name == 'Light', 'Dark', 'Light'),
+                        $primary: map.get($colors, 'primary'),
+                        $secondary: map.get($colors, 'secondary'),
+                        $tertiary: map.get($colors, 'tertiary'),
+                        $accent: map.get($colors, 'accent')
+                    );
+                }
+            }
+        }
+    }
+}

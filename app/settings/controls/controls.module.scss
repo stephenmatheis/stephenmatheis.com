@@ -11,6 +11,98 @@
         height: calc(var(--line-height) + 6px);
         color: var(--primary);
     }
+
+    .group {
+        display: flex;
+        align-items: center;
+        gap: 4ch;
+    }
+
+    .colors {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: calc(var(--line-height));
+        height: 100%;
+        width: 100%;
+
+        > div {
+            display: grid;
+            align-items: center;
+
+            &.primary {
+                background-color: var(--primary);
+                color: var(--background-color);
+
+                > div {
+                    .hex {
+                        &::after {
+                            content: var(--primary-string);
+                        }
+                    }
+                }
+            }
+
+            &.secondary {
+                background-color: var(--secondary);
+                color: var(--background-color);
+
+                > div {
+                    .hex {
+                        &::after {
+                            content: var(--secondary-string);
+                        }
+                    }
+                }
+            }
+
+            &.tertiary {
+                background-color: var(--tertiary);
+                color: var(--background-color);
+
+                > div {
+                    .hex {
+                        &::after {
+                            content: var(--tertiary-string);
+                        }
+                    }
+                }
+            }
+
+            &.accent {
+                background-color: var(--accent);
+                color: var(--background-color);
+
+                > div {
+                    .hex {
+                        &::after {
+                            content: var(--accent-string);
+                        }
+                    }
+                }
+            }
+
+            > div {
+                display: grid;
+                justify-content: center;
+                height: fit-content;
+
+                .hex {
+                    position: relative;
+                    color: transparent;
+
+                    &::after {
+                        content: '';
+                        color: var(--background-color);
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .reset-btn-ctr {
