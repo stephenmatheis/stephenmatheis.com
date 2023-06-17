@@ -1,10 +1,6 @@
 @use 'sass:map';
 @use 'sass:string';
-@use 'themes';
-
-// Themes
-$default: themes.$default;
-$themes: themes.$themes;
+@use 'styles/themes.module.scss' as themes;
 
 // Globals
 $font-size: 12px;
@@ -54,6 +50,33 @@ $max-width: 680px;
 }
 
 // Themes
+@function format($iterable) {
+    $str: '';
+
+    @each $key, $value in $iterable {
+        $entry-string: $key;
+
+        $str: $str + ', ' + $entry-string;
+    }
+
+    $str: string.slice($str, 3); // remove leading ', ' from ', entry1, entry2'
+
+    @return string.unquote($str);
+}
+
+$default: themes.$default;
+$themes: themes.$themes;
+$dark-colors: map.get($themes, 'Dark');
+$light-colors: map.get($themes, 'Light');
+$combined-colors: ($dark-colors, $light-colors);
+
+@debug format($dark-colors);
+
+$theme-colors: (
+    'Dark': format($dark-colors),
+    'Light': format($light-colors),
+);
+
 @mixin defaultColor($variableName, $value, $mode, $options) {
     @if $value {
         --#{$variableName}: #{$value};
@@ -160,6 +183,7 @@ $max-width: 680px;
     }
 }
 
+// TODO: dry up these calls
 @mixin prefers-dark {
     @include create-theme(
         $type: null,
@@ -168,7 +192,11 @@ $max-width: 680px;
         $primary: map.get($themes, 'Dark', $default, 'primary'),
         $secondary: map.get($themes, 'Dark', $default, 'secondary'),
         $tertiary: map.get($themes, 'Dark', $default, 'tertiary'),
-        $accent: map.get($themes, 'Dark', $default, 'accent')
+        $accent: map.get($themes, 'Dark', $default, 'accent'),
+        $background-color:
+            map.get($themes, 'Dark', $default, 'background-color'),
+        $color: map.get($themes, 'Dark', $default, 'color'),
+        $muted: map.get($themes, 'Dark', $default, 'muted')
     );
 
     @include create-theme(
@@ -178,7 +206,11 @@ $max-width: 680px;
         $primary: map.get($themes, 'Dark', $default, 'primary'),
         $secondary: map.get($themes, 'Dark', $default, 'secondary'),
         $tertiary: map.get($themes, 'Dark', $default, 'tertiary'),
-        $accent: map.get($themes, 'Dark', $default, 'accent')
+        $accent: map.get($themes, 'Dark', $default, 'accent'),
+        $background-color:
+            map.get($themes, 'Dark', $default, 'background-color'),
+        $color: map.get($themes, 'Dark', $default, 'color'),
+        $muted: map.get($themes, 'Dark', $default, 'muted')
     );
 }
 
@@ -190,7 +222,11 @@ $max-width: 680px;
         $primary: map.get($themes, 'Light', $default, 'primary'),
         $secondary: map.get($themes, 'Light', $default, 'secondary'),
         $tertiary: map.get($themes, 'Light', $default, 'tertiary'),
-        $accent: map.get($themes, 'Light', $default, 'accent')
+        $accent: map.get($themes, 'Light', $default, 'accent'),
+        $background-color:
+            map.get($themes, 'Light', $default, 'background-color'),
+        $color: map.get($themes, 'Light', $default, 'color'),
+        $muted: map.get($themes, 'Light', $default, 'muted')
     );
 
     @include create-theme(
@@ -200,7 +236,11 @@ $max-width: 680px;
         $primary: map.get($themes, 'Light', $default, 'primary'),
         $secondary: map.get($themes, 'Light', $default, 'secondary'),
         $tertiary: map.get($themes, 'Light', $default, 'tertiary'),
-        $accent: map.get($themes, 'Light', $default, 'accent')
+        $accent: map.get($themes, 'Light', $default, 'accent'),
+        $background-color:
+            map.get($themes, 'Light', $default, 'background-color'),
+        $color: map.get($themes, 'Light', $default, 'color'),
+        $muted: map.get($themes, 'Light', $default, 'muted')
     );
 }
 
@@ -214,7 +254,10 @@ $max-width: 680px;
                 $primary: map.get($mode, $default, 'primary'),
                 $secondary: map.get($mode, $default, 'secondary'),
                 $tertiary: map.get($mode, $default, 'tertiary'),
-                $accent: map.get($mode, $default, 'accent')
+                $accent: map.get($mode, $default, 'accent'),
+                $background-color: map.get($mode, $default, 'background-color'),
+                $color: map.get($mode, $default, 'color'),
+                $muted: map.get($mode, $default, 'muted')
             );
 
             @include create-theme(
@@ -224,7 +267,10 @@ $max-width: 680px;
                 $primary: map.get($mode, $default, 'primary'),
                 $secondary: map.get($mode, $default, 'secondary'),
                 $tertiary: map.get($mode, $default, 'tertiary'),
-                $accent: map.get($mode, $default, 'accent')
+                $accent: map.get($mode, $default, 'accent'),
+                $background-color: map.get($mode, $default, 'background-color'),
+                $color: map.get($mode, $default, 'color'),
+                $muted: map.get($mode, $default, 'muted')
             );
 
             @each $color, $colors in $mode {
@@ -237,7 +283,10 @@ $max-width: 680px;
                         $primary: map.get($colors, 'primary'),
                         $secondary: map.get($colors, 'secondary'),
                         $tertiary: map.get($colors, 'tertiary'),
-                        $accent: map.get($colors, 'accent')
+                        $accent: map.get($colors, 'accent'),
+                        $background-color: map.get($colors, 'background-color'),
+                        $color: map.get($colors, 'color'),
+                        $muted: map.get($colors, 'muted')
                     );
 
                     @include create-theme(
@@ -247,7 +296,10 @@ $max-width: 680px;
                         $primary: map.get($colors, 'primary'),
                         $secondary: map.get($colors, 'secondary'),
                         $tertiary: map.get($colors, 'tertiary'),
-                        $accent: map.get($colors, 'accent')
+                        $accent: map.get($colors, 'accent'),
+                        $background-color: map.get($colors, 'background-color'),
+                        $color: map.get($colors, 'color'),
+                        $muted: map.get($colors, 'muted')
                     );
                 }
             }

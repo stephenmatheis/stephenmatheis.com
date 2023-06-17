@@ -12,11 +12,10 @@
 -   [ ] Add UI to create your own palette
 -   [x] Fix next post title max width on mobile
 -   [x] Add vertical toggle for long lists (themes)
--   [ ] Add themes with different background colors
 -   [ ] Add Gameboy theme
--   [ ] Add retro theme - amber
--   [ ] Add retro theme - green
--   [ ] Add high contrast theme
+-   [x] Add retro theme - amber
+-   [x] Add retro theme - green
+-   [x] Add high contrast themes
 -   [ ] Add unformatted view (simple html and css) that looks good in cli browsers
 -   [ ] Add some playgrounds (html/css)
 -   [ ] Find a library for embedding interactive code blocks

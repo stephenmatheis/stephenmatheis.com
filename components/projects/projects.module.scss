@@ -78,18 +78,6 @@ $outer-radius: calc($inner-radius + $distance);
                         left: $distance;
                         background-color: var(--shadow-color);
                         transition: all 300ms;
-
-                        // NOTE: Experimenting with no border radius
-
-                        // NOTE: Option #1: Only modify the border radius in the bottom right corner, where the two corners meet.
-                        // border-radius: $inner-radius $inner-radius $outer-radius
-                        //     $inner-radius;
-
-                        // NOTE: Option #2: Modify all border radii.
-                        // border-radius: $outer-radius;
-
-                        // NOTE: Option #1: No change.
-                        // border-radius: $inner-radius;
                     }
 
                     &:hover {
@@ -113,9 +101,6 @@ $outer-radius: calc($inner-radius + $distance);
                         display: block;
                         width: 100%;
                         height: auto;
-
-                        // NOTE: Experimenting with no border radius
-                        // border-radius: $inner-radius;
                     }
                 }
 

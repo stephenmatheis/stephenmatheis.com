@@ -4,6 +4,7 @@ import { Fragment, useCallback, useMemo, useState } from 'react';
 import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
 import styles from './controls.module.scss';
+import variables from '@/styles/exports.module.scss';
 
 type ControlProps = {
     label: string;
@@ -22,7 +23,7 @@ function Color({ name }: { name: string }) {
         <div className={styles[name.toLowerCase()]}>
             <div>
                 <div>{name}</div>
-                <div className={styles.hex}>#xxxxxxx</div>
+                <div className={styles.hex}>#000000</div>
             </div>
         </div>
     );
@@ -42,16 +43,16 @@ export function Controls({}) {
             {
                 label: 'Light Theme',
                 key: 'light-theme',
-                options: ['Green', 'Blue', 'Red', 'Monochrome'],
-                defaultOption: 'Green',
+                options: variables.Light.split(', '),
+                defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
             },
             {
                 label: 'Dark Theme',
                 key: 'dark-theme',
-                options: ['Green', 'Blue', 'Red', 'Monochrome'],
-                defaultOption: 'Green',
+                options: variables.Dark.split(', '),
+                defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
             },
