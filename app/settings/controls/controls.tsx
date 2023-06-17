@@ -15,6 +15,19 @@ type ControlProps = {
     vertical?: boolean;
 };
 
+const colors = ['Primary', 'Secondary', 'Tertiary', 'Accent'];
+
+function Color({ name }: { name: string }) {
+    return (
+        <div className={styles[name.toLowerCase()]}>
+            <div>
+                <div>{name}</div>
+                <div className={styles.hex}>#xxxxxxx</div>
+            </div>
+        </div>
+    );
+}
+
 export function Controls({}) {
     const [shouldResize, setShouldResize] = useState(false);
     const controls = useMemo((): ControlProps[] => {
@@ -85,16 +98,41 @@ export function Controls({}) {
                         return (
                             <Fragment key={label}>
                                 <div className={styles.label}>{label}</div>
-                                <Toggle
-                                    options={options}
-                                    defaultOption={defaultOption}
-                                    localStorageKey={key}
-                                    shouldResize={shouldResize}
-                                    resize={resize}
-                                    addDataAttr={addDataAttr}
-                                    addCssVariable={addCssVariable}
-                                    vertical={vertical}
-                                />
+                                {vertical ? (
+                                    <div className={styles.group}>
+                                        <Toggle
+                                            options={options}
+                                            defaultOption={defaultOption}
+                                            localStorageKey={key}
+                                            shouldResize={shouldResize}
+                                            resize={resize}
+                                            addDataAttr={addDataAttr}
+                                            addCssVariable={addCssVariable}
+                                            vertical={vertical}
+                                        />
+                                        <div className={styles.colors}>
+                                            {colors.map((name) => {
+                                                return (
+                                                    <Color
+                                                        key={name}
+                                                        name={name}
+                                                    />
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <Toggle
+                                        options={options}
+                                        defaultOption={defaultOption}
+                                        localStorageKey={key}
+                                        shouldResize={shouldResize}
+                                        resize={resize}
+                                        addDataAttr={addDataAttr}
+                                        addCssVariable={addCssVariable}
+                                        vertical={vertical}
+                                    />
+                                )}
                             </Fragment>
                         );
                     }

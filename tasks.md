@@ -8,10 +8,10 @@
     -   Secondary
     -   Tertiary
 -   [x] Add line height \* 1.25 or 1.5 to posts titles
--   [ ] Add palette with hex values to settings
+-   [ ] Add palette with hex values to settings **next to toggles**
 -   [ ] Add UI to create your own palette
 -   [x] Fix next post title max width on mobile
--   [ ] Add vertical toggle for long lists (themes)
+-   [x] Add vertical toggle for long lists (themes)
 -   [ ] Add themes with different background colors
 -   [ ] Add Gameboy theme
 -   [ ] Add retro theme - amber

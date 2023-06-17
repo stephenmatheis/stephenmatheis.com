@@ -1,6 +1,7 @@
 @use 'styles/utilities';
 @use 'dark';
 @use 'light';
+@use 'themes';
 
 :root {
     // Utilities
@@ -26,53 +27,15 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        @include dark.green;
+        @include themes.prefers-dark;
     }
 
     @media (prefers-color-scheme: light),
         (prefers-color-scheme: no-preference) {
-        @include light.green;
+        @include themes.prefers-light;
     }
 
-    // Dark
-    &[data-prefers-color-scheme='Dark'] {
-        @include dark.green;
-
-        // Blue
-        &[data-dark-theme='Blue'] {
-            @include dark.blue;
-        }
-
-        // Red
-        &[data-dark-theme='Red'] {
-            @include dark.red;
-        }
-
-        // Monochrome
-        &[data-dark-theme='Monochrome'] {
-            @include dark.monochrome();
-        }
-    }
-
-    // Light
-    &[data-prefers-color-scheme='Light'] {
-        @include light.green;
-
-        // Blue
-        &[data-light-theme='Blue'] {
-            @include light.blue;
-        }
-
-        // Red
-        &[data-light-theme='Red'] {
-            @include light.red;
-        }
-
-        // Monochrome
-        &[data-light-theme='Monochrome'] {
-            @include light.monochrome();
-        }
-    }
+    @include themes.colors('&');
 
     // Sans Serif
     &[data-font-family='Sans Serif'] {
@@ -326,11 +289,11 @@ button {
                 }
 
                 // Line numbers
-                > .line &[data-line-numbers-max-digits='2'] > .line::before {
+                .line &[data-line-numbers-max-digits='2'] > .line::before {
                     width: 2rem;
                 }
 
-                > .line &[data-line-numbers-max-digits='3'] > .line::before {
+                .line &[data-line-numbers-max-digits='3'] > .line::before {
                     width: 3rem;
                 }
             }
@@ -393,4 +356,13 @@ div[data-code-block] {
             display: none;
         }
     }
+}
+
+// Classes
+.muted {
+    color: var(--muted);
+}
+
+.color {
+    color: var(--color);
 }
