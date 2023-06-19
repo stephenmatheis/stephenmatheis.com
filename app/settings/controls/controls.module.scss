@@ -38,10 +38,8 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
             width: 100%;
             text-align: center;
 
-            @each $color in $colors {
-                .#{$color} {
-                    color: var(--primary);
-                }
+            .color-label {
+                color: var(--primary);
             }
 
             .color-block {

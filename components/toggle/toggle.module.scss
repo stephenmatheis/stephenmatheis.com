@@ -2,7 +2,7 @@
     --modifier: 0;
     --indicator-width: 0px;
     --indicator-height: 0px;
-    --offset: 3px;
+    --double-offset: calc(var(--offset) * 2);
 
     cursor: pointer;
     user-select: none;
@@ -23,7 +23,6 @@
             white-space: nowrap;
             width: 100%;
             padding: 3px 24px;
-            // padding: 6px 24px;
 
             &:not(:nth-last-child(2))::after {
                 right: 3px;
@@ -34,12 +33,12 @@
         }
 
         .indicator {
-            width: calc(100% - 6px);
-            height: calc(var(--indicator-height) - 6px);
+            width: calc(100% - var(--double-offset));
+            height: calc(var(--indicator-height) - var(--double-offset));
             top: calc(
                 (var(--indicator-height) * var(--modifier)) + var(--offset)
             );
-            left: 3px;
+            left: var(--offset);
         }
     }
 
@@ -54,9 +53,9 @@
         }
 
         .indicator {
-            width: calc(var(--indicator-width) - 6px);
-            height: calc(100% - 6px);
-            top: 3px;
+            width: calc(var(--indicator-width) - var(--double-offset));
+            height: calc(100% - var(--double-offset));
+            top: var(--offset);
             left: calc(
                 (var(--indicator-width) * var(--modifier)) + var(--offset)
             );
