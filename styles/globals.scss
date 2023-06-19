@@ -4,6 +4,7 @@
     // Utilities
     --line-height: #{utilities.$line-height};
     --font-size: #{utilities.$font-size};
+    --offset: #{utilities.$offset};
     --p-line-height-modifier: #{utilities.$p-line-height-modifier};
     --page-padding: #{utilities.$page-padding};
     --page-gap: #{utilities.$page-gap};
@@ -20,19 +21,43 @@
 
     @media print {
         --line-height: 16px !important;
-        --font-size: 11px !important;
     }
 
     @include utilities.init-themes();
 
-    // Sans Serif
+    // Fonts
+    &[data-font-size='12px'] {
+        --font-size: 12px;
+    }
+
+    &[data-font-size='16px'] {
+        --font-size: 16px;
+        --line-height: 24px;
+        --offset: 4.5px;
+    }
+
+    &[data-font-size='20px'] {
+        --font-size: 20px;
+        --line-height: 32px;
+        --offset: 6px;
+    }
+
+    // Fonts
+    &[data-font-family='Retro'] {
+        --font-family: var(--font-retro);
+        --max-width: 800px;
+
+        &[data-font-size='20px'] {
+            --max-width: 850px;
+        }
+    }
+
     &[data-font-family='Sans Serif'] {
         --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
             Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
             'Segoe UI Symbol';
     }
 
-    // Sans Serif
     &[data-font-family='Serif'] {
         --font-family: var(--font-serif);
     }

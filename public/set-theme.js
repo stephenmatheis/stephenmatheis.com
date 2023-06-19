@@ -1,6 +1,5 @@
 setMode();
-['font-size'].forEach((variable) => setLocalSetting(variable));
-['light-theme', 'dark-theme', 'font-family'].forEach((att) =>
+['light-theme', 'dark-theme', 'font-family', 'font-size'].forEach((att) =>
     setDataAttribute(att)
 );
 
@@ -15,33 +14,11 @@ function setMode() {
         setModeValue(localMode);
         return;
     }
-
-    return;
-
-    if (
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
-        setModeValue('Dark');
-    } else {
-        setModeValue('Light');
-    }
 }
 
 function setModeValue(mode) {
     localStorage.setItem('prefers-color-scheme', mode);
     document.documentElement.setAttribute('data-prefers-color-scheme', mode);
-}
-
-function setLocalSetting(key) {
-    const value = localStorage.getItem(key);
-
-    if (!value) {
-        return;
-    }
-
-    // Set CSS Varaible
-    document.documentElement.style.setProperty(`--${key}`, value);
 }
 
 function setDataAttribute(key) {
@@ -51,6 +28,17 @@ function setDataAttribute(key) {
         return;
     }
 
-    // Set CSS Varaible
+    // Set data attribute
     document.documentElement.setAttribute(`data-${key}`, value);
+}
+
+function setLocalSetting(key) {
+    const value = localStorage.getItem(key);
+
+    if (!value) {
+        return;
+    }
+
+    // Set CSS varaible
+    document.documentElement.style.setProperty(`--${key}`, value);
 }
