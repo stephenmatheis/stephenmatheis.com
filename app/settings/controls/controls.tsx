@@ -1,6 +1,13 @@
 'use client';
 
-import { Fragment, useCallback, useMemo, useState } from 'react';
+import {
+    Dispatch,
+    Fragment,
+    SetStateAction,
+    useCallback,
+    useMemo,
+    useState,
+} from 'react';
 import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
 import styles from './controls.module.scss';
@@ -11,33 +18,44 @@ type ControlProps = {
     key: string;
     options: string[];
     defaultOption: string;
-    addDataAttr?: boolean;
-    addCssVariable?: boolean;
-    vertical?: boolean;
+    addDataAttr?: boolean | undefined;
+    addCssVariable?: boolean | undefined;
+    vertical?: boolean | undefined;
+    onUpdate?: Dispatch<SetStateAction<string>> | undefined;
+    props?: {};
 };
 
 const colors = ['Primary', 'Secondary', 'Tertiary', 'Accent'];
 
-function Color({ name }: { name: string }) {
+function Color({ label, name }: { label: string; name: string }) {
     return (
-        <div className={styles[name.toLowerCase()]}>
-            <div>
-                <div>{name}</div>
-                <div className={styles.hex}>#000000</div>
+        <div
+            className={[styles['color-block'], styles[name.toLowerCase()]].join(
+                ' '
+            )}
+        >
+            <div className={styles['color-text']}>
+                {/* {label && <div>{label}</div>} */}
+                <div className={styles.hex}>
+                    <div className={styles.placeholder}>#000000</div>
+                </div>
             </div>
         </div>
     );
 }
 
 export function Controls({}) {
+    const [light, setLight] = useState('');
+    const [dark, setDark] = useState('');
     const [shouldResize, setShouldResize] = useState(false);
     const controls = useMemo((): ControlProps[] => {
         return [
             {
                 label: 'Mode',
                 key: 'prefers-color-scheme',
-                options: ['Light', 'Dark'],
-                defaultOption: 'Light',
+                options: ['OS Default', 'Light', 'Dark'],
+                // options: ['Light', 'Dark'],
+                defaultOption: 'OS Default',
                 addDataAttr: true,
             },
             {
@@ -47,6 +65,11 @@ export function Controls({}) {
                 defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
+                onUpdate: setLight,
+                props: {
+                    ['data-mode']: 'light',
+                    [`data-light-theme`]: light,
+                },
             },
             {
                 label: 'Dark Theme',
@@ -55,6 +78,11 @@ export function Controls({}) {
                 defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
+                onUpdate: setDark,
+                props: {
+                    ['data-mode']: 'dark',
+                    [`data-dark-theme`]: dark,
+                },
             },
             {
                 label: 'Font Family',
@@ -71,8 +99,9 @@ export function Controls({}) {
                 addCssVariable: true,
             },
         ];
-    }, []);
+    }, [dark, light]);
     const resize = useCallback(() => {
+        // Set
         setShouldResize(true);
 
         // Reset state
@@ -95,12 +124,14 @@ export function Controls({}) {
                         addDataAttr,
                         addCssVariable,
                         vertical,
+                        onUpdate,
+                        props,
                     }) => {
                         return (
                             <Fragment key={label}>
                                 <div className={styles.label}>{label}</div>
                                 {vertical ? (
-                                    <div className={styles.group}>
+                                    <div className={styles.group} {...props}>
                                         <Toggle
                                             options={options}
                                             defaultOption={defaultOption}
@@ -110,12 +141,33 @@ export function Controls({}) {
                                             addDataAttr={addDataAttr}
                                             addCssVariable={addCssVariable}
                                             vertical={vertical}
+                                            onUpdate={onUpdate}
                                         />
-                                        <div className={styles.colors}>
+                                        <div
+                                            className={[
+                                                styles.colors,
+                                                styles[key],
+                                            ].join(' ')}
+                                        >
+                                            {colors.map((name) => {
+                                                return (
+                                                    <div
+                                                        key={name}
+                                                        className={
+                                                            styles[
+                                                                name.toLowerCase()
+                                                            ]
+                                                        }
+                                                    >
+                                                        {name}
+                                                    </div>
+                                                );
+                                            })}
                                             {colors.map((name) => {
                                                 return (
                                                     <Color
                                                         key={name}
+                                                        label={name}
                                                         name={name}
                                                     />
                                                 );

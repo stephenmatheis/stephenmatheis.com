@@ -1,8 +1,8 @@
 setMode();
-setLocalSetting('font-size');
-setDataAttribute('light-theme');
-setDataAttribute('dark-theme');
-setDataAttribute('font-family');
+['font-size'].forEach((variable) => setLocalSetting(variable));
+['light-theme', 'dark-theme', 'font-family'].forEach((att) =>
+    setDataAttribute(att)
+);
 
 setTimeout(() => {
     document.body.classList.add('can-transition');
@@ -15,6 +15,8 @@ function setMode() {
         setModeValue(localMode);
         return;
     }
+
+    return;
 
     if (
         window.matchMedia &&
