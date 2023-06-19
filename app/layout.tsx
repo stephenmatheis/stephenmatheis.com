@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Libre_Baskerville } from 'next/font/google';
+import localFont from 'next/font/local';
 import '@/styles/globals.scss';
 
 const serif = Libre_Baskerville({
@@ -7,6 +8,13 @@ const serif = Libre_Baskerville({
     variable: '--font-serif',
     display: 'swap',
     weight: '400',
+});
+
+// Font files can be colocated inside of `app`
+const retro = localFont({
+    src: 'fonts/PrintChar21.woff2',
+    variable: '--font-retro',
+    display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -34,7 +42,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={serif.variable} suppressHydrationWarning>
+        <html
+            lang="en"
+            className={[serif.variable, retro.variable].join(' ')}
+            suppressHydrationWarning
+        >
             <body suppressHydrationWarning>
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
                 <script src="/set-theme.js" />
