@@ -27,7 +27,7 @@ type ControlProps = {
 
 const colors = ['Primary', 'Secondary', 'Tertiary', 'Accent'];
 
-function Color({ label, name }: { label: string; name: string }) {
+function Color({ name }: { name: string }) {
     return (
         <div
             className={[styles['color-block'], styles[name.toLowerCase()]].join(
@@ -35,7 +35,6 @@ function Color({ label, name }: { label: string; name: string }) {
             )}
         >
             <div className={styles['color-text']}>
-                {/* {label && <div>{label}</div>} */}
                 <div className={styles.hex}>
                     <div className={styles.placeholder}>#000000</div>
                 </div>
@@ -54,7 +53,6 @@ export function Controls({}) {
                 label: 'Mode',
                 key: 'prefers-color-scheme',
                 options: ['OS Default', 'Light', 'Dark'],
-                // options: ['Light', 'Dark'],
                 defaultOption: 'OS Default',
                 addDataAttr: true,
             },
@@ -87,7 +85,8 @@ export function Controls({}) {
             {
                 label: 'Font Family',
                 key: 'font-family',
-                options: ['Monospace', 'Sans Serif', 'Serif'],
+                // options: ['Monospace', 'Sans Serif', 'Serif'],
+                options: ['Monospace', 'Retro', 'Sans Serif', 'Serif'],
                 defaultOption: 'Monospace',
                 addDataAttr: true,
             },
@@ -96,7 +95,7 @@ export function Controls({}) {
                 key: 'font-size',
                 options: ['12px', '16px', '20px'],
                 defaultOption: '12px',
-                addCssVariable: true,
+                addDataAttr: true,
             },
         ];
     }, [dark, light]);
@@ -155,7 +154,7 @@ export function Controls({}) {
                                                         key={name}
                                                         className={
                                                             styles[
-                                                                name.toLowerCase()
+                                                                'color-label'
                                                             ]
                                                         }
                                                     >
@@ -167,7 +166,6 @@ export function Controls({}) {
                                                 return (
                                                     <Color
                                                         key={name}
-                                                        label={name}
                                                         name={name}
                                                     />
                                                 );
