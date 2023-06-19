@@ -13,6 +13,29 @@ $medium-width: 1024px;
 $large-width: 1025px;
 $max-width: 680px;
 
+// String utilties
+/// https://gist.github.com/delphinpro/6e048196bbdfdfee07b1fb5c9ea4caef
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+    $index: str_index($string, $search);
+
+    @if $index {
+        @return str_slice($string, 1, $index - 1) + $replace +
+            str-replace(
+                str-slice($string, $index + str-length($search)),
+                $search,
+                $replace
+            );
+    }
+
+    @return $string;
+}
+
 // Shadows
 @mixin shadow-variables {
     --border-color: var(--primary);
@@ -77,11 +100,11 @@ $theme-colors: (
     'Light': format($light-colors),
 );
 
-@mixin defaultColor($variableName, $value, $mode, $options) {
+@mixin defaultColor($prefix, $variableName, $value, $mode, $options) {
     @if $value {
-        --#{$variableName}: #{$value};
+        --#{$prefix}#{$variableName}: #{$value};
     } @else {
-        --#{$variableName}: #{map.get($options, $mode)};
+        --#{$prefix}#{$variableName}: #{map.get($options, $mode)};
     }
 }
 
@@ -104,10 +127,12 @@ $theme-colors: (
         'tertiary': $tertiary,
         'accent': $accent,
     );
+    $formatted-prefix: if($prefix, #{$prefix}-, '');
 
     @if $type == null {
         // Page
         @include defaultColor(
+            $formatted-prefix,
             'background-color',
             $background-color,
             $mode,
@@ -118,6 +143,7 @@ $theme-colors: (
         );
 
         @include defaultColor(
+            $formatted-prefix,
             'color',
             $color,
             $mode,
@@ -128,6 +154,7 @@ $theme-colors: (
         );
 
         @include defaultColor(
+            $formatted-prefix,
             'muted',
             $muted,
             $mode,
@@ -138,31 +165,39 @@ $theme-colors: (
         );
 
         @each $name, $color in $colors {
-            --#{$name}: #{$color};
-            --#{if($prefix, #{$prefix}-, '')}#{$name}-string: '#{$color}';
+            --#{$formatted-prefix}#{$name}: #{$color};
+            --#{$formatted-prefix}#{$name}-string: '#{$color}';
 
             @each $opacity in $opacities {
-                --#{$name}-#{$opacity}: #{$color}#{$opacity};
+                --#{$formatted-prefix}#{$name}-#{$opacity}: #{$color}#{$opacity};
             }
 
             @if $mode == 'Light' {
-                --#{$name}-variant: #{mix(white, $color, 10%)};
+                --#{$formatted-prefix}#{$name}-variant: #{mix(
+                        white,
+                        $color,
+                        10%
+                    )};
             } @else if $mode == 'Dark' {
-                --#{$name}-variant: #{mix(black, $color, 10%)};
+                --#{$formatted-prefix}#{$name}-variant: #{mix(
+                        black,
+                        $color,
+                        10%
+                    )};
             }
         }
 
         // Code block word highLights
         @if $mode == 'Light' {
-            $word-background-color: #ffdcc2;
-            $r-word-background-color: #ffc2d3;
-            $g-word-background-color: #c2ffce;
-            $b-word-background-color: #c2efff;
+            --#{$formatted-prefix}word-background-color: #ffdcc2;
+            --#{$formatted-prefix}r-word-background-color: #ffc2d3;
+            --#{$formatted-prefix}g-word-background-color: #c2ffce;
+            --#{$formatted-prefix}b-word-background-color: #c2efff;
         } @else if $mode == 'Dark' {
-            $word-background-color: #63341d;
-            $r-word-background-color: #9f1239;
-            $g-word-background-color: #115e59;
-            $b-word-background-color: #1e40af;
+            --#{$formatted-prefix}word-background-color: #63341d;
+            --#{$formatted-prefix}r-word-background-color: #9f1239;
+            --#{$formatted-prefix}g-word-background-color: #115e59;
+            --#{$formatted-prefix}b-word-background-color: #1e40af;
         }
     }
 
@@ -183,126 +218,65 @@ $theme-colors: (
     }
 }
 
-// TODO: dry up these calls
-@mixin prefers-dark {
+// TODO: I need to add ALL themes as css variables because
+// light and dark themes are independent
+// Ex. Selecting the 'Red' Light theme shouldn't update Dark's colors.
+// The only way to make sure the palette is correct is to have
+// all themes as variables
+
+@mixin set-theme($prefix, $mode, $color) {
     @include create-theme(
         $type: null,
-        $prefix: null,
-        $mode: 'Dark',
-        $primary: map.get($themes, 'Dark', $default, 'primary'),
-        $secondary: map.get($themes, 'Dark', $default, 'secondary'),
-        $tertiary: map.get($themes, 'Dark', $default, 'tertiary'),
-        $accent: map.get($themes, 'Dark', $default, 'accent'),
-        $background-color:
-            map.get($themes, 'Dark', $default, 'background-color'),
-        $color: map.get($themes, 'Dark', $default, 'color'),
-        $muted: map.get($themes, 'Dark', $default, 'muted')
-    );
-
-    @include create-theme(
-        $type: 'strings',
-        $prefix: null,
-        $mode: 'Light',
-        $primary: map.get($themes, 'Dark', $default, 'primary'),
-        $secondary: map.get($themes, 'Dark', $default, 'secondary'),
-        $tertiary: map.get($themes, 'Dark', $default, 'tertiary'),
-        $accent: map.get($themes, 'Dark', $default, 'accent'),
-        $background-color:
-            map.get($themes, 'Dark', $default, 'background-color'),
-        $color: map.get($themes, 'Dark', $default, 'color'),
-        $muted: map.get($themes, 'Dark', $default, 'muted')
+        $prefix: $prefix,
+        $mode: $mode,
+        $primary: map.get($themes, $mode, $color, 'primary'),
+        $secondary: map.get($themes, $mode, $color, 'secondary'),
+        $tertiary: map.get($themes, $mode, $color, 'tertiary'),
+        $accent: map.get($themes, $mode, $color, 'accent'),
+        $background-color: map.get($themes, $mode, $color, 'background-color'),
+        $color: map.get($themes, $mode, $color, 'color'),
+        $muted: map.get($themes, $mode, $color, 'muted')
     );
 }
 
-@mixin prefers-light {
-    @include create-theme(
-        $type: null,
-        $prefix: null,
-        $mode: 'Light',
-        $primary: map.get($themes, 'Light', $default, 'primary'),
-        $secondary: map.get($themes, 'Light', $default, 'secondary'),
-        $tertiary: map.get($themes, 'Light', $default, 'tertiary'),
-        $accent: map.get($themes, 'Light', $default, 'accent'),
-        $background-color:
-            map.get($themes, 'Light', $default, 'background-color'),
-        $color: map.get($themes, 'Light', $default, 'color'),
-        $muted: map.get($themes, 'Light', $default, 'muted')
-    );
+// TODO: dry up these calls
+@mixin prefers-dark {
+    @include set-theme(null, 'Dark', $default);
+}
 
-    @include create-theme(
-        $type: 'strings',
-        $prefix: null,
-        $mode: 'Dark',
-        $primary: map.get($themes, 'Light', $default, 'primary'),
-        $secondary: map.get($themes, 'Light', $default, 'secondary'),
-        $tertiary: map.get($themes, 'Light', $default, 'tertiary'),
-        $accent: map.get($themes, 'Light', $default, 'accent'),
-        $background-color:
-            map.get($themes, 'Light', $default, 'background-color'),
-        $color: map.get($themes, 'Light', $default, 'color'),
-        $muted: map.get($themes, 'Light', $default, 'muted')
-    );
+@mixin prefers-light {
+    // Base
+    @include set-theme(null, 'Light', $default);
 }
 
 @mixin colors($selector: '') {
     @each $name, $mode in $themes {
         #{$selector}[data-prefers-color-scheme='#{$name}'] {
-            @include create-theme(
-                $type: null,
-                $prefix: null,
-                $mode: $name,
-                $primary: map.get($mode, $default, 'primary'),
-                $secondary: map.get($mode, $default, 'secondary'),
-                $tertiary: map.get($mode, $default, 'tertiary'),
-                $accent: map.get($mode, $default, 'accent'),
-                $background-color: map.get($mode, $default, 'background-color'),
-                $color: map.get($mode, $default, 'color'),
-                $muted: map.get($mode, $default, 'muted')
-            );
-
-            @include create-theme(
-                $type: 'strings',
-                $prefix: null,
-                $mode: if($name == 'Light', 'Dark', 'Light'),
-                $primary: map.get($mode, $default, 'primary'),
-                $secondary: map.get($mode, $default, 'secondary'),
-                $tertiary: map.get($mode, $default, 'tertiary'),
-                $accent: map.get($mode, $default, 'accent'),
-                $background-color: map.get($mode, $default, 'background-color'),
-                $color: map.get($mode, $default, 'color'),
-                $muted: map.get($mode, $default, 'muted')
-            );
+            @include set-theme(null, $name, $default);
 
             @each $color, $colors in $mode {
-                // Blue
                 &[data-#{string.to-lower-case($name)}-theme='#{$color}'] {
-                    @include create-theme(
-                        $type: null,
-                        $prefix: null,
-                        $mode: $name,
-                        $primary: map.get($colors, 'primary'),
-                        $secondary: map.get($colors, 'secondary'),
-                        $tertiary: map.get($colors, 'tertiary'),
-                        $accent: map.get($colors, 'accent'),
-                        $background-color: map.get($colors, 'background-color'),
-                        $color: map.get($colors, 'color'),
-                        $muted: map.get($colors, 'muted')
-                    );
-
-                    @include create-theme(
-                        $type: 'strings',
-                        $prefix: null,
-                        $mode: if($name == 'Light', 'Dark', 'Light'),
-                        $primary: map.get($colors, 'primary'),
-                        $secondary: map.get($colors, 'secondary'),
-                        $tertiary: map.get($colors, 'tertiary'),
-                        $accent: map.get($colors, 'accent'),
-                        $background-color: map.get($colors, 'background-color'),
-                        $color: map.get($colors, 'color'),
-                        $muted: map.get($colors, 'muted')
-                    );
+                    @include set-theme(null, $name, $color);
                 }
             }
+        }
+    }
+
+    @each $name, $mode in $themes {
+        [data-mode='#{string.to-lower-case($name)}'] {
+            @each $color, $colors in $mode {
+                &[data-#{string.to-lower-case($name)}-theme='#{$color}'] {
+                    @include set-theme('toggle', $name, $color);
+                }
+            }
+        }
+    }
+}
+
+@mixin os-themes($selector, $mode) {
+    @each $color, $colors in map.get($themes, $mode) {
+        #{$selector}[data-#{string.to-lower-case($mode)}-theme='#{$color}'] {
+            @include set-theme(null, $mode, $color);
         }
     }
 }
@@ -310,11 +284,13 @@ $theme-colors: (
 @mixin init-themes() {
     @media (prefers-color-scheme: dark) {
         @include prefers-dark;
+        @include os-themes('&', 'Dark');
     }
 
     @media (prefers-color-scheme: light),
         (prefers-color-scheme: no-preference) {
         @include prefers-light;
+        @include os-themes('&', 'Light');
     }
 
     @include colors('&');

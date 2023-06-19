@@ -1,6 +1,13 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import {
+    Dispatch,
+    SetStateAction,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+} from 'react';
 import classNames from 'classnames';
 import styles from './toggle.module.scss';
 
@@ -8,11 +15,12 @@ type Props = {
     options: string[];
     localStorageKey: string;
     defaultOption?: string | undefined;
-    addDataAttr?: boolean;
-    addCssVariable?: boolean;
-    vertical?: boolean;
+    addDataAttr?: boolean | undefined;
+    addCssVariable?: boolean | undefined;
+    vertical?: boolean | undefined;
     shouldResize: boolean;
     resize: () => void;
+    onUpdate?: Dispatch<SetStateAction<string>> | undefined;
 };
 
 export function Toggle({
@@ -24,12 +32,17 @@ export function Toggle({
     vertical = false,
     shouldResize,
     resize,
+    onUpdate,
 }: Props) {
     const ref = useRef<HTMLButtonElement>(null);
     const [selectedOption, setSelectedOption] = useState('');
     const setSelectedValue = useCallback(
         (option: string) => {
             setSelectedOption(option);
+
+            if (onUpdate) {
+                onUpdate(option);
+            }
 
             // Update local storage
             localStorage.setItem(localStorageKey, option);
@@ -58,7 +71,7 @@ export function Toggle({
 
             ref.current.style.setProperty('--modifier', index);
         },
-        [addCssVariable, addDataAttr, localStorageKey, options]
+        [addCssVariable, addDataAttr, localStorageKey, onUpdate, options]
     );
     const setWidth = useCallback(() => {
         if (!ref.current) {

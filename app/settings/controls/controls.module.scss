@@ -1,8 +1,14 @@
+@use 'sass:string';
+@use 'sass:math';
+
+// TODO: Move to exports.module.scss
+$colors: ('primary', 'secondary', 'tertiary', 'accent');
+
 .controls {
     width: 100%;
     display: grid;
     grid-template-columns: max-content auto;
-    gap: var(--line-height) 4ch;
+    gap: var(--line-height) 2ch;
 
     .label {
         display: flex;
@@ -15,89 +21,73 @@
     .group {
         display: flex;
         align-items: center;
-        gap: 4ch;
-    }
+        gap: 2ch;
 
-    .colors {
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: calc(var(--line-height));
-        height: 100%;
-        width: 100%;
+        &[data-dark-theme=''],
+        &[data-light-theme=''] {
+            color: transparent;
+        }
 
-        > div {
+        .colors {
             display: grid;
-            align-items: center;
+            grid-template-columns: auto auto auto auto;
+            grid-template-rows: min-content auto;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1ch;
+            height: 100%;
+            width: 100%;
+            text-align: center;
 
-            &.primary {
-                background-color: var(--primary);
-                color: var(--background-color);
-
-                > div {
-                    .hex {
-                        &::after {
-                            content: var(--primary-string);
-                        }
-                    }
+            @each $color in $colors {
+                .#{$color} {
+                    color: var(--primary);
                 }
             }
 
-            &.secondary {
-                background-color: var(--secondary);
-                color: var(--background-color);
-
-                > div {
-                    .hex {
-                        &::after {
-                            content: var(--secondary-string);
-                        }
-                    }
-                }
-            }
-
-            &.tertiary {
-                background-color: var(--tertiary);
-                color: var(--background-color);
-
-                > div {
-                    .hex {
-                        &::after {
-                            content: var(--tertiary-string);
-                        }
-                    }
-                }
-            }
-
-            &.accent {
-                background-color: var(--accent);
-                color: var(--background-color);
-
-                > div {
-                    .hex {
-                        &::after {
-                            content: var(--accent-string);
-                        }
-                    }
-                }
-            }
-
-            > div {
+            .color-block {
                 display: grid;
-                justify-content: center;
-                height: fit-content;
+                align-items: center;
+                color: var(--toggle-background-color);
+                background-color: var(--primary-20);
+                transition: all var(--prefers-color-scheme-transition-speed)
+                    ease-in-out;
 
-                .hex {
-                    position: relative;
-                    color: transparent;
+                @each $color in $colors {
+                    &.#{$color} {
+                        background-color: var(
+                            --toggle-#{$color},
+                            var(--primary-20)
+                        );
 
-                    &::after {
-                        content: '';
-                        color: var(--background-color);
-                        position: absolute;
-                        top: 0px;
-                        left: 0px;
-                        width: 100%;
-                        height: 100%;
+                        .color-text {
+                            .hex {
+                                &::after {
+                                    content: var(--toggle-#{$color}-string);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .color-text {
+                    text-align: center;
+
+                    .hex {
+                        position: relative;
+                        text-align: center;
+
+                        .placeholder {
+                            color: transparent;
+                        }
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0px;
+                            left: 0px;
+                            width: 100%;
+                            height: 100%;
+                        }
                     }
                 }
             }
