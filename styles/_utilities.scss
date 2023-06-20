@@ -6,6 +6,8 @@
 $font-size: 12px;
 $line-height: 18px;
 $offset: 3px;
+$x: 3px;
+$y: 7px;
 $p-line-height-modifier: 1.25;
 $page-padding: calc($line-height * 7) 0.5in calc($line-height * 2);
 $page-gap: calc($line-height * 5);
@@ -44,8 +46,6 @@ $max-width: 680px;
     --shadow-2: var(--primary-20);
     --shadow-3: var(--primary-20);
     --transition-speed: 150ms;
-    --x: 3px;
-    --y: 7px;
 }
 
 @mixin shadow-base {
