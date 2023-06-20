@@ -5,6 +5,8 @@
     --line-height: #{utilities.$line-height};
     --font-size: #{utilities.$font-size};
     --offset: #{utilities.$offset};
+    --x: #{utilities.$x};
+    --y: #{utilities.$y};
     --p-line-height-modifier: #{utilities.$p-line-height-modifier};
     --page-padding: #{utilities.$page-padding};
     --page-gap: #{utilities.$page-gap};
@@ -34,21 +36,46 @@
         --font-size: 16px;
         --line-height: 24px;
         --offset: 4.5px;
+        --y: 9.5px;
+        --x: 5.5px;
     }
 
     &[data-font-size='20px'] {
         --font-size: 20px;
         --line-height: 32px;
         --offset: 6px;
+        --y: 11.5px;
+        --x: 7.5px;
+        // --max-width: 950px;
     }
 
     // Fonts
     &[data-font-family='Retro'] {
         --font-family: var(--font-retro);
-        --max-width: 800px;
+
+        // DEV: Can this be nade to look good?
+        // How do make this work for every color?
+        // text-shadow: 0px 0px calc(var(--font-size) / 2) currentColor;
+        // text-shadow: 0px 0px var(--font-size) currentColor;
+        // text-shadow: 0px 0px 1ch currentColor;
+        // text-shadow: 0px 0px 1px currentColor;
+
+        &[data-font-size='12px'] {
+            // --max-width: 850px;
+            --y: 6px;
+            --x: 3px;
+        }
+
+        &[data-font-size='16px'] {
+            // --max-width: 1050px;
+            --y: 8px;
+            --x: 5px;
+        }
 
         &[data-font-size='20px'] {
-            --max-width: 850px;
+            // --max-width: 1250px;
+            --y: 10px;
+            --x: 6px;
         }
     }
 
@@ -61,6 +88,9 @@
     &[data-font-family='Serif'] {
         --font-family: var(--font-serif);
     }
+
+    // DEV:
+    // text-shadow: 0px 0px 1px currentColor;
 }
 
 * {
