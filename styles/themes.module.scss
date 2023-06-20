@@ -48,6 +48,13 @@ $themes: (
             'accent': #ff5ebf,
             'background-color': #292d52,
         ),
+        'Cyber': (
+            'primary': #28fc91,
+            'secondary': #28fc91,
+            'tertiary': #40ffff,
+            'accent': #40ffff,
+            // TODO: Need differnt muted / background colors
+        ),
         'High Contrast': (
             'primary': #ffffff,
             'secondary': #ffffff,
@@ -106,6 +113,14 @@ $themes: (
             'tertiary': #616d02,
             'accent': #383e6f,
             'background-color': #cdd4e0,
+        ),
+        'Cyber': (
+            // TODO: Need darker colors
+            'primary': #28fc91,
+            'secondary': #28fc91,
+            'tertiary': #40ffff,
+            'accent': #40ffff,
+            // TODO: Need differnt muted / background colors
         ),
         'High Contrast': (
             'primary': #000000,
