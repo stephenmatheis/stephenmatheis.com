@@ -22,7 +22,8 @@
         [data-option] {
             white-space: nowrap;
             width: 100%;
-            padding: 3px 24px;
+            // padding: 3px 24px;
+            padding: var(--offset) 24px;
 
             &:not(:nth-last-child(2))::after {
                 right: 3px;
