@@ -2,6 +2,7 @@
 
 .header {
     display: flex;
+    justify-content: center;
     width: 100%;
 
     @media screen and (max-width: utilities.$medium-width) {
