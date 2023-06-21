@@ -13,6 +13,7 @@ export function DateTime({ dateString, className = '' }: Props) {
         <time
             className={[styles['date-time'], className].join(' ')}
             dateTime={dateString}
+            suppressHydrationWarning
         >
             {format(date, 'LLLL	d, yyyy')}
         </time>
