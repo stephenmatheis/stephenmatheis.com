@@ -49,6 +49,7 @@ export function Projects({ displayImages, printOnly }: Props) {
                                                 alt={description}
                                                 width={width}
                                                 height={height}
+                                                priority
                                             />
                                         </a>
                                     </div>
