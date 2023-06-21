@@ -41,6 +41,18 @@
     }
 
     // Fonts
+    &[data-font-family='Monospace'] {
+        &[data-font-size='16px'] {
+            --y: 9.5px;
+            --x: 5.5px;
+        }
+
+        &[data-font-size='20px'] {
+            --y: 11.5px;
+            --x: 7.5px;
+        }
+    }
+
     &[data-font-family='Retro'] {
         --font-family: var(--font-retro);
 
