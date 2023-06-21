@@ -3,10 +3,11 @@ import styles from './memoji.module.scss';
 export function Memoji({}: {}) {
     return (
         <video
-            autoPlay
-            playsInline
             loop
             muted
+            autoPlay
+            playsInline
+            poster="/poster.png"
             preload="auto"
             style={{
                 width: 640 / 2,
