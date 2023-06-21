@@ -93,9 +93,6 @@ $themes: themes.$themes;
 $dark-colors: map.get($themes, 'Dark');
 $light-colors: map.get($themes, 'Light');
 $combined-colors: ($dark-colors, $light-colors);
-
-@debug format($dark-colors);
-
 $theme-colors: (
     'Dark': format($dark-colors),
     'Light': format($light-colors),
