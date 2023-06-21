@@ -8,7 +8,6 @@ export function Memoji({}: {}) {
             autoPlay
             playsInline
             poster="/poster.png"
-            preload="auto"
             style={{
                 width: 640 / 2,
                 height: 480 / 2,
