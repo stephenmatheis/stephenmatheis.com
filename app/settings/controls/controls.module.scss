@@ -89,6 +89,7 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
                 .color-block {
                     display: grid;
                     align-items: center;
+                    height: 100%;
                     color: var(--toggle-background-color);
                     background-color: var(--primary-20);
                     transition: all var(--prefers-color-scheme-transition-speed)
