@@ -10,8 +10,8 @@ import {
 } from 'react';
 import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
-import styles from './controls.module.scss';
 import variables from '@/styles/exports.module.scss';
+import styles from './controls.module.scss';
 
 type ControlProps = {
     label: string;
@@ -85,7 +85,6 @@ export function Controls({}) {
             {
                 label: 'Font Family',
                 key: 'font-family',
-                // options: ['Monospace', 'Sans Serif', 'Serif'],
                 options: ['Monospace', 'Retro', 'Sans Serif', 'Serif'],
                 defaultOption: 'Monospace',
                 addDataAttr: true,
@@ -100,7 +99,6 @@ export function Controls({}) {
         ];
     }, [dark, light]);
     const resize = useCallback(() => {
-        // Set
         setShouldResize(true);
 
         // Reset state
@@ -154,20 +152,24 @@ export function Controls({}) {
                                                         key={name}
                                                         className={
                                                             styles[
-                                                                'color-label'
+                                                                'color-group'
                                                             ]
                                                         }
                                                     >
-                                                        {name}
+                                                        <div
+                                                            className={
+                                                                styles[
+                                                                    'color-label'
+                                                                ]
+                                                            }
+                                                        >
+                                                            {name}
+                                                        </div>
+                                                        <Color
+                                                            key={name}
+                                                            name={name}
+                                                        />
                                                     </div>
-                                                );
-                                            })}
-                                            {colors.map((name) => {
-                                                return (
-                                                    <Color
-                                                        key={name}
-                                                        name={name}
-                                                    />
                                                 );
                                             })}
                                         </div>

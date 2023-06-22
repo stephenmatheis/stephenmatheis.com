@@ -1,3 +1,32 @@
+@use 'styles/utilities';
+
+@mixin vertical() {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    [data-option] {
+        white-space: nowrap;
+        width: 100%;
+        // padding: 3px 24px;
+        padding: var(--offset) 24px;
+
+        &:not(:nth-last-child(2))::after {
+            right: 3px;
+            bottom: -0.5px;
+            height: 1px;
+            width: calc(100% - 6px);
+        }
+    }
+
+    .indicator {
+        width: calc(100% - var(--double-offset));
+        height: calc(var(--indicator-height) - var(--double-offset));
+        top: calc((var(--indicator-height) * var(--modifier)) + var(--offset));
+        left: var(--offset);
+    }
+}
+
 .toggle {
     --modifier: 0;
     --indicator-width: 0px;
@@ -12,54 +41,37 @@
     padding: 0px;
     width: 100%;
     background-color: var(--primary-20);
+    -webkit-tap-highlight-color: transparent;
     z-index: 0;
 
-    &.vertical {
-        width: fit-content;
-        display: flex;
-        flex-direction: column;
-
-        [data-option] {
-            white-space: nowrap;
-            width: 100%;
-            // padding: 3px 24px;
-            padding: var(--offset) 24px;
-
-            &:not(:nth-last-child(2))::after {
-                right: 3px;
-                bottom: -0.5px;
-                height: 1px;
-                width: calc(100% - 6px);
-            }
-        }
-
-        .indicator {
-            width: calc(100% - var(--double-offset));
-            height: calc(var(--indicator-height) - var(--double-offset));
-            top: calc(
-                (var(--indicator-height) * var(--modifier)) + var(--offset)
-            );
-            left: var(--offset);
-        }
+    @media (max-width: utilities.$small-width) {
+        @include vertical();
+        width: 100% !important;
     }
 
-    &:not(.vertical) {
-        [data-option] {
-            &:not(:nth-last-child(2))::after {
-                top: 3px;
-                right: -0.5px;
-                width: 1px;
-                height: calc(100% - 6px);
-            }
-        }
+    &.vertical {
+        @include vertical();
+    }
 
-        .indicator {
-            width: calc(var(--indicator-width) - var(--double-offset));
-            height: calc(100% - var(--double-offset));
-            top: var(--offset);
-            left: calc(
-                (var(--indicator-width) * var(--modifier)) + var(--offset)
-            );
+    @media (min-width: calc(utilities.$small-width + 1px)) {
+        &:not(.vertical) {
+            [data-option] {
+                &:not(:nth-last-child(2))::after {
+                    top: 3px;
+                    right: -0.5px;
+                    width: 1px;
+                    height: calc(100% - 6px);
+                }
+            }
+
+            .indicator {
+                width: calc(var(--indicator-width) - var(--double-offset));
+                height: calc(100% - var(--double-offset));
+                top: var(--offset);
+                left: calc(
+                    (var(--indicator-width) * var(--modifier)) + var(--offset)
+                );
+            }
         }
     }
 
