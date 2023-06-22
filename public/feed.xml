@@ -13,6 +13,7 @@
             <url>http://example.com/image.png</url>
             <link>http://example.com/</link>
         </image>
+        <icon>https://stephenmatheis-com.vercel.app/favicons/favicon.ico</icon>
         <copyright>All rights reserved 2013, John Doe</copyright>
         <item>
             <title><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua 2]]></title>

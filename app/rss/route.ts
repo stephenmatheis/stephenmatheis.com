@@ -10,8 +10,8 @@ export async function GET() {
         id: 'https://stephenmatheis-com.vercel.app',
         link: 'https://stephenmatheis-com.vercel.app',
         language: 'en',
-        favicon: 'https://stephenmatheis-com.vercel.app/favicons/favicon.ico',
         image: 'https://stephenmatheis-com.vercel.app/memoji.png',
+        favicon: 'https://stephenmatheis-com.vercel.app/favicons/favicon.ico',
         copyright: `Copyright © ${new Date().getFullYear()}, Stephen Matheis`,
         generator: 'Next.js + Feed for Node.js',
         feedLinks: {
