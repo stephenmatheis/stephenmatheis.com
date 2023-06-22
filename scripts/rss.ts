@@ -15,7 +15,7 @@ const posts = readdirSync(path.resolve(__dirname, '../_posts/'))
         const postContent = readFileSync(`./_posts/${file}`, 'utf8');
         const { data, content }: { data: any; content: string } =
             matter(postContent);
-        return { ...data, body: content };
+        return { ...data, body: content, slug: path.parse(file).name };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -37,10 +37,12 @@ function renderPost(md: string) {
 function main(): void {
     const feed = new RSS({
         title: 'Stephen Matheis',
-        site_url: 'https://stephenmatheis-com.vercel.app',
-        feed_url: 'https://stephenmatheis-com.vercel.app/feed.xml',
-        language: 'en',
         description: "Stephen Matheis' blog",
+        feed_url: 'https://stephenmatheis-com.vercel.app/feed.xml',
+        site_url: 'https://stephenmatheis-com.vercel.app',
+        copyright: `${new Date().getFullYear()} Stephen Matheis`,
+        pubDate: new Date(),
+        language: 'en',
     });
 
     posts.forEach((post) => {
@@ -50,7 +52,7 @@ function main(): void {
             title: post.title,
             description: renderPost(post.body),
             date: new Date(post?.date),
-            author: 'Max Leiter',
+            author: 'Stephen Matheis',
             url,
             guid: url,
         });
