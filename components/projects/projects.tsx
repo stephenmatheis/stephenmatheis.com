@@ -39,7 +39,9 @@ export function Projects({ displayImages, printOnly }: Props) {
                                 [styles['display-images']]: displayImages,
                             })}
                         >
-                            <LinkCtr href={link}>{name}</LinkCtr>
+                            <LinkCtr href={link} newTab>
+                                {name}
+                            </LinkCtr>
                             <div className={styles['description-ctr']}>
                                 {displayImages && src && (
                                     <div className={styles['img-ctr']}>
