@@ -7,7 +7,7 @@ export function Memoji({}: {}) {
             muted
             autoPlay
             playsInline
-            poster="/poster.png"
+            poster="/poster.webp"
             style={{
                 width: 640 / 2,
                 height: 480 / 2,

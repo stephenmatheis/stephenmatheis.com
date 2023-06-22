@@ -4,7 +4,7 @@ const projects = [
         link: 'https://github.com/robijs',
         gif: '',
         image: {
-            src: '/robi.png',
+            src: '/robi.webp',
             width: 1400,
             height: 868,
         },
@@ -16,7 +16,7 @@ const projects = [
         link: 'https://robi-command-palette.netlify.app',
         gif: '',
         image: {
-            src: '/command-palette.png',
+            src: '/command-palette.webp',
             width: 1400,
             height: 868,
         },
@@ -28,7 +28,7 @@ const projects = [
         link: 'https://samepage.dev',
         gif: '',
         image: {
-            src: '/samepage.png',
+            src: '/samepage.webp',
             width: 1400,
             height: 1066,
         },
