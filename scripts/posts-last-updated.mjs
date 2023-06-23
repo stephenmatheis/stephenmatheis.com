@@ -16,6 +16,8 @@ posts.forEach(async (file) => {
         lastModified: lastModified.toISOString(),
     };
 
+    console.log(lastModified.toISOString());
+
     fileMatter.data = updatedData;
     const updatedFileContent = matter.stringify(fileMatter);
     fs.writeFile(filePath, updatedFileContent);
