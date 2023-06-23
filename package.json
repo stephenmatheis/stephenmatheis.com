@@ -6,10 +6,10 @@
         "dev": "next dev",
         "build": "next build",
         "build-static": "next build && next export",
-        "prebuild": "node ./scripts/posts-last-updated.mjs",
         "start": "next start",
         "lint": "next lint"
     },
+    "pre-commit": "node ./scripts/posts-last-updated.mjs",
     "bin": {
         "post": "./.bin/create-post.mjs"
     },
