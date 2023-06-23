@@ -18,20 +18,20 @@ posts.forEach(async (file) => {
         lastModified: lastModified.toISOString(),
     };
 
-    console.log(currentData.title);
-    console.log(currentData.lastModified);
-    console.log(updatedData.lastModified);
-    console.log(new Date().toISOString());
+    // console.log(currentData.title);
+    // console.log(currentData.lastModified);
+    // console.log(updatedData.lastModified);
+    // console.log(new Date().toISOString());
 
     if (currentData.lastModified === updatedData.lastModified) {
-        console.log('not modified, skip');
-        console.log('---');
+        // console.log('not modified, skip');
+        // console.log('---');
 
         return;
     }
 
-    console.log('modified');
-    console.log('---');
+    // console.log('modified');
+    // console.log('---');
 
     fileMatter.data = updatedData;
     const updatedFileContent = matter.stringify(fileMatter);
