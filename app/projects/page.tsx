@@ -16,7 +16,7 @@ export default function ProjectsPage({}) {
                 {
                     label: 'GitHub',
                     path: 'https://github.com/stephenmatheis',
-                    external: true,
+                    newTab: true,
                 },
             ]}
         >

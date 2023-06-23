@@ -4,7 +4,7 @@ import styles from './footer.module.scss';
 type Link = {
     label: string;
     path: string;
-    external?: boolean;
+    newTab?: boolean;
 };
 
 type Props = {
@@ -20,10 +20,10 @@ export function Footer({ links, text }: Props) {
             {links?.length && (
                 <nav>
                     <ol>
-                        {links.map(({ label, path, external }) => {
+                        {links.map(({ label, path, newTab }) => {
                             return (
-                                <li key="label">
-                                    <LinkCtr href={path} newTab={external}>
+                                <li key={path}>
+                                    <LinkCtr href={path} newTab={newTab}>
                                         {label}
                                     </LinkCtr>
                                 </li>

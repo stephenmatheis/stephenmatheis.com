@@ -7,9 +7,14 @@ export default function RootPage() {
         <Page
             links={[
                 {
-                    label: 'GitHub',
-                    path: 'https://github.com/stephenmatheis',
-                    external: true,
+                    label: 'RSS',
+                    path: '/rss',
+                    newTab: true,
+                },
+                {
+                    label: 'JSON',
+                    path: '/json',
+                    newTab: true,
                 },
             ]}
         >
