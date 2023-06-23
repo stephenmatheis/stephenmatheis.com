@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         { media: '(prefers-color-scheme: dark)', color: '#221d29' },
     ],
     icons: {
-        shortcut: '/favicons/favicon.ico',
+        shortcut: '/favicon.ico',
         icon: '/favicons/icon.png',
         apple: '/favicons/apple-icon.png',
     },

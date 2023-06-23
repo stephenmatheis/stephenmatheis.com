@@ -33,7 +33,7 @@ export function LinkCtr({
                     target="_blank"
                     aria-label={label}
                 >
-                    {children}
+                    <span className={styles['text']}>{children}</span>
                 </a>
             ) : (
                 <Link
