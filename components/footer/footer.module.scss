@@ -1,10 +1,11 @@
-@use '../../styles/utilities.module.scss' as utilities;
-@use '../../styles/dark.theme.module.scss' as theme;
-
 .footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--line-height);
+
     * {
-        font-size: utilities.$font-size;
-        line-height: utilities.$line-height;
+        font-size: var(--font-size);
+        line-height: var(--line-height);
     }
 
     nav {
@@ -13,7 +14,17 @@
             padding-left: 0;
             display: flex;
             justify-content: center;
+            gap: 2ch;
+
+            li {
+                color: var(--secondary);
+            }
         }
+    }
+
+    .copyright {
+        text-align: center;
+        color: var(--muted);
     }
 
     @media print {

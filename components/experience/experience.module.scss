@@ -1,43 +1,35 @@
-@use '../../styles/utilities.module.scss' as utilities;
-@use '../../styles/dark.theme.module.scss' as theme;
-
-.comment {
-    color: theme.$comment;
-    margin-bottom: utilities.$line-height;
-}
-
-.date {
-    color: theme.$date;
-
-    .location {
-        color: theme.$muted;
-    }
-}
-
 .experience {
     .job {
         break-inside: avoid;
 
         &:not(:last-child) {
-            margin-bottom: utilities.$line-height;
+            margin-bottom: calc((var(--line-height) * 2));
+
+            @media print {
+                margin-bottom: var(--line-height);
+            }
         }
 
         .title {
-            color: theme.$heading;
+            color: var(--primary);
 
             .company {
-                color: theme.$company;
+                color: var(--accent);
             }
         }
 
         .lines {
-            display: flex;
-            flex-direction: column;
-
             .line {
                 display: flex;
-                color: theme.$text;
             }
+        }
+    }
+
+    .date {
+        color: var(--tertiary);
+
+        .location {
+            color: var(--tertiary);
         }
     }
 }

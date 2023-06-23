@@ -1,20 +1,17 @@
-@use '../../styles/utilities.module.scss' as utilities;
-@use '../../styles/dark.theme.module.scss' as theme;
-
 .comment {
-    color: theme.$comment;
-    margin-bottom: utilities.$line-height;
+    color: var(--title-color);
+    margin-bottom: var(--line-height);
 }
 
 .skills {
     .groups-ctr {
         display: flex;
         flex-direction: column;
-        gap: utilities.$line-height;
+        gap: var(--line-height);
 
         .group {
             .name {
-                color: theme.$heading;
+                color: var(--secondary);
             }
 
             .items-ctr {
@@ -25,7 +22,7 @@
                 .item {
                     display: inline-block;
                     border-radius: 4px;
-                    color: theme.$skill;
+                    color: var(--tertiary);
                 }
             }
         }

@@ -1,0 +1,9 @@
+@use 'sass:string';
+@use 'utilities';
+
+:export {
+    default: string.unquote(utilities.$default);
+    @each $key, $value in utilities.$theme-colors {
+        #{unquote($key)}: $value;
+    }
+}

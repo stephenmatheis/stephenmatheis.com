@@ -1,27 +1,141 @@
+@use 'utilities';
+
 :root {
-    --background-color: #1f1f1f;
-    --color: #d4d4d4;
-    --line-height: 18px;
-    --font-size: 12px;
+    // Utilities
+    --line-height: #{utilities.$line-height};
+    --font-size: #{utilities.$font-size};
+    --offset: #{utilities.$offset};
+    --x: #{utilities.$x};
+    --y: #{utilities.$y};
+    --p-line-height-modifier: #{utilities.$p-line-height-modifier};
+    --page-padding: #{utilities.$page-padding};
+    --page-gap: #{utilities.$page-gap};
+    --small-width: #{utilities.$small-width};
+    --medium-width: #{utilities.$medium-width};
+    --large-width: #{utilities.$large-width};
+    --max-width: #{utilities.$max-width};
+
+    // Defaults
+    --prefers-color-scheme-transition-speed: 250ms;
+    --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        Liberation Mono, 'Courier New', monospace;
+    --font-family: var(--font-monospace);
 
     @media print {
-        --line-height: 16.5px;
-        --font-size: 11px;
+        --line-height: 16px !important;
+    }
+
+    @include utilities.init-themes();
+
+    // Fonts
+    &[data-font-size='16px'] {
+        --font-size: 16px;
+        --line-height: 24px;
+        --offset: 4.5px;
+    }
+
+    &[data-font-size='20px'] {
+        --font-size: 20px;
+        --line-height: 32px;
+        --offset: 6px;
+    }
+
+    // Fonts
+    &[data-font-family='Monospace'] {
+        &[data-font-size='16px'] {
+            --y: 9.5px;
+            --x: 5.5px;
+        }
+
+        &[data-font-size='20px'] {
+            --y: 11.5px;
+            --x: 7.5px;
+        }
+    }
+
+    &[data-font-family='Retro'] {
+        --font-family: var(--font-retro);
+
+        // DEV: Can this be nade to look good?
+        // How do make this work for every color?
+        // text-shadow: 0px 0px calc(var(--font-size) / 2) currentColor;
+        // text-shadow: 0px 0px var(--font-size) currentColor;
+        // text-shadow: 0px 0px 1ch currentColor;
+        // text-shadow: 0px 0px 1px currentColor;
+
+        &[data-font-size='12px'] {
+            --y: 6px;
+            --x: 3px;
+        }
+
+        &[data-font-size='16px'] {
+            --y: 8px;
+            --x: 5px;
+        }
+
+        &[data-font-size='20px'] {
+            --y: 10px;
+            --x: 6px;
+        }
+    }
+
+    &[data-font-family='Sans Serif'] {
+        --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+            Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol';
+
+        &[data-font-size='16px'] {
+            --font-size: 16px;
+            --line-height: 24px;
+            --y: 9.5px;
+            --x: 5.5px;
+        }
+
+        &[data-font-size='20px'] {
+            --font-size: 20px;
+            --line-height: 28px;
+            --y: 11.75px;
+            --x: 7.5px;
+        }
+    }
+
+    &[data-font-family='Serif'] {
+        --font-family: var(--font-serif);
+
+        &[data-font-size='12px'] {
+            --font-size: 12px;
+            --y: 7.25px;
+            --x: 3.25px;
+        }
+
+        &[data-font-size='16px'] {
+            --font-size: 16px;
+            --line-height: 24px;
+            --y: 10px;
+            --x: 5px;
+        }
+
+        &[data-font-size='20px'] {
+            --font-size: 20px;
+            --line-height: 28px;
+            --y: 12.5px;
+            --x: 7.5px;
+        }
     }
 }
 
 * {
     box-sizing: border-box;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
 }
 
 html {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-        Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol';
+    font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
-    scrollbar-width: none; // Firefox
-    -ms-overflow-style: none; // IE 10+
+    // scrollbar-width: none; // Firefox
+    // -ms-overflow-style: none; // IE 10+
     -webkit-text-size-adjust: 100%;
 }
 
@@ -31,7 +145,276 @@ body {
     padding: 0;
     overflow: overlay;
 
-    &.hidden {
-        overflow: hidden;
+    &.can-transition {
+        transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
+            background-color var(--prefers-color-scheme-transition-speed) ease
+                0s;
     }
+}
+
+a {
+    position: relative;
+    color: var(--primary);
+
+    &.anchor {
+        display: block;
+
+        &:hover {
+            * {
+                color: var(--primary);
+            }
+        }
+
+        * {
+            transition: color 150ms ease-in-out;
+        }
+    }
+
+    &,
+    &:hover {
+        text-decoration: none;
+
+        .anchor-link {
+            opacity: 1;
+        }
+    }
+
+    .anchor-link {
+        position: absolute;
+        bottom: 0px;
+        left: -2ch;
+        color: var(--primary);
+        opacity: 0;
+        transition: opacity 150ms ease-in-out;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    color: var(--primary);
+
+    // TODO: Look at max-width to mimic text-wrap: balance;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: calc(var(--line-height) * 2);
+    margin-bottom: var(--line-height);
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: var(--line-height);
+    line-height: calc(var(--line-height) * var(--p-line-height-modifier));
+    text-align: justify;
+}
+
+article {
+    --theme-color: var(--primary);
+
+    .date {
+        display: inline-block;
+        margin-bottom: 0px;
+    }
+
+    p {
+        &:first-of-type {
+            margin-top: var(--line-height);
+        }
+    }
+
+    ul,
+    ol {
+        padding-left: 2ch;
+        margin: var(--line-height) 0px;
+
+        li {
+            &::marker {
+                color: var(--theme-color);
+            }
+        }
+    }
+
+    ol {
+        list-style-position: inside;
+    }
+
+    ul {
+        list-style: inside square;
+    }
+
+    blockquote {
+        // 🚫 Heading
+        border-left: 2px solid var(--theme-color);
+
+        // ✅ Link
+        // background: var(--primary-15);
+        // border-left: 10px solid var(--primary);
+
+        margin: calc(var(--line-height) * 2) 1ch;
+        padding-left: 2ch;
+
+        p {
+            color: var(--theme-color);
+            margin-top: 0px !important;
+        }
+    }
+}
+
+button {
+    font-family: var(--font-family);
+}
+
+// Code block
+[data-rehype-pretty-code-fragment] {
+    --background: var(--primary-10);
+    --hightlighted-background: var(--primary-15);
+    --title-background: var(--primary-20);
+    --highlighted-border-color: var(--primary);
+
+    position: relative;
+    margin-top: 0;
+    margin-bottom: calc(var(--line-height) * 2);
+
+    [data-rehype-pretty-code-title] {
+        // Tabbed
+        // width: fit-content;
+        // background: var(--background);
+
+        background: var(--title-background);
+        line-height: 30px;
+        padding: 0px 2ch;
+
+        @media (prefers-color-scheme: dark) {
+            &[data-theme='light'] {
+                display: none;
+            }
+        }
+
+        @media (prefers-color-scheme: light),
+            (prefers-color-scheme: no-preference) {
+            &[data-theme='dark'] {
+                display: none;
+            }
+        }
+    }
+
+    pre {
+        overflow-x: auto;
+        font-weight: 400;
+        margin: 0px;
+        padding: calc(var(--line-height) * 1) 0px;
+        opacity: 0.98;
+        background: var(--background);
+
+        &,
+        & * {
+            line-height: 2;
+        }
+
+        & > code {
+            font-family: var(--font-monospace);
+            display: grid;
+
+            // Line numbers
+            &[data-line-numbers] {
+                counter-reset: line;
+
+                > .line::before {
+                    counter-increment: line;
+                    content: counter(line);
+
+                    // Other styling
+                    display: inline-block;
+                    width: 1rem;
+                    margin-right: 2rem;
+                    text-align: right;
+                    color: gray;
+                }
+
+                // Line numbers
+                .line &[data-line-numbers-max-digits='2'] > .line::before {
+                    width: 2rem;
+                }
+
+                .line &[data-line-numbers-max-digits='3'] > .line::before {
+                    width: 3rem;
+                }
+            }
+
+            // Line
+            > .line {
+                padding: 0px 2ch;
+                border-left: 2px solid transparent;
+
+                // Highlight line
+                &.highlighted {
+                    background: var(--hightlighted-background);
+                    border-left-color: var(--highlighted-border-color);
+                }
+
+                &::selection,
+                & *::selection {
+                    color: inherit;
+                    background: var(--primary-30);
+                }
+            }
+
+            // Highlight word
+            .word {
+                --background-color: var(--word-background-color);
+
+                border-top: solid 3px var(--background-color);
+                border-bottom: solid 3px var(--background-color);
+                background-color: var(--background-color);
+
+                &[data-word-id='r'] {
+                    --background-color: var(--r-word-background-color);
+                }
+
+                &[data-word-id='g'] {
+                    --background-color: var(--g-word-background-color);
+                }
+
+                &[data-word-id='b'] {
+                    --background-color: var(--b-word-background-color);
+                }
+            }
+        }
+    }
+}
+
+// Conditionally show or hide light and dark theme code blocks
+div[data-code-block] {
+    &:has([data-theme='light']) {
+        @media (prefers-color-scheme: dark) {
+            display: none;
+        }
+    }
+}
+
+div[data-code-block] {
+    &:has([data-theme='dark']) {
+        @media (prefers-color-scheme: light),
+            (prefers-color-scheme: no-preference) {
+            display: none;
+        }
+    }
+}
+
+// Classes
+.muted {
+    color: var(--muted);
+}
+
+.color {
+    color: var(--color);
 }

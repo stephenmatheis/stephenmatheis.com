@@ -1,0 +1,108 @@
+@use 'styles/utilities';
+
+@mixin vertical() {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    [data-option] {
+        white-space: nowrap;
+        width: 100%;
+        // padding: 3px 24px;
+        padding: var(--offset) 24px;
+
+        &:not(:nth-last-child(2))::after {
+            right: 3px;
+            bottom: -0.5px;
+            height: 1px;
+            width: calc(100% - 6px);
+        }
+    }
+
+    .indicator {
+        width: calc(100% - var(--double-offset));
+        height: calc(var(--indicator-height) - var(--double-offset));
+        top: calc((var(--indicator-height) * var(--modifier)) + var(--offset));
+        left: var(--offset);
+    }
+}
+
+.toggle {
+    --modifier: 0;
+    --indicator-width: 0px;
+    --indicator-height: 0px;
+    --double-offset: calc(var(--offset) * 2);
+
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    display: grid;
+    border: none;
+    padding: 0px;
+    width: 100%;
+    background-color: var(--primary-20);
+    -webkit-tap-highlight-color: transparent;
+    z-index: 0;
+
+    @media (max-width: utilities.$small-width) {
+        @include vertical();
+        width: 100% !important;
+    }
+
+    &.vertical {
+        @include vertical();
+    }
+
+    @media (min-width: calc(utilities.$small-width + 1px)) {
+        &:not(.vertical) {
+            [data-option] {
+                &:not(:nth-last-child(2))::after {
+                    top: 3px;
+                    right: -0.5px;
+                    width: 1px;
+                    height: calc(100% - 6px);
+                }
+            }
+
+            .indicator {
+                width: calc(var(--indicator-width) - var(--double-offset));
+                height: calc(100% - var(--double-offset));
+                top: var(--offset);
+                left: calc(
+                    (var(--indicator-width) * var(--modifier)) + var(--offset)
+                );
+            }
+        }
+    }
+
+    [data-option] {
+        color: var(--primary);
+        text-align: center;
+        padding: 3px 6px;
+        position: relative;
+        z-index: 2;
+
+        &:not(:nth-last-child(2))::after {
+            content: '';
+            position: absolute;
+            background-color: var(--primary-50);
+        }
+    }
+
+    .indicator {
+        display: block;
+        background-color: var(--background-color);
+        position: absolute;
+        transition: top calc(var(--prefers-color-scheme-transition-speed) / 2)
+                linear,
+            left calc(var(--prefers-color-scheme-transition-speed) / 2) linear,
+            opacity var(--prefers-color-scheme-transition-speed) linear
+                calc(var(--prefers-color-scheme-transition-speed) / 2);
+        z-index: 1;
+
+        &.hidden {
+            opacity: 0;
+            scale: 0;
+        }
+    }
+}

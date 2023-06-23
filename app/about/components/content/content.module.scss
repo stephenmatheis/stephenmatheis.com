@@ -1,0 +1,40 @@
+@use 'styles/utilities';
+
+.resume {
+    flex: 2;
+    display: flex;
+    width: 100%;
+
+    @media screen {
+        gap: 16ch;
+        flex-direction: column-reverse;
+        gap: calc(var(--line-height) * 4);
+
+        .right {
+            max-width: unset;
+        }
+    }
+
+    @media print {
+        flex-direction: row-reverse;
+        gap: 4ch;
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--line-height) * 1.5);
+
+        @media screen {
+            gap: calc(var(--line-height) * 3);
+
+            @media (max-width: utilities.$medium-width) {
+                max-width: none;
+            }
+        }
+
+        @media print {
+            max-width: 34ch;
+        }
+    }
+}

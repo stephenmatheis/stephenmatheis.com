@@ -1,0 +1,71 @@
+@use 'styles/utilities';
+
+// FIXME: Link ctr internals leaking into nav
+@mixin button {
+    position: absolute;
+    top: 0.5px;
+    margin-right: 0ch;
+    transform: unset;
+    line-height: var(--line-height);
+    font-size: 22px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    a {
+        &,
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
+    .previous,
+    .next {
+        display: flex;
+        width: 100%;
+
+        > a {
+            position: relative;
+        }
+    }
+
+    .previous,
+    .next,
+    .center {
+        > a {
+            max-width: 25ch;
+            line-height: calc(
+                var(--line-height) * var(--p-line-height-modifier)
+            );
+
+            @media (max-width: utilities.$small-width) {
+                max-width: 15ch;
+            }
+        }
+    }
+
+    .previous {
+        justify-content: flex-start;
+
+        > a {
+            span:first-child {
+                @include button;
+                left: -1.5ch;
+            }
+        }
+    }
+
+    .next {
+        justify-content: flex-end;
+
+        > a {
+            span:nth-child(2) {
+                @include button;
+                right: -1.5ch;
+            }
+        }
+    }
+}
