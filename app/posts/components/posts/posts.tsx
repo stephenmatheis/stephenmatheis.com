@@ -11,7 +11,11 @@ export function Posts({ posts }: { posts: Post[] }) {
     const last20Posts = posts.slice(0, 21);
     const dates = [
         ...new Set(
-            last20Posts.map(({ date }) => new Date(date).toLocaleDateString())
+            last20Posts.map(({ date }) =>
+                new Date(date).toLocaleDateString('en-US', {
+                    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
+                })
+            )
         ),
     ];
 
@@ -44,7 +48,9 @@ export function Posts({ posts }: { posts: Post[] }) {
                                         (post) =>
                                             new Date(
                                                 post.date
-                                            ).toLocaleDateString() === date
+                                            ).toLocaleDateString('en-US', {
+                                                timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
+                                            }) === date
                                     )
                                     .map(
                                         (

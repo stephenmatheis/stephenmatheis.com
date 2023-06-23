@@ -15,6 +15,7 @@ export function PostsList({ posts }: { posts: Post[] }) {
                 return new Date(date).toLocaleDateString('en-US', {
                     month: 'long',
                     year: 'numeric',
+                    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
                 });
             })
         ),
@@ -34,6 +35,7 @@ export function PostsList({ posts }: { posts: Post[] }) {
                         ).toLocaleDateString('en-US', {
                             month: 'long',
                             year: 'numeric',
+                            timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
                         });
 
                         if (dateToCompare === date) {

@@ -1,4 +1,5 @@
-import { parseISO, format } from 'date-fns';
+import { parseISO } from 'date-fns';
+import { formatInTimeZone } from 'date-fns-tz';
 import styles from './date-time.module.scss';
 
 type Props = {
@@ -18,7 +19,11 @@ export function DateTime({ dateString, className = '' }: Props) {
             dateTime={dateString}
             suppressHydrationWarning
         >
-            {format(date, 'LLLL d, yyyy')}
+            {formatInTimeZone(
+                date,
+                process.env.NEXT_PUBLIC_TIME_ZONE || '',
+                'LLLL d, yyyy'
+            )}
         </time>
     );
 }
