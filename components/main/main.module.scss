@@ -1,160 +1,83 @@
-@use '../../styles/utilities.module.scss' as utilities;
-@use '../../styles/dark.theme.module.scss' as theme;
+@use 'styles/utilities';
 
 .main {
+    position: relative;
+    flex: 2;
     display: flex;
-    justify-content: space-between;
-    gap: 4ch;
-    opacity: 0;
+    width: 100%;
+    gap: 16ch;
 
-    @media screen {
-        flex-direction: row-reverse;
-
-        // NOTE:
-        // If the viewport is less than 912px wide, the combined left and right
-        // padding and margin will be less than 96px (1 inch) on either side.
-        // So, we'll set `flex-direction` to `column` and `max-width` to unset
-        // because it can now span the full width of the page.
-        //
-        // There is a corresponding media query in `styles/resume.module.scss` that
-        // replaces the 8.5in width with `fit-content` and add `align-items: center`
-        // which horizontally centers main.
-        //
-        // The main container may now be less than 720px so the page  `width` is
-        // set to `fit-content`.
-
-        // @media (max-width: 911px) {
-        @media (max-width: 911px) {
-            flex-direction: column;
-            gap: calc(utilities.$line-height * 2);
-
-            .right {
-                max-width: unset;
-            }
+    @media (min-width: utilities.$large-width) {
+        .left {
+            position: absolute;
+            right: calc(100% + 8ch);
         }
     }
 
-    &.loading {
-        opacity: 0;
-    }
-
-    &.fade {
-        animation: fade-in 450ms ease-in-out 0ms forwards;
-    }
-
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    * {
-        font-size: utilities.$font-size;
-        line-height: utilities.$line-height;
-    }
-
-    .right {
-        display: flex;
+    @media (max-width: utilities.$medium-width) {
         flex-direction: column;
-        gap: calc(utilities.$line-height * 2);
-        max-width: 34ch;
-
-        @media screen and (max-width: 911px) {
-            max-width: none;
-        }
+        gap: calc(var(--line-height) * 4);
     }
 
-    .ctr:not(:only-child) {
-        margin-bottom: utilities.$line-height;
-    }
-
-    .comment {
-        color: theme.$comment;
-        margin-bottom: utilities.$line-height;
-    }
-
-    .job {
-        break-inside: avoid;
-
-        &:not(:last-child) {
-            margin-bottom: utilities.$line-height;
+    &.col-2 {
+        .left,
+        .right {
+            display: flex;
+            flex-direction: column;
         }
 
-        .title {
-            color: theme.$heading;
+        .left {
+            justify-content: flex-start;
+            gap: calc(var(--line-height) * 2);
 
-            .company {
-                color: theme.$company;
+            @media screen and (max-width: utilities.$medium-width) {
+                width: unset;
+            }
+
+            @media print {
+                display: none;
             }
         }
 
-        .lines {
-            display: flex;
-            flex-direction: column;
+        .right {
+            flex: 2;
+            width: 100%;
+        }
+    }
 
-            .line {
-                display: flex;
-                color: theme.$text;
+    &.col-3 {
+        .left,
+        .right {
+            display: flex;
+            width: 100%;
+        }
+
+        .left {
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: calc(var(--line-height) * 2);
+
+            @media screen and (max-width: utilities.$medium-width) {
+                width: unset;
             }
         }
-    }
 
-    #skills {
-        .groups-ctr {
+        .middle {
             display: flex;
-            flex-direction: column;
-            gap: utilities.$line-height;
+            align-items: center;
+            justify-content: center;
 
-            .group {
-                .name {
-                    color: theme.$heading;
-                }
-
-                .items-ctr {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0ch 1ch;
-
-                    .item {
-                        display: inline-block;
-                        border-radius: 4px;
-                        color: theme.$skill;
-                    }
-                }
+            @media screen and (max-width: utilities.$medium-width) {
+                flex: 2;
             }
         }
-    }
 
-    #contact {
-        .info {
-            display: flex;
-            flex-direction: column;
-            white-space: nowrap;
-            gap: utilities.$line-height;
-        }
-    }
+        .right {
+            justify-content: flex-end;
 
-    #projects {
-        .project-ctr {
-            display: flex;
-            flex-direction: column;
-            gap: utilities.$line-height;
-
-            &:not(:last-child) {
-                margin-bottom: utilities.$line-height;
+            @media screen and (max-width: utilities.$medium-width) {
+                display: none;
             }
-        }
-    }
-
-    .date {
-        color: theme.$date;
-
-        .location {
-            color: theme.$muted;
         }
     }
 }

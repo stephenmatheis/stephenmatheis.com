@@ -1,9 +1,6 @@
-@use '../../styles/utilities.module.scss' as utilities;
-@use '../../styles/dark.theme.module.scss' as theme;
-
 .comment {
-    color: theme.$comment;
-    margin-bottom: utilities.$line-height;
+    color: var(--title-color);
+    margin-bottom: var(--line-height);
 }
 
 .contact {
@@ -11,6 +8,6 @@
         display: flex;
         flex-direction: column;
         white-space: nowrap;
-        gap: utilities.$line-height;
+        gap: var(--line-height);
     }
 }

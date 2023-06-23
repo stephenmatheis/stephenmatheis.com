@@ -1,0 +1,74 @@
+.copy-to-clipboard {
+    button {
+        --label-color: var(--primary);
+        --shadow-color: var(--label-color);
+
+        z-index: 1;
+        cursor: pointer;
+        position: absolute;
+
+        right: 7px;
+        top: 3px;
+
+        border: none;
+        background-color: var(--background-color);
+        box-shadow: 4px 4px 0px 0px var(--shadow-color);
+        color: var(--label-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 54px;
+        transition: all 300ms;
+
+        &:hover {
+            background-color: var(--shadow-color);
+            box-shadow: 0px 0px 0px 0px var(--shadow-color);
+            transform: translate(2px, 2px);
+
+            color: var(--background-color);
+        }
+
+        &.copied {
+            background-color: var(--shadow-color);
+            box-shadow: 0px 0px 0px 0px var(--shadow-color);
+            transform: translate(2px, 2px);
+
+            color: var(--background-color);
+
+            span {
+                animation: scale-in 300ms ease-in-out forwards;
+            }
+        }
+
+        &.fade {
+            span {
+                animation: scale-out 300ms ease-in-out forwards,
+                    scale-in 300ms ease-in-out 3300ms forwards;
+            }
+        }
+
+        @keyframes scale-in {
+            from {
+                scale: 0;
+                opacity: 0;
+            }
+
+            to {
+                scale: 1;
+                opacity: 1;
+            }
+        }
+
+        @keyframes scale-out {
+            from {
+                scale: 1;
+                opacity: 1;
+            }
+
+            to {
+                scale: 0;
+                opacity: 0;
+            }
+        }
+    }
+}

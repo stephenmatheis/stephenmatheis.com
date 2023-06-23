@@ -1,57 +1,37 @@
-@use '../../styles/utilities.module.scss' as utilities;
-@use '../../styles/dark.theme.module.scss' as theme;
+@use 'styles/utilities';
 
-.link-ctr {
-    height: utilities.$line-height;
+.link {
+    cursor: pointer;
 
-    &.hide-background {
-        .link-text {
-            border-bottom-color: transparent;
+    &,
+    &:hover {
+        color: var(--primary);
 
-            &::before {
-                background-color: transparent;
-            }
+        .text {
+            @include utilities.shadow-hover;
         }
     }
 
-    a {
-        display: flex;
-
-        &,
-        &:hover {
-            color: theme.$link;
-        }
+    .text {
+        @include utilities.shadow-variables;
+        @include utilities.shadow-base;
     }
 
-    .link-text {
-        position: relative;
-        border-bottom: solid 1px;
-        border-bottom-color: theme.$link;
-        transition: border-bottom-color 450ms ease-in-out;
+    .emoji {
+        font-size: var(--line-height);
 
-        &:hover {
-            &::before {
-                top: 0px;
-                left: 0px;
-            }
-        }
+        margin-right: 1ch;
+        // FIXME:
+        // I'm not sure if there is a good default.
+        // The only component using this right now is <Contacts />.
+        transform: translateY(3px);
+        // transform: translateY(1.5px);
+        display: inline-block;
+        line-height: 0px;
 
-        &::before {
-            content: '';
-            pointer-events: none;
-            position: absolute;
-            top: 6px;
-            left: 3px;
-            width: 100%;
-            height: 100%;
-            background-color: theme.$link-20;
-            transition: background-color 450ms ease-in-out,
-                top 250ms ease-in-out, left 250ms ease-in-out;
+        &.left {
+            margin-right: 0ch;
+            margin-left: 1ch;
         }
     }
-}
-
-.emoji {
-    font-size: utilities.$line-height;
-    margin-right: 1ch;
 }

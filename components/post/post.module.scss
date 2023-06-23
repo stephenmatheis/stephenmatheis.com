@@ -1,0 +1,37 @@
+@use 'styles/utilities';
+
+.post {
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    max-width: 100%;
+    min-height: 100dvh;
+    width: var(--max-width);
+    padding: 0.5in;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--line-height) * 3);
+
+    @media screen {
+        margin: 0 auto;
+        padding-top: calc(var(--line-height) * 4);
+        padding-bottom: calc(var(--line-height) * 2);
+
+        @media (max-width: utilities.$small-width) {
+            padding-left: 0.25in;
+            padding-right: 0.25in;
+        }
+    }
+
+    h1 {
+        margin-top: calc(35vh - (var(--line-height) * 5));
+        margin-top: calc(35vh - (var(--line-height) * 5));
+        margin-bottom: calc(15vh - (var(--line-height) * 3));
+    }
+    
+    article {
+        flex: 2;
+    }
+
+    .footer-wrapper {
+        margin-top: calc(var(--line-height) * 5);
+    }
+}
