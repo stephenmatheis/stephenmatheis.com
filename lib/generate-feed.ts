@@ -1,5 +1,23 @@
+import getPosts from './get-posts';
 import { Feed } from 'feed';
-import getPosts from '@/lib/get-posts';
+import { marked } from 'marked';
+import { gfmHeadingId } from 'marked-gfm-heading-id';
+import { mangle } from 'marked-mangle';
+
+const renderer = new marked.Renderer();
+
+renderer.link = (href, _, text) =>
+    `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+
+marked.use(gfmHeadingId(), mangle(), {
+    gfm: true,
+    breaks: true,
+    renderer,
+});
+
+function renderPost(md: string) {
+    return marked.parse(md);
+}
 
 export async function generateFeed(type: string) {
     const posts = await getPosts();
@@ -38,7 +56,7 @@ export async function generateFeed(type: string) {
                 title: post.title,
                 id: url,
                 link: url,
-                content: post.body,
+                content: renderPost(post.body),
                 author: [
                     {
                         name: 'Stephen Matheis',
