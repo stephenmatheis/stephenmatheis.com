@@ -10,14 +10,14 @@ posts.forEach(async (file) => {
     const stats = await fs.stat(filePath);
     const fileMatter = matter.read(filePath);
     const { data: currentData } = fileMatter;
+    const lastModified = new Date(stats.mtime);
     const updatedData = {
         ...currentData,
-        lastModified: new Date(stats.mtime).toISOString(),
+        lastModified: lastModified.toISOString(),
     };
-
-    console.log(new Date(stats.mtime).toISOString());
 
     fileMatter.data = updatedData;
     const updatedFileContent = matter.stringify(fileMatter);
     fs.writeFile(filePath, updatedFileContent);
+    fs.utimes(filePath, lastModified, lastModified);
 });
