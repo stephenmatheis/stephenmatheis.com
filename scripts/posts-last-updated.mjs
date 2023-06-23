@@ -22,9 +22,16 @@ posts.forEach(async (file) => {
     console.log(currentData.lastModified);
     console.log(updatedData.lastModified);
     console.log(new Date().toISOString());
-    console.log('---');
 
-    // return;
+    if (currentData.lastModified === updatedData.lastModified) {
+        console.log('not modified, skip');
+        console.log('---');
+
+        return;
+    }
+
+    console.log('modified');
+    console.log('---');
 
     fileMatter.data = updatedData;
     const updatedFileContent = matter.stringify(fileMatter);
