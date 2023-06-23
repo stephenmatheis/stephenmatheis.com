@@ -10,14 +10,19 @@ import styles from './posts.module.scss';
 export function Posts({ posts }: { posts: Post[] }) {
     const last20Posts = posts.slice(0, 21);
     const dates = [
-        ...new Set(last20Posts.map(({ date }) => date.split('T')[0])),
+        ...new Set(
+            last20Posts.map(({ date }) => new Date(date).toLocaleDateString())
+        ),
     ];
 
     return (
         <>
             <div className={styles['page-title']}>
                 <Comment text="Posts" />
-                <DateTime className={styles.date} dateString={dates[0]} />
+                <DateTime
+                    className={styles.date}
+                    dateString={new Date(dates[0]).toISOString()}
+                />
             </div>
             <div className={styles['date-groups']}>
                 {dates.map((date, dateIndex) => {
@@ -30,15 +35,16 @@ export function Posts({ posts }: { posts: Post[] }) {
                             {dateIndex !== 0 && (
                                 <DateTime
                                     className={styles.date}
-                                    dateString={date}
+                                    dateString={new Date(date).toISOString()}
                                 />
                             )}
-                            {/* <DateTime className={styles.date} dateString={date} /> */}
                             <div className={styles.posts}>
                                 {last20Posts
                                     .filter(
                                         (post) =>
-                                            post.date.split('T')[0] === date
+                                            new Date(
+                                                post.date
+                                            ).toLocaleDateString() === date
                                     )
                                     .map(
                                         (
