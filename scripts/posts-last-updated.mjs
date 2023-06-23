@@ -5,6 +5,8 @@ import fs from 'fs/promises';
 const postsDirectory = join(process.cwd(), '_posts');
 const posts = await fs.readdir(postsDirectory);
 
+// FIXME: This runs on all posts.
+// Filter to only run on posts that have been modified.
 posts.forEach(async (file) => {
     const filePath = join(postsDirectory, file);
     const stats = await fs.stat(filePath);
@@ -16,8 +18,16 @@ posts.forEach(async (file) => {
         lastModified: lastModified.toISOString(),
     };
 
+    console.log(currentData.title);
+    console.log(currentData.lastModified);
+    console.log(updatedData.lastModified);
+    console.log(new Date().toISOString());
+    console.log('---');
+
+    // return;
+
     fileMatter.data = updatedData;
     const updatedFileContent = matter.stringify(fileMatter);
-    fs.writeFile(filePath, updatedFileContent);
-    fs.utimes(filePath, lastModified, lastModified);
+    await fs.writeFile(filePath, updatedFileContent);
+    await fs.utimes(filePath, lastModified, lastModified);
 });
