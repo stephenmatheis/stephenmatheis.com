@@ -1,8 +1,6 @@
 @use 'styles/utilities';
 
-$inner-radius: 10px;
 $distance: 10px;
-$outer-radius: calc($inner-radius + $distance);
 
 .projects {
     &.print-only {
@@ -64,7 +62,6 @@ $outer-radius: calc($inner-radius + $distance);
                     border: solid 1px var(--shadow-color);
 
                     @media (max-width: utilities.$small-width) {
-                        min-width: calc(100% - 10px);
                         max-width: calc(100% - 10px);
                     }
 
@@ -80,21 +77,23 @@ $outer-radius: calc($inner-radius + $distance);
                         transition: all 300ms;
                     }
 
-                    &:hover {
-                        --hover-offset: 3px;
-                        --translate-offset: calc(var(--hover-offset) * -1);
+                    @media (hover: hover) {
+                        &:hover {
+                            --hover-offset: 3px;
+                            --translate-offset: calc(var(--hover-offset) * -1);
 
-                        translate: var(--translate-offset)
-                            var(--translate-offset);
+                            translate: var(--translate-offset)
+                                var(--translate-offset);
 
-                        &::after {
-                            top: calc($distance + (var(--hover-offset) * 2));
-                            left: calc($distance + (var(--hover-offset) * 2));
+                            &::after {
+                                top: calc(
+                                    $distance + (var(--hover-offset) * 2)
+                                );
+                                left: calc(
+                                    $distance + (var(--hover-offset) * 2)
+                                );
+                            }
                         }
-                    }
-
-                    @media screen and (max-width: utilities.$small-width) {
-                        width: 100%;
                     }
 
                     img {
