@@ -8,15 +8,15 @@
         "build-static": "next build && next export",
         "start": "next start",
         "lint": "next lint",
-        "lint:staged": "lint-staged",
-        "update-dates": "node ./scripts/posts-last-updated.mjs"
+        "lint:staged": "lint-staged -v",
+        "update-posts": "node ./scripts/update-posts.mjs"
     },
     "pre-commit": "lint:staged",
     "lint-staged": {
-        "**/*.{md,mdx}": "npm run update-dates"
+        "**/*.{md,mdx}": "npm run update-posts"
     },
     "bin": {
-        "post": "update-dates"
+        "post": "create-post"
     },
     "dependencies": {
         "@mdx-js/loader": "^2.3.0",
