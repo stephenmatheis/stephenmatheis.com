@@ -21,7 +21,7 @@ function renderPost(md: string) {
 
 export async function generateFeed(type: string) {
     const posts = await getPosts();
-    const site = 'https://stephenmatheis-com.vercel.app';
+    const site = 'https://stephenmatheis.com';
     const feed = new Feed({
         title: 'Stephen Matheis',
         description: "Stephen Matheis' blog",
@@ -49,7 +49,7 @@ export async function generateFeed(type: string) {
             body: any;
             date: string | number | Date;
         }) => {
-            const url = `https://stephenmatheis-com.vercel.app/posts/${post.slug}`;
+            const url = `${site}/posts/${post.slug}`;
 
             feed.addItem({
                 title: post.title,
@@ -59,8 +59,7 @@ export async function generateFeed(type: string) {
                 author: [
                     {
                         name: 'Stephen Matheis',
-                        email: 'stephen@matheis.email',
-                        link: 'https://stephenmatheis.com',
+                        link: site,
                     },
                 ],
                 date: new Date(post?.date),
