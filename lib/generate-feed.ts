@@ -38,7 +38,6 @@ export async function generateFeed(type: string) {
         },
         author: {
             name: 'Stephen Matheis',
-            email: 'stephen@mathis.email',
             link: site,
         },
     });

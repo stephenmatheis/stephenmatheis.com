@@ -1,14 +1,14 @@
 # Tasks
 
 -   [ ] https://www.adamcollier.co.uk/posts/adding-an-updated-date-to-markdown-and-mdx-posts/
--   [ ] Move domain to vecel (if Netlify bug isn't fixed soon)
--   [ ] Update header to use <LinkCtr />
+-   [x] Move domain to vecel (if Netlify bug isn't fixed soon)
+-   [x] Update header to use <LinkCtr />
 -   [ ] Add `color` property to <LinkCtr />
     -   Primary
     -   Secondary
     -   Tertiary
 -   [x] Add line height \* 1.25 or 1.5 to posts titles
--   [ ] Add palette with hex values to settings **next to toggles**
+-   [x] Add palette with hex values to settings **next to toggles**
 -   [ ] Add UI to create your own palette
 -   [x] Fix next post title max width on mobile
 -   [x] Add vertical toggle for long lists (themes)
