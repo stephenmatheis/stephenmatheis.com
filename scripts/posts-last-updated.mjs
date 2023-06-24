@@ -12,29 +12,33 @@ posts.forEach(async (file) => {
     const stats = await fs.stat(filePath);
     const fileMatter = matter.read(filePath);
     const { data: currentData } = fileMatter;
-    const lastModified = new Date(stats.mtime);
+    const lastModified = new Date(stats.mtime).toLocaleDateString('en-US', {
+        dateStyle: 'long',
+        timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
+    });
     const updatedData = {
         ...currentData,
-        lastModified: lastModified.toISOString(),
+        lastModified,
     };
 
-    // console.log(currentData.title);
-    // console.log(currentData.lastModified);
-    // console.log(updatedData.lastModified);
-    // console.log(new Date().toISOString());
+    console.log(currentData.title);
+    console.log(currentData.lastModified);
+    console.log(updatedData.lastModified);
 
     if (currentData.lastModified === updatedData.lastModified) {
-        // console.log('not modified, skip');
-        // console.log('---');
+        console.log('not modified, skip');
+        console.log('---');
 
         return;
     }
 
-    // console.log('modified');
-    // console.log('---');
+    console.log('modified');
+    console.log('---');
+
+    // return;
 
     fileMatter.data = updatedData;
     const updatedFileContent = matter.stringify(fileMatter);
     await fs.writeFile(filePath, updatedFileContent);
-    await fs.utimes(filePath, lastModified, lastModified);
+    await fs.utimes(filePath, stats.mtime, stats.mtime);
 });

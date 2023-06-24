@@ -9,17 +9,7 @@ import styles from './posts-list.module.scss';
 
 export function PostsList({ posts }: { posts: Post[] }) {
     const [filteredPosts, setFilteredPosts] = useState(posts);
-    const months = [
-        ...new Set(
-            filteredPosts.map(({ date }) => {
-                return new Date(date).toLocaleDateString('en-US', {
-                    month: 'long',
-                    year: 'numeric',
-                    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
-                });
-            })
-        ),
-    ];
+    const months = [...new Set(filteredPosts.map(({ date }) => date))];
 
     return (
         <>
@@ -29,19 +19,9 @@ export function PostsList({ posts }: { posts: Post[] }) {
             </div>
             <ul className={styles.container}>
                 {months.map((date) => {
-                    const postsThisMonth = filteredPosts.filter((post) => {
-                        const dateToCompare = new Date(
-                            post.date
-                        ).toLocaleDateString('en-US', {
-                            month: 'long',
-                            year: 'numeric',
-                            timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
-                        });
-
-                        if (dateToCompare === date) {
-                            return post;
-                        }
-                    });
+                    const postsThisMonth = filteredPosts.filter(
+                        (post) => post.date === date
+                    );
 
                     return (
                         <div className={styles.group} key={date}>
