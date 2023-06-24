@@ -28,7 +28,10 @@ if (doesExist) {
     process.exit();
 }
 
-const date = new Date().toISOString();
+const date = new Date().toLocaleDateString('en-US', {
+    dateStyle: 'long',
+    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
+});
 const text = `---
 title: '${formatName(name)}'
 date: '${date}'

@@ -9,24 +9,13 @@ import styles from './posts.module.scss';
 
 export function Posts({ posts }: { posts: Post[] }) {
     const last20Posts = posts.slice(0, 21);
-    const dates = [
-        ...new Set(
-            last20Posts.map(({ date }) =>
-                new Date(date).toLocaleDateString('en-US', {
-                    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
-                })
-            )
-        ),
-    ];
+    const dates = [...new Set(last20Posts.map(({ date }) => date))];
 
     return (
         <>
             <div className={styles['page-title']}>
                 <Comment text="Posts" />
-                <DateTime
-                    className={styles.date}
-                    dateString={new Date(dates[0]).toISOString()}
-                />
+                <DateTime className={styles.date} dateString={dates[0]} />
             </div>
             <div className={styles['date-groups']}>
                 {dates.map((date, dateIndex) => {
@@ -39,22 +28,15 @@ export function Posts({ posts }: { posts: Post[] }) {
                             {dateIndex !== 0 && (
                                 <DateTime
                                     className={styles.date}
-                                    dateString={new Date(date).toISOString()}
+                                    dateString={date}
                                 />
                             )}
                             <div className={styles.posts}>
                                 {last20Posts
-                                    .filter(
-                                        (post) =>
-                                            new Date(
-                                                post.date
-                                            ).toLocaleDateString('en-US', {
-                                                timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
-                                            }) === date
-                                    )
+                                    .filter((post) => post.date === date)
                                     .map(
                                         (
-                                            { slug, title, date, link, body },
+                                            { slug, title, link, body },
                                             postIndex
                                         ) => {
                                             return (
