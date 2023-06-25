@@ -1,3 +1,6 @@
+---
+lastModified: 'June 24, 2023'
+---
 # Tasks
 
 -   [ ] https://www.adamcollier.co.uk/posts/adding-an-updated-date-to-markdown-and-mdx-posts/
@@ -19,3 +22,6 @@
 -   [ ] Add unformatted view (simple html and css) that looks good in cli browsers
 -   [ ] Add some playgrounds (html/css)
 -   [ ] Find a library for embedding interactive code blocks
+-   [ ] Add a "Set up" or "Equipment" page to list hardware and software I use
+-   [ ] Simplify code block style
+-   [ ] Add either another page or a way to filter external link posts or long-form posts
