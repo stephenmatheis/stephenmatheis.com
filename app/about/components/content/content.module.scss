@@ -23,7 +23,7 @@
     .left {
         display: flex;
         flex-direction: column;
-        gap: calc(var(--line-height) * 1.5);
+        gap: calc(var(--line-height) * 2);
 
         @media screen {
             gap: calc(var(--line-height) * 3);

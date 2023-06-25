@@ -1,0 +1,26 @@
+@use 'styles/utilities';
+
+$distance: 10px;
+
+.project-ctr {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--line-height) * 2);
+
+    @media print {
+        gap: calc(var(--line-height) * 1);
+    }
+
+    .description-ctr {
+        display: flex;
+        gap: 6ch;
+
+        @media (max-width: utilities.$small-width) {
+            flex-direction: column;
+        }
+
+        & > * {
+            flex: 1;
+        }
+    }
+}

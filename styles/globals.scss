@@ -22,7 +22,8 @@
     --font-family: var(--font-monospace);
 
     @media print {
-        --line-height: 16px !important;
+        --font-size: 11px;
+        --line-height: 16px ;
     }
 
     @include utilities.init-themes();
