@@ -1,0 +1,69 @@
+@use 'styles/utilities';
+
+$distance: 10px;
+
+.img-ctr {
+    --shadow-color: var(--primary-variant);
+    --img-width: 250px;
+
+    // FIXME: leak
+    flex: 1;
+    z-index: 0;
+    position: relative;
+    margin: 0px;
+    transition: all 300ms;
+    height: fit-content;
+    border: solid 1px var(--shadow-color);
+
+    @media (max-width: utilities.$small-width) {
+        max-width: calc(100% - 10px);
+    }
+
+    &::after {
+        z-index: -1;
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        // top: $distance;
+        // left: $distance;
+        top: 0px;
+        left: 0px;
+        background-color: var(--shadow-color);
+        transition: all 300ms;
+        animation: shadow 1000ms ease-in-out 2000ms forwards;
+    }
+
+    @keyframes shadow {
+        from {
+            opacity: 0;
+            top: 0px;
+            left: 0px;
+        }
+        to {
+            opacity: 1;
+            top: $distance;
+            left: $distance;
+        }
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            --hover-offset: 3px;
+            --translate-offset: calc(var(--hover-offset) * -1);
+
+            translate: var(--translate-offset) var(--translate-offset);
+
+            &::after {
+                top: calc($distance + (var(--hover-offset) * 2));
+                left: calc($distance + (var(--hover-offset) * 2));
+            }
+        }
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
