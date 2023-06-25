@@ -19,8 +19,7 @@ $distance: 10px;
             flex-direction: column;
         }
 
-        // FIXME: leak
-        .description {
+        & > * {
             flex: 1;
         }
     }
