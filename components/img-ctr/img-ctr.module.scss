@@ -6,8 +6,6 @@ $distance: 10px;
     --shadow-color: var(--primary-variant);
     --img-width: 250px;
 
-    // FIXME: leak
-    flex: 1;
     z-index: 0;
     position: relative;
     margin: 0px;
@@ -25,23 +23,14 @@ $distance: 10px;
         width: 100%;
         height: 100%;
         position: absolute;
-        // top: $distance;
-        // left: $distance;
         top: 0px;
         left: 0px;
         background-color: var(--shadow-color);
         transition: all 300ms;
-        animation: shadow 1000ms ease-in-out 2000ms forwards;
     }
 
-    @keyframes shadow {
-        from {
-            opacity: 0;
-            top: 0px;
-            left: 0px;
-        }
-        to {
-            opacity: 1;
+    &.shadow {
+        &::after {
             top: $distance;
             left: $distance;
         }
@@ -55,8 +44,8 @@ $distance: 10px;
             translate: var(--translate-offset) var(--translate-offset);
 
             &::after {
-                top: calc($distance + (var(--hover-offset) * 2));
-                left: calc($distance + (var(--hover-offset) * 2));
+                top: calc($distance + (var(--hover-offset) * 2)) !important;
+                left: calc($distance + (var(--hover-offset) * 2)) !important;
             }
         }
     }

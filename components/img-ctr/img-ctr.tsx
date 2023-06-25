@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import styles from './img-ctr.module.scss';
+import { useState } from 'react';
 
 type ImageProps = {
     src: string;
@@ -11,9 +12,15 @@ type ImageProps = {
 
 export function ImgCtr({ link, description, image }) {
     const { src, width, height }: ImageProps = image;
+    const [showShadow, setShowShadow] = useState(false);
 
     return (
-        <div className={styles['img-ctr']}>
+        <div
+            className={[
+                styles['img-ctr'],
+                ...(showShadow ? [styles.shadow] : []),
+            ].join(' ')}
+        >
             <a href={link} target="_blank">
                 <Image
                     src={src}
@@ -21,9 +28,11 @@ export function ImgCtr({ link, description, image }) {
                     width={width}
                     height={height}
                     priority
-                    // onLoadingComplete={(event) => {
-                    //     console.log(event);
-                    // }}
+                    onLoadingComplete={(node) => {
+                        if (node) {
+                            setShowShadow(true);
+                        }
+                    }}
                 />
             </a>
         </div>
