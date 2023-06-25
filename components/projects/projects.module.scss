@@ -1,8 +1,6 @@
 @use 'styles/utilities';
 
-$inner-radius: 10px;
 $distance: 10px;
-$outer-radius: calc($inner-radius + $distance);
 
 .projects {
     &.print-only {
@@ -27,90 +25,6 @@ $outer-radius: calc($inner-radius + $distance);
 
             .project-ctr {
                 gap: var(--line-height);
-            }
-        }
-
-        .project-ctr {
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--line-height) * 2);
-
-            @media print {
-                gap: calc(var(--line-height) * 1);
-            }
-
-            .description-ctr {
-                display: flex;
-                gap: 6ch;
-
-                @media (max-width: utilities.$small-width) {
-                    flex-direction: column;
-                }
-
-                .img-ctr,
-                .description {
-                    flex: 1;
-                }
-
-                .img-ctr {
-                    --shadow-color: var(--primary-variant);
-                    --img-width: 250px;
-
-                    z-index: 0;
-                    position: relative;
-                    margin: 0px;
-                    transition: all 300ms;
-                    height: fit-content;
-                    border: solid 1px var(--shadow-color);
-
-                    @media (max-width: utilities.$small-width) {
-                        min-width: calc(100% - 10px);
-                        max-width: calc(100% - 10px);
-                    }
-
-                    &::after {
-                        z-index: -1;
-                        content: '';
-                        width: 100%;
-                        height: 100%;
-                        position: absolute;
-                        top: $distance;
-                        left: $distance;
-                        background-color: var(--shadow-color);
-                        transition: all 300ms;
-                    }
-
-                    &:hover {
-                        --hover-offset: 3px;
-                        --translate-offset: calc(var(--hover-offset) * -1);
-
-                        translate: var(--translate-offset)
-                            var(--translate-offset);
-
-                        &::after {
-                            top: calc($distance + (var(--hover-offset) * 2));
-                            left: calc($distance + (var(--hover-offset) * 2));
-                        }
-                    }
-
-                    @media screen and (max-width: utilities.$small-width) {
-                        width: 100%;
-                    }
-
-                    img {
-                        display: block;
-                        width: 100%;
-                        height: auto;
-                    }
-                }
-
-                // .description {
-                //     text-align: justify;
-
-                //     @media (max-width: 500px) {
-                //         text-align: left;
-                //     }
-                // }
             }
         }
     }

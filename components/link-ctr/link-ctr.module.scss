@@ -3,12 +3,13 @@
 .link {
     cursor: pointer;
 
-    &,
-    &:hover {
-        color: var(--primary);
+    @media (hover: hover) {
+        &:hover {
+            color: var(--primary);
 
-        .text {
-            @include utilities.shadow-hover;
+            .text {
+                @include utilities.shadow-hover;
+            }
         }
     }
 
