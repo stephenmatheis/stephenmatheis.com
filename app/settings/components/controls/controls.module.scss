@@ -15,6 +15,10 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
         display: block;
     }
 
+    .spacer {
+        margin-bottom: calc(var(--line-height) * 3);
+    }
+
     .label {
         display: flex;
         align-items: center;

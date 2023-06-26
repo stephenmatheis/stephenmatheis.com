@@ -111,7 +111,7 @@ export function Controls({}) {
         <>
             <div className={styles.controls}>
                 <Comment text={'Settings'} />
-                <div />
+                <div className={styles.spacer} />
                 {controls.map(
                     ({
                         label,
