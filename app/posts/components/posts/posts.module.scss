@@ -31,6 +31,22 @@
                         var(--line-height) * var(--p-line-height-modifier)
                     );
                 }
+
+                .post-link {
+                    display: flex;
+                    align-items: center;
+                    margin-left: 2ch;
+                    padding: 0px 0.5ch;
+                    font-size: var(--line-height);
+
+                    transition: background-color 150ms;
+
+                    @media (hover: hover) {
+                        &:hover {
+                            background-color: var(--primary-20);
+                        }
+                    }
+                }
             }
         }
     }

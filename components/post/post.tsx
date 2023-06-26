@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { DateTime } from '@/components/date-time';
 import { LinkCtr } from '@/components/link-ctr';
 import { Footer } from '@/components/footer';
@@ -19,8 +18,7 @@ export async function Post({
 
     if (!post) return notFound();
 
-    const { previous, next, title, body, date, link, slug, lastModified } =
-        post;
+    const { previous, next, title, body, date, link, lastModified } = post;
 
     return (
         <main className={styles.post}>
@@ -37,6 +35,7 @@ export async function Post({
                 <DateTime className={styles.date} dateString={date} />
                 <Body>{body}</Body>
             </article>
+            {/* TODO: */}
             {/* {lastModified && (
                 <div className={styles.date}>
                     Last modified <Date dateString={lastModified} />

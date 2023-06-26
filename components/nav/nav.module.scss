@@ -1,13 +1,11 @@
 @use 'styles/utilities';
 
-// FIXME: Link ctr internals leaking into nav
 @mixin button {
     position: absolute;
     top: 0.5px;
     margin-right: 0ch;
     transform: unset;
     line-height: var(--line-height);
-    font-size: 22px;
 }
 
 .navigation {
