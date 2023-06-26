@@ -18,7 +18,8 @@ export async function Post({
 
     if (!post) return notFound();
 
-    const { previous, next, title, body, date, link, lastModified } = post;
+    const { previous, next, title, slug, body, date, link, lastModified } =
+        post;
 
     return (
         <main className={styles.post}>
@@ -43,7 +44,20 @@ export async function Post({
             )} */}
             <Nav previous={previous} next={next} />
             <div className={styles['footer-wrapper']}>
-                <Footer />
+                <Footer
+                    links={[
+                        {
+                            label: 'Markdown',
+                            path: `${slug}/raw`,
+                            newTab: true,
+                        },
+                        {
+                            label: 'GitHub',
+                            path: `https://github.com/stephenmatheis/stephenmatheis.com/blob/main/_posts/${slug}.mdx`,
+                            newTab: true,
+                        },
+                    ]}
+                />
             </div>
         </main>
     );

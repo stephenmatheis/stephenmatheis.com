@@ -30,7 +30,7 @@ if (doesExist) {
 
 const date = new Date().toLocaleDateString('en-US', {
     dateStyle: 'long',
-    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
+    timeZone: process.env.TIME_ZONE,
 });
 const text = `---
 title: '${formatName(name)}'
