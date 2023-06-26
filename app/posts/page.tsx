@@ -13,7 +13,12 @@ export default async function PostsPage() {
     const posts = await getPosts();
 
     return (
-        <Page links={[{ label: 'More posts', path: '/archive' }]}>
+        <Page
+            links={[
+                { label: 'Markdown', path: '/posts/raw' },
+                { label: 'All posts', path: '/archive' },
+            ]}
+        >
             <Main columns={2}>
                 <Posts posts={posts} />
             </Main>

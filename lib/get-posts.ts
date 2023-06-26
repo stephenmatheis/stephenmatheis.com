@@ -10,6 +10,7 @@ function getFirstTwoSentences(str: string): string {
     return sentences ? sentences.slice(0, 80 * 3) + '' : '';
 }
 
+
 export const getPosts = cache(async (): Promise<any> => {
     const postsDirectory = join(process.cwd(), '_posts');
     const posts = await fs.readdir(postsDirectory);
@@ -31,6 +32,7 @@ export const getPosts = cache(async (): Promise<any> => {
                     excerpt: getFirstTwoSentences(content),
                     body: content,
                     slug: path.parse(file).name,
+                    raw: postContent
                 } as Post;
             })
     );

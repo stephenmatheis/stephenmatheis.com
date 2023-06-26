@@ -7,7 +7,7 @@ import { success, mod, cyan } from '../utils/log.mjs';
 const [, , ...mdFilePaths] = process.argv;
 const today = new Date().toLocaleDateString('en-US', {
     dateStyle: 'long',
-    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
+    timeZone: process.env.TIME_ZONE,
 });
 
 console.log(cyan(`Today's date is ${today}\n`));
