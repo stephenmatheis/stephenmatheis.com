@@ -6,14 +6,8 @@
         z-index: 1;
         cursor: pointer;
         position: absolute;
-
-        // DEV:
-        // right: 7px;
-        // top: 3px;
-
+        top: 3px;
         right: 0px;
-        bottom: calc(var(--line-height) * -1);
-
         border: none;
         background-color: var(--primary-20);
         color: var(--label-color);

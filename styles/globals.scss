@@ -290,7 +290,6 @@ p {
 
 [data-rehype-pretty-code-fragment] {
     // DEV:
-    // --background: var(--primary-10);
     --background: var(--background);
 
     --hightlighted-background: var(--primary-15);
@@ -298,8 +297,7 @@ p {
     --highlighted-border-color: var(--primary);
 
     position: relative;
-    // margin-top: calc(var(--line-height) * 2);
-    margin-bottom: calc(var(--line-height) * 2);
+    margin-bottom: calc(var(--line-height) * 1);
 
     [data-rehype-pretty-code-title] {
         // Tabbed
@@ -325,11 +323,8 @@ p {
     }
 
     pre {
-        // overflow-x: auto;
         font-weight: 400;
         margin: 0px;
-        // DEV:
-        padding: var(--line-height) 0px;
         opacity: 0.98;
         background: var(--background);
 
@@ -341,7 +336,7 @@ p {
         & > code {
             display: grid;
             font-family: var(--font-monospace);
-            padding: calc(var(--line-height) * 1) 0px;
+            padding: calc(var(--line-height) * 1.5) 0px;
             overflow-x: auto;
 
             // DEV:
