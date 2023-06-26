@@ -2,6 +2,7 @@
     "name": "stephenmatheis.com",
     "version": "0.1.0",
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
@@ -9,14 +10,14 @@
         "start": "next start",
         "lint": "next lint",
         "lint:staged": "lint-staged -v",
-        "update-posts": "node ./scripts/update-posts.mjs"
+        "update-posts": "tsx ./scripts/update-posts.ts"
     },
     "pre-commit": "lint:staged",
     "lint-staged": {
         "**/*.{md,mdx}": "npm run update-posts"
     },
     "bin": {
-        "post": "create-post"
+        "post": ".bin/create-post.ts"
     },
     "dependencies": {
         "@mdx-js/loader": "^2.3.0",
@@ -51,7 +52,7 @@
         "pre-commit": "^1.2.2",
         "rss": "^1.2.2",
         "sass": "^1.57.1",
-        "ts-node": "^10.9.1",
+        "tsx": "^3.12.7",
         "typescript": "^5.1.3"
     }
 }

@@ -1,9 +1,10 @@
-#!/usr/bin/env node
+#!/usr/bin/env tsx
+/// <reference lib="esnext" />
 
 import { exec } from 'child_process';
 import { writeFile, access } from 'fs/promises';
 
-const [name, ...rest] = process.argv.slice(2);
+const [name, ...rest]: string[] = process.argv.slice(2);
 
 // Exit if no name is provided
 if (!name) {
@@ -13,13 +14,13 @@ if (!name) {
 }
 
 // FIXME: Replace characters or encode URI
-const slug = name
+const slug: string = name
     .toLowerCase()
     .replaceAll(' ', '-')
     .replaceAll(',', '')
     .replaceAll('.', '_');
-const path = `./_posts/${slug}.mdx`;
-const doesExist = await exists(path);
+const path: string = `./_posts/${slug}.mdx`;
+const doesExist: boolean = await exists(path);
 
 if (doesExist) {
     console.log(
@@ -28,9 +29,9 @@ if (doesExist) {
     process.exit();
 }
 
-const date = new Date().toLocaleDateString('en-US', {
+const date: string = new Date().toLocaleDateString('en-US', {
     dateStyle: 'long',
-    timeZone: process.env.TIME_ZONE,
+    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
 });
 const text = `---
 title: '${formatName(name)}'
@@ -48,7 +49,7 @@ exec(`code ${path}:8:1 -g`);
 
 // Functions
 
-async function exists(path) {
+async function exists(path: string): Promise<boolean> {
     try {
         await access(path);
         return true;
@@ -57,7 +58,7 @@ async function exists(path) {
     }
 }
 
-function formatName(name) {
+function formatName(name: string): string {
     const formatted = name.replaceAll('-', ' ');
 
     return formatted.charAt(0).toUpperCase() + formatted.slice(1);
