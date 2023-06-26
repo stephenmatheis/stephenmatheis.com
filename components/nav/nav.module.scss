@@ -1,6 +1,5 @@
 @use 'styles/utilities';
 
-// FIXME: Link ctr internals leaking into nav
 @mixin button {
     position: absolute;
     top: 0.5px;
