@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
-import { Controls } from './controls';
+import { Controls } from './components/controls';
 
 export const metadata: Metadata = {
-    title: 'Resume',
-    description: 'My resume and contact information.',
+    title: 'Settings',
+    description: "Change the site's look and feel.",
 };
 
 export default function SettingsPage() {
