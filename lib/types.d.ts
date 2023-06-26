@@ -9,6 +9,7 @@ export type Post = {
     body: string;
     lastModified?: number;
     views?: number;
+    raw: string;
 };
 
 export type Project = {
