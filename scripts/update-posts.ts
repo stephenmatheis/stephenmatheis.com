@@ -2,17 +2,22 @@
 
 import matter from 'gray-matter';
 import { writeFile } from 'fs/promises';
-import { success, mod, cyan } from '../utils/log.mjs';
+import { success, mod, cyan } from '@/utils/log.ts';
 
-const [, , ...mdFilePaths] = process.argv;
-const today = new Date().toLocaleDateString('en-US', {
+const [, , ...mdFilePaths]: string[] = process.argv;
+const today: string = new Date().toLocaleDateString('en-US', {
     dateStyle: 'long',
-    timeZone: process.env.TIME_ZONE,
+    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
 });
 
 console.log(cyan(`Today's date is ${today}\n`));
 
-mdFilePaths.forEach(async (path) => {
+if (!mdFilePaths.length) {
+    console.log('No staged md or mdx files.\n');
+    process.exit();
+}
+
+mdFilePaths.forEach(async (path: string): Promise<void> => {
     const file = matter.read(path);
     const { data: currentData } = file;
     const updatedData = {
@@ -32,7 +37,7 @@ mdFilePaths.forEach(async (path) => {
 
     file.data = updatedData;
 
-    const updatedFileContent = matter.stringify(file);
+    const updatedFileContent = matter.stringify(file, {});
 
     writeFile(path, updatedFileContent);
 });
