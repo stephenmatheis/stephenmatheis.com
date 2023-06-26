@@ -16,7 +16,7 @@ lastModified: 'June 25, 2023'
 -   [ ] Add UI to create your own palette
 -   [x] Fix next post title max width on mobile
 -   [x] Add vertical toggle for long lists (themes)
--   [ ] Add Gameboy theme
+-   [x] Add Gameboy theme
 -   [x] Add retro theme - amber
 -   [x] Add retro theme - green
 -   [x] Add high contrast themes
@@ -24,7 +24,7 @@ lastModified: 'June 25, 2023'
 -   [ ] Add some playgrounds (html/css)
 -   [ ] Find a library for embedding interactive code blocks
 -   [ ] Add a "Set up" or "Equipment" page to list hardware and software I use
--   [ ] Simplify code block style
+-   [x] Simplify code block style
 -   [ ] ? Add either another page or a way to filter external link posts or long-form posts
 -   [ ] ? Add and "Art" page for posting drawings and other things I want to share
--   [ ] Fix external link
+-   [x] Fix external link
