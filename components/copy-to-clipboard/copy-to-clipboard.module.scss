@@ -11,20 +11,18 @@
         // right: 7px;
         // top: 3px;
 
-        right: 2ch;
-        // NOTE: Assumes the first line won't span the width of the block
-        // top: calc(var(--line-height) * 2);
-        bottom: calc((var(--line-height) * 0.25));
-        height: calc((var(--line-height) * 1.5));
-        // top: 0px;
+        right: 0px;
+        bottom: calc(var(--line-height) * -1);
 
         border: none;
-        background-color: var(--primary-30);
+        background-color: var(--primary-20);
         color: var(--label-color);
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: 8ch;
+        width: 8ch;
+        padding: calc(var(--line-height) * 0.25) 0px;
+        z-index: 1;
 
         &.copied {
             span {

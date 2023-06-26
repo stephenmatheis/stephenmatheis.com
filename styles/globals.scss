@@ -156,8 +156,8 @@ body {
 a {
     position: relative;
     color: var(--primary);
-    -webkit-tap-highlight-color: transparent;
-    // -webkit-tap-highlight-color: var(--primary-20);
+    // -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: var(--primary-20);
 
     &.anchor {
         display: block;
@@ -282,16 +282,14 @@ button {
     // DEV:
     // --background: var(--primary-10);
     --background: var(--background);
-    // --background: var(--primary-10);
 
     --hightlighted-background: var(--primary-15);
     --title-background: var(--primary-20);
     --highlighted-border-color: var(--primary);
 
     position: relative;
-    margin-top: 0;
-    // margin-bottom: calc(var(--line-height) * 2);
-    margin-bottom: var(--line-height);
+    // margin-top: calc(var(--line-height) * 2);
+    margin-bottom: calc(var(--line-height) * 2);
 
     [data-rehype-pretty-code-title] {
         // Tabbed
@@ -317,11 +315,11 @@ button {
     }
 
     pre {
-        overflow-x: auto;
+        // overflow-x: auto;
         font-weight: 400;
         margin: 0px;
         // DEV:
-        padding: calc(var(--line-height) * 2) 0px;
+        padding: var(--line-height) 0px;
         opacity: 0.98;
         background: var(--background);
 
@@ -331,8 +329,10 @@ button {
         }
 
         & > code {
-            font-family: var(--font-monospace);
             display: grid;
+            font-family: var(--font-monospace);
+            padding: calc(var(--line-height) * 1) 0px;
+            overflow-x: auto;
 
             // DEV:
             // border-left: solid 2px var(--primary);
