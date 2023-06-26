@@ -74,7 +74,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                                         ]
                                                                     }
                                                                 >
-                                                                    {/* ⚹ */}#
+                                                                    #
                                                                 </Link>
                                                             </>
                                                         ) : (
