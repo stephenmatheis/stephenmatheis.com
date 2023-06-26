@@ -15,7 +15,7 @@ export default function ResumePage() {
                 {
                     label: 'Donwload a copy',
                     path: '/resume.pdf',
-                    external: true,
+                    newTab: true,
                 },
             ]}
         >
