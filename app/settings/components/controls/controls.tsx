@@ -52,8 +52,8 @@ export function Controls({}) {
             {
                 label: 'Mode',
                 key: 'prefers-color-scheme',
-                options: ['OS Default', 'Light', 'Dark'],
-                defaultOption: 'OS Default',
+                options: ['System', 'Light', 'Dark'],
+                defaultOption: 'Dark',
                 addDataAttr: true,
             },
             {
