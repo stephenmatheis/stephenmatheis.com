@@ -34,9 +34,9 @@ const date: string = new Date().toLocaleDateString('en-US', {
     timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
 });
 const text = `---
-title: '${formatName(name)}'
-date: '${date}'
-lastModified: '${date}'
+title: ${formatName(name)}
+date: ${date}
+lastModified: ${date}
 author: Stephen Matheis
 ---
 
