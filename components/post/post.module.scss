@@ -26,9 +26,16 @@
         margin-top: calc(35vh - (var(--line-height) * 5));
         margin-bottom: calc(15vh - (var(--line-height) * 3));
     }
-    
+
     article {
         flex: 2;
+    }
+
+    .date {
+        // margin-top: calc(var(--line-height) * 5);
+        margin-bottom: var(--line-height);
+        color: var(--muted);
+        text-align: center;
     }
 
     .footer-wrapper {
