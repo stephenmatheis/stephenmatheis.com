@@ -33,15 +33,15 @@ export async function Post({
                 )}
             </h1>
             <article>
-                <DateTime className={styles.date} dateString={date} />
+                <DateTime dateString={date} />
                 <Body>{body}</Body>
             </article>
             {/* TODO: */}
-            {/* {lastModified && (
+            {new Date(lastModified) > new Date(date) && (
                 <div className={styles.date}>
-                    Last modified <Date dateString={lastModified} />
+                    Last modified <DateTime dateString={lastModified} />
                 </div>
-            )} */}
+            )}
             <Nav previous={previous} next={next} />
             <div className={styles['footer-wrapper']}>
                 <Footer
