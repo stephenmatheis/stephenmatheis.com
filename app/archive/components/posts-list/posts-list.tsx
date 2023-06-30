@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { Post } from '@/lib/types';
 import { Comment } from '@/components/comment';
@@ -14,10 +14,8 @@ function filterTags(post: Post, tags: string[]) {
         return;
     }
 
-    for (let tag of tags) {
-        if (post.tags.includes(tag)) {
-            return post;
-        }
+    if (tags.every((val) => post.tags.includes(val))) {
+        return post;
     }
 }
 
@@ -44,7 +42,12 @@ export function PostsList({ posts }: { posts: Post[] }) {
         ),
     ];
 
-    console.log(tags, taggedPosts.length, filteredPosts.length);
+    // Reset
+    useEffect(() => {
+        if (!tags.length) {
+            setFilteredPosts(posts);
+        }
+    }, [tags]);
 
     return (
         <>
