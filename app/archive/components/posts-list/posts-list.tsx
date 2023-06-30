@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import type { Post } from '@/lib/types';
 import { Comment } from '@/components/comment';
 import { Search } from '../search';
@@ -20,7 +20,6 @@ function filterTags(post: Post, tags: string[]) {
 }
 
 export function PostsList({ posts }: { posts: Post[] }) {
-    const router = useRouter();
     const searchParams = useSearchParams();
     const tags = searchParams.get('tags')?.split(',') || [];
     const taggedPosts = tags.length
