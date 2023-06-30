@@ -28,3 +28,6 @@ lastModified: 'June 26, 2023'
 -   [ ] ? Add either another page or a way to filter external link posts or long-form posts
 -   [x] ? Add and "Art" page for posting drawings and other things I want to share
 -   [x] Fix external link
+-   [ ] Add "Mac OS 7" theme
+-   [ ] Add "VS Code Dark Plus/Modern" theme
+-   [ ] Feat: Add, edit, and delete posts fromt end (will need auth to github)
