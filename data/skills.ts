@@ -16,7 +16,7 @@ const skills = [
     },
     {
         group: 'Libraries',
-        items: ['jQuery', 'Bootstrap', 'Chart.js', 'PnPjs'],
+        items: ['jQuery', 'Bootstrap', 'Chart.js'],
     },
     {
         group: 'Tools',
@@ -24,11 +24,11 @@ const skills = [
     },
     {
         group: 'Platforms',
-        items: ['Netlify', 'Firebase', 'SharePoint'],
+        items: ['Vercel', 'Netlify', 'Firebase', 'SharePoint'],
     },
     {
         group: 'Design',
-        items: ['Sketch', 'Figma', 'Principle'],
+        items: ['Sketch', 'Figma'],
     },
 ];
 

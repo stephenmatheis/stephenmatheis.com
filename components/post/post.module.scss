@@ -31,9 +31,12 @@
         flex: 2;
     }
 
+    .created {
+        display: inline-block;
+        margin-bottom: calc(var(--line-height) * 1);
+    }
+
     .date {
-        // margin-top: calc(var(--line-height) * 5);
-        margin-bottom: var(--line-height);
         color: var(--muted);
         text-align: center;
     }

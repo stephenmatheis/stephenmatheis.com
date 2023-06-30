@@ -7,7 +7,8 @@ export function Sidebar({}) {
             <LinkCtr href="/posts">Posts</LinkCtr>
             <LinkCtr href="/archive">Archive</LinkCtr>
             <LinkCtr href="/projects">Projects</LinkCtr>
-            <LinkCtr href="/drawings">Drawings</LinkCtr>
+            {/* FIXME: Work in progress */}
+            {/* <LinkCtr href="/drawings">Drawings</LinkCtr> */}
             <LinkCtr href="/about">About</LinkCtr>
             <LinkCtr href="/settings">Settings</LinkCtr>
         </nav>

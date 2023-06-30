@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import { Fallback } from '@/components/fallback';
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
 import { PostsList } from './components/posts-list';
+import { Suspense } from 'react';
 import getPosts from '@/lib/get-posts';
 
 export const metadata: Metadata = {
@@ -15,7 +17,9 @@ export default async function PostsPage() {
     return (
         <Page links={[{ label: 'Home', path: '/' }]}>
             <Main columns={2}>
-                <PostsList posts={posts} />
+                <Suspense fallback={<Fallback />}>
+                    <PostsList posts={posts} />
+                </Suspense>
             </Main>
         </Page>
     );
