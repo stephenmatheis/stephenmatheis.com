@@ -1,21 +1,59 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { Post } from '@/lib/types';
 import { Comment } from '@/components/comment';
 import { Search } from '../search';
 import { Entry } from '../entry';
+import { Tags } from '@/components/tags';
 import styles from './posts-list.module.scss';
 
+function filterTags(post: Post, tags: string[]) {
+    if (!post.tags) {
+        return;
+    }
+
+    for (let tag of tags) {
+        if (post.tags.includes(tag)) {
+            return post;
+        }
+    }
+}
+
 export function PostsList({ posts }: { posts: Post[] }) {
-    const [filteredPosts, setFilteredPosts] = useState(posts);
-    const months = [...new Set(filteredPosts.map(({ date }) => date))];
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const tags = searchParams.get('tags')?.split(',') || [];
+    const taggedPosts = tags.length
+        ? posts.filter((post) => filterTags(post, tags))
+        : posts;
+    const [filteredPosts, setFilteredPosts] = useState(taggedPosts);
+    const months = [...new Set(filteredPosts.map(({ date }) => date))].sort(
+        (a, b) => (a && b ? new Date(b).getTime() - new Date(a).getTime() : 0)
+    );
+    // TODO: Move to lib
+    const allTags = [
+        ...new Set(
+            posts
+                .flatMap(({ tags }) => {
+                    return tags;
+                })
+                .filter((tag) => tag)
+                .sort()
+        ),
+    ];
+
+    console.log(tags, taggedPosts.length, filteredPosts.length);
 
     return (
         <>
             <div className={styles.title}>
                 <Comment text="Archive" />
-                <Search posts={posts} setPosts={setFilteredPosts} />
+                <Search posts={taggedPosts} setPosts={setFilteredPosts} />
+            </div>
+            <div id="tags" className={styles.tags}>
+                <Tags tags={allTags} color={'primary'} />
             </div>
             <ul className={styles.container}>
                 {months.map((date) => {
@@ -27,13 +65,7 @@ export function PostsList({ posts }: { posts: Post[] }) {
                         <div className={styles.group} key={date}>
                             <h2 className={styles.month}>{date}</h2>
                             {postsThisMonth.map(
-                                ({
-                                    slug,
-                                    title,
-                                    date,
-                                    description,
-                                    excerpt,
-                                }) => {
+                                ({ slug, title, date, description, tags }) => {
                                     return (
                                         <Entry
                                             key={`post-item-${slug}`}
@@ -41,7 +73,7 @@ export function PostsList({ posts }: { posts: Post[] }) {
                                             title={title}
                                             date={date}
                                             description={description}
-                                            excerpt={excerpt}
+                                            tags={tags}
                                         />
                                     );
                                 }

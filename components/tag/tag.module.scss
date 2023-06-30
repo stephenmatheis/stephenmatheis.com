@@ -1,0 +1,17 @@
+.tag {
+    cursor: pointer;
+
+    &:hover {
+        .name {
+            color: var(--primary);
+        }
+    }
+
+    &.selected {
+        color: var(--accent);
+    }
+
+    .spacer {
+        color: var(--muted);
+    }
+}

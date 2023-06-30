@@ -25,7 +25,8 @@
     justify-content: space-between;
     width: 100%;
     height: var(--line-height);
-    margin-bottom: calc(var(--line-height) * 3);
+    // margin-bottom: calc(var(--line-height) * 3);
+    margin-bottom: calc(var(--line-height) * 2);
 
     & {
         > div:first-of-type {
@@ -36,4 +37,11 @@
             flex: 1;
         }
     }
+}
+
+.tags {
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: calc(var(--line-height) * 3);
 }
