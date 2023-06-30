@@ -1,4 +1,6 @@
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+import { Fallback } from '@/components/fallback';
 import { DateTime } from '@/components/date-time';
 import { LinkCtr } from '@/components/link-ctr';
 import { Footer } from '@/components/footer';
@@ -51,7 +53,9 @@ export async function Post({
                     Last modified <DateTime dateString={lastModified} />
                 </div>
             )}
-            <Tags tags={tags} newTab={true} />
+            <Suspense fallback={<Fallback />}>
+                <Tags tags={tags} newTab={true} />
+            </Suspense>
             <Nav previous={previous} next={next} />
             <div className={styles['footer-wrapper']}>
                 <Footer
