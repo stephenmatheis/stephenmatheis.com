@@ -1,9 +1,12 @@
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+import { Fallback } from '@/components/fallback';
 import { DateTime } from '@/components/date-time';
 import { LinkCtr } from '@/components/link-ctr';
 import { Footer } from '@/components/footer';
 import { Body } from '@/components/body';
 import { Nav } from '@/components/nav';
+import { Tags } from '@/components/tags';
 import { getData } from '@/lib/get-data';
 import styles from './post.module.scss';
 
@@ -18,8 +21,17 @@ export async function Post({
 
     if (!post) return notFound();
 
-    const { previous, next, title, slug, body, date, link, lastModified } =
-        post;
+    const {
+        previous,
+        next,
+        title,
+        slug,
+        body,
+        date,
+        link,
+        lastModified,
+        tags,
+    } = post;
 
     return (
         <main className={styles.post}>
@@ -33,15 +45,17 @@ export async function Post({
                 )}
             </h1>
             <article>
-                <DateTime dateString={date} />
+                <DateTime dateString={date} className={styles.created} />
                 <Body>{body}</Body>
             </article>
-            {/* TODO: */}
             {new Date(lastModified) > new Date(date) && (
                 <div className={styles.date}>
                     Last modified <DateTime dateString={lastModified} />
                 </div>
             )}
+            <Suspense fallback={<Fallback />}>
+                <Tags tags={tags} newTab={true} />
+            </Suspense>
             <Nav previous={previous} next={next} />
             <div className={styles['footer-wrapper']}>
                 <Footer

@@ -24,6 +24,7 @@ export function Projects({ displayImages, printOnly }: Props) {
             >
                 {projects.map(({ name, link, description, image }) => (
                     <Project
+                        key={name}
                         name={name}
                         link={link}
                         description={description}
