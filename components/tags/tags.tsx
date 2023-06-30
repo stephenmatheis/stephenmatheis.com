@@ -10,7 +10,7 @@ type Props = {
 export function Tags({ tags, newTab, color = 'muted' }: Props) {
     return (
         <>
-            {tags && (
+            {tags && tags.length > 0 && (
                 <span className={[styles.tags, styles[color]].join(' ')}>
                     #{' '}
                     {tags.map((tag: string, index: number) => {

@@ -54,9 +54,11 @@ export function PostsList({ posts }: { posts: Post[] }) {
                 <Comment text="Archive" />
                 <Search posts={taggedPosts} setPosts={setFilteredPosts} />
             </div>
-            <div id="tags" className={styles.tags}>
-                <Tags tags={allTags} color={'primary'} />
-            </div>
+            {allTags.length > 0 && (
+                <div id="tags" className={styles.tags}>
+                    <Tags tags={allTags} color={'primary'} />
+                </div>
+            )}
             <ul className={styles.container}>
                 {months.map((date) => {
                     const postsThisMonth = filteredPosts.filter(
