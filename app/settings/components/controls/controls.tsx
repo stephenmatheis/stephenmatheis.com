@@ -13,10 +13,22 @@ import { Toggle } from '@/components/toggle';
 import variables from '@/styles/exports.module.scss';
 import styles from './controls.module.scss';
 
+// FIXME: move to types
+type Variable = {
+    name: string;
+    value: string;
+};
+
+type Variables = {
+    color: string;
+    variables: Variable[];
+};
+
 type ControlProps = {
     label: string;
     key: string;
     options: string[];
+    variables?: Variables[];
     defaultOption: string;
     addDataAttr?: boolean | undefined;
     addCssVariable?: boolean | undefined;
@@ -26,6 +38,37 @@ type ControlProps = {
 };
 
 const colors = ['Primary', 'Secondary', 'Tertiary', 'Accent'];
+
+function getVariables({ name, values, mode }) {
+    return {
+        color: name,
+        variables: [
+            {
+                name: 'meta-theme',
+                value:
+                    values['background-color'] || mode === 'dark'
+                        ? variables.defaultDarkMetaTheme
+                        : variables.defaultLightMetaTheme,
+            },
+        ],
+    };
+}
+
+function getMap(str: string) {
+    const [color, values] = str.split(' - ');
+    const names = values
+        .split(',')
+        .filter((x) => x)
+        .map((name) => {
+            const [key, value] = name.split(' > ');
+            return `"${key}": "${value}"`;
+        });
+
+    return {
+        name: color.trim(),
+        values: JSON.parse(`{ ${names.join(', ')} }`),
+    };
+}
 
 function Color({ name }: { name: string }) {
     return (
@@ -44,6 +87,20 @@ function Color({ name }: { name: string }) {
 }
 
 export function Controls({}) {
+    const darkMap = variables.Dark.split('|').map(getMap);
+    const darkOptions = darkMap.map(({ name }) => name);
+    const darkVariables = darkMap.map(({ name, values }) =>
+        getVariables({ name, values, mode: 'dark' })
+    );
+
+    const lightMap = variables.Dark.split('|').map(getMap);
+    const lightOptions = lightMap.map(({ name }) => name);
+    const lightVariables = lightMap.map(({ name, values }) =>
+        getVariables({ name, values, mode: 'light' })
+    );
+
+    // console.log(lightVariables);
+
     const [light, setLight] = useState('');
     const [dark, setDark] = useState('');
     const [shouldResize, setShouldResize] = useState(false);
@@ -59,7 +116,8 @@ export function Controls({}) {
             {
                 label: 'Light Theme',
                 key: 'light-theme',
-                options: variables.Light.split(', '),
+                options: lightOptions,
+                variables: lightVariables,
                 defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
@@ -72,7 +130,8 @@ export function Controls({}) {
             {
                 label: 'Dark Theme',
                 key: 'dark-theme',
-                options: variables.Dark.split(', '),
+                options: darkOptions,
+                variables: darkVariables,
                 defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
@@ -117,6 +176,7 @@ export function Controls({}) {
                         label,
                         key,
                         options,
+                        variables,
                         defaultOption,
                         addDataAttr,
                         addCssVariable,
@@ -135,6 +195,7 @@ export function Controls({}) {
                                             localStorageKey={key}
                                             shouldResize={shouldResize}
                                             resize={resize}
+                                            variables={variables}
                                             addDataAttr={addDataAttr}
                                             addCssVariable={addCssVariable}
                                             vertical={vertical}
