@@ -1,5 +1,5 @@
 ---
-lastModified: 'June 26, 2023'
+lastModified: 'July 2, 2023'
 ---
 
 # Tasks
@@ -31,3 +31,4 @@ lastModified: 'June 26, 2023'
 -   [ ] Add "Mac OS 7" theme
 -   [ ] Add "VS Code Dark Plus/Modern" theme
 -   [ ] Feat: Add, edit, and delete posts fromt end (will need auth to github)
+-   [ ] Fix setings width overlowing page-max width, especially at larger font sizes and with the retro font enabled
