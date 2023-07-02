@@ -1,4 +1,16 @@
-// localStorage.clear();
+// Check version
+const version = '1.0.0';
+const installed = localStorage.getItem('version');
+
+if (installed !== version) {
+    console.log(
+        `On version ${installed}. Latest version is ${version}. Clear local settings.`
+    );
+    localStorage.clear();
+    localStorage.setItem('version', version);
+} else {
+    console.log(`On latest version ${version}.`);
+}
 
 // Set theme
 setMode();
@@ -8,17 +20,12 @@ setMode();
     setDataAttribute(att)
 );
 
-// DEV:
-// // Set Meta theme
-// const metaTheme = localStorage.getItem('meta-theme');
-
-// console.log(metaTheme);
-
-// if (metaTheme) {
-//     document
-//         .querySelector('meta[name="theme-color"]')
-//         .setAttribute('content', metaTheme);
-// }
+// Create Meta theme
+const metaTheme = localStorage.getItem('meta-theme');
+const meta = document.createElement('meta');
+meta.name = 'theme-color';
+meta.content = metaTheme;
+document.getElementsByTagName('head')[0].appendChild(meta || '#221d29');
 
 // Don't animate transitions on load
 setTimeout(() => {
@@ -28,15 +35,14 @@ setTimeout(() => {
 function setMode() {
     const localMode = localStorage.getItem('prefers-color-scheme');
 
-    // DEV:
-    // if (!localMode) {
-    //     document.documentElement.setAttribute(
-    //         'data-prefers-color-scheme',
-    //         'Dark'
-    //     );
+    if (!localMode) {
+        document.documentElement.setAttribute(
+            'data-prefers-color-scheme',
+            'Dark'
+        );
 
-    //     return;
-    // }
+        return;
+    }
 
     if (localMode === 'Light' || localMode === 'Dark') {
         setModeValue(localMode);

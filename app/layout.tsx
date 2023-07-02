@@ -24,11 +24,6 @@ export const metadata: Metadata = {
     },
     description: 'My blog, portfolio, and resume.',
     viewport: 'width=device-width, initial-scale=1,  viewport-fit=cover',
-    themeColor: '#221d29',
-    // themeColor: [
-    //     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    //     { media: '(prefers-color-scheme: dark)', color: '#221d29' },
-    // ],
     icons: {
         shortcut: '/favicon.ico',
         icon: '/favicons/icon.png',

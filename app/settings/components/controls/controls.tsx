@@ -1,58 +1,34 @@
 'use client';
 
-import {
-    Dispatch,
-    Fragment,
-    SetStateAction,
-    useCallback,
-    useMemo,
-    useState,
-} from 'react';
+import { Fragment, useCallback, useMemo, useState } from 'react';
 import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
 import variables from '@/styles/exports.module.scss';
 import styles from './controls.module.scss';
 
-// FIXME: move to types
-type Variable = {
-    name: string;
-    value: string;
-};
-
-type Variables = {
-    color: string;
-    variables: Variable[];
-};
-
 type ControlProps = {
     label: string;
     key: string;
     options: string[];
-    variables?: Variables[];
     defaultOption: string;
     addDataAttr?: boolean | undefined;
     addCssVariable?: boolean | undefined;
     vertical?: boolean | undefined;
-    onUpdate?: Dispatch<SetStateAction<string>> | undefined;
+    onUpdate?: (option: string) => void;
     props?: {};
 };
 
 const colors = ['Primary', 'Secondary', 'Tertiary', 'Accent'];
+const darkMap = variables.Dark.split('|').map(getMap);
+const darkOptions = darkMap.map(({ name }) => name);
 
-function getVariables({ name, values, mode }) {
-    return {
-        color: name,
-        variables: [
-            {
-                name: 'meta-theme',
-                value:
-                    values['background-color'] || mode === 'dark'
-                        ? variables.defaultDarkMetaTheme
-                        : variables.defaultLightMetaTheme,
-            },
-        ],
-    };
-}
+const lightMap = variables.Dark.split('|').map(getMap);
+const lightOptions = lightMap.map(({ name }) => name);
+
+const modeMap = {
+    Light: lightMap,
+    Dark: darkMap,
+};
 
 function getMap(str: string) {
     const [color, values] = str.split(' - ');
@@ -68,6 +44,43 @@ function getMap(str: string) {
         name: color.trim(),
         values: JSON.parse(`{ ${names.join(', ')} }`),
     };
+}
+
+function setMetaTheme(value: string, mode: string) {
+    let currentMode = localStorage.getItem('prefers-color-scheme');
+
+    if (currentMode === 'System') {
+        if (
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+        ) {
+            currentMode = 'Dark';
+        } else {
+            currentMode = 'Light';
+        }
+    }
+
+    if (document && currentMode === mode) {
+        console.log(
+            variables.defaultLightMetaTheme,
+            variables.defaultDarkMetaTheme
+        );
+        const backgroundColor =
+            modeMap[mode].find(({ name }) => name === value).values[
+                'background-color'
+            ] ||
+            (mode === 'Light'
+                ? variables.defaultLightMetaTheme
+                : variables.defaultDarkMetaTheme);
+
+        // Set local storage
+        localStorage.setItem('meta-theme', backgroundColor);
+
+        // Update meta tag
+        document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute('content', backgroundColor);
+    }
 }
 
 function Color({ name }: { name: string }) {
@@ -87,20 +100,6 @@ function Color({ name }: { name: string }) {
 }
 
 export function Controls({}) {
-    const darkMap = variables.Dark.split('|').map(getMap);
-    const darkOptions = darkMap.map(({ name }) => name);
-    const darkVariables = darkMap.map(({ name, values }) =>
-        getVariables({ name, values, mode: 'dark' })
-    );
-
-    const lightMap = variables.Dark.split('|').map(getMap);
-    const lightOptions = lightMap.map(({ name }) => name);
-    const lightVariables = lightMap.map(({ name, values }) =>
-        getVariables({ name, values, mode: 'light' })
-    );
-
-    // console.log(lightVariables);
-
     const [light, setLight] = useState('');
     const [dark, setDark] = useState('');
     const [shouldResize, setShouldResize] = useState(false);
@@ -117,11 +116,13 @@ export function Controls({}) {
                 label: 'Light Theme',
                 key: 'light-theme',
                 options: lightOptions,
-                variables: lightVariables,
                 defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
-                onUpdate: setLight,
+                onUpdate(option) {
+                    setMetaTheme(option, 'Light');
+                    setLight(option);
+                },
                 props: {
                     ['data-mode']: 'light',
                     [`data-light-theme`]: light,
@@ -131,11 +132,13 @@ export function Controls({}) {
                 label: 'Dark Theme',
                 key: 'dark-theme',
                 options: darkOptions,
-                variables: darkVariables,
                 defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
-                onUpdate: setDark,
+                onUpdate(option) {
+                    setMetaTheme(option, 'Dark');
+                    setDark(option);
+                },
                 props: {
                     ['data-mode']: 'dark',
                     [`data-dark-theme`]: dark,
@@ -176,7 +179,6 @@ export function Controls({}) {
                         label,
                         key,
                         options,
-                        variables,
                         defaultOption,
                         addDataAttr,
                         addCssVariable,
@@ -195,7 +197,6 @@ export function Controls({}) {
                                             localStorageKey={key}
                                             shouldResize={shouldResize}
                                             resize={resize}
-                                            variables={variables}
                                             addDataAttr={addDataAttr}
                                             addCssVariable={addCssVariable}
                                             vertical={vertical}

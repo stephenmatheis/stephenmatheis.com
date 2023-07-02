@@ -11,20 +11,8 @@ import {
 import classNames from 'classnames';
 import styles from './toggle.module.scss';
 
-// FIXME: move to types
-type Variable = {
-    name: string;
-    value: string;
-};
-
-type Variables = {
-    color: string;
-    variables: Variable[];
-};
-
 type Props = {
     options: string[];
-    variables?: Variables[];
     localStorageKey: string;
     defaultOption?: string | undefined;
     addDataAttr?: boolean | undefined;
@@ -37,7 +25,6 @@ type Props = {
 
 export function Toggle({
     options,
-    variables,
     localStorageKey,
     defaultOption,
     addDataAttr = false,
@@ -56,34 +43,6 @@ export function Toggle({
             if (onUpdate) {
                 onUpdate(option);
             }
-
-            // const currentMode = localStorage.getItem('prefers-color-scheme');
-
-            // variables
-            //     ?.find(({ color }) => color === option)
-            //     ?.variables.forEach(({ name, value }) => {
-            //         console.log(
-            //             localStorageKey,
-            //             currentMode,
-            //             option,
-            //             name,
-            //             value
-            //         );
-
-            //         if (
-            //             currentMode === 'Light' &&
-            //             localStorageKey === 'light-theme'
-            //         ) {
-            //             localStorage.setItem(name, value);
-            //         }
-
-            //         if (
-            //             currentMode === 'Dark' &&
-            //             localStorageKey === 'dark-theme'
-            //         ) {
-            //             localStorage.setItem(name, value);
-            //         }
-            //     });
 
             // Update local storage
             localStorage.setItem(localStorageKey, option);
