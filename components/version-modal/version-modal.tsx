@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import styles from './verison-modal.module.scss';
 
-export function VersionModal({}) {
+export function VersionModal() {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
