@@ -57,7 +57,7 @@ export function error() {
     return `${colors.FgCyan}⨂${colors.Reset}`;
 }
 
-export function cyan(text) {
+export function cyan(text: string) {
     return `${colors.FgCyan}${text}${colors.Reset}`;
 }
 

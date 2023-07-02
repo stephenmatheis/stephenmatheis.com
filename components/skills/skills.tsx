@@ -2,7 +2,7 @@ import { Comment } from '@/components/comment';
 import skills from '@/data/skills';
 import styles from './skills.module.scss';
 
-export function Skills({}) {
+export function Skills() {
     return (
         <div className={styles['skills']}>
             <Comment text={'Skills'} />
