@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { VersionModal } from '@/components/version-modal';
 import { Libre_Baskerville } from 'next/font/google';
 import localFont from 'next/font/local';
 import '@/styles/globals.scss';
@@ -47,6 +48,7 @@ export default function RootLayout({
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
                 <script src="/set-theme.js" />
                 {children}
+                <VersionModal />
             </body>
         </html>
     );
