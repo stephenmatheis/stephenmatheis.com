@@ -2,7 +2,7 @@ import { Comment } from '@/components/comment';
 import jobs from '@/data/jobs';
 import styles from './experience.module.scss';
 
-export function Experience({}) {
+export function Experience() {
     return (
         <div className={styles['experience']}>
             <Comment text={'Experience'} />

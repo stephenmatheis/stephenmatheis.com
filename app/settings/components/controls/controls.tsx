@@ -1,13 +1,6 @@
 'use client';
 
-import {
-    Dispatch,
-    Fragment,
-    SetStateAction,
-    useCallback,
-    useMemo,
-    useState,
-} from 'react';
+import { Fragment, useCallback, useMemo, useState } from 'react';
 import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
 import variables from '@/styles/exports.module.scss';
@@ -21,11 +14,70 @@ type ControlProps = {
     addDataAttr?: boolean | undefined;
     addCssVariable?: boolean | undefined;
     vertical?: boolean | undefined;
-    onUpdate?: Dispatch<SetStateAction<string>> | undefined;
+    onUpdate?: (option: string) => void;
     props?: {};
 };
 
 const colors = ['Primary', 'Secondary', 'Tertiary', 'Accent'];
+const darkMap = variables.Dark.split('|').map(getMap);
+const darkOptions = darkMap.map(({ name }) => name);
+
+const lightMap = variables.Dark.split('|').map(getMap);
+const lightOptions = lightMap.map(({ name }) => name);
+
+const modeMap = {
+    Light: lightMap,
+    Dark: darkMap,
+};
+
+function getMap(str: string) {
+    const [color, values] = str.split(' - ');
+    const names = values
+        .split(',')
+        .filter((x) => x)
+        .map((name) => {
+            const [key, value] = name.split(' > ');
+            return `"${key}": "${value}"`;
+        });
+
+    return {
+        name: color.trim(),
+        values: JSON.parse(`{ ${names.join(', ')} }`),
+    };
+}
+
+function setMetaTheme(value: string, mode: string) {
+    let currentMode = localStorage.getItem('prefers-color-scheme');
+
+    if (currentMode === 'System') {
+        if (
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+        ) {
+            currentMode = 'Dark';
+        } else {
+            currentMode = 'Light';
+        }
+    }
+
+    if (document && currentMode === mode) {
+        const backgroundColor =
+            modeMap[mode].find(({ name }) => name === value).values[
+                'background-color'
+            ] ||
+            (mode === 'Light'
+                ? variables.defaultLightMetaTheme
+                : variables.defaultDarkMetaTheme);
+
+        // Set local storage
+        localStorage.setItem('meta-theme', backgroundColor);
+
+        // Update meta tag
+        document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute('content', backgroundColor);
+    }
+}
 
 function Color({ name }: { name: string }) {
     return (
@@ -33,6 +85,7 @@ function Color({ name }: { name: string }) {
             className={[styles['color-block'], styles[name.toLowerCase()]].join(
                 ' '
             )}
+            data-color-block
         >
             <div className={styles['color-text']}>
                 <div className={styles.hex}>
@@ -59,11 +112,14 @@ export function Controls({}) {
             {
                 label: 'Light Theme',
                 key: 'light-theme',
-                options: variables.Light.split(', '),
+                options: lightOptions,
                 defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
-                onUpdate: setLight,
+                onUpdate(option) {
+                    setMetaTheme(option, 'Light');
+                    setLight(option);
+                },
                 props: {
                     ['data-mode']: 'light',
                     [`data-light-theme`]: light,
@@ -72,11 +128,14 @@ export function Controls({}) {
             {
                 label: 'Dark Theme',
                 key: 'dark-theme',
-                options: variables.Dark.split(', '),
+                options: darkOptions,
                 defaultOption: variables.default,
                 addDataAttr: true,
                 vertical: true,
-                onUpdate: setDark,
+                onUpdate(option) {
+                    setMetaTheme(option, 'Dark');
+                    setDark(option);
+                },
                 props: {
                     ['data-mode']: 'dark',
                     [`data-dark-theme`]: dark,
@@ -109,7 +168,7 @@ export function Controls({}) {
 
     return (
         <>
-            <div className={styles.controls}>
+            <div className={styles.controls} data-controls>
                 <Comment text={'Settings'} />
                 <div className={styles.spacer} />
                 {controls.map(
@@ -126,9 +185,15 @@ export function Controls({}) {
                     }) => {
                         return (
                             <Fragment key={label}>
-                                <div className={styles.label}>{label}</div>
+                                <div className={styles.label} data-label>
+                                    {label}
+                                </div>
                                 {vertical ? (
-                                    <div className={styles.group} {...props}>
+                                    <div
+                                        className={styles.group}
+                                        {...props}
+                                        data-control-group
+                                    >
                                         <Toggle
                                             options={options}
                                             defaultOption={defaultOption}
@@ -145,6 +210,7 @@ export function Controls({}) {
                                                 styles.colors,
                                                 styles[key],
                                             ].join(' ')}
+                                            data-colors
                                         >
                                             {colors.map((name) => {
                                                 return (
@@ -155,6 +221,7 @@ export function Controls({}) {
                                                                 'color-group'
                                                             ]
                                                         }
+                                                        data-color-group
                                                     >
                                                         <div
                                                             className={
@@ -162,6 +229,7 @@ export function Controls({}) {
                                                                     'color-label'
                                                                 ]
                                                             }
+                                                            data-color-label
                                                         >
                                                             {name}
                                                         </div>

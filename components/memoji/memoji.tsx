@@ -1,6 +1,6 @@
 import styles from './memoji.module.scss';
 
-export function Memoji({}: {}) {
+export function Memoji() {
     return (
         <video
             loop

@@ -94,6 +94,7 @@ export function Toggle({
         }
     }, [defaultOption, localStorageKey, options, setSelectedValue]);
 
+    // FIXME: Can these effects be combined?
     useEffect(() => {
         if (shouldResize) {
             updateValue();
@@ -131,6 +132,7 @@ export function Toggle({
                     ? undefined
                     : `repeat(${options.length}, 1fr)`,
             }}
+            data-control
         >
             {options.map((option: string, index: number) => {
                 return (
@@ -144,6 +146,7 @@ export function Toggle({
                     [styles.hidden]: selectedOption === '',
                 })}
                 data-index={options.indexOf(selectedOption)}
+                data-indicator
             />
         </button>
     );

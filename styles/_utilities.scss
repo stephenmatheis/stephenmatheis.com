@@ -39,6 +39,38 @@ $max-width: 680px;
     @return $string;
 }
 
+// Controls
+@mixin vertical() {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    [data-option] {
+        white-space: nowrap;
+        width: 100%;
+        // padding: 3px 24px;
+        padding: var(--offset) 24px;
+
+        &:not(:nth-last-child(2))::after {
+            right: 3px;
+            bottom: -0.5px;
+            height: 1px;
+            width: calc(100% - 6px);
+
+            // Overide :not(.vertical)
+            top: unset;
+            left: unset;
+        }
+    }
+
+    [data-indicator] {
+        width: calc(100% - var(--double-offset));
+        height: calc(var(--indicator-height) - var(--double-offset));
+        top: calc((var(--indicator-height) * var(--modifier)) + var(--offset));
+        left: var(--offset);
+    }
+}
+
 // Shadows
 @mixin shadow-variables {
     --border-color: var(--primary);
@@ -88,14 +120,41 @@ $max-width: 680px;
     @return string.unquote($str);
 }
 
+@function format-map($iterable) {
+    $str: '';
+
+    @each $key, $value in $iterable {
+        $entry-string: $key;
+
+        $str: $str + '|' + $entry-string + ' - ';
+
+        @each $name, $color in $value {
+            $entry-string: string.unquote($name) + ' >' $color;
+            // $entry-string: $color;
+
+            $str: $str + $entry-string + ',';
+        }
+    }
+
+    $str: string.slice($str, 2); // remove leading ', ' from ', entry1, entry2'
+
+    @return string.unquote($str);
+}
+
 $default: themes.$default;
+$defaultDarkMetaTheme: themes.$defaultDarkMetaTheme;
+$defaultLightMetaTheme: themes.$defaultLightMetaTheme;
 $themes: themes.$themes;
 $dark-colors: map.get($themes, 'Dark');
 $light-colors: map.get($themes, 'Light');
 $combined-colors: ($dark-colors, $light-colors);
+// $theme-colors: (
+//     'Dark': format($dark-colors),
+//     'Light': format($light-colors),
+// );
 $theme-colors: (
-    'Dark': format($dark-colors),
-    'Light': format($light-colors),
+    'Dark': format-map($dark-colors),
+    'Light': format-map($light-colors),
 );
 
 @mixin defaultColor($prefix, $variableName, $value, $mode, $options) {
@@ -243,7 +302,6 @@ $theme-colors: (
 }
 
 @mixin prefers-light {
-    // Base
     @include set-theme(null, 'Light', $default);
 }
 
@@ -280,13 +338,12 @@ $theme-colors: (
 }
 
 @mixin init-themes() {
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
         @include prefers-dark;
         @include os-themes('&', 'Dark');
     }
 
-    @media (prefers-color-scheme: light),
-        (prefers-color-scheme: no-preference) {
+    @media (prefers-color-scheme: light) {
         @include prefers-light;
         @include os-themes('&', 'Light');
     }
