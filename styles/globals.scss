@@ -151,6 +151,14 @@ body {
             background-color var(--prefers-color-scheme-transition-speed) ease
                 0s;
     }
+
+    &.modal-open {
+        position: fixed;
+
+        > :not([data-modal]) {
+            opacity: 0;
+        }
+    }
 }
 
 a {

@@ -4,10 +4,12 @@ const installed = localStorage.getItem('version');
 
 if (installed !== version) {
     console.log(
-        `On version ${installed}. Latest version is ${version}. Clear local settings.`
+        `On version ${installed}. Latest version is ${version}. Settings cleared.`
     );
     localStorage.clear();
     localStorage.setItem('version', version);
+    localStorage.setItem('showVersionDialog', 'true');
+    document.body.classList.add('modal-open');
 } else {
     console.log(`On latest version ${version}.`);
 }
