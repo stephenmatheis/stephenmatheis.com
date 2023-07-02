@@ -34,8 +34,6 @@ export function Tag({ tag, spacer, newTab, color = 'muted' }: Props) {
                         : '/archive'
                 }`;
 
-                console.log(href);
-
                 if (newTab) {
                     window.open(href);
                 } else {

@@ -61,10 +61,6 @@ function setMetaTheme(value: string, mode: string) {
     }
 
     if (document && currentMode === mode) {
-        console.log(
-            variables.defaultLightMetaTheme,
-            variables.defaultDarkMetaTheme
-        );
         const backgroundColor =
             modeMap[mode].find(({ name }) => name === value).values[
                 'background-color'
@@ -89,6 +85,7 @@ function Color({ name }: { name: string }) {
             className={[styles['color-block'], styles[name.toLowerCase()]].join(
                 ' '
             )}
+            data-color-block
         >
             <div className={styles['color-text']}>
                 <div className={styles.hex}>
@@ -171,7 +168,7 @@ export function Controls({}) {
 
     return (
         <>
-            <div className={styles.controls}>
+            <div className={styles.controls} data-controls>
                 <Comment text={'Settings'} />
                 <div className={styles.spacer} />
                 {controls.map(
@@ -188,9 +185,15 @@ export function Controls({}) {
                     }) => {
                         return (
                             <Fragment key={label}>
-                                <div className={styles.label}>{label}</div>
+                                <div className={styles.label} data-label>
+                                    {label}
+                                </div>
                                 {vertical ? (
-                                    <div className={styles.group} {...props}>
+                                    <div
+                                        className={styles.group}
+                                        {...props}
+                                        data-control-group
+                                    >
                                         <Toggle
                                             options={options}
                                             defaultOption={defaultOption}
@@ -207,6 +210,7 @@ export function Controls({}) {
                                                 styles.colors,
                                                 styles[key],
                                             ].join(' ')}
+                                            data-colors
                                         >
                                             {colors.map((name) => {
                                                 return (
@@ -217,6 +221,7 @@ export function Controls({}) {
                                                                 'color-group'
                                                             ]
                                                         }
+                                                        data-color-group
                                                     >
                                                         <div
                                                             className={
@@ -224,6 +229,7 @@ export function Controls({}) {
                                                                     'color-label'
                                                                 ]
                                                             }
+                                                            data-color-label
                                                         >
                                                             {name}
                                                         </div>
