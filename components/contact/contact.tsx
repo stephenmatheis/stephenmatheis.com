@@ -3,7 +3,7 @@ import { Comment } from '../comment';
 import contact from '@/data/contact';
 import styles from './contact.module.scss';
 
-export function Contact({}) {
+export function Contact() {
     return (
         <div className={styles['contact']}>
             <Comment text={'Contact'} />

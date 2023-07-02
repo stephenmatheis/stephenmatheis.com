@@ -1,9 +1,7 @@
 @use 'styles/utilities';
 
 .header {
-    display: flex;
-    width: 100%;
-    justify-content: center;
+    text-align: center;
 
     a {
         .text {
@@ -13,8 +11,10 @@
                 @include utilities.shadow-base;
             }
 
-            &:hover .part {
-                @include utilities.shadow-hover;
+            @media (hover: hover) {
+                &:hover .part {
+                    @include utilities.shadow-hover;
+                }
             }
 
             .name {
@@ -22,10 +22,6 @@
                 --border-color: var(--accent);
                 --shadow-2: var(--accent-20);
                 --shadow-3: var(--accent-20);
-            }
-
-            .title {
-                white-space: nowrap;
             }
         }
     }

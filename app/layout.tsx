@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { VersionModal } from '@/components/version-modal';
 import { Libre_Baskerville } from 'next/font/google';
 import localFont from 'next/font/local';
 import '@/styles/globals.scss';
@@ -24,10 +25,6 @@ export const metadata: Metadata = {
     },
     description: 'My blog, portfolio, and resume.',
     viewport: 'width=device-width, initial-scale=1,  viewport-fit=cover',
-    themeColor: [
-        { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-        { media: '(prefers-color-scheme: dark)', color: '#221d29' },
-    ],
     icons: {
         shortcut: '/favicon.ico',
         icon: '/favicons/icon.png',
@@ -51,6 +48,7 @@ export default function RootLayout({
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
                 <script src="/set-theme.js" />
                 {children}
+                <VersionModal />
             </body>
         </html>
     );
