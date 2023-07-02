@@ -39,6 +39,38 @@ $max-width: 680px;
     @return $string;
 }
 
+// Controls
+@mixin vertical() {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    [data-option] {
+        white-space: nowrap;
+        width: 100%;
+        // padding: 3px 24px;
+        padding: var(--offset) 24px;
+
+        &:not(:nth-last-child(2))::after {
+            right: 3px;
+            bottom: -0.5px;
+            height: 1px;
+            width: calc(100% - 6px);
+
+            // Overide :not(.vertical)
+            top: unset;
+            left: unset;
+        }
+    }
+
+    [data-indicator] {
+        width: calc(100% - var(--double-offset));
+        height: calc(var(--indicator-height) - var(--double-offset));
+        top: calc((var(--indicator-height) * var(--modifier)) + var(--offset));
+        left: var(--offset);
+    }
+}
+
 // Shadows
 @mixin shadow-variables {
     --border-color: var(--primary);
@@ -270,7 +302,6 @@ $theme-colors: (
 }
 
 @mixin prefers-light {
-    // Base
     @include set-theme(null, 'Light', $default);
 }
 
@@ -307,17 +338,6 @@ $theme-colors: (
 }
 
 @mixin init-themes() {
-    // @media (prefers-color-scheme: dark) {
-    //     @include prefers-dark;
-    //     @include os-themes('&', 'Dark');
-    // }
-
-    // @media (prefers-color-scheme: light),
-    //     (prefers-color-scheme: no-preference) {
-    //     @include prefers-light;
-    //     @include os-themes('&', 'Light');
-    // }
-
     @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
         @include prefers-dark;
         @include os-themes('&', 'Dark');

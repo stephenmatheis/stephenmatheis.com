@@ -1,5 +1,49 @@
 @use 'utilities';
 
+@mixin large-font() {
+    [data-control] {
+        @include utilities.vertical();
+        width: 100% !important;
+    }
+
+    [data-controls] {
+        display: block;
+    }
+
+    [data-label] {
+        justify-content: flex-start;
+        margin-bottom: var(--line-height);
+
+        &:not(:nth-of-type(3)) {
+            margin-top: calc(var(--line-height) * 2);
+        }
+    }
+
+    [data-control-group] {
+        display: block;
+        overflow: hidden;
+    }
+
+    [data-colors] {
+        margin-top: var(--line-height);
+        padding-bottom: var(--line-height);
+        overflow: overlay;
+    }
+
+    [data-color-group] {
+        display: block;
+    }
+
+    [data-color-label] {
+        padding: 0px;
+        margin-bottom: var(--line-height);
+    }
+
+    [data-color-block] {
+        height: calc(var(--line-height) * 4) !important;
+    }
+}
+
 :root {
     // Utilities
     --line-height: #{utilities.$line-height};
@@ -41,6 +85,11 @@
         --offset: 6px;
     }
 
+    &[data-font-size='16px'],
+    &[data-font-size='20px'] {
+        @include large-font();
+    }
+
     // Fonts
     &[data-font-family='Monospace'] {
         &[data-font-size='16px'] {
@@ -63,6 +112,8 @@
         // text-shadow: 0px 0px var(--font-size) currentColor;
         // text-shadow: 0px 0px 1ch currentColor;
         // text-shadow: 0px 0px 1px currentColor;
+
+        @include large-font();
 
         &[data-font-size='12px'] {
             --y: 6px;
