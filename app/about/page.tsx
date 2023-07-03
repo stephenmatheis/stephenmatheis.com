@@ -4,7 +4,7 @@ import { Content } from './components/content';
 import { Main } from '@/components/main';
 
 export const metadata: Metadata = {
-    title: 'Resume',
+    title: 'About',
     description: 'My resume and contact information.',
 };
 
