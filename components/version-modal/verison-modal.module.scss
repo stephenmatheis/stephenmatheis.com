@@ -1,19 +1,54 @@
+@use 'styles/utilities';
+
 .version-modal {
-    height: 100dvh;
-    width: 100vw;
+    --curve: cubic-bezier(0.465, 0.183, 0.153, 0.946);
+    --offset: 0vw;
+    --height: calc(100dvh - (calc(var(--offset) * 2)));
+    --width: calc(100vw - (calc(var(--offset) * 2)));
+    --border: none;
+
+    height: var(--height);
+    width: var(--width);
+    top: var(--offset);
+    left: var(--offset);
+    border: var(--border);
     background-color: var(--background-color);
     position: fixed;
-    top: 0px;
-    left: 0px;
     display: grid;
     place-content: center;
+    will-change: scale, opacity;
+    animation: open 300ms var(--curve) forwards;
+
+    &.close {
+        animation: close 300ms var(--curve) forwards;
+    }
+
+    @keyframes open {
+        from {
+            top: 100dvh;
+        }
+
+        to {
+            top: var(--offset);
+        }
+    }
+
+    @keyframes close {
+        from {
+            top: var(--offset);
+        }
+
+        to {
+            top: 100dvh;
+        }
+    }
 
     .close {
         cursor: pointer;
         position: absolute;
         font-size: 32px;
-        top: 18px;
-        right: 18px;
+        top: 28px;
+        right: 28px;
         font-weight: 100;
         color: var(--primary);
 
@@ -23,10 +58,26 @@
     }
 
     .content {
-        max-width: 35ch;
+        padding: 10vw;
+
+        @media (max-width: utilities.$small-width) {
+            padding: 8vw;
+        }
+
+        * {
+            font-size: 20px;
+            line-height: 28px;
+            text-align: left;
+
+            @media (max-width: utilities.$small-width) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
 
         h2 {
             margin-top: var(--line-height);
+            margin-bottom: calc(var(--line-height) * 3);
         }
     }
 }

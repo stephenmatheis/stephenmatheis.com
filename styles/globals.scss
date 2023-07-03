@@ -210,8 +210,7 @@ html {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
-    // scrollbar-width: none; // Firefox
-    // -ms-overflow-style: none; // IE 10+
+    
     -webkit-text-size-adjust: 100%;
 }
 
@@ -228,18 +227,13 @@ body {
     }
 
     &.modal-open {
-        position: fixed;
-
-        > :not([data-modal]) {
-            opacity: 0;
-        }
+        overflow: hidden;
     }
 }
 
 a {
     position: relative;
     color: var(--primary);
-    // -webkit-tap-highlight-color: transparent;
     -webkit-tap-highlight-color: var(--primary-20);
 
     &.anchor {
