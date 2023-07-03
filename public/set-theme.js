@@ -1,5 +1,5 @@
 // Check version
-const version = '1.0.6';
+const version = '1.0.7';
 const installed = localStorage.getItem('version');
 
 if (installed !== version) {

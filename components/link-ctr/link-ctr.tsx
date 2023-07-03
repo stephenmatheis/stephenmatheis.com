@@ -1,3 +1,4 @@
+import type { ComponentPropsWithoutRef } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 import styles from './link-ctr.module.scss';
@@ -7,14 +8,14 @@ type EmojiProps = {
     value: string;
 };
 
-type Props = {
+interface Props extends ComponentPropsWithoutRef<'a'> {
     emoji?: EmojiProps | string;
     href: string;
     children: React.ReactNode;
     label?: string;
     newTab?: Boolean;
     className?: string;
-};
+}
 
 export function LinkCtr({
     emoji,
@@ -23,6 +24,7 @@ export function LinkCtr({
     label,
     newTab,
     className,
+    ...props
 }: Props) {
     return (
         <>
@@ -32,6 +34,7 @@ export function LinkCtr({
                     href={href}
                     target="_blank"
                     aria-label={label}
+                    {...props}
                 >
                     <span className={styles['text']}>{children}</span>
                 </a>
@@ -40,6 +43,7 @@ export function LinkCtr({
                     href={href}
                     aria-label={label}
                     className={classNames(styles['link'], className)}
+                    {...props}
                 >
                     {(typeof emoji === 'string' ||
                         emoji?.position === 'left') && (
