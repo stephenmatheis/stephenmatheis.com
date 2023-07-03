@@ -15,6 +15,7 @@ $small-width: 500px;
 $medium-width: 1024px;
 $large-width: 1025px;
 $max-width: 680px;
+$medium-height: 725px;
 
 // String utilties
 /// https://gist.github.com/delphinpro/6e048196bbdfdfee07b1fb5c9ea4caef
@@ -68,6 +69,23 @@ $max-width: 680px;
         height: calc(var(--indicator-height) - var(--double-offset));
         top: calc((var(--indicator-height) * var(--modifier)) + var(--offset));
         left: var(--offset);
+    }
+}
+
+// Gaps
+@mixin gaps() {
+    transition: gap 450ms ease-in-out, padding-top 450ms ease-in-out;
+
+    @media (max-height: 725px) {
+        gap: calc(var(--line-height) * 3);
+    }
+
+    @media (max-height: 600px) {
+        gap: calc(var(--line-height) * 2);
+    }
+
+    @media (max-height: 540px) {
+        gap: calc(var(--line-height) * 1);
     }
 }
 
