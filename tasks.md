@@ -32,4 +32,6 @@ lastModified: 'July 2, 2023'
 -   [ ] Add "VS Code Dark Plus/Modern" theme
 -   [ ] Feat: Add, edit, and delete posts fromt end (will need auth to github)
 -   [ ] Fix setings width overlowing page-max width, especially at larger font sizes and with the retro font enabled
--   [ ] Add 'design system' section within settings - or maybe a link to docs, that's a separate website entirely but under the domain like design.stephenmatheis.com or stephenmatheis.design - with a complete interactiv list of all components used in the site
+-   [ ] Add 'design system' section within settings - or maybe a link to docs, that's a separate website entirely but under the domain like design.stephenmatheis.com or stephenmatheis.design - with a complete interactive list of all components used in the site (like storybook, but more tailored)
+-   [ ] Add a proper 'About me' paragraph. Updte the layout of /about to be less 'resume-y' and more fun.
+-   [x] Fix post page width on mobile
