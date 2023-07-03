@@ -19,6 +19,8 @@
         gap: calc(var(--line-height) * 4);
     }
 
+    @include utilities.gaps();
+
     &.col-2 {
         .left,
         .right {
