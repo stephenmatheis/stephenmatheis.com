@@ -72,6 +72,10 @@
 
     @include utilities.init-themes();
 
+    br[data-header-break] {
+        display: none;
+    }
+
     // Fonts
     &[data-font-size='16px'] {
         --font-size: 16px;
@@ -88,6 +92,26 @@
     &[data-font-size='16px'],
     &[data-font-size='20px'] {
         @include large-font();
+
+        @media (max-width: 613px) {
+            br[data-header-break] {
+                display: unset;
+            }
+
+            [data-header] {
+                line-height: calc(var(--line-height) * 2);
+            }
+        }
+
+        &[data-font-family='Retro'] {
+            br[data-header-break] {
+                display: unset;
+            }
+
+            [data-header] {
+                line-height: calc(var(--line-height) * 2);
+            }
+        }
     }
 
     // Fonts
