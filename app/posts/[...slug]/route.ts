@@ -5,9 +5,11 @@ export async function GET(req: NextRequest) {
     const slug = req.nextUrl.pathname
         .replace('/posts/', '')
         .replace('/raw', '');
-    const { raw } = await getPost(slug);
+    // const { raw } = await getPost(slug);
 
-    return new Response(raw, {
+    console.log(slug, req.nextUrl);
+
+    return new Response('test', {
         headers: {
             'Content-Type': 'text/plain',
         },
