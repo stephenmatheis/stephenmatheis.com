@@ -1,8 +1,7 @@
 @use 'styles/utilities';
 
 .post {
-    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    max-width: 100%;
+    font-family: var(--font-family);
     min-height: 100dvh;
     width: var(--max-width);
     padding: 0.5in;
