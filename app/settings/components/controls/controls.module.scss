@@ -9,7 +9,6 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
     width: 100%;
     display: grid;
     grid-template-columns: max-content auto;
-    // gap: var(--line-height) 2ch;
     gap: calc(var(--line-height) * 2) 4ch;
 
     @media (max-width: utilities.$small-width) {
