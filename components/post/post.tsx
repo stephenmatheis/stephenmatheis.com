@@ -62,7 +62,7 @@ export async function Post({
                     links={[
                         {
                             label: 'Markdown',
-                            path: `${slug}/raw`,
+                            path: `${slug}/markdown`,
                             newTab: true,
                         },
                         {

@@ -1,7 +1,7 @@
 .footer {
     display: flex;
     flex-direction: column;
-    gap: var(--line-height);
+    gap: calc(var(--line-height) * 1.5);
 
     * {
         font-size: var(--font-size);
@@ -10,6 +10,7 @@
 
     nav {
         ol {
+            margin: 0px;
             list-style-type: none;
             padding-left: 0;
             display: flex;

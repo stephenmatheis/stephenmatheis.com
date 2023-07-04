@@ -1,8 +1,19 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import styles from './verison-modal.module.scss';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { LinkCtr } from '../link-ctr';
+import styles from './verison-modal.module.scss';
+
+function parseMS(modal: RefObject<HTMLDivElement>, value: string): number {
+    if (!modal.current) {
+        return 0;
+    }
+
+    const style = getComputedStyle(modal.current);
+    const speed = style.getPropertyValue(value);
+
+    return parseInt(speed.replace('ms', ''));
+}
 
 export function VersionModal() {
     const [show, setShow] = useState(false);
@@ -10,11 +21,14 @@ export function VersionModal() {
 
     function close() {
         modal?.current?.classList.add(styles.close);
+        document.body.classList.remove('modal-open');
+
+        const speed = parseMS(modal, '--speed');
+        const delay = parseMS(modal, '--delay');
 
         setTimeout(() => {
-            document.body.classList.remove('modal-open');
             setShow(false);
-        }, 300);
+        }, speed + delay);
     }
 
     useEffect(() => {
