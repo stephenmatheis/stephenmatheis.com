@@ -36,3 +36,5 @@ lastModified: 'July 3, 2023'
 -   [ ] Add a proper 'About me' paragraph. Updte the layout of /about to be less 'resume-y' and more fun.
 -   [x] Fix post page width on mobile
 -   [ ] Fix `update-version.ts` to **_not run_** if only a post was added or updated (no code changes)
+-   [ ] Add `color` and `background color` to color groups in settings
+-   [ ] If a theme doesn't include secondary or tertiary colors, don't show them
