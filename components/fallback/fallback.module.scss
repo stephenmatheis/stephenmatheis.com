@@ -1,0 +1,39 @@
+.loader-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    .dots {
+        display: flex;
+        gap: 1ch;
+
+        .dot {
+            width: var(--font-size);
+            height: var(--font-size);
+            background-color: var(--primary);
+            animation: pulse 1400ms infinite ease-in-out both;
+
+            &:first-child {
+                animation-delay: -320ms;
+            }
+
+            &:nth-child(2) {
+                animation-delay: -160ms;
+            }
+        }
+    }
+
+    @keyframes pulse {
+        0%,
+        80%,
+        100% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+        40% {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+}
