@@ -1,18 +1,19 @@
 // Check version
-const version = '1.0.24';
+const version = '1.0.25';
 const installed = localStorage.getItem('version');
 
-if (installed !== version) {
-    console.log(
-        `On version ${installed}. Latest version is ${version}. Settings cleared.`
-    );
-    localStorage.clear();
-    localStorage.setItem('version', version);
-    localStorage.setItem('showVersionDialog', 'true');
-    document.body.classList.add('modal-open');
-} else {
-    console.log(`On latest version ${version}.`);
-}
+// DEV: OFF
+// if (installed !== version) {
+//     console.log(
+//         `On version ${installed}. Latest version is ${version}. Settings cleared.`
+//     );
+//     localStorage.clear();
+//     localStorage.setItem('version', version);
+//     localStorage.setItem('showVersionDialog', 'true');
+//     document.body.classList.add('modal-open');
+// } else {
+//     console.log(`On latest version ${version}.`);
+// }
 
 // Set theme
 setMode();
