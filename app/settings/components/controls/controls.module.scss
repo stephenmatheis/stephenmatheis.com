@@ -3,7 +3,7 @@
 @use 'styles/utilities';
 
 // TODO: Move to exports.module.scss
-$colors: ('primary', 'secondary', 'tertiary', 'accent');
+$colors: ('primary', 'secondary', 'tertiary', 'accent', 'background-color', 'color');
 
 .controls {
     width: 100%;
@@ -54,7 +54,7 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
         }
 
         .colors {
-            display: flex;
+            // display: flex;
             height: 100%;
             width: 100%;
             gap: 2ch;

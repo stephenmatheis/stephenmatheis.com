@@ -18,7 +18,14 @@ type ControlProps = {
     props?: {};
 };
 
-const colors = ['Primary', 'Secondary', 'Tertiary', 'Accent'];
+const colors = [
+    'Primary',
+    'Secondary',
+    'Tertiary',
+    'Accent',
+    'Background',
+    'Color',
+];
 const darkMap = variables.Dark.split('|').map(getMap);
 const darkOptions = darkMap.map(({ name }) => name);
 
