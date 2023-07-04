@@ -38,11 +38,14 @@
             }
 
             .indicator {
-                width: calc(var(--indicator-width) - var(--double-offset));
-                height: calc(100% - var(--double-offset));
-                top: var(--offset);
+                width: calc(var(--indicator-width) - var(--double-offset) / 1);
+                height: calc(
+                    var(--indicator-height) - var(--double-offset) / 1
+                );
+                top: calc(var(--offset) / 1);
                 left: calc(
-                    (var(--indicator-width) * var(--modifier)) + var(--offset)
+                    (var(--indicator-width) * var(--modifier)) + var(--offset) /
+                        1
                 );
             }
         }
@@ -51,7 +54,7 @@
     [data-option] {
         color: var(--primary);
         text-align: center;
-        padding: 3px 6px;
+        padding: var(--offset) 6px;
         position: relative;
         z-index: 2;
 
