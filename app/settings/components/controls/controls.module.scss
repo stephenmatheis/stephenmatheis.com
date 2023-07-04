@@ -9,14 +9,15 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
     width: 100%;
     display: grid;
     grid-template-columns: max-content auto;
-    gap: var(--line-height) 2ch;
+    // gap: var(--line-height) 2ch;
+    gap: calc(var(--line-height) * 2) 4ch;
 
     @media (max-width: utilities.$small-width) {
         display: block;
     }
 
     .spacer {
-        margin-bottom: calc(var(--line-height) * 3);
+        margin-bottom: calc(var(--line-height) * 2);
     }
 
     .label {
@@ -40,7 +41,7 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 2ch;
+        gap: 4ch;
 
         &[data-dark-theme=''],
         &[data-light-theme=''] {
