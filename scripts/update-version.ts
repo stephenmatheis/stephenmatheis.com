@@ -1,3 +1,5 @@
+// FIXME: Don't run if just a post was added or updated.
+
 // Create Posts
 
 import { writeFile, readFile } from 'fs/promises';
