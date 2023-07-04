@@ -6,10 +6,12 @@
     --height: calc(100dvh - (calc(var(--offset) * 2)));
     --width: calc(100vw - (calc(var(--offset) * 2)));
     --border: none;
+    --speed: 450ms;
+    --delay: 150ms;
 
     height: var(--height);
     width: var(--width);
-    top: var(--offset);
+    top: 100dvh;
     left: var(--offset);
     border: var(--border);
     background-color: var(--background-color);
@@ -17,10 +19,10 @@
     display: grid;
     place-content: center;
     will-change: scale, opacity;
-    animation: open 300ms var(--curve) forwards;
+    animation: open var(--speed) var(--curve) var(--delay) forwards;
 
     &.close {
-        animation: close 300ms var(--curve) forwards;
+        animation: close var(--speed) var(--curve) forwards;
     }
 
     @keyframes open {
@@ -58,9 +60,15 @@
     }
 
     .content {
+        --y: 11.5px;
+        --x: 7.5px;
+
         padding: 10vw;
 
         @media (max-width: utilities.$small-width) {
+            --y: 9.5px;
+            --x: 5.5px;
+
             padding: 8vw;
         }
 

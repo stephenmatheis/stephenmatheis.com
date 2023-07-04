@@ -5,7 +5,7 @@
 // Globals
 $font-size: 12px;
 $line-height: 18px;
-$offset: 3px;
+$offset: 13px;
 $x: 3px;
 $y: 7px;
 $p-line-height-modifier: 1.25;
@@ -15,6 +15,7 @@ $small-width: 500px;
 $medium-width: 1024px;
 $large-width: 1025px;
 $max-width: 680px;
+$medium-height: 725px;
 
 // String utilties
 /// https://gist.github.com/delphinpro/6e048196bbdfdfee07b1fb5c9ea4caef
@@ -48,7 +49,6 @@ $max-width: 680px;
     [data-option] {
         white-space: nowrap;
         width: 100%;
-        // padding: 3px 24px;
         padding: var(--offset) 24px;
 
         &:not(:nth-last-child(2))::after {
@@ -64,10 +64,40 @@ $max-width: 680px;
     }
 
     [data-indicator] {
-        width: calc(100% - var(--double-offset));
-        height: calc(var(--indicator-height) - var(--double-offset));
-        top: calc((var(--indicator-height) * var(--modifier)) + var(--offset));
-        left: var(--offset);
+        width: calc(100% - var(--offset));
+        height: calc(var(--indicator-height) - var(--double-offset) / 2);
+        top: calc(
+            (var(--indicator-height) * var(--modifier)) + var(--offset) / 2
+        );
+        left: calc(var(--offset) / 2);
+    }
+
+    @media (hover: hover) {
+        [data-indicator] {
+            width: calc(100% - var(--double-offset));
+            height: calc(var(--indicator-height) - var(--double-offset) / 1);
+            top: calc(
+                (var(--indicator-height) * var(--modifier)) + var(--offset) / 1
+            );
+            left: calc(var(--offset) / 1);
+        }
+    }
+}
+
+// Gaps
+@mixin gaps() {
+    transition: gap 450ms ease-in-out, padding-top 450ms ease-in-out;
+
+    @media (max-height: 640px) {
+        gap: calc(var(--line-height) * 3);
+    }
+
+    @media (max-height: 585px) {
+        gap: calc(var(--line-height) * 2);
+    }
+
+    @media (max-height: 530px) {
+        gap: calc(var(--line-height) * 1);
     }
 }
 
