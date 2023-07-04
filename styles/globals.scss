@@ -200,6 +200,48 @@
             --x: 7.5px;
         }
     }
+
+    &[data-font-family='Windy City'] {
+        --font-family: var(--font-windy-city);
+
+        // @include large-font();
+
+        // &[data-font-size='12px'] {
+        //     --y: 6px;
+        //     --x: 3px;
+        // }
+
+        // &[data-font-size='16px'] {
+        //     --y: 8px;
+        //     --x: 5px;
+        // }
+
+        // &[data-font-size='20px'] {
+        //     --y: 10px;
+        //     --x: 6px;
+        // }
+    }
+
+    &[data-font-family='Pixel'] {
+        --font-family: var(--font-pixel);
+
+        // @include large-font();
+
+        // &[data-font-size='12px'] {
+        //     --y: 6px;
+        //     --x: 3px;
+        // }
+
+        // &[data-font-size='16px'] {
+        //     --y: 8px;
+        //     --x: 5px;
+        // }
+
+        // &[data-font-size='20px'] {
+        //     --y: 10px;
+        //     --x: 6px;
+        // }
+    }
 }
 
 * {
