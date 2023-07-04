@@ -59,6 +59,10 @@
     --large-width: #{utilities.$large-width};
     --max-width: #{utilities.$max-width};
 
+    @media (hover: hover) {
+        --offset: 3px;
+    }
+
     // Defaults
     --prefers-color-scheme-transition-speed: 250ms;
     --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
@@ -80,13 +84,11 @@
     &[data-font-size='16px'] {
         --font-size: 16px;
         --line-height: 24px;
-        --offset: 4.5px;
     }
 
     &[data-font-size='20px'] {
         --font-size: 20px;
         --line-height: 32px;
-        --offset: 6px;
     }
 
     &[data-font-size='16px'],

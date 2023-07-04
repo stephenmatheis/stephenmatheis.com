@@ -5,7 +5,7 @@
 // Globals
 $font-size: 12px;
 $line-height: 18px;
-$offset: 3px;
+$offset: 13px;
 $x: 3px;
 $y: 7px;
 $p-line-height-modifier: 1.25;
@@ -49,7 +49,6 @@ $medium-height: 725px;
     [data-option] {
         white-space: nowrap;
         width: 100%;
-        // padding: 3px 24px;
         padding: var(--offset) 24px;
 
         &:not(:nth-last-child(2))::after {
@@ -65,10 +64,23 @@ $medium-height: 725px;
     }
 
     [data-indicator] {
-        width: calc(100% - var(--double-offset));
-        height: calc(var(--indicator-height) - var(--double-offset));
-        top: calc((var(--indicator-height) * var(--modifier)) + var(--offset));
-        left: var(--offset);
+        width: calc(100% - var(--offset));
+        height: calc(var(--indicator-height) - var(--double-offset) / 2);
+        top: calc(
+            (var(--indicator-height) * var(--modifier)) + var(--offset) / 2
+        );
+        left: calc(var(--offset) / 2);
+    }
+
+    @media (hover: hover) {
+        [data-indicator] {
+            width: calc(100% - var(--double-offset));
+            height: calc(var(--indicator-height) - var(--double-offset) / 1);
+            top: calc(
+                (var(--indicator-height) * var(--modifier)) + var(--offset) / 1
+            );
+            left: calc(var(--offset) / 1);
+        }
     }
 }
 
