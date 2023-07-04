@@ -39,6 +39,7 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
     .group {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 2ch;
 
         &[data-dark-theme=''],
@@ -143,6 +144,26 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent');
                         }
                     }
                 }
+            }
+        }
+
+        .font-example {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            padding: var(--line-height) 4ch;
+
+            p {
+                text-align: left;
+
+                &.right {
+                    text-align: right;
+                }
+            }
+
+            p:last-child {
+                margin: 0px;
             }
         }
     }

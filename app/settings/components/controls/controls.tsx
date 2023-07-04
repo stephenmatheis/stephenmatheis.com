@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useCallback, useMemo, useState } from 'react';
+import { Fragment, ReactNode, useCallback, useMemo, useState } from 'react';
 import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
 import variables from '@/styles/exports.module.scss';
@@ -79,6 +79,30 @@ function setMetaTheme(value: string, mode: string) {
     }
 }
 
+function ColorGroup({ localStorageKey }): ReactNode {
+    return (
+        <div
+            className={[styles.colors, styles[localStorageKey]].join(' ')}
+            data-colors
+        >
+            {colors.map((name) => {
+                return (
+                    <div
+                        key={name}
+                        className={styles['color-group']}
+                        data-color-group
+                    >
+                        <div className={styles['color-label']} data-color-label>
+                            {name}
+                        </div>
+                        <Color key={name} name={name} />
+                    </div>
+                );
+            })}
+        </div>
+    );
+}
+
 function Color({ name }: { name: string }) {
     return (
         <div
@@ -144,8 +168,16 @@ export function Controls({}) {
             {
                 label: 'Font Family',
                 key: 'font-family',
-                options: ['Monospace', 'Retro', 'Sans Serif', 'Serif'],
+                options: [
+                    'Monospace',
+                    'Pixel',
+                    'Retro',
+                    'Windy City',
+                    'Sans Serif',
+                    'Serif',
+                ],
                 defaultOption: 'Monospace',
+                vertical: true,
                 addDataAttr: true,
             },
             {
@@ -205,42 +237,27 @@ export function Controls({}) {
                                             vertical={vertical}
                                             onUpdate={onUpdate}
                                         />
-                                        <div
-                                            className={[
-                                                styles.colors,
-                                                styles[key],
-                                            ].join(' ')}
-                                            data-colors
-                                        >
-                                            {colors.map((name) => {
-                                                return (
-                                                    <div
-                                                        key={name}
-                                                        className={
-                                                            styles[
-                                                                'color-group'
-                                                            ]
-                                                        }
-                                                        data-color-group
-                                                    >
-                                                        <div
-                                                            className={
-                                                                styles[
-                                                                    'color-label'
-                                                                ]
-                                                            }
-                                                            data-color-label
-                                                        >
-                                                            {name}
-                                                        </div>
-                                                        <Color
-                                                            key={name}
-                                                            name={name}
-                                                        />
-                                                    </div>
-                                                );
-                                            })}
-                                        </div>
+                                        {(key === 'light-theme' ||
+                                            key === 'dark-theme') && (
+                                            <ColorGroup localStorageKey={key} />
+                                        )}
+                                        {key === 'font-family' && (
+                                            <div
+                                                className={
+                                                    styles['font-example']
+                                                }
+                                            >
+                                                <div className={styles.content}>
+                                                    <p>
+                                                        "Negative. I'm a meat
+                                                        popsicle."
+                                                    </p>
+                                                    <p className={styles.right}>
+                                                        ~ Korben Dallas
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 ) : (
                                     <Toggle
