@@ -51,7 +51,7 @@ export function PostsList({ posts }: { posts: Post[] }) {
     return (
         <>
             <div className={styles.title}>
-                <Comment text="Archive" />
+                <Comment text="Archive" style={{ marginBottom: 0 }} />
                 <Search posts={taggedPosts} setPosts={setFilteredPosts} />
             </div>
             {allTags.length > 0 && (

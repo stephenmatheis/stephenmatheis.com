@@ -184,8 +184,8 @@ export function Controls({}) {
                 key: 'font-family',
                 options: [
                     'Monospace',
-                    'Pixel',
                     'Retro',
+                    'Pixel',
                     'Windy City',
                     'Sans Serif',
                     'Serif',
