@@ -3,7 +3,14 @@
 @use 'styles/utilities';
 
 // TODO: Move to exports.module.scss
-$colors: ('primary', 'secondary', 'tertiary', 'accent', 'background-color', 'color');
+$colors: (
+    'primary',
+    'secondary',
+    'tertiary',
+    'accent',
+    'background-color',
+    'color'
+);
 
 .controls {
     width: 100%;
@@ -50,11 +57,13 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent', 'background-color', 'col
         @media (max-width: utilities.$small-width) {
             display: block;
             overflow: hidden;
-            // align-items: unset;
         }
 
         .colors {
-            // display: flex;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
             height: 100%;
             width: 100%;
             gap: 2ch;
@@ -62,30 +71,54 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent', 'background-color', 'col
             @media (max-width: utilities.$small-width) {
                 margin-top: var(--line-height);
                 padding-bottom: var(--line-height);
-                overflow: overlay;
-
-                // height: unset;
-                // flex-direction: column;
             }
 
             .color-group {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
+                flex-basis: calc(50% - 2ch);
+                color: var(--toggle-background-color);
+                border: solid 1px transparent;
+                transition: all var(--prefers-color-scheme-transition-speed)
+                    ease-in-out;
 
                 @media (max-width: utilities.$small-width) {
                     display: block;
-                    // flex-direction: row;
+                    flex-direction: row;
+                }
+
+                @each $color in $colors {
+                    &:has(.color-block.#{$color}) {
+                        background-color: var(
+                            --toggle-#{$color},
+                            var(--primary-20)
+                        );
+
+                        .color-text {
+                            .hex {
+                                &::after {
+                                    content: var(--toggle-#{$color}-string);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &:has(.color-block.background-color) {
+                    border-color: var(--toggle-primary-50);
+                    color: var(--toggle-color);
+
+                    * {
+                        color: var(--toggle-color);
+                    }
                 }
 
                 .color-label {
-                    color: var(--primary);
                     padding: var(--offset) 0px;
                     text-align: center;
 
                     @media (max-width: utilities.$small-width) {
-                        // width: 10ch;
-                        // text-align: left;
                         padding: 0px;
                         margin-bottom: var(--line-height);
                     }
@@ -96,30 +129,11 @@ $colors: ('primary', 'secondary', 'tertiary', 'accent', 'background-color', 'col
                     align-items: center;
                     height: 100%;
                     color: var(--toggle-background-color);
-                    background-color: var(--primary-20);
                     transition: all var(--prefers-color-scheme-transition-speed)
                         ease-in-out;
 
                     @media (max-width: utilities.$small-width) {
                         height: calc(var(--line-height) * 4);
-                        // flex: 2;
-                    }
-
-                    @each $color in $colors {
-                        &.#{$color} {
-                            background-color: var(
-                                --toggle-#{$color},
-                                var(--primary-20)
-                            );
-
-                            .color-text {
-                                .hex {
-                                    &::after {
-                                        content: var(--toggle-#{$color}-string);
-                                    }
-                                }
-                            }
-                        }
                     }
 
                     .color-text {
