@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { LinkCtr } from '@/components/link-ctr';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
+import { Project } from '../project';
 
 export type Theme =
     | 'css-variables'
@@ -84,6 +85,7 @@ const components = {
             </CopyToClipboard>
         );
     },
+    Project: Project
 };
 
 export function Body({ children }: { children: string }) {
