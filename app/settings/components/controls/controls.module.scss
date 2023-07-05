@@ -63,10 +63,9 @@ $colors: (
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-
             height: 100%;
             width: 100%;
-            gap: 2ch;
+            gap: 1ch;
 
             @media (max-width: utilities.$small-width) {
                 margin-top: var(--line-height);
@@ -77,6 +76,8 @@ $colors: (
                 flex: 1;
                 display: flex;
                 flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
                 flex-basis: calc(50% - 2ch);
                 color: var(--toggle-background-color);
                 border: solid 1px transparent;
@@ -115,7 +116,6 @@ $colors: (
                 }
 
                 .color-label {
-                    padding: var(--offset) 0px;
                     text-align: center;
 
                     @media (max-width: utilities.$small-width) {
@@ -127,7 +127,6 @@ $colors: (
                 .color-block {
                     display: grid;
                     align-items: center;
-                    height: 100%;
                     color: var(--toggle-background-color);
                     transition: all var(--prefers-color-scheme-transition-speed)
                         ease-in-out;
