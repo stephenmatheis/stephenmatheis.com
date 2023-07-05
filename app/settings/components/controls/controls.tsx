@@ -29,7 +29,7 @@ const colors = [
 const darkMap = variables.Dark.split('|').map(getMap);
 const darkOptions = darkMap.map(({ name }) => name);
 
-const lightMap = variables.Dark.split('|').map(getMap);
+const lightMap = variables.Light.split('|').map(getMap);
 const lightOptions = lightMap.map(({ name }) => name);
 
 const modeMap = {
