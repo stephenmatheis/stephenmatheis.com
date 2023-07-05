@@ -137,20 +137,6 @@ $medium-height: 725px;
 }
 
 // Themes
-@function format($iterable) {
-    $str: '';
-
-    @each $key, $value in $iterable {
-        $entry-string: $key;
-
-        $str: $str + ', ' + $entry-string;
-    }
-
-    $str: string.slice($str, 3); // remove leading ', ' from ', entry1, entry2'
-
-    @return string.unquote($str);
-}
-
 @function format-map($iterable) {
     $str: '';
 
@@ -161,13 +147,13 @@ $medium-height: 725px;
 
         @each $name, $color in $value {
             $entry-string: string.unquote($name) + ' >' $color;
-            // $entry-string: $color;
 
             $str: $str + $entry-string + ',';
         }
     }
 
-    $str: string.slice($str, 2); // remove leading ', ' from ', entry1, entry2'
+    // remove leading ', ' from ', item 1, item 2'
+    $str: string.slice($str, 2);
 
     @return string.unquote($str);
 }
@@ -179,10 +165,6 @@ $themes: themes.$themes;
 $dark-colors: map.get($themes, 'Dark');
 $light-colors: map.get($themes, 'Light');
 $combined-colors: ($dark-colors, $light-colors);
-// $theme-colors: (
-//     'Dark': format($dark-colors),
-//     'Light': format($light-colors),
-// );
 $theme-colors: (
     'Dark': format-map($dark-colors),
     'Light': format-map($light-colors),
@@ -191,8 +173,10 @@ $theme-colors: (
 @mixin defaultColor($prefix, $variableName, $value, $mode, $options) {
     @if $value {
         --#{$prefix}#{$variableName}: #{$value};
+        --toggle-#{$variableName}-string: '#{$value}';
     } @else {
         --#{$prefix}#{$variableName}: #{map.get($options, $mode)};
+        --toggle-#{$variableName}-string: '#{map.get($options, $mode)}';
     }
 }
 
@@ -248,7 +232,7 @@ $theme-colors: (
             $mode,
             (
                 'Light': #757575,
-                'Dark': #808080,
+                'Dark': #878787,
             )
         );
 
