@@ -23,8 +23,8 @@ const colors = [
     'Secondary',
     'Tertiary',
     'Accent',
-    'Background',
-    'Color',
+    'Background-Color',
+    'Text Color',
 ];
 const darkMap = variables.Dark.split('|').map(getMap);
 const darkOptions = darkMap.map(({ name }) => name);
@@ -99,8 +99,14 @@ function ColorGroup({ localStorageKey }): ReactNode {
                         className={styles['color-group']}
                         data-color-group
                     >
-                        <div className={styles['color-label']} data-color-label>
-                            {name}
+                        <div
+                            className={[
+                                styles['color-label'],
+                                styles[name.toLowerCase().replace('text ', '')],
+                            ].join(' ')}
+                            data-color-label
+                        >
+                            {name.replaceAll('-', ' ')}
                         </div>
                         <Color key={name} name={name} />
                     </div>
@@ -113,9 +119,10 @@ function ColorGroup({ localStorageKey }): ReactNode {
 function Color({ name }: { name: string }) {
     return (
         <div
-            className={[styles['color-block'], styles[name.toLowerCase()]].join(
-                ' '
-            )}
+            className={[
+                styles['color-block'],
+                styles[name.toLowerCase().replace('text ', '')],
+            ].join(' ')}
             data-color-block
         >
             <div className={styles['color-text']}>
