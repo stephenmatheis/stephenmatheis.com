@@ -16,6 +16,10 @@ export default function RootPage() {
                     path: '/json',
                     newTab: true,
                 },
+                {
+                    label: 'Login',
+                    path: '/login',
+                },
             ]}
         >
             <Main columns={2}>
