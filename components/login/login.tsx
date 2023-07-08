@@ -1,15 +1,53 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
-export function Login() {
-    const searchParams = useSearchParams();
-    const code = searchParams.get('code');
+export function Login({ name }) {
+    const pathname = usePathname();
 
-    useEffect(() => {
-        
-    }, [code]);
+    return (
+        <>
+            {name && (
+                <div
+                    style={{
+                        position: 'fixed',
+                        top: 10,
+                        right: 10,
+                        textAlign: 'right',
+                    }}
+                >
+                    <div
+                        style={{
+                            color: 'var(--color)',
+                            backgroundColor: 'var(--primary-30)',
+                            padding: '6px 24px',
+                            borderRadius: '6px',
+                            marginBottom: 5,
+                        }}
+                    >
+                        {name}
+                    </div>
+                    <button
+                        style={{
+                            color: 'var(--primary)',
+                            backgroundColor: 'var(--primary-30)',
+                            padding: '6px 24px',
+                            borderRadius: '6px',
+                            border: 'none',
+                            cursor: 'pointer',
+                        }}
+                        onClick={async () => {
+                            await fetch('api/octokit/logout', {
+                                method: 'POST',
+                            });
 
-    return <></>;
+                            window.location.replace(pathname);
+                        }}
+                    >
+                        Logout
+                    </button>
+                </div>
+            )}
+        </>
+    );
 }
