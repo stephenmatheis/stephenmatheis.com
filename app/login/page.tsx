@@ -28,7 +28,7 @@ export default function ProjectsPage({}) {
             <Main columns={2}>
                 <Comment text="Login" />
                 <LinkCtr
-                    href={`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=http://localhost:3000/login`}
+                    href={`https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${process.env.REDIRECT_URI}`}
                 >
                     Login with GitHub
                 </LinkCtr>
