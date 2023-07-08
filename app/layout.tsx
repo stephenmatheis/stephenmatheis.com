@@ -1,7 +1,5 @@
-import { cookies } from 'next/headers';
 import type { Metadata } from 'next';
 import { VersionModal } from '@/components/version-modal';
-import { Login } from '@/components/login';
 import { Libre_Baskerville } from 'next/font/google';
 import localFont from 'next/font/local';
 import '@/styles/globals.scss';
@@ -52,9 +50,6 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
-    const cookieStore = cookies();
-    const name = cookieStore.get('name') as { name: string; value: string };
-
     return (
         <html
             lang="en"
@@ -71,7 +66,6 @@ export default function RootLayout({
                 <script src="/set-theme.js" />
                 {children}
                 <VersionModal />
-                {name && <Login name={name.value} />}
             </body>
         </html>
     );

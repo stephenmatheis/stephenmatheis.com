@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import styles from './login.module.scss';
 
 export function Login({ name }) {
     const pathname = usePathname();
@@ -13,8 +14,6 @@ export function Login({ name }) {
                 method: 'POST',
             });
             const data = await res.json();
-
-            console.log('Check:', data);
 
             if (data.error) {
                 await fetch('api/octokit/logout', {
@@ -36,34 +35,10 @@ export function Login({ name }) {
     return (
         <>
             {name && (
-                <div
-                    style={{
-                        position: 'fixed',
-                        top: 10,
-                        right: 10,
-                        textAlign: 'right',
-                    }}
-                >
-                    <div
-                        style={{
-                            color: 'var(--color)',
-                            backgroundColor: 'var(--primary-30)',
-                            padding: '6px 24px',
-                            borderRadius: '6px',
-                            marginBottom: 5,
-                        }}
-                    >
-                        {name}
-                    </div>
+                <div className={styles['login-toolbar']}>
+                    <div className={styles.name}>{name}</div>
                     <button
-                        style={{
-                            color: 'var(--primary)',
-                            backgroundColor: 'var(--primary-30)',
-                            padding: '6px 24px',
-                            borderRadius: '6px',
-                            border: 'none',
-                            cursor: 'pointer',
-                        }}
+                        className={styles.logout}
                         onClick={async () => {
                             await fetch('api/octokit/logout', {
                                 method: 'POST',

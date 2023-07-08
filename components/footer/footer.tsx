@@ -1,3 +1,5 @@
+import { cookies } from 'next/headers';
+import { Login } from '@/components/login';
 import { LinkCtr } from '@/components/link-ctr';
 import styles from './footer.module.scss';
 
@@ -13,6 +15,8 @@ type Props = {
 };
 
 export function Footer({ links, text }: Props) {
+    const cookieStore = cookies();
+    const name = cookieStore.get('name') as { name: string; value: string };
     const copyright = `Copyright (C) ${new Date().getFullYear()} Stephen Matheis`;
 
     return (
@@ -33,6 +37,7 @@ export function Footer({ links, text }: Props) {
                 </nav>
             )}
             {text && <div className={styles.text}>{text}</div>}
+            {name && <Login name={name.value} />}
             <div className={styles.copyright}>{copyright}</div>
         </footer>
     );
