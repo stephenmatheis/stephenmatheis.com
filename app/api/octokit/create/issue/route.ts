@@ -21,12 +21,27 @@ export async function POST(req: NextRequest) {
     const octokit = await init({ token });
 
     try {
-        const { data } = await octokit.request('GET /user');
+        const issue = await octokit.request(
+            'POST /repos/{owner}/{repo}/issues',
+            {
+                owner: 'stephenmatheis',
+                repo: 'stephenmatheis.com',
+                title: 'Test',
+                body: 'Created with api.',
+                assignees: ['stephenmatheis'],
+                labels: ['bug'],
+            }
+        );
 
-        const response = NextResponse.json(data, options);
+        const response = NextResponse.json(
+            { msg: 'created issue', data: issue },
+            options
+        );
 
         return response;
     } catch (error) {
+        console.log(error);
+
         const response = NextResponse.json({ error }, options);
 
         return response;

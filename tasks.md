@@ -1,5 +1,5 @@
 ---
-lastModified: 'July 4, 2023'
+lastModified: 'July 8, 2023'
 ---
 
 # Tasks
@@ -36,3 +36,4 @@ lastModified: 'July 4, 2023'
 -   [x] Fix post page width on mobile
 -   [ ] Fix `update-version.ts` to **_not run_** if only a post was added or updated (no code changes)
 -   [x] Add `color` and `background color` to color groups in settings
+-   [ ] Abstract api calls into reusable hooks/utils?

@@ -21,7 +21,7 @@ export function Buttons() {
             <button
                 onClick={async () => {
                     // TODO: Submit values with form
-                    const res = await fetch('api/octokit/issue/create', {
+                    const res = await fetch('api/octokit/create/issue', {
                         method: 'POST',
                     });
 

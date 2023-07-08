@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { init } from '../../lib/init';
+import { init } from '@/app/api/lib/init';
 
 type Cookie = {
     name: string;
@@ -10,18 +10,17 @@ export async function POST(req: NextRequest) {
     const { value: token } = req.cookies.get('token') as Cookie;
     const octokit = await init({ token });
 
-    const reovke = await octokit.request(
-        'DELETE /applications/{client_id}/token',
-        {
+    try {
+        await octokit.request('DELETE /applications/{client_id}/token', {
             client_id: process.env.CLIENT_ID || '',
             access_token: token,
             headers: {
                 'X-GitHub-Api-Version': '2022-11-28',
             },
-        }
-    );
-
-    console.log('REVOKE', reovke);
+        });
+    } catch (error) {
+        console.log(error);
+    }
 
     const response = NextResponse.json(
         { msg: 'access token revoked' },
