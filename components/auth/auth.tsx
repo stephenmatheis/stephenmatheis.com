@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, usePathname } from 'next/navigation';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '@/hooks/useAuth';
 
 export function Auth() {
     const searchParams = useSearchParams();

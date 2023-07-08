@@ -7,18 +7,8 @@ export default function RootPage() {
         <Page
             links={[
                 {
-                    label: 'RSS',
-                    path: '/rss',
-                    newTab: true,
-                },
-                {
-                    label: 'JSON',
-                    path: '/json',
-                    newTab: true,
-                },
-                {
-                    label: 'Login',
-                    path: '/login',
+                    label: 'Settings',
+                    path: '/settings',
                 },
             ]}
         >
