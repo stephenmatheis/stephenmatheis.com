@@ -31,16 +31,7 @@
     }
 
     [data-color-group] {
-        display: block;
-    }
-
-    [data-color-label] {
-        padding: 0px;
-        margin-bottom: var(--line-height);
-    }
-
-    [data-color-block] {
-        height: calc(var(--line-height) * 4) !important;
+        height: calc(var(--line-height) * 4);
     }
 }
 
