@@ -1,5 +1,5 @@
 ---
-lastModified: 'July 8, 2023'
+lastModified: 'July 9, 2023'
 ---
 
 # Tasks
@@ -7,12 +7,8 @@ lastModified: 'July 8, 2023'
 -   [x] https://www.adamcollier.co.uk/posts/adding-an-updated-date-to-markdown-and-mdx-posts/
 -   [x] Move domain to vecel (if Netlify bug isn't fixed soon)
 -   [x] Update header to use <LinkCtr />
--   [ ] Add `color` property to <LinkCtr />
-    -   Primary
-    -   Secondary
-    -   Tertiary
 -   [x] Add line height \* 1.25 or 1.5 to posts titles
--   [x] Add palette with hex values to settings **next to toggles**
+-   [x] Add palette with hex values to settings
 -   [ ] Add UI to create your own palette
 -   [x] Fix next post title max width on mobile
 -   [x] Add vertical toggle for long lists (themes)
@@ -37,3 +33,6 @@ lastModified: 'July 8, 2023'
 -   [ ] Fix `update-version.ts` to **_not run_** if only a post was added or updated (no code changes)
 -   [x] Add `color` and `background color` to color groups in settings
 -   [ ] Abstract api calls into reusable hooks/utils?
+-   [ ] Complete 'New Post' form
+-   [ ] Add 'Edit post' button
+-   [ ] Add 'Edit post' form
