@@ -14,11 +14,16 @@ function parseMS(modal: RefObject<HTMLDivElement>, value: string): number {
     return parseInt(speed.replace('ms', ''));
 }
 
-export function NewPost() {
-    const [showForm, setShowForm] = useState(false);
+export function NewPost({ posts }) {
+    const titles = posts.map(({ title }) => title);
     const backdrop = useRef<HTMLDivElement>(null);
     const modal = useRef<HTMLDivElement>(null);
     const uploadBtn = useRef<HTMLButtonElement>(null);
+    const title = useRef<HTMLInputElement>(null);
+    const body = useRef<HTMLTextAreaElement>(null);
+    const [showForm, setShowForm] = useState(false);
+    const [disabled, setDisabled] = useState(true);
+    const [exists, setExists] = useState(false);
 
     function close() {
         const speed = parseMS(backdrop, '--speed');
@@ -56,29 +61,64 @@ export function NewPost() {
                                 <div className={styles.field}>
                                     <label htmlFor="title">Title</label>
                                     <input
+                                        ref={title}
                                         type="text"
                                         name="title"
                                         autoFocus={true}
                                         onChange={(event) => {
-                                            if (!uploadBtn.current) {
-                                                return;
-                                            }
+                                            const value = event.target.value;
 
-                                            if (event.target.value) {
-                                                uploadBtn.current.disabled =
-                                                    false;
+                                            if (value) {
+                                                if (titles.includes(value)) {
+                                                    setDisabled(true);
+                                                    setExists(true);
+                                                } else {
+                                                    setDisabled(false);
+                                                    setExists(false);
+                                                }
                                             } else {
-                                                uploadBtn.current.disabled =
-                                                    true;
+                                                setDisabled(true);
                                             }
                                         }}
                                     />
+                                    {/* DEV: */}
+                                    {exists && (
+                                        <div className={styles.exists}>
+                                            <em>
+                                                {' '}
+                                                A post with this title already
+                                                exists.
+                                            </em>
+                                        </div>
+                                    )}
                                 </div>
                                 <button
                                     ref={uploadBtn}
                                     className={styles.upload}
                                     tabIndex={-1}
-                                    disabled
+                                    disabled={disabled}
+                                    onClick={async () => {
+                                        setDisabled(true);
+
+                                        console.log('Uploading...');
+
+                                        // DEV: Test creating a post
+                                        const res = await fetch(
+                                            'api/octokit/create/post',
+                                            {
+                                                method: 'POST',
+                                                body: JSON.stringify({
+                                                    title: title?.current
+                                                        ?.value,
+                                                    content:
+                                                        body?.current?.value,
+                                                }),
+                                            }
+                                        );
+                                        const data = await res.json();
+
+                                        console.log(data);
+                                    }}
                                 >
                                     <svg
                                         id="icon-arrow-up2"
@@ -90,7 +130,7 @@ export function NewPost() {
                             </div>
                             {/* TODO: Markdown syntax highlighting */}
                             <div className={styles.field}>
-                                <textarea name="body" />
+                                <textarea ref={body} name="body" />
                             </div>
                         </div>
                     </div>

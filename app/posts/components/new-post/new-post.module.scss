@@ -130,6 +130,7 @@
                 gap: 6ch;
                 margin-bottom: calc(var(--line-height) * 2);
                 align-items: center;
+                position: relative;
 
                 .upload {
                     background-color: var(--muted);
@@ -147,12 +148,20 @@
                     }
 
                     &:not([disabled]) {
+                        cursor: pointer;
                         background-color: var(--primary-30);
 
                         svg {
                             fill: var(--primary);
                         }
                     }
+                }
+
+                .exists {
+                    position: absolute;
+                    bottom: calc(var(--line-height) * -1.5);
+                    left: 0px;
+                    color: var(--primary);
                 }
             }
 

@@ -21,9 +21,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                 <Comment text="Posts" />
                 <DateTime className={styles.date} dateString={dates[0]} />
             </div>
-            {/* DEV: New post button */}
-            {name && <NewPost/>}
-            {/* DEV: */}
+            {name && <NewPost posts={posts} />}
             <div className={styles['date-groups']}>
                 {dates.map((date, dateIndex) => {
                     return (
