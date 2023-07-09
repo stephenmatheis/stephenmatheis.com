@@ -201,6 +201,7 @@
         }
     }
 
+    // TODO:
     &[data-font-family='Windy City'] {
         --font-family: var(--font-windy-city);
 
@@ -222,6 +223,7 @@
         // }
     }
 
+    // TODO:
     &[data-font-family='Pixel'] {
         --font-family: var(--font-pixel);
 
@@ -256,6 +258,26 @@ html {
     color: var(--color);
 
     -webkit-text-size-adjust: 100%;
+
+    &[data-prefers-color-scheme='Dark'] {
+        body {
+            &.modal-open {
+                [data-backdrop] {
+                    --filter: blur(4px) brightness(1.5);
+                }
+            }
+        }
+    }
+
+    @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
+        body {
+            &.modal-open {
+                [data-backdrop] {
+                    --filter: blur(4px) brightness(1.5);
+                }
+            }
+        }
+    }
 }
 
 body {
@@ -267,7 +289,8 @@ body {
     &.can-transition {
         transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
             background-color var(--prefers-color-scheme-transition-speed) ease
-                0s;
+                0s,
+            filter var(--prefers-color-scheme-transition-speed) ease 0s;
     }
 
     &.modal-open {
