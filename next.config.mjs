@@ -3,9 +3,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-    // FIXME: Turn back on before merging
-    // DEV:
-    // reactStrictMode: true,
+    reactStrictMode: true,
     sassOptions: {
         logger: {
             /**

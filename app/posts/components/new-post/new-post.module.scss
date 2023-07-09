@@ -1,6 +1,7 @@
 @use 'styles/utilities';
 
 .button {
+    user-select: none;
     cursor: pointer;
     width: fit-content;
     padding: 12px 24px;
@@ -114,10 +115,83 @@
         }
 
         .content {
-            padding: 10vw;
+            padding: 10vw 10vw 0vw 10vw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
 
             @media (max-width: utilities.$small-width) {
-                padding: 8vw;
+                padding: 8vw 8vw 0vw 8vw;
+            }
+
+            .title {
+                width: 100%;
+                display: flex;
+                gap: 6ch;
+                margin-bottom: calc(var(--line-height) * 2);
+                align-items: center;
+
+                .upload {
+                    background-color: var(--muted);
+                    border-radius: 50%;
+                    border: none;
+                    height: 32px;
+                    min-width: 32px;
+                    display: grid;
+                    place-content: center;
+
+                    svg {
+                        height: 22px;
+                        width: 22px;
+                        fill: var(--color);
+                    }
+
+                    &:not([disabled]) {
+                        background-color: var(--primary-30);
+
+                        svg {
+                            fill: var(--primary);
+                        }
+                    }
+                }
+            }
+
+            .field {
+                width: 100%;
+
+                label {
+                    display: block;
+                    color: var(--primary);
+                }
+
+                input {
+                    font-family: var(--font);
+                    width: 100%;
+                    background-color: var(--background-color);
+                    color: var(--color);
+                    padding: calc(var(--line-height) / 2) 0px;
+                    border: none;
+                    border-bottom: solid 1px var(--primary);
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                textarea {
+                    font-family: var(--font);
+                    width: 100%;
+                    height: 100%;
+                    background-color: var(--background-color);
+                    color: var(--color);
+                    padding: 0px 0px var(--line-height) 0px;
+                    border: none;
+                    resize: none;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
             }
         }
     }
