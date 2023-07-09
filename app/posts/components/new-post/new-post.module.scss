@@ -1,15 +1,25 @@
 @use 'styles/utilities';
 
+.toolbar {
+    display: flex;
+    justify-content: right;
+}
+
 .button {
     user-select: none;
     cursor: pointer;
     width: fit-content;
     padding: 12px 24px;
     color: var(--primary);
-    border: solid 1px var(--primary);
-    background-color: var(--primary-10);
-    margin-bottom: calc(var(--line-height) * 3);
-    width: 100%;
+
+    // DEV:
+
+    border: none;
+    background-color: transparent;
+
+    // margin-bottom: calc(var(--line-height) * 3);
+    // border: solid 1px var(--primary);
+    background-color: var(--primary-30);
 
     @media (hover: hover) {
         padding: 6px 24px;
@@ -103,7 +113,7 @@
         .close {
             cursor: pointer;
             position: absolute;
-            font-size: 32px;
+            font-size: 22px;
             top: 28px;
             right: 28px;
             font-weight: 100;

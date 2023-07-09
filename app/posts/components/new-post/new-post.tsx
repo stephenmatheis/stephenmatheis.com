@@ -40,15 +40,17 @@ export function NewPost({ posts }) {
 
     return (
         <>
-            <button
-                className={styles.button}
-                onClick={() => {
-                    document.body.classList.add('modal-open');
-                    setShowForm(true);
-                }}
-            >
-                New post
-            </button>
+            <div className={styles.toolbar}>
+                <button
+                    className={styles.button}
+                    onClick={() => {
+                        document.body.classList.add('modal-open');
+                        setShowForm(true);
+                    }}
+                >
+                    New post
+                </button>
+            </div>
             {showForm && (
                 <div className={styles.backdrop} ref={backdrop} data-backdrop>
                     <div className={styles['form']} ref={modal} data-modal>
