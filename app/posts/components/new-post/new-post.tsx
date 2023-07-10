@@ -1,6 +1,10 @@
 'use client';
 
-import { RefObject, useState, useRef } from 'react';
+import { marked } from 'marked';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-markdown';
+import 'prismjs/plugins/custom-class/prism-custom-class.min.js';
+import { RefObject, useState, useRef, KeyboardEvent } from 'react';
 import styles from './new-post.module.scss';
 
 function parseMS(modal: RefObject<HTMLDivElement>, value: string): number {
@@ -21,9 +25,20 @@ export function NewPost({ posts }) {
     const uploadBtn = useRef<HTMLButtonElement>(null);
     const title = useRef<HTMLInputElement>(null);
     const body = useRef<HTMLTextAreaElement>(null);
+    const code = useRef<HTMLModElement>(null);
+    const pre = useRef<HTMLPreElement>(null);
     const [showForm, setShowForm] = useState(false);
     const [disabled, setDisabled] = useState(true);
     const [exists, setExists] = useState(false);
+    const [showPreview, setShowPreview] = useState(false);
+    const [content, setContent] = useState('');
+
+    marked.use({
+        mangle: false,
+        headerIds: false,
+    });
+
+    const html = marked.parse(content);
 
     function close() {
         const speed = parseMS(backdrop, '--speed');
@@ -37,6 +52,76 @@ export function NewPost({ posts }) {
             setShowForm(false);
         }, speed + delay);
     }
+
+    Prism.plugins.customClass.add(({content, type, language}) => {
+        if (content === 'return' && type === 'keyword' && language === 'js') {
+            return 'return';
+        }
+    });
+
+    function update(text: string) {
+        let result_element = code.current;
+
+        if (!result_element) {
+            return;
+        }
+
+        // Handle final newlines (see article)
+        if (text[text.length - 1] == '\n') {
+            text += ' ';
+        }
+
+        // Update code
+        result_element.innerHTML = text
+            .replace(new RegExp('&', 'g'), '&amp;')
+            .replace(new RegExp('<', 'g'), '&lt;'); /* Global RegExp */
+
+        // Syntax Highlight
+        Prism.highlightElement(result_element);
+    }
+
+    function sync_scroll(element: Element) {
+        /* Scroll result to scroll coords of event - sync with textarea */
+        let result_element = pre.current;
+
+        if (!result_element) {
+            return;
+        }
+
+        // Get and set x and y
+        result_element.scrollTop = element.scrollTop;
+        result_element.scrollLeft = element.scrollLeft;
+    }
+
+    function check_tab(
+        element: HTMLTextAreaElement,
+        event: KeyboardEvent<HTMLTextAreaElement>
+    ) {
+        let code = element.value;
+
+        // FIXME: Trying to tab more than one line causes the text selected to disappear
+        // cmd+z does not revert this change.
+        if (event.key == 'Tab') {
+            /* Tab key pressed */
+            event.preventDefault(); // stop normal
+
+            let before_tab = code.slice(0, element.selectionStart); // text before tab
+            let after_tab = code.slice(
+                element.selectionEnd,
+                element.value.length
+            ); // text after tab
+            let cursor_pos = element.selectionStart + 1; // where cursor moves after tab - moving forward by 1 char to after tab
+
+            element.value = before_tab + '\t' + after_tab; // add tab char
+            // move cursor
+            element.selectionStart = cursor_pos;
+            element.selectionEnd = cursor_pos;
+
+            update(element.value); // Update text to include indent
+        }
+    }
+
+    // DEV:
 
     return (
         <>
@@ -55,10 +140,9 @@ export function NewPost({ posts }) {
                 <div className={styles.backdrop} ref={backdrop} data-backdrop>
                     <div className={styles['form']} ref={modal} data-modal>
                         <div className={styles.close} onClick={close}>
-                            ✕
+                            Cancel
                         </div>
                         <div className={styles.content}>
-                            {/* TODO: Add aria */}
                             <div className={styles.title}>
                                 <div className={styles.field}>
                                     <label htmlFor="title">Title</label>
@@ -67,7 +151,9 @@ export function NewPost({ posts }) {
                                         type="text"
                                         name="title"
                                         autoFocus={true}
-                                        onChange={(event) => {
+                                        onChange={(
+                                            event: React.ChangeEvent<HTMLInputElement>
+                                        ) => {
                                             const value = event.target.value;
 
                                             if (value) {
@@ -113,7 +199,8 @@ export function NewPost({ posts }) {
                                                     title: title?.current
                                                         ?.value,
                                                     content:
-                                                        body?.current?.value,
+                                                        body?.current
+                                                            ?.innerText,
                                                 }),
                                             }
                                         );
@@ -130,9 +217,57 @@ export function NewPost({ posts }) {
                                     </svg>
                                 </button>
                             </div>
-                            {/* TODO: Markdown syntax highlighting */}
                             <div className={styles.field}>
-                                <textarea ref={body} name="body" />
+                                {/* Textarea */}
+                                {/* <textarea ref={body} className={styles.body} /> */}
+
+                                {/* DEV: */}
+                                <div className="prism-wrapper">
+                                    <textarea
+                                        ref={body}
+                                        placeholder=""
+                                        id={styles.editing}
+                                        spellCheck="false"
+                                        onInput={() => {
+                                            if (!body.current) {
+                                                return;
+                                            }
+
+                                            update(body.current.value);
+                                            sync_scroll(body.current);
+                                        }}
+                                        onScroll={() => {
+                                            if (!body.current) {
+                                                return;
+                                            }
+
+                                            sync_scroll(body.current);
+                                        }}
+                                        onKeyDown={(
+                                            event: KeyboardEvent<HTMLTextAreaElement>
+                                        ): void => {
+                                            if (!body.current) {
+                                                return;
+                                            }
+
+                                            check_tab(body.current, event);
+                                        }}
+                                    />
+                                    <pre
+                                        ref={pre}
+                                        id={styles.highlighting}
+                                        aria-hidden="true"
+                                    >
+                                        <code
+                                            ref={code}
+                                            className={[
+                                                styles['language-markdown'],
+                                                'language-md',
+                                            ].join(' ')}
+                                            id={styles['highlighting-content']}
+                                        />
+                                    </pre>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -141,3 +276,24 @@ export function NewPost({ posts }) {
         </>
     );
 }
+
+// {/* DEV: Prevew */}
+//     {/* <div className={styles['show-preivew-ctr']}>
+//         <button
+//             className={styles['show-preivew']}
+//             onClick={() => {
+//                 setShowPreview((prev) => !prev);
+//             }}
+//         >
+//             {showPreview ? 'Hide' : 'Show'} preview
+//         </button>
+//     </div>
+//     {showPreview && (
+//         <div className={styles.preview}>
+//             <div
+//                 dangerouslySetInnerHTML={{
+//                     __html: html,
+//                 }}
+//             />
+//         </div>
+//     )} */}

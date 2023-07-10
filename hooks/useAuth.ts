@@ -10,7 +10,7 @@ export function useAuth(code: string, pathname: string) {
                 }),
             });
 
-            window.location.replace(pathname);
+            location.href = pathname;
         }
 
         try {

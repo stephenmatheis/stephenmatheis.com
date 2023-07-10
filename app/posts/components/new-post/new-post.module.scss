@@ -10,16 +10,10 @@
     cursor: pointer;
     width: fit-content;
     padding: 12px 24px;
-    color: var(--primary);
-
-    // DEV:
-
-    border: none;
-    background-color: transparent;
-
-    // margin-bottom: calc(var(--line-height) * 3);
-    // border: solid 1px var(--primary);
     background-color: var(--primary-30);
+    color: var(--primary);
+    border-radius: 6px;
+    border: none;
 
     @media (hover: hover) {
         padding: 6px 24px;
@@ -75,14 +69,15 @@
         --border: none;
 
         position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
         height: var(--height);
         width: var(--width);
+        max-width: 680px;
         top: 100dvh;
-        left: var(--offset);
         border: var(--border);
         background-color: var(--background-color);
         border-radius: 6px 6px 0px 0px;
-        will-change: scale, opacity;
         animation: open var(--speed) var(--curve) forwards;
         z-index: 100;
 
@@ -113,32 +108,32 @@
         .close {
             cursor: pointer;
             position: absolute;
-            font-size: 22px;
-            top: 28px;
-            right: 28px;
+            top: 4ch;
+            left: 10ch;
             font-weight: 100;
             color: var(--primary);
 
-            &:hover {
-                color: var(--color);
+            @media (max-width: utilities.$small-width) {
+                top: var(--line-height);
+                left: 1ch;
             }
         }
 
         .content {
-            padding: 10vw 10vw 0vw 10vw;
+            padding: 10ch 10ch 0vw 10ch;
             height: 100%;
             display: flex;
             flex-direction: column;
+            gap: var(--line-height);
 
             @media (max-width: utilities.$small-width) {
-                padding: 8vw 8vw 0vw 8vw;
+                padding: calc(var(--line-height) * 3) 2ch 0px 2ch;
             }
 
             .title {
                 width: 100%;
                 display: flex;
                 gap: 6ch;
-                margin-bottom: calc(var(--line-height) * 2);
                 align-items: center;
                 position: relative;
 
@@ -176,42 +171,149 @@
             }
 
             .field {
+                flex: 1;
                 width: 100%;
 
                 label {
                     display: block;
-                    color: var(--primary);
-                }
-
-                input {
-                    font-family: var(--font);
-                    width: 100%;
-                    background-color: var(--background-color);
+                    // color: var(--primary);
                     color: var(--color);
-                    padding: calc(var(--line-height) / 2) 0px;
-                    border: none;
-                    border-bottom: solid 1px var(--primary);
-
-                    &:focus {
-                        outline: none;
-                    }
-                }
-
-                textarea {
-                    font-family: var(--font);
-                    width: 100%;
-                    height: 100%;
-                    background-color: var(--background-color);
-                    color: var(--color);
-                    padding: 0px 0px var(--line-height) 0px;
-                    border: none;
-                    resize: none;
-
-                    &:focus {
-                        outline: none;
-                    }
                 }
             }
+
+            input {
+                font-family: var(--font);
+                width: 100%;
+                background-color: var(--background-color);
+                color: var(--color);
+                padding: calc(var(--line-height) / 2) 0px;
+                border: none;
+                border-bottom: solid 1px var(--primary);
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .body {
+                font-family: var(--font);
+                width: 100%;
+                background-color: var(--background-color);
+                border: none;
+                color: var(--color);
+                padding: var(--line-height) 2ch var(--line-height) 0px;
+                height: 100%;
+                resize: none;
+
+                @media (max-width: utilities.$small-width) {
+                    padding: var(--line-height) 1ch var(--line-height) 0px;
+                }
+
+                // DEV:
+                &::-webkit-scrollbar {
+                    width: 2px;
+                    background-color: transparent;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: var(--primary);
+                }
+                &::-webkit-scrollbar-track {
+                    background-color: var(--primary-30);
+                }
+                // DEV:
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .show-preivew-ctr {
+                display: flex;
+                justify-content: center;
+
+                .show-preivew {
+                    cursor: pointer;
+                    width: fit-content;
+                    background-color: transparent;
+                    border: none;
+                    color: var(--primary);
+                    padding: 12px 24px;
+                }
+            }
+
+            .preview {
+                min-height: calc(var(--line-height) * 3);
+                overflow: overlay;
+
+                // DEV:
+                &::-webkit-scrollbar {
+                    width: 2px;
+                    background-color: transparent;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: var(--primary);
+                }
+                &::-webkit-scrollbar-track {
+                    background-color: var(--primary-30);
+                }
+                // DEV:
+            }
         }
+    }
+
+    // DEV:
+    // https://codepen.io/WebCoder49/pen/dyNyraq
+
+    #editing,
+    #highlighting {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    #editing,
+    #highlighting,
+    #highlighting * {
+        /* Also add text styles to highlighing tokens */
+        font-family: var(--font-monospace);
+        tab-size: 4;
+    }
+
+    /* Move the textarea in front of the result */
+    #editing {
+        padding: 0px;
+        z-index: 1;
+    }
+
+    #highlighting {
+        z-index: 0;
+    }
+
+    /* Make textarea almost completely transparent */
+
+    #editing {
+        color: transparent;
+        background: transparent;
+        caret-color: white; /* Or choose your favourite color */
+        resize: none;
+        outline: none;
+    }
+
+    pre {
+        margin: 0px;
+    }
+
+    /* Paragraphs; First Image */
+    * {
+        font-family: var(--font-monospace);
+    }
+
+    p code {
+        border-radius: 2px;
+        background-color: #eee;
+        color: #111;
     }
 }

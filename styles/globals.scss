@@ -572,3 +572,176 @@ div[data-code-block] {
 .color {
     color: var(--color);
 }
+
+// DEV: Prism theme (Uncompiled SCSS) #3
+.prism-wrapper {
+    height: 100%;
+    position: relative;
+
+    code,
+    textarea {
+        white-space: pre-wrap;
+    }
+
+    code[class*='language-'],
+    pre[class*='language-'] {
+        font-family: var(--font-monospace);
+        font-size: var(--font-size);
+        text-align: left;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+        tab-size: 4;
+        hyphens: none;
+    }
+
+    pre[class*='language-'] {
+        overflow: auto;
+    }
+
+    code[class*='language-'] {
+        color: white;
+    }
+
+    :not(pre) {
+        & > code[class*='language-'] {
+            box-shadow: none;
+            white-space: normal;
+        }
+    }
+
+    // Tokens
+    .token {
+        // # 0 - Simplified
+
+        &.code {
+            color: var(--accent);
+
+            .token {
+                &.punctuation {
+                    color: var(--color);
+                }
+            }
+        }
+
+        &.cdata,
+        &.comment,
+        &.doctype,
+        &.prolog {
+            color: var(--muted);
+        }
+
+        &.punctuation {
+            color: var(--primary);
+        }
+
+        &.function + &.punctuation {
+            color: var(--primary);
+        }
+
+        &.namespace {
+            opacity: 0.7;
+        }
+
+        &.boolean,
+        &.constant,
+        &.deleted,
+        &.number,
+        &.property,
+        &.symbol,
+        &.tag {
+            color: var(--primary);
+        }
+
+        &.attr-name,
+        &.builtin,
+        &.char,
+        &.inserted,
+        &.selector,
+        &.string {
+            color: var(--tertiary);
+        }
+
+        &.entity,
+        &.operator {
+            color: var(--color);
+        }
+
+        &.url {
+            color: var(--accent);
+
+            .token {
+                &.content {
+                    color: var(--color);
+                }
+
+                &.url {
+                    color: var(--primary);
+                }
+            }
+        }
+
+        &.atrule,
+        &.attr-value,
+        &.keyword {
+            color: var(--primary);
+        }
+
+        &.keyword {
+            &.return {
+                // NOTE: Do I like this?
+                color: var(--accent);
+            }
+        }
+
+        &.class-name,
+        &.function {
+            color: var(--secondary);
+        }
+
+        &.important,
+        &.regex,
+        &.variable {
+            color: var(--primary);
+        }
+
+        &.bold,
+        &.important {
+            font-weight: 700;
+        }
+
+        &.italic {
+            font-style: italic;
+        }
+
+        &.entity {
+            cursor: help;
+        }
+    }
+}
+
+// Diff (editing)
+.prism-wrapper
+    pre.diff-highlight.diff-highlight
+    > code
+    .token.deleted:not(.prefix),
+.prism-wrapper
+    pre
+    > code.diff-highlight.diff-highlight
+    .token.deleted:not(.prefix) {
+    background-color: rgba(255, 0, 0, 0.3);
+    display: inline;
+}
+
+.prism-wrapper
+    pre.diff-highlight.diff-highlight
+    > code
+    .token.inserted:not(.prefix),
+.prism-wrapper
+    pre
+    > code.diff-highlight.diff-highlight
+    .token.inserted:not(.prefix) {
+    background-color: rgba(0, 255, 128, 0.3);
+    display: inline;
+}
