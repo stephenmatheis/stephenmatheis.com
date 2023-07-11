@@ -1,11 +1,21 @@
+// Syntax highlighted textarea inspired by:
+// https://codepen.io/WebCoder49/pen/dyNyraq
+// https://css-tricks.com/creating-an-editable-textarea-that-supports-syntax-highlighted-code/
+
 'use client';
 
+import { RefObject, useState, useRef, KeyboardEvent } from 'react';
 import { marked } from 'marked';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-markdown';
 import 'prismjs/plugins/custom-class/prism-custom-class.min.js';
-import { RefObject, useState, useRef, KeyboardEvent } from 'react';
 import styles from './new-post.module.scss';
+
+Prism.plugins.customClass.add(({ content, type, language }) => {
+    if (content === 'return' && type === 'keyword' && language === 'js') {
+        return 'return';
+    }
+});
 
 function parseMS(modal: RefObject<HTMLDivElement>, value: string): number {
     if (!modal.current) {
@@ -52,12 +62,6 @@ export function NewPost({ posts }) {
             setShowForm(false);
         }, speed + delay);
     }
-
-    Prism.plugins.customClass.add(({content, type, language}) => {
-        if (content === 'return' && type === 'keyword' && language === 'js') {
-            return 'return';
-        }
-    });
 
     function update(text: string) {
         let result_element = code.current;

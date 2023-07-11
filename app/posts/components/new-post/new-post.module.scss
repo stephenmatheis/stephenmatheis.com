@@ -209,19 +209,6 @@
                     padding: var(--line-height) 1ch var(--line-height) 0px;
                 }
 
-                // DEV:
-                &::-webkit-scrollbar {
-                    width: 2px;
-                    background-color: transparent;
-                }
-                &::-webkit-scrollbar-thumb {
-                    background-color: var(--primary);
-                }
-                &::-webkit-scrollbar-track {
-                    background-color: var(--primary-30);
-                }
-                // DEV:
-
                 &:focus {
                     outline: none;
                 }
@@ -266,6 +253,7 @@
 
     #editing,
     #highlighting {
+        padding: var(--line-height) 0px;
         position: absolute;
         top: 0px;
         left: 0px;
@@ -284,16 +272,31 @@
 
     /* Move the textarea in front of the result */
     #editing {
-        padding: 0px;
         z-index: 1;
+
+        // DEV:
+        &::-webkit-scrollbar {
+            width: 2px;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: var(--primary-30);
+        }
+        // DEV:
     }
 
     #highlighting {
         z-index: 0;
+
+        overflow: hidden; /* Hide scrollbars */
     }
 
     /* Make textarea almost completely transparent */
-
     #editing {
         color: transparent;
         background: transparent;
