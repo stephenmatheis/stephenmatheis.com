@@ -1,5 +1,18 @@
 @use 'styles/utilities';
 
+.view {
+    cursor: pointer;
+    position: absolute;
+    top: 4ch;
+    right: 10ch;
+    display: grid;
+
+    @media (max-width: utilities.$small-width) {
+        top: var(--line-height);
+        right: 1ch;
+    }
+}
+
 .toolbar {
     display: flex;
     justify-content: right;
@@ -63,9 +76,9 @@
 
     .form {
         --curve: cubic-bezier(0.465, 0.183, 0.153, 0.946);
-        --offset: 5vw;
-        --height: calc(100dvh - (calc(var(--offset) * 1)));
-        --width: calc(100vw - (calc(var(--offset) * 2)));
+        --form-offset: 5vw;
+        --height: calc(100dvh - (calc(var(--form-offset) * 1)));
+        --width: calc(100vw - (calc(var(--form-offset) * 2)));
         --border: none;
 
         position: absolute;
@@ -91,13 +104,13 @@
             }
 
             to {
-                top: var(--offset);
+                top: var(--form-offset);
             }
         }
 
         @keyframes close {
             from {
-                top: var(--offset);
+                top: var(--form-offset);
             }
 
             to {
@@ -110,7 +123,6 @@
             position: absolute;
             top: 4ch;
             left: 10ch;
-            font-weight: 100;
             color: var(--primary);
 
             @media (max-width: utilities.$small-width) {
@@ -124,7 +136,6 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            gap: var(--line-height);
 
             @media (max-width: utilities.$small-width) {
                 padding: calc(var(--line-height) * 3) 2ch 0px 2ch;

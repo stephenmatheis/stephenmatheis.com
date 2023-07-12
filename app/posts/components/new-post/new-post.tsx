@@ -4,8 +4,9 @@
 
 'use client';
 
-import { RefObject, useState, useRef, KeyboardEvent } from 'react';
+import { RefObject, useCallback, useState, useRef, KeyboardEvent } from 'react';
 import { marked } from 'marked';
+import { Toggle } from '@/components/toggle';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-markdown';
 import 'prismjs/plugins/custom-class/prism-custom-class.min.js';
@@ -126,6 +127,15 @@ export function NewPost({ posts }) {
     }
 
     // DEV:
+    const [shouldResize, setShouldResize] = useState(false);
+    const resize = useCallback(() => {
+        setShouldResize(true);
+
+        // Reset state
+        setTimeout(() => {
+            setShouldResize(false);
+        }, 0);
+    }, []);
 
     return (
         <>
@@ -143,8 +153,21 @@ export function NewPost({ posts }) {
             {showForm && (
                 <div className={styles.backdrop} ref={backdrop} data-backdrop>
                     <div className={styles['form']} ref={modal} data-modal>
+                        {/* Cancel button */}
                         <div className={styles.close} onClick={close}>
                             Cancel
+                        </div>
+                        {/* Markdown/Preview toggle */}
+                        <div className={styles.view}>
+                            <Toggle
+                                options={['Markdown', 'Preview']}
+                                defaultOption={'Markdown'}
+                                localStorageKey={'new-post-view'}
+                                shouldResize={shouldResize}
+                                resize={resize}
+                                addDataAttr={false}
+                                addCssVariable={false}
+                            />
                         </div>
                         <div className={styles.content}>
                             <div className={styles.title}>
