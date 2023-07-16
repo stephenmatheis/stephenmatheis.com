@@ -18,8 +18,8 @@ type Props = {
     addDataAttr?: boolean | undefined;
     addCssVariable?: boolean | undefined;
     vertical?: boolean | undefined;
-    shouldResize: boolean;
-    resize: () => void;
+    shouldResize?: boolean;
+    resize?: () => void;
     onUpdate?: Dispatch<SetStateAction<string>> | undefined;
 };
 
@@ -73,7 +73,7 @@ export function Toggle({
         },
         [addCssVariable, addDataAttr, localStorageKey, onUpdate, options]
     );
-    const setWidth = useCallback(() => {
+    const setDimensions = useCallback(() => {
         if (!ref.current) {
             return;
         }
@@ -94,13 +94,12 @@ export function Toggle({
         }
     }, [defaultOption, localStorageKey, options, setSelectedValue]);
 
-    // FIXME: Can these effects be combined?
     useEffect(() => {
         if (shouldResize) {
             updateValue();
-            setWidth();
+            setDimensions();
         }
-    }, [setWidth, shouldResize, updateValue]);
+    }, [shouldResize, updateValue, setDimensions]);
 
     useEffect(() => {
         updateValue();
@@ -109,8 +108,8 @@ export function Toggle({
             return;
         }
 
-        setWidth();
-    }, [setWidth, updateValue]);
+        setDimensions();
+    }, [setDimensions, updateValue]);
 
     // 3px
 
@@ -119,7 +118,10 @@ export function Toggle({
             ref={ref}
             onClick={(event: any) => {
                 setSelectedValue(event.target.dataset.option);
-                resize();
+
+                if (resize) {
+                    resize();
+                }
             }}
             className={classNames(styles.toggle, {
                 [styles.hidden]: selectedOption === '',

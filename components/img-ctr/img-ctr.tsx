@@ -21,7 +21,7 @@ export function ImgCtr({ link, description, image }) {
                 ...(showShadow ? [styles.shadow] : []),
             ].join(' ')}
         >
-            <a href={link} target="_blank">
+            <a href={link} target="_blank" rel="noopener">
                 <Image
                     src={src}
                     alt={description}

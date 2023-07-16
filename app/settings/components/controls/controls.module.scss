@@ -84,10 +84,10 @@ $colors: (
                 transition: all var(--prefers-color-scheme-transition-speed)
                     ease-in-out;
 
-                @media (max-width: utilities.$small-width) {
-                    display: block;
-                    flex-direction: row;
-                }
+                // @media (max-width: utilities.$small-width) {
+                //     display: block;
+                //     flex-direction: row;
+                // }
 
                 @each $color in $colors {
                     &:has(.color-block.#{$color}) {
@@ -131,9 +131,9 @@ $colors: (
                     transition: all var(--prefers-color-scheme-transition-speed)
                         ease-in-out;
 
-                    @media (max-width: utilities.$small-width) {
-                        height: calc(var(--line-height) * 4);
-                    }
+                    // @media (max-width: utilities.$small-width) {
+                    //     height: calc(var(--line-height) * 4);
+                    // }
 
                     .color-text {
                         text-align: center;
