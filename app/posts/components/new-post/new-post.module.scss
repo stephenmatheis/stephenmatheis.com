@@ -243,7 +243,6 @@
                 min-height: calc(var(--line-height) * 3);
                 overflow: overlay;
 
-                // DEV:
                 &::-webkit-scrollbar {
                     width: 2px;
                     background-color: transparent;
@@ -254,12 +253,10 @@
                 &::-webkit-scrollbar-track {
                     background-color: var(--primary-30);
                 }
-                // DEV:
             }
         }
     }
 
-    // DEV:
     // https://codepen.io/WebCoder49/pen/dyNyraq
 
     #editing,
@@ -285,7 +282,6 @@
     #editing {
         z-index: 1;
 
-        // DEV:
         &::-webkit-scrollbar {
             width: 2px;
             background-color: transparent;
@@ -298,7 +294,6 @@
         &::-webkit-scrollbar-track {
             background-color: var(--primary-30);
         }
-        // DEV:
     }
 
     #highlighting {

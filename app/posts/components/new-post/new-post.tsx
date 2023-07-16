@@ -4,7 +4,14 @@
 
 'use client';
 
-import { RefObject, useCallback, useState, useRef, KeyboardEvent } from 'react';
+import {
+    RefObject,
+    useCallback,
+    useState,
+    useRef,
+    KeyboardEvent,
+    useEffect,
+} from 'react';
 import { marked } from 'marked';
 import { Toggle } from '@/components/toggle';
 import Prism from 'prismjs';
@@ -43,6 +50,7 @@ export function NewPost({ posts }) {
     const [exists, setExists] = useState(false);
     const [showPreview, setShowPreview] = useState(false);
     const [content, setContent] = useState('');
+    const [view, setView] = useState('Markdown');
 
     marked.use({
         mangle: false,
@@ -126,16 +134,13 @@ export function NewPost({ posts }) {
         }
     }
 
-    // DEV:
-    const [shouldResize, setShouldResize] = useState(false);
-    const resize = useCallback(() => {
-        setShouldResize(true);
+    console.log(view);
 
-        // Reset state
-        setTimeout(() => {
-            setShouldResize(false);
-        }, 0);
-    }, []);
+    useEffect(() => {
+        if (view === 'Markdown') {
+            update(content);
+        }
+    }, [view]);
 
     return (
         <>
@@ -163,10 +168,11 @@ export function NewPost({ posts }) {
                                 options={['Markdown', 'Preview']}
                                 defaultOption={'Markdown'}
                                 localStorageKey={'new-post-view'}
-                                shouldResize={shouldResize}
-                                resize={resize}
                                 addDataAttr={false}
                                 addCssVariable={false}
+                                onUpdate={(option) => {
+                                    setView(option);
+                                }}
                             />
                         </div>
                         <div className={styles.content}>
@@ -244,58 +250,73 @@ export function NewPost({ posts }) {
                                     </svg>
                                 </button>
                             </div>
-                            <div className={styles.field}>
-                                {/* Textarea */}
-                                {/* <textarea ref={body} className={styles.body} /> */}
+                            {/* Markdown */}
+                            {view === 'Markdown' && (
+                                <div className={styles.field}>
+                                    <div className="prism-wrapper">
+                                        <textarea
+                                            ref={body}
+                                            placeholder=""
+                                            id={styles.editing}
+                                            spellCheck="false"
+                                            value={content}
+                                            onInput={() => {
+                                                if (!body.current) {
+                                                    return;
+                                                }
 
-                                {/* DEV: */}
-                                <div className="prism-wrapper">
-                                    <textarea
-                                        ref={body}
-                                        placeholder=""
-                                        id={styles.editing}
-                                        spellCheck="false"
-                                        onInput={() => {
-                                            if (!body.current) {
-                                                return;
-                                            }
+                                                setContent(body.current.value);
+                                                update(body.current.value);
+                                                sync_scroll(body.current);
+                                            }}
+                                            onScroll={() => {
+                                                if (!body.current) {
+                                                    return;
+                                                }
 
-                                            update(body.current.value);
-                                            sync_scroll(body.current);
-                                        }}
-                                        onScroll={() => {
-                                            if (!body.current) {
-                                                return;
-                                            }
+                                                sync_scroll(body.current);
+                                            }}
+                                            onKeyDown={(
+                                                event: KeyboardEvent<HTMLTextAreaElement>
+                                            ): void => {
+                                                if (!body.current) {
+                                                    return;
+                                                }
 
-                                            sync_scroll(body.current);
-                                        }}
-                                        onKeyDown={(
-                                            event: KeyboardEvent<HTMLTextAreaElement>
-                                        ): void => {
-                                            if (!body.current) {
-                                                return;
-                                            }
-
-                                            check_tab(body.current, event);
+                                                check_tab(body.current, event);
+                                            }}
+                                        />
+                                        <pre
+                                            ref={pre}
+                                            id={styles.highlighting}
+                                            aria-hidden="true"
+                                        >
+                                            <code
+                                                ref={code}
+                                                className={[
+                                                    styles['language-markdown'],
+                                                    'language-md',
+                                                ].join(' ')}
+                                                id={
+                                                    styles[
+                                                        'highlighting-content'
+                                                    ]
+                                                }
+                                            />
+                                        </pre>
+                                    </div>
+                                </div>
+                            )}
+                            {/* Preview */}
+                            {view === 'Preview' && (
+                                <div className={styles.preview}>
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: html,
                                         }}
                                     />
-                                    <pre
-                                        ref={pre}
-                                        id={styles.highlighting}
-                                        aria-hidden="true"
-                                    >
-                                        <code
-                                            ref={code}
-                                            className={[
-                                                styles['language-markdown'],
-                                                'language-md',
-                                            ].join(' ')}
-                                            id={styles['highlighting-content']}
-                                        />
-                                    </pre>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -303,24 +324,3 @@ export function NewPost({ posts }) {
         </>
     );
 }
-
-// {/* DEV: Prevew */}
-//     {/* <div className={styles['show-preivew-ctr']}>
-//         <button
-//             className={styles['show-preivew']}
-//             onClick={() => {
-//                 setShowPreview((prev) => !prev);
-//             }}
-//         >
-//             {showPreview ? 'Hide' : 'Show'} preview
-//         </button>
-//     </div>
-//     {showPreview && (
-//         <div className={styles.preview}>
-//             <div
-//                 dangerouslySetInnerHTML={{
-//                     __html: html,
-//                 }}
-//             />
-//         </div>
-//     )} */}
