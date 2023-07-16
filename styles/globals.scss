@@ -147,6 +147,29 @@
         }
     }
 
+    &[data-font-family='Block'] {
+        --font-family: var(--font-block);
+
+        p {
+            text-shadow: 1.5px 1.5px 0px var(--text-shadow-color);
+        }
+
+        &[data-font-size='12px'] {
+            --y: 7.25px;
+            --x: 3px;
+        }
+
+        &[data-font-size='16px'] {
+            --y: 9.5px;
+            --x: 5px;
+        }
+
+        &[data-font-size='20px'] {
+            --y: 12px;
+            --x: 6px;
+        }
+    }
+
     &[data-font-family='Sans Serif'] {
         --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
             Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -188,44 +211,6 @@
             --line-height: 28px;
             --y: 12.5px;
             --x: 7.5px;
-        }
-    }
-
-    &[data-font-family='Windy City'] {
-        --font-family: var(--font-windy-city);
-
-        &[data-font-size='12px'] {
-            --y: 7.25px;
-            --x: 3px;
-        }
-
-        &[data-font-size='16px'] {
-            --y: 9.5px;
-            --x: 5px;
-        }
-
-        &[data-font-size='20px'] {
-            --y: 12px;
-            --x: 6px;
-        }
-    }
-
-    &[data-font-family='Pixel'] {
-        --font-family: var(--font-pixel);
-
-        &[data-font-size='12px'] {
-            --y: 6.75px;
-            --x: 3px;
-        }
-
-        &[data-font-size='16px'] {
-            --y: 9px;
-            --x: 5px;
-        }
-
-        &[data-font-size='20px'] {
-            --y: 11.5px;
-            --x: 6px;
         }
     }
 }

@@ -189,6 +189,7 @@ $theme-colors: (
     $tertiary,
     $accent,
     $background-color: null,
+    $text-shadow-color: null,
     $color: null,
     $muted: null
 ) {
@@ -233,6 +234,17 @@ $theme-colors: (
             (
                 'Light': #757575,
                 'Dark': #878787,
+            )
+        );
+
+        @include defaultColor(
+            $formatted-prefix,
+            'text-shadow-color',
+            $text-shadow-color,
+            $mode,
+            (
+                'Light': #dfdfdf,
+                'Dark': #505050,
             )
         );
 
@@ -307,7 +319,8 @@ $theme-colors: (
         $accent: map.get($themes, $mode, $color, 'accent'),
         $background-color: map.get($themes, $mode, $color, 'background-color'),
         $color: map.get($themes, $mode, $color, 'color'),
-        $muted: map.get($themes, $mode, $color, 'muted')
+        $muted: map.get($themes, $mode, $color, 'muted'),
+        $text-shadow-color: map.get($themes, $mode, $color, 'text-shadow-color')
     );
 }
 
