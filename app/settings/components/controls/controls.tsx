@@ -182,14 +182,7 @@ export function Controls({}) {
             {
                 label: 'Font Family',
                 key: 'font-family',
-                options: [
-                    'Monospace',
-                    'Retro',
-                    'Pixel',
-                    'Windy City',
-                    'Sans Serif',
-                    'Serif',
-                ],
+                options: ['Monospace', 'Retro', 'Block', 'Sans Serif', 'Serif'],
                 defaultOption: 'Monospace',
                 vertical: true,
                 addDataAttr: true,

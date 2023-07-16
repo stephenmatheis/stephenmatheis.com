@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { VersionModal } from '@/components/version-modal';
-import { Libre_Baskerville } from 'next/font/google';
+import { Libre_Baskerville, VT323 } from 'next/font/google';
 import localFont from 'next/font/local';
 import '@/styles/globals.scss';
 
@@ -12,22 +12,41 @@ const serif = Libre_Baskerville({
 });
 
 const retro = localFont({
-    src: 'fonts/PrintChar21.woff2',
+    src: 'fonts/kreative-korp/print-char-21/PrintChar21.woff2',
     variable: '--font-retro',
     display: 'swap',
 });
 
-const windyCity = localFont({
-    src: 'fonts/ChicagoFLF.woff2',
-    variable: '--font-windy-city',
+const block = localFont({
+    src: 'fonts/block/block.woff2',
+    variable: '--font-block',
     display: 'swap',
 });
 
-const pixel = localFont({
-    src: 'fonts/sysfont.woff2',
-    variable: '--font-pixel',
-    display: 'swap',
-});
+// const retro = VT323({
+//     subsets: ['latin'],
+//     variable: '--font-retro',
+//     display: 'swap',
+//     weight: '400',
+// });
+
+// const retro = localFont({
+//     src: 'fonts/PrintChar21.woff2',
+//     variable: '--font-retro',
+//     display: 'swap',
+// });
+
+// const windyCity = localFont({
+//     src: 'fonts/ChicagoFLF.woff2',
+//     variable: '--font-windy-city',
+//     display: 'swap',
+// });
+
+// const pixel = localFont({
+//     src: 'fonts/sysfont.woff2',
+//     variable: '--font-pixel',
+//     display: 'swap',
+// });
 
 export const metadata: Metadata = {
     title: {
@@ -55,8 +74,9 @@ export default function RootLayout({
             className={[
                 serif.variable,
                 retro.variable,
-                windyCity.variable,
-                pixel.variable,
+                block.variable,
+                // windyCity.variable,
+                // pixel.variable,
             ].join(' ')}
             suppressHydrationWarning
         >
