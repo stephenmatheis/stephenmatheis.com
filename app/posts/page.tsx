@@ -15,7 +15,6 @@ export default async function PostsPage() {
     return (
         <Page
             links={[
-                { label: 'Markdown', path: '/posts/markdown', newTab: true },
                 { label: 'All posts', path: '/archive' },
             ]}
         >

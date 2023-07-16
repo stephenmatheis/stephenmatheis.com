@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { DateTime } from '@/components/date-time';
@@ -7,11 +6,8 @@ import { LinkCtr } from '@/components/link-ctr';
 import { Body } from '@/components/body';
 import type { Post } from '@/lib/types';
 import styles from './posts.module.scss';
-import { NewPost } from '../new-post';
 
 export function Posts({ posts }: { posts: Post[] }) {
-    const cookieStore = cookies();
-    const name = cookieStore.get('name') as { name: string; value: string };
     const last20Posts = posts.slice(0, 21);
     const dates = [...new Set(last20Posts.map(({ date }) => date))];
 
@@ -21,7 +17,6 @@ export function Posts({ posts }: { posts: Post[] }) {
                 <Comment text="Posts" />
                 <DateTime className={styles.date} dateString={dates[0]} />
             </div>
-            {name && <NewPost posts={posts} />}
             <div className={styles['date-groups']}>
                 {dates.map((date, dateIndex) => {
                     return (
