@@ -11,7 +11,6 @@ const serif = Libre_Baskerville({
     weight: '400',
 });
 
-// Font files can be colocated inside of `app`
 const retro = localFont({
     src: 'fonts/PrintChar21.woff2',
     variable: '--font-retro',

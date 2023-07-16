@@ -38,15 +38,28 @@
             }
 
             .indicator {
-                width: calc(var(--indicator-width) - var(--double-offset) / 1);
+                width: calc(var(--indicator-width) - var(--double-offset) / 2);
                 height: calc(
-                    var(--indicator-height) - var(--double-offset) / 1
+                    var(--indicator-height) - var(--double-offset) / 2
                 );
-                top: calc(var(--offset) / 1);
+                top: calc(var(--offset) / 2);
                 left: calc(
-                    (var(--indicator-width) * var(--modifier)) + var(--offset) /
-                        1
+                    var(--indicator-width) * var(--modifier) + var(--offset) / 2
                 );
+
+                @media (hover: hover) {
+                    width: calc(
+                        var(--indicator-width) - var(--double-offset) / 1
+                    );
+                    height: calc(
+                        var(--indicator-height) - var(--double-offset) / 1
+                    );
+                    top: calc(var(--offset) / 1);
+                    left: calc(
+                        (var(--indicator-width) * var(--modifier)) +
+                            var(--offset) / 1
+                    );
+                }
             }
         }
     }

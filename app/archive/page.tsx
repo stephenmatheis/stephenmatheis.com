@@ -8,14 +8,32 @@ import getPosts from '@/lib/get-posts';
 
 export const metadata: Metadata = {
     title: 'Archive',
-    description: 'All posts with search field.',
+    description: 'All posts.',
 };
 
 export default async function PostsPage() {
     const posts = await getPosts();
 
     return (
-        <Page links={[{ label: 'Home', path: '/' }]}>
+        <Page
+            links={[
+                {
+                    label: 'RSS',
+                    path: '/rss',
+                    newTab: true,
+                },
+                {
+                    label: 'JSON',
+                    path: '/json',
+                    newTab: true,
+                },
+                {
+                    label: 'Markdown',
+                    path: '/posts/markdown',
+                    newTab: true,
+                },
+            ]}
+        >
             <Main columns={2}>
                 <Suspense fallback={<Fallback />}>
                     <PostsList posts={posts} />

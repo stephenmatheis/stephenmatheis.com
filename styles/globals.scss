@@ -31,16 +31,7 @@
     }
 
     [data-color-group] {
-        display: block;
-    }
-
-    [data-color-label] {
-        padding: 0px;
-        margin-bottom: var(--line-height);
-    }
-
-    [data-color-block] {
-        height: calc(var(--line-height) * 4) !important;
+        height: calc(var(--line-height) * 4);
     }
 }
 
@@ -201,6 +192,7 @@
         }
     }
 
+    // TODO:
     &[data-font-family='Windy City'] {
         --font-family: var(--font-windy-city);
 
@@ -222,6 +214,7 @@
         // }
     }
 
+    // TODO:
     &[data-font-family='Pixel'] {
         --font-family: var(--font-pixel);
 
@@ -256,6 +249,26 @@ html {
     color: var(--color);
 
     -webkit-text-size-adjust: 100%;
+
+    &[data-prefers-color-scheme='Dark'] {
+        body {
+            &.modal-open {
+                [data-backdrop] {
+                    --filter: blur(4px) brightness(1.5);
+                }
+            }
+        }
+    }
+
+    @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
+        body {
+            &.modal-open {
+                [data-backdrop] {
+                    --filter: blur(4px) brightness(1.5);
+                }
+            }
+        }
+    }
 }
 
 body {
@@ -267,7 +280,8 @@ body {
     &.can-transition {
         transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
             background-color var(--prefers-color-scheme-transition-speed) ease
-                0s;
+                0s,
+            filter var(--prefers-color-scheme-transition-speed) ease 0s;
     }
 
     &.modal-open {
@@ -557,4 +571,176 @@ div[data-code-block] {
 
 .color {
     color: var(--color);
+}
+
+// New Post
+.prism-wrapper {
+    height: 100%;
+    position: relative;
+
+    code,
+    textarea {
+        white-space: pre-wrap;
+    }
+
+    code[class*='language-'],
+    pre[class*='language-'] {
+        font-family: var(--font-monospace);
+        font-size: var(--font-size);
+        text-align: left;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+        tab-size: 4;
+        hyphens: none;
+    }
+
+    pre[class*='language-'] {
+        overflow: auto;
+    }
+
+    code[class*='language-'] {
+        color: white;
+    }
+
+    :not(pre) {
+        & > code[class*='language-'] {
+            box-shadow: none;
+            white-space: normal;
+        }
+    }
+
+    // Tokens
+    .token {
+        // # 0 - Simplified
+
+        &.code {
+            color: var(--accent);
+
+            .token {
+                &.punctuation {
+                    color: var(--color);
+                }
+            }
+        }
+
+        &.cdata,
+        &.comment,
+        &.doctype,
+        &.prolog {
+            color: var(--muted);
+        }
+
+        &.punctuation {
+            color: var(--primary);
+        }
+
+        &.function + &.punctuation {
+            color: var(--primary);
+        }
+
+        &.namespace {
+            opacity: 0.7;
+        }
+
+        &.boolean,
+        &.constant,
+        &.deleted,
+        &.number,
+        &.property,
+        &.symbol,
+        &.tag {
+            color: var(--primary);
+        }
+
+        &.attr-name,
+        &.builtin,
+        &.char,
+        &.inserted,
+        &.selector,
+        &.string {
+            color: var(--tertiary);
+        }
+
+        &.entity,
+        &.operator {
+            color: var(--color);
+        }
+
+        &.url {
+            color: var(--accent);
+
+            .token {
+                &.content {
+                    color: var(--color);
+                }
+
+                &.url {
+                    color: var(--primary);
+                }
+            }
+        }
+
+        &.atrule,
+        &.attr-value,
+        &.keyword {
+            color: var(--primary);
+        }
+
+        &.keyword {
+            &.return {
+                color: var(--accent);
+            }
+        }
+
+        &.class-name,
+        &.function {
+            color: var(--secondary);
+        }
+
+        &.important,
+        &.regex,
+        &.variable {
+            color: var(--primary);
+        }
+
+        &.bold,
+        &.important {
+            font-weight: 700;
+        }
+
+        &.italic {
+            font-style: italic;
+        }
+
+        &.entity {
+            cursor: help;
+        }
+    }
+}
+
+// Diff (editing)
+.prism-wrapper
+    pre.diff-highlight.diff-highlight
+    > code
+    .token.deleted:not(.prefix),
+.prism-wrapper
+    pre
+    > code.diff-highlight.diff-highlight
+    .token.deleted:not(.prefix) {
+    background-color: rgba(255, 0, 0, 0.3);
+    display: inline;
+}
+
+.prism-wrapper
+    pre.diff-highlight.diff-highlight
+    > code
+    .token.inserted:not(.prefix),
+.prism-wrapper
+    pre
+    > code.diff-highlight.diff-highlight
+    .token.inserted:not(.prefix) {
+    background-color: rgba(0, 255, 128, 0.3);
+    display: inline;
 }

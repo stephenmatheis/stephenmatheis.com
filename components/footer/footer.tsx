@@ -17,10 +17,10 @@ export function Footer({ links, text }: Props) {
 
     return (
         <footer className={styles.footer}>
-            {links?.length && (
+            {links?.length !== 0 && (
                 <nav>
                     <ol>
-                        {links.map(({ label, path, newTab }) => {
+                        {links?.map(({ label, path, newTab }) => {
                             return (
                                 <li key={path}>
                                     <LinkCtr href={path} newTab={newTab}>

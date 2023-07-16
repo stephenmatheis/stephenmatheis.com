@@ -14,7 +14,7 @@ export default function SettingsPage() {
             links={[
                 {
                     label: 'Home',
-                    path: '/',
+                    path: '',
                 },
             ]}
         >
