@@ -60,15 +60,9 @@
     }
 
     .content {
-        --y: 11.5px;
-        --x: 7.5px;
-
         padding: 10vw;
 
         @media (max-width: utilities.$small-width) {
-            --y: 9.5px;
-            --x: 5.5px;
-
             padding: 8vw;
         }
 
