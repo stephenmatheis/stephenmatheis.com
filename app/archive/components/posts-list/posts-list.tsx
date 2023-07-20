@@ -44,9 +44,11 @@ export function PostsList({ posts }: { posts: Post[] }) {
     // Reset
     useEffect(() => {
         if (!tags.length) {
-            setFilteredPosts(posts);
+            setFilteredPosts(filteredPosts);
         }
     }, [tags]);
+
+    console.log('posts:', filteredPosts);
 
     return (
         <>
@@ -59,33 +61,43 @@ export function PostsList({ posts }: { posts: Post[] }) {
                     <Tags tags={allTags} color={'primary'} />
                 </div>
             )}
-            <ul className={styles.container}>
-                {months.map((date) => {
-                    const postsThisMonth = filteredPosts.filter(
-                        (post) => post.date === date
-                    );
+            {filteredPosts.length === 0 ? (
+                <div className={styles.none}>There are no posts that match this query.</div>
+            ) : (
+                <ul className={styles.container}>
+                    {months.map((date) => {
+                        const postsThisMonth = filteredPosts.filter(
+                            (post) => post.date === date
+                        );
 
-                    return (
-                        <div className={styles.group} key={date}>
-                            <h2 className={styles.month}>{date}</h2>
-                            {postsThisMonth.map(
-                                ({ slug, title, date, description, tags }) => {
-                                    return (
-                                        <Entry
-                                            key={`post-item-${slug}`}
-                                            href={`/posts/${slug}`}
-                                            title={title}
-                                            date={date}
-                                            description={description}
-                                            tags={tags}
-                                        />
-                                    );
-                                }
-                            )}
-                        </div>
-                    );
-                })}
-            </ul>
+                        return (
+                            <div className={styles.group} key={date}>
+                                <h2 className={styles.month}>{date}</h2>
+                                {postsThisMonth.map(
+                                    ({
+                                        slug,
+                                        title,
+                                        date,
+                                        description,
+                                        tags,
+                                    }) => {
+                                        return (
+                                            <Entry
+                                                key={`post-item-${slug}`}
+                                                href={`/posts/${slug}`}
+                                                title={title}
+                                                date={date}
+                                                description={description}
+                                                tags={tags}
+                                            />
+                                        );
+                                    }
+                                )}
+                            </div>
+                        );
+                    })}
+                </ul>
+            )}
         </>
     );
 }

@@ -4,13 +4,13 @@ import { ChangeEvent, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { useDebounce } from '@/hooks/useDebounce';
 import styles from './search.module.scss';
+import { Post } from '@/lib/types';
 
 export function Search({ posts, setPosts }) {
     const inputRef = useRef<HTMLInputElement>(null);
-    const [query, setQuery] = useState('');
+    const [showClear, setShowClear] = useState(false);
 
     function handleClearSearch() {
-        setQuery('');
         setPosts(posts);
 
         if (!inputRef.current) {
@@ -20,16 +20,19 @@ export function Search({ posts, setPosts }) {
         inputRef.current.value = '';
     }
 
+    function handleOnChange(event: ChangeEvent<HTMLInputElement>) {
+        setShowClear(event.target.value ? true : false);
+    }
+
     const handleOnInput = useDebounce(
         (event: ChangeEvent<HTMLInputElement>) => {
             const query = event.target.value.toLowerCase();
-            setQuery(query);
 
             if (!query) {
                 setPosts(posts);
             }
 
-            const filteredPosts = posts.filter((post) => {
+            const filteredPosts = posts.filter((post: Post) => {
                 const { title, date, description, body } = post;
 
                 if (title?.toLowerCase().includes(query)) {
@@ -51,7 +54,8 @@ export function Search({ posts, setPosts }) {
 
             setPosts(filteredPosts);
         },
-        500
+        // https://stackoverflow.com/a/44755058
+        100
     );
 
     return (
@@ -61,10 +65,11 @@ export function Search({ posts, setPosts }) {
                     ref={inputRef}
                     className={styles.search}
                     onInput={handleOnInput}
+                    onChange={handleOnChange}
                     placeholder="search"
                 />
                 <button
-                    className={classNames({ [styles.active]: query })}
+                    className={classNames({ [styles.active]: showClear })}
                     onClick={handleClearSearch}
                 >
                     &times;
