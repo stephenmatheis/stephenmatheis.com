@@ -8,10 +8,11 @@ type ImageProps = {
     src: string;
     width?: number;
     height?: number;
+    blurDataUrl?: string;
 };
 
 export function ImgCtr({ link, description, image }) {
-    const { src, width, height }: ImageProps = image;
+    const { src, width, height, blurDataUrl }: ImageProps = image;
     const [showShadow, setShowShadow] = useState(false);
 
     return (
@@ -27,6 +28,8 @@ export function ImgCtr({ link, description, image }) {
                     alt={description}
                     width={width}
                     height={height}
+                    placeholder="blur"
+                    blurDataURL={blurDataUrl}
                     priority
                     onLoadingComplete={(node) => {
                         if (node) {
