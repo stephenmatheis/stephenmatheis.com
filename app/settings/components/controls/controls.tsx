@@ -5,6 +5,7 @@ import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
 import variables from '@/styles/exports.module.scss';
 import styles from './controls.module.scss';
+import { getDarkThemeNames, getLightThemeNames, getThemes } from '@/lib/themes';
 
 type ControlProps = {
     label: string;
@@ -26,32 +27,9 @@ const colors = [
     'Background-Color',
     'Text Color',
 ];
-const darkMap = variables.Dark.split('|').map(getMap);
-const darkOptions = darkMap.map(({ name }) => name);
-
-const lightMap = variables.Light.split('|').map(getMap);
-const lightOptions = lightMap.map(({ name }) => name);
-
-const modeMap = {
-    Light: lightMap,
-    Dark: darkMap,
-};
-
-function getMap(str: string) {
-    const [color, values] = str.split(' - ');
-    const names = values
-        .split(',')
-        .filter((x) => x)
-        .map((name) => {
-            const [key, value] = name.split(' > ');
-            return `"${key}": "${value}"`;
-        });
-
-    return {
-        name: color.trim(),
-        values: JSON.parse(`{ ${names.join(', ')} }`),
-    };
-}
+const themes = getThemes();
+const darkOptions = getDarkThemeNames();
+const lightOptions = getLightThemeNames();
 
 function setMetaTheme(value: string, mode: string) {
     let currentMode = localStorage.getItem('prefers-color-scheme');
@@ -69,7 +47,7 @@ function setMetaTheme(value: string, mode: string) {
 
     if (document && currentMode === mode) {
         const backgroundColor =
-            modeMap[mode].find(({ name }) => name === value).values[
+            themes[mode].find(({ name }) => name === value).values[
                 'background-color'
             ] ||
             (mode === 'Light'
