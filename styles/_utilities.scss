@@ -106,13 +106,13 @@ $medium-height: 725px;
 }
 
 @mixin shadow-base {
-    padding-bottom: 2px;
-    box-shadow: inset 0 -1px 0 0 var(--border-color);
+    // padding-bottom: 2px;
+    // box-shadow: inset 0 -1px 0 0 var(--border-color);
 }
 
 @mixin shadow-hover {
     color: var(--accent);
-    box-shadow: inset 0 -1px 0 0 var(--accent);
+    // box-shadow: inset 0 -1px 0 0 var(--accent);
 }
 
 // Themes
