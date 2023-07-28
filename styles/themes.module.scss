@@ -44,7 +44,7 @@ $themes: (
             'accent': #ffb000,
             'background-color': #282828,
         ),
-        '8-bit': (
+        'C-64': (
             'primary': #c7beff,
             'secondary': #c7beff,
             'tertiary': #c7beff,
@@ -52,6 +52,15 @@ $themes: (
             'background-color': #50459b,
             'color': #ffffff,
             'muted': #c4c4c4,
+        ),
+        '8-Bit': (
+            'primary': #ff004d,
+            'secondary': #2aacff,
+            'tertiary': #01e435,
+            'accent': #ff77a8,
+            'background-color': #1d2b53,
+            'color': #fff2e8,
+            'muted': #83769c,
         ),
         'Retro': (
             'primary': #c7beff,
@@ -120,12 +129,22 @@ $themes: (
             'tertiary': #ff8503,
             'accent': #ff8503,
         ),
-        '8-bit': (
+
+        'C-64': (
             'primary': #50459b,
             'secondary': #50459b,
             'tertiary': #50459b,
             'accent': #50459b,
             'background-color': #c7beff,
+        ),
+        '8-Bit': (
+            'primary': #ff004d,
+            'secondary': #2aacff,
+            'tertiary': #ff77a8,
+            'accent': #01e435,
+            'background-color': #1d2b53,
+            'color': #fff2e8,
+            'muted': #83769c,
         ),
         'Retro': (
             'primary': #7b2659,
@@ -140,7 +159,6 @@ $themes: (
             'secondary': #28fc91,
             'tertiary': #40ffff,
             'accent': #40ffff,
-            // TODO: Need differnt muted / background colors
         ),
         'High Contrast': (
             'primary': #000000,
