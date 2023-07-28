@@ -69,18 +69,18 @@
     }
 
     // Fonts
-    &[data-font-size='16px'] {
+    &[data-font-size='Medium'] {
         --font-size: 16px;
         --line-height: 24px;
     }
 
-    &[data-font-size='20px'] {
+    &[data-font-size='Large'] {
         --font-size: 20px;
         --line-height: 32px;
     }
 
-    &[data-font-size='16px'],
-    &[data-font-size='20px'] {
+    &[data-font-size='Medium'],
+    &[data-font-size='Large'] {
         @include large-font();
 
         @media (max-width: 613px) {
@@ -126,17 +126,38 @@
         }
     }
 
+    &[data-font-family='8-Bit'] {
+        --font-family: var(--font-pico);
+
+        &[data-font-size='Small'] {
+            --font-size: 6px;
+            --line-height: 18px;
+        }
+
+        &[data-font-size='Medium'] {
+            --font-size: 12px;
+            --line-height: 36px;
+        }
+
+        &[data-font-size='Large'] {
+            --font-size: 20px;
+            --line-height: 60px;
+        }
+
+        @include large-font();
+    }
+
     &[data-font-family='Sans Serif'] {
         --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
             Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
             'Segoe UI Symbol';
 
-        &[data-font-size='16px'] {
+        &[data-font-size='Medium'] {
             --font-size: 16px;
             --line-height: 24px;
         }
 
-        &[data-font-size='20px'] {
+        &[data-font-size='Large'] {
             --font-size: 20px;
             --line-height: 28px;
         }
@@ -145,16 +166,17 @@
     &[data-font-family='Serif'] {
         --font-family: var(--font-serif);
 
-        &[data-font-size='12px'] {
+        &[data-font-size='Small'] {
             --font-size: 12px;
+            --line-height: 20px;
         }
 
-        &[data-font-size='16px'] {
+        &[data-font-size='Medium'] {
             --font-size: 16px;
             --line-height: 24px;
         }
 
-        &[data-font-size='20px'] {
+        &[data-font-size='Large'] {
             --font-size: 20px;
             --line-height: 28px;
         }
