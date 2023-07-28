@@ -160,7 +160,14 @@ export function Controls({}) {
             {
                 label: 'Font Family',
                 key: 'font-family',
-                options: ['Monospace', 'Retro', 'Block', 'Sans Serif', 'Serif'],
+                options: [
+                    'Monospace',
+                    'Retro',
+                    'Block',
+                    '8-Bit',
+                    'Sans Serif',
+                    'Serif',
+                ],
                 defaultOption: 'Monospace',
                 vertical: true,
                 addDataAttr: true,
@@ -168,8 +175,8 @@ export function Controls({}) {
             {
                 label: 'Font Size',
                 key: 'font-size',
-                options: ['12px', '16px', '20px'],
-                defaultOption: '12px',
+                options: ['Small', 'Medium', 'Large'],
+                defaultOption: 'Small',
                 addDataAttr: true,
             },
         ];
