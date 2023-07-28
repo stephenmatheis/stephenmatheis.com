@@ -23,6 +23,12 @@ const block = localFont({
     display: 'swap',
 });
 
+const pico = localFont({
+    src: 'fonts/pico-8/pico-8-mono-upper.woff2',
+    variable: '--font-pico',
+    display: 'swap',
+});
+
 // const retro = VT323({
 //     subsets: ['latin'],
 //     variable: '--font-retro',
@@ -75,6 +81,7 @@ export default function RootLayout({
                 serif.variable,
                 retro.variable,
                 block.variable,
+                pico.variable,
                 // windyCity.variable,
                 // pixel.variable,
             ].join(' ')}

@@ -1,3 +1,5 @@
+@use 'styles/utilities';
+
 .posts-ctr {
     .date {
         display: block;
@@ -37,13 +39,16 @@
                     align-items: center;
                     margin-left: 2ch;
                     padding: 0px 0.5ch;
-                    font-size: var(--line-height);
+                    // font-size: var(--line-height);
 
-                    transition: background-color 150ms;
+                    // transition: background-color 150ms;
+
+                    @include utilities.shadow-variables;
+                    @include utilities.shadow-base;
 
                     @media (hover: hover) {
                         &:hover {
-                            background-color: var(--primary-20);
+                            @include utilities.shadow-hover;
                         }
                     }
                 }

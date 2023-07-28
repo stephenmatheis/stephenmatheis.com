@@ -36,13 +36,9 @@ export async function Post({
     return (
         <main className={styles.post}>
             <h1>
-                {link ? (
-                    <LinkCtr href={link} newTab>
-                        {title}
-                    </LinkCtr>
-                ) : (
-                    title
-                )}
+                <LinkCtr href={link || slug} newTab={!!link}>
+                    {title}
+                </LinkCtr>
             </h1>
             <article>
                 <DateTime dateString={date} className={styles.created} />
