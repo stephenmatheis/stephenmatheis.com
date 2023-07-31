@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { useDebounce } from '@/hooks/useDebounce';
 import styles from './search.module.scss';
@@ -9,6 +9,7 @@ import { Post } from '@/lib/types';
 export function Search({ posts, setPosts }) {
     const inputRef = useRef<HTMLInputElement>(null);
     const [showClear, setShowClear] = useState(false);
+    const [clearBtnText, setClearBtnText] = useState('');
 
     function handleClearSearch() {
         setPosts(posts);
@@ -58,6 +59,12 @@ export function Search({ posts, setPosts }) {
         100
     );
 
+    useEffect(() => {
+        const currentFont = localStorage.getItem('font-family');
+
+        setClearBtnText(currentFont === '8-Bit' ? 'x' : '&times;');
+    }, []);
+
     return (
         <div className={styles['search-row']}>
             <div className={styles['search-ctr']}>
@@ -69,11 +76,14 @@ export function Search({ posts, setPosts }) {
                     placeholder="search"
                 />
                 <button
-                    className={classNames({ [styles.active]: showClear })}
+                    className={classNames({
+                        [styles.active]: showClear,
+                        [styles.small]: clearBtnText === 'x',
+                    })}
                     onClick={handleClearSearch}
-                >
-                    &times;
-                </button>
+                    data-btn-clear
+                    dangerouslySetInnerHTML={{ __html: clearBtnText }}
+                />
             </div>
         </div>
     );

@@ -172,7 +172,8 @@ $theme-colors: (
     $color: null,
     $muted: null
 ) {
-    $opacities: '05', '10', '15', '20', '30', '50';
+    // $opacities: '05', '10', '15', '20', '30', '50';
+    $opacities: '05', '10', '15', '20', '30', '50', '70', '90';
     $colors: (
         'primary': $primary,
         'secondary': $secondary,

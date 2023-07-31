@@ -8,7 +8,7 @@
         align-items: center;
         width: 100%;
         background-color: var(--primary-20);
-        border-bottom: solid 2px var(--primary-variant);
+        border-bottom: solid 2px var(--primary-70);
 
         &:focus-within {
             outline: none;
@@ -16,7 +16,8 @@
         }
 
         .search {
-            font-family: var(--font-monospace);
+            width: 100%;
+            font-family: var(--font-family);
             border: none;
             font-size: var(--font-size);
             height: calc(var(--line-height) * 1.5);
@@ -30,7 +31,7 @@
             }
 
             &::placeholder {
-                color: var(--primary-variant);
+                color: var(--primary-70);
             }
         }
 
@@ -38,9 +39,11 @@
             background-color: transparent;
             border: none;
             color: var(--primary);
-            font-size: 24px;
-            line-height: 0;
             opacity: 0;
+
+            &:not(.small) {
+                font-size: 24px;
+            }
 
             &:focus,
             &:active {
