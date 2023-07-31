@@ -68,7 +68,46 @@
         display: none;
     }
 
-    // Fonts
+    // Themes
+    &[data-dark-theme='High Contrast'],
+    &[data-light-theme='High Contrast'] {
+        a {
+            [data-link-text] {
+                padding-bottom: 2px;
+                box-shadow: inset 0 -1px 0 0 var(--border-color);
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    [data-link-text] {
+                        background-color: var(--primary);
+                        color: var(--background-color) !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &[data-dark-theme='Monochrome'],
+    &[data-light-theme='Monochrome'] {
+        a {
+            [data-link-text] {
+                padding-bottom: 2px;
+                box-shadow: inset 0 -1px 0 0 var(--border-color);
+            }
+
+            @media (hover: hover) {
+                &:hover {
+                    [data-link-text] {
+                        background-color: var(--primary);
+                        color: var(--background-color) !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // Font sizes
     &[data-font-size='Medium'] {
         --font-size: 16px;
         --line-height: 24px;
@@ -104,7 +143,7 @@
         }
     }
 
-    // Fonts
+    // Font families
     &[data-font-family='Retro'] {
         --font-family: var(--font-retro);
 
