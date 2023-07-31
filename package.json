@@ -32,6 +32,7 @@
         "@octokit/auth-oauth-user": "^3.0.1",
         "classnames": "^2.3.2",
         "eslint": "^8.42.0",
+        "eslint-config-next": "^13.4.12",
         "gray-matter": "^4.0.3",
         "next": "^13.4.7",
         "next-mdx-remote": "^4.4.1",
