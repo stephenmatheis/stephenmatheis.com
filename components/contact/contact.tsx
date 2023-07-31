@@ -8,14 +8,9 @@ export function Contact() {
         <div className={styles['contact']}>
             <Comment text={'Contact'} />
             <div className={styles['info']}>
-                {contact.map(({ emoji, href, text, label }) => {
+                {contact.map(({ href, text, label }) => {
                     return (
-                        <LinkCtr
-                            key={text}
-                            emoji={emoji}
-                            href={href}
-                            label={label}
-                        >
+                        <LinkCtr key={text} href={href} label={label}>
                             {text}
                         </LinkCtr>
                     );
