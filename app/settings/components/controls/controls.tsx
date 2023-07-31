@@ -241,8 +241,8 @@ export function Controls({}) {
                                             >
                                                 <div className={styles.content}>
                                                     <p>
-                                                        "Negative. I'm a meat
-                                                        popsicle."
+                                                        &quot;Negative. I&apos;m a meat
+                                                        popsicle.&quot;
                                                     </p>
                                                     <p className={styles.right}>
                                                         ~ Korben Dallas

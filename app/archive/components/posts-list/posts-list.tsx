@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { Post } from '@/lib/types';
 import { Comment } from '@/components/comment';
@@ -21,7 +21,10 @@ function filterTags(post: Post, tags: string[]) {
 
 export function PostsList({ posts }: { posts: Post[] }) {
     const searchParams = useSearchParams();
-    const tags = searchParams.get('tags')?.split(',') || [];
+    const tags = useMemo(
+        () => searchParams.get('tags')?.split(',') || [],
+        [searchParams]
+    );
     const taggedPosts = tags.length
         ? posts.filter((post) => filterTags(post, tags))
         : posts;
@@ -46,9 +49,7 @@ export function PostsList({ posts }: { posts: Post[] }) {
         if (!tags.length) {
             setFilteredPosts(filteredPosts);
         }
-    }, [tags]);
-
-    console.log('posts:', filteredPosts);
+    }, [filteredPosts, tags]);
 
     return (
         <>
@@ -62,7 +63,9 @@ export function PostsList({ posts }: { posts: Post[] }) {
                 </div>
             )}
             {filteredPosts.length === 0 ? (
-                <div className={styles.none}>There are no posts that match this query.</div>
+                <div className={styles.none}>
+                    There are no posts that match this query.
+                </div>
             ) : (
                 <ul className={styles.container}>
                     {months.map((date) => {
