@@ -50,7 +50,7 @@ export function VersionModal() {
                     <div className={styles.content}>
                         <h2>New settings are available.</h2>
                         <p>
-                            If you made changes to the default configuation, I'm
+                            If you made changes to the default configuation, I&apos;m
                             afraid they had to be reset.
                         </p>
                         <p>
