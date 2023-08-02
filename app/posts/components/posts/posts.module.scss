@@ -20,6 +20,15 @@
                 margin-bottom: calc(var(--line-height) * 5);
                 display: flex;
 
+                @media (min-width: calc(utilities.$small-width + 1px)) {
+                    align-items: center;
+                    gap: 2ch;
+                }
+
+                @media (max-width: utilities.$small-width) {
+                    flex-direction: column;
+                }
+
                 &.first {
                     margin-top: 0px;
                 }
@@ -37,10 +46,10 @@
                 .post-link {
                     display: flex;
                     align-items: center;
-                    margin-left: 2ch;
                     padding: 0px 0.5ch;
-                    // font-size: var(--line-height);
 
+                    // margin-left: 2ch;
+                    // font-size: var(--line-height);
                     // transition: background-color 150ms;
 
                     @include utilities.shadow-variables;
