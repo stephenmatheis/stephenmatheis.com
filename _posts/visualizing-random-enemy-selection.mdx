@@ -1,0 +1,298 @@
+---
+title: 'Visualizing random enemy selection'
+date: August 2, 2023
+lastModified: August 2, 2023
+author: Stephen Matheis
+tags:
+    - PICO-8
+---
+
+In [Lazy Game Dev's](https://www.youtube.com/@LazyDevs) [Shmup Tutorial](https://youtube.com/playlist?list=PLea8cjCua_P3Sfq4XJqNVbd1vsWnh7LZd) episode [#24 - Enemy Movement](https://youtu.be/0UoE_rUl1qc), we're encouraged to create our own method for selecting the next enemy from a 4 x 10 grid of enemies to launch an attack.
+
+We're given just one requirement to meet: **_enemies should only be chosen from the bottom most row in a given column_**.
+
+I had a hard time visualizing how this would work. I created the component below to experiment with different ways to select the next enemy.
+
+Let's start with the easiest way to select an enemy from the bottom row.
+
+INSERT
+
+The solution posed in the next episode [#25 - Enemy Attacks](https://youtu.be/eZoQoWoUZ6g) is simpler than what I came up, with the trade off that it may select an ememy from a back row.
+
+I like both methods, but theirs has several benefits:
+
+-   Uses fewer tokens ([a cart can contain no more than 8192](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Specifications)).
+-   In practice, the chance of selecting an ememy from a back row means the player can't assume that the last enemy in a row will be the next one selected. This unpredictabily feels more random and more fun.
+
+Still, I don't regret working through this exercise. I now have a much better understanding of
+
+<div style={{ marginTop: 'calc(var(--line-height) * 5)' }}>
+    <SelectCell />
+</div>
+
+## Code
+
+```js
+'use client';
+
+// Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+import { Fragment, useEffect, useMemo } from 'react';
+import { Comment } from '@/components/comment';
+import styles from './select-cell.module.scss';
+
+function setEnemies() {
+    const enemies = [];
+    let cell = 1;
+
+    for (let row = 1; row <= 4; row++) {
+        const cells = [];
+
+        for (let col = 1; col <= 10; col++) {
+            cells.push(cell++);
+        }
+
+        enemies.push(cells);
+    }
+
+    return enemies;
+}
+
+export function SelectCell() {
+    const enemies = useMemo(() => {
+        return setEnemies();
+    }, []);
+
+    // Loop
+    useEffect(() => {
+        // State
+        let t = 0;
+        let seconds = 0;
+        let enemeies = [...document.querySelectorAll(`.${styles.cell}`)];
+        let range = enemeies.slice(-10);
+        let selected = [];
+
+        // Run at 30fps
+        let game_loop;
+
+        function start_game() {
+            return setInterval(() => {
+                _update();
+                _draw();
+            }, 1000 / 30);
+        }
+
+        function _update() {
+            // Set frame
+            t += 1;
+            document.querySelector('.fps').innerText = t;
+
+            // TODO: Add number field for user to set
+            // Every second (30 frames)
+            if (t % 1 === 0) {
+                seconds += 1;
+                document.querySelector('.seconds').innerText = seconds;
+
+                const row_len = 10;
+                const el = rnd_element(range);
+                const range_index = range.indexOf(el);
+                const enemies_index = enemeies.indexOf(el);
+
+                const new_el = enemeies[enemies_index - row_len];
+
+                // NOTE: Don't remove the enemy
+                // It will be removed either by:
+                // 1. Player reduces the enemy's health to 0
+                // 2. The enemy leaves the screen
+                //
+                // This poses a problem. We don't know what the size
+                // of the array will be on any given frame.
+                // We'll have to check the size of the array on each
+                // pass to see what's there
+
+                enemeies.splice(enemies_index, 1);
+                range.splice(range_index, 1);
+
+                // if (new_el) {
+                //     range.splice(range_index, 1, new_el);
+                // } else {
+                //     range.splice(range_index, 1);
+                // }
+
+                // DEV: From SHMUP.P8
+                // local max_num = min(10, #enemies)
+                // local index = flr(rnd(max_num))
+
+                // index = #enemies - index
+
+                // local enemy = enemies[index]
+                // DEV:
+
+                // console.log(
+                //     'Range:',
+                //     range.map((c) => c.innerText)
+                // );
+                // console.log('Selected:', el);
+                // console.log('Range index:', range_index);
+                // console.log(
+                //     'Enemies:',
+                //     enemeies.map((c) => c.innerText)
+                // );
+                // console.log('Enemies index:', enemies_index);
+                // console.log('New enemy?', new_el);
+                // console.log('----------------------------------------\n');
+
+                selected.push(el);
+
+                // Update order selected
+                document.querySelector(
+                    `.${styles.selected}:not(.${styles.cell})`
+                ).innerHTML = selected
+                    .map((cell, index) => {
+                        const num = index + 1;
+
+                        return /*html*/ `
+                            <div class="${styles['order-line']}">
+                                <span style="margin-right: ${
+                                    num > 10 ? '1ch' : '2ch'
+                                }">${num}</span><span>${cell.innerText}</span>
+                            </div>
+                        `;
+                    })
+                    .join('\n');
+
+                // Grab the next 10 items
+                if (range.length === 0) {
+                    range = enemeies.slice(-10);
+                }
+
+                if (enemeies.length == 0) {
+                    clearInterval(game_loop);
+                    return;
+                }
+            }
+        }
+
+        function _draw() {
+            [...document.querySelectorAll(`.${styles.cell}`)].forEach(
+                (cell) => {
+                    if (selected.includes(cell)) {
+                        cell.classList.add(styles.selected);
+                    }
+                }
+            );
+        }
+
+        function reset_state() {
+            t = 0;
+            seconds = 0;
+            enemeies = [...document.querySelectorAll(`.${styles.cell}`)];
+            range = enemeies.slice(-10);
+            selected = [];
+        }
+
+        function rnd_element(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        // start
+        document.querySelector('.start').addEventListener('click', () => {
+            game_loop = start_game();
+        });
+
+        // stop
+        document.querySelector('.stop').addEventListener('click', () => {
+            clearInterval(game_loop);
+        });
+
+        // reset
+        document.querySelector('.reset').addEventListener('click', () => {
+            clearInterval(game_loop);
+
+            // set state back to initial values
+            reset_state();
+
+            // reset frame counter
+            document.querySelector('.fps').innerText = 0;
+
+            // reset seconds elapsed
+            document.querySelector('.seconds').innerText = 0;
+
+            // remove selected class from cells
+            [...document.querySelectorAll(`.${styles.cell}`)].forEach(
+                (cell) => {
+                    if (cell.classList.contains(styles.selected)) {
+                        cell.classList.remove(styles.selected);
+                    }
+                }
+            );
+
+            document.querySelector(
+                `.${styles.selected}:not(.${styles.cell})`
+            ).innerHTML = /*html*/ `
+                <div
+                    class="${styles['order-line']} ${styles.placeholder}"
+                >
+                    None
+                </div>
+            `;
+        });
+    }, []);
+
+    return (
+        <div className={styles['grid-wrapper']}>
+            <div className={styles.stats}>
+                <div>
+                    <span>Frame</span>
+                    <span className={[styles.counter, 'fps'].join(' ')}>0</span>
+                </div>
+                <div>
+                    <span>Seconds</span>
+                    <span className={[styles.counter, 'seconds'].join(' ')}>
+                        0
+                    </span>
+                </div>
+            </div>
+            <div className={styles.grid}>
+                {enemies.map((row, index) => {
+                    return (
+                        <Fragment key={index}>
+                            {row.map((cell) => {
+                                return (
+                                    <div key={cell} className={styles.cell}>
+                                        {cell}
+                                    </div>
+                                );
+                            })}
+                        </Fragment>
+                    );
+                })}
+            </div>
+            {/* Buttons */}
+            <div className={styles.toolbar}>
+                <button className={[styles.btn, 'start'].join(' ')}>
+                    Start
+                </button>
+                <button className={[styles.btn, 'stop'].join(' ')}>Stop</button>
+                <button className={[styles.btn, 'reset'].join(' ')}>
+                    Reset
+                </button>
+            </div>
+            {/* Readout */}
+            <div className={styles.readout}>
+                <Comment text="Order Selected" />
+                <div className={styles.selected}>
+                    <div
+                        className={[
+                            styles['order-line'],
+                            styles.placeholder,
+                        ].join(' ')}
+                    >
+                        None
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+```
