@@ -331,10 +331,14 @@ h6 {
     margin-bottom: var(--line-height);
 }
 
+p,
+li {
+    line-height: calc(var(--line-height) * var(--p-line-height-modifier));
+}
+
 p {
     margin-top: 0px;
     margin-bottom: var(--line-height);
-    line-height: calc(var(--line-height) * var(--p-line-height-modifier));
 }
 
 article {
@@ -397,7 +401,7 @@ button {
 p {
     code {
         font-family: var(--font-monospace);
-        padding: 0.5ch 1ch;
+        padding: 0.125ch 0.25ch;
         background-color: var(--primary-20);
         color: var(--primary);
     }
@@ -406,8 +410,11 @@ p {
 // Code block
 
 [data-rehype-pretty-code-fragment] {
+    margin-right: calc(2ch + 2px);
+
     // DEV:
-    --background: var(--background);
+    // --background: var(--background);
+    --background: var(--primary-10);
 
     --hightlighted-background: var(--primary-15);
     --title-background: var(--primary-20);
@@ -529,19 +536,31 @@ p {
 }
 
 // Conditionally show or hide light and dark theme code blocks
-div[data-code-block] {
-    &:has([data-theme='light']) {
-        @media (prefers-color-scheme: dark) {
+html {
+    &[data-prefers-color-scheme='Light'] {
+        div[data-code-block]:has(code[data-theme='dark']) {
             display: none;
         }
     }
-}
 
-div[data-code-block] {
-    &:has([data-theme='dark']) {
+    &[data-prefers-color-scheme='Dark'] {
+        div[data-code-block]:has(code[data-theme='light']) {
+            display: none;
+        }
+    }
+
+    &[data-prefers-color-scheme='System'] {
         @media (prefers-color-scheme: light),
             (prefers-color-scheme: no-preference) {
-            display: none;
+            div[data-code-block]:has(code[data-theme='dark']) {
+                display: none;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            div[data-code-block]:has(code[data-theme='light']) {
+                display: none;
+            }
         }
     }
 }
