@@ -49,7 +49,7 @@
         justify-content: flex-start;
 
         > a {
-            span:first-child {
+            [data-emoji] {
                 @include button;
                 left: -1.5ch;
             }
@@ -60,7 +60,7 @@
         justify-content: flex-end;
 
         > a {
-            span:nth-child(2) {
+            [data-emoji] {
                 @include button;
                 right: -1.5ch;
             }
