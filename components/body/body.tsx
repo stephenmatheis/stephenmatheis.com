@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { LinkCtr } from '@/components/link-ctr';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
+import { SelectCell } from '@/components/select-cell';
 
 function getAnchor(text: string) {
     return text
@@ -53,6 +54,7 @@ const components = {
             </CopyToClipboard>
         );
     },
+    SelectCell: () => <SelectCell />,
 };
 
 export function Body({ children }: { children: string }) {
