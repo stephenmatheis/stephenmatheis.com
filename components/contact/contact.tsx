@@ -10,7 +10,11 @@ export function Contact() {
             <div className={styles['info']}>
                 {contact.map(({ href, text, label }) => {
                     return (
-                        <LinkCtr key={text} href={href} label={label}>
+                        <LinkCtr
+                            key={text}
+                            href={href}
+                            label={label}
+                        >
                             {text}
                         </LinkCtr>
                     );

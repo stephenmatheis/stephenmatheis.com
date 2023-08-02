@@ -36,7 +36,9 @@ export function LinkCtr({
                     aria-label={label}
                     {...props}
                 >
-                    <span className={styles['text']}>{children}</span>
+                    <span className={styles['text']} data-link-text>
+                        {children}
+                    </span>
                 </a>
             ) : (
                 <Link
@@ -51,7 +53,9 @@ export function LinkCtr({
                             {typeof emoji === 'string' ? emoji : emoji.value}
                         </span>
                     )}
-                    <span className={styles['text']}>{children}</span>
+                    <span className={styles['text']} data-link-text>
+                        {children}
+                    </span>
                     {typeof emoji === 'object' &&
                         emoji.position === 'right' && (
                             <span

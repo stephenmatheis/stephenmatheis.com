@@ -17,7 +17,7 @@ export function Tags({ tags, newTab, color = 'muted' }: Props) {
                     #{' '}
                     {tags.map((tag: string, index: number) => {
                         return (
-                            <Suspense fallback={<Fallback />}>
+                            <Suspense fallback={<Fallback />} key={tag}>
                                 <Tag
                                     key={tag}
                                     tag={tag}
