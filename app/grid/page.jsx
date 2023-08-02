@@ -4,8 +4,7 @@ import { Page } from '@/components/page';
 import { Main } from '@/components/main';
 import { Comment } from '@/components/comment';
 import styles from './grid.module.scss';
-import { Fragment, useEffect, useMemo, useState } from 'react';
-import classNames from 'classnames';
+import { Fragment, useEffect, useMemo } from 'react';
 
 function rnd(min, max) {
     min = Math.ceil(min);
@@ -35,38 +34,14 @@ function setEnemies() {
 }
 
 export default function DrawingsPage() {
-    const [seconds, setSeconds] = useState(0);
-    const [selected, setSelected] = useState([]);
     const enemies = useMemo(() => {
         return setEnemies();
     }, []);
 
     // Loop
     useEffect(() => {
-        setInterval(() => {
-            setSeconds((prev) => prev + 1);
-        }, 1000);
+        setInterval(() => {}, 1000);
     }, []);
-
-    useEffect(() => {
-        setInterval(() => {
-            // console.log(rnd(1, 40));
-            // const cell = rnd(1, 40);
-            const range = enemies.at(-1);
-            const min = range[0];
-            const max = range.at(-1);
-            const el = rnd_el(range);
-
-            // setSelected(prev => [
-            //     ...prev,
-            //     cell
-            // ]);
-        }, 2000);
-    }, []);
-
-    useEffect(() => {
-        console.log(selected);
-    }, [selected]);
 
     return (
         <Page
@@ -79,34 +54,76 @@ export default function DrawingsPage() {
         >
             <Main columns={2}>
                 <Comment text="Grid" />
-                <div className={styles.grid}>
-                    {enemies.map((row, index) => {
-                        return (
-                            <Fragment key={index}>
-                                {row.map((cell) => {
-                                    return (
-                                        <div
-                                            key={cell}
-                                            className={classNames(styles.cell, {
-                                                [styles.selected]:
-                                                    selected.includes(cell),
-                                            })}
-                                        >
-                                            {cell}
-                                        </div>
-                                    );
-                                })}
-                            </Fragment>
-                        );
-                    })}
-                </div>
-                <div className={styles.timer}>
-                    <div>Seconds</div>
-                    <div>{seconds}</div>
-                </div>
-                <div className={styles.timer}>
-                    <div>Selected</div>
-                    <div>{selected.join(', ')}</div>
+                <div className={styles['grid-wrapper']}>
+                    <div className={styles.stats}>
+                        <div>
+                            <span>Frame</span>
+                            <span
+                                className={[styles.counter, styles.fps].join(
+                                    ' '
+                                )}
+                            >
+                                0
+                            </span>
+                        </div>
+                        <div>
+                            <span>Seconds</span>
+                            <span
+                                className={[
+                                    styles.counter,
+                                    styles.seconds,
+                                ].join(' ')}
+                            >
+                                0
+                            </span>
+                        </div>
+                    </div>
+                    <div className={styles.grid}>
+                        {enemies.map((row, index) => {
+                            return (
+                                <Fragment key={index}>
+                                    {row.map((cell) => {
+                                        return (
+                                            <div
+                                                key={cell}
+                                                className={styles.cell}
+                                            >
+                                                {cell}
+                                            </div>
+                                        );
+                                    })}
+                                </Fragment>
+                            );
+                        })}
+                    </div>
+                    <div className={styles.readout}>
+                        <div className={styles.heading}>Order Selected</div>
+                        <div className={styles.selected}>
+                            <div
+                                className={[
+                                    styles['order-line'],
+                                    styles.placeholder,
+                                ].join(' ')}
+                            >
+                                None
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.toolbar}>
+                        <button
+                            className={[styles.btn, styles.start].join(' ')}
+                        >
+                            Start
+                        </button>
+                        <button className={[styles.btn, styles.stop].join(' ')}>
+                            Stop
+                        </button>
+                        <button
+                            className={[styles.btn, styles.reset].join(' ')}
+                        >
+                            Reset
+                        </button>
+                    </div>
                 </div>
             </Main>
         </Page>
