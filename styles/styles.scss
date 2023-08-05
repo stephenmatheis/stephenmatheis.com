@@ -46,6 +46,7 @@
     --medium-width: #{utilities.$medium-width};
     --large-width: #{utilities.$large-width};
     --max-width: #{utilities.$max-width};
+    --border-radius: #{utilities.$border-radius};
 
     @media (hover: hover) {
         --offset: 3px;
@@ -63,6 +64,53 @@
     }
 
     @include utilities.init-themes();
+
+    // Shiki
+    --shiki-color-text: var(--color);
+    --shiki-color-background: var(--primary-10);
+    --shiki-token-constant: var(--color);
+    --shiki-token-string: var(--color);
+    --shiki-token-comment: var(--muted);
+    --shiki-token-keyword: var(--primary);
+    --shiki-token-parameter: var(--primary);
+    --shiki-token-function: var(--primary);
+    --shiki-token-string-expression: var(--color);
+    --shiki-token-punctuation: var(--color);
+    --shiki-token-link: var(--primary);
+
+    /* Only required if using ansiToHtml function */
+    --shiki-color-ansi-black: #000000;
+    --shiki-color-ansi-black-dim: #00000080;
+    --shiki-color-ansi-red: #bb0000;
+    --shiki-color-ansi-red-dim: #bb000080;
+    --shiki-color-ansi-green: #00bb00;
+    --shiki-color-ansi-green-dim: #00bb0080;
+    --shiki-color-ansi-yellow: #bbbb00;
+    --shiki-color-ansi-yellow-dim: #bbbb0080;
+    --shiki-color-ansi-blue: #0000bb;
+    --shiki-color-ansi-blue-dim: #0000bb80;
+    --shiki-color-ansi-magenta: #ff00ff;
+    --shiki-color-ansi-magenta-dim: #ff00ff80;
+    --shiki-color-ansi-cyan: #00bbbb;
+    --shiki-color-ansi-cyan-dim: #00bbbb80;
+    --shiki-color-ansi-white: #eeeeee;
+    --shiki-color-ansi-white-dim: #eeeeee80;
+    --shiki-color-ansi-bright-black: #555555;
+    --shiki-color-ansi-bright-black-dim: #55555580;
+    --shiki-color-ansi-bright-red: #ff5555;
+    --shiki-color-ansi-bright-red-dim: #ff555580;
+    --shiki-color-ansi-bright-green: #00ff00;
+    --shiki-color-ansi-bright-green-dim: #00ff0080;
+    --shiki-color-ansi-bright-yellow: #ffff55;
+    --shiki-color-ansi-bright-yellow-dim: #ffff5580;
+    --shiki-color-ansi-bright-blue: #5555ff;
+    --shiki-color-ansi-bright-blue-dim: #5555ff80;
+    --shiki-color-ansi-bright-magenta: #ff55ff;
+    --shiki-color-ansi-bright-magenta-dim: #ff55ff80;
+    --shiki-color-ansi-bright-cyan: #55ffff;
+    --shiki-color-ansi-bright-cyan-dim: #55ffff80;
+    --shiki-color-ansi-bright-white: #ffffff;
+    --shiki-color-ansi-bright-white-dim: #ffffff80;
 
     br[data-header-break] {
         display: none;
@@ -410,12 +458,7 @@ p {
 // Code block
 
 [data-rehype-pretty-code-fragment] {
-    margin-right: calc(2ch + 2px);
-
-    // DEV:
-    // --background: var(--background);
     --background: var(--primary-10);
-
     --hightlighted-background: var(--primary-15);
     --title-background: var(--primary-20);
     --highlighted-border-color: var(--primary);
@@ -424,7 +467,7 @@ p {
     margin-bottom: calc(var(--line-height) * 1);
 
     [data-rehype-pretty-code-title] {
-        // Tabbed
+        // TODO: Tabbed
         // width: fit-content;
         // background: var(--background);
 
@@ -451,21 +494,13 @@ p {
         margin: 0px;
         opacity: 0.98;
         background: var(--background);
-
-        &,
-        & * {
-            line-height: 2;
-        }
+        border: solid 1px var(--border-color);
 
         & > code {
             display: grid;
             font-family: var(--font-monospace);
-            padding: calc(var(--line-height) * 1.5) 0px;
+            padding: var(--line-height) 0px;
             overflow-x: auto;
-
-            // DEV:
-            // border-left: solid 2px var(--primary);
-            // border-left: solid 2px var(--primary-30);
 
             // Line numbers
             &[data-line-numbers] {
@@ -573,6 +608,8 @@ html {
 .color {
     color: var(--color);
 }
+
+// TODO: Move to app
 
 // New Post
 .prism-wrapper {

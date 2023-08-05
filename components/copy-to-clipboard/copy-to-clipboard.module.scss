@@ -18,6 +18,9 @@
         padding: calc(var(--line-height) * 0.25) 0px;
         z-index: 1;
 
+        // DEV:
+        border-radius: var(--border-radius);
+
         &.copied {
             span {
                 animation: scale-in 300ms ease-in-out forwards;

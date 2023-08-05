@@ -52,7 +52,7 @@ export function SelectCell() {
 
             // TODO: Add number field for user to set
             // Every second (30 frames)
-            if (t % 1 === 0) {
+            if (t % 30 === 0) {
                 seconds += 1;
                 document.querySelector('.seconds').innerText = seconds;
 
@@ -204,16 +204,20 @@ export function SelectCell() {
 
     return (
         <div className={styles['grid-wrapper']}>
-            <div className={styles.stats}>
-                <div>
-                    <span>Frame</span>
-                    <span className={[styles.counter, 'fps'].join(' ')}>0</span>
-                </div>
-                <div>
-                    <span>Seconds</span>
-                    <span className={[styles.counter, 'seconds'].join(' ')}>
-                        0
-                    </span>
+            <div className={styles['stats-ctr']}>
+                <div className={styles.stats}>
+                    <div>
+                        <span>Frame</span>
+                        <span className={[styles.counter, 'fps'].join(' ')}>
+                            0
+                        </span>
+                    </div>
+                    <div>
+                        <span>Seconds</span>
+                        <span className={[styles.counter, 'seconds'].join(' ')}>
+                            0
+                        </span>
+                    </div>
                 </div>
             </div>
             <div className={styles.grid}>

@@ -14,6 +14,7 @@ $medium-width: 1024px;
 $large-width: 1025px;
 $max-width: 680px;
 $medium-height: 725px;
+$border-radius: 6px;
 
 // String utilties
 /// https://gist.github.com/delphinpro/6e048196bbdfdfee07b1fb5c9ea4caef
@@ -262,22 +263,6 @@ $theme-colors: (
             --#{$formatted-prefix}r-word-background-color: #9f1239;
             --#{$formatted-prefix}g-word-background-color: #115e59;
             --#{$formatted-prefix}b-word-background-color: #1e40af;
-        }
-    }
-
-    @if $type == 'strings' {
-        @each $name, $color in $colors {
-            --#{$mode}-#{$name}-string: '#{$color}';
-
-            @each $opacity in $opacities {
-                --#{$mode}-#{$name}-#{$opacity}-string: #{$color}#{$opacity};
-            }
-
-            @if $mode == 'Light' {
-                --#{$mode}-#{$name}-variant: #{mix(white, $color, 10%)};
-            } @else if $mode == 'Dark' {
-                --#{$mode}-#{$name}-variant: #{mix(black, $color, 10%)};
-            }
         }
     }
 }
