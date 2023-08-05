@@ -4,6 +4,7 @@
     --border-color: var(--primary-50);
     --icon-size: calc(var(--font-size) + 8px);
 
+    margin: calc(var(--line-height) * 3) 0px;
     border-radius: var(--border-radius);
 
     .titles {
