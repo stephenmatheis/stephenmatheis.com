@@ -45,13 +45,13 @@
             &:first-child {
                 border-top: solid 1px var(--border-color);
                 border-left: solid 1px var(--border-color);
+                border-right: solid 1px var(--border-color);
                 border-radius: 6px 0px 0px 0px;
             }
 
             &:not(:first-child) {
                 border-top: solid 1px var(--border-color);
                 border-right: solid 1px var(--border-color);
-                border-left: solid 1px var(--border-color);
             }
 
             &:last-child {
