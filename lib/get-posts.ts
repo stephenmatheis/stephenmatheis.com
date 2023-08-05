@@ -20,13 +20,13 @@ export const getPosts = cache(async (): Promise<any> => {
             .map(async (file) => {
                 const filePath = join(postsDirectory, file);
                 const postContent = await readFile(filePath, 'utf8');
-                const { birthtime } = await stat(filePath);
                 const { data, content } = matter(postContent);
+                const { date } = data;
 
                 return {
                     ...data,
                     ...(data.tags ? { tags: data.tags.sort() } : {}),
-                    created: birthtime,
+                    created: date,
                     excerpt: getFirstTwoSentences(content),
                     body: content,
                     slug: path.parse(file).name,
