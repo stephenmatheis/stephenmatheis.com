@@ -1,6 +1,7 @@
 'use client';
 
-import { ReactElement, useState, useCallback } from 'react';
+import { ReactElement, useState, useCallback, useRef } from 'react';
+import { Menu } from '@/components/menu';
 import styles from './tabs.module.scss';
 
 export type TabTitleProps = {
@@ -103,12 +104,13 @@ export function Tabs({
     children,
     preSelectedTabIndex: index,
 }: TabsProps): JSX.Element {
+    const ctr = useRef<HTMLDivElement>(null!);
     const [selectedTabIndex, setSelectedTabIndex] = useState<number>(
         index || 0
     );
 
     return (
-        <div className={styles.tabs}>
+        <div ref={ctr} className={styles.tabs}>
             <div className={styles['titles-scroll-wrapper']}>
                 <div className={styles.titles}>
                     {children.map(({ props }, index) => (
@@ -122,7 +124,25 @@ export function Tabs({
                     ))}
                 </div>
                 <div className={styles['titles-toolbar']}>
-                    <div className={styles['titles-toolbar-btn']}>···</div>
+                    <div className={styles['titles-toolbar-btn']}>
+                        <Menu
+                            buttons={[
+                                {
+                                    label: 'Copy',
+                                    action() {
+                                        const btn: HTMLButtonElement =
+                                            ctr.current.querySelector(
+                                                '[data-copy-code-btn]'
+                                            ) as HTMLButtonElement;
+
+                                        if (btn) {
+                                            btn.click();
+                                        }
+                                    },
+                                },
+                            ]}
+                        />
+                    </div>
                 </div>
             </div>
             {children[selectedTabIndex]}
