@@ -46,6 +46,7 @@ export function CopyToClipboard({ children }: ICopyToClipboard) {
                     [styles.fade]: fadeBtn,
                 })}
                 onClick={onCopy}
+                data-copy-code-btn
             >
                 <span>{copied ? '✔' : 'Copy'}</span>
                 {/* <span>{copied ? '👌' : 'Copy'}</span> */}
