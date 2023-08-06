@@ -109,16 +109,21 @@ export function Tabs({
 
     return (
         <div className={styles.tabs}>
-            <div className={styles.titles}>
-                {children.map(({ props }, index) => (
-                    <TabTitle
-                        key={props.title}
-                        title={props.title}
-                        index={index}
-                        isActive={index === selectedTabIndex}
-                        setSelectedTab={setSelectedTabIndex}
-                    />
-                ))}
+            <div className={styles['titles-scroll-wrapper']}>
+                <div className={styles.titles}>
+                    {children.map(({ props }, index) => (
+                        <TabTitle
+                            key={props.title}
+                            title={props.title}
+                            index={index}
+                            isActive={index === selectedTabIndex}
+                            setSelectedTab={setSelectedTabIndex}
+                        />
+                    ))}
+                </div>
+                <div className={styles['titles-toolbar']}>
+                    <div className={styles['titles-toolbar-btn']}>···</div>
+                </div>
             </div>
             {children[selectedTabIndex]}
         </div>
