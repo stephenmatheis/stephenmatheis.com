@@ -60,7 +60,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                         )}
                                                     >
                                                         {link ? (
-                                                            <>
+                                                            <span>
                                                                 <LinkCtr
                                                                     href={link}
                                                                     newTab
@@ -77,7 +77,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                                 >
                                                                     #
                                                                 </Link>
-                                                            </>
+                                                            </span>
                                                         ) : (
                                                             <LinkCtr
                                                                 href={`/posts/${slug}`}
