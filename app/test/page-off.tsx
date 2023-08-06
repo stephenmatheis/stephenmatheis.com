@@ -20,7 +20,16 @@ export default function ProjectsPage({}) {
             ]}
         >
             <Main columns={2}>
-                <Menu />
+                <Menu
+                    buttons={[
+                        {
+                            label: 'Hi',
+                            action() {
+                                alert('Hi!');
+                            },
+                        },
+                    ]}
+                />
             </Main>
         </Page>
     );
