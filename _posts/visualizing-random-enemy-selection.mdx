@@ -4,40 +4,33 @@ date: 'August 2, 2023'
 lastModified: 'August 5, 2023'
 author: Stephen Matheis
 tags:
-  - PICO-8
+    - PICO-8
 ---
 
 In [Lazy Game Dev's](https://www.youtube.com/@LazyDevs) [Shmup Tutorial](https://youtube.com/playlist?list=PLea8cjCua_P3Sfq4XJqNVbd1vsWnh7LZd) episode [#24 - Enemy Movement](https://youtu.be/0UoE_rUl1qc), we're encouraged to create our own method for selecting the next enemy from a 4 x 10 grid of enemies to launch an attack.
 
 We're given just one requirement to meet: **_enemies should only be chosen from the bottom most row in a given column_**.
 
-I had a hard time visualizing how this would work. I created the component below to experiment with different ways to select the next enemy.
+I had a hard time visualizing how this would work. So I created this tool to experiment with different ways to select the next enemy.
 
+<div
+    style={{
+        margin: 'calc(var(--line-height) * 4) 0px',
+    }}
+>
+    <SelectCell />
+</div>
+
+## Method #1
 Let's start with the easiest way to select an enemy from the bottom row.
 
 INSERT
 
 The solution posed in the next episode [#25 - Enemy Attacks](https://youtu.be/eZoQoWoUZ6g) is simpler than what I came up, with the trade off that it may select an ememy from a back row.
 
-I like both methods, but theirs has several benefits:
+I like both methods, but theirs is better in a couple of ways. It uses fewer tokens ([a cart can contain no more than 8192](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Specifications)). And the chance of selecting an ememy from from a back row means the player can't assume that the last enemy in the closest row will always be the next one selected.
 
--   Uses fewer tokens ([a cart can contain no more than 8192](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Specifications)).
--   In practice, the chance of selecting an ememy from a back row means the player can't assume that the last enemy in a row will be the next one selected. This unpredictabily feels more random and more fun.
-
-I don't regret working through this exercise. I now have a much better understanding of
-
-<div style={{ marginTop: 'calc(var(--line-height) * 5)' }}>
-    <SelectCell />
-</div>
-
-## Code
-
-Here's all the code in two formats:
-
-1. A [React Client Component](https://nextjs.org/docs/getting-started/react-essentials) (since this site is [made with Next.js](https://github.com/stephenmatheis/stephenmatheis.com)).
-2. Plain HTML, CSS, and JS.
-
-### React
+Here's the code wrapped in a [React Client Component](https://nextjs.org/docs/getting-started/react-essentials) (since this site is [made with Next.js](https://github.com/stephenmatheis/stephenmatheis.com)).
 
 <Tabs>
     <Tab title="grid.tsx">
@@ -430,7 +423,7 @@ Here's all the code in two formats:
 
 </Tabs>
 
-### Plain HTML, CSS, and JS
+And here is in it's orginal format.
 
 <Tabs>
     <Tab title="index.html">
