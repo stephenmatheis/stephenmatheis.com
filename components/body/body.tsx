@@ -5,7 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { LinkCtr } from '@/components/link-ctr';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
 import { SelectCell } from '@/components/select-cell';
-import { Tab, Tabs } from '@/app/test/components/tabs';
+import { Tab, Tabs } from '@/components/tabs';
 
 function getAnchor(text: string) {
     return text
