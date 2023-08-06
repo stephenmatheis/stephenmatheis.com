@@ -1,10 +1,10 @@
 ---
 title: Visualizing random enemy selection
 date: 'August 2, 2023'
-lastModified: 'August 5, 2023'
+lastModified: 'August 6, 2023'
 author: Stephen Matheis
 tags:
-    - PICO-8
+  - PICO-8
 ---
 
 In [Lazy Game Dev's](https://www.youtube.com/@LazyDevs) [Shmup Tutorial](https://youtube.com/playlist?list=PLea8cjCua_P3Sfq4XJqNVbd1vsWnh7LZd) episode [#24 - Enemy Movement](https://youtu.be/0UoE_rUl1qc), we're encouraged to create our own method for selecting the next enemy from a 4 x 10 grid of enemies to launch an attack.
@@ -34,7 +34,7 @@ Here's the code wrapped in a [React Client Component](https://nextjs.org/docs/ge
 
 <Tabs>
     <Tab title="grid.tsx">
-        ```js
+        ```tsx
         'use client';
 
         // https://github.com/shikijs/shiki/blob/main/docs/themes.md
@@ -302,7 +302,7 @@ Here's the code wrapped in a [React Client Component](https://nextjs.org/docs/ge
         ```
     </Tab>
     <Tab title="grid.module.scss">
-        ```css
+        ```scss
         .grid-wrapper {
             display: flex;
             flex-direction: column;
