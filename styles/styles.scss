@@ -65,53 +65,6 @@
 
     @include utilities.init-themes();
 
-    // Shiki
-    --shiki-color-text: var(--color);
-    --shiki-color-background: var(--primary-10);
-    --shiki-token-constant: var(--color);
-    --shiki-token-string: var(--color);
-    --shiki-token-comment: var(--muted);
-    --shiki-token-keyword: var(--primary);
-    --shiki-token-parameter: var(--primary);
-    --shiki-token-function: var(--primary);
-    --shiki-token-string-expression: var(--color);
-    --shiki-token-punctuation: var(--color);
-    --shiki-token-link: var(--primary);
-
-    /* Only required if using ansiToHtml function */
-    --shiki-color-ansi-black: #000000;
-    --shiki-color-ansi-black-dim: #00000080;
-    --shiki-color-ansi-red: #bb0000;
-    --shiki-color-ansi-red-dim: #bb000080;
-    --shiki-color-ansi-green: #00bb00;
-    --shiki-color-ansi-green-dim: #00bb0080;
-    --shiki-color-ansi-yellow: #bbbb00;
-    --shiki-color-ansi-yellow-dim: #bbbb0080;
-    --shiki-color-ansi-blue: #0000bb;
-    --shiki-color-ansi-blue-dim: #0000bb80;
-    --shiki-color-ansi-magenta: #ff00ff;
-    --shiki-color-ansi-magenta-dim: #ff00ff80;
-    --shiki-color-ansi-cyan: #00bbbb;
-    --shiki-color-ansi-cyan-dim: #00bbbb80;
-    --shiki-color-ansi-white: #eeeeee;
-    --shiki-color-ansi-white-dim: #eeeeee80;
-    --shiki-color-ansi-bright-black: #555555;
-    --shiki-color-ansi-bright-black-dim: #55555580;
-    --shiki-color-ansi-bright-red: #ff5555;
-    --shiki-color-ansi-bright-red-dim: #ff555580;
-    --shiki-color-ansi-bright-green: #00ff00;
-    --shiki-color-ansi-bright-green-dim: #00ff0080;
-    --shiki-color-ansi-bright-yellow: #ffff55;
-    --shiki-color-ansi-bright-yellow-dim: #ffff5580;
-    --shiki-color-ansi-bright-blue: #5555ff;
-    --shiki-color-ansi-bright-blue-dim: #5555ff80;
-    --shiki-color-ansi-bright-magenta: #ff55ff;
-    --shiki-color-ansi-bright-magenta-dim: #ff55ff80;
-    --shiki-color-ansi-bright-cyan: #55ffff;
-    --shiki-color-ansi-bright-cyan-dim: #55ffff80;
-    --shiki-color-ansi-bright-white: #ffffff;
-    --shiki-color-ansi-bright-white-dim: #ffffff80;
-
     br[data-header-break] {
         display: none;
     }
@@ -308,6 +261,30 @@ body {
     margin: 0;
     padding: 0;
 
+    // DEV:
+    position: relative;
+    z-index: 1;
+
+    &::after {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        content: '';
+        width: 100vw;
+        height: 100dvh;
+        z-index: -1;
+
+        background-image: radial-gradient(
+            circle at 1px 1px,
+            var(--primary-50) 1px,
+            transparent 0
+        );
+        background-size: 5vw 5vh;
+        background-position: 2.5vw 2.5vh;
+    }
+
+    // DEV:
+
     &.can-transition {
         transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
             background-color var(--prefers-color-scheme-transition-speed) ease
@@ -497,6 +474,53 @@ p {
         border: solid 1px var(--border-color);
 
         & > code {
+            // Shiki
+            --shiki-color-text: var(--color);
+            --shiki-color-background: var(--primary-10);
+            --shiki-token-constant: var(--color);
+            --shiki-token-string: var(--color);
+            --shiki-token-comment: var(--muted);
+            --shiki-token-keyword: var(--accent);
+            --shiki-token-parameter: var(--primary);
+            --shiki-token-function: var(--primary);
+            --shiki-token-string-expression: var(--primary);
+            --shiki-token-punctuation: var(--color);
+            --shiki-token-link: var(--primary);
+
+            /* Only required if using ansiToHtml function */
+            --shiki-color-ansi-black: #000000;
+            --shiki-color-ansi-black-dim: #00000080;
+            --shiki-color-ansi-red: #bb0000;
+            --shiki-color-ansi-red-dim: #bb000080;
+            --shiki-color-ansi-green: #00bb00;
+            --shiki-color-ansi-green-dim: #00bb0080;
+            --shiki-color-ansi-yellow: #bbbb00;
+            --shiki-color-ansi-yellow-dim: #bbbb0080;
+            --shiki-color-ansi-blue: #0000bb;
+            --shiki-color-ansi-blue-dim: #0000bb80;
+            --shiki-color-ansi-magenta: #ff00ff;
+            --shiki-color-ansi-magenta-dim: #ff00ff80;
+            --shiki-color-ansi-cyan: #00bbbb;
+            --shiki-color-ansi-cyan-dim: #00bbbb80;
+            --shiki-color-ansi-white: #eeeeee;
+            --shiki-color-ansi-white-dim: #eeeeee80;
+            --shiki-color-ansi-bright-black: #555555;
+            --shiki-color-ansi-bright-black-dim: #55555580;
+            --shiki-color-ansi-bright-red: #ff5555;
+            --shiki-color-ansi-bright-red-dim: #ff555580;
+            --shiki-color-ansi-bright-green: #00ff00;
+            --shiki-color-ansi-bright-green-dim: #00ff0080;
+            --shiki-color-ansi-bright-yellow: #ffff55;
+            --shiki-color-ansi-bright-yellow-dim: #ffff5580;
+            --shiki-color-ansi-bright-blue: #5555ff;
+            --shiki-color-ansi-bright-blue-dim: #5555ff80;
+            --shiki-color-ansi-bright-magenta: #ff55ff;
+            --shiki-color-ansi-bright-magenta-dim: #ff55ff80;
+            --shiki-color-ansi-bright-cyan: #55ffff;
+            --shiki-color-ansi-bright-cyan-dim: #55ffff80;
+            --shiki-color-ansi-bright-white: #ffffff;
+            --shiki-color-ansi-bright-white-dim: #ffffff80;
+
             display: grid;
             font-family: var(--font-monospace);
             padding: var(--line-height) 0px;
