@@ -261,30 +261,6 @@ body {
     margin: 0;
     padding: 0;
 
-    // DEV:
-    position: relative;
-    z-index: 1;
-
-    &::after {
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        content: '';
-        width: 100vw;
-        height: 100dvh;
-        z-index: -1;
-
-        background-image: radial-gradient(
-            circle at 1px 1px,
-            var(--primary-50) 1px,
-            transparent 0
-        );
-        background-size: 5vw 5vh;
-        background-position: 2.5vw 2.5vh;
-    }
-
-    // DEV:
-
     &.can-transition {
         transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
             background-color var(--prefers-color-scheme-transition-speed) ease
