@@ -7,11 +7,16 @@ tags:
   - PICO-8
 ---
 
-In [Lazy Game Dev's](https://www.youtube.com/@LazyDevs) [Shmup Tutorial](https://youtube.com/playlist?list=PLea8cjCua_P3Sfq4XJqNVbd1vsWnh7LZd) episode [#24 - Enemy Movement](https://youtu.be/0UoE_rUl1qc), we're encouraged to create our own method for selecting the next enemy from a 4 x 10 grid of enemies to launch an attack.
+In [Lazy Game Dev's](https://www.youtube.com/@LazyDevs) [Shmup Tutorial](https://youtube.com/playlist?list=PLea8cjCua_P3Sfq4XJqNVbd1vsWnh7LZd) episode [#24 - Enemy Movement](https://youtu.be/0UoE_rUl1qc) we're encouraged to create a method for selecting the next enemy to launch an attack from a 4 x 10 grid of enemies.
 
-We're given just one requirement to meet: **_enemies should only be chosen from the bottom most row in a given column_**.
+There's only one criteria: **_enemies should be chosen from the bottom most row in a given column_**.
 
-I had a hard time visualizing how this would work. So I created this tool to experiment with different ways to select the next enemy.
+I had a hard time visualizing how this would work. There are a more things to think about than I had first realized.
+
+- What should happen if the selected enemy is alredy attacking?
+- ???
+
+So I created this tool to experiment with different ways to select the next enemy.
 
 <div
     style={{
@@ -21,14 +26,11 @@ I had a hard time visualizing how this would work. So I created this tool to exp
     <SelectCell />
 </div>
 
-## Method #1
-Let's start with the easiest way to select an enemy from the bottom row.
+The best I could come up with is to randomly select
 
-INSERT
+A solution is presented in the next episode [#25 - Enemy Attacks](https://youtu.be/eZoQoWoUZ6g). It's much simpler than what I came up, with the caveat that it may select an ememy from a back row every once in a while.
 
-The solution posed in the next episode [#25 - Enemy Attacks](https://youtu.be/eZoQoWoUZ6g) is simpler than what I came up, with the trade off that it may select an ememy from a back row.
-
-I like both methods, but theirs is better in a couple of ways. It uses fewer tokens ([a cart can contain no more than 8192](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Specifications)). And the chance of selecting an ememy from from a back row means the player can't assume that the last enemy in the closest row will always be the next one selected.
+I like both methods, but theirs uses fewer tokens (in PICO-8, [a cart can contain no more than 8192](https://www.lexaloffle.com/dl/docs/pico-8_manual.html#Specifications)). Plus, when the bottom row only has one enemy left in it, the player can't assume it will always be the next one to attack.
 
 Here's the code wrapped in a [React Client Component](https://nextjs.org/docs/getting-started/react-essentials) (since this site is [made with Next.js](https://github.com/stephenmatheis/stephenmatheis.com)).
 
