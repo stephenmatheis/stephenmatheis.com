@@ -147,6 +147,7 @@
     // Font families
     &[data-font-family='Retro'] {
         --font-family: var(--font-retro);
+        --font-monospace: var(--font-retro);
 
         // DEV: Can this be nade to look good?
         // How do make this work for every color?
@@ -160,6 +161,7 @@
 
     &[data-font-family='Block'] {
         --font-family: var(--font-block);
+        --font-monospace: var(--font-block);
 
         p {
             text-shadow: 1.5px 1.5px 0px var(--text-shadow-color);
@@ -168,6 +170,7 @@
 
     &[data-font-family='8-Bit'] {
         --font-family: var(--font-pico);
+        --font-monospace: var(--font-pico);
 
         &[data-font-size='Small'] {
             --font-size: 6px;
