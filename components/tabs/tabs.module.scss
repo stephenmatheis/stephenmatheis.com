@@ -4,7 +4,7 @@
     --tabs-background: var(--primary-10);
     --tabs-inactive-background: var(--background-color);
     --border-color: var(--primary-50);
-    --icon-size: calc(var(--font-size) + 8px);
+    --icon-size: calc(var(--line-height) + 2px);
 
     margin: calc(var(--line-height) * 3) 0px;
     border-radius: var(--border-radius);
@@ -47,7 +47,7 @@
                 background-color: var(--tabs-inactive-background);
                 color: var(--muted);
                 padding: 0px calc(2ch + 2px);
-                height: clamp(35px, 35px, var(--line-height));
+                height: 100%;
                 display: inline-flex;
                 align-items: center;
                 border-right: solid 1px var(--border-color);
