@@ -4,26 +4,22 @@ import { Fragment, useEffect, useMemo } from 'react';
 import { Comment } from '@/components/comment';
 import styles from './select-cell.module.scss';
 
-function setEnemies() {
-    const enemies = [];
-    let cell = 1;
-
-    for (let row = 1; row <= 4; row++) {
-        const cells = [];
-
-        for (let col = 1; col <= 10; col++) {
-            cells.push(cell++);
-        }
-
-        enemies.push(cells);
-    }
-
-    return enemies;
-}
-
 export function SelectCell() {
     const enemies = useMemo(() => {
-        return setEnemies();
+        const enemies = [];
+        let cell = 1;
+
+        for (let row = 1; row <= 4; row++) {
+            const cells = [];
+
+            for (let col = 1; col <= 10; col++) {
+                cells.push(cell++);
+            }
+
+            enemies.push(cells);
+        }
+
+        return enemies;
     }, []);
 
     // Loop
@@ -31,8 +27,13 @@ export function SelectCell() {
         // State
         let t = 0;
         let seconds = 0;
-        let enemeies = [...document.querySelectorAll(`.${styles.cell}`)];
-        let range = enemeies.slice(-10);
+        let enemeies = [...document.querySelectorAll(`.${styles.cell}`)].map(
+            (cell) => {
+                cell.mission = 'protect';
+
+                return cell;
+            }
+        );
         let selected = [];
 
         // Run at 30fps
@@ -56,56 +57,18 @@ export function SelectCell() {
                 seconds += 1;
                 document.querySelector('.seconds').innerText = seconds;
 
-                const row_len = 10;
-                const el = rnd_element(range);
-                const range_index = range.indexOf(el);
-                const enemies_index = enemeies.indexOf(el);
+                const max_index = Math.min(9, enemeies.length);
+                const index = Math.floor(Math.random() * max_index) + 1;
+                const cell = enemeies.at(-index);
 
-                const new_el = enemeies[enemies_index - row_len];
+                console.log(`Selected #${cell} :`, cell);
+                console.log(`Mission?`, cell.mission);
 
-                // NOTE: Don't remove the enemy
-                // It will be removed either by:
-                // 1. Player reduces the enemy's health to 0
-                // 2. The enemy leaves the screen
-                //
-                // This poses a problem. We don't know what the size
-                // of the array will be on any given frame.
-                // We'll have to check the size of the array on each
-                // pass to see what's there
+                // Set el to attack
+                cell.mission = 'attack';
 
-                enemeies.splice(enemies_index, 1);
-                range.splice(range_index, 1);
-
-                // if (new_el) {
-                //     range.splice(range_index, 1, new_el);
-                // } else {
-                //     range.splice(range_index, 1);
-                // }
-
-                // DEV: From SHMUP.P8
-                // local max_num = min(10, #enemies)
-                // local index = flr(rnd(max_num))
-
-                // index = #enemies - index
-
-                // local enemy = enemies[index]
-                // DEV:
-
-                // console.log(
-                //     'Range:',
-                //     range.map((c) => c.innerText)
-                // );
-                // console.log('Selected:', el);
-                // console.log('Range index:', range_index);
-                // console.log(
-                //     'Enemies:',
-                //     enemeies.map((c) => c.innerText)
-                // );
-                // console.log('Enemies index:', enemies_index);
-                // console.log('New enemy?', new_el);
-                // console.log('----------------------------------------\n');
-
-                selected.push(el);
+                // Add to list of selected enemies
+                selected.push(cell);
 
                 // Update order selected
                 document.querySelector(
@@ -124,15 +87,21 @@ export function SelectCell() {
                     })
                     .join('\n');
 
-                // Grab the next 10 items
-                if (range.length === 0) {
-                    range = enemeies.slice(-10);
-                }
-
                 if (enemeies.length == 0) {
                     clearInterval(game_loop);
                     return;
                 }
+            }
+
+            // TODO:
+            // Randomly select an enemy to be killed
+            // at a random frame
+            if (t % 30 === 0) {
+                const index = Math.floor(Math.random() * (enemeies.length - 1));
+
+                console.log(`#${index} killed.`);
+
+                enemeies.splice(index, 1);
             }
         }
 
@@ -152,10 +121,6 @@ export function SelectCell() {
             enemeies = [...document.querySelectorAll(`.${styles.cell}`)];
             range = enemeies.slice(-10);
             selected = [];
-        }
-
-        function rnd_element(arr) {
-            return arr[Math.floor(Math.random() * arr.length)];
         }
 
         // start
