@@ -46,7 +46,7 @@ export async function Post({
             </article>
             {new Date(lastModified) > new Date(date) && (
                 <div className={styles.date}>
-                    Last modified <DateTime dateString={lastModified} />
+                    Last updated on <DateTime dateString={lastModified} />
                 </div>
             )}
             <Suspense fallback={<Fallback />}>
