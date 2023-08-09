@@ -2,6 +2,7 @@
 
 import { ReactElement, useState, useCallback, useRef } from 'react';
 import { Menu } from '@/components/menu';
+import type { MenuButton } from '@/components/menu';
 import styles from './tabs.module.scss';
 
 export type TabTitleProps = {
@@ -89,14 +90,15 @@ function TabTitle(props: TabTitleProps): JSX.Element {
 type TabProps = {
     title: string;
     children: ReactElement | ReactElement[];
+    menu: { label: string }[];
 };
 
-export function Tab({ children }: TabProps): JSX.Element {
+export function Tab({ children, menu }: TabProps): JSX.Element {
     return <div className={styles.tab}>{children}</div>;
 }
 
 type TabsProps = {
-    children: ReactElement<TabTitleProps>[];
+    children: ReactElement<TabProps>[];
     preSelectedTabIndex?: number;
 };
 
@@ -113,15 +115,17 @@ export function Tabs({
         <div ref={ctr} className={styles.tabs}>
             <div className={styles['titles-scroll-wrapper']}>
                 <div className={styles.titles}>
-                    {children.map(({ props }, index) => (
-                        <TabTitle
-                            key={props.title}
-                            title={props.title}
-                            index={index}
-                            isActive={index === selectedTabIndex}
-                            setSelectedTab={setSelectedTabIndex}
-                        />
-                    ))}
+                    {children.map(({ props }, index) => {
+                        return (
+                            <TabTitle
+                                key={props.title}
+                                title={props.title}
+                                index={index}
+                                isActive={index === selectedTabIndex}
+                                setSelectedTab={setSelectedTabIndex}
+                            />
+                        );
+                    })}
                 </div>
                 <div className={styles['titles-toolbar']}>
                     <div className={styles['titles-toolbar-btn']}>
@@ -140,6 +144,18 @@ export function Tabs({
                                         }
                                     },
                                 },
+                                ...(children[selectedTabIndex].props.menu
+                                    ? children[selectedTabIndex].props.menu.map(
+                                          ({ label }) => {
+                                              return {
+                                                  label,
+                                                  action() {
+                                                      alert(label);
+                                                  },
+                                              };
+                                          }
+                                      )
+                                    : []),
                             ]}
                         />
                     </div>

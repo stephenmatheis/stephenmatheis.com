@@ -61,7 +61,11 @@ const components = {
     },
     SelectCell: () => <SelectCell />,
     Tabs: ({ children }) => <Tabs>{children}</Tabs>,
-    Tab: ({ children, title }) => <Tab title={title}>{children}</Tab>,
+    Tab: ({ children, title, menu }) => (
+        <Tab title={title} menu={menu}>
+            {children}
+        </Tab>
+    ),
 };
 
 export function Body({ children }: { children: string }) {
