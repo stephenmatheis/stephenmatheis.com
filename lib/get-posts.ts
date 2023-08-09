@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import matter from 'gray-matter';
 import path, { join } from 'path';
-import { readFile, readdir, stat } from 'fs/promises';
+import { readFile, readdir } from 'fs/promises';
 import type { Post } from './types';
 
 function getFirstTwoSentences(str: string): string {
@@ -10,7 +10,7 @@ function getFirstTwoSentences(str: string): string {
     return sentences ? sentences.slice(0, 80 * 3) + '' : '';
 }
 
-export const getPosts = cache(async (): Promise<any> => {
+export const getPosts = cache(async (): Promise<Post[]> => {
     const postsDirectory = join(process.cwd(), '_posts');
     const posts = await readdir(postsDirectory);
 
@@ -34,11 +34,13 @@ export const getPosts = cache(async (): Promise<any> => {
                 } as Post;
             })
     );
-    const sorted = postsWithMetadata.sort((a, b) =>
-        a && b
-            ? new Date(b.created).getTime() - new Date(a.created).getTime()
-            : 0
-    ) as Post[];
+    const sorted = postsWithMetadata
+        .filter(({ status }) => status !== 'draft')
+        .sort((a, b) =>
+            a && b
+                ? new Date(b.created).getTime() - new Date(a.created).getTime()
+                : 0
+        ) as Post[];
 
     return sorted;
 });
