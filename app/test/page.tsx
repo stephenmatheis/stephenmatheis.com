@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Main } from '@/components/main';
 import { Page } from '@/components/page';
 import { Menu } from '@/components/menu';
+import { Box } from '@/components/box';
 
 export const metadata: Metadata = {
     title: 'Test',
@@ -20,7 +21,7 @@ export default function ProjectsPage({}) {
             ]}
         >
             <Main columns={2}>
-                <Menu
+                {/* <Menu
                     buttons={[
                         {
                             label: 'Hi',
@@ -29,7 +30,19 @@ export default function ProjectsPage({}) {
                             },
                         },
                     ]}
-                />
+                /> */}
+                <Box>
+                    <div
+                        style={{
+                            display: 'grid',
+                            placeContent: 'center',
+                            height: '300px',
+                            color: 'var(--primary)'
+                        }}
+                    >
+                        Box
+                    </div>
+                </Box>
             </Main>
         </Page>
     );
