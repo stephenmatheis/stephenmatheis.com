@@ -1,7 +1,7 @@
 ---
 title: Visualizing random enemy selection
 date: 'August 2, 2023'
-lastModified: 'August 6, 2023'
+lastModified: 'August 8, 2023'
 author: Stephen Matheis
 tags:
   - PICO-8
@@ -13,8 +13,8 @@ There's only one criteria: **_enemies should be chosen from the bottom most row 
 
 I had a hard time visualizing how this would work. There are a more things to think about than I had first realized.
 
-- What should happen if the selected enemy is alredy attacking?
-- ???
+-   What should happen if the selected enemy is alredy attacking?
+-   ???
 
 So I created this tool to experiment with different ways to select the next enemy.
 
@@ -26,7 +26,11 @@ So I created this tool to experiment with different ways to select the next enem
     <SelectCell />
 </div>
 
-The best I could come up with is to randomly select
+The best I could come up with was to randomly select one enemy from the bottom row until all enemeis in that row had been selected before moving on to the next row. It works, but fails in one crucial area. It's hard for me to describe in words, which is why I wanted to make this tool. But I'll give it a try.
+
+Given our 4 x 10 layout we start with 40 enemies. Consider what the grid of enemies would look like after the first enemy has attacked. We now have a grid of 39 enemies. There's a gap left by the enemy that's attacked. This means the enemy directly behind it is not the most bottom enemy in it's column. Think back to our singular requirement: **_enemies should be chosen from the bottom most row in a given column_**. After just one pass we're immediatley presented with the challenge of making this new enemy availabel to attack.
+
+Now we need to think about the data strucure used to store the enemies.
 
 A solution is presented in the next episode [#25 - Enemy Attacks](https://youtu.be/eZoQoWoUZ6g). It's much simpler than what I came up, with the caveat that it may select an ememy from a back row every once in a while.
 
@@ -35,13 +39,15 @@ I like both methods, but theirs uses fewer tokens (in PICO-8, [a cart can contai
 Here's the code wrapped in a [React Client Component](https://nextjs.org/docs/getting-started/react-essentials) (since this site is [made with Next.js](https://github.com/stephenmatheis/stephenmatheis.com)).
 
 <Tabs>
-    <Tab title="grid.tsx">
+    <Tab title="grid.tsx" menu={[
+        {
+            label: 'Edit on Codepen',
+        }
+    ]}>
         ```tsx
         'use client';
 
         // https://github.com/shikijs/shiki/blob/main/docs/themes.md
-
-        // Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
         import { Fragment, useEffect, useMemo } from 'react';
         import { Comment } from '@/components/comment';
@@ -425,7 +431,7 @@ Here's the code wrapped in a [React Client Component](https://nextjs.org/docs/ge
 
 </Tabs>
 
-And here is in it's orginal format.
+And here it is in HTML, CSS, and JS.
 
 <Tabs>
     <Tab title="index.html">
