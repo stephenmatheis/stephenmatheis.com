@@ -11,6 +11,7 @@ export type Post = {
     lastModified?: number;
     views?: number;
     raw: string;
+    status?: string;
 };
 
 export type Project = {
