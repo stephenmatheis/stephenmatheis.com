@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import styles from './menu.module.scss';
 
-type MenuButton = {
+export type MenuButton = {
     label: string;
     action: () => void;
 };

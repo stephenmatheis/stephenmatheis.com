@@ -66,6 +66,7 @@
             padding: 0.5ch 2ch;
             text-align: left;
             border-radius: 6px;
+            white-space: nowrap;
 
             &:hover {
                 background-color: var(--primary-20);
