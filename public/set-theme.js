@@ -1,5 +1,5 @@
 // Check version
-const version = '1.0.122';
+const version = '1.0.123';
 const installed = localStorage.getItem('version');
 
 // DEV: OFF
