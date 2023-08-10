@@ -13,7 +13,7 @@ export default function RootPage() {
             ]}
         >
             <Main columns={2}>
-                <Memoji />
+                {/* <Memoji /> */}
             </Main>
         </Page>
     );
