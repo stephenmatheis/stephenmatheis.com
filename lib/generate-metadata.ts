@@ -14,6 +14,6 @@ export async function generateMetadata({
         title: `Posts | ${post?.title}`,
         description:
             post?.description ||
-            `${post.title}. Published by ${post.author} on ${post.date}.`,
+            `${post?.title}. Published by ${post?.author} on ${post?.date}.`,
     };
 }
