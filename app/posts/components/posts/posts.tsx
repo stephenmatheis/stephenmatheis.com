@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { DateTime } from '@/components/date-time';
 import { Comment } from '@/components/comment';
 import { LinkCtr } from '@/components/link-ctr';
+import { Tags } from '@/components/tags';
 import { Body } from '@/components/body';
 import type { Post } from '@/lib/types';
 import styles from './posts.module.scss';
@@ -36,7 +37,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                     .filter((post) => post.date === date)
                                     .map(
                                         (
-                                            { slug, title, link, body },
+                                            { slug, title, link, body, tags },
                                             postIndex
                                         ) => {
                                             return (
@@ -59,7 +60,13 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                         )}
                                                     >
                                                         {link ? (
-                                                            <>
+                                                            <span
+                                                                className={
+                                                                    styles[
+                                                                        'title-text'
+                                                                    ]
+                                                                }
+                                                            >
                                                                 <LinkCtr
                                                                     href={link}
                                                                     newTab
@@ -76,7 +83,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                                 >
                                                                     #
                                                                 </Link>
-                                                            </>
+                                                            </span>
                                                         ) : (
                                                             <LinkCtr
                                                                 href={`/posts/${slug}`}
@@ -84,8 +91,9 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                                 {title}
                                                             </LinkCtr>
                                                         )}
-                                                    </h2>
 
+                                                        <Tags tags={tags} />
+                                                    </h2>
                                                     <Body>{body}</Body>
                                                 </article>
                                             );

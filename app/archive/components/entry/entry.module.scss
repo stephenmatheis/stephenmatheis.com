@@ -81,8 +81,8 @@
 
     .title {
         max-width: 50%;
+        min-width: fit-content;
         color: var(--primary);
-        text-align: justify;
 
         @media (max-width: utilities.$small-width) {
             max-width: 60%;

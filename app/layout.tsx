@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { VersionModal } from '@/components/version-modal';
 import { Libre_Baskerville, VT323 } from 'next/font/google';
 import localFont from 'next/font/local';
-import '@/styles/globals.scss';
+import '@/styles/styles.scss';
 
 const serif = Libre_Baskerville({
     subsets: ['latin'],

@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import { LinkCtr } from '@/components/link-ctr';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
+import { SelectCell } from '@/components/select-cell';
+import { Tab, Tabs } from '@/components/tabs';
 
 function getAnchor(text: string) {
     return text
@@ -43,7 +45,11 @@ const components = {
     h5: ({ children }: any) => <Heading as={'h5'}>{children}</Heading>,
     h6: ({ children }: any) => <Heading as={'h6'}>{children}</Heading>,
     a: ({ children, ...props }: any) => {
-        return <LinkCtr href={props.href || ''}>{children}</LinkCtr>;
+        return (
+            <LinkCtr href={props.href || ''} newTab={true}>
+                {children}
+            </LinkCtr>
+        );
     },
     img: ResponsiveImage,
     pre: ({ children }) => {
@@ -53,27 +59,38 @@ const components = {
             </CopyToClipboard>
         );
     },
+    SelectCell: () => <SelectCell />,
+    Tabs: ({ children }) => <Tabs>{children}</Tabs>,
+    Tab: ({ children, title, menu }) => (
+        <Tab title={title} menu={menu}>
+            {children}
+        </Tab>
+    ),
 };
 
 export function Body({ children }: { children: string }) {
     const options = {
         // Use one of Shiki's packaged themes
-        theme: {
-            // dark: 'poimandres',
-            // light: 'github-light',
-            dark: 'dark-plus',
-            light: 'light-plus',
-        },
+        // theme: {
+        //     // dark: 'dark-plus',
+        //     // light: 'light-plus',
+        // },
+
+        // Use CSS variables
+        theme: 'css-variables',
+
         // Or your own JSON theme
         // theme: JSON.parse(
-        //     fs.readFileSync(require.resolve('./themes/dark.json'), 'utf-8')
+        //     readFileSync('./shiki/monochrome-light.json', 'utf-8')
+        // ),
+        // theme: JSON.parse(
+        //     readFileSync('./shiki/custom.json', 'utf-8')
         // ),
 
         // Keep the background or use a custom background color?
         keepBackground: false,
 
-        // Callback hooks to add custom logic to nodes when visiting
-        // them.
+        // Callback hooks to add custom logic to nodes when visiting them.
         onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and
             // allow empty lines to be copy/pasted
@@ -117,7 +134,6 @@ export function Body({ children }: { children: string }) {
                     //     // generates a table of contents based on headings
                     //     remarkToc,
                     //   ],
-                    // These work together to add IDs and linkify headings
                     rehypePlugins: [[rehypePrettyCode, options]],
                 },
             }}

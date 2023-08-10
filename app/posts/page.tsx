@@ -16,6 +16,21 @@ export default async function PostsPage() {
         <Page
             links={[
                 { label: 'All posts', path: '/archive' },
+                {
+                    label: 'RSS',
+                    path: '/rss',
+                    newTab: true,
+                },
+                {
+                    label: 'JSON',
+                    path: '/json',
+                    newTab: true,
+                },
+                {
+                    label: 'Markdown',
+                    path: '/posts/markdown',
+                    newTab: true,
+                },
             ]}
         >
             <Main columns={2}>

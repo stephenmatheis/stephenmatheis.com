@@ -1,0 +1,105 @@
+.box {
+    --border-color: var(--primary);
+    --box-color: var(--border-color);
+    --circle-color: var(--background-color);
+    --radius-size: 6px;
+    --top-radius: 0px 0px var(--radius-size) var(--radius-size);
+    --bottom-radius: var(--radius-size) var(--radius-size) 0px 0px;
+
+    // NOTE: Cannot be < 3px
+    --corner-size: 3px;
+
+    width: 100%;
+    border: solid 1px var(--border-color);
+    border-radius: var(--border-radius);
+    position: relative;
+
+    .top,
+    .bottom {
+        // pointer-events: none;
+        pointer-events: none;
+        position: absolute;
+        left: 25%;
+        height: calc(var(--corner-size) * 3);
+        height: 9px;
+        width: 50%;
+        background-color: var(--border-color);
+
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            width: var(--corner-size);
+            height: var(--corner-size);
+            background-color: var(--box-color);
+            z-index: 1;
+        }
+
+        &:after {
+            left: calc(var(--corner-size) * -1);
+        }
+
+        &:before {
+            right: calc(var(--corner-size) * -1);
+        }
+
+        .circle {
+            height: 100%;
+            width: 100%;
+            border-radius: var(--top-radius);
+
+            &:after,
+            &:before {
+                content: '';
+                position: absolute;
+                width: calc(var(--corner-size) * 2);
+                height: calc(var(--corner-size) * 2);
+                border-radius: var(--corner-size);
+                background: var(--circle-color);
+                z-index: 2;
+            }
+
+            &:after {
+                left: calc(var(--corner-size) * -2);
+            }
+
+            &:before {
+                right: calc(var(--corner-size) * -2);
+            }
+        }
+    }
+
+    .top {
+        top: 0px;
+        border-radius: var(--top-radius);
+
+        &:after,
+        &:before {
+            top: 0px;
+        }
+
+        .circle {
+            &:after,
+            &:before {
+                top: 0px;
+            }
+        }
+    }
+
+    .bottom {
+        bottom: 0px;
+        border-radius: var(--bottom-radius);
+
+        &:after,
+        &:before {
+            bottom: 0px;
+        }
+
+        .circle {
+            &:after,
+            &:before {
+                bottom: 0px;
+            }
+        }
+    }
+}
