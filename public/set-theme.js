@@ -1,5 +1,5 @@
 // Check version
-const version = '1.0.81';
+const version = '1.0.129';
 const installed = localStorage.getItem('version');
 
 // DEV: OFF
@@ -19,7 +19,7 @@ const installed = localStorage.getItem('version');
 setMode();
 
 // Set data attributes
-['light-theme', 'dark-theme', 'font-family', 'font-size'].forEach((att) =>
+['prefers-color-scheme', 'light-theme', 'dark-theme', 'font-family', 'font-size'].forEach((att) =>
     setDataAttribute(att)
 );
 

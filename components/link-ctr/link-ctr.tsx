@@ -49,7 +49,7 @@ export function LinkCtr({
                 >
                     {(typeof emoji === 'string' ||
                         emoji?.position === 'left') && (
-                        <span className={styles['emoji']}>
+                        <span className={styles['emoji']} data-emoji>
                             {typeof emoji === 'string' ? emoji : emoji.value}
                         </span>
                     )}
@@ -63,6 +63,7 @@ export function LinkCtr({
                                     styles['emoji'],
                                     styles['left']
                                 )}
+                                data-emoji
                             >
                                 {typeof emoji === 'string'
                                     ? emoji

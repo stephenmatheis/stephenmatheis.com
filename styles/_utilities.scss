@@ -14,8 +14,22 @@ $medium-width: 1024px;
 $large-width: 1025px;
 $max-width: 680px;
 $medium-height: 725px;
+$border-radius: 6px;
 
-// String utilties
+// Scrollbar
+@mixin hide-scrollbar() {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    & {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
+
 /// https://gist.github.com/delphinpro/6e048196bbdfdfee07b1fb5c9ea4caef
 /// Replace `$search` with `$replace` in `$string`
 /// @author Hugo Giraudel
@@ -172,8 +186,16 @@ $theme-colors: (
     $color: null,
     $muted: null
 ) {
-    // $opacities: '05', '10', '15', '20', '30', '50';
-    $opacities: '05', '10', '15', '20', '30', '50', '70', '90';
+    $opacities: '05', '10', '15', '20', '30', '50';
+    $gradients: (
+        ('05', 95%),
+        ('10', 90%),
+        ('15', 85%),
+        ('20', 80%),
+        ('30', 70%),
+        ('50', 50%),
+        ('90', 10%)
+    );
     $colors: (
         'primary': $primary,
         'secondary': $secondary,
@@ -236,6 +258,14 @@ $theme-colors: (
                 --#{$formatted-prefix}#{$name}-#{$opacity}: #{$color}#{$opacity};
             }
 
+            // @each $label, $value in $gradients {
+            //     $mix-color: #221d29;
+
+            //     $color-lighter: mix($mix-color, $color, $value);
+
+            //     --#{$formatted-prefix}#{$name}-#{$label}: #{$color-lighter};
+            // }
+
             @if $mode == 'Light' {
                 --#{$formatted-prefix}#{$name}-variant: #{mix(
                         white,
@@ -262,22 +292,6 @@ $theme-colors: (
             --#{$formatted-prefix}r-word-background-color: #9f1239;
             --#{$formatted-prefix}g-word-background-color: #115e59;
             --#{$formatted-prefix}b-word-background-color: #1e40af;
-        }
-    }
-
-    @if $type == 'strings' {
-        @each $name, $color in $colors {
-            --#{$mode}-#{$name}-string: '#{$color}';
-
-            @each $opacity in $opacities {
-                --#{$mode}-#{$name}-#{$opacity}-string: #{$color}#{$opacity};
-            }
-
-            @if $mode == 'Light' {
-                --#{$mode}-#{$name}-variant: #{mix(white, $color, 10%)};
-            } @else if $mode == 'Dark' {
-                --#{$mode}-#{$name}-variant: #{mix(black, $color, 10%)};
-            }
         }
     }
 }

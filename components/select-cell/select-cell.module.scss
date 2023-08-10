@@ -1,0 +1,122 @@
+.grid-wrapper {
+    --border-color: var(--primary-50);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--line-height);
+    position: relative;
+
+    /* Grid */
+    .grid {
+        --cols: 10;
+        --rows: 4;
+
+        display: grid;
+        grid-template-columns: repeat(var(--cols), 1fr);
+        grid-template-rows: repeat(var(--rows), 1fr);
+        gap: 1ch;
+        aspect-ratio: calc(var(--cols) / var(--rows));
+    }
+
+    .grid .cell {
+        display: grid;
+        place-content: center;
+        font-weight: 600;
+        background-color: var(--primary-30);
+        color: var(--primary);
+        border-radius: var(--border-radius);
+    }
+
+    .cell.selected {
+        background-color: var(--accent-30);
+        color: var(--accent);
+    }
+
+    /* Order selected */
+    .readout .selected {
+        margin-top: var(--line-height);
+        min-height: 57px;
+        background-color: var(--primary-10);
+        overflow: overlay;
+        padding: var(--line-height);
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+        gap: 5px;
+        flex: 1;
+        border: solid 1px var(--border-color);
+        border-radius: var(--border-radius);
+    }
+
+    .readout .selected .order-line {
+        display: flex;
+        justify-content: center;
+    }
+
+    .readout .selected .order-line.placeholder {
+        color: transparent;
+    }
+
+    .readout .selected .order-line span:first-child {
+        color: var(--muted);
+    }
+
+    .readout .selected .order-line span:nth-child(2) {
+        color: var(--primary);
+    }
+
+    /* Stats */
+    .stats-ctr {
+        display: flex;
+        justify-content: flex-end;
+
+        .stats {
+            flex-direction: column;
+            background-color: var(--secondary-30);
+            color: var(--secondary);
+            padding: 1ch 2ch;
+            min-width: 15ch;
+            white-space: nowrap;
+            border-radius: var(--border-radius);
+        }
+
+        .stats > div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stats .counter {
+            text-align: right;
+        }
+    }
+
+    /* Toolbar */
+    .toolbar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 2ch;
+        margin: var(--line-height) 0px;
+
+        .btn {
+            cursor: pointer;
+            border: none;
+            background-color: var(--primary-30);
+            color: var(--primary);
+            padding: 0.5ch 2ch;
+            text-align: center;
+            border-radius: var(--border-radius);
+
+            &:global(.stop) {
+                color: var(--accent);
+                background-color: var(--accent-30);
+            }
+
+            &:global(.reset) {
+                color: var(--accent);
+                background-color: var(--accent-30);
+            }
+        }
+    }
+}

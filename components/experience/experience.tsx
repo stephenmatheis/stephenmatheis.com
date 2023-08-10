@@ -34,7 +34,9 @@ export function Experience() {
                                             <span
                                                 style={{ marginRight: '6px' }}
                                             >
-                                                ❯
+                                                {/* ❯ */}
+                                                {/* {'>'} */}
+                                                {'·'}
                                             </span>
                                             <span
                                                 dangerouslySetInnerHTML={{
