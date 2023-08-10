@@ -12,6 +12,7 @@ export type Post = {
     views?: number;
     raw: string;
     status?: string;
+    author?: string;
 };
 
 export type Project = {
