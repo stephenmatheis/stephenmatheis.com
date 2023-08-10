@@ -9,6 +9,7 @@
         gap: 16ch;
         flex-direction: column-reverse;
         gap: calc(var(--line-height) * 4);
+        margin-bottom: calc(var(--line-height) * 4);
 
         .right {
             max-width: unset;
