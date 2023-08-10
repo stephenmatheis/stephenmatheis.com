@@ -60,7 +60,13 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                         )}
                                                     >
                                                         {link ? (
-                                                            <span>
+                                                            <span
+                                                                className={
+                                                                    styles[
+                                                                        'title-text'
+                                                                    ]
+                                                                }
+                                                            >
                                                                 <LinkCtr
                                                                     href={link}
                                                                     newTab
