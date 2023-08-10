@@ -45,8 +45,9 @@ export const getPosts = cache(async (): Promise<Post[]> => {
     return sorted;
 });
 
-export async function getPost(slug: string) {
+export async function getPost(slug: string): Promise<Post | undefined> {
     const posts = await getPosts();
+
     return posts.find((post: any) => post.slug === slug);
 }
 
