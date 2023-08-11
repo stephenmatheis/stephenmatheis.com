@@ -1,7 +1,8 @@
 @use 'styles/utilities';
 
 .header {
-    text-align: center;
+    // text-align: center;
+    width: 100%;
 
     a {
         .text {
@@ -17,7 +18,7 @@
                 }
             }
 
-            .name {
+            .title {
                 color: var(--accent);
                 --border-color: var(--accent);
                 --shadow-2: var(--accent-20);
