@@ -1,0 +1,92 @@
+.console {
+    // --font-size: 20px;
+    // --line-height: 32px;
+    --icon-size: calc(var(--font-size) + 4px);
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .name,
+    .date {
+        margin-left: calc(var(--icon-size) + 0.5ch);
+    }
+
+    .name {
+        color: var(--primary);
+    }
+
+    .date {
+        color: var(--muted);
+    }
+
+    .prompts {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--line-height) * 0.5);
+        margin-top: var(--line-height);
+        width: fit-content;
+
+        @media (hover: hover) {
+            display: block;
+        }
+
+        .prompt {
+            color: var(--color);
+            height: var(--line-height);
+            display: flex;
+            align-items: center;
+            gap: 0.5ch;
+            // gap: 1ch;
+
+            .indicator {
+                display: flex;
+                align-items: center;
+
+                svg {
+                    fill: transparent;
+                    height: var(--icon-size);
+                    width: var(--icon-size);
+                }
+
+                &.selected {
+                    svg {
+                        fill: var(--primary);
+                        animation: shift 1500ms ease-in-out infinite;
+                    }
+
+                    @keyframes shift {
+                        0% {
+                            transform: translateX(0px);
+                        }
+                        50% {
+                            transform: translateX(-0.5ch);
+                        }
+                        100% {
+                            transform: translateX(0px);
+                        }
+                    }
+                }
+
+                // height: calc(var(--line-height) - 4px);
+                // width: 3px;
+                // border-radius: 1px;
+
+                // &.selected {
+                //     background-color: var(--primary);
+                //     animation: pulse 1000ms step-end infinite;
+                // }
+
+                // @keyframes pulse {
+                //     from,
+                //     to {
+                //         background-color: transparent;
+                //     }
+                //     50% {
+                //         background-color: var(--primary);
+                //     }
+                // }
+            }
+        }
+    }
+}
