@@ -2,14 +2,19 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import styles from './page.module.scss';
 
-export function Page({ children, ...props }) {
+export function Page({
+    children,
+    noHeader = false,
+    noFooter = false,
+    ...props
+}) {
     const { links, text } = props;
 
     return (
         <div className={styles.page}>
-            <Header />
+            {!noHeader && <Header />}
             {children}
-            <Footer links={links} text={text} />
+            {!noFooter && <Footer links={links} text={text} />}
         </div>
     );
 }
