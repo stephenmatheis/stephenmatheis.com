@@ -15,7 +15,6 @@ export function Posts({ posts }: { posts: Post[] }) {
     return (
         <>
             <div className={styles['page-title']}>
-                <Comment text="Posts" />
                 <DateTime className={styles.date} dateString={dates[0]} />
             </div>
             <div className={styles['date-groups']}>
