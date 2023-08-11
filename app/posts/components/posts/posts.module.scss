@@ -75,7 +75,7 @@
 
 .page-title {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
     height: var(--line-height);
     margin-bottom: calc(var(--line-height) * 3);

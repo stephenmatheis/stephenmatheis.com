@@ -7,10 +7,10 @@
     display: flex;
     flex-direction: column;
 
-    .name,
-    .date {
-        margin-left: calc(var(--icon-size) + 0.5ch);
-    }
+    // .name,
+    // .date {
+    //     margin-left: calc(var(--icon-size) + 0.5ch);
+    // }
 
     .name {
         color: var(--primary);
@@ -32,14 +32,16 @@
         }
 
         .prompt {
+            position: relative;
             color: var(--color);
             height: var(--line-height);
             display: flex;
             align-items: center;
             gap: 0.5ch;
-            // gap: 1ch;
 
             .indicator {
+                position: absolute;
+                left: calc(var(--icon-size) * -1 - 0.5ch);
                 display: flex;
                 align-items: center;
 
@@ -67,25 +69,12 @@
                         }
                     }
                 }
+            }
 
-                // height: calc(var(--line-height) - 4px);
-                // width: 3px;
-                // border-radius: 1px;
-
-                // &.selected {
-                //     background-color: var(--primary);
-                //     animation: pulse 1000ms step-end infinite;
-                // }
-
-                // @keyframes pulse {
-                //     from,
-                //     to {
-                //         background-color: transparent;
-                //     }
-                //     50% {
-                //         background-color: var(--primary);
-                //     }
-                // }
+            .label {
+                &.selected {
+                    color: var(--primary);
+                }
             }
         }
     }
