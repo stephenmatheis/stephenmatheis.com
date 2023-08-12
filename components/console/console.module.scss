@@ -1,16 +1,7 @@
 .console {
-    // --font-size: 20px;
-    // --line-height: 32px;
-    --icon-size: calc(var(--font-size) + 4px);
-
     width: 100%;
     display: flex;
     flex-direction: column;
-
-    // .name,
-    // .date {
-    //     margin-left: calc(var(--icon-size) + 0.5ch);
-    // }
 
     .name {
         color: var(--primary);

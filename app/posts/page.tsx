@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
-import { Console } from '@/components/console';
 import { Posts } from './components/posts';
 import getPosts from '@/lib/get-posts';
 
@@ -17,7 +16,6 @@ export default async function PostsPage() {
     return (
         <Page
             noHeader
-            // noFooter
             links={[
                 { label: 'All posts', path: '/archive' },
                 {
@@ -37,34 +35,9 @@ export default async function PostsPage() {
                 },
             ]}
         >
-            {/* <Main columns={2}> */}
-            <Console />
-            <Posts posts={posts} />
-            {/* </Main> */}
+            <Main>
+                <Posts posts={posts} />
+            </Main>
         </Page>
-        // <Page
-        //     links={[
-        //         { label: 'All posts', path: '/archive' },
-        //         {
-        //             label: 'RSS',
-        //             path: '/rss',
-        //             newTab: true,
-        //         },
-        //         {
-        //             label: 'JSON',
-        //             path: '/json',
-        //             newTab: true,
-        //         },
-        //         {
-        //             label: 'Markdown',
-        //             path: '/posts/markdown',
-        //             newTab: true,
-        //         },
-        //     ]}
-        // >
-        //     <Main columns={2}>
-        //         <Posts posts={posts} />
-        //     </Main>
-        // </Page>
     );
 }

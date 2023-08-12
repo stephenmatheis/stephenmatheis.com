@@ -1,5 +1,5 @@
 import { Page } from '@/components/page';
-import { Console } from '@/components/console';
+import { Main } from '@/components/main';
 
 export default function RootPage() {
     return (
@@ -13,7 +13,7 @@ export default function RootPage() {
                 },
             ]}
         >
-            <Console />
+            <Main />
         </Page>
     );
 }

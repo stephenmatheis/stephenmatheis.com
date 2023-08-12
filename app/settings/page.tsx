@@ -18,7 +18,7 @@ export default function SettingsPage() {
                 },
             ]}
         >
-            <Main columns={2}>
+            <Main >
                 <Controls />
             </Main>
         </Page>

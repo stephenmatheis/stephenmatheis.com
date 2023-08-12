@@ -4,8 +4,8 @@ import { Fragment, ReactNode, useCallback, useMemo, useState } from 'react';
 import { Comment } from '@/components/comment';
 import { Toggle } from '@/components/toggle';
 import variables from '@/styles/exports.module.scss';
-import styles from './controls.module.scss';
 import { getDarkThemeNames, getLightThemeNames, getThemes } from '@/lib/themes';
+import styles from './controls.module.scss';
 
 type ControlProps = {
     label: string;
@@ -193,7 +193,8 @@ export function Controls({}) {
     return (
         <>
             <div className={styles.controls} data-controls>
-                <Comment text={'Settings'} />
+                {/* TODO: Clean up */}
+                <div className={styles.spacer} />
                 <div className={styles.spacer} />
                 {controls.map(
                     ({
@@ -241,8 +242,8 @@ export function Controls({}) {
                                             >
                                                 <div className={styles.content}>
                                                     <p>
-                                                        &quot;Negative. I&apos;m a meat
-                                                        popsicle.&quot;
+                                                        &quot;Negative. I&apos;m
+                                                        a meat popsicle.&quot;
                                                     </p>
                                                     <p className={styles.right}>
                                                         ~ Korben Dallas

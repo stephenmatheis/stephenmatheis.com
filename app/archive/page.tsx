@@ -34,7 +34,7 @@ export default async function PostsPage() {
                 },
             ]}
         >
-            <Main columns={2}>
+            <Main>
                 <Suspense fallback={<Fallback />}>
                     <PostsList posts={posts} />
                 </Suspense>

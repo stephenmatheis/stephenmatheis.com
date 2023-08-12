@@ -1,12 +1,9 @@
-import classNames from 'classnames';
-import Link from 'next/link';
 import { DateTime } from '@/components/date-time';
-import { Comment } from '@/components/comment';
-import { LinkCtr } from '@/components/link-ctr';
-import { Tags } from '@/components/tags';
 import { Body } from '@/components/body';
 import type { Post } from '@/lib/types';
+import { UpdatePrompts } from '@/components/update-prompts';
 import styles from './posts.module.scss';
+import { PostTitle } from '@/components/post-title';
 
 export function Posts({ posts }: { posts: Post[] }) {
     const last20Posts = posts.slice(0, 21);
@@ -14,6 +11,15 @@ export function Posts({ posts }: { posts: Post[] }) {
 
     return (
         <>
+            <UpdatePrompts
+                prompts={last20Posts.map(({ slug, title, link }) => {
+                    return {
+                        label: title,
+                        href: link || `/posts/${slug}`,
+                        type: link ? 'external' : 'post',
+                    };
+                })}
+            />
             <div className={styles['page-title']}>
                 <DateTime className={styles.date} dateString={dates[0]} />
             </div>
@@ -44,55 +50,18 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                     key={slug}
                                                     className={styles.post}
                                                 >
-                                                    <h2
-                                                        className={classNames(
-                                                            styles.title,
-                                                            {
-                                                                [styles.first]:
-                                                                    dateIndex ===
-                                                                        0 &&
-                                                                    postIndex ===
-                                                                        0,
-                                                                [styles.external]:
-                                                                    link,
-                                                            }
-                                                        )}
-                                                    >
-                                                        {link ? (
-                                                            <span
-                                                                className={
-                                                                    styles[
-                                                                        'title-text'
-                                                                    ]
-                                                                }
-                                                            >
-                                                                <LinkCtr
-                                                                    href={link}
-                                                                    newTab
-                                                                >
-                                                                    {title}
-                                                                </LinkCtr>
-                                                                <Link
-                                                                    href={`/posts/${slug}`}
-                                                                    className={
-                                                                        styles[
-                                                                            'post-link'
-                                                                        ]
-                                                                    }
-                                                                >
-                                                                    #
-                                                                </Link>
-                                                            </span>
-                                                        ) : (
-                                                            <LinkCtr
-                                                                href={`/posts/${slug}`}
-                                                            >
-                                                                {title}
-                                                            </LinkCtr>
-                                                        )}
+                                                    {/* DEV: */}
 
-                                                        <Tags tags={tags} />
-                                                    </h2>
+                                                    <PostTitle
+                                                        slug={slug}
+                                                        title={title}
+                                                        link={link}
+                                                        tags={tags}
+                                                        dateIndex={dateIndex}
+                                                        postIndex={postIndex}
+                                                    />
+
+                                                    {/* DEV: */}
                                                     <Body>{body}</Body>
                                                 </article>
                                             );
