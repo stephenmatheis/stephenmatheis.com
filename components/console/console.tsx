@@ -54,8 +54,6 @@ export function Console() {
             if (event.key === 'Enter') {
                 event.preventDefault();
 
-                console.log(prompts[selected]);
-
                 if (prompts[selected].newTab) {
                     window.open(prompts[selected].path);
                 } else {
