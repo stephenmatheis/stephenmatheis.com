@@ -1,9 +1,9 @@
+@use 'styles/utilities';
+
 .console {
     width: 100%;
     display: flex;
     flex-direction: column;
-    // margin-bottom: var(--page-gap);
-    // margin-bottom: calc(var(--line-height) * 4);
     margin-bottom: calc(var(--line-height) * 3);
 
     @media print {
@@ -19,14 +19,13 @@
     }
 
     .prompts {
-        display: flex;
-        flex-direction: column;
-        gap: calc(var(--line-height) * 0.5);
         margin-top: var(--line-height);
         width: fit-content;
 
-        @media (hover: hover) {
-            display: block;
+        @media (pointer: coarse), (max-width: utilities.$small-width) {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .prompt {
@@ -36,6 +35,10 @@
             display: flex;
             align-items: center;
             gap: 0.5ch;
+
+            @media (pointer: coarse), (max-width: utilities.$small-width) {
+                height: 48px;
+            }
 
             .indicator {
                 position: absolute;
