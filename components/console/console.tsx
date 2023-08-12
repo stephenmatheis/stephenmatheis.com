@@ -69,7 +69,9 @@ export function Console() {
 
     return (
         <div className={styles.console}>
-            <div className={styles.name}>Stephen Matheis</div>
+            <Link className={styles.name} href={'/'}>
+                Stephen Matheis
+            </Link>
             <div className={styles.date}>
                 {'(C)'} {new Date().getFullYear()}
             </div>
