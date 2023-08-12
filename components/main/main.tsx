@@ -11,6 +11,8 @@ export function Main({ children }: Props) {
     return (
         <main className={styles.main}>
             <PromptsProvider
+                // TODO: Add nested prompts that only show when prompt is selected
+                // Example: Posts > RSS
                 prompts={[
                     { label: 'Posts', path: '/posts', type: 'console' },
                     { label: 'Archive', path: '/archive', type: 'console' },
