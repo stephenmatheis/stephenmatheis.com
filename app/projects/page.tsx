@@ -20,7 +20,7 @@ export default function ProjectsPage({}) {
                 },
             ]}
         >
-            <Main columns={2}>
+            <Main>
                 <Projects displayImages={true} />
             </Main>
         </Page>

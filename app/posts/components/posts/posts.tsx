@@ -1,9 +1,9 @@
-import { DateTime } from '@/components/date-time';
-import { Body } from '@/components/body';
 import type { Post } from '@/lib/types';
 import { UpdatePrompts } from '@/components/update-prompts';
-import styles from './posts.module.scss';
+import { DateTime } from '@/components/date-time';
 import { PostTitle } from '@/components/post-title';
+import { Body } from '@/components/body';
+import styles from './posts.module.scss';
 
 export function Posts({ posts }: { posts: Post[] }) {
     const last20Posts = posts.slice(0, 21);
@@ -12,17 +12,25 @@ export function Posts({ posts }: { posts: Post[] }) {
     return (
         <>
             <UpdatePrompts
-                prompts={last20Posts.map(({ slug, title, link }) => {
-                    return {
-                        label: title,
-                        href: link || `/posts/${slug}`,
-                        type: link ? 'external' : 'post',
-                    };
-                })}
+                prompts={[
+                    {
+                        // TODO: Added 'nested' or 'parent' prop
+                        // to position under 'Posts' and indent
+                        label: 'RSS',
+                        path: '/rss',
+                        type: 'console',
+                        newTab: true,
+                    },
+                    ...last20Posts.map(({ slug, title, link }) => {
+                        return {
+                            label: title,
+                            path: link || `/posts/${slug}`,
+                            type: 'post',
+                            newTab: link ? true : false,
+                        };
+                    }),
+                ]}
             />
-            <div className={styles['page-title']}>
-                <DateTime className={styles.date} dateString={dates[0]} />
-            </div>
             <div className={styles['date-groups']}>
                 {dates.map((date, dateIndex) => {
                     return (
@@ -31,12 +39,10 @@ export function Posts({ posts }: { posts: Post[] }) {
                             className={styles['posts-ctr']}
                             data-date={date}
                         >
-                            {dateIndex !== 0 && (
-                                <DateTime
-                                    className={styles.date}
-                                    dateString={date}
-                                />
-                            )}
+                            <DateTime
+                                className={styles.date}
+                                dateString={date}
+                            />
                             <div className={styles.posts}>
                                 {last20Posts
                                     .filter((post) => post.date === date)
@@ -50,8 +56,6 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                     key={slug}
                                                     className={styles.post}
                                                 >
-                                                    {/* DEV: */}
-
                                                     <PostTitle
                                                         slug={slug}
                                                         title={title}
@@ -60,8 +64,6 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                         dateIndex={dateIndex}
                                                         postIndex={postIndex}
                                                     />
-
-                                                    {/* DEV: */}
                                                     <Body>{body}</Body>
                                                 </article>
                                             );

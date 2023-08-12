@@ -4,6 +4,12 @@
     // text-align: center;
     width: 100%;
 
+    &.print-only {
+        @media screen {
+            display: none;
+        }
+    }
+
     a {
         .text {
             @include utilities.shadow-variables;

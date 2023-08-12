@@ -1,5 +1,7 @@
+'use client';
+
 import classNames from 'classnames';
-import { Comment } from '@/components/comment';
+import { UpdatePrompts } from '@/components/update-prompts';
 import { Project } from '@/components/project';
 import projects from '@/data/projects';
 import styles from './projects.module.scss';
@@ -16,7 +18,18 @@ export function Projects({ displayImages, printOnly }: Props) {
                 [styles['print-only']]: printOnly,
             })}
         >
-            <Comment text={'Projects'} />
+            <UpdatePrompts
+                prompts={[
+                    ...projects.map(({ link }) => {
+                        return {
+                            label: link,
+                            path: link,
+                            type: 'project',
+                            newTab: true,
+                        };
+                    }),
+                ]}
+            />
             <div
                 className={classNames(styles['projects-wrapper'], {
                     [styles['compact']]: !displayImages,

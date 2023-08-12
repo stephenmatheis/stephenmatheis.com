@@ -3,10 +3,10 @@
 .title {
     margin-bottom: calc(var(--line-height) * 5);
     display: flex;
-
-    // DEV:
-
     position: relative;
+
+    flex-direction: column;
+    gap: var(--line-height);
 
     .indicator {
         position: absolute;
@@ -40,21 +40,19 @@
         }
     }
 
-    // DEV:
+    // @media (min-width: calc(utilities.$small-width + 1px)) {
+    //     align-items: center;
+    //     justify-content: space-between;
+    // }
 
-    @media (min-width: calc(utilities.$small-width + 1px)) {
-        align-items: center;
-        justify-content: space-between;
-    }
+    // @media (max-width: utilities.$small-width) {
+    //     flex-direction: column;
+    //     gap: var(--line-height);
+    // }
 
-    @media (max-width: utilities.$small-width) {
-        flex-direction: column;
-        gap: var(--line-height);
-    }
-
-    &.first {
-        margin-top: 0px;
-    }
+    // &.first {
+    //     margin-top: 0px;
+    // }
 
     &.external {
         margin-bottom: calc(var(--line-height) * 2);
@@ -74,9 +72,9 @@
             }
         }
 
-        @media (max-width: utilities.$small-width) {
-            margin-left: 2ch;
-        }
+        // @media (max-width: utilities.$small-width) {
+        //     margin-left: 2ch;
+        // }
     }
 
     .title-text {

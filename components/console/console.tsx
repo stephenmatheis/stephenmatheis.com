@@ -13,11 +13,13 @@ export function Console() {
     const pathname = usePathname();
 
     useEffect(() => {
-        if (prompts[selected].type === 'console') {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-            });
+        function scrollToTop(selected: number) {
+            if (prompts[selected].type === 'console') {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            }
         }
 
         function selectNext(event: KeyboardEvent) {
@@ -25,11 +27,11 @@ export function Console() {
                 event.preventDefault();
 
                 setSelected((prev) => {
-                    if (prev < prompts.length - 1) {
-                        return prev + 1;
-                    } else {
-                        return 0;
-                    }
+                    const selected = prev < prompts.length - 1 ? prev + 1 : 0;
+
+                    scrollToTop(selected);
+
+                    return selected;
                 });
 
                 return;
@@ -39,11 +41,11 @@ export function Console() {
                 event.preventDefault();
 
                 setSelected((prev) => {
-                    if (prev > 0) {
-                        return prev - 1;
-                    } else {
-                        return prompts.length - 1;
-                    }
+                    const selected = prev > 0 ? prev - 1 : prompts.length - 1;
+
+                    scrollToTop(selected);
+
+                    return selected;
                 });
 
                 return;
@@ -52,10 +54,9 @@ export function Console() {
             if (event.key === 'Enter') {
                 event.preventDefault();
 
-                if (
-                    prompts[selected].newTab ||
-                    prompts[selected].type === 'external'
-                ) {
+                console.log(prompts[selected]);
+
+                if (prompts[selected].newTab) {
                     window.open(prompts[selected].path);
                 } else {
                     router.push(prompts[selected].path);

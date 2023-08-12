@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Page } from '@/components/page';
 import { Content } from './components/content';
 import { Main } from '@/components/main';
+import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
     title: 'About',
@@ -20,6 +21,7 @@ export default function ResumePage() {
             ]}
         >
             <Main>
+                <Header printOnly />
                 <Content />
             </Main>
         </Page>

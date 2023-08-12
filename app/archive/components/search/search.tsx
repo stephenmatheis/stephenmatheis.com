@@ -1,10 +1,10 @@
 'use client';
 
+import { Post } from '@/lib/types';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { useDebounce } from '@/hooks/useDebounce';
 import styles from './search.module.scss';
-import { Post } from '@/lib/types';
 
 export function Search({ posts, setPosts }) {
     const inputRef = useRef<HTMLInputElement>(null);

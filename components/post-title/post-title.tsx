@@ -1,12 +1,12 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { LinkCtr } from '@/components/link-ctr';
 import { Tags } from '@/components/tags';
 import { usePrompts } from '@/contexts/prompts';
 import styles from './post-title.module.scss';
-import { useEffect, useRef } from 'react';
 
 export function PostTitle({
     slug,
