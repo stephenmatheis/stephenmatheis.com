@@ -20,7 +20,7 @@ export default function ProjectsPage({}) {
                 },
             ]}
         >
-            <Main columns={2}>
+            <Main>
                 {/* <Menu
                     buttons={[
                         {
@@ -37,7 +37,7 @@ export default function ProjectsPage({}) {
                             display: 'grid',
                             placeContent: 'center',
                             height: '300px',
-                            color: 'var(--primary)'
+                            color: 'var(--primary)',
                         }}
                     >
                         Box
