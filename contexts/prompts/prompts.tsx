@@ -31,9 +31,11 @@ export function usePrompts() {
 export function PromptsProvider({ children, prompts: defaultPrompts }) {
     const pathname = usePathname();
     const [prompts, setPrompts] = useState<PromptProps[]>(defaultPrompts);
-    const [selected, setSelected] = useState<number>(
-        prompts.map(({ path }) => path).indexOf(pathname)
-    );
+    const pathIndex = prompts.map(({ path }) => path).indexOf(pathname);
+    const startIndex = pathIndex !== -1 ? pathIndex : 0;
+    const [selected, setSelected] = useState<number>(startIndex);
+
+    console.log(prompts.map(({ path }) => path).indexOf(pathname));
 
     return (
         <PromptsContext.Provider
