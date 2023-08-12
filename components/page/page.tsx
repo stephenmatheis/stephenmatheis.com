@@ -12,7 +12,7 @@ export function Page({
 
     return (
         <div className={styles.page}>
-            {!noHeader && <Header />}
+            {/* {!noHeader && <Header />} */}
             {children}
             {!noFooter && <Footer links={links} text={text} />}
         </div>

@@ -47,6 +47,7 @@
     --large-width: #{utilities.$large-width};
     --max-width: #{utilities.$max-width};
     --border-radius: #{utilities.$border-radius};
+    --icon-size: calc(var(--font-size) + 4px);
 
     @media (hover: hover) {
         --offset: 3px;

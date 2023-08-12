@@ -1,21 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { usePrompts } from '@/contexts/prompts';
 import styles from './console.module.scss';
 
-// TODO: Add 'Settings' and 'Resume?'
-
-const prompts = ['Posts', 'Archive', 'About', 'Settings'];
-
 export function Console() {
+    const { prompts, selected, setSelected } = usePrompts();
     const router = useRouter();
     const pathname = usePathname();
-    const [selected, setSelected] = useState<number>(0);
 
     useEffect(() => {
+        if (prompts[selected].type === 'console') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+        }
+
         function selectNext(event: KeyboardEvent) {
             if (event.key === 'ArrowDown') {
                 event.preventDefault();
@@ -48,14 +52,21 @@ export function Console() {
             if (event.key === 'Enter') {
                 event.preventDefault();
 
-                router.push(`/${prompts[selected].toLowerCase()}`);
+                if (
+                    prompts[selected].newTab ||
+                    prompts[selected].type === 'external'
+                ) {
+                    window.open(prompts[selected].path);
+                } else {
+                    router.push(prompts[selected].path);
+                }
             }
         }
 
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [router, selected]);
+    }, [prompts, router, selected, setSelected]);
 
     return (
         <div className={styles.console}>
@@ -64,46 +75,46 @@ export function Console() {
                 {'(C)'} {new Date().getFullYear()}
             </div>
             <div className={styles.prompts}>
-                {prompts.map((label: string, index: number) => {
-                    const asPath = label.toLowerCase();
-
-                    return (
-                        <Link
-                            href={`/${asPath}`}
-                            key={label}
-                            className={styles.prompt}
-                            onMouseEnter={() => setSelected(index)}
-                        >
-                            <div
-                                className={[
-                                    ...(selected === index
-                                        ? [styles.selected]
-                                        : []),
-                                    styles.indicator,
-                                ].join(' ')}
+                {prompts
+                    .filter(({ type }) => type === 'console')
+                    .map(({ label, path }, index: number) => {
+                        return (
+                            <Link
+                                href={path}
+                                key={label}
+                                className={styles.prompt}
+                                onMouseEnter={() => setSelected(index)}
                             >
-                                <svg
-                                    width="16"
-                                    height="16"
-                                    fill="currentColor"
-                                    viewBox="0 0 16 16"
+                                <div
+                                    className={[
+                                        ...(selected === index
+                                            ? [styles.selected]
+                                            : []),
+                                        styles.indicator,
+                                    ].join(' ')}
                                 >
-                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-                                </svg>
-                            </div>
-                            <div
-                                className={[
-                                    ...(pathname === `/${asPath}`
-                                        ? [styles.selected]
-                                        : []),
-                                    styles.label,
-                                ].join(' ')}
-                            >
-                                {label}
-                            </div>
-                        </Link>
-                    );
-                })}
+                                    <svg
+                                        width="16"
+                                        height="16"
+                                        fill="currentColor"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                    </svg>
+                                </div>
+                                <div
+                                    className={[
+                                        ...(pathname === path
+                                            ? [styles.selected]
+                                            : []),
+                                        styles.label,
+                                    ].join(' ')}
+                                >
+                                    {label}
+                                </div>
+                            </Link>
+                        );
+                    })}
             </div>
         </div>
     );

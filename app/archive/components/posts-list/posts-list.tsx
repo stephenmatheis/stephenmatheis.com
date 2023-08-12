@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { Post } from '@/lib/types';
-import { Comment } from '@/components/comment';
 import { Search } from '../search';
 import { Entry } from '../entry';
 import { Tags } from '@/components/tags';
@@ -54,7 +53,6 @@ export function PostsList({ posts }: { posts: Post[] }) {
     return (
         <>
             <div className={styles.title}>
-                <Comment text="Archive" style={{ marginBottom: 0 }} />
                 <Search posts={taggedPosts} setPosts={setFilteredPosts} />
             </div>
             {allTags.length > 0 && (
