@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
-import { usePrompts } from '@/contexts/prompts';
+import { useRef } from 'react';
 import { LinkCtr } from '@/components/link-ctr';
 import { ImgCtr } from '@/components/img-ctr';
 import styles from './project.module.scss';
+import { useScrollToPrompt } from '@/hooks/useScrollToPrompt';
 
 type ImageProps = {
     src: string;
@@ -13,14 +13,7 @@ type ImageProps = {
 export function Project({ name, link, description, image, displayImages }) {
     const { src }: ImageProps = image;
     const ref = useRef<HTMLDivElement>(null);
-    const { prompts, selected } = usePrompts();
-    const promptIndex = prompts.map(({ path }) => path).indexOf(link);
-
-    useEffect(() => {
-        if (selected === promptIndex) {
-            ref.current?.scrollIntoView({ behavior: 'smooth' });
-        }
-    }, [promptIndex, selected]);
+    const { promptIndex, selected } = useScrollToPrompt({ ref, label: name });
 
     return (
         <div key={name} className={styles['project-ctr']} ref={ref}>

@@ -13,14 +13,12 @@ export function Posts({ posts }: { posts: Post[] }) {
         <>
             <UpdatePrompts
                 prompts={[
-                    {
-                        // TODO: Added 'nested' or 'parent' prop
-                        // to position under 'Posts' and indent
-                        label: 'RSS',
-                        path: '/rss',
-                        type: 'console',
-                        newTab: true,
-                    },
+                    // {
+                    //     label: 'RSS',
+                    //     path: '/rss',
+                    //     type: 'console',
+                    //     newTab: true,
+                    // },
                     ...last20Posts.map(({ slug, title, link }) => {
                         return {
                             label: title,

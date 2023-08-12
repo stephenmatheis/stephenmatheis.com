@@ -20,9 +20,9 @@ export function Projects({ displayImages, printOnly }: Props) {
         >
             <UpdatePrompts
                 prompts={[
-                    ...projects.map(({ link }) => {
+                    ...projects.map(({ name, link }) => {
                         return {
-                            label: link,
+                            label: name,
                             path: link,
                             type: 'project',
                             newTab: true,

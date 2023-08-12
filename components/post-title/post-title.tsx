@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
 import { LinkCtr } from '@/components/link-ctr';
 import { Tags } from '@/components/tags';
-import { usePrompts } from '@/contexts/prompts';
 import styles from './post-title.module.scss';
+import { useScrollToPrompt } from '@/hooks/useScrollToPrompt';
 
 export function PostTitle({
     slug,
@@ -24,14 +24,7 @@ export function PostTitle({
     postIndex: number;
 }) {
     const ref = useRef<HTMLDivElement>(null);
-    const { prompts, selected } = usePrompts();
-    const promptIndex = prompts.map(({ label }) => label).indexOf(title);
-
-    useEffect(() => {
-        if (selected === promptIndex) {
-            ref.current?.scrollIntoView({ behavior: 'smooth' });
-        }
-    }, [promptIndex, selected]);
+    const { promptIndex, selected } = useScrollToPrompt({ ref, label: title });
 
     return (
         <h2
