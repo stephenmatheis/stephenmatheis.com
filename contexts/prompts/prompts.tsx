@@ -35,8 +35,6 @@ export function PromptsProvider({ children, prompts: defaultPrompts }) {
     const startIndex = pathIndex !== -1 ? pathIndex : 0;
     const [selected, setSelected] = useState<number>(startIndex);
 
-    console.log(prompts.map(({ path }) => path).indexOf(pathname));
-
     return (
         <PromptsContext.Provider
             value={{ prompts, setPrompts, selected, setSelected }}
