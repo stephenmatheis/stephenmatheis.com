@@ -14,6 +14,7 @@ export function Main({ children }: Props) {
                 prompts={[
                     { label: 'Posts', path: '/posts', type: 'console' },
                     { label: 'Archive', path: '/archive', type: 'console' },
+                    { label: 'Projects', path: '/projects', type: 'console' },
                     { label: 'About', path: '/about', type: 'console' },
                     {
                         label: 'Resume',

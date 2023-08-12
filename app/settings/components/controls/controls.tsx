@@ -193,9 +193,6 @@ export function Controls({}) {
     return (
         <>
             <div className={styles.controls} data-controls>
-                {/* TODO: Clean up */}
-                <div className={styles.spacer} />
-                <div className={styles.spacer} />
                 {controls.map(
                     ({
                         label,
