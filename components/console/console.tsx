@@ -16,9 +16,11 @@ function PromptLink({
     setSelected,
     pathname,
     nest,
+    newTab,
+    ...props
 }) {
     return (
-        <Link
+        <LinkType
             href={path}
             className={[
                 styles.prompt,
@@ -26,6 +28,8 @@ function PromptLink({
                 ...(selected === index ? [styles.selected] : []),
             ].join(' ')}
             onMouseEnter={() => setSelected(index)}
+            newTab={newTab}
+            {...props}
         >
             <Indicator label={label} />
             <div
@@ -36,7 +40,19 @@ function PromptLink({
             >
                 {label}
             </div>
+        </LinkType>
+    );
+}
+
+function LinkType({ children, href, newTab, ...props }) {
+    return newTab ? (
+        <Link href={href} {...props}>
+            {children}
         </Link>
+    ) : (
+        <a href={href} target="_blank" {...props}>
+            {children}
+        </a>
     );
 }
 
@@ -115,7 +131,7 @@ export function Console() {
             <div className={styles.prompts}>
                 {prompts
                     .filter(({ type }) => type === 'console')
-                    .map(({ label, path, nest }, index: number) => {
+                    .map(({ label, path, nest, newTab }, index: number) => {
                         return (
                             <PromptLink
                                 key={label}
@@ -125,6 +141,7 @@ export function Console() {
                                 selected={selected}
                                 setSelected={setSelected}
                                 pathname={pathname}
+                                newTab={newTab}
                                 nest={nest}
                             />
                         );
