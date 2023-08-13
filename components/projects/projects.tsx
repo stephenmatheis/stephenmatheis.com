@@ -16,18 +16,20 @@ export function Projects({ displayImages, printOnly }: Props) {
                 [styles['print-only']]: printOnly,
             })}
         >
-            <UpdatePrompts
-                prompts={[
-                    ...projects.map(({ name, link }) => {
-                        return {
-                            label: name,
-                            path: link,
-                            type: 'project',
-                            newTab: true,
-                        };
-                    }),
-                ]}
-            />
+            {!printOnly && (
+                <UpdatePrompts
+                    prompts={[
+                        ...projects.map(({ name, link }) => {
+                            return {
+                                label: name,
+                                path: link,
+                                type: 'project',
+                                newTab: true,
+                            };
+                        }),
+                    ]}
+                />
+            )}
             <div
                 className={classNames(styles['projects-wrapper'], {
                     [styles['compact']]: !displayImages,

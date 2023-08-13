@@ -87,10 +87,14 @@ export function Console() {
             if (event.key === 'Enter') {
                 event.preventDefault();
 
+                if (!prompts[selected].path) {
+                    return;
+                }
+
                 if (prompts[selected].newTab) {
                     window.open(prompts[selected].path);
                 } else {
-                    router.push(prompts[selected].path);
+                    router.push(prompts[selected].path!);
                 }
             }
         }

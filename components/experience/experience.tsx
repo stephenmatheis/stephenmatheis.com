@@ -1,10 +1,12 @@
 import { Comment } from '@/components/comment';
+import { Indicator } from '@/components/indicator';
 import jobs from '@/data/jobs';
 import styles from './experience.module.scss';
 
 export function Experience() {
     return (
         <div className={styles['experience']}>
+            <Indicator label={'Experience'} />
             <Comment text={'Experience'} />
             {jobs.map(
                 ({ title, company, location, start, end, lines }, index) => {

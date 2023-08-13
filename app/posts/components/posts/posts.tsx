@@ -13,12 +13,6 @@ export function Posts({ posts }: { posts: Post[] }) {
         <>
             <UpdatePrompts
                 prompts={[
-                    // {
-                    //     label: 'RSS',
-                    //     path: '/rss',
-                    //     type: 'console',
-                    //     newTab: true,
-                    // },
                     ...last20Posts.map(({ slug, title, link }) => {
                         return {
                             label: title,
