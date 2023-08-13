@@ -1,3 +1,4 @@
+import { Indicator } from '@/components/indicator';
 import { Comment } from '@/components/comment';
 import skills from '@/data/skills';
 import styles from './skills.module.scss';
@@ -5,6 +6,7 @@ import styles from './skills.module.scss';
 export function Skills() {
     return (
         <div className={styles['skills']}>
+            <Indicator label={'Skills'} />
             <Comment text={'Skills'} />
             <div className={styles['groups-ctr']}>
                 {skills.map(({ group, items }, index) => {
