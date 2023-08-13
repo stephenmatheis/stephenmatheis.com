@@ -13,6 +13,10 @@ export function Content() {
     return (
         <div className={styles.resume}>
             <UpdatePrompts
+                // TODO: Move to Experience, Skils, and Contact
+                // Add a prompt for each job, skill block, and contact?
+                // At least one for each contact type so enter works
+                // to launch a new email or link
                 prompts={[
                     {
                         label: 'Experience',
@@ -29,12 +33,12 @@ export function Content() {
                 ]}
             />
             <section className={styles.left}>
+                <Experience />
+            </section>
+            <section className={styles.right}>
                 <Skills />
                 <Projects printOnly />
                 <Contact />
-            </section>
-            <section className={styles.right}>
-                <Experience />
             </section>
         </div>
     );
