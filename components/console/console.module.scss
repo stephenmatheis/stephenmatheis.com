@@ -66,7 +66,7 @@
 
                 &.selected {
                     &:before {
-                        width: calc(100% - 4px - 1ch);
+                        width: calc(100% - (var(--icon-size) + 5px));
                     }
                 }
             }

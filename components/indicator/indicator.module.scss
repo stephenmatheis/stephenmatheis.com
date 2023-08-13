@@ -11,6 +11,8 @@
     }
 
     &.selected {
+        background-color: var(--background-color);
+
         svg {
             fill: var(--primary);
             animation: shift 1500ms ease-in-out infinite;
