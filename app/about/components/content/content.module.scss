@@ -7,7 +7,7 @@
 
     @media screen {
         gap: 16ch;
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: calc(var(--line-height) * 4);
         margin-bottom: calc(var(--line-height) * 4);
 
@@ -17,11 +17,11 @@
     }
 
     @media print {
-        flex-direction: row-reverse;
+        flex-direction: row;
         gap: 4ch;
     }
 
-    .left {
+    .right {
         display: flex;
         flex-direction: column;
         gap: calc(var(--line-height) * 2);
