@@ -1,10 +1,11 @@
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
-import { Memoji } from '@/components/memoji';
 
 export default function RootPage() {
     return (
         <Page
+            noHeader
+            noFooter
             links={[
                 {
                     label: 'Settings',
@@ -12,9 +13,7 @@ export default function RootPage() {
                 },
             ]}
         >
-            <Main columns={2}>
-                {/* <Memoji /> */}
-            </Main>
+            <Main />
         </Page>
     );
 }

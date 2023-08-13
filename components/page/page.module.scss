@@ -27,13 +27,15 @@
 
         @media (max-width: utilities.$small-width) {
             min-width: 100%;
-            padding-top: 0.5in;
-            padding-left: 0.25in;
-            padding-right: 0.25in;
+            padding: .25in;
+            // padding-top: 0.5in;
+            // padding-left: 0.25in;
+            // padding-right: 0.25in;
         }
 
         @media (max-height: utilities.$medium-height) {
-            padding-top: 0.5in;
+            padding: .25in;
+            // padding-top: 0.5in;
         }
 
         @include utilities.gaps();

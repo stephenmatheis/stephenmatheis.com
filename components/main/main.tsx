@@ -1,39 +1,60 @@
-import classNames from 'classnames';
-import { Sidebar } from '@/components/sidebar';
+import { ReactNode } from 'react';
+import { Console } from '@/components/console';
+import { PromptsProvider } from '@/contexts/prompts';
 import styles from './main.module.scss';
 
 type Props = {
-    children: React.ReactNode;
-    columns?: number;
-    className?: string;
-    right?: {
-        className: string;
-    };
+    children?: ReactNode;
 };
 
-export function Main({ children, columns = 2, className, right }: Props) {
+export function Main({ children }: Props) {
     return (
-        <main
-            className={classNames(styles.main, className, {
-                [styles['col-2']]: columns === 2,
-                [styles['col-3']]: columns === 3,
-            })}
-        >
-            <section className={styles.left}>
-                <Sidebar />
-            </section>
-            {columns === 2 && (
-                <section className={classNames(styles.right, right?.className)}>
-                    {children}
-                </section>
-            )}
-            {columns === 3 && (
-                <>
-                    <section className={styles.middle}>{children}</section>
-                    {/* Intentionally empty to center `section.middle`. */}
-                    <section className={styles.right} />
-                </>
-            )}
+        <main className={styles.main}>
+            <PromptsProvider
+                prompts={[
+                    {
+                        label: 'Posts',
+                        path: '/posts',
+                        type: 'console',
+                    },
+                    {
+                        label: 'RSS',
+                        path: '/rss',
+                        type: 'console',
+                        nest: '/posts',
+                        newTab: true,
+                    },
+                    {
+                        label: 'Archive',
+                        path: '/archive',
+                        type: 'console',
+                    },
+                    {
+                        label: 'Projects',
+                        path: '/projects',
+                        type: 'console',
+                    },
+                    {
+                        label: 'About',
+                        path: '/about',
+                        type: 'console',
+                    },
+                    {
+                        label: 'Resume',
+                        path: '/resume.pdf',
+                        type: 'console',
+                        newTab: true,
+                    },
+                    {
+                        label: 'Settings',
+                        path: '/settings',
+                        type: 'console',
+                    },
+                ]}
+            >
+                <Console />
+                {children}
+            </PromptsProvider>
         </main>
     );
 }

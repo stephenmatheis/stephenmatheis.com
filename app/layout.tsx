@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { VersionModal } from '@/components/version-modal';
-import { Libre_Baskerville, VT323 } from 'next/font/google';
+import { Libre_Baskerville } from 'next/font/google';
 import localFont from 'next/font/local';
 import '@/styles/styles.scss';
 
@@ -28,13 +28,6 @@ const pico = localFont({
     variable: '--font-pico',
     display: 'swap',
 });
-
-// const retro = VT323({
-//     subsets: ['latin'],
-//     variable: '--font-retro',
-//     display: 'swap',
-//     weight: '400',
-// });
 
 // const retro = localFont({
 //     src: 'fonts/PrintChar21.woff2',

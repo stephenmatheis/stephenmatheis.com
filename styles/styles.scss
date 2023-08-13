@@ -47,6 +47,7 @@
     --large-width: #{utilities.$large-width};
     --max-width: #{utilities.$max-width};
     --border-radius: #{utilities.$border-radius};
+    --icon-size: calc(var(--font-size) + 4px);
 
     @media (hover: hover) {
         --offset: 3px;
@@ -54,11 +55,13 @@
 
     // Defaults
     --prefers-color-scheme-transition-speed: 250ms;
-    --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    --font-print: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         Liberation Mono, 'Courier New', monospace;
+    --font-monospace: var(--font-print);
     --font-family: var(--font-monospace);
 
     @media print {
+        --font-family: var(--font-print) !important;
         --font-size: 11px;
         --line-height: 16px;
     }
