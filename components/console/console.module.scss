@@ -71,38 +71,6 @@
                 }
             }
 
-            .indicator {
-                position: absolute;
-                left: calc(var(--icon-size) * -1 - 0.5ch);
-                display: flex;
-                align-items: center;
-
-                svg {
-                    fill: transparent;
-                    height: var(--icon-size);
-                    width: var(--icon-size);
-                }
-
-                &.selected {
-                    svg {
-                        fill: var(--primary);
-                        animation: shift 1500ms ease-in-out infinite;
-                    }
-
-                    @keyframes shift {
-                        0% {
-                            transform: translateX(0px);
-                        }
-                        50% {
-                            transform: translateX(-0.5ch);
-                        }
-                        100% {
-                            transform: translateX(0px);
-                        }
-                    }
-                }
-            }
-
             .label {
                 &.selected {
                     color: var(--primary);
