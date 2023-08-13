@@ -56,7 +56,7 @@ export function Console() {
         }
 
         function selectNext(event: KeyboardEvent) {
-            if (event.key === 'ArrowDown') {
+            if (event.key === 'ArrowDown' && !event.metaKey) {
                 event.preventDefault();
 
                 setSelected((prev) => {
@@ -70,7 +70,7 @@ export function Console() {
                 return;
             }
 
-            if (event.key === 'ArrowUp') {
+            if (event.key === 'ArrowUp' && !event.metaKey) {
                 event.preventDefault();
 
                 setSelected((prev) => {
