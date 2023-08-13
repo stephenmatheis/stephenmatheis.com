@@ -5,7 +5,40 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { usePrompts } from '@/contexts/prompts';
+import { Indicator } from '@/components/indicator';
 import styles from './console.module.scss';
+
+function PromptLink({
+    label,
+    path,
+    index,
+    selected,
+    setSelected,
+    pathname,
+    nest,
+}) {
+    return (
+        <Link
+            href={path}
+            className={[
+                styles.prompt,
+                ...(nest ? [styles.nest] : []),
+                ...(selected === index ? [styles.selected] : []),
+            ].join(' ')}
+            onMouseEnter={() => setSelected(index)}
+        >
+            <Indicator label={label} />
+            <div
+                className={[
+                    ...(pathname === path ? [styles.selected] : []),
+                    styles.label,
+                ].join(' ')}
+            >
+                {label}
+            </div>
+        </Link>
+    );
+}
 
 export function Console() {
     const { prompts, selected, setSelected } = usePrompts();
@@ -78,42 +111,18 @@ export function Console() {
             <div className={styles.prompts}>
                 {prompts
                     .filter(({ type }) => type === 'console')
-                    .map(({ label, path }, index: number) => {
+                    .map(({ label, path, nest }, index: number) => {
                         return (
-                            <Link
-                                href={path}
+                            <PromptLink
                                 key={label}
-                                className={styles.prompt}
-                                onMouseEnter={() => setSelected(index)}
-                            >
-                                <div
-                                    className={[
-                                        ...(selected === index
-                                            ? [styles.selected]
-                                            : []),
-                                        styles.indicator,
-                                    ].join(' ')}
-                                >
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        fill="currentColor"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-                                    </svg>
-                                </div>
-                                <div
-                                    className={[
-                                        ...(pathname === path
-                                            ? [styles.selected]
-                                            : []),
-                                        styles.label,
-                                    ].join(' ')}
-                                >
-                                    {label}
-                                </div>
-                            </Link>
+                                label={label}
+                                path={path}
+                                index={index}
+                                selected={selected}
+                                setSelected={setSelected}
+                                pathname={pathname}
+                                nest={nest}
+                            />
                         );
                     })}
             </div>

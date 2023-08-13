@@ -40,6 +40,37 @@
                 height: 48px;
             }
 
+            &.nest {
+                margin-left: 4ch;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    left: calc((100% - 1px) * -1);
+                    width: calc(100% - 4px - 1ch);
+                    height: 2px;
+                    background-color: var(--primary);
+                    border-radius: 0.5px;
+                }
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: calc(-50% + 1ch);
+                    left: calc((100% - 1px) * -1);
+                    width: 2px;
+                    height: calc(100% - 1ch);
+                    background-color: var(--primary);
+                    border-radius: 0.5px;
+                }
+
+                &.selected {
+                    &:before {
+                        width: calc(100% - 4px - 1ch);
+                    }
+                }
+            }
+
             .indicator {
                 position: absolute;
                 left: calc(var(--icon-size) * -1 - 0.5ch);
