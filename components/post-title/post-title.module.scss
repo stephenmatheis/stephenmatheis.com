@@ -1,0 +1,38 @@
+@use 'styles/utilities';
+
+.title {
+    margin-bottom: calc(var(--line-height) * 5);
+    display: flex;
+    position: relative;
+
+    flex-direction: column;
+    gap: var(--line-height);
+
+    &.external {
+        margin-bottom: calc(var(--line-height) * 2);
+    }
+
+    .post-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 0px 0.5ch;
+
+        @include utilities.shadow-variables;
+        @include utilities.shadow-base;
+
+        @media (hover: hover) {
+            &:hover {
+                @include utilities.shadow-hover;
+            }
+        }
+
+        // @media (max-width: utilities.$small-width) {
+        //     margin-left: 2ch;
+        // }
+    }
+
+    .title-text {
+        gap: 2ch;
+        display: flex;
+    }
+}

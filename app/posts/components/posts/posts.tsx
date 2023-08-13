@@ -1,11 +1,8 @@
-import classNames from 'classnames';
-import Link from 'next/link';
-import { DateTime } from '@/components/date-time';
-import { Comment } from '@/components/comment';
-import { LinkCtr } from '@/components/link-ctr';
-import { Tags } from '@/components/tags';
-import { Body } from '@/components/body';
 import type { Post } from '@/lib/types';
+import { UpdatePrompts } from '@/components/update-prompts';
+import { DateTime } from '@/components/date-time';
+import { PostTitle } from '@/components/post-title';
+import { Body } from '@/components/body';
 import styles from './posts.module.scss';
 
 export function Posts({ posts }: { posts: Post[] }) {
@@ -14,10 +11,24 @@ export function Posts({ posts }: { posts: Post[] }) {
 
     return (
         <>
-            <div className={styles['page-title']}>
-                <Comment text="Posts" />
-                <DateTime className={styles.date} dateString={dates[0]} />
-            </div>
+            <UpdatePrompts
+                prompts={[
+                    // {
+                    //     label: 'RSS',
+                    //     path: '/rss',
+                    //     type: 'console',
+                    //     newTab: true,
+                    // },
+                    ...last20Posts.map(({ slug, title, link }) => {
+                        return {
+                            label: title,
+                            path: link || `/posts/${slug}`,
+                            type: 'post',
+                            newTab: link ? true : false,
+                        };
+                    }),
+                ]}
+            />
             <div className={styles['date-groups']}>
                 {dates.map((date, dateIndex) => {
                     return (
@@ -26,12 +37,10 @@ export function Posts({ posts }: { posts: Post[] }) {
                             className={styles['posts-ctr']}
                             data-date={date}
                         >
-                            {dateIndex !== 0 && (
-                                <DateTime
-                                    className={styles.date}
-                                    dateString={date}
-                                />
-                            )}
+                            <DateTime
+                                className={styles.date}
+                                dateString={date}
+                            />
                             <div className={styles.posts}>
                                 {last20Posts
                                     .filter((post) => post.date === date)
@@ -45,55 +54,14 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                     key={slug}
                                                     className={styles.post}
                                                 >
-                                                    <h2
-                                                        className={classNames(
-                                                            styles.title,
-                                                            {
-                                                                [styles.first]:
-                                                                    dateIndex ===
-                                                                        0 &&
-                                                                    postIndex ===
-                                                                        0,
-                                                                [styles.external]:
-                                                                    link,
-                                                            }
-                                                        )}
-                                                    >
-                                                        {link ? (
-                                                            <span
-                                                                className={
-                                                                    styles[
-                                                                        'title-text'
-                                                                    ]
-                                                                }
-                                                            >
-                                                                <LinkCtr
-                                                                    href={link}
-                                                                    newTab
-                                                                >
-                                                                    {title}
-                                                                </LinkCtr>
-                                                                <Link
-                                                                    href={`/posts/${slug}`}
-                                                                    className={
-                                                                        styles[
-                                                                            'post-link'
-                                                                        ]
-                                                                    }
-                                                                >
-                                                                    #
-                                                                </Link>
-                                                            </span>
-                                                        ) : (
-                                                            <LinkCtr
-                                                                href={`/posts/${slug}`}
-                                                            >
-                                                                {title}
-                                                            </LinkCtr>
-                                                        )}
-
-                                                        <Tags tags={tags} />
-                                                    </h2>
+                                                    <PostTitle
+                                                        slug={slug}
+                                                        title={title}
+                                                        link={link}
+                                                        tags={tags}
+                                                        dateIndex={dateIndex}
+                                                        postIndex={postIndex}
+                                                    />
                                                     <Body>{body}</Body>
                                                 </article>
                                             );

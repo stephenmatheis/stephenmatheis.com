@@ -9,6 +9,7 @@
         width: 100%;
         background-color: var(--primary-20);
         border-bottom: solid 2px var(--primary-70);
+        border-radius: var(--border-radius);
 
         &:focus-within {
             outline: none;

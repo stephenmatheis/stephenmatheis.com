@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './img-ctr.module.scss';
-import { useState } from 'react';
 
 type ImageProps = {
     src: string;

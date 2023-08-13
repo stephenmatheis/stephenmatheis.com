@@ -12,28 +12,15 @@ export const metadata: Metadata = {
 export default async function PostsPage() {
     const posts = await getPosts();
 
+    // TODO: Move RSS link to top near title
     return (
         <Page
+            noHeader
             links={[
-                { label: 'All posts', path: '/archive' },
-                {
-                    label: 'RSS',
-                    path: '/rss',
-                    newTab: true,
-                },
-                {
-                    label: 'JSON',
-                    path: '/json',
-                    newTab: true,
-                },
-                {
-                    label: 'Markdown',
-                    path: '/posts/markdown',
-                    newTab: true,
-                },
+                { label: 'More posts', path: '/archive' },
             ]}
         >
-            <Main columns={2}>
+            <Main>
                 <Posts posts={posts} />
             </Main>
         </Page>

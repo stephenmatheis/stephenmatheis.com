@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import { LinkCtr } from '@/components/link-ctr';
 import { ImgCtr } from '@/components/img-ctr';
+import { Indicator } from '@/components/indicator';
 import styles from './project.module.scss';
 
 type ImageProps = {
@@ -13,12 +13,8 @@ export function Project({ name, link, description, image, displayImages }) {
     const { src }: ImageProps = image;
 
     return (
-        <div
-            key={name}
-            className={classNames(styles['project-ctr'], {
-                [styles['display-images']]: displayImages,
-            })}
-        >
+        <div key={name} className={styles['project-ctr']}>
+            <Indicator label={name} />
             <LinkCtr href={link} newTab>
                 {name}
             </LinkCtr>

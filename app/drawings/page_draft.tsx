@@ -21,32 +21,32 @@ export default function DrawingsPage() {
                 },
             ]}
         >
-            <Main columns={2}>
+            <Main>
                 <Comment text="Drawings" />
                 <div className={styles.drawings}>
-                {drawings.map(({ name, image, description }) => {
-                    const { src, width, height } = image;
+                    {drawings.map(({ name, image, description }) => {
+                        const { src, width, height } = image;
 
-                    return (
-                        <>
-                            <div className={styles.name}>{name}</div>
-                            <div className={styles.drawing}>
-                                <Image
-                                    src={src}
-                                    alt={description}
-                                    width={width}
-                                    height={height}
-                                    priority
-                                    // onLoadingComplete={(node) => {
-                                    //     if (node) {
-                                    //         setShowShadow(true);
-                                    //     }
-                                    // }}
-                                />
-                            </div>
-                        </>
-                    );
-                })}
+                        return (
+                            <>
+                                <div className={styles.name}>{name}</div>
+                                <div className={styles.drawing}>
+                                    <Image
+                                        src={src}
+                                        alt={description}
+                                        width={width}
+                                        height={height}
+                                        priority
+                                        // onLoadingComplete={(node) => {
+                                        //     if (node) {
+                                        //         setShowShadow(true);
+                                        //     }
+                                        // }}
+                                    />
+                                </div>
+                            </>
+                        );
+                    })}
                 </div>
             </Main>
         </Page>
