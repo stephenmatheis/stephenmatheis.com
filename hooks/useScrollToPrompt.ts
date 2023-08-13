@@ -6,12 +6,31 @@ export function useScrollToPrompt({ ref, label }) {
     const promptIndex = prompts.map(({ label }) => label).indexOf(label);
 
     useEffect(() => {
-        if (selected === promptIndex) {
-            ref.current?.scrollIntoView({ behavior: 'smooth' });
+        if (!ref || prompts[selected].type === 'console') {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+
+            return;
         }
-    }, [promptIndex, ref, selected]);
+
+        // https://stackoverflow.com/a/49860927
+        if (selected === promptIndex) {
+            const { top } = ref.current.getBoundingClientRect();
+            const lineHeight = getComputedStyle(
+                document.documentElement
+            ).getPropertyValue('--line-height');
+
+            window.scrollTo({
+                top: top + window.scrollY - parseInt(lineHeight) * 4,
+                behavior: 'smooth',
+            });
+        }
+    }, [promptIndex, prompts, ref, selected]);
 
     return {
-        promptIndex, selected
-    }
+        promptIndex,
+        selected,
+    };
 }

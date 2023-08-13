@@ -11,20 +11,45 @@ export function Main({ children }: Props) {
     return (
         <main className={styles.main}>
             <PromptsProvider
-                // TODO: Add nested prompts that only show when prompt is selected
-                // Example: Posts > RSS
                 prompts={[
-                    { label: 'Posts', path: '/posts', type: 'console' },
-                    { label: 'Archive', path: '/archive', type: 'console' },
-                    { label: 'Projects', path: '/projects', type: 'console' },
-                    { label: 'About', path: '/about', type: 'console' },
+                    {
+                        label: 'Posts',
+                        path: '/posts',
+                        type: 'console',
+                    },
+                    {
+                        label: 'RSS',
+                        path: '/rss',
+                        type: 'console',
+                        nest: '/posts',
+                        newTab: true,
+                    },
+                    {
+                        label: 'Archive',
+                        path: '/archive',
+                        type: 'console',
+                    },
+                    {
+                        label: 'Projects',
+                        path: '/projects',
+                        type: 'console',
+                    },
+                    {
+                        label: 'About',
+                        path: '/about',
+                        type: 'console',
+                    },
                     {
                         label: 'Resume',
                         path: '/resume.pdf',
                         type: 'console',
                         newTab: true,
                     },
-                    { label: 'Settings', path: '/settings', type: 'console' },
+                    {
+                        label: 'Settings',
+                        path: '/settings',
+                        type: 'console',
+                    },
                 ]}
             >
                 <Console />

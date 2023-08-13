@@ -1,5 +1,3 @@
-'use client';
-
 import classNames from 'classnames';
 import { UpdatePrompts } from '@/components/update-prompts';
 import { Project } from '@/components/project';

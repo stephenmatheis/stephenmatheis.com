@@ -8,6 +8,7 @@ export type PromptProps = {
     path: string;
     type?: string;
     newTab?: string;
+    nest?: string;
 };
 
 export type PromptsContextProps = {
@@ -30,7 +31,19 @@ export function usePrompts() {
 
 export function PromptsProvider({ children, prompts: defaultPrompts }) {
     const pathname = usePathname();
-    const [prompts, setPrompts] = useState<PromptProps[]>(defaultPrompts);
+    const [prompts, setPrompts] = useState<PromptProps[]>(
+        defaultPrompts.filter((prompt: PromptProps) => {
+            const { nest } = prompt;
+
+            if (nest === undefined) {
+                return prompt;
+            }
+
+            if (nest === pathname) {
+                return prompt;
+            }
+        })
+    );
     const pathIndex = prompts.map(({ path }) => path).indexOf(pathname);
     const startIndex = pathIndex !== -1 ? pathIndex : 0;
     const [selected, setSelected] = useState<number>(startIndex);
