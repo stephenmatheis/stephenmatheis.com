@@ -6,27 +6,30 @@ export function useScrollToPrompt({ ref, label }) {
     const promptIndex = prompts.map(({ label }) => label).indexOf(label);
 
     useEffect(() => {
-        if (!ref || prompts[selected].type === 'console') {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-            });
-
+        if (prompts.length === 0) {
             return;
         }
 
         // https://stackoverflow.com/a/49860927
-        if (selected === promptIndex) {
-            const { top } = ref.current.getBoundingClientRect();
-            const lineHeight = getComputedStyle(
-                document.documentElement
-            ).getPropertyValue('--line-height');
+        const options: ScrollToOptions = {
+            top:
+                selected === promptIndex
+                    ? ref.current.getBoundingClientRect().top +
+                      window.scrollY -
+                      parseInt(
+                          getComputedStyle(
+                              document.documentElement
+                          ).getPropertyValue('--line-height')
+                      ) *
+                          4
+                    : 0,
+            behavior: 'smooth',
+        };
 
-            window.scrollTo({
-                top: top + window.scrollY - parseInt(lineHeight) * 4,
-                behavior: 'smooth',
-            });
-        }
+        (window.innerWidth > 500
+            ? window
+            : document.querySelector('[data-page]')
+        )?.scrollTo(options);
     }, [promptIndex, prompts, ref, selected]);
 
     return {

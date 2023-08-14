@@ -62,14 +62,14 @@ export function Console() {
     const pathname = usePathname();
 
     useEffect(() => {
-        function scrollToTop(selected: number) {
-            if (prompts[selected].type === 'console') {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                });
-            }
-        }
+        // function scrollToTop(selected: number) {
+        //     if (prompts[selected].type === 'console') {
+        //         window.scrollTo({
+        //             top: 0,
+        //             behavior: 'smooth',
+        //         });
+        //     }
+        // }
 
         function selectNext(event: KeyboardEvent) {
             if (event.key === 'ArrowDown' && !event.metaKey) {
@@ -78,7 +78,7 @@ export function Console() {
                 setSelected((prev) => {
                     const selected = prev < prompts.length - 1 ? prev + 1 : 0;
 
-                    scrollToTop(selected);
+                    // scrollToTop(selected);
 
                     return selected;
                 });
@@ -92,7 +92,7 @@ export function Console() {
                 setSelected((prev) => {
                     const selected = prev > 0 ? prev - 1 : prompts.length - 1;
 
-                    scrollToTop(selected);
+                    // scrollToTop(selected);
 
                     return selected;
                 });
