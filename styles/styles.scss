@@ -267,6 +267,15 @@ body {
     margin: 0;
     padding: 0;
 
+    // DEV:
+
+    @media (max-width: utilities.$small-width) {
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
     &.can-transition {
         transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
             background-color var(--prefers-color-scheme-transition-speed) ease
