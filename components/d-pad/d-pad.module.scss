@@ -31,6 +31,12 @@
         .right {
             height: var(--dpad-size);
             width: var(--dpad-size);
+            display: flex;
+            padding: 2px;
+
+            svg {
+                fill: var(--primary);
+            }
         }
 
         .up {
@@ -39,6 +45,8 @@
             border-left: solid 1px var(--primary);
             border-right: solid 1px var(--primary);
             border-radius: var(--dpad-radius) var(--dpad-radius) 0px 0px;
+
+            justify-content: center;
         }
 
         .down {
@@ -47,6 +55,9 @@
             border-left: solid 1px var(--primary);
             border-right: solid 1px var(--primary);
             border-radius: 0px 0px var(--dpad-radius) var(--dpad-radius);
+
+            justify-content: center;
+            align-items: flex-end;
         }
 
         .left {
@@ -55,6 +66,9 @@
             border-top: solid 1px var(--primary);
             border-left: solid 1px var(--primary);
             border-radius: var(--dpad-radius) 0px 0px var(--dpad-radius);
+
+            justify-content: flex-start;
+            align-items: center;
         }
 
         .right {
@@ -63,6 +77,9 @@
             border-top: solid 1px var(--primary);
             border-right: solid 1px var(--primary);
             border-radius: 0px var(--dpad-radius) var(--dpad-radius) 0px;
+
+            justify-content: flex-end;
+            align-items: center;
         }
 
         .middle {
@@ -73,7 +90,11 @@
     }
 
     .menu {
+        width: max-content;
+
         .btn-ctr {
+            width: 50px;
+            transform: rotateZ(315deg);
             margin-top: calc(var(--dpad-size) * 2);
             background-color: var(--background-color);
             border: none;
@@ -89,7 +110,9 @@
 
             .label {
                 color: var(--primary);
-                font-size: 10px;
+                text-align: center;
+                line-height: 1;
+                font-size: calc(var(--font-size) - 2px);
             }
         }
     }
