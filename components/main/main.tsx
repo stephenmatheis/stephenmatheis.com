@@ -52,8 +52,10 @@ export function Main({ children }: Props) {
                     },
                 ]}
             >
-                <Console />
-                {children}
+                <div className={styles.left}>
+                    <Console />
+                </div>
+                <div className={styles.right}>{children}</div>
             </PromptsProvider>
         </main>
     );

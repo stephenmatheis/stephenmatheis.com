@@ -41,14 +41,17 @@
             }
 
             &.nest {
+                --thickness: 1px;
+
                 margin-left: 4ch;
 
                 &:before {
                     content: '';
                     position: absolute;
                     left: calc((100% - 1px) * -1);
-                    width: calc(100% - 4px - 1ch);
-                    height: 2px;
+                    // width: calc(100% - 4px - 1ch);
+                    width: calc(100% - 4px - 0ch);
+                    height: var(--thickness);
                     background-color: var(--primary);
                     border-radius: 0.5px;
                 }
@@ -58,7 +61,7 @@
                     position: absolute;
                     top: calc(-50% + 1ch);
                     left: calc((100% - 1px) * -1);
-                    width: 2px;
+                    width: var(--thickness);
                     height: calc(100% - 1ch);
                     background-color: var(--primary);
                     border-radius: 0.5px;
