@@ -46,13 +46,13 @@ function PromptLink({
 
 function LinkType({ children, href, newTab, ...props }) {
     return newTab ? (
-        <Link href={href} {...props}>
-            {children}
-        </Link>
-    ) : (
         <a href={href} target="_blank" {...props}>
             {children}
         </a>
+    ) : (
+        <Link href={href} {...props}>
+            {children}
+        </Link>
     );
 }
 

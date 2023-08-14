@@ -21,65 +21,28 @@
 
     @include utilities.gaps();
 
-    &.col-2 {
-        .left,
-        .right {
-            display: flex;
-            flex-direction: column;
+    .left,
+    .right {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left {
+        min-width: max-content;
+        // justify-content: flex-start;
+        // gap: calc(var(--line-height) * 2);
+
+        @media screen and (max-width: utilities.$medium-width) {
+            width: unset;
         }
 
-        .left {
-            justify-content: flex-start;
-            gap: calc(var(--line-height) * 2);
-
-            @media screen and (max-width: utilities.$medium-width) {
-                width: unset;
-            }
-
-            @media print {
-                display: none;
-            }
-        }
-
-        .right {
-            flex: 2;
-            width: 100%;
+        @media print {
+            display: none;
         }
     }
 
-    &.col-3 {
-        .left,
-        .right {
-            display: flex;
-            width: 100%;
-        }
-
-        .left {
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: calc(var(--line-height) * 2);
-
-            @media screen and (max-width: utilities.$medium-width) {
-                width: unset;
-            }
-        }
-
-        .middle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            @media screen and (max-width: utilities.$medium-width) {
-                flex: 2;
-            }
-        }
-
-        .right {
-            justify-content: flex-end;
-
-            @media screen and (max-width: utilities.$medium-width) {
-                display: none;
-            }
-        }
+    .right {
+        flex: 2;
+        width: 100%;
     }
 }
