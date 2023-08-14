@@ -53,7 +53,7 @@ export function PromptsProvider({ children, prompts: defaultPrompts }) {
     const startIndex = pathIndex !== -1 ? pathIndex : 0;
     const [selected, setSelected] = useState<number>(startIndex);
 
-    // console.log(prompts);
+    console.log(prompts);
 
     return (
         <PromptsContext.Provider
