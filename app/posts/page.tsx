@@ -14,12 +14,7 @@ export default async function PostsPage() {
 
     // TODO: Move RSS link to top near title
     return (
-        <Page
-            noHeader
-            links={[
-                { label: 'More posts', path: '/archive' },
-            ]}
-        >
+        <Page links={[{ label: 'More posts', path: '/archive' }]}>
             <Main>
                 <Posts posts={posts} />
             </Main>

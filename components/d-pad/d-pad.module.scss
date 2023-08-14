@@ -1,0 +1,111 @@
+@use 'styles/utilities';
+
+.controller {
+    --dpad-radius: 4px;
+    --dpad-size: 27px;
+
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    border: solid 1px var(--primary);
+    height: 175px;
+    margin: 0px 0.125in 0.125in 0.125in;
+    border-radius: var(--border-radius);
+    padding: 3ch;
+
+    .dpad,
+    .menu,
+    .buttons {
+        // flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dpad {
+        flex-direction: column;
+
+        .up,
+        .down,
+        .left,
+        .right {
+            height: var(--dpad-size);
+            width: var(--dpad-size);
+        }
+
+        .up {
+            transform: translateY(1px);
+            border-top: solid 1px var(--primary);
+            border-left: solid 1px var(--primary);
+            border-right: solid 1px var(--primary);
+            border-radius: var(--dpad-radius) var(--dpad-radius) 0px 0px;
+        }
+
+        .down {
+            transform: translateY(-1px);
+            border-bottom: solid 1px var(--primary);
+            border-left: solid 1px var(--primary);
+            border-right: solid 1px var(--primary);
+            border-radius: 0px 0px var(--dpad-radius) var(--dpad-radius);
+        }
+
+        .left {
+            transform: translateX(1px);
+            border-bottom: solid 1px var(--primary);
+            border-top: solid 1px var(--primary);
+            border-left: solid 1px var(--primary);
+            border-radius: var(--dpad-radius) 0px 0px var(--dpad-radius);
+        }
+
+        .right {
+            transform: translateX(-1px);
+            border-bottom: solid 1px var(--primary);
+            border-top: solid 1px var(--primary);
+            border-right: solid 1px var(--primary);
+            border-radius: 0px var(--dpad-radius) var(--dpad-radius) 0px;
+        }
+
+        .middle {
+            display: flex;
+            gap: var(--dpad-size);
+            background-color: var(--background-color);
+        }
+    }
+
+    .menu {
+        .btn-ctr {
+            margin-top: calc(var(--dpad-size) * 2);
+            background-color: var(--background-color);
+            border: none;
+
+            .btn {
+                height: 10px;
+                width: 100%;
+                margin-bottom: 5px;
+                background-color: var(--background-color);
+                border: solid 1px var(--primary);
+                border-radius: var(--dpad-radius);
+            }
+
+            .label {
+                color: var(--primary);
+                font-size: 10px;
+            }
+        }
+    }
+
+    .buttons {
+        gap: 11px;
+
+        button {
+            display: grid;
+            place-content: center;
+            height: 35px;
+            width: 35px;
+            background-color: var(--background-color);
+            color: var(--primary);
+            border: solid 1px var(--primary);
+            border-radius: 50%;
+        }
+    }
+}

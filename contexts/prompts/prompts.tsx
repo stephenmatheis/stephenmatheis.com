@@ -16,6 +16,8 @@ export type PromptsContextProps = {
     setPrompts: React.Dispatch<React.SetStateAction<PromptProps[]>>;
     selected: number;
     setSelected: React.Dispatch<React.SetStateAction<number>>;
+    open: boolean;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const PromptsContext = createContext<PromptsContextProps>({
@@ -23,6 +25,8 @@ const PromptsContext = createContext<PromptsContextProps>({
     setPrompts: () => null,
     selected: 0,
     setSelected: () => null,
+    open: false,
+    setOpen: () => null,
 });
 
 export function usePrompts() {
@@ -31,6 +35,7 @@ export function usePrompts() {
 
 export function PromptsProvider({ children, prompts: defaultPrompts }) {
     const pathname = usePathname();
+    const [open, setOpen] = useState(false);
     const [prompts, setPrompts] = useState<PromptProps[]>(
         defaultPrompts.filter((prompt: PromptProps) => {
             const { nest } = prompt;
@@ -48,11 +53,18 @@ export function PromptsProvider({ children, prompts: defaultPrompts }) {
     const startIndex = pathIndex !== -1 ? pathIndex : 0;
     const [selected, setSelected] = useState<number>(startIndex);
 
-    console.log(prompts);
+    // console.log(prompts);
 
     return (
         <PromptsContext.Provider
-            value={{ prompts, setPrompts, selected, setSelected }}
+            value={{
+                prompts,
+                setPrompts,
+                selected,
+                setSelected,
+                open,
+                setOpen,
+            }}
         >
             {children}
         </PromptsContext.Provider>

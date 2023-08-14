@@ -27,17 +27,25 @@
 
         @media (max-width: utilities.$small-width) {
             min-width: 100%;
-            padding: .25in;
+            padding: 0.25in;
             // padding-top: 0.5in;
             // padding-left: 0.25in;
             // padding-right: 0.25in;
         }
 
         @media (max-height: utilities.$medium-height) {
-            padding: .25in;
+            padding: 0.25in;
             // padding-top: 0.5in;
         }
 
         @include utilities.gaps();
+
+        // DEV:
+
+        @media (max-width: utilities.$small-width) {
+            min-height: 0px;
+            height: calc(100dvh - 175px);
+            overflow: auto;
+        }
     }
 }

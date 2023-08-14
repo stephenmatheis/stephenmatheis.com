@@ -57,7 +57,7 @@ function LinkType({ children, href, newTab, ...props }) {
 }
 
 export function Console() {
-    const { prompts, selected, setSelected } = usePrompts();
+    const { prompts, selected, setSelected, open, setOpen } = usePrompts();
     const router = useRouter();
     const pathname = usePathname();
 
@@ -113,40 +113,54 @@ export function Console() {
                     router.push(prompts[selected].path!);
                 }
             }
+
+            if (event.key === ' ') {
+                console.log('Toggle menu');
+
+                event.preventDefault();
+                setOpen((prev) => !prev);
+            }
         }
 
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [prompts, router, selected, setSelected]);
+    }, [prompts, router, selected, setOpen, setSelected]);
 
     return (
-        <div className={styles.console}>
-            <Link className={styles.name} href={'/'}>
-                Stephen Matheis
-            </Link>
-            <div className={styles.date}>
-                {'(C)'} {new Date().getFullYear()}
-            </div>
-            <div className={styles.prompts}>
-                {prompts
-                    .filter(({ type }) => type === 'console')
-                    .map(({ label, path, nest, newTab }, index: number) => {
-                        return (
-                            <PromptLink
-                                key={label}
-                                label={label}
-                                path={path}
-                                index={index}
-                                selected={selected}
-                                setSelected={setSelected}
-                                pathname={pathname}
-                                newTab={newTab}
-                                nest={nest}
-                            />
-                        );
-                    })}
-            </div>
-        </div>
+        <>
+            {/* <div className={styles.menu}>
+                Press <span className={styles.keyboard}>Spacebar</span>{' '}
+                <span className={styles.touch}>Start</span>
+            </div> */}
+            {open && (
+                <div className={styles.console}>
+                    <div className={styles.prompts}>
+                        {prompts
+                            .filter(({ type }) => type === 'console')
+                            .map(
+                                (
+                                    { label, path, nest, newTab },
+                                    index: number
+                                ) => {
+                                    return (
+                                        <PromptLink
+                                            key={label}
+                                            label={label}
+                                            path={path}
+                                            index={index}
+                                            selected={selected}
+                                            setSelected={setSelected}
+                                            pathname={pathname}
+                                            newTab={newTab}
+                                            nest={nest}
+                                        />
+                                    );
+                                }
+                            )}
+                    </div>
+                </div>
+            )}
+        </>
     );
 }

@@ -4,7 +4,6 @@ import { Main } from '@/components/main';
 export default function RootPage() {
     return (
         <Page
-            noHeader
             noFooter
             links={[
                 {

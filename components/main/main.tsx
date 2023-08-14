@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
+import Link from 'next/link';
 import { Console } from '@/components/console';
-import { PromptsProvider } from '@/contexts/prompts';
 import styles from './main.module.scss';
 
 type Props = {
@@ -10,53 +10,16 @@ type Props = {
 export function Main({ children }: Props) {
     return (
         <main className={styles.main}>
-            <PromptsProvider
-                prompts={[
-                    {
-                        label: 'Posts',
-                        path: '/posts',
-                        type: 'console',
-                    },
-                    {
-                        label: 'RSS',
-                        path: '/rss',
-                        type: 'console',
-                        nest: '/posts',
-                        newTab: true,
-                    },
-                    {
-                        label: 'Archive',
-                        path: '/archive',
-                        type: 'console',
-                    },
-                    {
-                        label: 'Projects',
-                        path: '/projects',
-                        type: 'console',
-                    },
-                    {
-                        label: 'About',
-                        path: '/about',
-                        type: 'console',
-                    },
-                    {
-                        label: 'Resume',
-                        path: '/resume.pdf',
-                        type: 'console',
-                        newTab: true,
-                    },
-                    {
-                        label: 'Settings',
-                        path: '/settings',
-                        type: 'console',
-                    },
-                ]}
-            >
-                <div className={styles.left}>
-                    <Console />
+            <div className={styles.left}>
+                <Link className={styles.name} href={'/'}>
+                    Stephen Matheis
+                </Link>
+                <div style={{ color: 'var(--muted)' }}>
+                    {'(C)'} {new Date().getFullYear()}
                 </div>
-                <div className={styles.right}>{children}</div>
-            </PromptsProvider>
+                <Console />
+            </div>
+            <div className={styles.right}>{children}</div>
         </main>
     );
 }
