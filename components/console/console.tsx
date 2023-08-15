@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
@@ -59,6 +59,7 @@ function PromptLink({
     pathname,
     nest,
     newTab,
+    scrollCtr,
     ...props
 }) {
     return (
@@ -73,7 +74,12 @@ function PromptLink({
             newTab={newTab}
             {...props}
         >
-            <Indicator prompts={prompts} selected={selected} label={label} />
+            <Indicator
+                label={label}
+                selected={selected}
+                prompts={prompts}
+                scrollCtr={scrollCtr}
+            />
             <div
                 className={[
                     ...(pathname === path ? [styles.selected] : []),
@@ -100,6 +106,7 @@ function LinkType({ children, href, newTab, ...props }) {
 
 export function Console() {
     // const { prompts, selected, setSelected, open, setOpen } = usePrompts();
+    const promptsRef = useRef<HTMLDivElement>(null);
     const { open, setOpen } = usePrompts();
     const [selected, setSelected] = useState(0);
     const router = useRouter();
@@ -108,12 +115,8 @@ export function Console() {
     useEffect(() => {
         function selectNext(event: KeyboardEvent) {
             if (!open) {
-                // console.log('Console closed.');
-
                 return;
             }
-
-            // console.log('Console event.');
 
             if (event.key === 'ArrowDown' && !event.metaKey) {
                 event.preventDefault();
@@ -172,7 +175,7 @@ export function Console() {
             </div> */}
             {open && (
                 <div className={styles.console}>
-                    <div className={styles.prompts}>
+                    <div className={styles.prompts} ref={promptsRef}>
                         {prompts
                             .filter(({ type }) => type === 'console')
                             .map(
@@ -191,6 +194,7 @@ export function Console() {
                                             pathname={pathname}
                                             newTab={newTab}
                                             nest={nest}
+                                            scrollCtr={promptsRef}
                                         />
                                     );
                                 }

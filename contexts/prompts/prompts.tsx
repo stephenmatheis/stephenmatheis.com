@@ -46,7 +46,6 @@ export function PromptsProvider({ children, prompts: defaultPrompts }) {
     useEffect(() => {
         function selectNext(event: KeyboardEvent) {
             if (open) {
-                console.log('Console opened.');
                 return;
             }
 
