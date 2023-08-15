@@ -85,15 +85,8 @@
         color: var(--primary);
 
         @media (max-width: utilities.$small-width) {
-            max-width: 60%;
+            min-width: unset;
         }
-    }
-
-    .dots {
-        flex: 2;
-        display: inline-block;
-        border-bottom: dotted 2px var(--primary-50);
-        margin: 0px 1ch 3px;
     }
 
     .date {
