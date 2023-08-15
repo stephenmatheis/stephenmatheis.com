@@ -103,6 +103,11 @@ export function PromptsProvider({ children, prompts: defaultPrompts }) {
         if (open) {
             document.body.classList.add('no-scroll');
             document.querySelector('[data-page]')?.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+            document
+                .querySelector('[data-page]')
+                ?.classList.remove('no-scroll');
         }
     }, [open]);
 

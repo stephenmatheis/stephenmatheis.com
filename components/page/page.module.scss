@@ -29,32 +29,24 @@
         @media (max-width: utilities.$small-width) {
             min-width: 100%;
             padding: 0.25in;
-            // padding-top: 0.5in;
-            // padding-left: 0.25in;
-            // padding-right: 0.25in;
         }
 
         @media (max-height: utilities.$medium-height) {
             padding: 0.25in;
-            // padding-top: 0.5in;
         }
 
         @include utilities.gaps();
 
-        // DEV:
-
         @media (pointer: coarse) {
-            overflow: auto;
-            
-            // height: calc(100dvh - 175px - 0.5in);
+            --buffer: 8px;
 
             flex: 2;
-            
+            overflow: auto;
             min-height: 0px;
-            max-width: calc(100vw - 0.5in);
+            max-width: calc(100vw - (var(--buffer) * 2));
             width: unset;
             min-width: unset;
-            margin: 0.25in;
+            margin: var(--buffer);
             border: solid 1px var(--primary);
             border-radius: var(--border-radius);
         }

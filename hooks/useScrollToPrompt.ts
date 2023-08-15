@@ -26,7 +26,10 @@ export function useScrollToPrompt({
                 top:
                     localSelected === promptIndex && promptIndex !== 0
                         ? ref.current.getBoundingClientRect().top +
-                          window.scrollY -
+                          (matchMedia('(pointer:fine)').matches
+                              ? window.scrollY
+                              : document.querySelector('[data-page]')
+                                    ?.scrollTop) -
                           parseInt(
                               getComputedStyle(
                                   document.documentElement
@@ -36,6 +39,8 @@ export function useScrollToPrompt({
                         : 0,
                 behavior: 'smooth',
             };
+
+            console.log(prompts[selected].label, options);
 
             (matchMedia('(pointer:fine)').matches
                 ? window
