@@ -1,12 +1,54 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { usePrompts } from '@/contexts/prompts';
 import { Indicator } from '@/components/indicator';
+import type { PromptProps } from '@/contexts/prompts/prompts';
 import styles from './console.module.scss';
+
+const prompts: PromptProps[] = [
+    {
+        label: 'Posts',
+        path: '/posts',
+        type: 'console',
+    },
+    {
+        label: 'RSS',
+        path: '/rss',
+        type: 'console',
+        nest: '/posts',
+        newTab: true,
+    },
+    {
+        label: 'Archive',
+        path: '/archive',
+        type: 'console',
+    },
+    {
+        label: 'Projects',
+        path: '/projects',
+        type: 'console',
+    },
+    {
+        label: 'About',
+        path: '/about',
+        type: 'console',
+    },
+    {
+        label: 'Resume',
+        path: '/resume.pdf',
+        type: 'console',
+        newTab: true,
+    },
+    {
+        label: 'Settings',
+        path: '/settings',
+        type: 'console',
+    },
+];
 
 function PromptLink({
     label,
@@ -31,7 +73,7 @@ function PromptLink({
             newTab={newTab}
             {...props}
         >
-            <Indicator label={label} />
+            <Indicator prompts={prompts} selected={selected} label={label} />
             <div
                 className={[
                     ...(pathname === path ? [styles.selected] : []),
@@ -57,28 +99,27 @@ function LinkType({ children, href, newTab, ...props }) {
 }
 
 export function Console() {
-    const { prompts, selected, setSelected, open, setOpen } = usePrompts();
+    // const { prompts, selected, setSelected, open, setOpen } = usePrompts();
+    const { open, setOpen } = usePrompts();
+    const [selected, setSelected] = useState(0);
     const router = useRouter();
     const pathname = usePathname();
 
     useEffect(() => {
-        // function scrollToTop(selected: number) {
-        //     if (prompts[selected].type === 'console') {
-        //         window.scrollTo({
-        //             top: 0,
-        //             behavior: 'smooth',
-        //         });
-        //     }
-        // }
-
         function selectNext(event: KeyboardEvent) {
+            if (!open) {
+                // console.log('Console closed.');
+
+                return;
+            }
+
+            // console.log('Console event.');
+
             if (event.key === 'ArrowDown' && !event.metaKey) {
                 event.preventDefault();
 
                 setSelected((prev) => {
                     const selected = prev < prompts.length - 1 ? prev + 1 : 0;
-
-                    // scrollToTop(selected);
 
                     return selected;
                 });
@@ -91,8 +132,6 @@ export function Console() {
 
                 setSelected((prev) => {
                     const selected = prev > 0 ? prev - 1 : prompts.length - 1;
-
-                    // scrollToTop(selected);
 
                     return selected;
                 });
@@ -114,9 +153,7 @@ export function Console() {
                 }
             }
 
-            if (event.key === ' ') {
-                console.log('Toggle menu');
-
+            if (event.key === ' ' || event.key === 'Escape') {
                 event.preventDefault();
                 setOpen((prev) => !prev);
             }
@@ -125,7 +162,7 @@ export function Console() {
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [prompts, router, selected, setOpen, setSelected]);
+    }, [open, router, selected, setOpen, setSelected]);
 
     return (
         <>

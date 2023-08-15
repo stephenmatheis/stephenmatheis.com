@@ -1,17 +1,31 @@
 @use 'styles/utilities';
 
 .controller {
+    --btn-max-width: 126px;
+    --btn-gap: 15px;
     --dpad-radius: 4px;
-    --dpad-size: 27px;
+    --dpad-size: calc(var(--btn-max-width) / 3);
+    --btn-size: calc(var(--btn-max-width) / 2);
 
     user-select: none;
     display: flex;
     justify-content: space-between;
-    border: solid 1px var(--primary);
-    height: 175px;
-    margin: 0px 0.125in 0.125in 0.125in;
-    border-radius: var(--border-radius);
-    padding: 3ch;
+    
+    flex: 1;
+    
+    // height: 175px;
+    
+    // margin: 0px 0.125in 0.125in 0.125in;
+    margin-left: 0.25in;
+    margin-right: 0.25in;
+    margin-bottom: 0.25in;
+    // border: solid 1px var(--primary);
+    // border-radius: var(--border-radius);
+    // padding: 0px var(--btn-gap);
+
+    @media (pointer: fine), (hover: hover) {
+        display: none;
+    }
 
     .dpad,
     .menu,
@@ -21,6 +35,11 @@
         align-items: center;
         justify-content: center;
     }
+
+    // .dpad,
+    // .buttons {
+    //     flex: 1;
+    // }
 
     .dpad {
         flex-direction: column;
@@ -91,13 +110,15 @@
 
     .menu {
         width: max-content;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 10px;
 
         .btn-ctr {
-            width: 50px;
-            transform: rotateZ(315deg);
-            margin-top: calc(var(--dpad-size) * 2);
+            width: 100%;
             background-color: var(--background-color);
             border: none;
+            height: 44px;
 
             .btn {
                 height: 10px;
@@ -118,17 +139,36 @@
     }
 
     .buttons {
-        gap: 11px;
+        flex-direction: column;
+        width: var(--btn-max-width);
+
+        .top,
+        .bottom {
+            display: flex;
+            width: 100%;
+        }
+
+        .top {
+            justify-content: flex-end;
+        }
+
+        .bottom {
+            justify-content: flex-start;
+        }
 
         button {
             display: grid;
             place-content: center;
-            height: 35px;
-            width: 35px;
+            height: var(--btn-size);
+            width: var(--btn-size);
             background-color: var(--background-color);
             color: var(--primary);
             border: solid 1px var(--primary);
             border-radius: 50%;
         }
+    }
+
+    button {
+        -webkit-tap-highlight-color: transparent;
     }
 }

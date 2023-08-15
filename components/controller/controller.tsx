@@ -1,9 +1,9 @@
 'use client';
 
 import { usePrompts } from '@/contexts/prompts';
-import styles from './d-pad.module.scss';
+import styles from './controller.module.scss';
 
-export function DPad() {
+export function Controller() {
     const { open, setOpen } = usePrompts();
 
     return (
@@ -109,8 +109,12 @@ export function DPad() {
                 </button>
             </div>
             <div className={styles.buttons}>
-                <button>A</button>
-                <button>B</button>
+                <div className={styles.top}>
+                    <button>A</button>
+                </div>
+                <div className={styles.bottom}>
+                    <button>B</button>
+                </div>
             </div>
         </div>
     );
