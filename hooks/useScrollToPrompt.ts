@@ -53,11 +53,10 @@ export function useScrollToPrompt({
                         : 0,
                 behavior: 'smooth',
             };
-            
-            (matchMedia('(pointer:fine)').matches
-                ? window
-                : document.querySelector('[data-page]')
-            )?.scrollTo(options);
+
+            (matchMedia('(pointer:fine)').matches ? window : node)?.scrollTo(
+                options
+            );
         }
     }, [
         promptIndex,
