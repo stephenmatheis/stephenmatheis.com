@@ -3,6 +3,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+    // FIXME: Turn back on
     // reactStrictMode: true,
     sassOptions: {
         logger: {
