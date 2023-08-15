@@ -3,11 +3,9 @@
 .posts-ctr {
     .date {
         display: block;
-        // text-align: right;
     }
 
     .posts {
-        // Fixes collapsing margins
         display: flex;
         flex-direction: column;
 

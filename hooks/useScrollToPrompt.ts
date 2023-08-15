@@ -1,36 +1,56 @@
 import { useEffect } from 'react';
 import { usePrompts } from '@/contexts/prompts';
 
-export function useScrollToPrompt({ ref, label }) {
+export function useScrollToPrompt({
+    ref,
+    label,
+    prompts: overridePrompts,
+    selected: overrideSelected,
+}) {
     const { prompts, selected } = usePrompts();
-    const promptIndex = prompts.map(({ label }) => label).indexOf(label);
+    const localSelected = overrideSelected || selected;
+    const localPrompts = overridePrompts || prompts;
+    const promptIndex = localPrompts.map(({ label }) => label).indexOf(label);
 
     useEffect(() => {
-        if (!ref || prompts[selected].type === 'console') {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-            });
-
+        if (
+            localPrompts.length === 0 ||
+            prompts[selected]?.type === 'console'
+        ) {
             return;
         }
 
-        // https://stackoverflow.com/a/49860927
         if (selected === promptIndex) {
-            const { top } = ref.current.getBoundingClientRect();
-            const lineHeight = getComputedStyle(
-                document.documentElement
-            ).getPropertyValue('--line-height');
-
-            window.scrollTo({
-                top: top + window.scrollY - parseInt(lineHeight) * 4,
+            // https://stackoverflow.com/a/49860927
+            const options: ScrollToOptions = {
+                top:
+                    localSelected === promptIndex && promptIndex !== 0
+                        ? ref.current.getBoundingClientRect().top +
+                          (matchMedia('(pointer:fine)').matches
+                              ? window.scrollY
+                              : document.querySelector('[data-page]')
+                                    ?.scrollTop) -
+                          parseInt(
+                              getComputedStyle(
+                                  document.documentElement
+                              ).getPropertyValue('--line-height')
+                          ) *
+                              4
+                        : 0,
                 behavior: 'smooth',
-            });
+            };
+
+            console.log(prompts[selected].label, options);
+
+            (matchMedia('(pointer:fine)').matches
+                ? window
+                : document.querySelector('[data-page]')
+            )?.scrollTo(options);
         }
-    }, [promptIndex, prompts, ref, selected]);
+    }, [promptIndex, localPrompts, ref, localSelected, prompts, selected]);
 
     return {
         promptIndex,
-        selected,
+        selected: localSelected,
     };
 }
