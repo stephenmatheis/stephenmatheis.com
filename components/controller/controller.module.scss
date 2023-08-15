@@ -1,17 +1,31 @@
 @use 'styles/utilities';
 
 .controller {
+    --btn-max-width: 126px;
+    --btn-gap: 15px;
     --dpad-radius: 4px;
-    --dpad-size: 27px;
+    --dpad-size: calc(var(--btn-max-width) / 3);
+    --btn-size: calc(var(--btn-max-width) / 2);
 
     user-select: none;
     display: flex;
     justify-content: space-between;
-    border: solid 1px var(--primary);
-    height: 175px;
-    margin: 0px 0.125in 0.125in 0.125in;
-    border-radius: var(--border-radius);
-    padding: 3ch;
+    
+    flex: 1;
+    
+    // height: 175px;
+    
+    // margin: 0px 0.125in 0.125in 0.125in;
+    margin-left: 0.25in;
+    margin-right: 0.25in;
+    margin-bottom: 0.25in;
+    // border: solid 1px var(--primary);
+    // border-radius: var(--border-radius);
+    // padding: 0px var(--btn-gap);
+
+    @media (pointer: fine), (hover: hover) {
+        display: none;
+    }
 
     .dpad,
     .menu,
@@ -22,6 +36,11 @@
         justify-content: center;
     }
 
+    // .dpad,
+    // .buttons {
+    //     flex: 1;
+    // }
+
     .dpad {
         flex-direction: column;
 
@@ -31,6 +50,12 @@
         .right {
             height: var(--dpad-size);
             width: var(--dpad-size);
+            display: flex;
+            padding: 2px;
+
+            svg {
+                fill: var(--primary);
+            }
         }
 
         .up {
@@ -39,6 +64,8 @@
             border-left: solid 1px var(--primary);
             border-right: solid 1px var(--primary);
             border-radius: var(--dpad-radius) var(--dpad-radius) 0px 0px;
+
+            justify-content: center;
         }
 
         .down {
@@ -47,6 +74,9 @@
             border-left: solid 1px var(--primary);
             border-right: solid 1px var(--primary);
             border-radius: 0px 0px var(--dpad-radius) var(--dpad-radius);
+
+            justify-content: center;
+            align-items: flex-end;
         }
 
         .left {
@@ -55,6 +85,9 @@
             border-top: solid 1px var(--primary);
             border-left: solid 1px var(--primary);
             border-radius: var(--dpad-radius) 0px 0px var(--dpad-radius);
+
+            justify-content: flex-start;
+            align-items: center;
         }
 
         .right {
@@ -63,6 +96,9 @@
             border-top: solid 1px var(--primary);
             border-right: solid 1px var(--primary);
             border-radius: 0px var(--dpad-radius) var(--dpad-radius) 0px;
+
+            justify-content: flex-end;
+            align-items: center;
         }
 
         .middle {
@@ -73,10 +109,16 @@
     }
 
     .menu {
+        width: max-content;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 10px;
+
         .btn-ctr {
-            margin-top: calc(var(--dpad-size) * 2);
+            width: 100%;
             background-color: var(--background-color);
             border: none;
+            height: 44px;
 
             .btn {
                 height: 10px;
@@ -89,23 +131,44 @@
 
             .label {
                 color: var(--primary);
-                font-size: 10px;
+                text-align: center;
+                line-height: 1;
+                font-size: calc(var(--font-size) - 2px);
             }
         }
     }
 
     .buttons {
-        gap: 11px;
+        flex-direction: column;
+        width: var(--btn-max-width);
+
+        .top,
+        .bottom {
+            display: flex;
+            width: 100%;
+        }
+
+        .top {
+            justify-content: flex-end;
+        }
+
+        .bottom {
+            justify-content: flex-start;
+        }
 
         button {
             display: grid;
             place-content: center;
-            height: 35px;
-            width: 35px;
+            height: var(--btn-size);
+            width: var(--btn-size);
             background-color: var(--background-color);
             color: var(--primary);
             border: solid 1px var(--primary);
             border-radius: 50%;
         }
+    }
+
+    button {
+        -webkit-tap-highlight-color: transparent;
     }
 }

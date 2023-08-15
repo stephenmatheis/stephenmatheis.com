@@ -3,10 +3,26 @@
 import { useRef } from 'react';
 import { useScrollToPrompt } from '@/hooks/useScrollToPrompt';
 import styles from './indicator.module.scss';
+import { PromptProps } from '@/contexts/prompts/prompts';
 
-export function Indicator({ label }) {
+type IndicatorProps = {
+    label: string;
+    selected?: number;
+    prompts?: PromptProps[] | undefined;
+};
+
+export function Indicator({
+    label,
+    selected: overrideSelected,
+    prompts,
+}: IndicatorProps) {
     const ref = useRef<HTMLDivElement>(null);
-    const { promptIndex, selected } = useScrollToPrompt({ ref, label });
+    const { promptIndex, selected } = useScrollToPrompt({
+        ref,
+        label,
+        prompts,
+        selected: overrideSelected,
+    });
 
     return (
         <div

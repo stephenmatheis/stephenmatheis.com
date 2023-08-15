@@ -27,8 +27,6 @@
     flex-wrap: wrap;
     gap: 1ch;
     width: 100%;
-    height: var(--line-height);
-    // margin-bottom: calc(var(--line-height) * 3);
 
     & {
         > div:first-of-type {
@@ -45,6 +43,7 @@
     display: inline-flex;
     justify-content: flex-end;
     width: 100%;
+    margin-top: calc(var(--line-height) * 1);
     margin-bottom: calc(var(--line-height) * 3);
 }
 

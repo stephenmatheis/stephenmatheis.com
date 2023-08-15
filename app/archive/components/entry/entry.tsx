@@ -26,11 +26,6 @@ export function Entry({ title, type, href, date, tags = [] }: Props) {
                     <span className={`${styles.title}`}>
                         {title} <Tags tags={tags} />
                     </span>
-                    {/* DEV: */}
-                    <span className={`${styles.dots}`}>
-                        {/* ................................................................................ */}
-                    </span>
-                    {/* DEV: */}
                     {date && (
                         <DateTime className={styles.date} dateString={date} />
                     )}
