@@ -110,7 +110,19 @@ export function Controller() {
             </div>
             <div className={styles.buttons}>
                 <div className={styles.top}>
-                    <button>A</button>
+                    <button
+                        onClick={() => {
+                            console.log('A');
+
+                            window.dispatchEvent(
+                                new KeyboardEvent('keydown', {
+                                    key: 'Enter',
+                                })
+                            );
+                        }}
+                    >
+                        A
+                    </button>
                 </div>
                 <div className={styles.bottom}>
                     <button>B</button>

@@ -1,10 +1,11 @@
 @use 'styles/utilities';
 
 .console {
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
-    height: 100%;
+    // NOTE: Why - 10px? Will it always be 10px at larger viewports?
+    height: calc(100% / 1.5 - 10px);
     width: 100%;
     display: flex;
     align-items: center;
