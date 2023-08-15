@@ -21,6 +21,13 @@
 
     @include utilities.gaps();
 
+    // DEV:
+
+    @media (pointer: coarse) {
+        max-width: var(--max-width);
+        margin: 0 auto;
+    }
+
     .left,
     .right {
         display: flex;

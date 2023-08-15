@@ -267,9 +267,7 @@ body {
     margin: 0;
     padding: 0;
 
-    // DEV:
-
-    @media (max-width: utilities.$small-width) {
+    @media (pointer: coarse) {
         height: 100dvh;
         display: flex;
         flex-direction: column;
@@ -796,4 +794,9 @@ html {
     .token.inserted:not(.prefix) {
     background-color: rgba(0, 255, 128, 0.3);
     display: inline;
+}
+
+// No scroll
+.no-scroll {
+    overflow: hidden !important;
 }

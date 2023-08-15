@@ -4,9 +4,14 @@ import { useRef } from 'react';
 import { useScrollToPrompt } from '@/hooks/useScrollToPrompt';
 import styles from './indicator.module.scss';
 
-export function Indicator({ label }) {
+export function Indicator({ label, selected: overrideSelected, prompts }) {
     const ref = useRef<HTMLDivElement>(null);
-    const { promptIndex, selected } = useScrollToPrompt({ ref, label });
+    const { promptIndex, selected } = useScrollToPrompt({
+        ref,
+        label,
+        prompts,
+        selected: overrideSelected
+    });
 
     return (
         <div

@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--page-gap);
+    position: relative;
 
     @media print {
         gap: calc(var(--line-height) * 2);
@@ -42,10 +43,20 @@
 
         // DEV:
 
-        @media (max-width: utilities.$small-width) {
-            min-height: 0px;
-            height: calc(100dvh - 175px);
+        @media (pointer: coarse) {
             overflow: auto;
+            
+            // height: calc(100dvh - 175px - 0.5in);
+
+            flex: 2;
+            
+            min-height: 0px;
+            max-width: calc(100vw - 0.5in);
+            width: unset;
+            min-width: unset;
+            margin: 0.25in;
+            border: solid 1px var(--primary);
+            border-radius: var(--border-radius);
         }
     }
 }

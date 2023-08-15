@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { Console } from '@/components/console';
 import styles from './main.module.scss';
 
 type Props = {
@@ -17,7 +16,6 @@ export function Main({ children }: Props) {
                 <div style={{ color: 'var(--muted)' }}>
                     {'(C)'} {new Date().getFullYear()}
                 </div>
-                <Console />
             </div>
             <div className={styles.right}>{children}</div>
         </main>
