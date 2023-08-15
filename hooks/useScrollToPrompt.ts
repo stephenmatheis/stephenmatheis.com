@@ -40,7 +40,7 @@ export function useScrollToPrompt({
                 behavior: 'smooth',
             };
 
-            console.log(prompts[selected].label, options);
+            // console.log(prompts[selected]?.label, options);
 
             (matchMedia('(pointer:fine)').matches
                 ? window
