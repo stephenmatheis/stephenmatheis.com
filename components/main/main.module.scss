@@ -7,21 +7,19 @@
     width: 100%;
     gap: 16ch;
 
-    @media (min-width: utilities.$large-width) {
+    @media (min-width: utilities.$large-width) and (pointer: fine) {
         .left {
             position: absolute;
             right: calc(100% + 8ch);
         }
     }
 
-    @media (max-width: utilities.$medium-width) {
+    @media (max-width: utilities.$medium-width), (pointer: coarse) {
         flex-direction: column;
         gap: calc(var(--line-height) * 4);
     }
 
     @include utilities.gaps();
-
-    // DEV:
 
     @media (pointer: coarse) {
         max-width: var(--max-width);
@@ -36,8 +34,6 @@
 
     .left {
         min-width: max-content;
-        // justify-content: flex-start;
-        // gap: calc(var(--line-height) * 2);
 
         @media screen and (max-width: utilities.$medium-width) {
             width: unset;
