@@ -4,8 +4,7 @@
     position: fixed;
     top: 0px;
     left: 0px;
-    // NOTE: Why - 10px? Will it always be 10px at larger viewports?
-    height: calc(100% / 1.5 - 10px);
+    height: 100dvh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -14,6 +13,11 @@
 
     @media print {
         display: none;
+    }
+
+    @media (pointer: coarse) {
+        // NOTE: Why + 6px? Will it always be 10px at larger viewports?
+        height: calc(100dvh / 1.5 + 6px);
     }
 
     .name {
@@ -25,12 +29,14 @@
     }
 
     .prompts {
-        padding: 1ch 4ch;
+        // padding: 1ch 4ch;
+        padding: var(--line-height);
         background-color: var(--background-color);
         border-radius: var(--border-radius);
         border: solid 1px var(--primary);
 
         @media (pointer: coarse) {
+            padding: 1ch 4ch;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -52,7 +58,6 @@
             min-width: 300px;
 
             @media (pointer: coarse) {
-                // height: 48px;
                 height: 44px;
                 min-height: 44px;
             }

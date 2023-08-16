@@ -15,13 +15,13 @@ const prompts: PromptProps[] = [
         path: '/posts',
         type: 'console',
     },
-    {
-        label: 'RSS',
-        path: '/rss',
-        type: 'console',
-        nest: '/posts',
-        newTab: true,
-    },
+    // {
+    //     label: 'RSS',
+    //     path: '/rss',
+    //     type: 'console',
+    //     nest: '/posts',
+    //     newTab: true,
+    // },
     {
         label: 'Archive',
         path: '/archive',
