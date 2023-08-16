@@ -27,11 +27,15 @@ export function Indicator({
         scrollCtr,
     });
 
+    // console.log(overrideSelected, selected, promptIndex, selected === promptIndex);
+
     return (
         <div
             ref={ref}
             className={[
-                ...(selected === promptIndex ? [styles.selected] : []),
+                ...(selected !== -1 && selected === promptIndex
+                    ? [styles.selected]
+                    : []),
                 styles.indicator,
             ].join(' ')}
         >
