@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
 
 export type PromptProps = {
     label: string;
@@ -36,11 +35,9 @@ export function usePrompts() {
 
 export function PromptsProvider({ children }) {
     const router = useRouter();
-    const pathname = usePathname();
     const [open, setOpen] = useState(false);
     const [prompts, setPrompts] = useState<PromptProps[]>([]);
-    const pathIndex = prompts.map(({ path }) => path).indexOf(pathname);
-    const startIndex = pathIndex !== -1 ? pathIndex : 0;
+    const startIndex = -1;
     const [selected, setSelected] = useState<number>(startIndex);
 
     useEffect(() => {
