@@ -34,7 +34,7 @@ export function usePrompts() {
     return useContext(PromptsContext);
 }
 
-export function PromptsProvider({ children, prompts: defaultPrompts }) {
+export function PromptsProvider({ children }) {
     const router = useRouter();
     const pathname = usePathname();
     const [open, setOpen] = useState(false);
