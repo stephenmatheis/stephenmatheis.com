@@ -18,7 +18,9 @@ export function useScrollToPrompt({
     scrollCtr,
 }: Props) {
     const { prompts, selected } = usePrompts();
-    const localSelected = overrideSelected || selected;
+    // TODO: Move to usePrompts() param?
+    const localSelected =
+        typeof overrideSelected === 'number' ? overrideSelected : selected;
     const localPrompts = overridePrompts || prompts;
     const promptIndex = localPrompts.map(({ label }) => label).indexOf(label);
     const selectNode = useCallback(
@@ -73,6 +75,13 @@ export function useScrollToPrompt({
             node?.scrollTo(options);
         }
     }, [localPrompts, localSelected, promptIndex, scrollCtr, selectNode, ref]);
+
+    // console.log(
+    //     overrideSelected,
+    //     overrideSelected && overrideSelected > -1,
+    //     selected,
+    //     localSelected
+    // );
 
     return {
         promptIndex,

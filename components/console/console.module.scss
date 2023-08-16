@@ -29,8 +29,7 @@
     }
 
     .prompts {
-        // padding: 1ch 4ch;
-        padding: var(--line-height);
+        padding: var(--line-height) 4ch;
         background-color: var(--background-color);
         border-radius: var(--border-radius);
         border: solid 1px var(--primary);
@@ -56,6 +55,7 @@
             align-items: center;
             gap: 0.5ch;
             min-width: 300px;
+            height: calc(var(--line-height) * 1.5);
 
             @media (pointer: coarse) {
                 height: 44px;

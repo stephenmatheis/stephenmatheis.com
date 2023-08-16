@@ -105,12 +105,13 @@ function LinkType({ children, href, newTab, ...props }) {
 }
 
 export function Console() {
-    // const { prompts, selected, setSelected, open, setOpen } = usePrompts();
-    const promptsRef = useRef<HTMLDivElement>(null);
-    const { open, setOpen } = usePrompts();
-    const [selected, setSelected] = useState(0);
-    const router = useRouter();
     const pathname = usePathname();
+    // const { prompts, selected, setSelected, open, setOpen } = usePrompts();
+    const { open, setOpen } = usePrompts();
+    const promptsRef = useRef<HTMLDivElement>(null);
+    const pathPrompt = prompts.map(({ path }) => path).indexOf(pathname);
+    const [selected, setSelected] = useState(pathPrompt);
+    const router = useRouter();
 
     useEffect(() => {
         function selectNext(event: KeyboardEvent) {
@@ -162,10 +163,14 @@ export function Console() {
             }
         }
 
+        if (!open) {
+            setSelected(pathPrompt);
+        }
+
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [open, router, selected, setOpen, setSelected]);
+    }, [open, pathPrompt, router, selected, setOpen, setSelected]);
 
     return (
         <>
