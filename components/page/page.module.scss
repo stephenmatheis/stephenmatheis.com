@@ -49,6 +49,19 @@
             margin: var(--buffer);
             border: solid 1px var(--primary);
             border-radius: var(--border-radius);
+
+            @media (min-width: utilities.$large-width) {
+                padding-top: 0.5in;
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                margin: 0 auto;
+                width: calc(100% - (126px * 2) - 2in);
+                height: 90vh;
+                // https://github.com/kylebshr/ScreenCorners
+                border-radius: 18px;
+            }
         }
     }
 }
