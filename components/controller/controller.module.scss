@@ -1,6 +1,8 @@
 @use 'styles/utilities';
 
+// TODO: Allow parts to be freely movable
 .controller {
+    --controller-margin: 0.25in;
     --btn-max-width: 126px;
     --btn-gap: 15px;
     --dpad-radius: 4px;
@@ -10,21 +12,18 @@
     user-select: none;
     display: flex;
     justify-content: space-between;
-    
+
     flex: 1;
-    
-    // height: 175px;
-    
-    // margin: 0px 0.125in 0.125in 0.125in;
-    margin-left: 0.25in;
-    margin-right: 0.25in;
-    margin-bottom: 0.25in;
-    // border: solid 1px var(--primary);
-    // border-radius: var(--border-radius);
-    // padding: 0px var(--btn-gap);
+    margin-left: var(--controller-margin);
+    margin-right: var(--controller-margin);
+    margin-bottom: var(--controller-margin);
 
     @media (pointer: fine), (hover: hover) {
         display: none;
+    }
+
+    @media (min-width: utilities.$large-width) {
+        --controller-margin: 0.5in;
     }
 
     .dpad,
@@ -34,12 +33,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
 
-    // .dpad,
-    // .buttons {
-    //     flex: 1;
-    // }
+        @media (min-width: utilities.$large-width) {
+            // justify-content: flex-end;
+        }
+    }
 
     .dpad {
         flex-direction: column;
@@ -52,9 +50,17 @@
             width: var(--dpad-size);
             display: flex;
             padding: 2px;
+            justify-content: center;
+            align-items: center;
+
+            background-color: var(--primary);
 
             svg {
-                fill: var(--primary);
+                // fill: var(--primary-50);
+                fill: var(--background-color);
+
+                width: 75%;
+                height: 75%;
             }
         }
 
@@ -64,8 +70,6 @@
             border-left: solid 1px var(--primary);
             border-right: solid 1px var(--primary);
             border-radius: var(--dpad-radius) var(--dpad-radius) 0px 0px;
-
-            justify-content: center;
         }
 
         .down {
@@ -75,8 +79,9 @@
             border-right: solid 1px var(--primary);
             border-radius: 0px 0px var(--dpad-radius) var(--dpad-radius);
 
-            justify-content: center;
-            align-items: flex-end;
+            svg {
+                transform: rotate(180deg);
+            }
         }
 
         .left {
@@ -86,8 +91,9 @@
             border-left: solid 1px var(--primary);
             border-radius: var(--dpad-radius) 0px 0px var(--dpad-radius);
 
-            justify-content: flex-start;
-            align-items: center;
+            svg {
+                transform: rotate(270deg);
+            }
         }
 
         .right {
@@ -97,14 +103,19 @@
             border-right: solid 1px var(--primary);
             border-radius: 0px var(--dpad-radius) var(--dpad-radius) 0px;
 
-            justify-content: flex-end;
-            align-items: center;
+            svg {
+                transform: rotate(90deg);
+            }
         }
 
         .middle {
             display: flex;
             gap: var(--dpad-size);
-            background-color: var(--background-color);
+
+            // background-color: var(--background-color);
+            background-color: var(--primary);
+
+            border-radius: var(--dpad-radius);
         }
     }
 
@@ -114,6 +125,16 @@
         gap: 10px;
         padding-top: 10px;
 
+        @media (min-width: utilities.$large-width) {
+            position: fixed;
+            right: 0.5in;
+            bottom: 0.5in;
+            width: var(--btn-max-width);
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
         .btn-ctr {
             width: 100%;
             background-color: var(--background-color);
@@ -121,12 +142,20 @@
             height: 44px;
 
             .btn {
-                height: 10px;
+                height: var(--font-size);
                 width: 100%;
-                margin-bottom: 5px;
-                background-color: var(--background-color);
-                border: solid 1px var(--primary);
+                margin-bottom: calc(var(--font-size) / 2);
                 border-radius: var(--dpad-radius);
+
+                // background-color: var(--background-color);
+                // border: solid 1px var(--primary);
+
+                background-color: var(--primary-50);
+                border: solid 1px transparent;
+
+                @media (min-width: utilities.$large-width) {
+                    height: calc(var(--font-size) + 2px);
+                }
             }
 
             .label {
@@ -134,6 +163,12 @@
                 text-align: center;
                 line-height: 1;
                 font-size: calc(var(--font-size) - 2px);
+                font-family: var(--font-block);
+                // font-size: 22px;
+
+                @media (min-width: utilities.$large-width) {
+                    font-size: calc(var(--font-size) + 2px);
+                }
             }
         }
     }
@@ -161,10 +196,17 @@
             place-content: center;
             height: var(--btn-size);
             width: var(--btn-size);
-            background-color: var(--background-color);
-            color: var(--primary);
-            border: solid 1px var(--primary);
             border-radius: 50%;
+            font-family: var(--font-block);
+            font-size: calc(var(--font-size) + 10px);
+
+            // border: solid 1px var(--primary);
+            // background-color: var(--background-color);
+            // color: var(--primary);
+
+            border: solid 1px var(--primary);
+            background-color: var(--primary);
+            color: var(--background-color);
         }
     }
 
