@@ -188,6 +188,12 @@ export function Console() {
         return () => window.removeEventListener('keydown', selectNext);
     }, [open, pathPrompt, prompts, router, selected, setOpen, setSelected]);
 
+    useEffect(() => {
+        if (menu) {
+            setSelected(pathPrompt !== -1 ? pathPrompt : 0);
+        }
+    }, [menu, pathPrompt]);
+
     return (
         <>
             {/* <div className={styles.menu}>
