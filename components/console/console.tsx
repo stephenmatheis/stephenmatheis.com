@@ -9,19 +9,13 @@ import { Indicator } from '@/components/indicator';
 import type { PromptProps } from '@/contexts/prompts/prompts';
 import styles from './console.module.scss';
 
-const prompts: PromptProps[] = [
+// TODO: Add 'game' path to JS canvas game (something simple, following YT tutorial)
+const startMenuPrompts: PromptProps[] = [
     {
         label: 'Posts',
         path: '/posts',
         type: 'console',
     },
-    // {
-    //     label: 'RSS',
-    //     path: '/rss',
-    //     type: 'console',
-    //     nest: '/posts',
-    //     newTab: true,
-    // },
     {
         label: 'Archive',
         path: '/archive',
@@ -50,6 +44,16 @@ const prompts: PromptProps[] = [
     },
 ];
 
+// TODO: Should routes live in the 'Select', and leave fun stuff like 'Game' in 'Start?'
+const selectMenuPrompts: PromptProps[] = [
+    {
+        label: 'RSS',
+        path: '/rss',
+        type: 'console',
+        newTab: true,
+    },
+];
+
 function PromptLink({
     label,
     path,
@@ -60,6 +64,7 @@ function PromptLink({
     nest,
     newTab,
     scrollCtr,
+    prompts,
     ...props
 }) {
     return (
@@ -104,11 +109,22 @@ function LinkType({ children, href, newTab, ...props }) {
     );
 }
 
+function choosePrompts(menu: string) {
+    switch (menu) {
+        case 'Start':
+            return startMenuPrompts;
+        case 'Select':
+            return selectMenuPrompts;
+        default:
+            return [];
+    }
+}
+
 export function Console() {
     const pathname = usePathname();
-    // const { prompts, selected, setSelected, open, setOpen } = usePrompts();
-    const { open, setOpen } = usePrompts();
+    const { open, setOpen, menu } = usePrompts();
     const promptsRef = useRef<HTMLDivElement>(null);
+    const prompts = choosePrompts(menu);
     const pathPrompt = prompts.map(({ path }) => path).indexOf(pathname);
     const [selected, setSelected] = useState(pathPrompt);
     const router = useRouter();
@@ -170,7 +186,7 @@ export function Console() {
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [open, pathPrompt, router, selected, setOpen, setSelected]);
+    }, [open, pathPrompt, prompts, router, selected, setOpen, setSelected]);
 
     return (
         <>
@@ -200,6 +216,7 @@ export function Console() {
                                             newTab={newTab}
                                             nest={nest}
                                             scrollCtr={promptsRef}
+                                            prompts={prompts}
                                         />
                                     );
                                 }

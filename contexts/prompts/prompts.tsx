@@ -18,6 +18,8 @@ export type PromptsContextProps = {
     setSelected: React.Dispatch<React.SetStateAction<number>>;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    menu: string;
+    setMenu: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const PromptsContext = createContext<PromptsContextProps>({
@@ -27,6 +29,8 @@ const PromptsContext = createContext<PromptsContextProps>({
     setSelected: () => null,
     open: false,
     setOpen: () => null,
+    menu: '',
+    setMenu: () => null,
 });
 
 export function usePrompts() {
@@ -39,6 +43,7 @@ export function PromptsProvider({ children }) {
     const [prompts, setPrompts] = useState<PromptProps[]>([]);
     const startIndex = -1;
     const [selected, setSelected] = useState<number>(startIndex);
+    const [menu, setMenu] = useState('');
 
     useEffect(() => {
         function selectNext(event: KeyboardEvent) {
@@ -84,6 +89,20 @@ export function PromptsProvider({ children }) {
                 }
             }
 
+            // if (event.key === 'Tab') {
+            //     event.preventDefault();
+
+            //     if (!prompts[selected]?.path) {
+            //         return;
+            //     }
+
+            //     if (prompts[selected].newTab) {
+            //         window.open(prompts[selected].path);
+            //     } else {
+            //         router.push(prompts[selected].path!);
+            //     }
+            // }
+
             if (event.key === ' ' || event.key === 'Escape') {
                 event.preventDefault();
                 setOpen((prev) => !prev);
@@ -116,6 +135,8 @@ export function PromptsProvider({ children }) {
                 setSelected,
                 open,
                 setOpen,
+                menu,
+                setMenu,
             }}
         >
             {children}
