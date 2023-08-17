@@ -4,7 +4,7 @@ import { usePrompts } from '@/contexts/prompts';
 import styles from './controller.module.scss';
 
 export function Controller() {
-    const { open, setOpen } = usePrompts();
+    const { open, setOpen, menu, setMenu } = usePrompts();
 
     return (
         <div className={styles.controller}>
@@ -105,15 +105,33 @@ export function Controller() {
                 </div>
             </div>
             <div className={styles.menu}>
-                <button className={styles['btn-ctr']}>
+                <button
+                    className={styles['btn-ctr']}
+                    onClick={() => {
+                        setMenu('Select');
+                        setOpen((prev) => {
+                            if (menu === 'Select') {
+                                return !prev;
+                            } else {
+                                return true;
+                            }
+                        });
+                    }}
+                >
                     <div className={styles.btn} />
                     <div className={styles.label}>Select</div>
                 </button>
                 <button
                     className={styles['btn-ctr']}
                     onClick={() => {
-                        console.log(open);
-                        setOpen((prev) => !prev);
+                        setMenu('Start');
+                        setOpen((prev) => {
+                            if (menu === 'Start') {
+                                return !prev;
+                            } else {
+                                return true;
+                            }
+                        });
                     }}
                 >
                     <div className={styles.btn} />
@@ -141,10 +159,9 @@ export function Controller() {
                         onClick={() => {
                             console.log('B');
 
-                            // TODO: What key?
                             // window.dispatchEvent(
                             //     new KeyboardEvent('keydown', {
-                            //         key: 'Enter',
+                            //         key: 'Tab',
                             //     })
                             // );
                         }}
