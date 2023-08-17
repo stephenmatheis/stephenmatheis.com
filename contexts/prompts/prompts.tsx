@@ -73,7 +73,7 @@ export function PromptsProvider({ children }) {
             if (event.key === 'Enter') {
                 event.preventDefault();
 
-                if (!prompts[selected].path) {
+                if (!prompts[selected]?.path) {
                     return;
                 }
 
