@@ -64,12 +64,20 @@ const selectMenuPrompts = {
     ],
 };
 
-const defaultSelectPrompts: PromptProps[] = [
+const defaultStartPrompts: PromptProps[] = [
     {
         label: 'Back',
         type: 'console',
         path: 'back',
     },
+    {
+        label: 'Cancel',
+        type: 'console',
+        path: 'cancel',
+    },
+];
+
+const defaultSelectPrompts: PromptProps[] = [
     {
         label: 'Cancel',
         type: 'console',
@@ -138,9 +146,12 @@ function LinkType({ children, href, newTab, ...props }) {
 function choosePrompts(menu: string, pathname: string) {
     switch (menu) {
         case 'Start':
-            return [...startMenuPrompts, ...defaultSelectPrompts];
+            return [...startMenuPrompts, ...defaultStartPrompts];
         case 'Select':
-            return [...selectMenuPrompts[pathname], ...defaultSelectPrompts];
+            return [
+                ...(selectMenuPrompts[pathname] || []),
+                ...defaultSelectPrompts,
+            ];
         default:
             return [];
     }
@@ -152,9 +163,7 @@ export function Console() {
     const promptsRef = useRef<HTMLDivElement>(null);
     const prompts = choosePrompts(menu, pathname);
     const pathPrompt = prompts.map(({ path }) => path).indexOf(pathname);
-    const [selected, setSelected] = useState(
-        pathPrompt === -1 ? 0 : pathPrompt
-    );
+    const [selected, setSelected] = useState(0);
     const router = useRouter();
 
     useEffect(() => {
@@ -219,6 +228,7 @@ export function Console() {
                 event.preventDefault();
 
                 setMenu('Start');
+                setSelected(0);
                 setOpen((prev) => {
                     if (menu === 'Start') {
                         return !prev;
@@ -232,6 +242,7 @@ export function Console() {
                 event.preventDefault();
 
                 setMenu('Select');
+                setSelected(0);
                 setOpen((prev) => {
                     if (menu === 'Select') {
                         return !prev;
@@ -256,10 +267,6 @@ export function Console() {
         setOpen,
         setSelected,
     ]);
-
-    useEffect(() => {
-        setSelected(pathPrompt === -1 ? 0 : pathPrompt);
-    }, [pathPrompt]);
 
     return (
         <>
