@@ -47,6 +47,7 @@ export function PromptsProvider({ children }) {
 
     useEffect(() => {
         function selectNext(event: KeyboardEvent) {
+            // FIXME: Combine with event handler in Console
             if (open) {
                 return;
             }
@@ -89,30 +90,37 @@ export function PromptsProvider({ children }) {
                 }
             }
 
-            // if (event.key === 'Tab') {
-            //     event.preventDefault();
-
-            //     if (!prompts[selected]?.path) {
-            //         return;
-            //     }
-
-            //     if (prompts[selected].newTab) {
-            //         window.open(prompts[selected].path);
-            //     } else {
-            //         router.push(prompts[selected].path!);
-            //     }
-            // }
-
-            if (event.key === ' ' || event.key === 'Escape') {
+            if (event.key === ' ') {
                 event.preventDefault();
-                setOpen((prev) => !prev);
+
+                setMenu('Start');
+                setOpen((prev) => {
+                    if (menu === 'Start') {
+                        return !prev;
+                    } else {
+                        return true;
+                    }
+                });
+            }
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+
+                setMenu('Select');
+                setOpen((prev) => {
+                    if (menu === 'Select') {
+                        return !prev;
+                    } else {
+                        return true;
+                    }
+                });
             }
         }
 
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [open, prompts, router, selected, setOpen, setSelected]);
+    }, [menu, open, prompts, router, selected, setOpen, setSelected]);
 
     useEffect(() => {
         if (open) {

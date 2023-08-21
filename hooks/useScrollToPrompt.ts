@@ -48,10 +48,23 @@ export function useScrollToPrompt({
         []
     );
 
+    const getScrollHeight = useCallback(
+        (scrollCtr: RefObject<HTMLDivElement> | undefined) => {
+            if (scrollCtr?.current) {
+                scrollCtr.current.scrollHeight;
+            } else {
+                document.body.scrollHeight;
+            }
+        },
+        []
+    );
+
     useEffect(() => {
         if (localPrompts.length === 0) {
             return;
         }
+
+        // console.log(label);
 
         if (localSelected === promptIndex) {
             const { node, nodeTop, offset } = selectNode(scrollCtr);
@@ -62,19 +75,34 @@ export function useScrollToPrompt({
             );
             const gap = scrollCtr?.current ? lineHeight : lineHeight * 4;
             const refTop = ref.current?.getBoundingClientRect().top || 0;
+            const top =
+                promptIndex === 0
+                    ? 0
+                    : promptIndex === prompts.length - 1
+                    ? getScrollHeight(scrollCtr)
+                    : refTop + offset - gap - nodeTop;
 
             // https://stackoverflow.com/a/49860927
             const options: ScrollToOptions = {
-                top:
-                    localSelected === promptIndex && promptIndex !== 0
-                        ? refTop + offset - gap - nodeTop
-                        : 0,
+                top: top || 0,
                 behavior: 'smooth',
             };
 
             node?.scrollTo(options);
         }
-    }, [localPrompts, localSelected, promptIndex, scrollCtr, selectNode, ref]);
+    }, [
+        localPrompts,
+        localSelected,
+        promptIndex,
+        scrollCtr,
+        selectNode,
+        ref,
+        label,
+        prompts.length,
+        getScrollHeight,
+    ]);
+
+    // console.log(prompts);
 
     // console.log(
     //     overrideSelected,

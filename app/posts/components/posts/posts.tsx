@@ -12,16 +12,14 @@ export function Posts({ posts }: { posts: Post[] }) {
     return (
         <>
             <UpdatePrompts
-                prompts={[
-                    ...last20Posts.map(({ slug, title, link }) => {
-                        return {
-                            label: title,
-                            path: link || `/posts/${slug}`,
-                            type: 'post',
-                            newTab: link ? true : false,
-                        };
-                    }),
-                ]}
+                prompts={last20Posts.map(({ slug, title, link }) => {
+                    return {
+                        label: title,
+                        path: link || `/posts/${slug}`,
+                        type: 'post',
+                        newTab: link ? true : false,
+                    };
+                })}
             />
             <div className={styles['date-groups']}>
                 {dates.map((date, dateIndex) => {

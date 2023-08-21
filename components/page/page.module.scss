@@ -43,11 +43,19 @@
             flex: 2;
             overflow: auto;
             min-height: 0px;
-            max-width: calc(100vw - (var(--buffer) * 2));
             width: unset;
             min-width: unset;
-            margin: var(--buffer);
-            border: solid 1px var(--primary);
+
+            // DEV:: No border
+
+            // max-width: calc(100vw - (var(--buffer) * 2));
+            // margin: var(--buffer);
+            // border: solid 1px var(--primary);
+
+            padding-bottom: calc(100dvh / 3);
+
+            // DEV:
+
             border-radius: var(--border-radius);
 
             @media (min-width: utilities.$large-width) {
@@ -58,9 +66,17 @@
                 transform: translate(-50%, -50%);
                 margin: 0 auto;
                 width: calc(100% - (126px * 2) - 2in);
-                height: 90vh;
+
+                // DEV:: No border
+
                 // https://github.com/kylebshr/ScreenCorners
-                border-radius: 18px;
+                // border-radius: 18px;
+                // height: 90vh;
+                height: 100vh;
+
+                padding-bottom: 0.5in;
+
+                // DEV:
             }
         }
     }
