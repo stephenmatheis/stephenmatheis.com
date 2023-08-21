@@ -43,8 +43,6 @@
             flex: 2;
             overflow: auto;
             min-height: 0px;
-            width: unset;
-            min-width: unset;
             padding-bottom: calc(100dvh / 3);
 
             @media (min-width: utilities.$large-width) {
