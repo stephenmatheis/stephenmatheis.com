@@ -29,19 +29,20 @@ export function useScrollToPrompt({
                 return {
                     node: scrollCtr.current,
                     nodeTop: scrollCtr.current.getBoundingClientRect().top,
-                    offset: scrollCtr.current.scrollTop,
+                    offset: scrollCtr.current.scrollTop || 0,
                 };
             } else if (matchMedia('(pointer:coarse)').matches) {
                 return {
                     node: document.querySelector('[data-page]'),
-                    offset: window.scrollY,
                     nodeTop: 0,
+                    offset:
+                        document.querySelector('[data-page]')?.scrollTop || 0,
                 };
             } else {
                 return {
                     node: window,
-                    offset: window.scrollY,
                     nodeTop: 0,
+                    offset: window.scrollY,
                 };
             }
         },
@@ -51,9 +52,11 @@ export function useScrollToPrompt({
     const getScrollHeight = useCallback(
         (scrollCtr: RefObject<HTMLDivElement> | undefined) => {
             if (scrollCtr?.current) {
-                scrollCtr.current.scrollHeight;
+                return scrollCtr.current.scrollHeight || 0;
+            } else if (matchMedia('(pointer:coarse)').matches) {
+                return document.querySelector('[data-page]')?.scrollHeight || 0;
             } else {
-                document.body.scrollHeight;
+                return document.body.scrollHeight;
             }
         },
         []
@@ -63,8 +66,6 @@ export function useScrollToPrompt({
         if (localPrompts.length === 0) {
             return;
         }
-
-        // console.log(label);
 
         if (localSelected === promptIndex) {
             const { node, nodeTop, offset } = selectNode(scrollCtr);
@@ -78,7 +79,7 @@ export function useScrollToPrompt({
             const top =
                 promptIndex === 0
                     ? 0
-                    : promptIndex === prompts.length - 1
+                    : promptIndex === localPrompts.length - 1
                     ? getScrollHeight(scrollCtr)
                     : refTop + offset - gap - nodeTop;
 
@@ -98,18 +99,8 @@ export function useScrollToPrompt({
         selectNode,
         ref,
         label,
-        prompts.length,
         getScrollHeight,
     ]);
-
-    // console.log(prompts);
-
-    // console.log(
-    //     overrideSelected,
-    //     overrideSelected && overrideSelected > -1,
-    //     selected,
-    //     localSelected
-    // );
 
     return {
         promptIndex,
