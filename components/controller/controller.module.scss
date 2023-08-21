@@ -14,9 +14,26 @@
     justify-content: space-between;
 
     flex: 1;
-    margin-left: var(--controller-margin);
-    margin-right: var(--controller-margin);
-    margin-bottom: var(--controller-margin);
+
+    // DEV: Fixed
+
+    // margin-left: var(--controller-margin);
+    // margin-right: var(--controller-margin);
+    // margin-bottom: var(--controller-margin);
+
+    // padding-left: var(--controller-margin);
+    // padding-right: var(--controller-margin);
+    // padding-bottom: var(--controller-margin);
+
+    padding: var(--controller-margin);
+
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    backdrop-filter: blur(4px);
+
+    // DEV:
 
     @media (pointer: fine), (hover: hover) {
         display: none;
@@ -24,6 +41,13 @@
 
     @media (min-width: utilities.$large-width) {
         --controller-margin: 0.5in;
+
+        // DEV: Fixed
+
+        position: unset;
+        backdrop-filter: unset;
+
+        // DEV:
     }
 
     .dpad,
@@ -137,7 +161,8 @@
 
         .btn-ctr {
             width: 100%;
-            background-color: var(--background-color);
+            // background-color: var(--background-color);
+            background-color: transparent;
             border: none;
             height: 44px;
 

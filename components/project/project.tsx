@@ -9,12 +9,19 @@ type ImageProps = {
     height?: number;
 };
 
-export function Project({ name, link, description, image, displayImages }) {
+export function Project({
+    name,
+    link,
+    description,
+    image,
+    displayImages,
+    printOnly,
+}) {
     const { src }: ImageProps = image;
 
     return (
         <div key={name} className={styles['project-ctr']}>
-            <Indicator label={name} />
+            {!printOnly && <Indicator label={name} />}
             <LinkCtr href={link} newTab>
                 {name}
             </LinkCtr>

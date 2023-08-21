@@ -16,7 +16,7 @@ export function Skills() {
                     ...skills.map(({ group }) => {
                         return {
                             label: group,
-                            type: 'job',
+                            type: 'skill',
                         };
                     }),
                 ]}

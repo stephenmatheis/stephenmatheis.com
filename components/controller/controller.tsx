@@ -158,12 +158,6 @@ export function Controller() {
                     <button
                         onClick={() => {
                             console.log('B');
-
-                            // window.dispatchEvent(
-                            //     new KeyboardEvent('keydown', {
-                            //         key: 'Tab',
-                            //     })
-                            // );
                         }}
                     >
                         B

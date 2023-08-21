@@ -45,12 +45,35 @@ const startMenuPrompts: PromptProps[] = [
 ];
 
 // TODO: Should routes live in the 'Select', and leave fun stuff like 'Game' in 'Start?'
-const selectMenuPrompts: PromptProps[] = [
+const selectMenuPrompts = {
+    '/posts': [
+        {
+            label: 'RSS',
+            path: '/rss',
+            type: 'console',
+            newTab: true,
+        },
+    ],
+    '/about': [
+        {
+            label: 'Download',
+            path: '/resume.pdf',
+            type: 'console',
+            newTab: true,
+        },
+    ],
+};
+
+const defaultSelectPrompts: PromptProps[] = [
     {
-        label: 'RSS',
-        path: '/rss',
+        label: 'Back',
         type: 'console',
-        newTab: true,
+        path: 'back',
+    },
+    {
+        label: 'Cancel',
+        type: 'console',
+        path: 'cancel',
     },
 ];
 
@@ -88,6 +111,9 @@ function PromptLink({
             <div
                 className={[
                     ...(pathname === path ? [styles.selected] : []),
+                    ...(label === 'Cancel' || label == 'Back'
+                        ? [styles.muted]
+                        : []),
                     styles.label,
                 ].join(' ')}
             >
@@ -109,12 +135,12 @@ function LinkType({ children, href, newTab, ...props }) {
     );
 }
 
-function choosePrompts(menu: string) {
+function choosePrompts(menu: string, pathname: string) {
     switch (menu) {
         case 'Start':
-            return startMenuPrompts;
+            return [...startMenuPrompts, ...defaultSelectPrompts];
         case 'Select':
-            return selectMenuPrompts;
+            return [...selectMenuPrompts[pathname], ...defaultSelectPrompts];
         default:
             return [];
     }
@@ -122,15 +148,18 @@ function choosePrompts(menu: string) {
 
 export function Console() {
     const pathname = usePathname();
-    const { open, setOpen, menu } = usePrompts();
+    const { open, setOpen, menu, setMenu } = usePrompts();
     const promptsRef = useRef<HTMLDivElement>(null);
-    const prompts = choosePrompts(menu);
+    const prompts = choosePrompts(menu, pathname);
     const pathPrompt = prompts.map(({ path }) => path).indexOf(pathname);
-    const [selected, setSelected] = useState(pathPrompt);
+    const [selected, setSelected] = useState(
+        pathPrompt === -1 ? 0 : pathPrompt
+    );
     const router = useRouter();
 
     useEffect(() => {
         function selectNext(event: KeyboardEvent) {
+            // FIXME: Combine with event handler in Prompts
             if (!open) {
                 return;
             }
@@ -166,6 +195,18 @@ export function Console() {
                     return;
                 }
 
+                if (prompts[selected].path === 'cancel') {
+                    setOpen(false);
+
+                    return;
+                }
+
+                if (prompts[selected].path === 'back') {
+                    router.back();
+
+                    return;
+                }
+
                 if (prompts[selected].newTab) {
                     window.open(prompts[selected].path);
                 } else {
@@ -173,26 +214,52 @@ export function Console() {
                 }
             }
 
-            if (event.key === ' ' || event.key === 'Escape') {
+            // FIXME:
+            if (event.key === ' ') {
                 event.preventDefault();
-                setOpen((prev) => !prev);
-            }
-        }
 
-        if (!open) {
-            setSelected(pathPrompt);
+                setMenu('Start');
+                setOpen((prev) => {
+                    if (menu === 'Start') {
+                        return !prev;
+                    } else {
+                        return true;
+                    }
+                });
+            }
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+
+                setMenu('Select');
+                setOpen((prev) => {
+                    if (menu === 'Select') {
+                        return !prev;
+                    } else {
+                        return true;
+                    }
+                });
+            }
         }
 
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [open, pathPrompt, prompts, router, selected, setOpen, setSelected]);
+    }, [
+        menu,
+        open,
+        pathPrompt,
+        prompts,
+        router,
+        selected,
+        setMenu,
+        setOpen,
+        setSelected,
+    ]);
 
     useEffect(() => {
-        if (menu) {
-            setSelected(pathPrompt !== -1 ? pathPrompt : 0);
-        }
-    }, [menu, pathPrompt]);
+        setSelected(pathPrompt === -1 ? 0 : pathPrompt);
+    }, [pathPrompt]);
 
     return (
         <>

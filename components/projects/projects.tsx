@@ -18,16 +18,14 @@ export function Projects({ displayImages, printOnly }: Props) {
         >
             {!printOnly && (
                 <UpdatePrompts
-                    prompts={[
-                        ...projects.map(({ name, link }) => {
-                            return {
-                                label: name,
-                                path: link,
-                                type: 'project',
-                                newTab: true,
-                            };
-                        }),
-                    ]}
+                    prompts={projects.map(({ name, link }) => {
+                        return {
+                            label: name,
+                            path: link,
+                            type: 'project',
+                            newTab: true,
+                        };
+                    })}
                 />
             )}
             <div
@@ -43,6 +41,7 @@ export function Projects({ displayImages, printOnly }: Props) {
                         description={description}
                         image={image}
                         displayImages={displayImages}
+                        printOnly={printOnly}
                     />
                 ))}
             </div>
