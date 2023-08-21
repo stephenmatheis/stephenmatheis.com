@@ -13,41 +13,35 @@
     display: flex;
     justify-content: space-between;
 
-    flex: 1;
-
-    // DEV: Fixed
-
-    // margin-left: var(--controller-margin);
-    // margin-right: var(--controller-margin);
-    // margin-bottom: var(--controller-margin);
-
-    // padding-left: var(--controller-margin);
-    // padding-right: var(--controller-margin);
-    // padding-bottom: var(--controller-margin);
-
-    padding: var(--controller-margin);
-
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    backdrop-filter: blur(4px);
-
-    // DEV:
-
-    @media (pointer: fine), (hover: hover) {
+    @media (pointer: fine) {
         display: none;
     }
 
-    @media (min-width: utilities.$large-width) {
-        --controller-margin: 0.5in;
+    @media (pointer: coarse) {
+        @media (max-width: utilities.$medium-width) {
+            margin: 0px;
 
-        // DEV: Fixed
+            height: calc(100dvh / 3);
 
-        position: unset;
-        backdrop-filter: unset;
+            padding-left: var(--controller-margin);
+            padding-right: var(--controller-margin);
+            padding-bottom: var(--controller-margin);
 
-        // DEV:
+            position: fixed;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            backdrop-filter: blur(4px);
+        }
+
+        @media (min-width: utilities.$large-width) {
+            --controller-margin: 0.5in;
+
+            flex: 1;
+            margin-left: var(--controller-margin);
+            margin-right: var(--controller-margin);
+            margin-bottom: var(--controller-margin);
+        }
     }
 
     .dpad,
@@ -156,30 +150,25 @@
             width: var(--btn-max-width);
             flex-direction: row;
             justify-content: space-between;
-            gap: 8px;
+            gap: 2ch;
         }
 
         .btn-ctr {
             width: 100%;
-            // background-color: var(--background-color);
+            padding: 0px;
             background-color: transparent;
             border: none;
             height: 44px;
 
             .btn {
                 height: var(--font-size);
-                width: 100%;
                 margin-bottom: calc(var(--font-size) / 2);
                 border-radius: var(--dpad-radius);
-
-                // background-color: var(--background-color);
-                // border: solid 1px var(--primary);
-
                 background-color: var(--primary-50);
                 border: solid 1px transparent;
 
                 @media (min-width: utilities.$large-width) {
-                    height: calc(var(--font-size) + 2px);
+                    height: calc(var(--font-size) + 6px);
                 }
             }
 
@@ -187,12 +176,11 @@
                 color: var(--primary);
                 text-align: center;
                 line-height: 1;
-                font-size: calc(var(--font-size) - 2px);
+                // font-size: calc(var(--font-size) + 2px);
                 font-family: var(--font-block);
-                // font-size: 22px;
 
                 @media (min-width: utilities.$large-width) {
-                    font-size: calc(var(--font-size) + 2px);
+                    font-size: calc(var(--font-size) + 6px);
                 }
             }
         }
