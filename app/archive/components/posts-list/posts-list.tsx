@@ -73,7 +73,12 @@ export function PostsList({ posts }: { posts: Post[] }) {
 
                         return (
                             <div className={styles.group} key={date}>
-                                <h2 className={styles.month}>{date}</h2>
+                                <h2 className={styles.month}>
+                                    {new Date(date).toLocaleString('default', {
+                                        month: 'long',
+                                        year: 'numeric',
+                                    })}
+                                </h2>
                                 {postsThisMonth.map(
                                     ({
                                         slug,
