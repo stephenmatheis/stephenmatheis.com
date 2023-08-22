@@ -10,15 +10,13 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    pointer-events: none;
 
     @media print {
         display: none;
     }
 
     @media (pointer: coarse) {
-        // NOTE: Why + 6px? Will it always be 10px at larger viewports?
-        height: calc(90vh);
-
         @media (max-width: utilities.$small-width) {
             height: calc(100dvh / 1.5);
         }
@@ -33,18 +31,13 @@
     }
 
     .prompts {
+        pointer-events: all;
         padding: var(--line-height) 4ch;
         background-color: var(--background-color);
         border-radius: var(--border-radius);
-
-        // DEV: Blurred background
-
-        border: solid 1px var(--primary);
-        // border: solid 1px var(--muted);
+        border: solid 1px var(--primary-50);
         background-color: transparent;
         backdrop-filter: blur(16px);
-
-        // DEV:
 
         @media (pointer: coarse) {
             padding: 1ch 4ch;

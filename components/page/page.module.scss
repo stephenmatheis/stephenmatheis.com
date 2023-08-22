@@ -37,25 +37,8 @@
 
         @include utilities.gaps();
 
-        @media (pointer: coarse) {
-            --buffer: 8px;
-
-            flex: 2;
-            overflow: auto;
-            min-height: 0px;
+        @media (pointer: coarse) and (max-width: utilities.$small-width) {
             padding-bottom: calc(100dvh / 3);
-
-            @media (min-width: utilities.$large-width) {
-                padding-top: 0.5in;
-                position: fixed;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
-                margin: 0 auto;
-                width: calc(100% - (126px * 2) - 2in);
-                height: 100vh;
-                padding-bottom: 0.5in;
-            }
         }
     }
 }

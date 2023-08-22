@@ -79,6 +79,12 @@ const defaultStartPrompts: PromptProps[] = [
 
 const defaultSelectPrompts: PromptProps[] = [
     {
+        // TODO: How to switch between 'Show Controller' and 'Hide controller'
+        label: 'Controller',
+        type: 'console',
+        path: 'controller',
+    },
+    {
         label: 'Cancel',
         type: 'console',
         path: 'cancel',

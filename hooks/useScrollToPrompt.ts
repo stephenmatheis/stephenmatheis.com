@@ -31,13 +31,6 @@ export function useScrollToPrompt({
                     nodeTop: scrollCtr.current.getBoundingClientRect().top,
                     offset: scrollCtr.current.scrollTop || 0,
                 };
-            } else if (matchMedia('(pointer:coarse)').matches) {
-                return {
-                    node: document.querySelector('[data-page]'),
-                    nodeTop: 0,
-                    offset:
-                        document.querySelector('[data-page]')?.scrollTop || 0,
-                };
             } else {
                 return {
                     node: window,
@@ -53,8 +46,6 @@ export function useScrollToPrompt({
         (scrollCtr: RefObject<HTMLDivElement> | undefined) => {
             if (scrollCtr?.current) {
                 return scrollCtr.current.scrollHeight || 0;
-            } else if (matchMedia('(pointer:coarse)').matches) {
-                return document.querySelector('[data-page]')?.scrollHeight || 0;
             } else {
                 return document.body.scrollHeight;
             }
