@@ -9,39 +9,33 @@
     --dpad-size: calc(var(--btn-max-width) / 3);
     --btn-size: calc(var(--btn-max-width) / 2);
 
+    // pointer-events: none;
     user-select: none;
     display: flex;
     justify-content: space-between;
+    height: calc(100dvh / 3);
+    padding-left: var(--controller-margin);
+    padding-right: var(--controller-margin);
+    padding-bottom: var(--controller-margin);
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+
+    @media (min-width: utilities.$medium-width) {
+        --controller-margin: 0.5in;
+
+        bottom: 50%;
+        transform: translateY(50%);
+        padding-bottom: 0px;
+    }
+
+    @media (max-width: utilities.$small-width) {
+        backdrop-filter: blur(4px);
+    }
 
     @media (pointer: fine) {
         display: none;
-    }
-
-    @media (pointer: coarse) {
-        @media (max-width: utilities.$medium-width) {
-            margin: 0px;
-
-            height: calc(100dvh / 3);
-
-            padding-left: var(--controller-margin);
-            padding-right: var(--controller-margin);
-            padding-bottom: var(--controller-margin);
-
-            position: fixed;
-            bottom: 0px;
-            left: 0px;
-            width: 100%;
-            backdrop-filter: blur(4px);
-        }
-
-        @media (min-width: utilities.$large-width) {
-            --controller-margin: 0.5in;
-
-            flex: 1;
-            margin-left: var(--controller-margin);
-            margin-right: var(--controller-margin);
-            margin-bottom: var(--controller-margin);
-        }
     }
 
     .dpad,
@@ -51,10 +45,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-        @media (min-width: utilities.$large-width) {
-            // justify-content: flex-end;
-        }
+        pointer-events: all;
     }
 
     .dpad {
@@ -129,36 +120,33 @@
         .middle {
             display: flex;
             gap: var(--dpad-size);
-
-            // background-color: var(--background-color);
             background-color: var(--primary);
-
             border-radius: var(--dpad-radius);
         }
     }
 
     .menu {
         width: max-content;
-        flex-direction: column-reverse;
-        gap: 10px;
-        padding-top: 10px;
+        flex-direction: row;
+        justify-content: center;
+        width: var(--btn-max-width);
+        position: fixed;
+        gap: 2ch;
+        right: 0.5in;
+        bottom: 0px;
 
-        @media (min-width: utilities.$large-width) {
-            position: fixed;
-            right: 0.5in;
-            bottom: 0.5in;
-            width: var(--btn-max-width);
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 2ch;
+        @media (max-width: utilities.$small-width) {
+            right: 50%;
+            transform: translateX(50%);
+            bottom: 8px;
         }
 
         .btn-ctr {
-            width: 100%;
+            height: 44px;
+            width: 44px;
             padding: 0px;
             background-color: transparent;
             border: none;
-            height: 44px;
 
             .btn {
                 height: var(--font-size);
@@ -166,22 +154,14 @@
                 border-radius: var(--dpad-radius);
                 background-color: var(--primary-50);
                 border: solid 1px transparent;
-
-                @media (min-width: utilities.$large-width) {
-                    height: calc(var(--font-size) + 6px);
-                }
             }
 
             .label {
                 color: var(--primary);
                 text-align: center;
                 line-height: 1;
-                // font-size: calc(var(--font-size) + 2px);
                 font-family: var(--font-block);
-
-                @media (min-width: utilities.$large-width) {
-                    font-size: calc(var(--font-size) + 6px);
-                }
+                font-size: var(--font-size);
             }
         }
     }
@@ -212,11 +192,6 @@
             border-radius: 50%;
             font-family: var(--font-block);
             font-size: calc(var(--font-size) + 10px);
-
-            // border: solid 1px var(--primary);
-            // background-color: var(--background-color);
-            // color: var(--primary);
-
             border: solid 1px var(--primary);
             background-color: var(--primary);
             color: var(--background-color);

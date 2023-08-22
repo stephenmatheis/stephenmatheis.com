@@ -4,7 +4,7 @@ import { usePrompts } from '@/contexts/prompts';
 import styles from './controller.module.scss';
 
 export function Controller() {
-    const { open, setOpen, menu, setMenu } = usePrompts();
+    const { setOpen, menu, setMenu } = usePrompts();
 
     return (
         <div className={styles.controller}>
