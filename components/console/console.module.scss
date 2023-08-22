@@ -18,7 +18,7 @@
 
     @media (pointer: coarse) {
         @media (max-width: utilities.$small-width) {
-            height: calc(100dvh / 1.5);
+            height: calc(100svh / 1.5);
         }
     }
 
