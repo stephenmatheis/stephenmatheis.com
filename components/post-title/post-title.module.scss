@@ -20,9 +20,6 @@
         align-items: center;
         padding: 0px 0.5ch;
 
-        @include utilities.shadow-variables;
-        @include utilities.shadow-base;
-
         @media (hover: hover) {
             &:hover {
                 @include utilities.shadow-hover;

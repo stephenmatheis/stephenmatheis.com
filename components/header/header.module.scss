@@ -12,12 +12,6 @@
 
     a {
         .text {
-            @include utilities.shadow-variables;
-
-            .part {
-                @include utilities.shadow-base;
-            }
-
             @media (hover: hover) {
                 &:hover .part {
                     @include utilities.shadow-hover;
@@ -25,10 +19,7 @@
             }
 
             .title {
-                color: var(--accent);
-                --border-color: var(--accent);
-                --shadow-2: var(--accent-20);
-                --shadow-3: var(--accent-20);
+                color: var(--muted);
             }
         }
     }

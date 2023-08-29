@@ -101,33 +101,11 @@ $border-radius: 6px;
 // Gaps
 @mixin gaps() {
     transition: gap 450ms ease-in-out, padding-top 450ms ease-in-out;
-
-    // @media (max-height: 640px) {
-    //     gap: calc(var(--line-height) * 3);
-    // }
-
-    // @media (max-height: 585px) {
-    //     gap: calc(var(--line-height) * 2);
-    // }
-
-    // @media (max-height: 530px) {
-    //     gap: calc(var(--line-height) * 1);
-    // }
 }
 
 // Shadows
-@mixin shadow-variables {
-    --border-color: var(--primary);
-}
-
-@mixin shadow-base {
-    // padding-bottom: 2px;
-    // box-shadow: inset 0 -1px 0 0 var(--border-color);
-}
-
 @mixin shadow-hover {
     color: var(--accent);
-    // box-shadow: inset 0 -1px 0 0 var(--accent);
 }
 
 // Themes
