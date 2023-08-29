@@ -12,7 +12,7 @@ export function Content() {
             </section>
             <section className={styles.right}>
                 <Skills />
-                <Projects printOnly />
+                <Projects />
                 <Contact />
             </section>
         </div>
