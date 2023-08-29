@@ -17,16 +17,10 @@ export default async function PostsPage() {
     return (
         <Page
             links={[
-                {
-                    label: 'JSON',
-                    path: '/json',
-                    newTab: true,
-                },
-                {
-                    label: 'Markdown',
-                    path: '/posts/markdown',
-                    newTab: true,
-                },
+                { label: 'RSS', path: '/rss', newTab: true },
+                { label: 'JSON', path: '/json', newTab: true },
+                { label: 'Markdown', path: '/markdown', newTab: true },
+                { label: 'About', path: '/about' },
             ]}
         >
             <Main>

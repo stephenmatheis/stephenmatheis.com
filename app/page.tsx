@@ -9,12 +9,18 @@ export const metadata: Metadata = {
     description: 'The 20 most recent posts.',
 };
 
-export default async function PostsPage() {
+export default async function RootPage() {
     const posts = await getPosts();
 
     // TODO: Move RSS link to top near title
     return (
-        <Page links={[{ label: 'More posts', path: '/posts' }]}>
+        <Page
+            links={[
+                { label: 'More posts', path: '/posts' },
+                { label: 'RSS', path: '/rss', newTab: true },
+                { label: 'About', path: '/about' },
+            ]}
+        >
             <Main>
                 <Posts posts={posts} />
             </Main>
