@@ -1,7 +1,14 @@
 const skills = [
     {
         group: 'Programming Languages',
-        items: ['JavaScript/TypeScript', 'HTML', 'CSS/SCSS'],
+        items: [
+            'JavaScript/TypeScript',
+            'HTML',
+            'CSS/SCSS',
+            'C#',
+            'PowerShell',
+            'Python',
+        ],
     },
     {
         group: 'Frameworks',
@@ -13,15 +20,24 @@ const skills = [
     },
     {
         group: 'Tools',
-        items: ['Git', 'Node.js', 'Webpack', 'Prettier', 'ESLint'],
+        items: [
+            'Git',
+            'GitHub',
+            'GitLab',
+            'GitKraken',
+            'Node.js',
+            'Webpack',
+            'Prettier',
+            'ESLint',
+        ],
     },
     {
         group: 'Platforms',
-        items: ['Vercel', 'Netlify', 'Firebase', 'SharePoint'],
+        items: ['Vercel', 'Netlify', 'Firebase', '.NET', 'SharePoint'],
     },
     {
         group: 'Design',
-        items: ['Sketch', 'Figma'],
+        items: ['Figma', 'Sketch'],
     },
 ];
 
