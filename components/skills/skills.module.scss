@@ -1,13 +1,12 @@
-.comment {
-    color: var(--title-color);
-    margin-bottom: var(--line-height);
-}
-
 .skills {
     .groups-ctr {
         display: flex;
         flex-direction: column;
-        gap: var(--line-height);
+        gap: calc(var(--line-height) * 2);
+
+        @media print {
+            gap: var(--line-height);
+        }
 
         .group {
             .name {
