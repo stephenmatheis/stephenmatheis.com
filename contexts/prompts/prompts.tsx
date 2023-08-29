@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
 
 export type PromptProps = {
     label: string;
@@ -19,6 +18,8 @@ export type PromptsContextProps = {
     setSelected: React.Dispatch<React.SetStateAction<number>>;
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    menu: string;
+    setMenu: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const PromptsContext = createContext<PromptsContextProps>({
@@ -28,23 +29,25 @@ const PromptsContext = createContext<PromptsContextProps>({
     setSelected: () => null,
     open: false,
     setOpen: () => null,
+    menu: '',
+    setMenu: () => null,
 });
 
 export function usePrompts() {
     return useContext(PromptsContext);
 }
 
-export function PromptsProvider({ children, prompts: defaultPrompts }) {
+export function PromptsProvider({ children }) {
     const router = useRouter();
-    const pathname = usePathname();
     const [open, setOpen] = useState(false);
     const [prompts, setPrompts] = useState<PromptProps[]>([]);
-    const pathIndex = prompts.map(({ path }) => path).indexOf(pathname);
-    const startIndex = pathIndex !== -1 ? pathIndex : 0;
+    const startIndex = -1;
     const [selected, setSelected] = useState<number>(startIndex);
+    const [menu, setMenu] = useState('');
 
     useEffect(() => {
         function selectNext(event: KeyboardEvent) {
+            // FIXME: Combine with event handler in Console
             if (open) {
                 return;
             }
@@ -76,7 +79,7 @@ export function PromptsProvider({ children, prompts: defaultPrompts }) {
             if (event.key === 'Enter') {
                 event.preventDefault();
 
-                if (!prompts[selected].path) {
+                if (!prompts[selected]?.path) {
                     return;
                 }
 
@@ -87,16 +90,37 @@ export function PromptsProvider({ children, prompts: defaultPrompts }) {
                 }
             }
 
-            if (event.key === ' ' || event.key === 'Escape') {
+            if (event.key === ' ') {
                 event.preventDefault();
-                setOpen((prev) => !prev);
+
+                setMenu('Start');
+                setOpen((prev) => {
+                    if (menu === 'Start') {
+                        return !prev;
+                    } else {
+                        return true;
+                    }
+                });
+            }
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+
+                setMenu('Select');
+                setOpen((prev) => {
+                    if (menu === 'Select') {
+                        return !prev;
+                    } else {
+                        return true;
+                    }
+                });
             }
         }
 
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [open, prompts, router, selected, setOpen, setSelected]);
+    }, [menu, open, prompts, router, selected, setOpen, setSelected]);
 
     useEffect(() => {
         if (open) {
@@ -119,6 +143,8 @@ export function PromptsProvider({ children, prompts: defaultPrompts }) {
                 setSelected,
                 open,
                 setOpen,
+                menu,
+                setMenu,
             }}
         >
             {children}

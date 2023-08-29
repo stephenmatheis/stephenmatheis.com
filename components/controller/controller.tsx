@@ -4,7 +4,7 @@ import { usePrompts } from '@/contexts/prompts';
 import styles from './controller.module.scss';
 
 export function Controller() {
-    const { open, setOpen } = usePrompts();
+    const { setOpen, menu, setMenu } = usePrompts();
 
     return (
         <div className={styles.controller}>
@@ -25,7 +25,10 @@ export function Controller() {
                         fill="currentColor"
                         viewBox="0 0 16 16"
                     >
-                        <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                        <path
+                            fillRule="evenodd"
+                            d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
+                        />
                     </svg>
                 </div>
                 <div className={styles.middle}>
@@ -47,7 +50,10 @@ export function Controller() {
                             fill="currentColor"
                             viewBox="0 0 16 16"
                         >
-                            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                            <path
+                                fillRule="evenodd"
+                                d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
+                            />
                         </svg>
                     </div>
                     <div
@@ -68,7 +74,10 @@ export function Controller() {
                             fill="currentColor"
                             viewBox="0 0 16 16"
                         >
-                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                            <path
+                                fillRule="evenodd"
+                                d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
+                            />
                         </svg>
                     </div>
                 </div>
@@ -88,20 +97,41 @@ export function Controller() {
                         fill="currentColor"
                         viewBox="0 0 16 16"
                     >
-                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                        <path
+                            fillRule="evenodd"
+                            d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"
+                        />
                     </svg>
                 </div>
             </div>
             <div className={styles.menu}>
-                <button className={styles['btn-ctr']}>
+                <button
+                    className={styles['btn-ctr']}
+                    onClick={() => {
+                        setMenu('Select');
+                        setOpen((prev) => {
+                            if (menu === 'Select') {
+                                return !prev;
+                            } else {
+                                return true;
+                            }
+                        });
+                    }}
+                >
                     <div className={styles.btn} />
                     <div className={styles.label}>Select</div>
                 </button>
                 <button
                     className={styles['btn-ctr']}
                     onClick={() => {
-                        console.log(open);
-                        setOpen((prev) => !prev);
+                        setMenu('Start');
+                        setOpen((prev) => {
+                            if (menu === 'Start') {
+                                return !prev;
+                            } else {
+                                return true;
+                            }
+                        });
                     }}
                 >
                     <div className={styles.btn} />
@@ -125,7 +155,13 @@ export function Controller() {
                     </button>
                 </div>
                 <div className={styles.bottom}>
-                    <button>B</button>
+                    <button
+                        onClick={() => {
+                            console.log('B');
+                        }}
+                    >
+                        B
+                    </button>
                 </div>
             </div>
         </div>

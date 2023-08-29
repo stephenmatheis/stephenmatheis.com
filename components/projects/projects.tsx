@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { UpdatePrompts } from '@/components/update-prompts';
 import { Project } from '@/components/project';
 import projects from '@/data/projects';
 import styles from './projects.module.scss';
@@ -16,20 +15,6 @@ export function Projects({ displayImages, printOnly }: Props) {
                 [styles['print-only']]: printOnly,
             })}
         >
-            {!printOnly && (
-                <UpdatePrompts
-                    prompts={[
-                        ...projects.map(({ name, link }) => {
-                            return {
-                                label: name,
-                                path: link,
-                                type: 'project',
-                                newTab: true,
-                            };
-                        }),
-                    ]}
-                />
-            )}
             <div
                 className={classNames(styles['projects-wrapper'], {
                     [styles['compact']]: !displayImages,
@@ -43,6 +28,7 @@ export function Projects({ displayImages, printOnly }: Props) {
                         description={description}
                         image={image}
                         displayImages={displayImages}
+                        printOnly={printOnly}
                     />
                 ))}
             </div>

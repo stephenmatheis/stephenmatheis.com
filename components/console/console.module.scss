@@ -4,16 +4,22 @@
     position: fixed;
     top: 0px;
     left: 0px;
-    // NOTE: Why - 10px? Will it always be 10px at larger viewports?
-    height: calc(100% / 1.5 - 10px);
+    height: 100dvh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    pointer-events: none;
 
     @media print {
         display: none;
+    }
+
+    @media (pointer: coarse) {
+        @media (max-width: utilities.$small-width) {
+            height: calc(100svh / 1.5);
+        }
     }
 
     .name {
@@ -25,12 +31,16 @@
     }
 
     .prompts {
-        padding: 1ch 4ch;
+        pointer-events: all;
+        padding: var(--line-height) 4ch;
         background-color: var(--background-color);
         border-radius: var(--border-radius);
-        border: solid 1px var(--primary);
+        border: solid 1px var(--primary-50);
+        background-color: transparent;
+        backdrop-filter: blur(16px);
 
         @media (pointer: coarse) {
+            padding: 1ch 4ch;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -38,7 +48,7 @@
 
         @media (max-width: utilities.$small-width) {
             width: 75%;
-            height: 50%;
+            max-height: 50%;
             overflow: auto;
         }
 
@@ -50,9 +60,9 @@
             align-items: center;
             gap: 0.5ch;
             min-width: 300px;
+            height: calc(var(--line-height) * 1.5);
 
             @media (pointer: coarse) {
-                // height: 48px;
                 height: 44px;
                 min-height: 44px;
             }
@@ -97,6 +107,10 @@
             .label {
                 &.selected {
                     color: var(--primary);
+                }
+
+                &.muted {
+                    color: var(--muted);
                 }
             }
         }

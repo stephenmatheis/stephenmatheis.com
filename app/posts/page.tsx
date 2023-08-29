@@ -1,22 +1,33 @@
 import type { Metadata } from 'next';
+import { Fallback } from '@/components/fallback';
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
-import { Posts } from './components/posts';
+import { PostsList } from '@/components/posts-list';
+import { Suspense } from 'react';
 import getPosts from '@/lib/get-posts';
 
 export const metadata: Metadata = {
-    title: 'Posts',
-    description: 'The 20 most recent posts.',
+    title: 'Archive',
+    description: 'All posts.',
 };
 
 export default async function PostsPage() {
     const posts = await getPosts();
 
-    // TODO: Move RSS link to top near title
     return (
-        <Page links={[{ label: 'More posts', path: '/archive' }]}>
+        <Page
+            links={[
+                { label: 'Home', path: '/' },
+                { label: 'RSS', path: '/rss', newTab: true },
+                { label: 'JSON', path: '/json', newTab: true },
+                { label: 'Markdown', path: '/markdown', newTab: true },
+                { label: 'About', path: '/about' },
+            ]}
+        >
             <Main>
-                <Posts posts={posts} />
+                <Suspense fallback={<Fallback />}>
+                    <PostsList posts={posts} />
+                </Suspense>
             </Main>
         </Page>
     );
