@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { Comment } from '@/components/comment';
 import { Project } from '@/components/project';
 import projects from '@/data/projects';
 import styles from './projects.module.scss';
@@ -15,6 +16,7 @@ export function Projects({ displayImages, printOnly }: Props) {
                 [styles['print-only']]: printOnly,
             })}
         >
+            <Comment text={'Projects'} />
             <div
                 className={classNames(styles['projects-wrapper'], {
                     [styles['compact']]: !displayImages,
