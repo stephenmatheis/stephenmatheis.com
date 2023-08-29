@@ -1,20 +1,21 @@
 import { Footer } from '@/components/footer';
-import { Controller } from '@/components/controller';
-import { PromptsProvider } from '@/contexts/prompts';
+import { Header } from '@/components/header';
 import styles from './page.module.scss';
-import { Console } from '@/components/console';
 
-export function Page({ children, noFooter = false, ...props }) {
+export function Page({
+    children,
+    noFooter = false,
+    noHeader = false,
+    ...props
+}) {
     const { links, text } = props;
 
     return (
-        <PromptsProvider>
-            <div className={styles.page} data-page>
-                {children}
-                {!noFooter && <Footer links={links} text={text} />}
-                <Console />
-            </div>
-            <Controller />
-        </PromptsProvider>
+        <div className={styles.page} data-page>
+            {!noHeader && <Header />}
+            {children}
+
+            {!noFooter && <Footer links={links} text={text} />}
+        </div>
     );
 }

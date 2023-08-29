@@ -1,5 +1,3 @@
-import { UpdatePrompts } from '@/components/update-prompts';
-import { Indicator } from '@/components/indicator';
 import { LinkCtr } from '@/components/link-ctr';
 import styles from './footer.module.scss';
 
@@ -19,23 +17,12 @@ export function Footer({ links, text }: Props) {
 
     return (
         <footer className={styles.footer}>
-            <UpdatePrompts
-                prompts={links?.map(({ label, path, newTab }) => {
-                    return {
-                        label,
-                        path,
-                        type: 'footer',
-                        newTab,
-                    };
-                })}
-            />
             {links?.length !== 0 && (
                 <nav>
                     <ol>
                         {links?.map(({ label, path, newTab }) => {
                             return (
                                 <li key={path}>
-                                    <Indicator label={label} />
                                     <LinkCtr href={path} newTab={newTab}>
                                         {label}
                                     </LinkCtr>
