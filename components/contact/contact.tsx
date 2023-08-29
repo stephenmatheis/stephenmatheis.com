@@ -8,10 +8,10 @@ export function Contact() {
         <div className={styles['contact']}>
             <Comment text={'Contact'} />
             <div className={styles['info']}>
-                {contact.map(({ text, href, label }) => {
+                {contact.map(({ text, href, label, newTab }) => {
                     return (
                         <div key={text}>
-                            <LinkCtr href={href} label={label}>
+                            <LinkCtr href={href} label={label} newTab={newTab}>
                                 {text}
                             </LinkCtr>
                         </div>
