@@ -12,7 +12,7 @@ type Props = {
     text?: string;
 };
 
-export function Footer({ links, text }: Props) {
+export function Footer({ links = [], text }: Props) {
     const copyright = `Copyright (C) ${new Date().getFullYear()} Stephen Matheis`;
 
     return (
@@ -20,7 +20,10 @@ export function Footer({ links, text }: Props) {
             {links?.length !== 0 && (
                 <nav>
                     <ol>
-                        {links?.map(({ label, path, newTab }) => {
+                        {[
+                            ...links,
+                            { label: 'Settings', path: '/settings' },
+                        ]?.map(({ label, path, newTab }) => {
                             return (
                                 <li key={path}>
                                     <LinkCtr href={path} newTab={newTab}>
