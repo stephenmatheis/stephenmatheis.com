@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
-import { Posts } from './components/posts';
+import { Posts } from '@/components/posts';
 import getPosts from '@/lib/get-posts';
 
 export const metadata: Metadata = {
