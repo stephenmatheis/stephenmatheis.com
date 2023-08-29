@@ -1,19 +1,22 @@
+import type { Metadata } from 'next';
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
+import { Posts } from '@/components/posts';
+import getPosts from '@/lib/get-posts';
 
-export default function RootPage() {
+export const metadata: Metadata = {
+    title: 'Posts',
+    description: 'The 20 most recent posts.',
+};
+
+export default async function PostsPage() {
+    const posts = await getPosts();
+
+    // TODO: Move RSS link to top near title
     return (
-        <Page
-            noFooter
-            links={[
-                {
-                    label: 'Settings',
-                    path: '/settings',
-                },
-            ]}
-        >
+        <Page links={[{ label: 'More posts', path: '/archive' }]}>
             <Main>
-                <p>Press Spacebar</p>
+                <Posts posts={posts} />
             </Main>
         </Page>
     );
