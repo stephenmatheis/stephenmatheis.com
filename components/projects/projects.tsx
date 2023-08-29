@@ -31,6 +31,7 @@ export function Projects({ displayImages, printOnly }: Props) {
                         image={image}
                         displayImages={displayImages}
                         printOnly={printOnly}
+                        isCompact={!displayImages}
                     />
                 ))}
             </div>

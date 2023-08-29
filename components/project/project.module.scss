@@ -8,6 +8,10 @@ $distance: 10px;
     gap: calc(var(--line-height) * 2);
     position: relative;
 
+    &.compact {
+        gap: var(--line-height);
+    }
+
     @media print {
         gap: calc(var(--line-height) * 1);
     }

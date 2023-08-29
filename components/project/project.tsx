@@ -2,6 +2,7 @@ import { LinkCtr } from '@/components/link-ctr';
 import { ImgCtr } from '@/components/img-ctr';
 import { Indicator } from '@/components/indicator';
 import styles from './project.module.scss';
+import classNames from 'classnames';
 
 type ImageProps = {
     src: string;
@@ -16,11 +17,17 @@ export function Project({
     image,
     displayImages,
     printOnly,
+    isCompact,
 }) {
     const { src }: ImageProps = image;
 
     return (
-        <div key={name} className={styles['project-ctr']}>
+        <div
+            key={name}
+            className={classNames(styles['project-ctr'], {
+                [styles['compact']]: isCompact,
+            })}
+        >
             {!printOnly && <Indicator label={name} />}
             <LinkCtr href={link} newTab>
                 {name}

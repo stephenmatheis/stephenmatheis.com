@@ -19,8 +19,7 @@ $distance: 10px;
         }
 
         &.compact {
-            gap: var(--line-height);
-            margin-top: var(--line-height);
+            gap: calc(var(--line-height) * 2);
 
             .project-ctr {
                 gap: var(--line-height);
