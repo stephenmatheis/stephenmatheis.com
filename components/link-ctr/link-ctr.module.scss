@@ -13,11 +13,6 @@
         }
     }
 
-    .text {
-        @include utilities.shadow-variables;
-        @include utilities.shadow-base;
-    }
-
     .emoji {
         font-size: var(--line-height);
 
