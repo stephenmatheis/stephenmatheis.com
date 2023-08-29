@@ -12,7 +12,9 @@ export default function RootPage() {
                 },
             ]}
         >
-            <Main />
+            <Main>
+                <p>Press Spacebar</p>
+            </Main>
         </Page>
     );
 }
