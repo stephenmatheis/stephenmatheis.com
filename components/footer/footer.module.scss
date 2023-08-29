@@ -1,5 +1,6 @@
 .footer {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: calc(var(--line-height) * 1.5);
 
@@ -15,16 +16,16 @@
             padding-left: 0;
             display: flex;
             justify-content: center;
-            gap: 2ch;
+            gap: 4ch;
 
             li {
                 color: var(--secondary);
+                position: relative;
             }
         }
     }
 
     .copyright {
-        text-align: center;
         color: var(--muted);
     }
 

@@ -21,7 +21,6 @@ export default function ResumePage() {
             ]}
         >
             <Main>
-                <Header printOnly />
                 <Content />
             </Main>
         </Page>

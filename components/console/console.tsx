@@ -9,18 +9,12 @@ import { Indicator } from '@/components/indicator';
 import type { PromptProps } from '@/contexts/prompts/prompts';
 import styles from './console.module.scss';
 
-const prompts: PromptProps[] = [
+// TODO: Add 'game' path to JS canvas game (something simple, following YT tutorial)
+const startMenuPrompts: PromptProps[] = [
     {
         label: 'Posts',
         path: '/posts',
         type: 'console',
-    },
-    {
-        label: 'RSS',
-        path: '/rss',
-        type: 'console',
-        nest: '/posts',
-        newTab: true,
     },
     {
         label: 'Archive',
@@ -50,6 +44,54 @@ const prompts: PromptProps[] = [
     },
 ];
 
+// TODO: Should routes live in the 'Select', and leave fun stuff like 'Game' in 'Start?'
+const selectMenuPrompts = {
+    '/posts': [
+        {
+            label: 'RSS',
+            path: '/rss',
+            type: 'console',
+            newTab: true,
+        },
+    ],
+    '/about': [
+        {
+            label: 'Download',
+            path: '/resume.pdf',
+            type: 'console',
+            newTab: true,
+        },
+    ],
+};
+
+const defaultStartPrompts: PromptProps[] = [
+    {
+        label: 'Back',
+        type: 'console',
+        path: 'back',
+    },
+    {
+        label: 'Cancel',
+        type: 'console',
+        path: 'cancel',
+    },
+];
+
+const defaultSelectPrompts: PromptProps[] = [
+    {
+        // TODO: How to switch between 'Show Controller' and 'Hide controller'
+        // TODO: Move Controller to 'Settings' page
+        label: 'Controller',
+        type: 'console',
+        path: 'controller',
+    },
+    {
+        label: 'Cancel',
+        type: 'console',
+        path: 'cancel',
+    },
+];
+
 function PromptLink({
     label,
     path,
@@ -60,6 +102,7 @@ function PromptLink({
     nest,
     newTab,
     scrollCtr,
+    prompts,
     ...props
 }) {
     return (
@@ -83,6 +126,9 @@ function PromptLink({
             <div
                 className={[
                     ...(pathname === path ? [styles.selected] : []),
+                    ...(label === 'Cancel' || label == 'Back'
+                        ? [styles.muted]
+                        : []),
                     styles.label,
                 ].join(' ')}
             >
@@ -104,16 +150,32 @@ function LinkType({ children, href, newTab, ...props }) {
     );
 }
 
+function choosePrompts(menu: string, pathname: string) {
+    switch (menu) {
+        case 'Start':
+            return [...startMenuPrompts, ...defaultStartPrompts];
+        case 'Select':
+            return [
+                ...(selectMenuPrompts[pathname] || []),
+                ...defaultSelectPrompts,
+            ];
+        default:
+            return [];
+    }
+}
+
 export function Console() {
-    // const { prompts, selected, setSelected, open, setOpen } = usePrompts();
+    const pathname = usePathname();
+    const { open, setOpen, menu, setMenu } = usePrompts();
     const promptsRef = useRef<HTMLDivElement>(null);
-    const { open, setOpen } = usePrompts();
+    const prompts = choosePrompts(menu, pathname);
+    const pathPrompt = prompts.map(({ path }) => path).indexOf(pathname);
     const [selected, setSelected] = useState(0);
     const router = useRouter();
-    const pathname = usePathname();
 
     useEffect(() => {
         function selectNext(event: KeyboardEvent) {
+            // FIXME: Combine with event handler in Prompts
             if (!open) {
                 return;
             }
@@ -149,6 +211,18 @@ export function Console() {
                     return;
                 }
 
+                if (prompts[selected].path === 'cancel') {
+                    setOpen(false);
+
+                    return;
+                }
+
+                if (prompts[selected].path === 'back') {
+                    router.back();
+
+                    return;
+                }
+
                 if (prompts[selected].newTab) {
                     window.open(prompts[selected].path);
                 } else {
@@ -156,16 +230,50 @@ export function Console() {
                 }
             }
 
-            if (event.key === ' ' || event.key === 'Escape') {
+            // FIXME:
+            if (event.key === ' ') {
                 event.preventDefault();
-                setOpen((prev) => !prev);
+
+                setMenu('Start');
+                setSelected(0);
+                setOpen((prev) => {
+                    if (menu === 'Start') {
+                        return !prev;
+                    } else {
+                        return true;
+                    }
+                });
+            }
+
+            if (event.key === 'Escape') {
+                event.preventDefault();
+
+                setMenu('Select');
+                setSelected(0);
+                setOpen((prev) => {
+                    if (menu === 'Select') {
+                        return !prev;
+                    } else {
+                        return true;
+                    }
+                });
             }
         }
 
         window.addEventListener('keydown', selectNext);
 
         return () => window.removeEventListener('keydown', selectNext);
-    }, [open, router, selected, setOpen, setSelected]);
+    }, [
+        menu,
+        open,
+        pathPrompt,
+        prompts,
+        router,
+        selected,
+        setMenu,
+        setOpen,
+        setSelected,
+    ]);
 
     return (
         <>
@@ -195,6 +303,7 @@ export function Console() {
                                             newTab={newTab}
                                             nest={nest}
                                             scrollCtr={promptsRef}
+                                            prompts={prompts}
                                         />
                                     );
                                 }

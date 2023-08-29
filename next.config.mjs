@@ -4,7 +4,7 @@
 const nextConfig = {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
     // FIXME: Turn back on
-    // reactStrictMode: true,
+    reactStrictMode: true,
     sassOptions: {
         logger: {
             /**

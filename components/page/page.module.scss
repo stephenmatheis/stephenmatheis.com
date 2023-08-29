@@ -28,27 +28,21 @@
 
         @media (max-width: utilities.$small-width) {
             min-width: 100%;
-            padding: 0.25in;
+            padding-left: 0.25in;
+            padding-right: 0.25in;
+            padding-bottom: 0.25in;
         }
 
         @media (max-height: utilities.$medium-height) {
-            padding: 0.25in;
+            padding-left: 0.25in;
+            padding-right: 0.25in;
+            padding-bottom: 0.25in;
         }
 
         @include utilities.gaps();
 
-        @media (pointer: coarse) {
-            --buffer: 8px;
-
-            flex: 2;
-            overflow: auto;
-            min-height: 0px;
-            max-width: calc(100vw - (var(--buffer) * 2));
-            width: unset;
-            min-width: unset;
-            margin: var(--buffer);
-            border: solid 1px var(--primary);
-            border-radius: var(--border-radius);
+        @media (pointer: coarse) and (max-width: utilities.$small-width) {
+            padding-bottom: calc(100dvh / 3);
         }
     }
 }

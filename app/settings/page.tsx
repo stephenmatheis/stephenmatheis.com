@@ -14,11 +14,15 @@ export default function SettingsPage() {
             links={[
                 {
                     label: 'Home',
-                    path: '',
+                    path: '/',
+                },
+                {
+                    label: 'About',
+                    path: '/about',
                 },
             ]}
         >
-            <Main >
+            <Main>
                 <Controls />
             </Main>
         </Page>

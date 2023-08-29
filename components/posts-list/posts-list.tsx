@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { Post } from '@/lib/types';
-import { Search } from '../search';
-import { Entry } from '../entry';
+import { Search } from '@/components/search';
+import { Entry } from '@/components/entry';
 import { Tags } from '@/components/tags';
 import styles from './posts-list.module.scss';
 
@@ -73,7 +73,12 @@ export function PostsList({ posts }: { posts: Post[] }) {
 
                         return (
                             <div className={styles.group} key={date}>
-                                <h2 className={styles.month}>{date}</h2>
+                                <h2 className={styles.month}>
+                                    {new Date(date).toLocaleString('default', {
+                                        month: 'long',
+                                        year: 'numeric',
+                                    })}
+                                </h2>
                                 {postsThisMonth.map(
                                     ({
                                         slug,

@@ -31,7 +31,9 @@ export function Indicator({
         <div
             ref={ref}
             className={[
-                ...(selected === promptIndex ? [styles.selected] : []),
+                ...(selected !== -1 && selected === promptIndex
+                    ? [styles.selected]
+                    : []),
                 styles.indicator,
             ].join(' ')}
         >

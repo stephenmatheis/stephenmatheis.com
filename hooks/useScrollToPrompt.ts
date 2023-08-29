@@ -1,4 +1,4 @@
-import { RefObject, useEffect } from 'react';
+import { RefObject, useCallback, useEffect } from 'react';
 import { usePrompts } from '@/contexts/prompts';
 import { PromptProps } from '@/contexts/prompts/prompts';
 
@@ -18,9 +18,40 @@ export function useScrollToPrompt({
     scrollCtr,
 }: Props) {
     const { prompts, selected } = usePrompts();
-    const localSelected = overrideSelected || selected;
+    // TODO: Move to usePrompts() param?
+    const localSelected =
+        typeof overrideSelected === 'number' ? overrideSelected : selected;
     const localPrompts = overridePrompts || prompts;
     const promptIndex = localPrompts.map(({ label }) => label).indexOf(label);
+    const selectNode = useCallback(
+        (scrollCtr: RefObject<HTMLDivElement> | undefined) => {
+            if (scrollCtr?.current) {
+                return {
+                    node: scrollCtr.current,
+                    nodeTop: scrollCtr.current.getBoundingClientRect().top,
+                    offset: scrollCtr.current.scrollTop || 0,
+                };
+            } else {
+                return {
+                    node: window,
+                    nodeTop: 0,
+                    offset: window.scrollY,
+                };
+            }
+        },
+        []
+    );
+
+    const getScrollHeight = useCallback(
+        (scrollCtr: RefObject<HTMLDivElement> | undefined) => {
+            if (scrollCtr?.current) {
+                return scrollCtr.current.scrollHeight || 0;
+            } else {
+                return document.body.scrollHeight;
+            }
+        },
+        []
+    );
 
     useEffect(() => {
         if (localPrompts.length === 0) {
@@ -28,15 +59,7 @@ export function useScrollToPrompt({
         }
 
         if (localSelected === promptIndex) {
-            const node =
-                scrollCtr?.current || document.querySelector('[data-page]');
-            const nodeTop = scrollCtr?.current
-                ? scrollCtr?.current.getBoundingClientRect().top
-                : 0;
-            const offset =
-                (matchMedia('(pointer:fine)').matches
-                    ? window.scrollY
-                    : node?.scrollTop) || 0;
+            const { node, nodeTop, offset } = selectNode(scrollCtr);
             const lineHeight = parseInt(
                 getComputedStyle(document.documentElement).getPropertyValue(
                     '--line-height'
@@ -44,28 +67,30 @@ export function useScrollToPrompt({
             );
             const gap = scrollCtr?.current ? lineHeight : lineHeight * 4;
             const refTop = ref.current?.getBoundingClientRect().top || 0;
+            const top =
+                promptIndex === 0
+                    ? 0
+                    : promptIndex === localPrompts.length - 1
+                    ? getScrollHeight(scrollCtr)
+                    : refTop + offset - gap - nodeTop;
 
             // https://stackoverflow.com/a/49860927
             const options: ScrollToOptions = {
-                top:
-                    localSelected === promptIndex && promptIndex !== 0
-                        ? refTop + offset - gap - nodeTop
-                        : 0,
+                top: top || 0,
                 behavior: 'smooth',
             };
 
-            (matchMedia('(pointer:fine)').matches ? window : node)?.scrollTo(
-                options
-            );
+            node?.scrollTo(options);
         }
     }, [
-        promptIndex,
         localPrompts,
-        ref,
         localSelected,
-        prompts,
-        selected,
+        promptIndex,
         scrollCtr,
+        selectNode,
+        ref,
+        label,
+        getScrollHeight,
     ]);
 
     return {
