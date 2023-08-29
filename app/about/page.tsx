@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Page } from '@/components/page';
 import { Content } from './components/content';
 import { Main } from '@/components/main';
-import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
     title: 'About',
@@ -14,7 +13,7 @@ export default function ResumePage() {
         <Page
             links={[
                 {
-                    label: 'Donwload a copy',
+                    label: 'Download a copy',
                     path: '/resume.pdf',
                     newTab: true,
                 },
