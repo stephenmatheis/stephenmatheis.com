@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
-import { Fallback } from '@/components/fallback';
 import { Page } from '@/components/page';
 import { Main } from '@/components/main';
 import { PostsList } from '@/components/posts-list';
-import { Suspense } from 'react';
 import getPosts from '@/lib/get-posts';
 
 export const metadata: Metadata = {
@@ -25,9 +23,7 @@ export default async function PostsPage() {
             ]}
         >
             <Main>
-                <Suspense fallback={<Fallback />}>
-                    <PostsList posts={posts} />
-                </Suspense>
+                <PostsList posts={posts} />
             </Main>
         </Page>
     );
