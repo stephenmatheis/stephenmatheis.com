@@ -10,14 +10,14 @@ const contact = [
         label: 'My email address',
     },
     {
-        href: 'https://github.com/stephenmatheis',
-        text: 'github.com/stephenmatheis',
-        label: 'My GitHub profile',
-    },
-    {
         href: 'https://www.linkedin.com/in/stephenmatheis',
         text: 'linkedin.com/in/stephenmatheis',
         label: 'My LinkedIn profile',
+    },
+    {
+        href: 'https://github.com/stephenmatheis',
+        text: 'github.com/stephenmatheis',
+        label: 'My GitHub profile',
     },
 ];
 
