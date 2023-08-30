@@ -1,5 +1,3 @@
-import { Suspense } from 'react';
-import { Fallback } from '@/components/fallback';
 import { Tag } from '@/components/tag';
 import styles from './tags.module.scss';
 
@@ -17,15 +15,13 @@ export function Tags({ tags, newTab, color = 'muted' }: Props) {
                     #{' '}
                     {tags.map((tag: string, index: number) => {
                         return (
-                            <Suspense fallback={<Fallback />} key={index}>
-                                <Tag
-                                    key={tag}
-                                    tag={tag}
-                                    spacer={index < tags.length - 1}
-                                    newTab={newTab}
-                                    color={color}
-                                />
-                            </Suspense>
+                            <Tag
+                                key={tag}
+                                tag={tag}
+                                spacer={index < tags.length - 1}
+                                newTab={newTab}
+                                color={color}
+                            />
                         );
                     })}
                 </span>
