@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import { LinkCtr } from '@/components/link-ctr';
 import { Tags } from '@/components/tags';
-import { Indicator } from '@/components/indicator';
 import styles from './post-title.module.scss';
 
 export function PostTitle({
@@ -27,7 +26,6 @@ export function PostTitle({
                 [styles.external]: link,
             })}
         >
-            <Indicator label={title} />
             {link ? (
                 <span className={styles['title-text']}>
                     <LinkCtr href={link} newTab>

@@ -1,6 +1,5 @@
 import { LinkCtr } from '@/components/link-ctr';
 import { ImgCtr } from '@/components/img-ctr';
-import { Indicator } from '@/components/indicator';
 import styles from './project.module.scss';
 import classNames from 'classnames';
 
@@ -28,7 +27,6 @@ export function Project({
                 [styles['compact']]: isCompact,
             })}
         >
-            {!printOnly && <Indicator label={name} />}
             <LinkCtr href={link} newTab>
                 {name}
             </LinkCtr>
