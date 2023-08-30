@@ -32,11 +32,12 @@ export function Experience() {
                                             className={styles['line']}
                                         >
                                             <span
-                                                style={{ marginRight: '6px' }}
+                                                style={{
+                                                    marginRight: '6px',
+                                                    color: 'var(--muted)',
+                                                }}
                                             >
-                                                {/* ❯ */}
-                                                {/* {'>'} */}
-                                                {'·'}
+                                                {'*'}
                                             </span>
                                             <span
                                                 dangerouslySetInnerHTML={{
