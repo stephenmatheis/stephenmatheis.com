@@ -22,7 +22,7 @@ export default async function RootPage() {
             ]}
         >
             <Main>
-                <Posts posts={posts} />
+                {/* <Posts posts={posts} /> */}
             </Main>
         </Page>
     );
