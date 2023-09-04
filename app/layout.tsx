@@ -28,24 +28,6 @@ const pico = localFont({
     display: 'swap',
 });
 
-// const retro = localFont({
-//     src: 'fonts/PrintChar21.woff2',
-//     variable: '--font-retro',
-//     display: 'swap',
-// });
-
-// const windyCity = localFont({
-//     src: 'fonts/ChicagoFLF.woff2',
-//     variable: '--font-windy-city',
-//     display: 'swap',
-// });
-
-// const pixel = localFont({
-//     src: 'fonts/sysfont.woff2',
-//     variable: '--font-pixel',
-//     display: 'swap',
-// });
-
 export const metadata: Metadata = {
     title: {
         template: 'Stephen Matheis | %s',
@@ -74,8 +56,6 @@ export default function RootLayout({
                 retro.variable,
                 block.variable,
                 pico.variable,
-                // windyCity.variable,
-                // pixel.variable,
             ].join(' ')}
             suppressHydrationWarning
         >
