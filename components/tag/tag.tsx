@@ -30,8 +30,8 @@ export function Tag({ tag, spacer, newTab, color = 'muted' }: Props) {
 
                 const href = `${
                     queryParams.length
-                        ? `/archive?tags=${queryParams.join(',')}`
-                        : '/archive'
+                        ? `/posts?tags=${queryParams.join(',')}`
+                        : '/posts'
                 }`;
 
                 if (newTab) {
