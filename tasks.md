@@ -1,5 +1,5 @@
 ---
-lastModified: 'September 2, 2023'
+lastModified: 'September 3, 2023'
 ---
 
 # Tasks
@@ -36,5 +36,5 @@ lastModified: 'September 2, 2023'
 -   [ ] Complete 'New Post' form
 -   [ ] Add 'Edit post' button
 -   [ ] Add 'Edit post' form
--   [ ] Fix tags link - point to /posts not /archive
+-   [x] Fix tags link - point to /posts not /archive
 -   [ ] Fix default dark mode in Safari
