@@ -16,6 +16,12 @@ export function Tag({ tag, spacer, newTab, color = 'muted' }: Props) {
 
     return (
         <span
+            key={tag}
+            className={[
+                styles[color],
+                styles.tag,
+                ...(tags.includes(tag) ? [styles.selected] : []),
+            ].join(' ')}
             onClick={(event) => {
                 event.stopPropagation();
                 event.preventDefault();
@@ -40,12 +46,6 @@ export function Tag({ tag, spacer, newTab, color = 'muted' }: Props) {
                     location.href = href;
                 }
             }}
-            key={tag}
-            className={[
-                styles[color],
-                styles.tag,
-                ...(tags.includes(tag) ? [styles.selected] : []),
-            ].join(' ')}
         >
             <span className={styles.name}>{tag}</span>
             {spacer && <span className={styles.spacer}>,</span>}
