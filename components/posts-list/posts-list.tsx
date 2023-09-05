@@ -55,11 +55,11 @@ export function PostsList({ posts }: { posts: Post[] }) {
             <div className={styles.title}>
                 <Search posts={taggedPosts} setPosts={setFilteredPosts} />
             </div>
-            {allTags.length > 0 && (
+            {/* {allTags.length > 0 && (
                 <div id="tags" className={styles.tags}>
                     <Tags tags={allTags} color={'primary'} />
                 </div>
-            )}
+            )} */}
             {filteredPosts.length === 0 ? (
                 <div className={styles.none}>
                     There are no posts that match this query.

@@ -24,7 +24,8 @@ export function Entry({ title, type, href, date, tags = [] }: Props) {
                 {type && <div className={styles.type}>{type}</div>}
                 <div className={styles['title-wrapper']}>
                     <span className={`${styles.title}`}>
-                        {title} <Tags tags={tags} />
+                        {/* {title} <Tags tags={tags} /> */}
+                        {title}
                     </span>
                     {date && (
                         <DateTime className={styles.date} dateString={date} />
