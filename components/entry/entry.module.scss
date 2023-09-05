@@ -5,24 +5,6 @@
     position: relative;
     cursor: pointer;
 
-    @media (hover: hover) {
-        &::after {
-            content: '';
-            width: calc(100% + 4ch);
-            height: calc(100% + var(--line-height));
-            position: absolute;
-            left: -2ch;
-            top: calc((var(--line-height) / 2) * -1);
-            background-color: var(--primary-20);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        &:hover::after {
-            opacity: 1;
-        }
-    }
-
     p {
         position: relative;
         display: -webkit-box;
