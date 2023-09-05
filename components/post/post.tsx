@@ -4,7 +4,6 @@ import { LinkCtr } from '@/components/link-ctr';
 import { Footer } from '@/components/footer';
 import { Body } from '@/components/body';
 import { Nav } from '@/components/nav';
-import { Tags } from '@/components/tags';
 import { getData } from '@/lib/get-data';
 import styles from './post.module.scss';
 
@@ -47,7 +46,6 @@ export async function Post({
                     Last updated on <DateTime dateString={lastModified} />
                 </div>
             )}
-            <Tags tags={tags} newTab={true} />
             <Nav previous={previous} next={next} />
             <div className={styles['footer-wrapper']}>
                 <Footer

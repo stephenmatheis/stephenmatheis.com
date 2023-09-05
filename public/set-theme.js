@@ -1,5 +1,5 @@
 // Check version
-const version = '1.0.225';
+const version = '1.0.226';
 const installed = localStorage.getItem('version');
 
 // DEV: OFF
@@ -19,9 +19,13 @@ const installed = localStorage.getItem('version');
 setMode();
 
 // Set data attributes
-['prefers-color-scheme', 'light-theme', 'dark-theme', 'font-family', 'font-size'].forEach((att) =>
-    setDataAttribute(att)
-);
+[
+    'prefers-color-scheme',
+    'light-theme',
+    'dark-theme',
+    'font-family',
+    'font-size',
+].forEach((att) => setDataAttribute(att));
 
 // Create Meta theme
 const metaTheme = localStorage.getItem('meta-theme');

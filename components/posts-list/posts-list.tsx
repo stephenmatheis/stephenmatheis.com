@@ -1,65 +1,22 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+import type { Post } from '@/lib/types';
 import { Search } from '@/components/search';
 import { Entry } from '@/components/entry';
-import { Tags } from '@/components/tags';
-import type { Post } from '@/lib/types';
 import styles from './posts-list.module.scss';
 
-function filterTags(post: Post, tags: string[]) {
-    if (!post.tags) {
-        return;
-    }
-
-    if (tags.every((val) => post.tags.includes(val))) {
-        return post;
-    }
-}
-
 export function PostsList({ posts }: { posts: Post[] }) {
-    const searchParams = useSearchParams();
-    const tags = useMemo(
-        () => searchParams.get('tags')?.split(',') || [],
-        [searchParams]
-    );
-    const taggedPosts = tags.length
-        ? posts.filter((post) => filterTags(post, tags))
-        : posts;
-    const [filteredPosts, setFilteredPosts] = useState(taggedPosts);
+    const [filteredPosts, setFilteredPosts] = useState(posts);
     const months = [...new Set(filteredPosts.map(({ date }) => date))].sort(
         (a, b) => (a && b ? new Date(b).getTime() - new Date(a).getTime() : 0)
     );
-    // TODO: Move to lib
-    const allTags = [
-        ...new Set(
-            posts
-                .flatMap(({ tags }) => {
-                    return tags;
-                })
-                .filter((tag) => tag)
-                .sort()
-        ),
-    ];
-
-    // Reset
-    useEffect(() => {
-        if (!tags.length) {
-            setFilteredPosts(filteredPosts);
-        }
-    }, [filteredPosts, tags]);
 
     return (
         <>
             <div className={styles.title}>
-                <Search posts={taggedPosts} setPosts={setFilteredPosts} />
+                <Search posts={posts} setPosts={setFilteredPosts} />
             </div>
-            {allTags.length > 0 && (
-                <div id="tags" className={styles.tags}>
-                    <Tags tags={allTags} color={'primary'} />
-                </div>
-            )}
             {filteredPosts.length === 0 ? (
                 <div className={styles.none}>
                     There are no posts that match this query.
