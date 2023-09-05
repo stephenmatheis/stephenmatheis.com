@@ -167,13 +167,20 @@ $theme-colors: (
 ) {
     $opacities: '05', '10', '15', '20', '30', '50';
     $gradients: (
-        ('05', 95%),
-        ('10', 90%),
-        ('15', 85%),
-        ('20', 80%),
-        ('30', 70%),
-        ('50', 50%),
-        ('90', 10%)
+        // ('05', 95%),
+        // ('10', 90%),
+        // ('15', 85%),
+        // ('20', 80%),
+        // ('30', 70%),
+        // ('50', 50%),
+        // ('90', 10%)
+        ('05', 99%),
+        ('10', 95%),
+        ('15', 90%),
+        ('20', 85%),
+        ('30', 80%),
+        ('50', 75%),
+        ('90', 25%)
     );
     $colors: (
         'primary': $primary,
@@ -233,17 +240,23 @@ $theme-colors: (
             --#{$formatted-prefix}#{$name}: #{$color};
             --#{$formatted-prefix}#{$name}-string: '#{$color}';
 
-            @each $opacity in $opacities {
-                --#{$formatted-prefix}#{$name}-#{$opacity}: #{$color}#{$opacity};
-            }
-
-            // @each $label, $value in $gradients {
-            //     $mix-color: #221d29;
-
-            //     $color-lighter: mix($mix-color, $color, $value);
-
-            //     --#{$formatted-prefix}#{$name}-#{$label}: #{$color-lighter};
+            // @each $opacity in $opacities {
+            //     --#{$formatted-prefix}#{$name}-#{$opacity}: #{$color}#{$opacity};
             // }
+
+            @each $label, $value in $gradients {
+                @if $mode == 'Light' {
+                    $bg-mix: if($background-color, $background-color, #ffffff);
+                    $color-mixed: mix($bg-mix, $color, $value);
+
+                    --#{$formatted-prefix}#{$name}-#{$label}: #{$color-mixed};
+                } @else if $mode == 'Dark' {
+                    $bg-mix: if($background-color, $background-color, #221d29);
+                    $color-mixed: mix($bg-mix, $color, $value);
+
+                    --#{$formatted-prefix}#{$name}-#{$label}: #{$color-mixed};
+                }
+            }
 
             @if $mode == 'Light' {
                 --#{$formatted-prefix}#{$name}-variant: #{mix(
