@@ -35,14 +35,14 @@ export function PostTitle({
                         href={`/posts/${slug}`}
                         className={styles['post-link']}
                     >
-                        #
+                        *
                     </Link>
                 </span>
             ) : (
                 <LinkCtr href={`/posts/${slug}`}>{title}</LinkCtr>
             )}
 
-            {/* <Tags tags={tags} /> */}
+            <Tags tags={tags} />
         </h2>
     );
 }
