@@ -18,6 +18,7 @@
                 margin-top: 0px;
                 margin-bottom: 0px;
                 text-align: center;
+                color: var(--muted);
             }
         }
     }
@@ -29,6 +30,7 @@
     flex-wrap: wrap;
     gap: 1ch;
     width: 100%;
+    margin-bottom: calc(var(--line-height) * 4);
 
     & {
         > div:first-of-type {
@@ -39,14 +41,6 @@
             flex: 1;
         }
     }
-}
-
-.tags {
-    display: inline-flex;
-    justify-content: flex-end;
-    width: 100%;
-    margin-top: calc(var(--line-height) * 1);
-    margin-bottom: calc(var(--line-height) * 3);
 }
 
 .none {
