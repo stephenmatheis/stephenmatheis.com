@@ -32,13 +32,5 @@
             padding-right: 0.25in;
             padding-bottom: 0.25in;
         }
-
-        @media (max-height: utilities.$medium-height) {
-            padding-left: 0.25in;
-            padding-right: 0.25in;
-            padding-bottom: 0.25in;
-        }
-
-        @include utilities.gaps();
     }
 }

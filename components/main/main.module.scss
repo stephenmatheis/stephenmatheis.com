@@ -19,8 +19,6 @@
         gap: calc(var(--line-height) * 4);
     }
 
-    @include utilities.gaps();
-
     @media (pointer: coarse) {
         max-width: var(--max-width);
         margin: 0 auto;
