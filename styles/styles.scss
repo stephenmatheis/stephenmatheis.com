@@ -85,8 +85,13 @@
             @media (hover: hover) {
                 &:hover {
                     [data-link-text] {
-                        background-color: var(--color);
-                        color: var(--background-color);
+                        color: var(--muted);
+                    }
+                }
+
+                [data-link-text-ctr] {
+                    &:hover [data-link-text] {
+                        color: var(--muted);
                     }
                 }
             }
