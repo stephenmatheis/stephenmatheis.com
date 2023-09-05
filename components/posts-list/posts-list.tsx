@@ -2,10 +2,10 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import type { Post } from '@/lib/types';
 import { Search } from '@/components/search';
 import { Entry } from '@/components/entry';
 import { Tags } from '@/components/tags';
+import type { Post } from '@/lib/types';
 import styles from './posts-list.module.scss';
 
 function filterTags(post: Post, tags: string[]) {

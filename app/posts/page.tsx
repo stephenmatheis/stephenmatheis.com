@@ -3,10 +3,11 @@ import { Page } from '@/components/page';
 import { Main } from '@/components/main';
 import { PostsList } from '@/components/posts-list';
 import getPosts from '@/lib/get-posts';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
-    title: 'Archive',
-    description: 'All posts.',
+    title: 'Posts',
+    description: 'All blog posts.',
 };
 
 export default async function PostsPage() {
@@ -23,7 +24,9 @@ export default async function PostsPage() {
             ]}
         >
             <Main>
-                <PostsList posts={posts} />
+                <Suspense>
+                    <PostsList posts={posts} />
+                </Suspense>
             </Main>
         </Page>
     );
