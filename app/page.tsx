@@ -15,7 +15,7 @@ export default async function RootPage() {
     return (
         <Page
             links={[
-                { label: 'More posts', path: '/posts' },
+                { label: 'Posts', path: '/posts' },
                 { label: 'RSS', path: '/rss', newTab: true },
                 { label: 'About', path: '/about' },
             ]}
