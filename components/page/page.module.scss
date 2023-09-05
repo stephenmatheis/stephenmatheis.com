@@ -40,9 +40,5 @@
         }
 
         @include utilities.gaps();
-
-        @media (pointer: coarse) and (max-width: utilities.$small-width) {
-            padding-bottom: calc(100dvh / 3);
-        }
     }
 }
