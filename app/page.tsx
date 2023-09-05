@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 export default async function RootPage() {
     const posts = await getPosts();
 
-    // TODO: Move RSS link to top near title
     return (
         <Page
             links={[
