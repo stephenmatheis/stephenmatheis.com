@@ -35,7 +35,7 @@ export function PostTitle({
                         href={`/posts/${slug}`}
                         className={styles['post-link']}
                     >
-                        #
+                        *
                     </Link>
                 </span>
             ) : (
