@@ -47,7 +47,7 @@ export async function Post({
                     Last updated on <DateTime dateString={lastModified} />
                 </div>
             )}
-            <Tags tags={tags} newTab={true} />
+            {/* <Tags tags={tags} newTab={true} /> */}
             <Nav previous={previous} next={next} />
             <div className={styles['footer-wrapper']}>
                 <Footer

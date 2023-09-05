@@ -42,7 +42,7 @@ export function PostTitle({
                 <LinkCtr href={`/posts/${slug}`}>{title}</LinkCtr>
             )}
 
-            <Tags tags={tags} />
+            {/* <Tags tags={tags} /> */}
         </h2>
     );
 }
