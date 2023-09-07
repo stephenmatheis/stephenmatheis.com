@@ -1,12 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+
+import { useMemo, useState } from 'react';
 import type { Post } from '@/lib/types';
 import { Search } from '@/components/search';
 import { Entry } from '@/components/entry';
 import styles from './posts-list.module.scss';
 
 export function PostsList({ posts }: { posts: Post[] }) {
+    const searchParams = useSearchParams();
+    const tags = useMemo(
+        () => searchParams.get('tags')?.split(',') || [],
+        [searchParams]
+    );
+
+    console.log(tags);
+
     const [filteredPosts, setFilteredPosts] = useState(posts);
     const months = [...new Set(filteredPosts.map(({ date }) => date))].sort(
         (a, b) => (a && b ? new Date(b).getTime() - new Date(a).getTime() : 0)
