@@ -24,9 +24,9 @@ export default async function PostsPage() {
             ]}
         >
             <Main>
-                {/* <Suspense> */}
-                <PostsList posts={posts} />
-                {/* </Suspense> */}
+                <Suspense>
+                    <PostsList posts={posts} />
+                </Suspense>
             </Main>
         </Page>
     );
