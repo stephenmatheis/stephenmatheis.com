@@ -1,26 +1,29 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import styles from './tag.module.scss';
 
 type Props = {
     tag: string;
+    selected?: string[];
     spacer?: boolean;
     newTab?: boolean;
     color?: string;
 };
 
-export function Tag({ tag, spacer, newTab, color = 'muted' }: Props) {
-    const searchParams = useSearchParams();
-    const tags = searchParams.get('tags')?.split(',') || [];
-
+export function Tag({
+    selected = [],
+    tag,
+    spacer,
+    newTab,
+    color = 'muted',
+}: Props) {
     return (
         <span
             key={tag}
             className={[
                 styles[color],
                 styles.tag,
-                ...(tags.includes(tag) ? [styles.selected] : []),
+                ...(selected.includes(tag) ? [styles.selected] : []),
             ].join(' ')}
             onClick={(event) => {
                 event.stopPropagation();
@@ -28,10 +31,10 @@ export function Tag({ tag, spacer, newTab, color = 'muted' }: Props) {
 
                 let queryParams: string[];
 
-                if (tags.includes(tag)) {
-                    queryParams = tags.filter((t) => t !== tag);
+                if (selected.includes(tag)) {
+                    queryParams = selected.filter((t) => t !== tag);
                 } else {
-                    queryParams = [...new Set([...tags, tag])];
+                    queryParams = [...new Set([...selected, tag])];
                 }
 
                 const href = `${
