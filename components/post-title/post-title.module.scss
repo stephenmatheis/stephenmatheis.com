@@ -8,12 +8,10 @@
     flex-direction: column;
     gap: var(--line-height);
 
-    // NOTE: I remember now. Following Daring Fireball, external posts have less spacing
-    // between title and body text.
-
-    // &.external {
-    //     margin-bottom: calc(var(--line-height) * 2);
-    // }
+    // External posts have less spacing between title and body text.
+    &.external {
+        margin-bottom: calc(var(--line-height) * 2);
+    }
 
     .post-link {
         display: inline-flex;
@@ -25,10 +23,6 @@
                 @include utilities.shadow-hover;
             }
         }
-
-        // @media (max-width: utilities.$small-width) {
-        //     margin-left: 2ch;
-        // }
     }
 
     .title-text {
