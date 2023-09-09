@@ -5,7 +5,7 @@ $distance: 10px;
 .project-ctr {
     display: flex;
     flex-direction: column;
-    gap: calc(var(--line-height) * 2);
+    gap: calc(var(--line-height) * 1);
     position: relative;
 
     &.compact {

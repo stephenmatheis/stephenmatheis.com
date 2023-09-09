@@ -12,7 +12,7 @@ $distance: 10px;
     .projects-wrapper {
         display: flex;
         flex-direction: column;
-        gap: calc(var(--line-height) * 4);
+        gap: calc(var(--line-height) * 2);
 
         @media print {
             gap: var(--line-height);
