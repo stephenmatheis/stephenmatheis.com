@@ -36,8 +36,6 @@ export function PostsList({
         ),
     ];
 
-    console.log(tags);
-
     const taggedPosts = tags.length
         ? posts.filter((post) => filterTags(post, tags))
         : posts;
