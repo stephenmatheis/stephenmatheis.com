@@ -11,13 +11,9 @@
         "lint": "next lint",
         "lint:staged": "lint-staged -v",
         "update-posts": "tsx ./scripts/update-posts.ts",
-        "update-version": "tsx ./scripts/update-version.ts",
-        "git-add-set-theme": "git add ./public/set-theme.js",
         "clean": "rm -rf .next"
     },
     "pre-commit": [
-        "update-version",
-        "git-add-set-theme",
         "lint:staged"
     ],
     "lint-staged": {

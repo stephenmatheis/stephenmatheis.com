@@ -70,26 +70,8 @@ const components = {
 
 export function Body({ children }: { children: string }) {
     const options = {
-        // Use one of Shiki's packaged themes
-        // theme: {
-        //     // dark: 'dark-plus',
-        //     // light: 'light-plus',
-        // },
-
-        // Use CSS variables
         theme: 'css-variables',
-
-        // Or your own JSON theme
-        // theme: JSON.parse(
-        //     readFileSync('./shiki/monochrome-light.json', 'utf-8')
-        // ),
-        // theme: JSON.parse(
-        //     readFileSync('./shiki/custom.json', 'utf-8')
-        // ),
-
-        // Keep the background or use a custom background color?
         keepBackground: false,
-
         // Callback hooks to add custom logic to nodes when visiting them.
         onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and

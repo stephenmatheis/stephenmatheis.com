@@ -52,89 +52,13 @@ $border-radius: 6px;
     @return $string;
 }
 
-// Controls
-@mixin vertical() {
-    min-width: 150px;
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-
-    [data-option] {
-        white-space: nowrap;
-        width: 100%;
-        padding: var(--offset) 24px;
-
-        &:not(:nth-last-child(2))::after {
-            right: 3px;
-            bottom: -0.5px;
-            height: 1px;
-            width: calc(100% - 6px);
-
-            // Overide :not(.vertical)
-            top: unset;
-            left: unset;
-        }
-    }
-
-    [data-indicator] {
-        width: calc(100% - var(--offset));
-        height: calc(var(--indicator-height) - var(--double-offset) / 2);
-        top: calc(
-            (var(--indicator-height) * var(--modifier)) + var(--offset) / 2
-        );
-        left: calc(var(--offset) / 2);
-    }
-
-    @media (hover: hover) {
-        [data-indicator] {
-            width: calc(100% - var(--double-offset));
-            height: calc(var(--indicator-height) - var(--double-offset) / 1);
-            top: calc(
-                (var(--indicator-height) * var(--modifier)) + var(--offset) / 1
-            );
-            left: calc(var(--offset) / 1);
-        }
-    }
-}
-
 // Shadows
 @mixin shadow-hover {
     color: var(--accent);
 }
 
-// Themes
-@function format-map($iterable) {
-    $str: '';
-
-    @each $key, $value in $iterable {
-        $entry-string: $key;
-
-        $str: $str + '|' + $entry-string + ' - ';
-
-        @each $name, $color in $value {
-            $entry-string: string.unquote($name) + ' >' $color;
-
-            $str: $str + $entry-string + ',';
-        }
-    }
-
-    // remove leading ', ' from ', item 1, item 2'
-    $str: string.slice($str, 2);
-
-    @return string.unquote($str);
-}
-
 $default: themes.$default;
-$defaultDarkMetaTheme: themes.$defaultDarkMetaTheme;
-$defaultLightMetaTheme: themes.$defaultLightMetaTheme;
 $themes: themes.$themes;
-$dark-colors: map.get($themes, 'Dark');
-$light-colors: map.get($themes, 'Light');
-$combined-colors: ($dark-colors, $light-colors);
-$theme-colors: (
-    'Dark': format-map($dark-colors),
-    'Light': format-map($light-colors),
-);
 
 @mixin defaultColor($prefix, $variableName, $value, $mode, $options) {
     @if $value {
@@ -159,7 +83,6 @@ $theme-colors: (
     $color: null,
     $muted: null
 ) {
-    $opacities: '05', '10', '15', '20', '30', '50';
     $gradients: (
         // ('05', 95%),
         // ('10', 90%),
@@ -234,10 +157,6 @@ $theme-colors: (
             --#{$formatted-prefix}#{$name}: #{$color};
             --#{$formatted-prefix}#{$name}-string: '#{$color}';
 
-            // @each $opacity in $opacities {
-            //     --#{$formatted-prefix}#{$name}-#{$opacity}: #{$color}#{$opacity};
-            // }
-
             @each $label, $value in $gradients {
                 @if $mode == 'Light' {
                     $bg-mix: if($background-color, $background-color, #ffffff);
@@ -282,12 +201,6 @@ $theme-colors: (
     }
 }
 
-// TODO: I need to add ALL themes as css variables because
-// light and dark themes are independent
-// Ex. Selecting the 'Red' Light theme shouldn't update Dark's colors.
-// The only way to make sure the palette is correct is to have
-// all themes as variables
-
 @mixin set-theme($prefix, $mode, $color) {
     @include create-theme(
         $type: null,
@@ -304,57 +217,20 @@ $theme-colors: (
     );
 }
 
-// TODO: dry up these calls
-@mixin prefers-dark {
-    @include set-theme(null, 'Dark', $default);
-}
-
-@mixin prefers-light {
-    @include set-theme(null, 'Light', $default);
-}
-
-@mixin colors($selector: '') {
-    @each $name, $mode in $themes {
-        #{$selector}[data-prefers-color-scheme='#{$name}'] {
-            @include set-theme(null, $name, $default);
-
-            @each $color, $colors in $mode {
-                &[data-#{string.to-lower-case($name)}-theme='#{$color}'] {
-                    @include set-theme(null, $name, $color);
-                }
-            }
-        }
-    }
-
-    @each $name, $mode in $themes {
-        [data-mode='#{string.to-lower-case($name)}'] {
-            @each $color, $colors in $mode {
-                &[data-#{string.to-lower-case($name)}-theme='#{$color}'] {
-                    @include set-theme('toggle', $name, $color);
-                }
-            }
-        }
-    }
-}
-
-@mixin os-themes($selector, $mode) {
-    @each $color, $colors in map.get($themes, $mode) {
-        #{$selector}[data-#{string.to-lower-case($mode)}-theme='#{$color}'] {
-            @include set-theme(null, $mode, $color);
-        }
-    }
-}
-
 @mixin init-themes() {
-    @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
-        @include prefers-dark;
-        @include os-themes('&', 'Dark');
-    }
+    --line-height: #{$line-height};
+    --font-size: #{$font-size};
+    --offset: #{$offset};
+    --p-line-height-modifier: #{$p-line-height-modifier};
+    --page-padding: #{$page-padding};
+    --page-gap: #{$page-gap};
+    --small-width: #{$small-width};
+    --medium-width: #{$medium-width};
+    --large-width: #{$large-width};
+    --max-width: #{$max-width};
+    --border-radius: #{$border-radius};
+    --icon-size: calc(var(--font-size) + 4px);
+    --prefers-color-scheme-transition-speed: 250ms;
 
-    @media (prefers-color-scheme: light) {
-        @include prefers-light;
-        @include os-themes('&', 'Light');
-    }
-
-    @include colors('&');
+    @include set-theme(null, 'Dark', $default);
 }
