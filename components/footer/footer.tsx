@@ -20,10 +20,7 @@ export function Footer({ links = [], text }: Props) {
             {links?.length !== 0 && (
                 <nav>
                     <ol>
-                        {[
-                            ...links,
-                            { label: 'Settings', path: '/settings' },
-                        ]?.map(({ label, path, newTab }) => {
+                        {links?.map(({ label, path, newTab }) => {
                             return (
                                 <li key={path}>
                                     <LinkCtr href={path} newTab={newTab}>
