@@ -9,13 +9,12 @@ export function Projects() {
         <div className={classNames(styles.projects)}>
             <Comment text={'Projects'} />
             <div className={classNames(styles['projects-wrapper'])}>
-                {projects.map(({ name, link, description, image }) => (
+                {projects.map(({ name, link, description }) => (
                     <Project
                         key={name}
                         name={name}
                         link={link}
                         description={description}
-                        image={image}
                     />
                 ))}
             </div>
