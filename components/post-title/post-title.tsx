@@ -34,7 +34,7 @@ export function PostTitle({
                 </span>
             ) : (
                 <LinkCtr href={`/posts/${slug}`}>{title}</LinkCtr>
-            )}{' '}
+            )}
             {process.env.NODE_ENV && status && (
                 <span
                     style={{
@@ -43,6 +43,7 @@ export function PostTitle({
                             status === 'draft'
                                 ? 'var(--accent)'
                                 : 'var(--primary)',
+                        marginLeft: '2ch',
                     }}
                 >
                     ({status})
