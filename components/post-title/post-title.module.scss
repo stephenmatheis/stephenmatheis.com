@@ -8,26 +8,13 @@
         margin-bottom: calc(var(--line-height) * 2);
     }
 
-    &.draft {
-        * {
-            color: var(--muted);
-        }
-    }
-
     .post-link {
-        display: inline-flex;
-        align-items: center;
-        padding: 0px 0.5ch;
+        margin-left: 2ch;
 
         @media (hover: hover) {
             &:hover {
                 @include utilities.shadow-hover;
             }
         }
-    }
-
-    .title-text {
-        gap: 2ch;
-        display: flex;
     }
 }

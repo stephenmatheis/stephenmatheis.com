@@ -17,9 +17,6 @@ export function PostTitle({
     return (
         <h2
             className={classNames(styles.title, {
-                [styles.draft]:
-                    process.env.NODE_ENV === 'development' &&
-                    status === 'draft',
                 [styles.external]: link,
             })}
         >
@@ -42,9 +39,11 @@ export function PostTitle({
                 <span
                     style={{
                         textTransform: 'uppercase',
-                        color: 'var(--accent)',
+                        color:
+                            status === 'draft'
+                                ? 'var(--accent)'
+                                : 'var(--primary)',
                     }}
-                    className={styles.status}
                 >
                     ({status})
                 </span>
