@@ -3,6 +3,8 @@
 .posts-ctr {
     .date {
         display: block;
+        text-align: right;
+        margin-bottom: calc(var(--line-height) * 2);
     }
 
     .posts {
@@ -12,6 +14,10 @@
         .post {
             &:not(:last-child) {
                 margin-bottom: calc(var(--line-height) * 9);
+            }
+
+            .tags {
+                margin-top: calc(var(--line-height) * 4);
             }
         }
     }
