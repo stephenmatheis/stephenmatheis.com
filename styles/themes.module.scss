@@ -1,6 +1,6 @@
 $default: 'Green';
-$defaultDarkMetaTheme: #221d29;
-$defaultLightMetaTheme: #ffffff;
+$defaultDarkBackgroundColor: #221d29;
+$defaultLightBackgroundColor: #ffffff;
 $themes: (
     'Dark': (
         'Green': (
@@ -53,15 +53,6 @@ $themes: (
             'color': #ffffff,
             'muted': #c4c4c4,
         ),
-        // '8-Bit': (
-        //     'primary': #ff004d,
-        //     'secondary': #2aacff,
-        //     'tertiary': #ff77a8,
-        //     'accent': #01e435,
-        //     'background-color': #1d2b53,
-        //     'color': #fff2e8,
-        //     'muted': #83769c,
-        // ),
         '8-Bit': (
             'primary': #ff004d,
             'accent': #2aacff,
@@ -83,7 +74,6 @@ $themes: (
             'secondary': #28fc91,
             'tertiary': #40ffff,
             'accent': #40ffff,
-            // TODO: Need differnt muted / background colors
         ),
         'High Contrast': (
             'primary': #ffffff,
@@ -204,3 +194,13 @@ $themes: (
 // # Terminal Greens
 // #4af626
 // #00ff00s
+
+// '8-Bit': (
+//     'primary': #ff004d,
+//     'secondary': #2aacff,
+//     'tertiary': #ff77a8,
+//     'accent': #01e435,
+//     'background-color': #1d2b53,
+//     'color': #fff2e8,
+//     'muted': #83769c,
+// ),

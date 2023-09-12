@@ -5,6 +5,8 @@
 // Globals
 $default: themes.$default;
 $themes: themes.$themes;
+$defaultDarkBackgroundColor: themes.$defaultDarkBackgroundColor;
+$defaultLightBackgroundColor: themes.$defaultLightBackgroundColor;
 $font-size: 12px;
 $line-height: 18px;
 $offset: 13px;
@@ -90,8 +92,8 @@ $border-radius: 6px;
             $background-color,
             $mode,
             (
-                'Light': #ffffff,
-                'Dark': #221d29,
+                'Light': $defaultLightBackgroundColor,
+                'Dark': $defaultDarkBackgroundColor,
             )
         );
 
@@ -134,12 +136,12 @@ $border-radius: 6px;
 
             @each $label, $value in $gradients {
                 @if $mode == 'Light' {
-                    $bg-mix: if($background-color, $background-color, #ffffff);
+                    $bg-mix: if($background-color, $background-color, $defaultLightBackgroundColor);
                     $color-mixed: mix($bg-mix, $color, $value);
 
                     --#{$formatted-prefix}#{$name}-#{$label}: #{$color-mixed};
                 } @else if $mode == 'Dark' {
-                    $bg-mix: if($background-color, $background-color, #221d29);
+                    $bg-mix: if($background-color, $background-color, $defaultDarkBackgroundColor);
                     $color-mixed: mix($bg-mix, $color, $value);
 
                     --#{$formatted-prefix}#{$name}-#{$label}: #{$color-mixed};
