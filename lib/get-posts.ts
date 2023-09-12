@@ -34,15 +34,16 @@ export const getPosts = cache(async (): Promise<Post[]> => {
                 } as Post;
             })
     );
-    const sorted = postsWithMetadata
-        .filter(({ status }) => status !== 'draft')
-        .sort((a, b) =>
-            a && b
-                ? new Date(b.created).getTime() - new Date(a.created).getTime()
-                : 0
-        ) as Post[];
 
-    return sorted;
+    return (
+        process.env.NODE_ENV
+            ? postsWithMetadata
+            : postsWithMetadata.filter(({ status }) => status !== 'draft')
+    ).sort((a, b) =>
+        a && b
+            ? new Date(b.created).getTime() - new Date(a.created).getTime()
+            : 0
+    ) as Post[];
 });
 
 export async function getPost(slug: string): Promise<Post | undefined> {

@@ -2,6 +2,7 @@ import type { Post } from '@/lib/types';
 import { DateTime } from '@/components/date-time';
 import { PostTitle } from '@/components/post-title';
 import { Body } from '@/components/body';
+import { Tags } from '@/components/tags';
 import styles from './posts.module.scss';
 
 export function Posts({ posts }: { posts: Post[] }) {
@@ -27,7 +28,14 @@ export function Posts({ posts }: { posts: Post[] }) {
                                     .filter((post) => post.date === date)
                                     .map(
                                         (
-                                            { slug, title, link, body, tags },
+                                            {
+                                                slug,
+                                                title,
+                                                link,
+                                                body,
+                                                tags,
+                                                status,
+                                            },
                                             postIndex
                                         ) => {
                                             return (
@@ -39,11 +47,14 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                         slug={slug}
                                                         title={title}
                                                         link={link}
-                                                        tags={tags}
-                                                        dateIndex={dateIndex}
-                                                        postIndex={postIndex}
+                                                        status={status}
                                                     />
                                                     <Body>{body}</Body>
+                                                    <div
+                                                        className={styles.tags}
+                                                    >
+                                                        <Tags tags={tags} />
+                                                    </div>
                                                 </article>
                                             );
                                         }

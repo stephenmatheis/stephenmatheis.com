@@ -1,28 +1,25 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { LinkCtr } from '@/components/link-ctr';
-import { Tags } from '@/components/tags';
 import styles from './post-title.module.scss';
 
 export function PostTitle({
     slug,
     title,
     link,
-    tags,
-    dateIndex,
-    postIndex,
+    status,
 }: {
     slug: string;
     title: string;
     link?: string;
-    tags: string[];
-    dateIndex: number;
-    postIndex: number;
+    status?: string;
 }) {
     return (
         <h2
             className={classNames(styles.title, {
-                [styles.first]: dateIndex === 0 && postIndex === 0,
+                [styles.draft]:
+                    process.env.NODE_ENV === 'development' &&
+                    status === 'draft',
                 [styles.external]: link,
             })}
         >
@@ -40,8 +37,18 @@ export function PostTitle({
                 </span>
             ) : (
                 <LinkCtr href={`/posts/${slug}`}>{title}</LinkCtr>
+            )}{' '}
+            {process.env.NODE_ENV && status && (
+                <span
+                    style={{
+                        textTransform: 'uppercase',
+                        color: 'var(--accent)',
+                    }}
+                    className={styles.status}
+                >
+                    ({status})
+                </span>
             )}
-            {/* <Tags tags={tags} /> */}
         </h2>
     );
 }
