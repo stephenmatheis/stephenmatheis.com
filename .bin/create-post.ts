@@ -18,7 +18,8 @@ const slug: string = name
     .toLowerCase()
     .replaceAll(' ', '-')
     .replaceAll(',', '')
-    .replaceAll('.', '_');
+    .replaceAll('.', '_')
+    .replaceAll('&', 'and');
 const path: string = `./_posts/${slug}.mdx`;
 const doesExist: boolean = await exists(path);
 
@@ -34,6 +35,7 @@ const date: string = new Date().toLocaleDateString('en-US', {
     timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
 });
 const text = `---
+status: draft
 title: ${formatName(name)}
 date: ${date}
 lastModified: ${date}
