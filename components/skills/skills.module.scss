@@ -10,7 +10,7 @@
 
         .group {
             .name {
-                color: var(--secondary);
+                color: var(--primary);
                 position: relative;
             }
 
@@ -22,7 +22,6 @@
                 .item {
                     display: inline-block;
                     border-radius: 4px;
-                    color: var(--tertiary);
                 }
             }
         }
