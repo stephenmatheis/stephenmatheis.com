@@ -79,8 +79,8 @@ $border-radius: 6px;
     );
     $colors: (
         'primary': $primary,
-        'secondary': $secondary,
-        'tertiary': $tertiary,
+        // 'secondary': $secondary,
+        // 'tertiary': $tertiary,
         'accent': $accent,
     );
     $formatted-prefix: if($prefix, #{$prefix}-, '');
