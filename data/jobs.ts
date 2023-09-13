@@ -7,8 +7,8 @@ const jobs = [
         end: 'Present',
         lines: [
             'Supporting Apple',
-            'Prototyping with Next.js, TypeScript, Sass, Docker, and Kubernetes',
-            'Developed a system for scaffolding React components',
+            'Built prototypes with Next.js, TypeScript, and Sass',
+            'Developed a system for scaffolding React components with Node.js and Fastly',
         ],
     },
     {
@@ -18,7 +18,7 @@ const jobs = [
         start: 'May 2022',
         end: 'Jul 2022',
         lines: [
-            'Developed modules for a U.S. Air Force application in C# with .NET 6, Unity, and MongoDB',
+            'Developed an application for the U.S Air Force C# with .NET 6, Unity, and MongoDB',
             'Developed Node.js applications to generate C# source code files',
         ],
     },
@@ -29,8 +29,8 @@ const jobs = [
         start: 'Apr 2022',
         end: 'May 2022',
         lines: [
-            'Developed a React version of Robi with support for PnPjs',
-            'Developed an embeddable Command Palette for React apps',
+            'Ported Robi to React with support for PnPjs',
+            'Created an embeddable command palette for React apps',
         ],
     },
     {
@@ -74,6 +74,7 @@ const jobs = [
         lines: [
             'Developed web applications with jQuery and Bootstrap hosted on SharePoint 2013',
             'Migrated an on-premise SharePoint farm from 2010 to 2013',
+            'Migrated Lotus Notes apps to SharePoint 2013',
         ],
     },
     {
