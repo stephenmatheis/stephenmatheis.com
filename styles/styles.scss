@@ -1,13 +1,16 @@
 @use 'utilities';
 
 :root {
-    --font-print: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol';
+    --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         Liberation Mono, 'Courier New', monospace;
-    --font-monospace: var(--font-print);
     --font-family: var(--font-monospace);
+    --font-print: var(--font-monospace);
 
     @media print {
-        --font-family: var(--font-print) !important;
+        --font-family: var(--font-print);
         --font-size: 11px;
         --line-height: 16px;
     }
@@ -115,8 +118,6 @@ h5,
 h6 {
     font-weight: normal;
     color: var(--primary);
-
-    // TODO: Look at max-width to mimic text-wrap: balance;
 }
 
 h2,
