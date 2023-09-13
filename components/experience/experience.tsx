@@ -11,8 +11,7 @@ export function Experience() {
                     return (
                         <div key={index} className={styles['job']}>
                             <div className={styles['title']}>
-                                <span>{title}</span>
-                                <span> </span>
+                                <span>{title}</span>{' '}
                                 <span className={styles['company']}>
                                     @ {company}
                                 </span>
