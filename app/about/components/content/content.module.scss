@@ -6,7 +6,6 @@
     width: 100%;
 
     @media screen {
-        gap: 16ch;
         flex-direction: column;
         gap: calc(var(--line-height) * 4);
         margin-bottom: calc(var(--line-height) * 4);
@@ -24,18 +23,14 @@
     .right {
         display: flex;
         flex-direction: column;
-        gap: calc(var(--line-height) * 2);
 
         @media screen {
-            gap: calc(var(--line-height) * 3);
-
-            @media (max-width: utilities.$medium-width) {
-                max-width: none;
-            }
+            gap: calc(var(--line-height) * 4);
         }
 
         @media print {
             max-width: 34ch;
+            gap: calc(var(--line-height) * 3);
         }
     }
 }
