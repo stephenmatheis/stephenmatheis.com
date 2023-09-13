@@ -5,6 +5,7 @@
 // Globals
 $default: themes.$default;
 $themes: themes.$themes;
+$defaultMode: themes.$defaultMode;
 $defaultDarkBackgroundColor: themes.$defaultDarkBackgroundColor;
 $defaultLightBackgroundColor: themes.$defaultLightBackgroundColor;
 $font-size: 12px;
@@ -21,12 +22,12 @@ $medium-height: 725px;
 $border-radius: 6px;
 
 @mixin hide-scrollbar() {
-    /* Hide scrollbar for Chrome, Safari and Opera */
+    /* Chrome, Safari, and Opera */
     &::-webkit-scrollbar {
         display: none;
     }
 
-    /* Hide scrollbar for IE, Edge and Firefox */
+    /* IE, Edge (Legacy), and Firefox */
     & {
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
@@ -136,12 +137,20 @@ $border-radius: 6px;
 
             @each $label, $value in $gradients {
                 @if $mode == 'Light' {
-                    $bg-mix: if($background-color, $background-color, $defaultLightBackgroundColor);
+                    $bg-mix: if(
+                        $background-color,
+                        $background-color,
+                        $defaultLightBackgroundColor
+                    );
                     $color-mixed: mix($bg-mix, $color, $value);
 
                     --#{$formatted-prefix}#{$name}-#{$label}: #{$color-mixed};
                 } @else if $mode == 'Dark' {
-                    $bg-mix: if($background-color, $background-color, $defaultDarkBackgroundColor);
+                    $bg-mix: if(
+                        $background-color,
+                        $background-color,
+                        $defaultDarkBackgroundColor
+                    );
                     $color-mixed: mix($bg-mix, $color, $value);
 
                     --#{$formatted-prefix}#{$name}-#{$label}: #{$color-mixed};
@@ -209,5 +218,5 @@ $border-radius: 6px;
     --icon-size: calc(var(--font-size) + 4px);
     --prefers-color-scheme-transition-speed: 250ms;
 
-    @include set-theme(null, 'Dark', $default);
+    @include set-theme(null, $defaultMode, $default);
 }
