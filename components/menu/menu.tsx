@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './menu.module.scss';
 
 export type MenuButton = {
@@ -16,10 +16,6 @@ export function Menu({ buttons }: Props): JSX.Element {
     const menu = useRef<HTMLDivElement>(null!);
     const [showMenu, setShowMenu] = useState(false);
 
-    // TODO:
-    // Determine best position based on x, y and
-    // window width / height
-
     function close() {
         menu.current.classList.add(styles.close);
 
@@ -27,6 +23,19 @@ export function Menu({ buttons }: Props): JSX.Element {
             setShowMenu(false);
         }, 150);
     }
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (menu.current && !menu.current.contains(event.target as Node)) {
+                close();
+            }
+        }
+
+        window.addEventListener('mousedown', handleClickOutside);
+
+        return () =>
+            window.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     return (
         <div className={styles['menu-ctr']}>
