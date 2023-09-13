@@ -80,7 +80,11 @@ body {
 a {
     position: relative;
     color: var(--primary);
-    -webkit-tap-highlight-color: var(--primary-10);
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+        color: var(--primary-10);
+    }
 
     &.anchor {
         display: block;
