@@ -4,6 +4,7 @@
     // --menu-pos: top left;
     --menu-pos: top right;
 
+    user-select: none;
     position: relative;
     z-index: 10;
 
@@ -26,7 +27,7 @@
         border-radius: 6px;
         animation: open 150ms ease-in-out forwards;
         background-color: var(--background-color);
-        border: solid 1px var(--primary-50);
+        border: solid 1px var(--primary-10);
 
         &.close {
             animation: close 150ms ease-in-out forwards;
