@@ -236,6 +236,7 @@ p {
         opacity: 0.98;
         background: var(--background);
         border: solid 1px var(--border-color);
+        border-radius: 6px;
 
         & > code {
             // Shiki
