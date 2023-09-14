@@ -16,7 +16,6 @@ export function Nav({
             {/* Prev */}
             <div className={styles.previous}>
                 {previous && (
-                    // <LinkCtr href={`/posts/${previous.slug}`} emoji="❬">
                     <LinkCtr href={`/posts/${previous.slug}`}>
                         {previous.title}
                     </LinkCtr>
@@ -25,19 +24,13 @@ export function Nav({
 
             {/* Posts */}
             <div className={styles.center}>
-                {/* <LinkCtr href={home} emoji="❬"> */}
                 <LinkCtr href={home}>Posts</LinkCtr>
             </div>
 
             {/* Next */}
             <div className={styles.next}>
                 {next && (
-                    <LinkCtr
-                        href={`/posts/${next.slug}`}
-                        // emoji={{ position: 'right', value: '❭' }}
-                    >
-                        {next.title}
-                    </LinkCtr>
+                    <LinkCtr href={`/posts/${next.slug}`}>{next.title}</LinkCtr>
                 )}
             </div>
         </div>
