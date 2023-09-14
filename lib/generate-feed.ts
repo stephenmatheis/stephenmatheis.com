@@ -28,7 +28,7 @@ export async function generateFeed(type: string) {
         id: `${site}/${type}`,
         link: site,
         language: 'en',
-        image: `${site}/memoji.png`,
+        image: `${site}/me.png`,
         favicon: `${site}/favicon.ico`,
         copyright: `Copyright © ${new Date().getFullYear()}, Stephen Matheis`,
         generator: 'Next.js + Feed for Node.js',
