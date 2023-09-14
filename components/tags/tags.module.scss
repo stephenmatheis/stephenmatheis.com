@@ -1,13 +1,6 @@
 .tags {
     display: inline-flex;
     gap: 1ch;
-    transition: all 300ms ease-in-out;
-
-    &.muted {
-        color: var(--muted);
-    }
-
-    &.primary {
-        color: var(--primary);
-    }
+    flex-wrap: wrap;
+    color: var(--muted);
 }

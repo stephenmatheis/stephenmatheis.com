@@ -8,11 +8,11 @@ type Props = {
     color?: string;
 };
 
-export function Tags({ tags, selected, newTab, color = 'muted' }: Props) {
+export function Tags({ tags, selected, newTab }: Props) {
     return (
         <>
             {tags && tags.length > 0 && (
-                <span className={[styles.tags, styles[color]].join(' ')}>
+                <span className={styles.tags}>
                     #{' '}
                     {tags.map((tag: string, index: number) => {
                         return (
@@ -22,7 +22,6 @@ export function Tags({ tags, selected, newTab, color = 'muted' }: Props) {
                                 tag={tag}
                                 spacer={index < tags.length - 1}
                                 newTab={newTab}
-                                color={color}
                             />
                         );
                     })}
