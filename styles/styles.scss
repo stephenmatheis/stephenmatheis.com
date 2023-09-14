@@ -82,8 +82,10 @@ a {
     color: var(--primary);
     -webkit-tap-highlight-color: transparent;
 
-    &:active {
-        color: var(--primary-10);
+    @media (pointer: coarse) {
+        &:active {
+            color: var(--primary-10);
+        }
     }
 
     @media (hover: hover) {
