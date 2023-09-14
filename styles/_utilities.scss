@@ -35,7 +35,9 @@ $border-radius: 6px;
 }
 
 @mixin shadow-hover {
-    color: var(--accent);
+    border-radius: 2px;
+    background-color: var(--primary-20);
+    box-shadow: 0px 0px 0px 4px var(--primary-20);
 }
 
 @mixin defaultColor($prefix, $variableName, $value, $mode, $options) {

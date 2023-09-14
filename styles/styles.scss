@@ -86,6 +86,12 @@ a {
         color: var(--primary-10);
     }
 
+    @media (hover: hover) {
+        &:hover {
+            @include utilities.shadow-hover;
+        }
+    }
+
     &.anchor {
         display: block;
 
