@@ -12,11 +12,11 @@
 
     a {
         .text {
-            @media (hover: hover) {
-                &:hover .part {
-                    @include utilities.shadow-hover;
-                }
-            }
+            // @media (hover: hover) {
+            //     &:hover .part {
+            //         @include utilities.shadow-hover;
+            //     }
+            // }
 
             .title {
                 color: var(--muted);

@@ -2,32 +2,4 @@
 
 .link {
     cursor: pointer;
-
-    @media (hover: hover) {
-        &:hover {
-            color: var(--primary);
-
-            .text {
-                @include utilities.shadow-hover;
-            }
-        }
-    }
-
-    .emoji {
-        font-size: var(--line-height);
-
-        margin-right: 1ch;
-        // FIXME:
-        // I'm not sure if there is a good default.
-        // The only component using this right now is <Contacts />.
-        transform: translateY(3px);
-        // transform: translateY(1.5px);
-        display: inline-block;
-        line-height: 0px;
-
-        &.left {
-            margin-right: 0ch;
-            margin-left: 1ch;
-        }
-    }
 }
