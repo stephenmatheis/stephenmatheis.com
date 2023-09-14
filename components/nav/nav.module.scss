@@ -47,23 +47,9 @@
 
     .previous {
         justify-content: flex-start;
-
-        > a {
-            [data-emoji] {
-                @include button;
-                left: -1.5ch;
-            }
-        }
     }
 
     .next {
         justify-content: flex-end;
-
-        > a {
-            [data-emoji] {
-                @include button;
-                right: -1.5ch;
-            }
-        }
     }
 }
