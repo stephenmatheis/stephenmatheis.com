@@ -36,8 +36,8 @@ $border-radius: 6px;
 
 @mixin shadow-hover {
     border-radius: 1px;
-    background-color: var(--primary-20);
-    box-shadow: 0px 0px 0px 4px var(--primary-20);
+    background-color: var(--primary-10);
+    box-shadow: 0px 0px 0px 4px var(--primary-10);
 }
 
 @mixin defaultColor($prefix, $variableName, $value, $mode, $options) {

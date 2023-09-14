@@ -84,7 +84,9 @@ a {
 
     @media (pointer: coarse) {
         &:active {
-            color: var(--primary-10);
+            border-radius: 1px;
+            background-color: var(--primary-10);
+            box-shadow: 0px 0px 0px 4px var(--primary-10);
         }
     }
 
