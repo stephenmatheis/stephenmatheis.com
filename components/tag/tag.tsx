@@ -7,21 +7,13 @@ type Props = {
     selected?: string[];
     spacer?: boolean;
     newTab?: boolean;
-    color?: string;
 };
 
-export function Tag({
-    selected = [],
-    tag,
-    spacer,
-    newTab,
-    color = 'muted',
-}: Props) {
+export function Tag({ selected = [], tag, spacer, newTab }: Props) {
     return (
         <span
             key={tag}
             className={[
-                styles[color],
                 styles.tag,
                 ...(selected.includes(tag) ? [styles.selected] : []),
             ].join(' ')}

@@ -32,7 +32,9 @@ export function PostsList({
                     return tags;
                 })
                 .filter((tag) => tag)
-                .sort()
+                .sort((a: string, b: string) =>
+                    a.toLowerCase().localeCompare(b.toLowerCase())
+                )
         ),
     ];
 
@@ -51,7 +53,7 @@ export function PostsList({
             </div>
             {allTags.length > 0 && (
                 <div id="tags" className={styles.tags}>
-                    <Tags tags={allTags} selected={tags} color={'primary'} />
+                    <Tags tags={allTags} selected={tags} />
                 </div>
             )}
             {filteredPosts.length === 0 ? (
