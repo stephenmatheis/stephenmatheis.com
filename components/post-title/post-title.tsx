@@ -41,7 +41,7 @@ export function PostTitle({
                         textTransform: 'uppercase',
                         color:
                             status === 'draft'
-                                ? 'var(--accent)'
+                                ? 'var(--muted)'
                                 : 'var(--primary)',
                         marginLeft: '2ch',
                     }}
