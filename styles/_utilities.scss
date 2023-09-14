@@ -53,22 +53,17 @@ $border-radius: 6px;
     $prefix,
     $mode,
     $primary,
-    $secondary,
-    $tertiary,
     $accent,
+    $token-string-expression,
+    $token-function,
+    $token-constant,
+    $token-comment,
     $background-color: null,
     $text-shadow-color: null,
     $color: null,
     $muted: null
 ) {
     $gradients: (
-        // ('05', 95%),
-        // ('10', 90%),
-        // ('15', 85%),
-        // ('20', 80%),
-        // ('30', 70%),
-        // ('50', 50%),
-        // ('90', 10%)
         ('05', 99%),
         ('10', 95%),
         ('15', 90%),
@@ -79,9 +74,11 @@ $border-radius: 6px;
     );
     $colors: (
         'primary': $primary,
-        // 'secondary': $secondary,
-        // 'tertiary': $tertiary,
         'accent': $accent,
+        'token-string-expression': $token-string-expression,
+        'token-function': $token-function,
+        'token-constant': $token-constant,
+        'token-comment': $token-comment,
     );
     $formatted-prefix: if($prefix, #{$prefix}-, '');
 
@@ -193,8 +190,11 @@ $border-radius: 6px;
         $prefix: $prefix,
         $mode: $mode,
         $primary: map.get($themes, $mode, $color, 'primary'),
-        $secondary: map.get($themes, $mode, $color, 'secondary'),
-        $tertiary: map.get($themes, $mode, $color, 'tertiary'),
+        $token-string-expression:
+            map.get($themes, $mode, $color, 'token-string-expression'),
+        $token-function: map.get($themes, $mode, $color, 'token-function'),
+        $token-constant: map.get($themes, $mode, $color, 'token-constant'),
+        $token-comment: map.get($themes, $mode, $color, 'token-comment'),
         $accent: map.get($themes, $mode, $color, 'accent'),
         $background-color: map.get($themes, $mode, $color, 'background-color'),
         $color: map.get($themes, $mode, $color, 'color'),
