@@ -36,7 +36,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                 tags,
                                                 status,
                                             },
-                                            postIndex
+                                            index
                                         ) => {
                                             return (
                                                 <article
@@ -49,7 +49,9 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                         link={link}
                                                         status={status}
                                                     />
-                                                    <Body>{body}</Body>
+                                                    <Body id={index.toString()}>
+                                                        {body}
+                                                    </Body>
                                                     <div
                                                         className={styles.tags}
                                                     >
