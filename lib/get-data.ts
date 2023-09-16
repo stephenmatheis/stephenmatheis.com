@@ -14,6 +14,7 @@ export async function getData({ slug }: { slug: string }): Promise<any> {
     return {
         previous: posts[postIndex + 1] || null,
         next: posts[postIndex - 1] || null,
+        id: postIndex,
         ...rest,
     };
 }

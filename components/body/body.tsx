@@ -6,6 +6,7 @@ import { LinkCtr } from '@/components/link-ctr';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
 import { SelectCell } from '@/components/select-cell';
 import { Tab, Tabs } from '@/components/tabs';
+import { Children, cloneElement } from 'react';
 
 function getAnchor(text: string) {
     return text
@@ -38,37 +39,55 @@ function ResponsiveImage(props: any) {
     );
 }
 
-const components = {
-    h2: ({ children }: any) => <Heading as={'h2'}>{children}</Heading>,
-    h3: ({ children }: any) => <Heading as={'h3'}>{children}</Heading>,
-    h4: ({ children }: any) => <Heading as={'h4'}>{children}</Heading>,
-    h5: ({ children }: any) => <Heading as={'h5'}>{children}</Heading>,
-    h6: ({ children }: any) => <Heading as={'h6'}>{children}</Heading>,
-    a: ({ children, ...props }: any) => {
-        return (
-            <LinkCtr href={props.href || ''} newTab={true}>
+export function Body({ children, id }: { children: string; id?: string }) {
+    const components = {
+        h2: ({ children }: any) => <Heading as={'h2'}>{children}</Heading>,
+        h3: ({ children }: any) => <Heading as={'h3'}>{children}</Heading>,
+        h4: ({ children }: any) => <Heading as={'h4'}>{children}</Heading>,
+        h5: ({ children }: any) => <Heading as={'h5'}>{children}</Heading>,
+        h6: ({ children }: any) => <Heading as={'h6'}>{children}</Heading>,
+        a: ({ children, ...props }: any) => {
+            return (
+                <LinkCtr href={props.href || ''} newTab={true}>
+                    {children}
+                </LinkCtr>
+            );
+        },
+        img: ResponsiveImage,
+        pre: ({ children }) => {
+            return (
+                <CopyToClipboard>
+                    <pre>{children}</pre>
+                </CopyToClipboard>
+            );
+        },
+        SelectCell: () => <SelectCell />,
+        Tabs: ({ children }) => <Tabs>{children}</Tabs>,
+        Tab: ({ children, title, menu }) => (
+            <Tab title={title} menu={menu}>
                 {children}
-            </LinkCtr>
-        );
-    },
-    img: ResponsiveImage,
-    pre: ({ children }) => {
-        return (
-            <CopyToClipboard>
-                <pre>{children}</pre>
-            </CopyToClipboard>
-        );
-    },
-    SelectCell: () => <SelectCell />,
-    Tabs: ({ children }) => <Tabs>{children}</Tabs>,
-    Tab: ({ children, title, menu }) => (
-        <Tab title={title} menu={menu}>
-            {children}
-        </Tab>
-    ),
-};
+            </Tab>
+        ),
+        Footnotes: ({ children }) => (
+            <div className="footnotes">
+                <hr />
+                <ol>
+                    {Children.map(children, (child, i) =>
+                        cloneElement(child, { number: i + 1 })
+                    )}
+                </ol>
+            </div>
+        ),
+        Note: ({ children, number }) => (
+            <li id={`${id}-${number}`}>{children}</li>
+        ),
+        Sup: ({ children }) => (
+            <sup className="superscript">
+                <a href={`#${id}-${children}`}>{children}</a>
+            </sup>
+        ),
+    };
 
-export function Body({ children }: { children: string }) {
     const options = {
         theme: 'css-variables',
         keepBackground: false,
@@ -108,14 +127,6 @@ export function Body({ children }: { children: string }) {
             source={children}
             options={{
                 mdxOptions: {
-                    //   remarkPlugins: [
-                    //     // Adds support for GitHub Flavored Markdown
-                    //     remarkGfm,
-                    //     // Makes emojis more accessible
-                    //     remarkA11yEmoji,
-                    //     // generates a table of contents based on headings
-                    //     remarkToc,
-                    //   ],
                     rehypePlugins: [[rehypePrettyCode, options]],
                 },
             }}

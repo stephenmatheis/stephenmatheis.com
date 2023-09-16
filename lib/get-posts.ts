@@ -13,10 +13,11 @@ function getFirstTwoSentences(str: string): string {
 export const getPosts = cache(async (): Promise<Post[]> => {
     const postsDirectory = join(process.cwd(), '_posts');
     const posts = await readdir(postsDirectory);
+    const fileTypes = ['.md', '.mdx'];
 
     const postsWithMetadata = await Promise.all(
         posts
-            .filter((file) => path.extname(file) === '.mdx')
+            .filter((file) => fileTypes.includes(path.extname(file)))
             .map(async (file) => {
                 const filePath = join(postsDirectory, file);
                 const postContent = await readFile(filePath, 'utf8');

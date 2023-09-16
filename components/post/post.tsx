@@ -29,6 +29,7 @@ export async function Post({
         link,
         lastModified,
         tags,
+        id,
     } = post;
 
     return (
