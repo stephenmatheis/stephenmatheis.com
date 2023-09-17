@@ -41,7 +41,7 @@ export async function Post({
             </h1>
             <article>
                 <DateTime dateString={date} className={styles.created} />
-                <Body>{body}</Body>
+                <Body id={id}>{body}</Body>
             </article>
             {new Date(lastModified) > new Date(date) && (
                 <div className={styles.date}>
