@@ -37,7 +37,8 @@ export const getPosts = cache(async (): Promise<Post[]> => {
     );
 
     return (
-        process.env.NODE_ENV === 'production'
+        process.env.NODE_ENV === 'production' ||
+        process.env.NODE_ENV === 'development'
             ? postsWithMetadata
             : postsWithMetadata.filter(({ status }) => status !== 'draft')
     )
@@ -49,7 +50,6 @@ export const getPosts = cache(async (): Promise<Post[]> => {
         .map((post) => {
             const formatDate = post.created.split(' ').slice(0, 4).join(' ');
 
-            post.created = formatDate;
             post.date = formatDate;
 
             return post;

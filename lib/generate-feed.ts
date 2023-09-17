@@ -43,12 +43,7 @@ export async function generateFeed(type: string) {
     });
 
     posts.forEach(
-        (post: {
-            slug: any;
-            title: any;
-            body: any;
-            date: string | number | Date;
-        }) => {
+        (post: { slug: any; title: any; body: any; created: string }) => {
             const url = `${site}/posts/${post.slug}`;
 
             feed.addItem({
@@ -62,7 +57,7 @@ export async function generateFeed(type: string) {
                         link: site,
                     },
                 ],
-                date: new Date(post.date),
+                date: new Date(post.created),
             });
         }
     );
