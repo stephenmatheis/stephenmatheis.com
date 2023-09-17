@@ -52,11 +52,15 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                     <Body id={index.toString()}>
                                                         {body}
                                                     </Body>
-                                                    <div
-                                                        className={styles.tags}
-                                                    >
-                                                        <Tags tags={tags} />
-                                                    </div>
+                                                    {tags && (
+                                                        <div
+                                                            className={
+                                                                styles.tags
+                                                            }
+                                                        >
+                                                            <Tags tags={tags} />
+                                                        </div>
+                                                    )}
                                                 </article>
                                             );
                                         }
