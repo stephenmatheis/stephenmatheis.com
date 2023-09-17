@@ -12,7 +12,7 @@ export function Posts({ posts }: { posts: Post[] }) {
     return (
         <>
             <div className={styles['date-groups']}>
-                {dates.map((date, dateIndex) => {
+                {dates.map((date) => {
                     return (
                         <div
                             key={date}

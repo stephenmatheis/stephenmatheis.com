@@ -40,11 +40,20 @@ export const getPosts = cache(async (): Promise<Post[]> => {
         process.env.NODE_ENV === 'development'
             ? postsWithMetadata
             : postsWithMetadata.filter(({ status }) => status !== 'draft')
-    ).sort((a, b) =>
-        a && b
-            ? new Date(b.created).getTime() - new Date(a.created).getTime()
-            : 0
-    ) as Post[];
+    )
+        .sort((a, b) =>
+            a && b
+                ? new Date(b.created).getTime() - new Date(a.created).getTime()
+                : 0
+        )
+        .map((post) => {
+            const formatDate = post.created.split(' ').slice(0, 4).join(' ');
+
+            post.created = formatDate;
+            post.date = formatDate;
+
+            return post;
+        }) as Post[];
 });
 
 export async function getPost(slug: string): Promise<Post | undefined> {
