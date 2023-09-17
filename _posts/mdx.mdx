@@ -2,13 +2,13 @@
 status: draft
 title: MDX
 date: 'Saturday, September 16, 2023 8:36:00 CDT'
-lastModified: 'September 16, 2023'
+lastModified: 'September 17, 2023'
 author: Stephen Matheis
 ---
 
-This blog runs on Next.js. Posts are written in MDX. Here's how I've set it up.
+This site runs on [Next.js](https://nextjs.org/). Blog posts are written in [MDX](https://mdxjs.com/). It uses the [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) library to load and parse them server side. I chose this one over the [default configuation](https://nextjs.org/docs/app/building-your-application/configuring/mdx) and [other options](https://nextjs.org/docs/app/building-your-application/configuring/mdx#remote-mdx) because it seemed like the simplest to implement (and replace), it suports storing posts outside of the `app` directory and, if the need ever arose, it can load them from an external source, like a database.
 
-```js
+```js title="body.js"
 import Image from 'next/image';
 import Link from 'next/link';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -145,4 +145,71 @@ export function Body({ children, id }: { children: string, id?: string }) {
         />
     );
 }
+```
+
+```js title="get-posts.js"
+import { cache } from 'react';
+import matter from 'gray-matter';
+import path, { join } from 'path';
+import { readFile, readdir } from 'fs/promises';
+import type { Post } from './types';
+
+function getFirstTwoSentences(str: string): string {
+    const sentences = str.match(/(.*?[.!?])\s+/g)?.join(' ');
+
+    return sentences ? sentences.slice(0, 80 * 3) + '' : '';
+}
+
+export const getPosts = cache(async (): Promise<Post[]> => {
+    const postsDirectory = join(process.cwd(), '_posts');
+    const posts = await readdir(postsDirectory);
+    const fileTypes = ['.md', '.mdx'];
+
+    const postsWithMetadata = await Promise.all(
+        posts
+            .filter((file) => fileTypes.includes(path.extname(file)))
+            .map(async (file) => {
+                const filePath = join(postsDirectory, file);
+                const postContent = await readFile(filePath, 'utf8');
+                const { data, content } = matter(postContent);
+                const { date } = data;
+
+                return {
+                    ...data,
+                    ...(data.tags ? { tags: data.tags.sort() } : {}),
+                    created: date,
+                    excerpt: getFirstTwoSentences(content),
+                    body: content,
+                    slug: path.parse(file).name,
+                    raw: postContent,
+                } as Post;
+            })
+    );
+
+    return (
+        process.env.NODE_ENV === 'development'
+            ? postsWithMetadata
+            : postsWithMetadata.filter(({ status }) => status !== 'draft')
+    )
+        .sort((a, b) =>
+            a && b
+                ? new Date(b.created).getTime() - new Date(a.created).getTime()
+                : 0
+        )
+        .map((post) => {
+            const formatDate = post.created.split(' ').slice(0, 4).join(' ');
+
+            post.date = formatDate;
+
+            return post;
+        }) as Post[];
+});
+
+export async function getPost(slug: string): Promise<Post | undefined> {
+    const posts = await getPosts();
+
+    return posts.find((post: any) => post.slug === slug);
+}
+
+export default getPosts;
 ```
