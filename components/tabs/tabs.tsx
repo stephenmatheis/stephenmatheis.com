@@ -2,7 +2,6 @@
 
 import { ReactElement, useState, useCallback, useRef } from 'react';
 import { Menu } from '@/components/menu';
-import type { MenuButton } from '@/components/menu';
 import styles from './tabs.module.scss';
 
 export type TabTitleProps = {

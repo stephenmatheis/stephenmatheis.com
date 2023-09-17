@@ -12,7 +12,7 @@ export function Posts({ posts }: { posts: Post[] }) {
     return (
         <>
             <div className={styles['date-groups']}>
-                {dates.map((date, dateIndex) => {
+                {dates.map((date) => {
                     return (
                         <div
                             key={date}
@@ -36,7 +36,7 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                 tags,
                                                 status,
                                             },
-                                            postIndex
+                                            index
                                         ) => {
                                             return (
                                                 <article
@@ -49,12 +49,18 @@ export function Posts({ posts }: { posts: Post[] }) {
                                                         link={link}
                                                         status={status}
                                                     />
-                                                    <Body>{body}</Body>
-                                                    <div
-                                                        className={styles.tags}
-                                                    >
-                                                        <Tags tags={tags} />
-                                                    </div>
+                                                    <Body id={index.toString()}>
+                                                        {body}
+                                                    </Body>
+                                                    {tags && (
+                                                        <div
+                                                            className={
+                                                                styles.tags
+                                                            }
+                                                        >
+                                                            <Tags tags={tags} />
+                                                        </div>
+                                                    )}
                                                 </article>
                                             );
                                         }
