@@ -37,7 +37,6 @@ export const getPosts = cache(async (): Promise<Post[]> => {
     );
 
     return (
-        process.env.NODE_ENV === 'production' ||
         process.env.NODE_ENV === 'development'
             ? postsWithMetadata
             : postsWithMetadata.filter(({ status }) => status !== 'draft')
