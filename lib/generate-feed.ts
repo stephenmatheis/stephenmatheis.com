@@ -62,7 +62,7 @@ export async function generateFeed(type: string) {
                         link: site,
                     },
                 ],
-                date: new Date(`${post?.date} 12:00`),
+                date: new Date(post.date),
             });
         }
     );
