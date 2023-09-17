@@ -222,9 +222,10 @@ button {
 p {
     code {
         font-family: var(--font-monospace);
-        padding: 0.125ch 0.25ch;
+        padding: 3px 5px;
         background-color: var(--primary-20);
         color: var(--primary);
+        border-radius: 4px;
     }
 }
 
@@ -232,29 +233,29 @@ p {
 [data-rehype-pretty-code-fragment] {
     --background: var(--primary-10);
     --hightlighted-background: var(--primary-15);
-    --title-background: var(--primary-20);
     --highlighted-border-color: var(--primary);
 
-    position: relative;
-    margin-bottom: calc(var(--line-height) * 1);
+    background: var(--background);
+    margin-top: calc(var(--line-height) * 2);
+    margin-bottom: calc(var(--line-height) * 3);
+    border-radius: 6px;
 
     [data-rehype-pretty-code-title] {
-        background: var(--title-background);
-        line-height: 30px;
-        padding: 0px 2ch;
+        border-bottom: solid 1px var(--primary-20);
+        padding: calc(var(--line-height) * 0.5) 4ch;
+        border-radius: 6px 6px 0px 0px;
+        color: var(--muted);
     }
 
     pre {
         font-weight: 400;
         margin: 0px;
         opacity: 0.98;
-        background: var(--background);
         border: solid 1px var(--border-color);
-        border-radius: 6px;
 
         & > code {
             // Shiki
-            --shiki-color-background: var(--primary-10);
+            --shiki-color-background: var(--background);
             --shiki-token-keyword: var(--primary);
             --shiki-color-text: var(--color);
             --shiki-token-punctuation: var(--color);

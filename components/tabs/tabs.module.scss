@@ -110,10 +110,9 @@
         border-left: solid 1px var(--border-color);
         border-bottom: solid 1px var(--border-color);
         border-radius: 0px 0px 6px 6px;
-        // max-height: 70svh;
-        // overflow: auto;
 
         [data-rehype-pretty-code-fragment] {
+            margin-top: 0px;
             margin-bottom: 0px;
 
             pre {
