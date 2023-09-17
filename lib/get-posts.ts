@@ -13,10 +13,11 @@ function getFirstTwoSentences(str: string): string {
 export const getPosts = cache(async (): Promise<Post[]> => {
     const postsDirectory = join(process.cwd(), '_posts');
     const posts = await readdir(postsDirectory);
+    const fileTypes = ['.md', '.mdx'];
 
     const postsWithMetadata = await Promise.all(
         posts
-            .filter((file) => path.extname(file) === '.mdx')
+            .filter((file) => fileTypes.includes(path.extname(file)))
             .map(async (file) => {
                 const filePath = join(postsDirectory, file);
                 const postContent = await readFile(filePath, 'utf8');
@@ -39,11 +40,19 @@ export const getPosts = cache(async (): Promise<Post[]> => {
         process.env.NODE_ENV === 'development'
             ? postsWithMetadata
             : postsWithMetadata.filter(({ status }) => status !== 'draft')
-    ).sort((a, b) =>
-        a && b
-            ? new Date(b.created).getTime() - new Date(a.created).getTime()
-            : 0
-    ) as Post[];
+    )
+        .sort((a, b) =>
+            a && b
+                ? new Date(b.created).getTime() - new Date(a.created).getTime()
+                : 0
+        )
+        .map((post) => {
+            const formatDate = post.created.split(' ').slice(0, 4).join(' ');
+
+            post.date = formatDate;
+
+            return post;
+        }) as Post[];
 });
 
 export async function getPost(slug: string): Promise<Post | undefined> {

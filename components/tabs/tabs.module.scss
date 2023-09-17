@@ -28,7 +28,6 @@
             .titles-toolbar-btn {
                 display: grid;
                 place-content: center;
-                height: 100%;
                 padding: 0px 1ch;
                 margin: 2ch;
                 color: var(--primary);
@@ -48,7 +47,7 @@
                 border: none;
                 background-color: var(--tabs-inactive-background);
                 color: var(--muted);
-                padding: 1ch calc(2ch + 2px);
+                padding: 0ch calc(4ch + 2px);
                 height: 100%;
                 display: inline-flex;
                 align-items: center;

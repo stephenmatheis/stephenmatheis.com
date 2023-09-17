@@ -179,8 +179,12 @@ article {
 
         li {
             &::marker {
-                color: var(--theme-color);
+                color: var(--muted);
             }
+        }
+
+        & ul {
+            margin-top: 0px;
         }
     }
 
@@ -295,7 +299,7 @@ p {
 
             // Line
             > .line {
-                padding: 0px 2ch;
+                padding: 0px 4ch;
                 border-left: 2px solid transparent;
 
                 // Highlight line
@@ -342,4 +346,22 @@ p {
 
 .color {
     color: var(--color);
+}
+
+// Footnotes
+.superscript {
+    margin-left: 1ch;
+}
+
+.footnotes {
+    margin-top: calc(var(--line-height) * 4);
+
+    ol {
+        list-style-position: outside;
+        margin-left: 3ch;
+
+        li {
+            scroll-margin-top: var(--line-height);
+        }
+    }
 }

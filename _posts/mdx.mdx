@@ -1,3 +1,14 @@
+---
+status: draft
+title: MDX
+date: 'Saturday, September 16, 2023 8:36:00 CDT'
+lastModified: 'September 16, 2023'
+author: Stephen Matheis
+---
+
+This blog runs on Next.js. Posts are written in MDX. Here's how I've set it up.
+
+```js
 import Image from 'next/image';
 import Link from 'next/link';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -39,7 +50,7 @@ function ResponsiveImage(props: any) {
     );
 }
 
-export function Body({ children, id }: { children: string; id?: string }) {
+export function Body({ children, id }: { children: string, id?: string }) {
     const components = {
         h2: ({ children }: any) => <Heading as={'h2'}>{children}</Heading>,
         h3: ({ children }: any) => <Heading as={'h3'}>{children}</Heading>,
@@ -134,3 +145,4 @@ export function Body({ children, id }: { children: string; id?: string }) {
         />
     );
 }
+```
