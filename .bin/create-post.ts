@@ -6,14 +6,12 @@ import { writeFile, access } from 'fs/promises';
 
 const [name, ...rest]: string[] = process.argv.slice(2);
 
-// Exit if no name is provided
 if (!name) {
     console.log('\nMissing a name. Try this:\n');
     console.log('\tnpx post Name of post\n');
     process.exit();
 }
 
-// FIXME: Replace characters or encode URI
 const slug: string = name
     .toLowerCase()
     .replaceAll(' ', '-')
@@ -30,10 +28,13 @@ if (doesExist) {
     process.exit();
 }
 
-const date: string = new Date().toLocaleDateString('en-US', {
-    dateStyle: 'long',
-    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
-});
+const date: string = Intl.DateTimeFormat('en-US', {
+    dateStyle: 'full',
+    timeStyle: 'long',
+})
+    .format(new Date())
+    .replace('at ', '');
+
 const text = `---
 status: draft
 title: ${formatName(name)}
@@ -42,14 +43,11 @@ lastModified: ${date}
 author: Stephen Matheis
 ---
 
-
 `;
 
 await writeFile(path, text);
 
 exec(`code ${path}:8:1 -g`);
-
-// Functions
 
 async function exists(path: string): Promise<boolean> {
     try {
