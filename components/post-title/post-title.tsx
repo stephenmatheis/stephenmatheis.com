@@ -43,7 +43,7 @@ export function PostTitle({
                             status === 'draft'
                                 ? 'var(--muted)'
                                 : 'var(--primary)',
-                        marginLeft: '2ch',
+                        marginLeft: '1ch',
                     }}
                 >
                     ({status})

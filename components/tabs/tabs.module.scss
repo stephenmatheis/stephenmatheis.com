@@ -28,9 +28,11 @@
             .titles-toolbar-btn {
                 display: grid;
                 place-content: center;
-                padding: 0px 1ch;
-                margin: 2ch;
                 color: var(--primary);
+
+                button {
+                    padding: 2ch 3ch;
+                }
             }
         }
 
