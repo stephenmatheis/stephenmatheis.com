@@ -5,7 +5,6 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { LinkCtr } from '@/components/link-ctr';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
 import { SelectCell } from '@/components/select-cell';
-import { Tab, Tabs } from '@/components/tabs';
 import { Children, cloneElement } from 'react';
 
 function getAnchor(text: string) {
@@ -62,12 +61,6 @@ export function Body({ children, id }: { children: string; id?: string }) {
             );
         },
         SelectCell: () => <SelectCell />,
-        Tabs: ({ children }) => <Tabs>{children}</Tabs>,
-        Tab: ({ children, title, menu }) => (
-            <Tab title={title} menu={menu}>
-                {children}
-            </Tab>
-        ),
         Footnotes: ({ children }) => (
             <div className="footnotes">
                 <hr />
