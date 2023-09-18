@@ -29,7 +29,7 @@
 
     .cell.selected {
         background-color: var(--accent-30);
-        color: var(--accent);
+        color: var(--primary);
     }
 
     /* Order selected */
@@ -109,12 +109,12 @@
             border-radius: var(--border-radius);
 
             &:global(.stop) {
-                color: var(--accent);
+                color: var(--primary);
                 background-color: var(--accent-30);
             }
 
             &:global(.reset) {
-                color: var(--accent);
+                color: var(--primary);
                 background-color: var(--accent-30);
             }
         }
