@@ -4,17 +4,15 @@
     margin-bottom: calc(var(--line-height) * 2);
 
     .post-link {
-        margin-left: 1ch;
-        padding: 1ch;
+        margin-left: 2ch;
 
-        @media (hover: hover) {
-            &:hover {
-                @include utilities.shadow-hover;
-            }
+        @media (pointer: fine) {
+            margin-right: 1ch;
         }
 
         @media (pointer: coarse) {
-            height: 48px;
+            margin-left: 1ch;
+            padding: 1ch;
         }
     }
 }
