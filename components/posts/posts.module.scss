@@ -4,6 +4,7 @@
     .date {
         display: block;
         text-align: right;
+        margin-bottom: var(--line-height);
     }
 
     .posts {
@@ -12,7 +13,7 @@
 
         .post {
             &:not(:last-child) {
-                margin-bottom: calc(var(--line-height) * 9);
+                margin-bottom: calc(var(--line-height) * 5);
             }
 
             .tags {
