@@ -80,9 +80,7 @@ export function PostsList({
 
                         return (
                             <div className={styles.group} key={date}>
-                                <h2 className={styles.month}>
-                                    {formatAsMonthAndYear(date)}
-                                </h2>
+                                <h2 className={styles.month}>{date}</h2>
                                 {postsThisMonth.map(
                                     ({
                                         slug,
