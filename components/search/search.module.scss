@@ -7,13 +7,13 @@
         display: flex;
         align-items: center;
         width: 100%;
-        background-color: var(--primary-20);
-        border: solid 1px transparent;
+        background-color: var(--primary-15);
+        border: solid 2px transparent;
         border-radius: var(--border-radius);
 
         &:focus-within {
             outline: none;
-            border: solid 1px var(--primary);
+            border: solid 2px var(--primary-50);
         }
 
         .search {
