@@ -27,7 +27,11 @@ export function Entry({ title, type, href, date, tags = [] }: Props) {
                         {title} <Tags tags={tags} />
                     </span>
                     {date && (
-                        <DateTime className={styles.date} dateString={date} />
+                        <DateTime
+                            className={styles.date}
+                            dateString={date}
+                            short
+                        />
                     )}
                 </div>
             </Link>

@@ -5,10 +5,12 @@ import { writeFile } from 'fs/promises';
 import { success, mod, cyan } from '@/utils/log.ts';
 
 const [, , ...mdFilePaths]: string[] = process.argv;
-const today: string = new Date().toLocaleDateString('en-US', {
-    dateStyle: 'long',
-    timeZone: process.env.NEXT_PUBLIC_TIME_ZONE,
-});
+const today: string = Intl.DateTimeFormat('en-US', {
+    dateStyle: 'full',
+    timeStyle: 'long',
+})
+    .format(new Date())
+    .replace('at ', '');
 
 console.log(cyan(`Today's date is ${today}\n`));
 

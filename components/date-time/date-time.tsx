@@ -3,9 +3,10 @@ import styles from './date-time.module.scss';
 type Props = {
     dateString: string;
     className?: string;
+    short?: boolean;
 };
 
-export function DateTime({ dateString, className = '' }: Props) {
+export function DateTime({ dateString, className = '', short = false }: Props) {
     if (!dateString) return null;
 
     // @see https://github.com/vercel/next.js/discussions/39425#discussioncomment-3367041
@@ -15,7 +16,15 @@ export function DateTime({ dateString, className = '' }: Props) {
             dateTime={dateString}
             suppressHydrationWarning
         >
-            {dateString}
+            {short ? formatShort(dateString) : dateString}
         </time>
     );
+}
+
+function formatShort(dateString: string) {
+    return new Date(dateString).toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+    });
 }
