@@ -17,6 +17,13 @@ function filterTags(post: Post, tags: string[]) {
     }
 }
 
+function formatAsMonthAndYear(dateString: string) {
+    return new Date(dateString).toLocaleString('default', {
+        month: 'long',
+        year: 'numeric',
+    });
+}
+
 export function PostsList({
     posts,
     tags = [],
@@ -42,9 +49,13 @@ export function PostsList({
         ? posts.filter((post) => filterTags(post, tags))
         : posts;
     const [filteredPosts, setFilteredPosts] = useState(taggedPosts);
-    const months = [...new Set(filteredPosts.map(({ date }) => date))].sort(
-        (a, b) => (a && b ? new Date(b).getTime() - new Date(a).getTime() : 0)
+    const months = [
+        ...new Set(filteredPosts.map(({ date }) => formatAsMonthAndYear(date))),
+    ].sort((a, b) =>
+        a && b ? new Date(b).getTime() - new Date(a).getTime() : 0
     );
+
+    console.log(months);
 
     return (
         <>
@@ -64,16 +75,13 @@ export function PostsList({
                 <ul className={styles.container}>
                     {months.map((date) => {
                         const postsThisMonth = filteredPosts.filter(
-                            (post) => post.date === date
+                            (post) => formatAsMonthAndYear(post.date) === date
                         );
 
                         return (
                             <div className={styles.group} key={date}>
                                 <h2 className={styles.month}>
-                                    {new Date(date).toLocaleString('default', {
-                                        month: 'long',
-                                        year: 'numeric',
-                                    })}
+                                    {formatAsMonthAndYear(date)}
                                 </h2>
                                 {postsThisMonth.map(
                                     ({
