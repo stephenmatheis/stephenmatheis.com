@@ -1,16 +1,18 @@
 ---
-status: draft
+status: published
 title: Next.js & MDX
 date: 'Saturday, September 16, 2023 8:36:00 CDT'
-lastModified: 'Thursday, September 21, 2023 5:27:49 PM CDT'
+lastModified: 'Thursday, September 21, 2023 11:26:19 PM CDT'
 author: Stephen Matheis
 tags:
   - mdx
   - next.js
 ---
 
-This site runs on [Next.js](https://nextjs.org/). Blog posts are written in [MDX](https://mdxjs.com/). I chose the the [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) over the [default option](https://nextjs.org/docs/app/building-your-application/configuring/mdx) for three reasons:
+This site runs on [Next.js](https://nextjs.org/). Blog posts are written in [MDX](https://mdxjs.com/). I chose [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) over the [default option](https://nextjs.org/docs/app/building-your-application/configuring/mdx) for three reasons:
 
 1. You can store posts outside of the `app` directory and import them like any other component. This allowed me create the feed of the twenty most recent 20 posts on the root route. Of course, you can still create separate routes for each post.
 2. It supports [front matter](https://frontmatter.codes/docs/markdown) and [rehype](https://github.com/rehypejs/rehype) and [remark](https://remark.js.org/) plugins.
 3. If I ever needed to, I could pull in posts from an [external source](https://github.com/hashicorp/next-mdx-remote#examples) like a remote database using [server side fetch](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#fetching-data-on-the-server-with-fetch).
+
+Check out the [GitHub repo](https://github.com/stephenmatheis/stephenmatheis.com/blob/main/components/body/body.tsx). Feedback welcome.
