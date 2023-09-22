@@ -30,24 +30,22 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16ch;
     width: 100%;
 
     @media (max-width: utilities.$small-width) {
         display: block;
 
-        & > a {
-            display: block;
+        .page-title-wrapper {
             margin-bottom: var(--line-height);
         }
     }
 
-    & > a {
-        max-width: fit-content;
+    .page-title-wrapper {
+        flex: 1;
     }
 
-    & > div {
-        flex: 1;
+    .search-wrapper {
+        flex: 2;
     }
 }
 

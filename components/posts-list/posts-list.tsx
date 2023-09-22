@@ -59,10 +59,14 @@ export function PostsList({
     return (
         <>
             <div className={styles.title}>
-                <LinkCtr className={styles.reset} href="/posts">
-                    {'Posts'}
-                </LinkCtr>
-                <Search posts={taggedPosts} setPosts={setFilteredPosts} />
+                <div className={styles['page-title-wrapper']}>
+                    <LinkCtr className={styles.reset} href="/posts">
+                        {'Posts'}
+                    </LinkCtr>
+                </div>
+                <div className={styles['search-wrapper']}>
+                    <Search posts={taggedPosts} setPosts={setFilteredPosts} />
+                </div>
             </div>
             {allTags.length > 0 && (
                 <div id="tags" className={styles.tags}>
