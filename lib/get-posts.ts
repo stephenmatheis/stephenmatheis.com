@@ -43,9 +43,14 @@ export const getPosts = cache(async (): Promise<Post[]> => {
                 : 0
         )
         .map((post) => {
-            const formatDate = post.created.split(' ').slice(0, 4).join(' ');
+            post.date = post.created.split(' ').slice(0, 4).join(' ');
 
-            post.date = formatDate;
+            if (post.lastModified) {
+                post.lastModified = post.lastModified
+                    .split(' ')
+                    .slice(0, 4)
+                    .join(' ');
+            }
 
             return post;
         }) as Post[];

@@ -4,11 +4,11 @@ export type Post = {
     link?: string;
     date: string;
     created: string;
+    lastModified?: string;
     tags: string[];
     description: string;
     excerpt: string;
     body: string;
-    lastModified?: number;
     views?: number;
     raw: string;
     status?: string;
