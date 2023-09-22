@@ -21,19 +21,12 @@ export function Tag({ selected = [], tag, spacer, newTab }: Props) {
                 event.stopPropagation();
                 event.preventDefault();
 
-                let queryParams: string[];
-
-                if (selected.includes(tag)) {
-                    queryParams = selected.filter((t) => t !== tag);
-                } else {
-                    queryParams = [...new Set([...selected, tag])];
-                }
-
-                const href = `${
-                    queryParams.length
-                        ? `/posts?tags=${queryParams.join(',')}`
-                        : '/posts'
-                }`;
+                const queryParams = selected.includes(tag)
+                    ? selected.filter((t) => t !== tag)
+                    : [...new Set([...selected, tag])];
+                const href = queryParams.length
+                    ? `/posts?tags=${queryParams.join(',')}`
+                    : '/posts';
 
                 if (newTab) {
                     window.open(href);
