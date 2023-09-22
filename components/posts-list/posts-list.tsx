@@ -5,14 +5,15 @@ import type { Post } from '@/lib/types';
 import { Search } from '@/components/search';
 import { Entry } from '@/components/entry';
 import { Tags } from '@/components/tags';
+import { LinkCtr } from '../link-ctr';
 import styles from './posts-list.module.scss';
 
 function filterTags(post: Post, tags: string[]) {
-    if (!post.tags) {
-        return;
+    if (!post.tags && tags.includes('(none)')) {
+        return post;
     }
 
-    if (tags.every((val) => post.tags.includes(val))) {
+    if (tags.some((val) => post?.tags?.includes(val))) {
         return post;
     }
 }
@@ -55,16 +56,17 @@ export function PostsList({
         a && b ? new Date(b).getTime() - new Date(a).getTime() : 0
     );
 
-    console.log(months);
-
     return (
         <>
             <div className={styles.title}>
+                <LinkCtr className={styles.reset} href="/posts">
+                    {'Posts'}
+                </LinkCtr>
                 <Search posts={taggedPosts} setPosts={setFilteredPosts} />
             </div>
             {allTags.length > 0 && (
                 <div id="tags" className={styles.tags}>
-                    <Tags tags={allTags} selected={tags} />
+                    <Tags tags={allTags} selected={tags} none={true} />
                 </div>
             )}
             {filteredPosts.length === 0 ? (

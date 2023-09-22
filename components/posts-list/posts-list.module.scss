@@ -1,3 +1,5 @@
+@use 'styles/utilities';
+
 .container {
     --gap: calc(var(--line-height) * 5);
 
@@ -26,18 +28,26 @@
 .title {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 1ch;
+    gap: 16ch;
     width: 100%;
 
-    & {
-        > div:first-of-type {
-            flex: 2;
-        }
+    @media (max-width: utilities.$small-width) {
+        display: block;
 
-        > div:nth-of-type(2) {
-            flex: 1;
+        & > a {
+            display: block;
+            margin-bottom: var(--line-height);
         }
+    }
+
+    & > a {
+        max-width: fit-content;
+    }
+
+    & > div {
+        flex: 1;
     }
 }
 
@@ -47,6 +57,10 @@
     width: 100%;
     margin-top: calc(var(--line-height) * 1);
     margin-bottom: calc(var(--line-height) * 4);
+
+    @media (max-width: utilities.$small-width) {
+        justify-content: flex-start;
+    }
 }
 
 .none {

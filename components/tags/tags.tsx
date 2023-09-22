@@ -6,9 +6,10 @@ type Props = {
     selected?: string[];
     newTab?: boolean;
     color?: string;
+    none?: boolean;
 };
 
-export function Tags({ tags, selected, newTab }: Props) {
+export function Tags({ tags, selected, newTab, none }: Props) {
     return (
         <>
             {tags && tags.length > 0 && (
@@ -18,13 +19,26 @@ export function Tags({ tags, selected, newTab }: Props) {
                         return (
                             <Tag
                                 key={tag}
-                                selected={selected}
                                 tag={tag}
-                                spacer={index < tags.length - 1}
+                                selected={selected}
+                                spacer={
+                                    none || index < tags.length - 1
+                                        ? true
+                                        : false
+                                }
                                 newTab={newTab}
                             />
                         );
                     })}
+                    {none && (
+                        <Tag
+                            key="(none)"
+                            tag="(none)"
+                            selected={selected}
+                            spacer={false}
+                            newTab={newTab}
+                        />
+                    )}
                 </span>
             )}
         </>
