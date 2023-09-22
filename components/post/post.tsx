@@ -43,13 +43,15 @@ export async function Post({
                 <DateTime dateString={date} className={styles.created} />
                 <Body id={id}>{body}</Body>
             </article>
+            <Tags tags={tags} newTab={true} />
             {new Date(lastModified) > new Date(date) && (
                 <div className={styles.date}>
                     Last updated on <DateTime dateString={lastModified} />
                 </div>
             )}
-            <Tags tags={tags} newTab={true} />
-            <Nav previous={previous} next={next} />
+            <div className={styles['nav-wrapper']}>
+                <Nav previous={previous} next={next} />
+            </div>
             <div className={styles['footer-wrapper']}>
                 <Footer
                     links={[

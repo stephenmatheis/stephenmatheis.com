@@ -45,6 +45,11 @@
     .date {
         color: var(--muted);
         text-align: center;
+        margin: var(--line-height) 0px;
+    }
+
+    .nav-wrapper {
+        margin-top: var(--line-height);
     }
 
     .footer-wrapper {
