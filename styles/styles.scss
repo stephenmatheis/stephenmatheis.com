@@ -228,7 +228,7 @@ ol {
 // Code block
 [data-rehype-pretty-code-fragment] {
     --background: var(--primary-10);
-    --hightlighted-background: var(--primary-15);
+    --hightlighted-background: var(--primary-20);
     --highlighted-border-color: var(--primary);
 
     border-radius: 6px;
@@ -351,6 +351,7 @@ ol {
 // Footnotes
 .superscript {
     margin-left: 1ch;
+    vertical-align: top;
 }
 
 .footnotes {
