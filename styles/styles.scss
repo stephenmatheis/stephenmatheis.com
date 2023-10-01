@@ -236,7 +236,7 @@ ol {
     margin-top: calc(var(--line-height) * 2);
 
     &:not(:last-of-type) {
-        margin-bottom: calc(var(--line-height) * 3);
+        margin-bottom: calc(var(--line-height) * 2);
     }
 
     [data-rehype-pretty-code-title] {
@@ -356,6 +356,10 @@ ol {
 
 .footnotes {
     margin-top: calc(var(--line-height) * 4);
+
+    hr {
+        border: solid .5px var(--muted);
+    }
 
     ol {
         list-style-position: outside;
