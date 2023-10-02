@@ -19,27 +19,27 @@ if (!mdFilePaths.length) {
     process.exit();
 }
 
-// mdFilePaths.forEach(async (path: string): Promise<void> => {
-//     const file = matter.read(path);
-//     const { data: currentData } = file;
-//     const updatedData = {
-//         ...currentData,
-//         lastModified: today,
-//     };
+mdFilePaths.forEach(async (path: string): Promise<void> => {
+    const file = matter.read(path);
+    const { data: currentData } = file;
+    const updatedData = {
+        ...currentData,
+        lastModified: today,
+    };
 
-//     console.log('Title:', currentData.title);
-//     console.log('Last Upated:', currentData.lastModified);
+    console.log('Title:', currentData.title);
+    console.log('Last Upated:', currentData.lastModified);
 
-//     if (currentData.lastModified === updatedData.lastModified) {
-//         console.log(success(), 'Up to date\n');
-//         return;
-//     }
+    if (currentData.lastModified === updatedData.lastModified) {
+        console.log(success(), 'Up to date\n');
+        return;
+    }
 
-//     console.log(mod(), 'Modified\n');
+    console.log(mod(), 'Modified\n');
 
-//     file.data = updatedData;
+    file.data = updatedData;
 
-//     const updatedFileContent = matter.stringify(file, {});
+    const updatedFileContent = matter.stringify(file, {});
 
-//     writeFile(path, updatedFileContent);
-// });
+    writeFile(path, updatedFileContent);
+});
