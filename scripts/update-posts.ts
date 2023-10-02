@@ -24,15 +24,20 @@ mdFilePaths.forEach(async (path: string): Promise<void> => {
     const { data: currentData } = file;
     const updatedData = {
         ...currentData,
-        lastModified: today,
     };
 
-    console.log('Title:', currentData.title);
-    console.log('Last Upated:', currentData.lastModified);
+    // Update Last Modified
+    if (currentData.lastModified) {
+        updatedData.lastModified = today;
 
-    if (currentData.lastModified === updatedData.lastModified) {
-        console.log(success(), 'Up to date\n');
-        return;
+        console.log('Updated file:', currentData.title);
+        console.log(success(), `Created on: ${today} \n`);
+        console.log(success(), `Last updated: ${today} \n`);
+    } else {
+        updatedData.lastModified = updatedData.date;
+
+        console.log('New file:', currentData.title);
+        console.log(success(), `Created on: ${today} \n`);
     }
 
     console.log(mod(), 'Modified\n');
