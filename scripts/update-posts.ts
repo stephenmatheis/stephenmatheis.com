@@ -18,11 +18,22 @@ if (!mdFilePaths.length) {
 
 mdFilePaths.forEach(async (path: string): Promise<void> => {
     const file = matter.read(path);
-    const { data: currentData, content } = file;
+    const { data, content } = file;
+    const { lastModified, date, status } = data;
     const updatedData = {
-        ...currentData,
-        lastModified: currentData.lastModified ? today : currentData.date,
+        ...data,
+        // lastModified: status === 'draft' ? '' : ,
     };
+
+    if (status === 'draft') {
+        updatedData.lastModified = '';
+    } else if (status === 'published') {
+        if (!lastModified) {
+            updatedData.lastModified = date;
+        } else {
+            updatedData.lastModified = today;
+        }
+    }
 
     const updatedFileContent = matter.stringify(content, updatedData);
 
