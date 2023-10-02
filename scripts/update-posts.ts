@@ -22,18 +22,18 @@ mdFilePaths.forEach(async (path: string): Promise<void> => {
     const { lastModified, date, status } = data;
     const updatedData = {
         ...data,
-        // lastModified: status === 'draft' ? '' : ,
+        lastModified: status === 'draft' ? '' : !lastModified ? date : today,
     };
 
-    if (status === 'draft') {
-        updatedData.lastModified = '';
-    } else if (status === 'published') {
-        if (!lastModified) {
-            updatedData.lastModified = date;
-        } else {
-            updatedData.lastModified = today;
-        }
-    }
+    // if (status === 'draft') {
+    //     updatedData.lastModified = '';
+    // } else if (status === 'published') {
+    //     if (!lastModified) {
+    //         updatedData.lastModified = date;
+    //     } else {
+    //         updatedData.lastModified = today;
+    //     }
+    // }
 
     const updatedFileContent = matter.stringify(content, updatedData);
 
