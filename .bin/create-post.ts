@@ -38,8 +38,8 @@ const date: string = Intl.DateTimeFormat('en-US', {
 const text = `---
 status: draft
 title: ${formatName(name)}
-date: ${date}
-lastModified:
+date: '${date}'
+lastModified: ''
 author: Stephen Matheis
 ---
 
