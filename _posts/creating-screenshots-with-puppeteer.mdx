@@ -2,17 +2,17 @@
 status: draft
 title: Creating screenshots with Puppeteer
 date: 'Thursday, September 21, 2023 6:39:01 PM CDT'
-lastModified: 'Thursday, September 21, 2023 6:39:01 PM CDT'
+lastModified: 'Monday, October 2, 2023 4:30:14 PM CDT'
 author: Stephen Matheis
 ---
 
 I use [Instapaper](https://www.instapaper.com) to save bookmarks. I rarely go back to look at them. I mainly just want to feel safe closing tabs.
 
-Of course rarely isn't always so every now and then I do want to look something up. More often than not I can only remember what a site looked like. Instapaper only lists the title, description, address, and favicon of the sites you save. Which makes sense, really. But waht I'd prefer is some way to flip through images of what I've saved like a photo album.
+Of course rarely isn't always so every now and then I do want to look something up. More often than not I only remember what a site looked like. Instapaper lists the title, description, address, and favicon of the sites you save. But what I'd prefer is some way to flip through images of what I've saved like a photo album.
 
-So I tried to make one.
+So I thought I'd make one.
 
-I really didn't feel like loading each site one at a time. I exported everything in Instapaper to a CSV file. Then I used [csvjson](https://csvkit.readthedocs.io/en/1.1.1/scripts/csvjson.html) to convert it to JSON and saved the output to a new file which I manually edited in [VS Code](https://code.visualstudio.com/) to export a JS object so it could be [imported later in a Node.js script](#post-{id}-ln-6).
+I really didn't feel like loading each site one at a time. I exported every link I had saved to a CSV file. Then I used [csvjson](https://csvkit.readthedocs.io/en/1.1.1/scripts/csvjson.html) on it and saved the output to a new file which I manually edited in [VS Code](https://code.visualstudio.com/) to export a JS object so it could be [imported later in a Node.js script](#post-{id}-ln-6).
 
 This script.
 
