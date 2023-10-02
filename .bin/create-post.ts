@@ -39,6 +39,7 @@ const text = `---
 status: draft
 title: ${formatName(name)}
 date: ${date}
+lastModified:
 author: Stephen Matheis
 ---
 
