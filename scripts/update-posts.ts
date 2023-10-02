@@ -30,16 +30,6 @@ mdFilePaths.forEach(async (path: string): Promise<void> => {
                 : today,
     };
 
-    // if (status === 'draft') {
-    //     updatedData.lastModified = '';
-    // } else if (status === 'published') {
-    //     if (!lastModified) {
-    //         updatedData.lastModified = date;
-    //     } else {
-    //         updatedData.lastModified = today;
-    //     }
-    // }
-
     const updatedFileContent = matter.stringify(content, updatedData);
 
     writeFile(path, updatedFileContent);
