@@ -2,7 +2,6 @@
 
 import matter from 'gray-matter';
 import { writeFile } from 'fs/promises';
-import { success, mod, cyan } from '@/utils/log.ts';
 
 const [, , ...mdFilePaths]: string[] = process.argv;
 const today: string = Intl.DateTimeFormat('en-US', {
@@ -11,8 +10,6 @@ const today: string = Intl.DateTimeFormat('en-US', {
 })
     .format(new Date())
     .replace('at ', '');
-
-console.log(cyan(`Today's date is ${today}\n`));
 
 if (!mdFilePaths.length) {
     console.log('No staged md or mdx files.\n');
@@ -24,21 +21,8 @@ mdFilePaths.forEach(async (path: string): Promise<void> => {
     const { data: currentData, content } = file;
     const updatedData = {
         ...currentData,
+        lastModified: currentData.lastModified ? today : currentData.date,
     };
-
-    // Update Last Modified
-    if (currentData.lastModified) {
-        updatedData.lastModified = today;
-
-        console.log('Updated file:', currentData.title);
-        console.log(success(), `Created on: ${today} \n`);
-        console.log(success(), `Last updated: ${today} \n`);
-    } else {
-        updatedData.lastModified = updatedData.date;
-
-        console.log('New file:', currentData.title);
-        console.log(success(), `Created on: ${today} \n`);
-    }
 
     const updatedFileContent = matter.stringify(content, updatedData);
 
