@@ -22,7 +22,12 @@ mdFilePaths.forEach(async (path: string): Promise<void> => {
     const { lastModified, date, status } = data;
     const updatedData = {
         ...data,
-        lastModified: status === 'draft' ? '' : !lastModified ? date : today,
+        lastModified:
+            status === 'draft' && !lastModified
+                ? ''
+                : !lastModified
+                ? date
+                : today,
     };
 
     // if (status === 'draft') {
