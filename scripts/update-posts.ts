@@ -21,7 +21,7 @@ if (!mdFilePaths.length) {
 
 mdFilePaths.forEach(async (path: string): Promise<void> => {
     const file = matter.read(path);
-    const { data: currentData } = file;
+    const { data: currentData, content } = file;
     const updatedData = {
         ...currentData,
     };
@@ -40,11 +40,7 @@ mdFilePaths.forEach(async (path: string): Promise<void> => {
         console.log(success(), `Created on: ${today} \n`);
     }
 
-    console.log(mod(), 'Modified\n');
-
-    file.data = updatedData;
-
-    const updatedFileContent = matter.stringify(file, {});
+    const updatedFileContent = matter.stringify(content, updatedData);
 
     writeFile(path, updatedFileContent);
 });
