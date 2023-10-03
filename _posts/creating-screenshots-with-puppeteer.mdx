@@ -2,7 +2,7 @@
 status: draft
 title: Creating screenshots with Puppeteer
 date: 'Thursday, September 21, 2023 6:39:01 PM CDT'
-lastModified: 'Monday, October 2, 2023 4:30:14 PM CDT'
+lastModified: 'Monday, October 2, 2023 10:30:10 PM CDT'
 author: Stephen Matheis
 ---
 
@@ -59,7 +59,7 @@ async function fileExists(path) {
 }
 ```
 
-I've never used [Puppeteer](https://pptr.dev/) before. I don't think I'm using it quite right yet. But this little script mostly does what I hoped: loop through every site, load the URL, take a screenshot, and save it to disk. Sometimes it errors out becuase the site won't load. Other times it just fails and I don't know why. It's not very fast either. It takes anywhere from one to ten seconds per site. I've saved about 5,000 links. The script gets to about 1,500 then craps out every time.
+I've never used [Puppeteer](https://pptr.dev/) before. I don't think I'm using it quite right yet. But this little script mostly does what I hoped: loop through every site, load the URL, take a screenshot, and save it to disk. Sometimes it errors out because the site won't load. Other times it just fails and I don't know why. It's not very fast either. It takes anywhere from one to ten seconds per site. I've saved about 5,000 links. The script gets to about 1,500 then craps out every time.
 
 Here's the error:
 
