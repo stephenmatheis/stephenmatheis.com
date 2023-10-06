@@ -12,14 +12,14 @@ const jobs = [
         ],
     },
     {
-        title: 'Software Progammer 5',
+        title: 'Software Programmer 5',
         company: 'GovCIO',
         location: 'San Antonio, TX',
         start: 'May 2022',
         end: 'Jul 2022',
         lines: [
-            'Developed an application for the U.S Air Force C# with .NET 6, Unity, and MongoDB',
-            'Developed Node.js applications to generate C# source code files',
+            'Developed an application for the U.S Air Force in C# with .NET 6, Unity, and MongoDB',
+            'Developed Node.js tools for generating C# source code files',
         ],
     },
     {
@@ -30,7 +30,7 @@ const jobs = [
         end: 'May 2022',
         lines: [
             'Ported Robi to React with support for PnPjs',
-            'Created an embeddable command palette for React apps',
+            'Created a command palette for React apps',
         ],
     },
     {
