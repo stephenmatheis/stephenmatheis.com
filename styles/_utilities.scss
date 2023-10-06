@@ -68,7 +68,7 @@ $border-radius: 6px;
     $gradients: (
         ('05', 97%),
         ('10', 95%),
-        ('15', 90%),
+        ('15', 92%),
         ('20', 85%),
         ('30', 80%),
         ('50', 50%),
@@ -76,7 +76,6 @@ $border-radius: 6px;
     );
     $colors: (
         'primary': $primary,
-        'accent': $accent,
         'token-string-expression': $token-string-expression,
         'token-function': $token-function,
         'token-constant': $token-constant,

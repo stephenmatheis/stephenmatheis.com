@@ -5,7 +5,6 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { LinkCtr } from '@/components/link-ctr';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
 import { SelectCell } from '@/components/select-cell';
-import { Tab, Tabs } from '@/components/tabs';
 import { Children, cloneElement } from 'react';
 
 function getAnchor(text: string) {
@@ -48,7 +47,8 @@ export function Body({ children, id }: { children: string; id?: string }) {
         h6: ({ children }: any) => <Heading as={'h6'}>{children}</Heading>,
         a: ({ children, ...props }: any) => {
             return (
-                <LinkCtr href={props.href || ''} newTab={true}>
+                // <LinkCtr href={props.href || ''} newTab={true}>
+                <LinkCtr href={props.href.replaceAll('%7Bid%7D', id) || ''}>
                     {children}
                 </LinkCtr>
             );
@@ -62,12 +62,6 @@ export function Body({ children, id }: { children: string; id?: string }) {
             );
         },
         SelectCell: () => <SelectCell />,
-        Tabs: ({ children }) => <Tabs>{children}</Tabs>,
-        Tab: ({ children, title, menu }) => (
-            <Tab title={title} menu={menu}>
-                {children}
-            </Tab>
-        ),
         Footnotes: ({ children }) => (
             <div className="footnotes">
                 <hr />
@@ -92,18 +86,33 @@ export function Body({ children, id }: { children: string; id?: string }) {
         theme: 'css-variables',
         keepBackground: false,
         // Callback hooks to add custom logic to nodes when visiting them.
-        onVisitLine(node) {
+        onVisitLine(node: { children: string | any[] }) {
             // Prevent lines from collapsing in `display: grid` mode, and
             // allow empty lines to be copy/pasted
             if (node.children.length === 0) {
                 node.children = [{ type: 'text', value: ' ' }];
             }
         },
-        onVisitHighlightedLine(node) {
+        onVisitHighlightedLine(node: {
+            properties: { className: string[]; id: string };
+            position: { start: { line: any } };
+        }) {
             // Each line node by default has `class="line"`.
             node.properties.className.push('highlighted');
+
+            node.properties.id = `post-${id}-ln-${node.position.start.line}`;
         },
-        onVisitHighlightedWord(node, id) {
+        onVisitHighlightedWord(
+            node: {
+                properties: {
+                    [x: string]: any;
+                    className: string[];
+                    style: string;
+                };
+                children: any[];
+            },
+            id: any
+        ) {
             // Each word node has no className by default.
             node.properties.className = ['word'];
 

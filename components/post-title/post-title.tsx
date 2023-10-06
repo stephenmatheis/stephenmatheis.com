@@ -35,7 +35,7 @@ export function PostTitle({
             ) : (
                 <LinkCtr href={`/posts/${slug}`}>{title}</LinkCtr>
             )}
-            {process.env.NODE_ENV === 'development' && status && (
+            {status && (
                 <span
                     style={{
                         textTransform: 'uppercase',
@@ -43,7 +43,7 @@ export function PostTitle({
                             status === 'draft'
                                 ? 'var(--muted)'
                                 : 'var(--primary)',
-                        marginLeft: '2ch',
+                        marginLeft: '1ch',
                     }}
                 >
                     ({status})
