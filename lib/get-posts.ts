@@ -36,7 +36,11 @@ export const getPosts = cache(async (): Promise<Post[]> => {
             })
     );
 
-    return postsWithMetadata
+    return (
+        process.env.NODE_ENV === 'development'
+            ? postsWithMetadata
+            : postsWithMetadata.filter(({ status }) => status === 'published')
+    )
         .sort((a, b) =>
             a && b
                 ? new Date(b.created).getTime() - new Date(a.created).getTime()
