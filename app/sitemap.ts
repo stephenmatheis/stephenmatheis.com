@@ -5,7 +5,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const posts = await getPosts();
     const blogs = posts.map((post: any) => ({
         url: `https://stephenmatheis/posts/${post.slug}`,
-        lastModified: new Date(post.lastModified).toISOString().split('T')[0],
+        lastModified: post.lastModified
+            ? new Date(post.lastModified).toISOString().split('T')[0]
+            : '',
     }));
     const routes = ['', '/posts', '/about', '/rss', '/markdown', '/json'].map(
         (route) => ({
