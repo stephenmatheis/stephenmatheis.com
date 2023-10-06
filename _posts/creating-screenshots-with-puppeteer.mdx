@@ -1,0 +1,68 @@
+---
+status: draft
+title: Creating screenshots with Puppeteer
+date: 'Thursday, September 21, 2023 6:39:01 PM CDT'
+lastModified: 'Monday, October 2, 2023 10:30:10 PM CDT'
+author: Stephen Matheis
+---
+
+I use [Instapaper](https://www.instapaper.com) to save bookmarks. I rarely go back to look at them. I mainly just want to feel safe closing tabs.
+
+Of course rarely isn't always so every now and then I do want to look something up. More often than not I only remember what a site looked like. Instapaper lists the title, description, address, and favicon of the sites you save. But what I'd prefer is some way to flip through images of what I've saved like a photo album.
+
+So I thought I'd make one.
+
+I really didn't feel like loading each site one at a time. I exported every link I had saved to a CSV file. Then I used [csvjson](https://csvkit.readthedocs.io/en/1.1.1/scripts/csvjson.html) on it and saved the output to a new file which I manually edited in [VS Code](https://code.visualstudio.com/) to export a JS object so it could be [imported later in a Node.js script](#post-{id}-ln-6).
+
+This script.
+
+```js title="screenshot.js" showLineNumbers {6}
+import puppeteer from 'puppeteer';
+import { createWriteStream } from 'fs';
+import { stat } from 'fs/promises';
+import log from '../utils/log.js';
+
+// 1. CSV -> JSON -> Object
+import bookmarks from '../bookmarks.js';
+
+const fileName = `./logs/log-${new Date().toISOString()}.txt`;
+const stream = createWriteStream(fileName, { flags: 'a' });
+const browser = await puppeteer.launch({ headless: 'new' });
+const page = await browser.newPage();
+
+for (let [index, bookmark] of bookmarks.entries()) {
+    const doesExist = await fileExists(`./screenshots/${index}.png`);
+
+    if (doesExist) {
+        continue;
+    }
+
+    try {
+        await page.goto(bookmark.URL, { waitUntil: 'networkidle2' });
+    } catch (error) {
+        console.error(error);
+
+        continue;
+    }
+
+    await page.setViewport({ width: 1920, height: 1080 });
+
+    await page.screenshot({ path: `./screenshots/${index}.png` });
+}
+
+await browser.close();
+
+stream.end();
+
+async function fileExists(path) {
+    return !!(await stat(path).catch((e) => false));
+}
+```
+
+I've never used [Puppeteer](https://pptr.dev/) before. I don't think I'm using it quite right yet. But this little script mostly does what I hoped: loop through every site, load the URL, take a screenshot, and save it to disk. Sometimes it errors out because the site won't load. Other times it just fails and I don't know why. It's not very fast either. It takes anywhere from one to ten seconds per site. I've saved about 5,000 links. The script gets to about 1,500 then craps out every time.
+
+Here's the error:
+
+```sh
+error
+```

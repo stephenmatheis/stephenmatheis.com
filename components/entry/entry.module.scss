@@ -59,19 +59,15 @@
 .title-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
+    gap: 2ch;
 
     .title {
-        max-width: 50%;
-        min-width: fit-content;
         color: var(--primary);
-
-        @media (max-width: utilities.$small-width) {
-            min-width: unset;
-        }
     }
 
     .date {
+        min-width: fit-content;
         color: var(--color);
     }
 }
