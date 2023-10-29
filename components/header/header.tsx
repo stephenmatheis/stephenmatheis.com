@@ -11,7 +11,7 @@ export function Header({ printOnly = false }) {
                 ].join(' ')}
                 data-header
             >
-                <Link href="/" aria-label="Stephen Matheis' personal website">
+                <Link href="/" aria-label="Stephen Matheis Front-end Software Engineer">
                     <span className={styles.text} data-link-text-ctr>
                         <span
                             className={[styles.name, styles.part].join(' ')}
