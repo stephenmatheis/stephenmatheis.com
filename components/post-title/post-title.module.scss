@@ -4,15 +4,12 @@
     margin-bottom: calc(var(--line-height) * 2);
 
     .post-link {
-        margin-left: 2ch;
+        margin-left: 1ch;
+        padding: 1ch;
 
         @media (pointer: fine) {
+            margin-left: 2ch;
             margin-right: 1ch;
-        }
-
-        @media (pointer: coarse) {
-            margin-left: 1ch;
-            padding: 1ch;
         }
     }
 }
