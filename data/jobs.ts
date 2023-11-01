@@ -12,7 +12,7 @@ const jobs = [
     },
     {
         title: 'Front-end Developer',
-        company: 'Apple, Inc. (TEKsystems)',
+        company: 'Apple (TEKsystems)',
         location: 'Remote',
         start: 'Aug 2022',
         end: 'October 2023',
