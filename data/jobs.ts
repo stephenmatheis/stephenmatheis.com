@@ -1,12 +1,22 @@
 const jobs = [
     {
-        title: 'Front-end Developer',
+        title: 'Senior Application Solutions Engineer',
         company: 'TEKsystems',
         location: 'Remote',
-        start: 'Aug 2022',
+        start: 'Oct 2023',
         end: 'Present',
         lines: [
-            'Supporting Apple',
+            'Redesigning NOAA / National Weather Service U.S. Tsunami Warning System',
+            'Building prototypes with Next.js, TypeScript, and MongoDB',
+        ],
+    },
+    {
+        title: 'Front-end Developer',
+        company: 'Apple, Inc. (TEKsystems)',
+        location: 'Remote',
+        start: 'Aug 2022',
+        end: 'October 2023',
+        lines: [
             'Built prototypes with Next.js, TypeScript, and Sass',
             'Developed a system for scaffolding React components with Node.js and Fastly',
         ],
@@ -28,10 +38,7 @@ const jobs = [
         location: 'San Antonio, TX',
         start: 'Apr 2022',
         end: 'May 2022',
-        lines: [
-            'Ported Robi to React with support for PnPjs',
-            'Created a command palette for React apps',
-        ],
+        lines: ['Ported Robi to React with support for PnPjs'],
     },
     {
         title: 'Subject Matter Expert II',
@@ -40,8 +47,8 @@ const jobs = [
         start: 'May 2021',
         end: 'Apr 2022',
         lines: [
-            'Developed a cross-platform mobile app for the U.S. Marine Corps with React Native, Expo, and Firebase, and a companion web app with React and Firebase',
-            'Developed web applications with Robi, Bootstrap, CodeMirror, and DataTables hosted on SharePoint 2013',
+            'Developed a cross-platform mobile app for the U.S. Marine Corps with React Native, Expo, and Firebase',
+            'Developed web applications with Robi hosted on SharePoint 2013',
         ],
     },
     {
@@ -51,8 +58,8 @@ const jobs = [
         start: 'Mar 2018',
         end: 'May 2021',
         lines: [
-            'Developed web applications with Robi, jQuery, Bootstrap, Chart.js, DataTables, and FullCalendar hosted on SharePoint 2010 and 2013',
-            'Migrated an on-premise SharePoint farm from 2010 to 2013',
+            'Developed web applications with Robi hosted on SharePoint 2010 and 2013',
+            'Migrated physical on-premise SharePoint 2010 farm to a virtualized SharePoint 2013 environment',
         ],
     },
     {
@@ -62,7 +69,7 @@ const jobs = [
         start: 'Oct 2017',
         end: 'Mar 2018',
         lines: [
-            'Started Robi, a framework for creating single-page client-side SharePoint apps',
+            'Created Robi, a framework for building single-page client-side SharePoint apps',
         ],
     },
     {
@@ -74,7 +81,6 @@ const jobs = [
         lines: [
             'Developed web applications with jQuery and Bootstrap hosted on SharePoint 2013',
             'Migrated an on-premise SharePoint farm from 2010 to 2013',
-            'Migrated Lotus Notes apps to SharePoint 2013',
         ],
     },
     {
@@ -83,7 +89,7 @@ const jobs = [
         location: 'Herndon, VA',
         start: 'Mar 2016',
         end: 'Aug 2016',
-        lines: ['Supported Apple end-user devices'],
+        lines: ['Supported Apple devices'],
     },
     {
         title: 'Senior Consultant',
@@ -93,8 +99,7 @@ const jobs = [
         end: 'May 2016',
         lines: [
             'Developed web applications with jQuery and Bootstrap hosted on SharePoint 2010 and 2013',
-            'Developed PowerShell tools to automate SharePoint site and farm administration, migration, and data export',
-            'Supported SharePoint 2010 to 2013 migrations',
+            'Developed PowerShell tools to automate SharePoint administration',
         ],
     },
 ];
