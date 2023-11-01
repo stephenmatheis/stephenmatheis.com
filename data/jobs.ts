@@ -1,7 +1,7 @@
 const jobs = [
     {
         title: 'Senior Application Solutions Engineer',
-        company: 'TEKsystems',
+        company: 'T and T Consulting Services',
         location: 'Remote',
         start: 'Oct 2023',
         end: 'Present',
