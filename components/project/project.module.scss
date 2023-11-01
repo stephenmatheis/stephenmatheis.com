@@ -16,6 +16,10 @@ $distance: 10px;
         gap: calc(var(--line-height) * 1);
     }
 
+    a {
+        width: fit-content;
+    }
+
     .description-ctr {
         display: flex;
         gap: 6ch;
