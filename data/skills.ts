@@ -2,42 +2,48 @@ const skills = [
     {
         group: 'Programming Languages',
         items: [
-            'JavaScript/TypeScript',
+            'JavaScript',
+            'TypeScript',
             'HTML',
-            'CSS/SCSS',
-            'C#/.NET',
+            'CSS',
+            'Sass',
+            'C#',
             'PowerShell',
             'Python',
+            'Lua',
         ],
-    },
-    {
-        group: 'Frameworks',
-        items: ['React', 'Next.js', 'React Native', 'Expo'],
     },
     {
         group: 'Libraries',
-        items: ['jQuery', 'Bootstrap', 'Chart.js'],
+        items: ['React', 'Fastify', 'Express', 'jQuery'],
+    },
+    {
+        group: 'Frameworks',
+        items: ['Next.js', 'React Native', 'Expo'],
+    },
+    {
+        group: 'Databases',
+        items: ['MongoDB', 'MS SQL Server', 'Firebase'],
     },
     {
         group: 'Tools',
-        items: [
-            'Git',
-            'GitHub',
-            'GitLab',
-            'GitKraken',
-            'Node.js',
-            'Webpack',
-            'Prettier',
-            'ESLint',
-        ],
+        items: ['Git', 'GitHb', 'GitLab', 'Docker', 'Jenkins'],
     },
     {
         group: 'Platforms',
-        items: ['Vercel', 'Netlify', 'Firebase', '.NET', 'SharePoint'],
+        items: [
+            'Vercel',
+            'Netlify',
+            'SharePoint',
+            'Node.js',
+            '.NET',
+            'AWS',
+            'PICO-8',
+        ],
     },
     {
         group: 'Design',
-        items: ['Figma', 'Sketch'],
+        items: ['Figma', 'Sketch', 'draw.io'],
     },
 ];
 
