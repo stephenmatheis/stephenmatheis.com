@@ -20,6 +20,7 @@ const contact = [
         text: 'github.com/stephenmatheis',
         label: 'My GitHub profile',
         newTab: true,
+        header: true,
     },
 ];
 
