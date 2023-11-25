@@ -8,15 +8,21 @@ export function Contact() {
         <div className={styles['contact']}>
             <Comment text={'Contact'} />
             <div className={styles['info']}>
-                {contact.map(({ text, href, label, newTab }) => {
-                    return (
-                        <div key={text}>
-                            <LinkCtr href={href} label={label} newTab={newTab}>
-                                {text}
-                            </LinkCtr>
-                        </div>
-                    );
-                })}
+                {contact
+                    .filter(({ header }) => !header)
+                    .map(({ text, href, label, newTab }) => {
+                        return (
+                            <div key={text}>
+                                <LinkCtr
+                                    href={href}
+                                    label={label}
+                                    newTab={newTab}
+                                >
+                                    {text}
+                                </LinkCtr>
+                            </div>
+                        );
+                    })}
             </div>
         </div>
     );
