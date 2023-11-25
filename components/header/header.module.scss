@@ -2,6 +2,8 @@
 
 .header {
     width: 100%;
+    display: flex;
+    gap: calc(var(--line-height) * 3);
 
     &.print-only {
         @media screen {
@@ -14,6 +16,20 @@
             .title {
                 color: var(--muted);
             }
+        }
+    }
+
+    .name {
+        @media print {
+            flex: 1;
+        }
+    }
+
+    .number {
+        width: 34ch;
+
+        @media screen {
+            display: none;
         }
     }
 }
