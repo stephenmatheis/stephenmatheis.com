@@ -37,6 +37,7 @@ html {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
+    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
 
     &[data-prefers-color-scheme='Dark'] {
@@ -57,6 +58,10 @@ html {
                 }
             }
         }
+    }
+
+    @media screen and (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
     }
 }
 
@@ -358,7 +363,7 @@ ol {
     margin-top: calc(var(--line-height) * 4);
 
     hr {
-        border: solid .5px var(--muted);
+        border: solid 0.5px var(--muted);
     }
 
     ol {

@@ -1,29 +1,28 @@
-import { Comment } from '@/components/comment';
-import { LinkCtr } from '@/components/link-ctr';
+import Link from 'next/link';
+import { Section } from '@/components/section';
 import contact from '@/data/contact';
 import styles from './contact.module.scss';
 
 export function Contact() {
     return (
-        <div className={styles['contact']}>
-            <Comment text={'Contact'} />
+        <Section className={styles['contact']} heading="Contact">
             <div className={styles['info']}>
                 {contact
                     .filter(({ header }) => !header)
                     .map(({ text, href, label, newTab }) => {
                         return (
                             <div key={text}>
-                                <LinkCtr
+                                <Link
                                     href={href}
-                                    label={label}
-                                    newTab={newTab}
+                                    aria-label={label}
+                                    {...(newTab ? { target: '_blank' } : {})}
                                 >
                                     {text}
-                                </LinkCtr>
+                                </Link>
                             </div>
                         );
                     })}
             </div>
-        </div>
+        </Section>
     );
 }
