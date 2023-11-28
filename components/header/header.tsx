@@ -1,10 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 import contact from '@/data/contact';
 import styles from './header.module.scss';
+import { useEffect } from 'react';
 
 export function Header({ printOnly = false }) {
     const { text, href, label }: { text: string; href: string; label: string } =
         contact.find(({ header }) => header)!;
+
+    useEffect(() => {
+        document.documentElement.style.scrollBehavior = 'smooth';
+    }, []);
 
     return (
         <>

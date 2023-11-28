@@ -1,3 +1,5 @@
+@use 'styles/utilities';
+
 .footer {
     display: flex;
     align-items: center;
@@ -7,6 +9,10 @@
 
     @media screen {
         height: calc(100svh - (var(--line-height) * 18));
+
+        @media (pointer: coarse) and (max-width: utilities.$small-width) {
+            height: calc(100dvh - (var(--line-height) * 20));
+        }
     }
 
     * {
