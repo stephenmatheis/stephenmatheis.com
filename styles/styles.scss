@@ -37,7 +37,6 @@ html {
     font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
 
     &[data-prefers-color-scheme='Dark'] {
@@ -61,7 +60,7 @@ html {
     }
 
     @media screen and (prefers-reduced-motion: reduce) {
-        scroll-behavior: auto;
+        scroll-behavior: auto !important;
     }
 }
 
