@@ -6,7 +6,7 @@
 
     @media screen {
         height: calc(100svh - (var(--line-height) * 14));
-        min-height: 250px;
+        min-height: calc((var(--line-height) * 15));
         max-width: var(--max-width);
         align-items: center;
         margin-bottom: calc(var(--line-height) * 7);
