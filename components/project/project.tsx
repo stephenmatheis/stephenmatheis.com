@@ -1,13 +1,17 @@
-import { LinkCtr } from '@/components/link-ctr';
+import Link from 'next/link';
 import styles from './project.module.scss';
 import classNames from 'classnames';
 
 export function Project({ name, link, description }) {
     return (
-        <div key={name} className={classNames(styles['project-ctr'])}>
-            <LinkCtr href={link} newTab>
+        <div
+            key={name}
+            className={classNames(styles['project-ctr'])}
+            id="projects"
+        >
+            <Link href={link} target="_blank" aria-label={name}>
                 {name}
-            </LinkCtr>
+            </Link>
             <div className={styles['description-ctr']}>
                 <div className={styles.description}>{description}</div>
             </div>

@@ -3,7 +3,15 @@
 .header {
     width: 100%;
     display: flex;
-    gap: calc(var(--line-height) * 3);
+
+    @media screen {
+        height: calc(100svh - (var(--line-height) * 14));
+        min-height: 250px;
+        max-width: var(--max-width);
+        align-items: center;
+        margin-bottom: calc(var(--line-height) * 7);
+        position: relative;
+    }
 
     &.print-only {
         @media screen {
@@ -29,6 +37,20 @@
         width: 34ch;
 
         @media screen {
+            display: none;
+        }
+    }
+
+    .links {
+        position: absolute;
+        bottom: calc(var(--line-height) * -6);
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+        gap: var(--line-height);
+
+        @media print {
             display: none;
         }
     }

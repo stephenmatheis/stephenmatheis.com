@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { LinkCtr } from '@/components/link-ctr';
 import contact from '@/data/contact';
 import styles from './header.module.scss';
 
@@ -37,9 +36,24 @@ export function Header({ printOnly = false }) {
                         </span>
                     </span>
                 </Link>
-                <LinkCtr className={styles.number} href={href} label={label}>
+                <Link className={styles.number} href={href} aria-label={label}>
                     {text}
-                </LinkCtr>
+                </Link>
+                <div className={styles.links}>
+                    {[
+                        { label: 'Experience', link: '#experience' },
+                        { label: 'Skills', link: '#skills' },
+                        { label: 'Projects', link: '#projects' },
+                        { label: 'Contact', link: '#contact' },
+                        { label: 'Download', link: '/resume.pdf' },
+                    ].map(({ label, link }) => {
+                        return (
+                            <Link key={label} href={link} aria-label={label}>
+                                {label}
+                            </Link>
+                        );
+                    })}
+                </div>
             </header>
         </>
     );

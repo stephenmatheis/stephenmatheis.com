@@ -1,11 +1,10 @@
-import { Comment } from '@/components/comment';
+import { Section } from '@/components/section';
 import jobs from '@/data/jobs';
 import styles from './experience.module.scss';
 
 export function Experience() {
     return (
-        <div className={styles['experience']}>
-            <Comment text={'Experience'} />
+        <Section className={styles.experience} heading="Experience">
             {jobs.map(
                 ({ title, company, location, start, end, lines }, index) => {
                     return (
@@ -51,6 +50,6 @@ export function Experience() {
                     );
                 }
             )}
-        </div>
+        </Section>
     );
 }
