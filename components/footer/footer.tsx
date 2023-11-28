@@ -1,4 +1,4 @@
-import { LinkCtr } from '@/components/link-ctr';
+import Link from 'next/link';
 import styles from './footer.module.scss';
 
 type Link = {
@@ -23,9 +23,15 @@ export function Footer({ links = [], text }: Props) {
                         {links?.map(({ label, path, newTab }) => {
                             return (
                                 <li key={path}>
-                                    <LinkCtr href={path} newTab={newTab}>
+                                    <Link
+                                        href={path}
+                                        aria-label={label}
+                                        {...(newTab
+                                            ? { target: '_blank' }
+                                            : {})}
+                                    >
                                         {label}
-                                    </LinkCtr>
+                                    </Link>
                                 </li>
                             );
                         })}
