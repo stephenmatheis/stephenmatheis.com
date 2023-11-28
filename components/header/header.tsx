@@ -39,22 +39,17 @@ export function Header({ printOnly = false }) {
                 <Link className={styles.number} href={href} aria-label={label}>
                     {text}
                 </Link>
-                {/*  */}
                 <div className={styles.links}>
                     {[
-                        'Experience',
-                        'Skills',
-                        'Projects',
-                        'Contact',
-                        'Download',
-                    ].map((a) => {
+                        { label: 'Experience', link: '#experience' },
+                        { label: 'Skills', link: '#skills' },
+                        { label: 'Projects', link: '#projects' },
+                        { label: 'Contact', link: '#contact' },
+                        { label: 'Download', link: '/resume.pdf' },
+                    ].map(({ label, link }) => {
                         return (
-                            <Link
-                                key={a}
-                                href={`#${a.toLowerCase()}`}
-                                aria-label={a}
-                            >
-                                <span>#</span> {a}
+                            <Link key={label} href={link} aria-label={label}>
+                                {label}
                             </Link>
                         );
                     })}

@@ -5,10 +5,11 @@
     display: flex;
 
     @media screen {
-        height: calc(100lvh - (var(--line-height) * 14));
+        height: calc(100svh - (var(--line-height) * 14));
+        min-height: 250px;
         max-width: var(--max-width);
         align-items: center;
-        margin-bottom: calc(var(--line-height) * 3);
+        margin-bottom: calc(var(--line-height) * 7);
         position: relative;
     }
 
@@ -42,20 +43,15 @@
 
     .links {
         position: absolute;
-        top: calc(var(--line-height) * -5);
-        right: 0;
+        bottom: calc(var(--line-height) * -6);
+        left: 0;
+
         display: flex;
         flex-direction: column;
         gap: var(--line-height);
 
         @media print {
             display: none;
-        }
-
-        a {
-            span {
-                color: var(--muted);
-            }
         }
     }
 }
