@@ -1,9 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import contact from '@/data/contact';
 import styles from './header.module.scss';
-import { useEffect } from 'react';
 
 export function Header({ printOnly = false }) {
     const { text, href, label }: { text: string; href: string; label: string } =
@@ -48,14 +48,23 @@ export function Header({ printOnly = false }) {
                 </Link>
                 <div className={styles.links}>
                     {[
-                        { label: 'Experience', link: '#experience' },
-                        { label: 'Skills', link: '#skills' },
-                        { label: 'Projects', link: '#projects' },
-                        { label: 'Contact', link: '#contact' },
-                        { label: 'Download', link: '/resume.pdf' },
-                    ].map(({ label, link }) => {
+                        { label: 'Experience', path: '#experience' },
+                        { label: 'Skills', path: '#skills' },
+                        { label: 'Projects', path: '#projects' },
+                        { label: 'Contact', path: '#contact' },
+                        {
+                            label: 'Download',
+                            path: '/resume.pdf',
+                            newTab: true,
+                        },
+                    ].map(({ label, path, newTab }) => {
                         return (
-                            <Link key={label} href={link} aria-label={label}>
+                            <Link
+                                key={label}
+                                href={path}
+                                aria-label={label}
+                                {...(newTab ? { target: '_blank' } : {})}
+                            >
                                 {label}
                             </Link>
                         );
