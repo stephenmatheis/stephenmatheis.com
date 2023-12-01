@@ -11,11 +11,13 @@
         }
 
         .title {
-            color: var(--primary);
+            --title-color: var(--primary);
+
+            color: var(--title-color);
             position: relative;
 
             .company {
-                color: var(--primary);
+                color: var(--title-color);
             }
         }
 
@@ -27,11 +29,9 @@
     }
 
     .date {
-        // color: var(--secondary);
         color: var(--muted);
 
         .location {
-            // color: var(--tertiary);
             color: var(--muted);
         }
     }
