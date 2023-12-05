@@ -10,10 +10,31 @@ export default function NotFound() {
                 placeItems: 'center',
             }}
         >
-            <div style={{ display: 'grid', placeItems: 'center', gap: 36 }}>
-                <h1 style={{ textAlign: 'center', margin: 0 }}>
-                    404 - Page not found
-                </h1>
+            <div
+                style={{
+                    display: 'grid',
+                    placeItems: 'center',
+                    gap: 'calc(var(--line-height) * 3)',
+                }}
+            >
+                <div>
+                    <div
+                        style={{
+                            textAlign: 'center',
+                            marginBottom: 'var(--line-height)',
+                        }}
+                    >
+                        404
+                    </div>
+                    <div
+                        style={{
+                            textAlign: 'center',
+                            color: 'var(--muted)',
+                        }}
+                    >
+                        Page not found
+                    </div>
+                </div>
                 <Link href="/">Go back to Home</Link>
             </div>
         </div>
