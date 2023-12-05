@@ -6,8 +6,12 @@
 $default: themes.$default;
 $themes: themes.$themes;
 $defaultMode: themes.$defaultMode;
+$defaultDarkColor: themes.$defaultDarkColor;
 $defaultDarkBackgroundColor: themes.$defaultDarkBackgroundColor;
+$defaultLightColor: themes.$defaultLightColor;
 $defaultLightBackgroundColor: themes.$defaultLightBackgroundColor;
+$defaultLightMutedColor: themes.$defaultLightMutedColor;
+$defaultDarkMutedColor: themes.$defaultDarkMutedColor;
 $font-size: 12px;
 $line-height: 18px;
 $offset: 13px;
@@ -102,8 +106,8 @@ $border-radius: 6px;
             $color,
             $mode,
             (
-                'Light': #242424,
-                'Dark': #d4d4d4,
+                'Light': $defaultLightColor,
+                'Dark': $defaultDarkColor,
             )
         );
 
@@ -113,8 +117,8 @@ $border-radius: 6px;
             $muted,
             $mode,
             (
-                'Light': #757575,
-                'Dark': #878787,
+                'Light': $defaultLightMutedColor,
+                'Dark': $defaultDarkMutedColor,
             )
         );
 
