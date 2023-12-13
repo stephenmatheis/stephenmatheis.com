@@ -8,10 +8,15 @@
     gap: calc(var(--line-height) * 1.5);
 
     @media screen {
-        height: calc(100svh - (var(--line-height) * 18));
+        margin-top: calc(var(--line-height) * 10);
 
-        @media (pointer: coarse) and (max-width: utilities.$small-width) {
-            height: calc(100dvh - (var(--line-height) * 20));
+        @media (max-width: utilities.$medium-width) {
+            margin-top: 0px;
+            height: calc(100svh - (var(--line-height) * 19));
+
+            @media (pointer: coarse) and (max-width: utilities.$small-width) {
+                height: calc(100dvh - (var(--line-height) * 20));
+            }
         }
     }
 

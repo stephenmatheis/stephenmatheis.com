@@ -32,6 +32,9 @@ export function Header({ printOnly = false }) {
                             className={[styles.name, styles.part].join(' ')}
                             data-link-text
                         >
+                            {/* Stephen Matheis * * * * * * */}
+                            {/* Stephen Matheis / / / / / / */}
+                            {/* Stephen Matheis ----------- */}
                             Stephen Matheis
                         </span>{' '}
                         <br data-header-break />
