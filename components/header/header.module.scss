@@ -5,8 +5,8 @@
     display: flex;
 
     @media screen {
-        @media (max-width: utilities.$wide-threshold) {
-            height: calc(100svh - (var(--line-height) * 14));
+        @media (max-width: utilities.$medium-width) {
+            height: calc(100svh - (var(--line-height) * 6));
             min-height: calc((var(--line-height) * 15));
             max-width: var(--max-width);
             align-items: center;
@@ -55,11 +55,11 @@
         gap: 3ch;
 
         @media screen {
-            @media (max-width: utilities.$wide-threshold) {
+            @media (max-width: utilities.$medium-width) {
                 flex-direction: column;
                 gap: var(--line-height);
                 position: absolute;
-                bottom: calc(var(--line-height) * -5);
+                bottom: calc(var(--line-height) * -1);
                 left: 0;
             }
 

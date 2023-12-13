@@ -6,7 +6,7 @@
     width: 100%;
 
     @media screen {
-        @media (max-width: utilities.$wide-threshold) {
+        @media (max-width: utilities.$medium-width) {
             flex-direction: column;
             gap: calc(var(--line-height) * 4);
             margin-bottom: calc(var(--line-height) * 4);
