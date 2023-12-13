@@ -14,7 +14,6 @@ export function Page({
         <div className={styles.page} data-page>
             {!noHeader && <Header />}
             {children}
-
             {!noFooter && <Footer links={links} text={text} />}
         </div>
     );

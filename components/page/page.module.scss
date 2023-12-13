@@ -18,6 +18,9 @@
     @media screen {
         margin: 0 auto;
         padding: var(--page-padding);
+        padding-top: calc(var(--line-height) * 3);
+        padding-bottom: calc(var(--line-height) * 3);
+        width: 900px;
 
         @media (max-width: utilities.$medium-width) {
             width: 100%;
@@ -28,8 +31,8 @@
 
         @media (max-width: utilities.$small-width) {
             min-width: 100%;
-            padding-left: 0.25in;
-            padding-right: 0.25in;
+            padding-left: 3ch;
+            padding-right: 3ch;
             padding-bottom: calc(var(--line-height) * 4);
         }
     }
