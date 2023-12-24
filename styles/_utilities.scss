@@ -48,6 +48,7 @@ $border-radius: 6px;
     $token-comment,
     $background-color: null,
     $text-shadow-color: null,
+    $background-color-translucent: null,
     $color: null,
     $muted: null
 ) {
@@ -70,7 +71,6 @@ $border-radius: 6px;
     $formatted-prefix: if($prefix, #{$prefix}-, '');
 
     @if $type == null {
-        // Page
         @include defaultColor(
             $formatted-prefix,
             'background-color',
@@ -112,6 +112,17 @@ $border-radius: 6px;
             (
                 'Light': #dfdfdf,
                 'Dark': #505050,
+            )
+        );
+
+        @include defaultColor(
+            $formatted-prefix,
+            'background-color-translucent',
+            $background-color-translucent,
+            $mode,
+            (
+                'Light': #{$defaultLightBackgroundColor}cc,
+                'Dark': #{$defaultDarkBackgroundColor}cc,
             )
         );
 
