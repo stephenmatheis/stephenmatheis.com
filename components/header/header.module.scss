@@ -6,12 +6,12 @@
 
     @media screen {
         @media (max-width: utilities.$medium-width) {
-            height: calc(100svh - (var(--line-height) * 6));
-            min-height: calc((var(--line-height) * 15));
-            max-width: var(--max-width);
-            align-items: center;
-            margin-bottom: calc(var(--line-height) * 7);
-            position: relative;
+            // height: calc(100svh - (var(--line-height) * 6));
+            // min-height: calc((var(--line-height) * 15));
+            // max-width: var(--max-width);
+            // align-items: center;
+            // margin-bottom: calc(var(--line-height) * 7);
+            // position: relative;
         }
 
         @media (min-width: utilities.$medium-width) {
@@ -56,11 +56,13 @@
 
         @media screen {
             @media (max-width: utilities.$medium-width) {
-                flex-direction: column;
-                gap: var(--line-height);
-                position: absolute;
-                bottom: calc(var(--line-height) * -1);
-                left: 0;
+                display: none;
+
+                // flex-direction: column;
+                // gap: var(--line-height);
+                // position: absolute;
+                // bottom: calc(var(--line-height) * -1);
+                // left: 0;
             }
 
             @media (min-width: utilities.$medium-width) {
