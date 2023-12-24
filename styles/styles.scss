@@ -68,35 +68,6 @@ body {
     background-color: var(--background-color);
     margin: 0;
     padding: 0;
-    position: relative;
-    z-index: 1;
-
-    &::after {
-        --dot-bg: var(--background-color);
-        --dot-color: #514e54;
-        --dot-size: 1px;
-        --dot-space: 18px;
-
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        content: '';
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: linear-gradient(
-                    90deg,
-                    var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
-                    transparent 1%
-                )
-                center / var(--dot-space) var(--dot-space),
-            linear-gradient(
-                    var(--dot-bg) calc(var(--dot-space) - var(--dot-size)),
-                    transparent 1%
-                )
-                center / var(--dot-space) var(--dot-space),
-            var(--dot-color);
-    }
 
     &.can-transition {
         transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
