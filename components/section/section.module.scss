@@ -1,3 +1,9 @@
+@use 'styles/utilities';
+
 .section {
     scroll-margin-top: var(--line-height);
+
+    @media (max-width: utilities.$medium-width) {
+        scroll-margin-top: utilities.$scroll-margin-top;
+    }
 }
