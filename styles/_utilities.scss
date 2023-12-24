@@ -19,6 +19,7 @@ $medium-width: calc(900px + 12ch);
 $max-width: 680px;
 $medium-height: 725px;
 $border-radius: 6px;
+$scroll-margin-top: calc(var(--line-height) * 4);
 
 @mixin shadow-hover {
     border-radius: 1px;
@@ -214,6 +215,7 @@ $border-radius: 6px;
     --border-radius: #{$border-radius};
     --icon-size: calc(var(--font-size) + 4px);
     --prefers-color-scheme-transition-speed: 250ms;
+    --scroll-margin-top: #{scroll-margin-top};
 
     @include set-theme(null, $defaultMode, $default);
 }
