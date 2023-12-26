@@ -1,3 +1,5 @@
+@use 'styles/utilities';
+
 .section {
-    scroll-margin-top: var(--line-height);
+    scroll-margin-top: utilities.$scroll-margin-top;
 }

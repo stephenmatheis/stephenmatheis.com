@@ -214,6 +214,7 @@ article {
 
 button {
     font-family: var(--font-family);
+    -webkit-tap-highlight-color: transparent;
 }
 
 // Inline code block
@@ -371,6 +372,10 @@ ol {
 
         li {
             scroll-margin-top: var(--line-height);
+
+            @media (max-width: utilities.$medium-width) {
+                scroll-margin-top: utilities.$scroll-margin-top;
+            }
         }
     }
 }
