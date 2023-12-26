@@ -4,8 +4,8 @@ import { Content } from '@/components/content';
 import { Main } from '@/components/main';
 
 export const metadata: Metadata = {
-    title: 'About',
-    description: 'My resume and contact information.',
+    title: 'Stephen Matheis',
+    description: `The personal website and blog of Stephen Matheis. Copyright (C) ${new Date().getFullYear()} Stephen Matheis.`,
 };
 
 export default function ResumePage() {
