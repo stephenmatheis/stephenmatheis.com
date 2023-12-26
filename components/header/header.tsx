@@ -55,17 +55,13 @@ export function Header({ printOnly = false }) {
                     linksRef.current.style.display = 'flex';
                     document.body.style.overflow = 'hidden';
 
-                    const offset = window.scrollY < 36 ? window.scrollY : 36;
-
-                    if (offset === 0) {
-                        return;
-                    }
-
                     const btn = linksRef.current.querySelector('button');
 
                     if (!btn) {
                         return;
                     }
+
+                    const offset = window.scrollY < 36 ? window.scrollY : 36;
 
                     btn.style.transform = `translateY(-${offset}px)`;
                 }}
