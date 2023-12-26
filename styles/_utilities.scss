@@ -19,6 +19,35 @@ $medium-width: calc(900px + 12ch);
 $max-width: 680px;
 $medium-height: 725px;
 $border-radius: 6px;
+$scroll-margin-top: calc(var(--line-height) * 4);
+
+@mixin page-layout {
+    display: flex;
+    width: var(--max-width);
+    padding: 0.5in;
+
+    @media screen {
+        margin: 0 auto;
+        padding: var(--page-padding);
+        padding-top: calc(var(--line-height) * 3);
+        padding-bottom: calc(var(--line-height) * 3);
+        width: 900px;
+
+        @media (max-width: $medium-width) {
+            width: 100%;
+            align-items: center;
+            max-width: var(--max-width);
+            gap: calc(var(--line-height) * 4);
+        }
+
+        @media (max-width: $small-width) {
+            min-width: 100%;
+            padding-left: 3ch;
+            padding-right: 3ch;
+            padding-bottom: calc(var(--line-height) * 4);
+        }
+    }
+}
 
 @mixin shadow-hover {
     border-radius: 1px;
@@ -48,6 +77,7 @@ $border-radius: 6px;
     $token-comment,
     $background-color: null,
     $text-shadow-color: null,
+    $background-color-translucent: null,
     $color: null,
     $muted: null
 ) {
@@ -70,7 +100,6 @@ $border-radius: 6px;
     $formatted-prefix: if($prefix, #{$prefix}-, '');
 
     @if $type == null {
-        // Page
         @include defaultColor(
             $formatted-prefix,
             'background-color',
@@ -112,6 +141,17 @@ $border-radius: 6px;
             (
                 'Light': #dfdfdf,
                 'Dark': #505050,
+            )
+        );
+
+        @include defaultColor(
+            $formatted-prefix,
+            'background-color-translucent',
+            $background-color-translucent,
+            $mode,
+            (
+                'Light': #{$defaultLightBackgroundColor}cc,
+                'Dark': #{$defaultDarkBackgroundColor}cc,
             )
         );
 
@@ -203,6 +243,7 @@ $border-radius: 6px;
     --border-radius: #{$border-radius};
     --icon-size: calc(var(--font-size) + 4px);
     --prefers-color-scheme-transition-speed: 250ms;
+    --scroll-margin-top: #{scroll-margin-top};
 
     @include set-theme(null, $defaultMode, $default);
 }

@@ -3,19 +3,29 @@
 .header {
     width: 100%;
     display: flex;
+    justify-content: space-between;
 
     @media screen {
-        @media (max-width: utilities.$medium-width) {
-            height: calc(100svh - (var(--line-height) * 6));
-            min-height: calc((var(--line-height) * 15));
-            max-width: var(--max-width);
-            align-items: center;
-            margin-bottom: calc(var(--line-height) * 7);
-            position: relative;
-        }
+        position: sticky;
+        top: var(--line-height);
+        z-index: 10;
 
-        @media (min-width: utilities.$medium-width) {
-            justify-content: space-between;
+        &:after {
+            position: absolute;
+            content: '';
+            height: 200%;
+            width: calc(100% + 12ch);
+            top: -50%;
+            left: -6ch;
+            z-index: -1;
+            backdrop-filter: blur(5px);
+            box-shadow: inset 0 -1px 0 0 var(--accents-2);
+            transform: translateZ(0);
+
+            @media (max-width: utilities.$small-width) {
+                width: calc(100% + 6ch);
+                left: -3ch;
+            }
         }
     }
 
@@ -42,7 +52,7 @@
         }
     }
 
-    .number {
+    .right {
         width: 34ch;
 
         @media screen {
@@ -50,28 +60,91 @@
         }
     }
 
-    .links {
+    button {
+        cursor: pointer;
         display: flex;
-        gap: 3ch;
+        align-self: flex-start;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        width: 36px;
+        padding: 0;
+        background: none;
+        border: 0;
+        box-sizing: content-box;
 
-        @media screen {
-            @media (max-width: utilities.$medium-width) {
-                flex-direction: column;
-                gap: var(--line-height);
-                position: absolute;
-                bottom: calc(var(--line-height) * -1);
-                left: 0;
+        svg {
+            polyline {
+                stroke: var(--primary);
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
             }
+        }
+    }
+
+    .menu {
+        cursor: pointer;
+        user-select: none;
+        color: var(--primary);
+
+        @media (min-width: utilities.$medium-width) {
+            display: none;
+        }
+    }
+
+    .links-ctr {
+        @media (max-width: utilities.$medium-width) {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            height: 100dvh;
+            width: 100vw;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--background-color-translucent);
+            backdrop-filter: saturate(180%) blur(5px);
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%);
+            width: 100vw;
+            justify-content: flex-end;
+
+            @include utilities.page-layout();
 
             @media (min-width: utilities.$medium-width) {
-                a {
-                    height: var(--line-height);
-                }
+                display: none;
             }
         }
 
-        @media print {
-            display: none;
+        .links {
+            display: flex;
+            gap: 3ch;
+
+            @media screen {
+                @media (max-width: utilities.$medium-width) {
+                    flex-direction: column;
+                    width: max-content;
+                    align-items: flex-start;
+                    justify-content: center;
+                }
+
+                @media (min-width: utilities.$medium-width) {
+                    a {
+                        height: var(--line-height);
+                    }
+                }
+            }
+
+            @media print {
+                display: none;
+            }
         }
     }
 }
