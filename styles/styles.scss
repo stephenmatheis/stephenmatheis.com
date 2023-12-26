@@ -214,6 +214,7 @@ article {
 
 button {
     font-family: var(--font-family);
+    -webkit-tap-highlight-color: transparent;
 }
 
 // Inline code block
