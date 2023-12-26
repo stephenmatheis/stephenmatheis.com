@@ -88,12 +88,20 @@
         user-select: none;
         color: var(--primary);
 
+        @media print {
+            display: none;
+        }
+
         @media (min-width: utilities.$medium-width) {
             display: none;
         }
     }
 
     .links-ctr {
+        @media print {
+            display: none;
+        }
+
         @media (max-width: utilities.$medium-width) {
             display: none;
             position: fixed;
@@ -140,10 +148,6 @@
                         height: var(--line-height);
                     }
                 }
-            }
-
-            @media print {
-                display: none;
             }
         }
     }
