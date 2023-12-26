@@ -9,15 +9,15 @@
 
     @media screen {
         margin-top: 0px;
-        height: calc(100svh - (var(--line-height) * 19));
+        height: calc(100dvh - (var(--line-height) * 19));
 
         @media (max-width: utilities.$medium-width) {
             margin-top: 0px;
-            height: calc(100svh - (var(--line-height) * 22));
+            height: calc(100dvh - (var(--line-height) * 22));
+        }
 
-            @media (pointer: coarse) and (max-width: utilities.$small-width) {
-                height: calc(100dvh - (var(--line-height) * 23));
-            }
+        @media (pointer: coarse) and (max-width: utilities.$small-width) {
+            height: calc(100dvh - (var(--line-height) * 23));
         }
     }
 
