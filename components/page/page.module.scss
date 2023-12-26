@@ -3,37 +3,14 @@
 .page {
     font-family: var(--font-family);
     min-height: 100dvh;
-    width: var(--max-width);
-    padding: 0.5in;
-    display: flex;
     flex-direction: column;
     gap: var(--page-gap);
     position: relative;
 
+    @include utilities.page-layout();
+
     @media print {
         gap: calc(var(--line-height) * 2);
         width: 8.5in;
-    }
-
-    @media screen {
-        margin: 0 auto;
-        padding: var(--page-padding);
-        padding-top: calc(var(--line-height) * 3);
-        padding-bottom: calc(var(--line-height) * 3);
-        width: 900px;
-
-        @media (max-width: utilities.$medium-width) {
-            width: 100%;
-            align-items: center;
-            max-width: var(--max-width);
-            gap: calc(var(--line-height) * 4);
-        }
-
-        @media (max-width: utilities.$small-width) {
-            min-width: 100%;
-            padding-left: 3ch;
-            padding-right: 3ch;
-            padding-bottom: calc(var(--line-height) * 4);
-        }
     }
 }

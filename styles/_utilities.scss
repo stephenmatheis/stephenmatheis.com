@@ -21,6 +21,34 @@ $medium-height: 725px;
 $border-radius: 6px;
 $scroll-margin-top: calc(var(--line-height) * 4);
 
+@mixin page-layout {
+    display: flex;
+    width: var(--max-width);
+    padding: 0.5in;
+
+    @media screen {
+        margin: 0 auto;
+        padding: var(--page-padding);
+        padding-top: calc(var(--line-height) * 3);
+        padding-bottom: calc(var(--line-height) * 3);
+        width: 900px;
+
+        @media (max-width: $medium-width) {
+            width: 100%;
+            align-items: center;
+            max-width: var(--max-width);
+            gap: calc(var(--line-height) * 4);
+        }
+
+        @media (max-width: $small-width) {
+            min-width: 100%;
+            padding-left: 3ch;
+            padding-right: 3ch;
+            padding-bottom: calc(var(--line-height) * 4);
+        }
+    }
+}
+
 @mixin shadow-hover {
     border-radius: 1px;
     background-color: var(--primary-10);
