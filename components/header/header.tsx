@@ -5,9 +5,21 @@ import Link from 'next/link';
 import contact from '@/data/contact';
 import styles from './header.module.scss';
 
-export function Header({ printOnly = false }) {
-    const { text, href, label }: { text: string; href: string; label: string } =
-        contact.find(({ header }) => header)!;
+type Route = {
+    label: string;
+    path: string;
+    newTab: boolean | undefined;
+};
+
+type HeaderProps = {
+    anchors?: Route[];
+    printOnly?: boolean;
+};
+
+export function Header({ anchors, printOnly = false }: HeaderProps) {
+    const { text, href }: { text: string; href: string } = contact.find(
+        ({ header }) => header
+    )!;
     const linksRef = useRef<HTMLDivElement>(null!);
 
     useEffect(() => {
@@ -32,9 +44,6 @@ export function Header({ printOnly = false }) {
                         className={[styles.name, styles.part].join(' ')}
                         data-link-text
                     >
-                        {/* Stephen Matheis * * * * * * */}
-                        {/* Stephen Matheis / / / / / / */}
-                        {/* Stephen Matheis ----------- */}
                         Stephen Matheis
                     </span>{' '}
                     <br data-header-break />
@@ -46,7 +55,7 @@ export function Header({ printOnly = false }) {
                     </span>
                 </span>
             </Link>
-            <Link className={styles.right} href={href} aria-label={label}>
+            <Link className={styles.right} href={href} aria-label={text}>
                 {text}
             </Link>
             <div
@@ -84,36 +93,46 @@ export function Header({ printOnly = false }) {
                         }}
                     >
                         <svg width="36" height="36" viewBox="0 0 36 36">
-                            {/* <polyline points="10 10, 26 26" />
-                            <polyline points="10 26, 26 10" /> */}
                             <polyline points="12 12, 24 24" />
                             <polyline points="12 24, 24 12" />
                         </svg>
                     </button>
                 </div>
                 <div className={styles.links}>
-                    {[
-                        { label: 'Experience', path: '#experience' },
-                        { label: 'Skills', path: '#skills' },
-                        { label: 'Projects', path: '#projects' },
-                        { label: 'Contact', path: '#contact' },
-                        {
-                            label: 'Download',
-                            path: '/resume.pdf',
-                            newTab: true,
-                        },
-                    ].map(({ label, path, newTab }) => {
-                        return (
-                            <Link
-                                key={label}
-                                href={path}
-                                aria-label={label}
-                                {...(newTab ? { target: '_blank' } : {})}
-                            >
-                                {label}
-                            </Link>
-                        );
-                    })}
+                    {/* Anchors */}
+                    <div className={[styles.row, styles.anchors].join(' ')}>
+                        {anchors?.map(({ label, path, newTab }: Route) => {
+                            return (
+                                <Link
+                                    key={label}
+                                    href={path}
+                                    aria-label={label}
+                                    {...(newTab ? { target: '_blank' } : {})}
+                                >
+                                    {/* FIXME: new tab sigil */}
+                                    {newTab ? '#' : '#'} {label}
+                                </Link>
+                            );
+                        })}
+                    </div>
+                    {/* Links */}
+                    <div className={styles.row}>
+                        {[
+                            { label: 'Blog', path: '/blog' },
+                            { label: 'Posts', path: '/posts' },
+                        ].map(({ label, path, newTab }: Route) => {
+                            return (
+                                <Link
+                                    key={label}
+                                    href={path}
+                                    aria-label={label}
+                                    {...(newTab ? { target: '_blank' } : {})}
+                                >
+                                    {label}
+                                </Link>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </header>

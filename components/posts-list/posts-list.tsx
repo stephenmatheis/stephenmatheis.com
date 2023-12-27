@@ -59,11 +59,11 @@ export function PostsList({
     return (
         <>
             <div className={styles.title}>
-                <div className={styles['page-title-wrapper']}>
+                {/* <div className={styles['page-title-wrapper']}>
                     <LinkCtr className={styles.reset} href="/posts">
                         {'Posts'}
                     </LinkCtr>
-                </div>
+                </div> */}
                 <div className={styles['search-wrapper']}>
                     <Search posts={taggedPosts} setPosts={setFilteredPosts} />
                 </div>
@@ -75,7 +75,7 @@ export function PostsList({
             )}
             {filteredPosts.length === 0 ? (
                 <div className={styles.none}>
-                    Boo. No posts match this query.
+                    No posts match this query.
                 </div>
             ) : (
                 <ul className={styles.container}>

@@ -11,9 +11,18 @@ export const metadata: Metadata = {
 export default function ResumePage() {
     return (
         <Page
+            anchors={[
+                { label: 'Projects', path: '/#projects' },
+                { label: 'Contact', path: '/#contact' },
+                {
+                    label: 'Resume',
+                    path: '/resume.pdf',
+                    newTab: true,
+                },
+            ]}
             links={[
                 {
-                    label: 'Download a copy',
+                    label: 'Resume',
                     path: '/resume.pdf',
                     newTab: true,
                 },

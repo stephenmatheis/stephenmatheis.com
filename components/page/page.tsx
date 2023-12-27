@@ -8,11 +8,11 @@ export function Page({
     noHeader = false,
     ...props
 }) {
-    const { links, text } = props;
+    const { anchors, links, text } = props;
 
     return (
         <div className={styles.page} data-page>
-            {!noHeader && <Header />}
+            {!noHeader && <Header anchors={anchors} />}
             {children}
             {!noFooter && <Footer links={links} text={text} />}
         </div>
