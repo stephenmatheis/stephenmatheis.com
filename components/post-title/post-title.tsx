@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import Link from 'next/link';
-import { LinkCtr } from '@/components/link-ctr';
 import styles from './post-title.module.scss';
 
 export function PostTitle({
@@ -22,9 +21,9 @@ export function PostTitle({
         >
             {link ? (
                 <span className={styles['title-text']}>
-                    <LinkCtr href={link} newTab>
+                    <a href={link} target="_blank">
                         {title}
-                    </LinkCtr>
+                    </a>
                     <Link
                         href={`/posts/${slug}`}
                         className={styles['post-link']}
@@ -33,7 +32,7 @@ export function PostTitle({
                     </Link>
                 </span>
             ) : (
-                <LinkCtr href={`/posts/${slug}`}>{title}</LinkCtr>
+                <Link href={`/posts/${slug}`}>{title}</Link>
             )}
             {process.env.NODE_ENV === 'development' && status && (
                 <span

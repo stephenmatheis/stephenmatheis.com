@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import rehypePrettyCode from 'rehype-pretty-code';
 import { MDXRemote } from 'next-mdx-remote/rsc';
-import { LinkCtr } from '@/components/link-ctr';
 import { CopyToClipboard } from '@/components/copy-to-clipboard';
 import { SelectCell } from '@/components/select-cell';
 import { Children, cloneElement } from 'react';
@@ -48,9 +47,9 @@ export function Body({ children, id }: { children: string; id?: string }) {
         a: ({ children, ...props }: any) => {
             return (
                 // <LinkCtr href={props.href || ''} newTab={true}>
-                <LinkCtr href={props.href.replaceAll('%7Bid%7D', id) || ''}>
+                <Link href={props.href.replaceAll('%7Bid%7D', id) || ''}>
                     {children}
-                </LinkCtr>
+                </Link>
             );
         },
         img: ResponsiveImage,

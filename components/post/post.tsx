@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { DateTime } from '@/components/date-time';
-import { LinkCtr } from '@/components/link-ctr';
 import { Footer } from '@/components/footer';
 import { Body } from '@/components/body';
 import { Nav } from '@/components/nav';
@@ -35,9 +35,13 @@ export async function Post({
     return (
         <main className={styles.post}>
             <h1>
-                <LinkCtr href={link || slug} newTab={!!link}>
-                    {title}
-                </LinkCtr>
+                {link ? (
+                    <a href={link} aria-label={title} target="_blank">
+                        {title}
+                    </a>
+                ) : (
+                    <Link href={slug}>{title}</Link>
+                )}
             </h1>
             <article>
                 <DateTime dateString={date} className={styles.created} />

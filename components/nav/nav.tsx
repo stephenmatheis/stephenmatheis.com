@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import { Post } from '@/lib/types';
-import { LinkCtr } from '@/components/link-ctr';
 import styles from './nav.module.scss';
 
 export function Nav({
@@ -16,22 +16,20 @@ export function Nav({
             {/* Prev */}
             <div className={styles.previous}>
                 {previous && (
-                    <LinkCtr href={`/posts/${previous.slug}`}>
+                    <Link href={`/posts/${previous.slug}`}>
                         {previous.title}
-                    </LinkCtr>
+                    </Link>
                 )}
             </div>
 
             {/* Posts */}
             <div className={styles.center}>
-                <LinkCtr href={home}>Posts</LinkCtr>
+                <Link href={home}>Posts</Link>
             </div>
 
             {/* Next */}
             <div className={styles.next}>
-                {next && (
-                    <LinkCtr href={`/posts/${next.slug}`}>{next.title}</LinkCtr>
-                )}
+                {next && <Link href={`/posts/${next.slug}`}>{next.title}</Link>}
             </div>
         </div>
     );
