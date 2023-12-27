@@ -5,8 +5,8 @@ import { Posts } from '@/components/posts';
 import getPosts from '@/lib/get-posts';
 
 export const metadata: Metadata = {
-    title: 'Stephen Matheis',
-    description: `The personal website and blog of Stephen Matheis. Copyright (C) ${new Date().getFullYear()} Stephen Matheis.`,
+    title: 'Blog',
+    description: `Stephen Matheis' blog front page.`,
 };
 
 export default async function RootPage() {
