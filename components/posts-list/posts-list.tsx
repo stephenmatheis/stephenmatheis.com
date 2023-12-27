@@ -5,7 +5,6 @@ import type { Post } from '@/lib/types';
 import { Search } from '@/components/search';
 import { Entry } from '@/components/entry';
 import { Tags } from '@/components/tags';
-import { LinkCtr } from '../link-ctr';
 import styles from './posts-list.module.scss';
 
 function filterTags(post: Post, tags: string[]) {
@@ -59,11 +58,6 @@ export function PostsList({
     return (
         <>
             <div className={styles.title}>
-                {/* <div className={styles['page-title-wrapper']}>
-                    <LinkCtr className={styles.reset} href="/posts">
-                        {'Posts'}
-                    </LinkCtr>
-                </div> */}
                 <div className={styles['search-wrapper']}>
                     <Search posts={taggedPosts} setPosts={setFilteredPosts} />
                 </div>
@@ -74,9 +68,7 @@ export function PostsList({
                 </div>
             )}
             {filteredPosts.length === 0 ? (
-                <div className={styles.none}>
-                    No posts match this query.
-                </div>
+                <div className={styles.none}>No posts match this query.</div>
             ) : (
                 <ul className={styles.container}>
                     {months.map((date) => {
