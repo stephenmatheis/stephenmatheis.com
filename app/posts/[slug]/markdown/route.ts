@@ -8,9 +8,6 @@ export async function GET(req: NextRequest) {
         .replace('/markdown', '');
     const { raw } = (await getPost(slug)) as Post;
 
-    // console.log('Slug:', slug);
-    // console.log('Next URL:', req.nextUrl);
-
     return new Response(raw, {
         headers: {
             'Content-Type': 'text/plain',
