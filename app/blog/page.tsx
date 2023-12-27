@@ -14,11 +14,8 @@ export default async function RootPage() {
 
     return (
         <Page
-            links={[
-                { label: 'Posts', path: '/posts' },
-                { label: 'RSS', path: '/rss', newTab: true },
-                { label: 'About', path: '/about' },
-            ]}
+            anchors={[{ label: 'RSS', path: '/rss', newTab: true }]}
+            links={[{ label: 'RSS', path: '/rss', newTab: true }]}
         >
             <Main>
                 <Posts posts={posts} />

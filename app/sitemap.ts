@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             ? new Date(post.lastModified).toISOString().split('T')[0]
             : '',
     }));
-    const routes = ['', '/posts', '/about', '/rss', '/markdown', '/json'].map(
+    const routes = ['', '/blog', '/posts', '/rss', '/markdown', '/json'].map(
         (route) => ({
             url: `https://stephenmatheis.com${route}`,
             lastModified: new Date().toISOString().split('T')[0],

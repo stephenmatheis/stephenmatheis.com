@@ -9,12 +9,12 @@ export function Contact() {
             <div className={styles['info']}>
                 {contact
                     .filter(({ header }) => !header)
-                    .map(({ text, href, label, newTab }) => {
+                    .map(({ text, href, newTab }) => {
                         return (
                             <div key={text}>
                                 <Link
                                     href={href}
-                                    aria-label={label}
+                                    aria-label={text}
                                     {...(newTab ? { target: '_blank' } : {})}
                                 >
                                     {text}
