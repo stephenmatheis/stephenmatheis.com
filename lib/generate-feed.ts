@@ -25,7 +25,7 @@ export async function generateFeed(type: string) {
     const feed = new Feed({
         title: 'Stephen Matheis',
         description: "Stephen Matheis' blog",
-        id: `${site}/${type}`,
+        id: `${site}/posts/${type}`,
         link: site,
         language: 'en',
         image: `${site}/me.png`,
@@ -33,8 +33,8 @@ export async function generateFeed(type: string) {
         copyright: `Copyright © ${new Date().getFullYear()}, Stephen Matheis`,
         generator: 'Next.js + Feed for Node.js',
         feedLinks: {
-            json: `${site}/json`,
-            atom: `${site}/rss`,
+            json: `${site}/posts/json`,
+            atom: `${site}/posts/rss`,
         },
         author: {
             name: 'Stephen Matheis',
