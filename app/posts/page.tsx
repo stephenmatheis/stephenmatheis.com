@@ -19,11 +19,9 @@ export default async function PostsPage({
     return (
         <Page
             links={[
-                { label: 'Home', path: '/' },
                 { label: 'RSS', path: '/rss', newTab: true },
                 { label: 'JSON', path: '/json', newTab: true },
                 { label: 'Markdown', path: '/markdown', newTab: true },
-                { label: 'About', path: '/about' },
             ]}
         >
             <Main>
