@@ -24,9 +24,13 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
     )!;
     const linksRef = useRef<HTMLDivElement>(null!);
 
+    function reset() {
+        document.body.style.overflow = 'auto';
+    }
+
     function close() {
         linksRef.current.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        reset();
     }
 
     useEffect(() => {
@@ -138,6 +142,8 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                                     onClick={() => {
                                         if (path === pathname) {
                                             close();
+                                        } else {
+                                            reset();
                                         }
                                     }}
                                 >
