@@ -133,28 +133,28 @@
 
         .links {
             display: flex;
-            // flex-direction: column;
-            // align-items: flex-end;
-            // height: calc(var(--line-height) * 2);
-            // gap: var(--line-height);
             gap: 3ch;
+
+            @media (max-width: utilities.$medium-width) {
+                flex-direction: column;
+                gap: var(--line-height);
+            }
 
             .row {
                 display: flex;
                 gap: 3ch;
 
-                @media screen {
-                    @media (max-width: utilities.$medium-width) {
-                        flex-direction: column;
-                        width: max-content;
-                        align-items: flex-start;
-                        justify-content: center;
-                    }
+                @media (max-width: utilities.$medium-width) {
+                    flex-direction: column;
+                    width: max-content;
+                    align-items: flex-start;
+                    justify-content: center;
+                    gap: var(--line-height);
+                }
 
-                    @media (min-width: utilities.$medium-width) {
-                        a {
-                            height: var(--line-height);
-                        }
+                @media (min-width: utilities.$medium-width) {
+                    a {
+                        height: var(--line-height);
                     }
                 }
 
