@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import contact from '@/data/contact';
 import styles from './header.module.scss';
 
@@ -17,10 +18,16 @@ type HeaderProps = {
 };
 
 export function Header({ anchors, printOnly = false }: HeaderProps) {
+    const pathname = usePathname();
     const { text, href }: { text: string; href: string } = contact.find(
         ({ header }) => header
     )!;
     const linksRef = useRef<HTMLDivElement>(null!);
+
+    function close() {
+        linksRef.current.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 
     useEffect(() => {
         document.documentElement.style.scrollBehavior = 'smooth';
@@ -84,14 +91,7 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
             </div>
             <div ref={linksRef} className={styles['links-ctr']}>
                 <div className={styles.close}>
-                    <button
-                        type="button"
-                        aria-label="Close"
-                        onClick={() => {
-                            linksRef.current.style.display = 'none';
-                            document.body.style.overflow = 'auto';
-                        }}
-                    >
+                    <button type="button" aria-label="Close" onClick={close}>
                         <svg width="36" height="36" viewBox="0 0 36 36">
                             <polyline points="12 12, 24 24" />
                             <polyline points="12 24, 24 12" />
@@ -100,24 +100,29 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                 </div>
                 <div className={styles.links}>
                     {/* Anchors */}
-                    <div className={[styles.row, styles.anchors].join(' ')}>
-                        {anchors?.map(({ label, path, newTab }: Route) => {
-                            return (
-                                <Link
-                                    key={label}
-                                    href={path}
-                                    aria-label={label}
-                                    {...(newTab ? { target: '_blank' } : {})}
-                                >
-                                    {/* FIXME: new tab sigil */}
-                                    {newTab ? '#' : '#'} {label}
-                                </Link>
-                            );
-                        })}
-                    </div>
+                    {anchors?.length && (
+                        <div className={[styles.row, styles.anchors].join(' ')}>
+                            {anchors?.map(({ label, path, newTab }: Route) => {
+                                return (
+                                    <Link
+                                        key={label}
+                                        href={path}
+                                        aria-label={label}
+                                        {...(newTab
+                                            ? { target: '_blank' }
+                                            : {})}
+                                    >
+                                        {/* FIXME: new tab sigil */}
+                                        {newTab ? '#' : '#'} {label}
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    )}
                     {/* Links */}
                     <div className={styles.row}>
                         {[
+                            { label: 'About', path: '/about' },
                             { label: 'Blog', path: '/blog' },
                             { label: 'Posts', path: '/posts' },
                         ].map(({ label, path, newTab }: Route) => {
@@ -127,6 +132,11 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                                     href={path}
                                     aria-label={label}
                                     {...(newTab ? { target: '_blank' } : {})}
+                                    onClick={() => {
+                                        if (path === pathname) {
+                                            close();
+                                        }
+                                    }}
                                 >
                                     {label}
                                 </Link>
