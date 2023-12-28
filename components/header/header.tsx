@@ -104,7 +104,7 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                 </div>
                 <div className={styles.links}>
                     {/* Anchors */}
-                    {anchors?.length && (
+                    {anchors?.length != 0 && (
                         <div className={[styles.row, styles.anchors].join(' ')}>
                             {anchors?.map(({ label, path, newTab }: Route) => {
                                 return (
