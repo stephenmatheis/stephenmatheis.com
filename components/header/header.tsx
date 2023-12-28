@@ -111,6 +111,9 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                                         {...(newTab
                                             ? { target: '_blank' }
                                             : {})}
+                                        onClick={() => {
+                                            close();
+                                        }}
                                     >
                                         {/* FIXME: new tab sigil */}
                                         {newTab ? '#' : '#'} {label}
