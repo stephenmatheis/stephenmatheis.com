@@ -6,6 +6,7 @@ export function Page({
     children,
     noFooter = false,
     noHeader = false,
+    footerClass = '',
     ...props
 }) {
     const { anchors, links, text } = props;
@@ -14,7 +15,9 @@ export function Page({
         <div className={styles.page} data-page>
             {!noHeader && <Header anchors={anchors} />}
             {children}
-            {!noFooter && <Footer links={links} text={text} />}
+            {!noFooter && (
+                <Footer links={links} text={text} footerClass={footerClass} />
+            )}
         </div>
     );
 }
