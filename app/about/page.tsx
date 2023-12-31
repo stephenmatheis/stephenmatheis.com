@@ -12,8 +12,8 @@ export default function ResumePage() {
     return (
         <Page
             anchors={[
-                { label: 'Projects', path: '/#projects' },
-                { label: 'Contact', path: '/#contact' },
+                { label: 'Projects', path: '/about/#projects' },
+                { label: 'Contact', path: '/about/#contact' },
                 {
                     label: 'Resume',
                     path: '/resume.pdf',
