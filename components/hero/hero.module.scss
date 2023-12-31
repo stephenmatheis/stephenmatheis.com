@@ -1,0 +1,14 @@
+.hero {
+    // height: calc(100dvh - (var(--line-height) * 12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: calc(var(--line-height) * 4);
+
+    .img-ctr {
+        background-color: var(--primary-90);
+        border-radius: 50%;
+        display: flex;
+    }
+}
