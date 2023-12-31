@@ -23,7 +23,7 @@ export function Hero() {
                 <p>
                     If you're just starting out,{' '}
                     <Link href="/about#contact">hit me up</Link>. I'm happy to
-                    pass along what they taught.
+                    return the favor.
                 </p>
             </div>
         </div>
