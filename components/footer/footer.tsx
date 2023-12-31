@@ -10,13 +10,19 @@ type Link = {
 type Props = {
     links?: Link[];
     text?: string;
+    footerClass?: string;
 };
 
-export function Footer({ links = [], text }: Props) {
+export function Footer({ links = [], text, footerClass }: Props) {
     const copyright = `Copyright (C) ${new Date().getFullYear()} Stephen Matheis`;
 
     return (
-        <footer className={styles.footer}>
+        <footer
+            className={[
+                styles.footer,
+                ...(footerClass ? [footerClass] : []),
+            ].join(' ')}
+        >
             {links?.length !== 0 && (
                 <nav>
                     <ol>
