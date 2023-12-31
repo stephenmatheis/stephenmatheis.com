@@ -4,11 +4,11 @@ import { Content } from '@/components/content';
 import { Main } from '@/components/main';
 
 export const metadata: Metadata = {
-    title: 'Resume',
-    description: `Stephen Matheis' Resume.`,
+    title: 'About',
+    description: `My about page.`,
 };
 
-export default function ResumePage() {
+export default function AboutPage() {
     return (
         <Page
             anchors={[
