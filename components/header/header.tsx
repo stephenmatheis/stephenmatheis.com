@@ -23,6 +23,7 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
         ({ header }) => header
     )!;
     const linksRef = useRef<HTMLDivElement>(null!);
+    const menuRef = useRef<HTMLDivElement>(null!);
 
     function reset() {
         document.body.style.overflow = 'auto';
@@ -31,6 +32,20 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
     function close() {
         linksRef.current.style.display = 'none';
         reset();
+    }
+
+    function linkClick(path: string | undefined) {
+        const menuDisplay = getComputedStyle(menuRef.current).display;
+
+        if (menuDisplay === 'none') {
+            return;
+        }
+
+        if (path === pathname || path === undefined) {
+            close();
+        } else {
+            reset();
+        }
     }
 
     useEffect(() => {
@@ -70,6 +85,7 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                 {text}
             </Link>
             <div
+                ref={menuRef}
                 className={styles.menu}
                 onClick={() => {
                     linksRef.current.style.display = 'flex';
@@ -116,7 +132,7 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                                             ? { target: '_blank' }
                                             : {})}
                                         onClick={() => {
-                                            close();
+                                            linkClick(undefined);
                                         }}
                                     >
                                         {/* FIXME: new tab sigil */}
@@ -139,13 +155,7 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                                     href={path}
                                     aria-label={label}
                                     {...(newTab ? { target: '_blank' } : {})}
-                                    onClick={() => {
-                                        if (path === pathname) {
-                                            close();
-                                        } else {
-                                            reset();
-                                        }
-                                    }}
+                                    onClick={() => linkClick(path)}
                                 >
                                     {label}
                                 </Link>
