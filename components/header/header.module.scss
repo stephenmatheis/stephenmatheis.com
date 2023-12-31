@@ -19,7 +19,6 @@
             left: -6ch;
             z-index: -1;
             backdrop-filter: blur(5px);
-            box-shadow: inset 0 -1px 0 0 var(--accents-2);
             transform: translateZ(0);
 
             @media (max-width: utilities.$small-width) {
