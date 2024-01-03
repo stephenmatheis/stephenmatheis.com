@@ -48,6 +48,18 @@
     }
 
     a {
+        @media (pointer: coarse) {
+            &:active {
+                box-shadow: none;
+            }
+        }
+    
+        @media (hover: hover) {
+            &:hover {
+                box-shadow: none;
+            }
+        }
+
         .text {
             @media screen {
                 display: flex;
