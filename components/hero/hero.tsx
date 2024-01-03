@@ -13,6 +13,7 @@ export function Hero() {
                     alt="Me"
                     width={210}
                     style={{ borderRadius: '50%' }}
+                    priority
                 />
             </div>
             <div>
