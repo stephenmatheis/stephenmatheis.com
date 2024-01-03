@@ -11,6 +11,8 @@
         z-index: 10;
 
         &:after {
+            --mask-color: var(--background-color);
+
             position: absolute;
             content: '';
             height: 200%;
@@ -18,8 +20,15 @@
             top: -50%;
             left: -6ch;
             z-index: -1;
-            backdrop-filter: blur(5px);
-            transform: translateZ(0);
+
+            mask: linear-gradient(
+                var(--mask-color),
+                var(--mask-color),
+                var(--mask-color),
+                rgba(0, 0, 0, 0.8),
+                transparent
+            );
+            backdrop-filter: blur(8px);
 
             @media (max-width: utilities.$small-width) {
                 width: calc(100% + 6ch);
