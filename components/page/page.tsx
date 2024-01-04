@@ -13,7 +13,8 @@ export function Page({
 
     return (
         <div className={styles.page} data-page>
-            {!noHeader && <Header anchors={anchors} />}
+            {/* {!noHeader && <Header anchors={anchors} />} */}
+            {!noHeader && <Header />}
             {children}
             {!noFooter && (
                 <Footer links={links} text={text} footerClass={footerClass} />
