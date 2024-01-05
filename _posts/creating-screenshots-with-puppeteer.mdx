@@ -2,27 +2,25 @@
 status: draft
 title: Creating screenshots with Puppeteer
 date: 'Thursday, September 21, 2023 6:39:01 PM CDT'
-lastModified: 'Monday, October 2, 2023 10:30:10 PM CDT'
+lastModified: 'Thursday, January 4, 2024 11:52:58 PM CST'
 author: Stephen Matheis
 ---
 
 I use [Instapaper](https://www.instapaper.com) to save bookmarks. I rarely go back to look at them. I mainly just want to feel safe closing tabs.
 
-Of course rarely isn't always so every now and then I do want to look something up. More often than not I only remember what a site looked like. Instapaper lists the title, description, address, and favicon of the sites you save. But what I'd prefer is some way to flip through images of what I've saved like a photo album.
+Of course rarely isn't always. Usually I can only remember what a site looked like. Instapaper lists the title, description, address, and favicon of the sites you save. Sometimes a hero image. What I'd prefer is some way to flip through screenshots them like a photo album.
 
 So I thought I'd make one.
 
-I really didn't feel like loading each site one at a time. I exported every link I had saved to a CSV file. Then I used [csvjson](https://csvkit.readthedocs.io/en/1.1.1/scripts/csvjson.html) on it and saved the output to a new file which I manually edited in [VS Code](https://code.visualstudio.com/) to export a JS object so it could be [imported later in a Node.js script](#post-{id}-ln-6).
+**_insert blurb about the first attempt to make website with iframes that taught me sites can keep you from doing this_**
 
-This script.
+I really didn't feel like loading each site one at a time. I exported every link I had saved to a CSV file. Then I used [csvjson](https://csvkit.readthedocs.io/en/1.1.1/scripts/csvjson.html) on it and saved the output to a new file which I manually edited in [VS Code](https://code.visualstudio.com/) to export a JS object so it could be imported later in a Node.js script.
 
-```js title="screenshot.js" showLineNumbers {6}
+```js title="screenshot.js" showLineNumbers
 import puppeteer from 'puppeteer';
 import { createWriteStream } from 'fs';
 import { stat } from 'fs/promises';
 import log from '../utils/log.js';
-
-// 1. CSV -> JSON -> Object
 import bookmarks from '../bookmarks.js';
 
 const fileName = `./logs/log-${new Date().toISOString()}.txt`;
