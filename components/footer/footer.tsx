@@ -14,7 +14,7 @@ type Props = {
 };
 
 export function Footer({ links = [], text, footerClass }: Props) {
-    const copyright = `Copyright (C) ${new Date().getFullYear()} Stephen Matheis`;
+    const copyright = `Copyright (C) 2020–${new Date().getFullYear()} Stephen Matheis`;
 
     return (
         <footer
