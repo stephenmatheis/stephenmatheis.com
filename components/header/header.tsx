@@ -13,11 +13,10 @@ type Route = {
 };
 
 type HeaderProps = {
-    anchors?: Route[];
     printOnly?: boolean;
 };
 
-export function Header({ anchors, printOnly = false }: HeaderProps) {
+export function Header({ printOnly = false }: HeaderProps) {
     const pathname = usePathname();
     const { text, href }: { text: string; href: string } = contact.find(
         ({ header }) => header
@@ -47,10 +46,6 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
             reset();
         }
     }
-
-    useEffect(() => {
-        document.documentElement.style.scrollBehavior = 'smooth';
-    }, []);
 
     return (
         <header
@@ -119,29 +114,6 @@ export function Header({ anchors, printOnly = false }: HeaderProps) {
                     </button>
                 </div>
                 <div className={styles.links}>
-                    {/* Anchors */}
-                    {anchors?.length != 0 && (
-                        <div className={[styles.row, styles.anchors].join(' ')}>
-                            {anchors?.map(({ label, path, newTab }: Route) => {
-                                return (
-                                    <Link
-                                        key={label}
-                                        href={path}
-                                        aria-label={label}
-                                        {...(newTab
-                                            ? { target: '_blank' }
-                                            : {})}
-                                        onClick={() => {
-                                            linkClick(undefined);
-                                        }}
-                                    >
-                                        {/* FIXME: new tab sigil */}
-                                        {newTab ? '#' : '#'} {label}
-                                    </Link>
-                                );
-                            })}
-                        </div>
-                    )}
                     {/* Links */}
                     <div className={styles.row}>
                         {[
