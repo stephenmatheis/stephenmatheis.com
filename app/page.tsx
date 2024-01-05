@@ -11,16 +11,13 @@ export const metadata: Metadata = {
 export default function RootPage() {
     return (
         <Page
-            anchors={[{ label: 'RSS', path: '/rss', newTab: true }]}
-            links={
-                [
-                    // {
-                    //     label: '',
-                    //     path: '',
-                    // },
-                ]
-            }
-            noFooter
+            links={[
+                {
+                    label: 'GitHub',
+                    path: 'https://github.com/stephenmatheis',
+                    newTab: true,
+                },
+            ]}
         >
             <Main>
                 <Hero />

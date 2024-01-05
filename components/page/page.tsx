@@ -9,11 +9,10 @@ export function Page({
     footerClass = '',
     ...props
 }) {
-    const { anchors, links, text } = props;
+    const { links, text } = props;
 
     return (
         <div className={styles.page} data-page>
-            {/* {!noHeader && <Header anchors={anchors} />} */}
             {!noHeader && <Header />}
             {children}
             {!noFooter && (
