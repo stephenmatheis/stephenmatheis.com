@@ -7,28 +7,19 @@
 
     @media screen {
         position: sticky;
-        top: var(--line-height);
+        top: calc(var(--line-height) * 2);
+
         z-index: 10;
 
         &:after {
-            --mask-color: var(--background-color);
-
             position: absolute;
             content: '';
-            height: 200%;
             width: calc(100% + 12ch);
-            top: -50%;
+            height: calc(var(--line-height) * 6);
+            top: calc(var(--line-height) * -3);
             left: -6ch;
+            background-color: var(--background-color);
             z-index: -1;
-
-            mask: linear-gradient(
-                var(--mask-color),
-                var(--mask-color),
-                var(--mask-color),
-                rgba(0, 0, 0, 0.8),
-                transparent
-            );
-            backdrop-filter: blur(8px);
 
             @media (max-width: utilities.$small-width) {
                 width: calc(100% + 6ch);
@@ -53,7 +44,7 @@
                 box-shadow: none;
             }
         }
-    
+
         @media (hover: hover) {
             &:hover {
                 box-shadow: none;
