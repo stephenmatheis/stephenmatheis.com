@@ -13,20 +13,6 @@
         .right {
             max-width: unset;
         }
-
-        // @media (max-width: utilities.$medium-width) {
-        //     flex-direction: column;
-        //     gap: calc(var(--line-height) * 4);
-        //     margin-bottom: calc(var(--line-height) * 4);
-
-        //     .right {
-        //         max-width: unset;
-        //     }
-        // }
-
-        // @media (min-width: utilities.$medium-width) {
-        //     gap: 8ch;
-        // }
     }
 
     @media print {
@@ -40,10 +26,6 @@
 
         @media screen {
             gap: calc(var(--line-height) * 4);
-
-            @media (min-width: utilities.$medium-width) {
-                width: 30ch;
-            }
         }
 
         @media print {
