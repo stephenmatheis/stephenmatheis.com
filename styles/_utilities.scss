@@ -12,7 +12,6 @@ $font-size: 12px;
 $line-height: 18px;
 $offset: 13px;
 $p-line-height-modifier: 1.25;
-$page-padding: calc($line-height * 7) 6ch calc($line-height * 2);
 $page-gap: calc($line-height * 4);
 $page-width: 80ch;
 $small-width: 500px;
@@ -29,9 +28,7 @@ $scroll-margin-top: calc(var(--line-height) * 4);
 
     @media screen {
         margin: 0 auto;
-        padding: var(--page-padding);
-        padding-top: calc(var(--line-height) * 2);
-        padding-bottom: calc(var(--line-height) * 2);
+        padding: calc(var(--line-height) * 2) 6ch;
         width: $page-width;
 
         @media (max-width: $medium-width) {
@@ -45,7 +42,6 @@ $scroll-margin-top: calc(var(--line-height) * 4);
             min-width: 100%;
             padding-left: 3ch;
             padding-right: 3ch;
-            padding-bottom: calc(var(--line-height) * 4);
         }
     }
 }
@@ -230,7 +226,6 @@ $scroll-margin-top: calc(var(--line-height) * 4);
     --font-size: #{$font-size};
     --offset: #{$offset};
     --p-line-height-modifier: #{$p-line-height-modifier};
-    --page-padding: #{$page-padding};
     --page-gap: #{$page-gap};
     --small-width: #{$small-width};
     --medium-width: #{$medium-width};
