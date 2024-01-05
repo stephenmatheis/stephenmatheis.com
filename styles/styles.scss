@@ -38,47 +38,12 @@ html {
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
-
-    &[data-prefers-color-scheme='Dark'] {
-        body {
-            &.modal-open {
-                [data-backdrop] {
-                    --filter: blur(4px) brightness(1.5);
-                }
-            }
-        }
-    }
-
-    @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
-        body {
-            &.modal-open {
-                [data-backdrop] {
-                    --filter: blur(4px) brightness(1.5);
-                }
-            }
-        }
-    }
-
-    @media screen and (prefers-reduced-motion: reduce) {
-        scroll-behavior: auto !important;
-    }
 }
 
 body {
     background-color: var(--background-color);
     margin: 0;
     padding: 0;
-
-    &.can-transition {
-        transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
-            background-color var(--prefers-color-scheme-transition-speed) ease
-                0s,
-            filter var(--prefers-color-scheme-transition-speed) ease 0s;
-    }
-
-    &.modal-open {
-        overflow: hidden;
-    }
 }
 
 a {
