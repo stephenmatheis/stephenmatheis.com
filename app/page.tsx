@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Page } from '@/components/page';
-import { Main } from '@/components/main';
 import { Hero } from '@/components/hero';
 
 export const metadata: Metadata = {
@@ -19,9 +18,7 @@ export default function RootPage() {
                 },
             ]}
         >
-            <Main>
-                <Hero />
-            </Main>
+            <Hero />
         </Page>
     );
 }
