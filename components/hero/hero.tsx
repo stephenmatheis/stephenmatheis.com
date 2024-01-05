@@ -16,16 +16,6 @@ export function Hero() {
                     priority
                 />
             </div>
-            <div>
-                <p>
-                    I learned how to program computers from kind, smart people.
-                    I'm grateful they took the time to teach me their craft.
-                </p>
-                <p>
-                    <Link href="/about#contact">Hit me up</Link> if you want to talk shop. I'm happy to
-                    return the favor.
-                </p>
-            </div>
         </div>
     );
 }
