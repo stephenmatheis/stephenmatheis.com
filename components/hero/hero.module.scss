@@ -1,5 +1,5 @@
 .hero {
-    // height: calc(100dvh - (var(--line-height) * 12));
+    user-select: none;
     display: flex;
     align-items: center;
     justify-content: center;
