@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-import Link from 'next/link';
 import Image from 'next/image';
 import me from 'public/me.png';
 import styles from './hero.module.scss';
