@@ -13,10 +13,7 @@ export default async function RootPage() {
     const posts = await getPosts();
 
     return (
-        <Page
-            anchors={[{ label: 'RSS', path: '/rss', newTab: true }]}
-            links={[{ label: 'RSS', path: '/rss', newTab: true }]}
-        >
+        <Page links={[{ label: 'RSS', path: '/posts/rss', newTab: true }]}>
             <Main>
                 <Posts posts={posts} />
             </Main>
