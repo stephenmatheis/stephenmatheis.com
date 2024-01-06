@@ -1,0 +1,124 @@
+.page {
+    width: 75ch;
+    margin: 0 auto;
+    padding: calc(var(--line-height) * 4) 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--line-height) * 3);
+
+    h1,
+    h2,
+    h3 {
+        margin: 0;
+    }
+
+    .logo {
+        background-color: var(--logo-background);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+
+        svg {
+            width: 26px;
+            height: 26px;
+        }
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 2ch;
+
+        .photo {
+            background-color: var(--avatar-background);
+            border-radius: 50%;
+            display: flex;
+
+            img {
+                border-radius: 50%;
+            }
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--line-height) * 1 / 4);
+
+            .name {
+                color: var(--primary);
+                margin: 0;
+            }
+
+            .title {
+                color: var(--color);
+            }
+
+            .portfolio {
+                cursor: pointer;
+                background-color: var(--primary-20);
+                border-radius: var(--line-height);
+                padding: calc(var(--line-height) * 1 / 4)
+                    calc(var(--line-height) * 1 / 2);
+                width: fit-content;
+                color: var(--color);
+
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+        }
+    }
+
+    .section {
+        h2 {
+            color: var(--primary);
+
+            &.heading {
+                margin-bottom: var(--line-height);
+            }
+        }
+
+        div {
+            color: var(--color);
+        }
+    }
+
+    .block {
+        display: flex;
+        gap: 4ch;
+
+        &:not(:last-child) {
+            margin-bottom: calc(var(--line-height) * 2);
+        }
+
+        .date {
+            position: relative;
+            white-space: nowrap;
+            text-align: right;
+
+            span {
+                position: absolute;
+            }
+
+            &:after {
+                content: 'MMM YYYY — MMM YYYY';
+                visibility: hidden;
+            }
+        }
+
+        .text {
+            flex: 1;
+
+            .title {
+                color: var(--primary);
+            }
+
+            .location {
+                margin-bottom: var(--line-height);
+            }
+        }
+    }
+}

@@ -20,6 +20,31 @@
     br[data-header-break] {
         display: none;
     }
+
+    // DEV:
+
+    // Primary
+    --avatar-background: var(--color);
+    --logo-background: var(--color);
+
+    // Yellow
+    // --background-color: #ffc500;
+    // --avatar-background: black;
+    // --logo-background: black;
+    // --color: #665602;
+    // --muted: #665602;
+    // --primary: black;
+    // --primary-20: #edb72d;
+
+    // Purple
+    // --background-color: #7700ff;
+    // --avatar-background: #ffc500;
+    // --logo-background: white;
+
+    // --color: #e1d1f4;
+    // --muted: #e1d1f4;
+    // --primary: white;
+    // --primary-20: #913af5;
 }
 
 * {
@@ -33,15 +58,18 @@
     }
 }
 
+html,
+body {
+    background-color: var(--background-color);
+}
+
 html {
     font-family: var(--font-family);
-    background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
 }
 
 body {
-    background-color: var(--background-color);
     margin: 0;
     padding: 0;
 }
