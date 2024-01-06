@@ -4,7 +4,7 @@ const jobs = [
         company: 'T and T Consulting Services',
         location: 'Remote',
         start: 'Oct 2023',
-        end: 'Present',
+        end: 'Now',
         lines: [
             'Redesigning NOAA / National Weather Service U.S. Tsunami Warning System',
             'Building prototypes with Next.js, TypeScript, and MongoDB',
@@ -15,7 +15,7 @@ const jobs = [
         company: 'Apple (TEKsystems)',
         location: 'Remote',
         start: 'Aug 2022',
-        end: 'October 2023',
+        end: 'Oct 2023',
         lines: [
             'Built prototypes with Next.js, TypeScript, and Sass',
             'Developed a system for scaffolding React components with Node.js and Fastly',
