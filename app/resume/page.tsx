@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: `Resume.`,
 };
 
-export default function RootPage() {
+export default function ResumePage() {
     return (
         <main className={styles.page}>
             <div className={styles.header}>

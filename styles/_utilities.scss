@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:meta';
 @use 'sass:string';
 @use 'styles/themes.module.scss' as themes;
 
@@ -171,34 +172,61 @@ $scroll-margin-top: calc(var(--line-height) * 4);
                     --#{$formatted-prefix}#{$name}-#{$label}: #{$color-mixed};
                 }
             }
-
-            @if $mode == 'Light' {
-                --#{$formatted-prefix}#{$name}-variant: #{mix(
-                        white,
-                        $color,
-                        10%
-                    )};
-            } @else if $mode == 'Dark' {
-                --#{$formatted-prefix}#{$name}-variant: #{mix(
-                        black,
-                        $color,
-                        10%
-                    )};
-            }
         }
+
+        // Var
+        $currentBackgroundColor: null;
 
         // Code block word highLights
         @if $mode == 'Light' {
+            $currentBackgroundColor: $defaultLightBackgroundColor;
+
             --#{$formatted-prefix}word-background-color: #ffdcc2;
             --#{$formatted-prefix}r-word-background-color: #ffc2d3;
             --#{$formatted-prefix}g-word-background-color: #c2ffce;
             --#{$formatted-prefix}b-word-background-color: #c2efff;
         } @else if $mode == 'Dark' {
+            $currentBackgroundColor: $defaultDarkBackgroundColor;
+
             --#{$formatted-prefix}word-background-color: #63341d;
             --#{$formatted-prefix}r-word-background-color: #9f1239;
             --#{$formatted-prefix}g-word-background-color: #115e59;
             --#{$formatted-prefix}b-word-background-color: #1e40af;
         }
+
+        $bgc: if(
+            $background-color != null,
+            $background-color,
+            $currentBackgroundColor
+        );
+
+        // Shades
+        --background-color-shade-1: #{mix(black, $bgc, 13%)};
+        --background-color-shade-2: #{mix(black, $bgc, 24%)};
+        --background-color-shade-3: #{mix(black, $bgc, 37%)};
+        --background-color-shade-4: #{mix(black, $bgc, 51%)};
+        --background-color-shade-5: #{mix(black, $bgc, 63%)};
+        --background-color-shade-6: #{mix(black, $bgc, 75%)};
+        --background-color-shade-7: #{mix(black, $bgc, 87%)};
+
+        // Tints
+        --background-color-tint-1: #{mix(white, $bgc, 12.5%)};
+        --background-color-tint-2: #{mix(white, $bgc, 25%)};
+        --background-color-tint-3: #{mix(white, $bgc, 37.5%)};
+        --background-color-tint-4: #{mix(white, $bgc, 46%)};
+        --background-color-tint-5: #{mix(white, $bgc, 50%)};
+        --background-color-tint-6: #{mix(white, $bgc, 62.5%)};
+        --background-color-tint-7: #{mix(white, $bgc, 75%)};
+        --background-color-tint-8: #{mix(white, $bgc, 87.5%)};
+
+        // Tones
+        --background-color-tone-1: #{mix(gray, $bgc, 12.5%)};
+        --background-color-tone-2: #{mix(gray, $bgc, 25%)};
+        --background-color-tone-3: #{mix(gray, $bgc, 37%)};
+        --background-color-tone-4: #{mix(gray, $bgc, 49.5%)};
+        --background-color-tone-5: #{mix(gray, $bgc, 62.2%)};
+        --background-color-tone-6: #{mix(gray, $bgc, 74.5%)};
+        --background-color-tone-7: #{mix(gray, $bgc, 87%)};
     }
 }
 

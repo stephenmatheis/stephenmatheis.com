@@ -24,8 +24,14 @@
     // DEV:
 
     // Primary
-    --avatar-background: var(--color);
-    --logo-background: var(--color);
+    // --avatar-background: var(--color);
+    // --logo-background: var(--color);
+
+    --avatar-background: var(--background-color-tint-8);
+    --logo-background: var(--primary);
+
+    --muted: var(--background-color-tint-4);
+    --color: var(--background-color-tint-7);
 
     // Yellow
     // --background-color: #ffc500;
