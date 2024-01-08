@@ -6,10 +6,21 @@
     flex-direction: column;
     gap: calc(var(--line-height) * 3);
 
+    @media print {
+        width: 8.5in;
+        padding: 0.5in;
+    }
+
     h1,
     h2,
     h3 {
         margin: 0;
+    }
+
+    a {
+        &:hover {
+            box-shadow: none;
+        }
     }
 
     .logo {
@@ -64,10 +75,6 @@
                     calc(var(--line-height) * 1 / 2);
                 width: fit-content;
                 color: var(--color);
-
-                &:hover {
-                    box-shadow: none;
-                }
             }
         }
     }
@@ -98,6 +105,7 @@
             position: relative;
             white-space: nowrap;
             text-align: right;
+            color: var(--muted);
 
             span {
                 position: absolute;
@@ -112,11 +120,17 @@
         .text {
             flex: 1;
 
+            a {
+                display: inline-block;
+                width: fit-content;
+            }
+
             .title {
                 color: var(--primary);
             }
 
             .location {
+                color: var(--muted);
                 margin-bottom: var(--line-height);
             }
         }
