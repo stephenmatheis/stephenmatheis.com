@@ -31,11 +31,11 @@ export function Experience() {
                                         >
                                             <span
                                                 style={{
-                                                    marginRight: '6px',
+                                                    marginRight: '1ch',
                                                     color: 'var(--muted)',
                                                 }}
                                             >
-                                                {'*'}
+                                                *
                                             </span>
                                             <span
                                                 dangerouslySetInnerHTML={{
