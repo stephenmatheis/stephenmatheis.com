@@ -19,7 +19,7 @@ export default function ResumePage() {
                 <div className={styles.text}>
                     <h1 className={styles.name}>Stephen Matheis</h1>
                     <div className={styles.title}>
-                        Software Engineer in Washington, D.C.
+                        Front-end Software Engineer
                     </div>
                     <a
                         className={styles.portfolio}
@@ -85,7 +85,14 @@ export default function ResumePage() {
                                         {location}
                                     </div>
                                     <div className={styles.description}>
-                                        {lines.join(' * ')}
+                                        {lines.map((line, index) => (
+                                            <div
+                                                key={index}
+                                                className={styles.line}
+                                            >
+                                                <span>*</span> {line}
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             </div>
