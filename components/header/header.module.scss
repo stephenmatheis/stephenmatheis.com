@@ -14,10 +14,10 @@
         &:after {
             position: absolute;
             content: '';
-            width: calc(100% + 12ch);
+            width: 100%;
             height: calc(var(--line-height) * 6);
             top: calc(var(--line-height) * -3);
-            left: -6ch;
+            left: 0;
             background-color: var(--background-color);
             z-index: -1;
 
