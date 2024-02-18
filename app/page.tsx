@@ -9,16 +9,19 @@ export const metadata: Metadata = {
 
 export default function RootPage() {
     return (
-        <Page
-            links={[
-                {
-                    label: 'GitHub',
-                    path: 'https://github.com/stephenmatheis',
-                    newTab: true,
-                },
-            ]}
-        >
-            <Hero />
-        </Page>
+        // <Page
+        //     // links={[
+        //     //     {
+        //     //         label: 'GitHub',
+        //     //         path: 'https://github.com/stephenmatheis',
+        //     //         newTab: true,
+        //     //     },
+        //     // ]}
+        //     noHeader
+        //     noFooter
+        // >
+        //     <Hero />
+        // </Page>
+        <Hero />
     );
 }
