@@ -31,19 +31,11 @@ const skills = [
     },
     {
         group: 'Platforms',
-        items: [
-            'Vercel',
-            'Netlify',
-            'SharePoint',
-            'Node.js',
-            '.NET',
-            'AWS',
-            'PICO-8',
-        ],
+        items: ['Vercel', 'Netlify', 'SharePoint', 'Node.js', '.NET', 'PICO-8'],
     },
     {
         group: 'Design',
-        items: ['Figma', 'Sketch', 'draw.io'],
+        items: ['Figma', 'Sketch'],
     },
 ];
 
