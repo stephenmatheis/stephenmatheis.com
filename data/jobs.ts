@@ -6,7 +6,7 @@ const jobs = [
         start: 'Oct 2023',
         end: 'Present',
         lines: [
-            'Redesigning NOAA / National Weather Service U.S. Tsunami Warning System',
+            'Redesigning <a href="https://tsunami.gov" target="_blank">tsunami.gov</a>',
             'Building prototypes with Next.js, TypeScript, and MongoDB',
         ],
     },
