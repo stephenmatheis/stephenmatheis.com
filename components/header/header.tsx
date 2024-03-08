@@ -14,6 +14,11 @@ export function Header({ printOnly = false }) {
         document.documentElement.style.scrollBehavior = 'smooth';
     }, []);
 
+    function close() {
+        linksRef.current.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
     return (
         <header
             className={[
@@ -32,9 +37,6 @@ export function Header({ printOnly = false }) {
                         className={[styles.name, styles.part].join(' ')}
                         data-link-text
                     >
-                        {/* Stephen Matheis * * * * * * */}
-                        {/* Stephen Matheis / / / / / / */}
-                        {/* Stephen Matheis ----------- */}
                         Stephen Matheis
                     </span>{' '}
                     <br data-header-break />
@@ -75,17 +77,8 @@ export function Header({ printOnly = false }) {
             </div>
             <div ref={linksRef} className={styles['links-ctr']}>
                 <div className={styles.close}>
-                    <button
-                        type="button"
-                        aria-label="Close"
-                        onClick={() => {
-                            linksRef.current.style.display = 'none';
-                            document.body.style.overflow = 'auto';
-                        }}
-                    >
+                    <button type="button" aria-label="Close" onClick={close}>
                         <svg width="36" height="36" viewBox="0 0 36 36">
-                            {/* <polyline points="10 10, 26 26" />
-                            <polyline points="10 26, 26 10" /> */}
                             <polyline points="12 12, 24 24" />
                             <polyline points="12 24, 24 12" />
                         </svg>
@@ -109,6 +102,7 @@ export function Header({ printOnly = false }) {
                                 href={path}
                                 aria-label={label}
                                 {...(newTab ? { target: '_blank' } : {})}
+                                onClick={close}
                             >
                                 {label}
                             </Link>

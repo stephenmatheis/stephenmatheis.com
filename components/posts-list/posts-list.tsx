@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import type { Post } from '@/lib/types';
 import { Search } from '@/components/search';
 import { Entry } from '@/components/entry';
 import { Tags } from '@/components/tags';
 import { LinkCtr } from '../link-ctr';
+import type { Post } from '@/lib/types';
 import styles from './posts-list.module.scss';
 
 function filterTags(post: Post, tags: string[]) {
