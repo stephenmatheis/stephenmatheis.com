@@ -1,3 +1,4 @@
+import matter from 'gray-matter';
 import { Section } from '@/components/section';
 import jobs from '@/data/jobs';
 import styles from './experience.module.scss';
@@ -24,6 +25,8 @@ export function Experience() {
                             </div>
                             <div className={styles['lines']}>
                                 {lines.map((line, index) => {
+                                    const { content } = matter(line);
+
                                     return (
                                         <span
                                             key={index}
@@ -39,7 +42,7 @@ export function Experience() {
                                             </span>
                                             <span
                                                 dangerouslySetInnerHTML={{
-                                                    __html: line,
+                                                    __html: content,
                                                 }}
                                             />
                                         </span>
