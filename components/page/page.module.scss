@@ -13,4 +13,8 @@
         gap: calc(var(--line-height) * 2);
         width: 8.5in;
     }
+
+    @media screen and (min-width: utilities.$medium-width) {
+        width: 8.5in;
+    }
 }
