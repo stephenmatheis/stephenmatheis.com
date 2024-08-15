@@ -13,7 +13,7 @@ export default function ResumePage() {
         <Page
             links={[
                 {
-                    label: 'Download a copy',
+                    label: 'Download resume',
                     path: '/resume.pdf',
                     newTab: true,
                 },

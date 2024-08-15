@@ -13,6 +13,7 @@ $line-height: 18px;
 $offset: 13px;
 $p-line-height-modifier: 1.25;
 $page-padding: calc($line-height * 7) 6ch calc($line-height * 2);
+// $page-padding: calc($line-height * 7) 6ch $line-height;
 $page-gap: calc($line-height * 5);
 $small-width: 500px;
 $medium-width: calc(900px + 12ch);
@@ -30,7 +31,7 @@ $scroll-margin-top: calc(var(--line-height) * 4);
         margin: 0 auto;
         padding: var(--page-padding);
         padding-top: calc(var(--line-height) * 3);
-        padding-bottom: calc(var(--line-height) * 3);
+        // padding-bottom: calc(var(--line-height) * 3);
         width: 900px;
 
         @media (max-width: $medium-width) {
