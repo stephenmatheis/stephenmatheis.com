@@ -35,9 +35,11 @@ export function Header({ printOnly = false }) {
                     </span>
                 </span>
             </Link>
-            <Link className={styles.right} href={href} aria-label={label}>
-                {text}
-            </Link>
+            <div className={styles.right}>
+                <Link href={href} aria-label={label}>
+                    {text}
+                </Link>
+            </div>
         </header>
     );
 }
