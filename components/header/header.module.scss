@@ -29,6 +29,11 @@
     //     }
     // }
 
+    @media (max-width: utilities.$small-width) {
+        flex-direction: column;
+        gap: var(--line-height);
+    }
+
     @media print {
         justify-content: space-between;
     }
@@ -53,11 +58,15 @@
     }
 
     .right {
-        width: 34ch;
+        width: 30ch;
 
-        @media screen {
-            display: none;
+        @media screen and (max-width: calc(12ch + 900px)) {
+            width: unset;
         }
+
+        // @media screen {
+        //     display: none;
+        // }
     }
 
     button {
