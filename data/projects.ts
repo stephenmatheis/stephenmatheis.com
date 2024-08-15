@@ -9,11 +9,11 @@ const projects = [
         name: 'Command Palette',
         link: 'https://robi-command-palette.netlify.app',
         description:
-            'An embeddable React component to search for and run commands from within an app.',
+            'A React component to search for and run commands from within an app.',
     },
     {
         name: 'Samepage',
-        link: 'https://samepage.dev',
+        link: 'https://samepage.netlify.app/',
         description: 'A Basecamp clone built with Robi.',
     },
 ];
