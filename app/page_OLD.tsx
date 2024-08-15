@@ -10,19 +10,18 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
     return (
-        // <Page
-        //     links={[
-        //         {
-        //             label: 'Download a copy',
-        //             path: '/resume.pdf',
-        //             newTab: true,
-        //         },
-        //     ]}
-        // >
-        //     <Main>
-        //         <Content />
-        //     </Main>
-        // </Page>
-        <Content />
+        <Page
+            links={[
+                {
+                    label: 'Download a copy',
+                    path: '/resume.pdf',
+                    newTab: true,
+                },
+            ]}
+        >
+            <Main>
+                <Content />
+            </Main>
+        </Page>
     );
 }

@@ -1,46 +1,46 @@
-@use 'styles/utilities';
+// @use 'styles/utilities';
 
 .content {
-    flex: 2;
-    display: flex;
-    width: 100%;
+    // flex: 2;
+    // display: flex;
+    // width: 100%;
 
-    @media screen {
-        @media (max-width: utilities.$medium-width) {
-            flex-direction: column;
-            gap: calc(var(--line-height) * 4);
-            margin-bottom: calc(var(--line-height) * 4);
+    // @media screen {
+    //     @media (max-width: utilities.$medium-width) {
+    //         flex-direction: column;
+    //         gap: calc(var(--line-height) * 4);
+    //         margin-bottom: calc(var(--line-height) * 4);
 
-            .right {
-                max-width: unset;
-            }
-        }
+    //         .right {
+    //             max-width: unset;
+    //         }
+    //     }
 
-        @media (min-width: utilities.$medium-width) {
-            gap: 8ch;
-        }
-    }
+    //     @media (min-width: utilities.$medium-width) {
+    //         gap: 8ch;
+    //     }
+    // }
 
-    @media print {
-        flex-direction: row;
-        gap: 4ch;
-    }
+    // @media print {
+    //     flex-direction: row;
+    //     gap: 4ch;
+    // }
 
-    .right {
-        display: flex;
-        flex-direction: column;
+    // .right {
+    //     display: flex;
+    //     flex-direction: column;
 
-        @media screen {
-            gap: calc(var(--line-height) * 4);
+    //     @media screen {
+    //         gap: calc(var(--line-height) * 4);
 
-            @media (min-width: utilities.$medium-width) {
-                width: 30ch;
-            }
-        }
+    //         @media (min-width: utilities.$medium-width) {
+    //             width: 30ch;
+    //         }
+    //     }
 
-        @media print {
-            max-width: 34ch;
-            gap: calc(var(--line-height) * 3);
-        }
-    }
+    //     @media print {
+    //         max-width: 34ch;
+    //         gap: calc(var(--line-height) * 3);
+    //     }
+    // }
 }

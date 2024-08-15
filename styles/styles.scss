@@ -38,96 +38,20 @@ html {
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
-
-    &[data-prefers-color-scheme='Dark'] {
-        body {
-            &.modal-open {
-                [data-backdrop] {
-                    --filter: blur(4px) brightness(1.5);
-                }
-            }
-        }
-    }
-
-    @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
-        body {
-            &.modal-open {
-                [data-backdrop] {
-                    --filter: blur(4px) brightness(1.5);
-                }
-            }
-        }
-    }
-
-    @media screen and (prefers-reduced-motion: reduce) {
-        scroll-behavior: auto !important;
-    }
 }
 
 body {
     background-color: var(--background-color);
     margin: 0;
     padding: 0;
-
-    &.can-transition {
-        transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
-            background-color var(--prefers-color-scheme-transition-speed) ease
-                0s,
-            filter var(--prefers-color-scheme-transition-speed) ease 0s;
-    }
-
-    &.modal-open {
-        overflow: hidden;
-    }
 }
 
 a {
-    position: relative;
-    color: var(--primary);
-    -webkit-tap-highlight-color: transparent;
-
-    @media (pointer: coarse) {
-        &:active {
-            @include utilities.shadow-hover;
-        }
-    }
-
-    @media (hover: hover) {
-        &:hover {
-            @include utilities.shadow-hover;
-        }
-    }
-
-    &.anchor {
-        display: block;
-
-        &:hover {
-            * {
-                color: var(--primary);
-            }
-        }
-
-        * {
-            transition: color 150ms ease-in-out;
-        }
-    }
-
     &,
-    &:hover {
+    &:hover,
+    &:active {
         text-decoration: none;
-
-        .anchor-link {
-            opacity: 1;
-        }
-    }
-
-    .anchor-link {
-        position: absolute;
-        bottom: 0px;
-        left: -2ch;
         color: var(--primary);
-        opacity: 0;
-        transition: opacity 150ms ease-in-out;
     }
 }
 
@@ -139,77 +63,7 @@ h5,
 h6 {
     font-weight: normal;
     color: var(--primary);
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-top: calc(var(--line-height) * 2);
-    margin-bottom: var(--line-height);
-}
-
-p,
-li {
-    line-height: calc(var(--line-height) * var(--p-line-height-modifier));
-}
-
-p {
-    margin-top: 0px;
-    margin-bottom: var(--line-height);
-}
-
-article {
-    --theme-color: var(--primary);
-
-    .date {
-        display: inline-block;
-        margin-bottom: 0px;
-    }
-
-    p {
-        &:first-of-type {
-            margin-top: var(--line-height);
-        }
-    }
-
-    ul,
-    ol {
-        padding-left: 2ch;
-        margin: var(--line-height) 0px;
-
-        li {
-            margin-bottom: calc(var(--line-height) * 0.5);
-
-            &::marker {
-                color: var(--muted);
-            }
-        }
-
-        & ul {
-            margin-top: 0px;
-        }
-    }
-
-    ol {
-        margin-left: 3ch;
-    }
-
-    ul {
-        list-style: inside square;
-    }
-
-    blockquote {
-        border-left: 2px solid var(--theme-color);
-        margin: calc(var(--line-height) * 2) 1ch;
-        padding-left: 2ch;
-
-        p {
-            color: var(--theme-color);
-            margin-top: 0px !important;
-        }
-    }
+    margin: 0;
 }
 
 button {
@@ -217,165 +71,384 @@ button {
     -webkit-tap-highlight-color: transparent;
 }
 
-// Inline code block
-p,
-ul,
-ol {
-    code {
-        font-family: var(--font-monospace);
-        padding: 2px 4px;
-        background-color: var(--primary-20);
-        color: var(--primary);
-        border-radius: 4px;
-    }
-}
+// @use 'utilities';
 
-// Code block
-[data-rehype-pretty-code-fragment] {
-    --background: var(--primary-10);
-    --hightlighted-background: var(--primary-20);
-    --highlighted-border-color: var(--primary);
+// :root {
+//     --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+//         Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+//         'Segoe UI Symbol';
+//     --font-monospace: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+//         Liberation Mono, 'Courier New', monospace;
+//     --font-family: var(--font-monospace);
+//     --font-print: var(--font-monospace);
 
-    border-radius: 6px;
-    background: var(--background);
-    margin-top: calc(var(--line-height) * 2);
+//     @media print {
+//         --font-family: var(--font-print);
+//         --font-size: 11px;
+//         --line-height: 16px;
+//     }
 
-    &:not(:last-of-type) {
-        margin-bottom: calc(var(--line-height) * 2);
-    }
+//     @include utilities.init-themes();
 
-    [data-rehype-pretty-code-title] {
-        border-bottom: solid 1px var(--primary-20);
-        padding: calc(var(--line-height) * 0.5) 4ch;
-        border-radius: 6px 6px 0px 0px;
-        color: var(--token-comment);
-    }
+//     br[data-header-break] {
+//         display: none;
+//     }
+// }
 
-    pre {
-        font-weight: 400;
-        margin: 0px;
-        opacity: 0.98;
-        border: solid 1px var(--border-color);
+// * {
+//     box-sizing: border-box;
+//     font-size: var(--font-size);
+//     line-height: var(--line-height);
 
-        & > code {
-            // Shiki
-            --shiki-color-background: var(--background);
-            --shiki-token-keyword: var(--primary);
-            --shiki-color-text: var(--color);
-            --shiki-token-punctuation: var(--color);
-            --shiki-token-string: var(--color);
-            --shiki-token-parameter: var(--color);
-            --shiki-token-link: var(--color);
-            --shiki-token-string-expression: var(--token-string-expression);
-            --shiki-token-function: var(--token-function);
-            --shiki-token-constant: var(--token-constant);
-            --shiki-token-comment: var(--token-comment);
+//     &::selection {
+//         color: var(--primary);
+//         background-color: var(--primary-20);
+//     }
+// }
 
-            display: grid;
-            font-family: var(--font-monospace);
-            padding: var(--line-height) 0px;
-            overflow-x: auto;
+// html {
+//     font-family: var(--font-family);
+//     background-color: var(--background-color);
+//     color: var(--color);
+//     -webkit-text-size-adjust: 100%;
 
-            // Line numbers
-            &[data-line-numbers] {
-                counter-reset: line;
+//     &[data-prefers-color-scheme='Dark'] {
+//         body {
+//             &.modal-open {
+//                 [data-backdrop] {
+//                     --filter: blur(4px) brightness(1.5);
+//                 }
+//             }
+//         }
+//     }
 
-                > .line::before {
-                    counter-increment: line;
-                    content: counter(line);
+//     @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
+//         body {
+//             &.modal-open {
+//                 [data-backdrop] {
+//                     --filter: blur(4px) brightness(1.5);
+//                 }
+//             }
+//         }
+//     }
 
-                    // Other styling
-                    display: inline-block;
-                    width: 1rem;
-                    margin-right: 2rem;
-                    text-align: right;
-                    color: gray;
-                }
+//     @media screen and (prefers-reduced-motion: reduce) {
+//         scroll-behavior: auto !important;
+//     }
+// }
 
-                // Line numbers
-                .line &[data-line-numbers-max-digits='2'] > .line::before {
-                    width: 2rem;
-                }
+// body {
+//     background-color: var(--background-color);
+//     margin: 0;
+//     padding: 0;
 
-                .line &[data-line-numbers-max-digits='3'] > .line::before {
-                    width: 3rem;
-                }
-            }
+//     &.can-transition {
+//         transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
+//             background-color var(--prefers-color-scheme-transition-speed) ease
+//                 0s,
+//             filter var(--prefers-color-scheme-transition-speed) ease 0s;
+//     }
 
-            // Line
-            > .line {
-                padding: 0px 4ch;
-                border-left: 2px solid transparent;
+//     &.modal-open {
+//         overflow: hidden;
+//     }
+// }
 
-                // Highlight line
-                &.highlighted {
-                    background: var(--hightlighted-background);
-                    border-left-color: var(--highlighted-border-color);
-                }
+// a {
+//     position: relative;
+//     color: var(--primary);
+//     -webkit-tap-highlight-color: transparent;
 
-                &::selection,
-                & *::selection {
-                    color: inherit;
-                    background: var(--primary-30);
-                }
-            }
+//     @media (pointer: coarse) {
+//         &:active {
+//             @include utilities.shadow-hover;
+//         }
+//     }
 
-            // Highlight word
-            .word {
-                --background-color: var(--word-background-color);
+//     @media (hover: hover) {
+//         &:hover {
+//             @include utilities.shadow-hover;
+//         }
+//     }
 
-                border-top: solid 3px var(--background-color);
-                border-bottom: solid 3px var(--background-color);
-                background-color: var(--background-color);
+//     &.anchor {
+//         display: block;
 
-                &[data-word-id='r'] {
-                    --background-color: var(--r-word-background-color);
-                }
+//         &:hover {
+//             * {
+//                 color: var(--primary);
+//             }
+//         }
 
-                &[data-word-id='g'] {
-                    --background-color: var(--g-word-background-color);
-                }
+//         * {
+//             transition: color 150ms ease-in-out;
+//         }
+//     }
 
-                &[data-word-id='b'] {
-                    --background-color: var(--b-word-background-color);
-                }
-            }
-        }
-    }
-}
+//     &,
+//     &:hover {
+//         text-decoration: none;
 
-// Classes
-.muted {
-    color: var(--muted);
-}
+//         .anchor-link {
+//             opacity: 1;
+//         }
+//     }
 
-.color {
-    color: var(--color);
-}
+//     .anchor-link {
+//         position: absolute;
+//         bottom: 0px;
+//         left: -2ch;
+//         color: var(--primary);
+//         opacity: 0;
+//         transition: opacity 150ms ease-in-out;
+//     }
+// }
 
-// Footnotes
-.superscript {
-    margin-left: 1ch;
-    vertical-align: top;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//     font-weight: normal;
+//     color: var(--primary);
+// }
 
-.footnotes {
-    margin-top: calc(var(--line-height) * 4);
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//     margin-top: calc(var(--line-height) * 2);
+//     margin-bottom: var(--line-height);
+// }
 
-    hr {
-        border: solid 0.5px var(--muted);
-    }
+// p,
+// li {
+//     line-height: calc(var(--line-height) * var(--p-line-height-modifier));
+// }
 
-    ol {
-        list-style-position: outside;
-        margin-left: 3ch;
+// p {
+//     margin-top: 0px;
+//     margin-bottom: var(--line-height);
+// }
 
-        li {
-            scroll-margin-top: var(--line-height);
+// article {
+//     --theme-color: var(--primary);
 
-            @media (max-width: utilities.$medium-width) {
-                scroll-margin-top: utilities.$scroll-margin-top;
-            }
-        }
-    }
-}
+//     .date {
+//         display: inline-block;
+//         margin-bottom: 0px;
+//     }
+
+//     p {
+//         &:first-of-type {
+//             margin-top: var(--line-height);
+//         }
+//     }
+
+//     ul,
+//     ol {
+//         padding-left: 2ch;
+//         margin: var(--line-height) 0px;
+
+//         li {
+//             margin-bottom: calc(var(--line-height) * 0.5);
+
+//             &::marker {
+//                 color: var(--muted);
+//             }
+//         }
+
+//         & ul {
+//             margin-top: 0px;
+//         }
+//     }
+
+//     ol {
+//         margin-left: 3ch;
+//     }
+
+//     ul {
+//         list-style: inside square;
+//     }
+
+//     blockquote {
+//         border-left: 2px solid var(--theme-color);
+//         margin: calc(var(--line-height) * 2) 1ch;
+//         padding-left: 2ch;
+
+//         p {
+//             color: var(--theme-color);
+//             margin-top: 0px !important;
+//         }
+//     }
+// }
+
+// button {
+//     font-family: var(--font-family);
+//     -webkit-tap-highlight-color: transparent;
+// }
+
+// // Inline code block
+// p,
+// ul,
+// ol {
+//     code {
+//         font-family: var(--font-monospace);
+//         padding: 2px 4px;
+//         background-color: var(--primary-20);
+//         color: var(--primary);
+//         border-radius: 4px;
+//     }
+// }
+
+// // Code block
+// [data-rehype-pretty-code-fragment] {
+//     --background: var(--primary-10);
+//     --hightlighted-background: var(--primary-20);
+//     --highlighted-border-color: var(--primary);
+
+//     border-radius: 6px;
+//     background: var(--background);
+//     margin-top: calc(var(--line-height) * 2);
+
+//     &:not(:last-of-type) {
+//         margin-bottom: calc(var(--line-height) * 2);
+//     }
+
+//     [data-rehype-pretty-code-title] {
+//         border-bottom: solid 1px var(--primary-20);
+//         padding: calc(var(--line-height) * 0.5) 4ch;
+//         border-radius: 6px 6px 0px 0px;
+//         color: var(--token-comment);
+//     }
+
+//     pre {
+//         font-weight: 400;
+//         margin: 0px;
+//         opacity: 0.98;
+//         border: solid 1px var(--border-color);
+
+//         & > code {
+//             // Shiki
+//             --shiki-color-background: var(--background);
+//             --shiki-token-keyword: var(--primary);
+//             --shiki-color-text: var(--color);
+//             --shiki-token-punctuation: var(--color);
+//             --shiki-token-string: var(--color);
+//             --shiki-token-parameter: var(--color);
+//             --shiki-token-link: var(--color);
+//             --shiki-token-string-expression: var(--token-string-expression);
+//             --shiki-token-function: var(--token-function);
+//             --shiki-token-constant: var(--token-constant);
+//             --shiki-token-comment: var(--token-comment);
+
+//             display: grid;
+//             font-family: var(--font-monospace);
+//             padding: var(--line-height) 0px;
+//             overflow-x: auto;
+
+//             // Line numbers
+//             &[data-line-numbers] {
+//                 counter-reset: line;
+
+//                 > .line::before {
+//                     counter-increment: line;
+//                     content: counter(line);
+
+//                     // Other styling
+//                     display: inline-block;
+//                     width: 1rem;
+//                     margin-right: 2rem;
+//                     text-align: right;
+//                     color: gray;
+//                 }
+
+//                 // Line numbers
+//                 .line &[data-line-numbers-max-digits='2'] > .line::before {
+//                     width: 2rem;
+//                 }
+
+//                 .line &[data-line-numbers-max-digits='3'] > .line::before {
+//                     width: 3rem;
+//                 }
+//             }
+
+//             // Line
+//             > .line {
+//                 padding: 0px 4ch;
+//                 border-left: 2px solid transparent;
+
+//                 // Highlight line
+//                 &.highlighted {
+//                     background: var(--hightlighted-background);
+//                     border-left-color: var(--highlighted-border-color);
+//                 }
+
+//                 &::selection,
+//                 & *::selection {
+//                     color: inherit;
+//                     background: var(--primary-30);
+//                 }
+//             }
+
+//             // Highlight word
+//             .word {
+//                 --background-color: var(--word-background-color);
+
+//                 border-top: solid 3px var(--background-color);
+//                 border-bottom: solid 3px var(--background-color);
+//                 background-color: var(--background-color);
+
+//                 &[data-word-id='r'] {
+//                     --background-color: var(--r-word-background-color);
+//                 }
+
+//                 &[data-word-id='g'] {
+//                     --background-color: var(--g-word-background-color);
+//                 }
+
+//                 &[data-word-id='b'] {
+//                     --background-color: var(--b-word-background-color);
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// // Classes
+// .muted {
+//     color: var(--muted);
+// }
+
+// .color {
+//     color: var(--color);
+// }
+
+// // Footnotes
+// .superscript {
+//     margin-left: 1ch;
+//     vertical-align: top;
+// }
+
+// .footnotes {
+//     margin-top: calc(var(--line-height) * 4);
+
+//     hr {
+//         border: solid 0.5px var(--muted);
+//     }
+
+//     ol {
+//         list-style-position: outside;
+//         margin-left: 3ch;
+
+//         li {
+//             scroll-margin-top: var(--line-height);
+
+//             @media (max-width: utilities.$medium-width) {
+//                 scroll-margin-top: utilities.$scroll-margin-top;
+//             }
+//         }
+//     }
+// }
