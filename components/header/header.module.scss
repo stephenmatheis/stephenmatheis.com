@@ -64,9 +64,9 @@
             width: unset;
         }
 
-        // @media screen {
-        //     display: none;
-        // }
+        @media print {
+            width: 34ch;
+        }
     }
 
     button {
