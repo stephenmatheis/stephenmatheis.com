@@ -1,13 +1,29 @@
 const jobs = [
     {
-        title: 'Senior Application Solutions Engineer',
         company: 'T and T Consulting Services',
-        location: 'Remote',
-        start: 'Oct 2023',
-        end: 'Present',
-        lines: [
-            'Redesigning NOAA / National Weather Service U.S. Tsunami Warning System',
-            'Building prototypes with Next.js, TypeScript, and MongoDB',
+        titles: [
+            {
+                title: 'Director, Customer Experience',
+                company: 'T and T Consulting Services',
+                location: 'Remote',
+                start: 'Apr 2024',
+                end: 'Present',
+                lines: [
+                    'Redesigning NOAA / National Weather Service U.S. Tsunami Warning System',
+                    'Building prototypes with Next.js, TypeScript, and MongoDB',
+                ],
+            },
+            {
+                title: 'Senior Application Solutions Engineer',
+                company: 'T and T Consulting Services',
+                location: 'Remote',
+                start: 'Oct 2023',
+                end: 'Apr 2024',
+                lines: [
+                    'Redesigning NOAA / National Weather Service U.S. Tsunami Warning System',
+                    'Building prototypes with Next.js, TypeScript, and MongoDB',
+                ],
+            },
         ],
     },
     {

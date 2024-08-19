@@ -26,6 +26,36 @@
                 display: flex;
             }
         }
+
+        .positions {
+            // background-color: red;
+            padding-left: 3ch;
+            margin-top: var(--line-height);
+
+            .position {
+                // background-color: blue;
+                position: relative;
+
+                &::before {
+                    position: absolute;
+                    top: calc((var(--line-height) / 2) - 0.5ch);
+                    left: -2ch;
+                    content: '';
+                    width: 1ch;
+                    height: 1ch;
+                    background-color: var(--primary);
+                    border-radius: 50%;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: var(--line-height);
+                }
+
+                // .title {
+                //     background-color: green;
+                // }
+            }
+        }
     }
 
     .date {
