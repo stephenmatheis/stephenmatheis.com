@@ -8,7 +8,7 @@ export function Links() {
         <div className={styles.links}>
             <Link href="/">
                 <div className={styles.avatar}>
-                    <Image src={me} alt="My memoji" />
+                    <Image src={me} alt="My memoji" priority />
                 </div>
             </Link>
             <div className={styles.name}>Stephen Matheis</div>

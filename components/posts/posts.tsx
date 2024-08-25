@@ -14,11 +14,7 @@ export function Posts({ posts }: { posts: Post[] }) {
             <div className={styles['date-groups']}>
                 {dates.map((date) => {
                     return (
-                        <div
-                            key={date}
-                            className={styles['posts-ctr']}
-                            data-date={date}
-                        >
+                        <div key={date} className={styles['posts-ctr']}>
                             <DateTime
                                 className={styles.date}
                                 dateString={date}
