@@ -15,8 +15,8 @@ const jobs = [
             },
         ],
         lines: [
-            'Redesigning NOAA / National Weather Service U.S. Tsunami Warning System',
-            'Building prototypes with Next.js, TypeScript, and MongoDB',
+            /*html*/ `Redesigning <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a>`,
+            'Building prototypes with Next.js, TypeScript, and MongoDB hosted on Vercel and AWS',
         ],
     },
     {
