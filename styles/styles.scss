@@ -9,13 +9,13 @@
     --font-family: var(--font-monospace);
     --font-print: var(--font-monospace);
 
+    @include utilities.init-themes();
+
     @media print {
         --font-family: var(--font-print);
         --font-size: 11px;
         --line-height: 16px;
     }
-
-    @include utilities.init-themes();
 
     br[data-header-break] {
         display: none;
@@ -39,6 +39,10 @@ html {
     color: var(--color);
     -webkit-text-size-adjust: 100%;
 
+    @media screen and (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto !important;
+    }
+
     &[data-prefers-color-scheme='Dark'] {
         body {
             &.modal-open {
@@ -47,20 +51,6 @@ html {
                 }
             }
         }
-    }
-
-    @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
-        body {
-            &.modal-open {
-                [data-backdrop] {
-                    --filter: blur(4px) brightness(1.5);
-                }
-            }
-        }
-    }
-
-    @media screen and (prefers-reduced-motion: reduce) {
-        scroll-behavior: auto !important;
     }
 }
 
@@ -78,6 +68,10 @@ body {
 
     &.modal-open {
         overflow: hidden;
+
+        [data-backdrop] {
+            --filter: blur(4px) brightness(1.5);
+        }
     }
 }
 

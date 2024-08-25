@@ -31,7 +31,6 @@ $scroll-margin-top: calc(var(--line-height) * 4);
         margin: 0 auto;
         padding: var(--page-padding);
         padding-top: calc(var(--line-height) * 3);
-        // padding-bottom: calc(var(--line-height) * 3);
         width: 900px;
 
         @media (max-width: $medium-width) {
