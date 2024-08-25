@@ -13,8 +13,6 @@ type Props = {
 };
 
 export function Footer({ links = [], text }: Props) {
-    // const copyright = `Copyright (C) ${new Date().getFullYear()} Stephen Matheis`;
-
     return (
         <footer className={styles.footer}>
             {links?.length !== 0 && (
@@ -39,14 +37,6 @@ export function Footer({ links = [], text }: Props) {
                 </nav>
             )}
             {text && <div className={styles.text}>{text}</div>}
-            {/* <div className={styles.copyright}>{copyright}</div> */}
-            <Link
-                href="https://github.com/stephenmatheis/stephenmatheis.com"
-                target="_blank"
-                className={styles.copyright}
-            >
-                View source
-            </Link>
         </footer>
     );
 }

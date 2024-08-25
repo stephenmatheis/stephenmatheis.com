@@ -7,20 +7,6 @@
     flex-direction: column;
     gap: calc(var(--line-height) * 1);
 
-    // @media screen {
-    //     margin-top: 0px;
-    //     height: calc(100dvh - (var(--line-height) * 19));
-
-    //     @media (max-width: utilities.$medium-width) {
-    //         margin-top: 0px;
-    //         height: calc(100dvh - (var(--line-height) * 22));
-    //     }
-
-    //     @media (pointer: coarse) and (max-width: utilities.$small-width) {
-    //         height: calc(100dvh - (var(--line-height) * 23));
-    //     }
-    // }
-
     * {
         font-size: var(--font-size);
         line-height: var(--line-height);
