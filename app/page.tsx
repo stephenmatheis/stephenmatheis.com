@@ -1,27 +1,15 @@
+import { Links } from '@/components/links';
 import type { Metadata } from 'next';
-import { Page } from '@/components/page';
-import { Content } from '@/components/content';
-import { Main } from '@/components/main';
 
 export const metadata: Metadata = {
     title: 'Stephen Matheis',
-    description: `The personal website and blog of Stephen Matheis. Copyright (C) ${new Date().getFullYear()} Stephen Matheis.`,
+    description: `The personal website of Stephen Matheis.`,
 };
 
-export default function ResumePage() {
+export default function RootPage() {
     return (
-        <Page
-            links={[
-                {
-                    label: 'Download resume',
-                    path: '/resume.pdf',
-                    newTab: true,
-                },
-            ]}
-        >
-            <Main>
-                <Content />
-            </Main>
-        </Page>
+        <>
+            <Links />
+        </>
     );
 }
