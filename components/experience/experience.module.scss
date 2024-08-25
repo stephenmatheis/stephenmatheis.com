@@ -4,6 +4,10 @@
 
         &:not(:last-child) {
             margin-bottom: var(--line-height);
+
+            @media screen and (max-width: 8.5in) {
+                margin-bottom: calc(var(--line-height) * 2);
+            }
         }
 
         .title {
