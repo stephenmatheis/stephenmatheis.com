@@ -10,15 +10,7 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
     return (
-        <Page
-            links={[
-                {
-                    label: 'Download resume',
-                    path: '/resume.pdf',
-                    newTab: true,
-                },
-            ]}
-        >
+        <Page>
             <Main>
                 <Content />
             </Main>
