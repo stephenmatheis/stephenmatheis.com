@@ -3,50 +3,14 @@
 .content {
     flex: 2;
     display: flex;
-    width: 100%;
-
     flex-direction: row;
     gap: 4ch;
-
-    // @media screen {
-    //     @media (max-width: utilities.$medium-width) {
-    //         flex-direction: column;
-    //         gap: calc(var(--line-height) * 4);
-    //         margin-bottom: calc(var(--line-height) * 4);
-
-    //         .right {
-    //             max-width: unset;
-    //         }
-    //     }
-
-    //     @media (min-width: utilities.$medium-width) {
-    //         gap: 8ch;
-    //     }
-    // }
-
-    // @media print {
-    //     flex-direction: row;
-    //     gap: 4ch;
-    // }
+    width: 100%;
 
     .right {
         display: flex;
         flex-direction: column;
-
         gap: calc(var(--line-height) * 3);
         max-width: 34ch;
-
-        // @media screen {
-        //     gap: calc(var(--line-height) * 4);
-
-        //     @media (min-width: utilities.$medium-width) {
-        //         width: 30ch;
-        //     }
-        // }
-
-        // @media print {
-        //     max-width: 34ch;
-        //     gap: calc(var(--line-height) * 3);
-        // }
     }
 }

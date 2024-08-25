@@ -2,13 +2,7 @@
     .groups-ctr {
         display: flex;
         flex-direction: column;
-        // gap: calc(var(--line-height) * 2);
-
         gap: var(--line-height);
-
-        // @media print {
-        //     gap: var(--line-height);
-        // }
 
         .group {
             .name {
