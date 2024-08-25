@@ -1,6 +1,7 @@
 @use 'utilities';
 
 :root {
+    // Shared
     --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
         Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol';
@@ -9,7 +10,25 @@
     --font-family: var(--font-monospace);
     --font-print: var(--font-monospace);
 
-    @include utilities.init-themes();
+    // Utility variables
+    --line-height: #{utilities.$line-height};
+    --font-size: #{utilities.$font-size};
+    --offset: #{utilities.$offset};
+    --p-line-height-modifier: #{utilities.$p-line-height-modifier};
+    --page-padding: #{utilities.$page-padding};
+    --page-gap: #{utilities.$page-gap};
+    --small-width: #{utilities.$small-width};
+    --medium-width: #{utilities.$medium-width};
+    --max-width: #{utilities.$max-width};
+    --border-radius: #{utilities.$border-radius};
+    --icon-size: calc(var(--font-size) + 4px);
+    --scroll-margin-top: #{scroll-margin-top};
+
+    // Theme
+    --background-color: #221d29;
+    --color: #d4d4d4;
+    --muted: #878787;
+    --primary: #4ec9b0;
 
     @media print {
         --font-family: var(--font-print);
@@ -59,13 +78,6 @@ body {
     margin: 0;
     padding: 0;
 
-    &.can-transition {
-        transition: color var(--prefers-color-scheme-transition-speed) ease 0s,
-            background-color var(--prefers-color-scheme-transition-speed) ease
-                0s,
-            filter var(--prefers-color-scheme-transition-speed) ease 0s;
-    }
-
     &.modal-open {
         overflow: hidden;
 
@@ -80,16 +92,10 @@ a {
     color: var(--primary);
     -webkit-tap-highlight-color: transparent;
 
-    @media (pointer: coarse) {
-        &:active {
-            @include utilities.shadow-hover;
-        }
-    }
-
-    @media (hover: hover) {
-        &:hover {
-            @include utilities.shadow-hover;
-        }
+    &:active {
+        border-radius: 1px;
+        background-color: var(--primary-10);
+        box-shadow: 0px 0px 0px 4px var(--primary-10);
     }
 
     &.anchor {
@@ -368,7 +374,7 @@ ol {
             scroll-margin-top: var(--line-height);
 
             @media (max-width: utilities.$medium-width) {
-                scroll-margin-top: utilities.$scroll-margin-top;
+                scroll-margin-top: var(--scroll-margin-top);
             }
         }
     }
