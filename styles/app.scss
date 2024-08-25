@@ -26,9 +26,13 @@
 
     // Theme
     --background-color: #221d29;
+    --container-color: #3e3944;
     --color: #d4d4d4;
     --muted: #878787;
+    --muted-dark: #454545;
     --primary: #4ec9b0;
+    --primary-light: #d3f2eb;
+    --primary-dark: #14322c;
 
     @media print {
         --font-family: var(--font-print);
