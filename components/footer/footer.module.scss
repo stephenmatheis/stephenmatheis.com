@@ -3,41 +3,23 @@
 .footer {
     @media screen {
         position: fixed;
-        bottom: 0;
-        right: 0;
-        background-color: red;
+        top: 0.25in;
+        right: 0.125in;
 
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        flex-direction: column;
-        gap: calc(var(--line-height) * 1);
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background-color: var(--container-color);
+            height: calc((var(--line-height) * 2));
+            width: calc((var(--line-height) * 2));
 
-        * {
-            font-size: var(--font-size);
-            line-height: var(--line-height);
-        }
-
-        nav {
-            ol {
-                width: 100%;
-                margin: 0px;
-                list-style-type: none;
-                padding-left: 0;
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 4ch;
-
-                li {
-                    color: var(--secondary);
-                    position: relative;
-                }
+            svg {
+                width: 32px;
+                height: 32px;
+                fill: var(--color);
             }
-        }
-
-        .copyright {
-            color: var(--muted);
         }
     }
 

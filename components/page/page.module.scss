@@ -13,6 +13,15 @@
     padding: 0.5in;
 
     @media screen {
+        --font-size: 14px;
+        --line-height: 28px;
+
+        padding: 0.25in;
+        padding-bottom: 1in;
         margin: 0 auto;
+
+        @media (max-width: 8.5in) {
+            width: 100%;
+        }
     }
 }
