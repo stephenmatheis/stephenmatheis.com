@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import styles from './links.module.scss';
-import me from '@/public/favicons/icon-512.png';
 import Link from 'next/link';
+import me from '@/public/icon-400.webp';
+import styles from './links.module.scss';
 
 export function Links() {
     return (
@@ -23,7 +23,10 @@ export function Links() {
                         </a>
                     </li>
                     <li>
-                        <a href="" target="_blank">
+                        <a
+                            href="https://codepen.io/stephenmatheis"
+                            target="_blank"
+                        >
                             CodePen
                         </a>
                     </li>
@@ -36,9 +39,9 @@ export function Links() {
                         </a>
                     </li>
                     <li>
-                        <a href="/resume" target="_blank">
+                        <Link href="/resume" target="_blank">
                             Resume
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>

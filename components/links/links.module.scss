@@ -1,5 +1,5 @@
 .links {
-    --img-size: calc(512px / 3);
+    --img-size: calc(400px / 2);
 
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@
                     width: 100%;
                     display: inline-block;
                     background-color: var((--container-color));
-                    color: var(--color);
+                    color: var(--primary);
                     text-align: center;
                     padding: calc(var(--line-height));
                     border-radius: 10px;
