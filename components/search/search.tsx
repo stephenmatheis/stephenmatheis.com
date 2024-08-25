@@ -59,7 +59,6 @@ export function Search({ posts, setPosts }) {
                         [styles.active]: showClear,
                     })}
                     onClick={handleClearSearch}
-                    data-btn-clear
                 >
                     &times;
                 </button>

@@ -3,11 +3,13 @@
         break-inside: avoid;
 
         &:not(:last-child) {
-            margin-bottom: calc((var(--line-height) * 2));
+            // margin-bottom: calc((var(--line-height) * 2));
 
-            @media print {
-                margin-bottom: var(--line-height);
-            }
+            margin-bottom: var(--line-height);
+
+            // @media print {
+            //     margin-bottom: var(--line-height);
+            // }
         }
 
         .title {

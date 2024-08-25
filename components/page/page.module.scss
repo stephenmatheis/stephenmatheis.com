@@ -1,16 +1,29 @@
 @use 'styles/utilities';
 
 .page {
+    --font-size: 11px;
+    --line-height: 16px;
+
     font-family: var(--font-family);
     min-height: 100dvh;
     flex-direction: column;
     gap: var(--page-gap);
     position: relative;
 
-    @include utilities.page-layout();
+    display: flex;
+    padding: 0.5in;
 
-    @media print {
-        gap: calc(var(--line-height) * 2);
-        width: 8.5in;
+    gap: calc(var(--line-height) * 2);
+    width: 8.5in;
+
+    @media screen {
+        margin: 0 auto;
     }
+
+    // @include utilities.page-layout();
+
+    // @media print {
+    //     gap: calc(var(--line-height) * 2);
+    //     width: 8.5in;
+    // }
 }

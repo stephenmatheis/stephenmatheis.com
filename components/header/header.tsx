@@ -2,35 +2,22 @@ import Link from 'next/link';
 import contact from '@/data/contact';
 import styles from './header.module.scss';
 
-export function Header({ printOnly = false }) {
+export function Header() {
     const { text, href, label }: { text: string; href: string; label: string } =
         contact.find(({ header }) => header)!;
 
     return (
-        <header
-            className={[
-                styles.header,
-                ...(printOnly ? [styles['print-only']] : []),
-            ].join(' ')}
-            data-header
-        >
+        <header className={[styles.header].join(' ')}>
             <Link
                 className={styles.name}
                 href="/"
                 aria-label="Stephen Matheis Front-end Software Engineer"
             >
-                <span className={styles.text} data-link-text-ctr>
-                    <span
-                        className={[styles.name, styles.part].join(' ')}
-                        data-link-text
-                    >
+                <span className={styles.text}>
+                    <span className={[styles.name, styles.part].join(' ')}>
                         Stephen Matheis
                     </span>{' '}
-                    <br data-header-break />
-                    <span
-                        className={[styles.title, styles.part].join(' ')}
-                        data-link-text
-                    >
+                    <span className={[styles.title, styles.part].join(' ')}>
                         Front-end Software Engineer
                     </span>
                 </span>

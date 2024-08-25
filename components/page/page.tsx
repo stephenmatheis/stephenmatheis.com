@@ -11,7 +11,7 @@ export function Page({
     const { links, text } = props;
 
     return (
-        <div className={styles.page} data-page>
+        <div className={styles.page}>
             {!noHeader && <Header />}
             {children}
             {!noFooter && <Footer links={links} text={text} />}
