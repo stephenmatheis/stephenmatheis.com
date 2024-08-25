@@ -7,7 +7,6 @@ const skills = [
             'HTML',
             'CSS',
             'Sass',
-            'C#',
             'PowerShell',
             'Python',
             'Lua',
@@ -23,27 +22,19 @@ const skills = [
     },
     {
         group: 'Databases',
-        items: ['MongoDB', 'MS SQL Server', 'Firebase'],
+        items: ['MongoDB', 'DynamoDB', 'MS SQL Server', 'Firebase'],
     },
     {
         group: 'Tools',
-        items: ['Git', 'GitHb', 'GitLab', 'Docker', 'Jenkins'],
+        items: ['Git', 'GitHb', 'GitLab', 'Docker', 'Webpack', 'Vite'],
     },
     {
         group: 'Platforms',
-        items: [
-            'Vercel',
-            'Netlify',
-            'SharePoint',
-            'Node.js',
-            '.NET',
-            'AWS',
-            'PICO-8',
-        ],
+        items: ['Vercel', 'AWS', 'PICO-8'],
     },
     {
         group: 'Design',
-        items: ['Figma', 'Sketch', 'draw.io'],
+        items: ['Figma', 'Sketch'],
     },
 ];
 

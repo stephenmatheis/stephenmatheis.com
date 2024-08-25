@@ -1,0 +1,69 @@
+@use 'utilities';
+
+:root {
+    // Shared
+    --font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        Liberation Mono, 'Courier New', monospace;
+
+    // Utility variables
+    --line-height: #{utilities.$line-height};
+    --font-size: #{utilities.$font-size};
+    --p-line-height-modifier: #{utilities.$p-line-height-modifier};
+    --page-padding: #{utilities.$page-padding};
+    --page-gap: #{utilities.$page-gap};
+    --small-width: #{utilities.$small-width};
+    --medium-width: #{utilities.$medium-width};
+    --max-width: #{utilities.$max-width};
+    --border-radius: #{utilities.$border-radius};
+    --icon-size: calc(var(--font-size) + 4px);
+    --scroll-margin-top: #{scroll-margin-top};
+
+    // Theme
+    --primary: #e9e9e9;
+    --color: #c0c0c0;
+    --muted: #868686;
+
+    // Gray
+    --background-color: #1e1e1e;
+    --container-color: #3a3a3a;
+    --shadow-color: #565656;
+
+    @media print {
+        --font-size: 11px;
+        --line-height: 16px;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+
+    &::selection {
+        color: var(--background-color);
+        background-color: var(--color);
+    }
+}
+
+html {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--color);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--primary);
+    -webkit-tap-highlight-color: transparent;
+
+    &,
+    &:hover {
+        text-decoration: none;
+    }
+}

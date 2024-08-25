@@ -3,21 +3,19 @@
         break-inside: avoid;
 
         &:not(:last-child) {
-            margin-bottom: calc((var(--line-height) * 2));
+            margin-bottom: var(--line-height);
 
-            @media print {
-                margin-bottom: var(--line-height);
+            @media screen and (max-width: 8.5in) {
+                margin-bottom: calc(var(--line-height) * 2);
             }
         }
 
         .title {
-            --title-color: var(--primary);
-
-            color: var(--title-color);
+            color: var(--primary);
             position: relative;
 
             .company {
-                color: var(--title-color);
+                color: var(--color);
             }
         }
 
