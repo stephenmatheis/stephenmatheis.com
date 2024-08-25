@@ -39,9 +39,7 @@ export function Links() {
                         </a>
                     </li>
                     <li>
-                        <Link href="/resume" target="_blank">
-                            Resume
-                        </Link>
+                        <Link href="/resume">Resume</Link>
                     </li>
                 </ul>
             </nav>
