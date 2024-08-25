@@ -11,14 +11,14 @@ export function Header() {
             <Link
                 className={styles.name}
                 href="/"
-                aria-label="Stephen Matheis Front-end Software Engineer"
+                aria-label="Stephen Matheis Front-end Developer"
             >
                 <span className={styles.text}>
                     <span className={[styles.name, styles.part].join(' ')}>
                         Stephen Matheis
                     </span>{' '}
                     <span className={[styles.title, styles.part].join(' ')}>
-                        Front-end Software Engineer
+                        Front-end Software Developer
                     </span>
                 </span>
             </Link>

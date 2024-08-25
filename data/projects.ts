@@ -3,7 +3,7 @@ const projects = [
         name: 'Robi',
         link: 'https://github.com/robijs',
         description:
-            'A client-side single-page application framework for SharePoint. Supports ES modules and local development.',
+            'A client-side single-page application framework for SharePoint with support for ES modules and local development.',
     },
     {
         name: 'Command Palette',

@@ -11,13 +11,11 @@
         }
 
         .title {
-            --title-color: var(--primary);
-
-            color: var(--title-color);
+            color: var(--primary);
             position: relative;
 
             .company {
-                color: var(--title-color);
+                color: var(--color);
             }
         }
 
