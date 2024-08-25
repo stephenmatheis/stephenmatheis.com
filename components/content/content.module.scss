@@ -1,46 +1,23 @@
 @use 'styles/utilities';
 
 .content {
-    flex: 2;
     display: flex;
+    flex-direction: row;
+    gap: 4ch;
     width: 100%;
 
-    @media screen {
-        @media (max-width: utilities.$medium-width) {
-            flex-direction: column;
-            gap: calc(var(--line-height) * 4);
-            margin-bottom: calc(var(--line-height) * 4);
-
-            .right {
-                max-width: unset;
-            }
-        }
-
-        @media (min-width: utilities.$medium-width) {
-            gap: 8ch;
-        }
-    }
-
-    @media print {
-        flex-direction: row;
-        gap: 4ch;
+    @media screen and (max-width: 8.5in) {
+        flex-direction: column;
     }
 
     .right {
         display: flex;
         flex-direction: column;
+        gap: calc(var(--line-height) * 3);
+        max-width: 34ch;
 
-        @media screen {
-            gap: calc(var(--line-height) * 4);
-
-            @media (min-width: utilities.$medium-width) {
-                width: 30ch;
-            }
-        }
-
-        @media print {
-            max-width: 34ch;
-            gap: calc(var(--line-height) * 3);
+        @media screen and (max-width: 8.5in) {
+            max-width: 100%;
         }
     }
 }

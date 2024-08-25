@@ -1,29 +1,13 @@
-@use 'styles/utilities';
-
 $distance: 10px;
 
 .projects {
-    &.print-only {
-        @media screen {
-            display: none;
-        }
-    }
-
     .projects-wrapper {
         display: flex;
         flex-direction: column;
-        gap: calc(var(--line-height) * 2);
+        gap: var(--line-height);
 
-        @media print {
-            gap: var(--line-height);
-        }
-
-        &.compact {
+        @media screen and (max-width: 8.5in) {
             gap: calc(var(--line-height) * 2);
-
-            .project-ctr {
-                gap: var(--line-height);
-            }
         }
     }
 }
