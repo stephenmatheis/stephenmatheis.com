@@ -38,12 +38,7 @@ export function Experience() {
                             {lines.map((line, index) => {
                                 return (
                                     <span key={index} className={styles.line}>
-                                        <span className={styles.bullet}>
-                                            {/* › */}
-                                            {/* ⮀ */}
-                                            {/* ⮁ */}
-                                            {'❯'}
-                                        </span>
+                                        <span className={styles.bullet}>›</span>
                                         <span
                                             dangerouslySetInnerHTML={{
                                                 __html: line,
