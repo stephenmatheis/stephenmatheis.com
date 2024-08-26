@@ -8,18 +8,12 @@ export function Header() {
 
     return (
         <header className={[styles.header].join(' ')}>
-            <Link
-                className={styles.name}
-                href="/"
-                aria-label="Stephen Matheis Front-end Developer"
-            >
+            <Link className={styles.name} href="/" aria-label="Home page">
                 <span className={styles.text}>
                     <span className={[styles.name, styles.part].join(' ')}>
                         Stephen Matheis
                     </span>{' '}
-                    <span className={[styles.title, styles.part].join(' ')}>
-                        Front-end Software Developer
-                    </span>
+                    <span className={styles.title}>Software Developer</span>
                 </span>
             </Link>
             <div className={styles.right}>

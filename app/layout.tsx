@@ -14,6 +14,21 @@ export const metadata: Metadata = {
         apple: '/favicons/apple-icon.png',
     },
     manifest: '/manifest.json',
+    openGraph: {
+        title: 'Stephen Matheis',
+        description: 'Bio',
+        url: 'https://stephenmatheis.com',
+        siteName: 'Stephen Matheis',
+        images: [
+            {
+                url: 'https://stephenmatheis.com/images/og.png',
+                width: 1200,
+                height: 630,
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
 };
 
 export const viewport: Viewport = {

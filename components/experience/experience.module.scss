@@ -22,6 +22,11 @@
         .lines {
             .line {
                 display: flex;
+
+                .bullet {
+                    margin-right: 1ch;
+                    color: var(--muted);
+                }
             }
         }
     }

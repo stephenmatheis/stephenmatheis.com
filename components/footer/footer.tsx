@@ -9,6 +9,7 @@ export function Footer() {
                     height="16"
                     fill="currentColor"
                     viewBox="0 0 16 16"
+                    className={styles.mobile}
                 >
                     <path
                         fillRule="evenodd"
