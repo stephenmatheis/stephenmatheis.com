@@ -1,6 +1,6 @@
 const jobs = [
     {
-        company: 'T and T Consulting Services',
+        company: 'TATCS',
         location: 'Remote',
         roles: [
             {
@@ -69,11 +69,11 @@ const jobs = [
         ],
         lines: [
             'Developed a cross-platform mobile app for the U.S. Marine Corps with React Native, Expo, and Firebase',
-            'Developed web applications with Robi hosted on SharePoint 2013',
+            'Developed web apps with Robi hosted on SharePoint 2013',
         ],
     },
     {
-        company: 'T and T Consulting Services',
+        company: 'TATCS',
         location: 'San Antonio, TX',
         roles: [
             {
@@ -83,8 +83,8 @@ const jobs = [
             },
         ],
         lines: [
-            'Developed web applications with Robi hosted on SharePoint 2010 and 2013',
-            'Migrated physical on-premise SharePoint 2010 farm to a virtualized SharePoint 2013 environment',
+            'Developed web apps with Robi hosted on SharePoint 2010 and 2013',
+            'Migrated an on-premise SharePoint 2010 farm to a virtualized SharePoint 2013 environment',
         ],
     },
     {
@@ -98,7 +98,7 @@ const jobs = [
         ],
     },
     {
-        company: 'HID Global',
+        company: 'HID',
         location: 'Austin, TX',
         roles: [
             {
@@ -113,7 +113,7 @@ const jobs = [
         ],
     },
     {
-        company: 'Bravo Consulting Group',
+        company: 'Bravo CG',
         location: 'Reston, VA',
         roles: [
             {
@@ -129,7 +129,7 @@ const jobs = [
         ],
         lines: [
             'Developed web apps with jQuery and Bootstrap hosted on SharePoint 2010 and 2013',
-            'Developed PowerShell tools to automate SharePoint administration',
+            'Developed PowerShell tools to automate SharePoint app development and administration',
         ],
     },
 ];
