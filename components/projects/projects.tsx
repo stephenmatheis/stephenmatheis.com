@@ -1,12 +1,13 @@
-import { Section } from '@/components/section';
+import { Comment } from '@/components/comment';
 import { Project } from '@/components/project';
 import projects from '@/data/projects';
 import styles from './projects.module.scss';
 
 export function Projects() {
     return (
-        <Section className={styles.projects} heading="Projects">
-            <div className={styles['projects-wrapper']}>
+        <section className={styles.projects}>
+            <Comment text="Projects" />
+            <div className={styles.list}>
                 {projects.map(({ name, link, description }) => (
                     <Project
                         key={name}
@@ -16,6 +17,6 @@ export function Projects() {
                     />
                 ))}
             </div>
-        </Section>
+        </section>
     );
 }

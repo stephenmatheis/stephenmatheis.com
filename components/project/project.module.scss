@@ -1,8 +1,4 @@
-@use 'styles/utilities';
-
-$distance: 10px;
-
-.project-ctr {
+.project {
     display: flex;
     flex-direction: column;
     gap: calc(var(--line-height) * 1);
@@ -12,24 +8,7 @@ $distance: 10px;
         gap: var(--line-height);
     }
 
-    @media print {
-        gap: calc(var(--line-height) * 1);
-    }
-
     a {
         width: fit-content;
-    }
-
-    .description-ctr {
-        display: flex;
-        gap: 6ch;
-
-        @media (max-width: utilities.$small-width) {
-            flex-direction: column;
-        }
-
-        & > * {
-            flex: 1;
-        }
     }
 }

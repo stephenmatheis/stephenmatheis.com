@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import me from '@/public/icon-400.webp';
+import me from '@/public/images/icon-400.webp';
 import styles from './links.module.scss';
 
 export function Links() {
@@ -11,7 +11,12 @@ export function Links() {
                     <Image src={me} alt="My memoji" priority />
                 </div>
             </Link>
-            <div className={styles.name}>Stephen Matheis</div>
+            <div className={styles.text}>
+                <span className={[styles.name, styles.part].join(' ')}>
+                    Stephen Matheis
+                </span>{' '}
+                <span className={styles.title}>Software Developer</span>
+            </div>
             <nav>
                 <ul>
                     <li>

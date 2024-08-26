@@ -1,10 +1,11 @@
-import { Section } from '@/components/section';
+import { Comment } from '@/components/comment';
 import jobs from '@/data/jobs';
 import styles from './experience.module.scss';
 
 export function Experience() {
     return (
-        <Section className={styles.experience} heading="Experience">
+        <section className={styles.experience}>
+            <Comment text="Experience" />
             {jobs.map(({ company, location, roles, lines }, index) => {
                 return (
                     <div key={index} className={styles.job}>
@@ -37,13 +38,11 @@ export function Experience() {
                             {lines.map((line, index) => {
                                 return (
                                     <span key={index} className={styles.line}>
-                                        <span
-                                            style={{
-                                                marginRight: '6px',
-                                                color: 'var(--muted)',
-                                            }}
-                                        >
-                                            {'•'}
+                                        <span className={styles.bullet}>
+                                            {/* › */}
+                                            {/* ⮀ */}
+                                            {/* ⮁ */}
+                                            {'❯'}
                                         </span>
                                         <span
                                             dangerouslySetInnerHTML={{
@@ -57,6 +56,6 @@ export function Experience() {
                     </div>
                 );
             })}
-        </Section>
+        </section>
     );
 }

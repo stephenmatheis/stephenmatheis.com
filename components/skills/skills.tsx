@@ -1,10 +1,11 @@
-import { Section } from '@/components/section';
+import { Comment } from '@/components/comment';
 import skills from '@/data/skills';
 import styles from './skills.module.scss';
 
 export function Skills() {
     return (
-        <Section className={styles.skills} heading="Skills">
+        <section className={styles.skills}>
+            <Comment text="Skills" />
             <div className={styles['groups-ctr']}>
                 {skills.map(({ group, items }, index) => {
                     return (
@@ -29,6 +30,6 @@ export function Skills() {
                     );
                 })}
             </div>
-        </Section>
+        </section>
     );
 }

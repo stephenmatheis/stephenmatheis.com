@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import { Section } from '@/components/section';
+import { Comment } from '@/components/comment';
 import contact from '@/data/contact';
 import styles from './contact.module.scss';
 
 export function Contact() {
     return (
-        <Section className={styles['contact']} heading="Contact">
-            <div className={styles['info']}>
+        <section className={styles.contact}>
+            <Comment text="Contact" />
+            <div className={styles.info}>
                 {contact
                     .filter(({ header }) => !header)
                     .map(({ text, href, label, newTab }) => {
@@ -23,6 +24,6 @@ export function Contact() {
                         );
                     })}
             </div>
-        </Section>
+        </section>
     );
 }

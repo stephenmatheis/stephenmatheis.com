@@ -1,5 +1,3 @@
-@use 'styles/utilities';
-
 .footer {
     @media screen {
         margin-top: calc(var(--line-height) * 4);

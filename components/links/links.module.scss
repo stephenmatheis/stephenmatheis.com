@@ -26,6 +26,12 @@
         }
     }
 
+    .text {
+        .title {
+            color: var(--muted);
+        }
+    }
+
     nav {
         width: 100%;
 
@@ -50,14 +56,6 @@
                     text-align: center;
                     padding: calc(var(--line-height));
                     border-radius: 10px;
-                    box-shadow: 10px 10px 0px -5px var(--shadow-color);
-                    transition: transform 250ms ease-in-out,
-                        box-shadow 250ms ease-in-out;
-
-                    &:hover {
-                        transform: scale(1.05);
-                        box-shadow: 10px 10px 0px -3.5px var(--shadow-color);
-                    }
                 }
             }
         }
