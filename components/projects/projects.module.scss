@@ -1,13 +1,13 @@
-$distance: 10px;
-
 .projects {
-    .list {
-        display: flex;
-        flex-direction: column;
-        gap: var(--line-height);
+    @media print {
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--line-height);
 
-        @media screen and (max-width: 8.5in) {
-            gap: calc(var(--line-height) * 2);
+            // @media screen and (max-width: 8.5in) {
+            //     gap: calc(var(--line-height) * 2);
+            // }
         }
     }
 }

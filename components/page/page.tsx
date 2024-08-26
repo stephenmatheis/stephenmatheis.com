@@ -7,7 +7,7 @@ export function Page({ children }) {
         <div className={styles.page}>
             <Header />
             {children}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

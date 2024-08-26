@@ -1,41 +1,43 @@
 .experience {
-    .job {
-        break-inside: avoid;
+    @media print {
+        .job {
+            break-inside: avoid;
 
-        &:not(:last-child) {
-            margin-bottom: var(--line-height);
+            &:not(:last-child) {
+                margin-bottom: var(--line-height);
 
-            @media screen and (max-width: 8.5in) {
-                margin-bottom: calc(var(--line-height) * 2);
+                // @media screen and (max-width: 8.5in) {
+                //     margin-bottom: calc(var(--line-height) * 2);
+                // }
             }
-        }
 
-        .title {
-            color: var(--primary);
-            position: relative;
+            .title {
+                color: var(--primary);
+                position: relative;
 
-            .company {
-                color: var(--color);
+                .company {
+                    color: var(--color);
+                }
             }
-        }
 
-        .lines {
-            .line {
-                display: flex;
+            .lines {
+                .line {
+                    display: flex;
 
-                .bullet {
-                    margin-right: 1ch;
-                    color: var(--muted);
+                    .bullet {
+                        margin-right: 1ch;
+                        color: var(--muted);
+                    }
                 }
             }
         }
-    }
 
-    .date {
-        color: var(--muted);
-
-        .location {
+        .date {
             color: var(--muted);
+
+            .location {
+                color: var(--muted);
+            }
         }
     }
 }
