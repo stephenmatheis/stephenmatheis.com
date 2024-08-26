@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import contact from '@/data/contact';
+import me from '@/public/images/icon-400.webp';
 import styles from './header.module.scss';
 
 export function Header() {
@@ -8,6 +10,9 @@ export function Header() {
 
     return (
         <header className={[styles.header].join(' ')}>
+            <div className={styles.avatar}>
+                <Image src={me} alt="My memoji" priority />
+            </div>
             <Link className={styles.name} href="/" aria-label="Home page">
                 <span className={styles.text}>
                     <span className={[styles.name, styles.part].join(' ')}>
