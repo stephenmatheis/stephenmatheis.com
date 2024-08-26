@@ -1,13 +1,10 @@
-.comment {
-    color: var(--title-color);
-    margin-bottom: var(--line-height);
-}
-
 .contact {
-    .info {
-        display: flex;
-        flex-direction: column;
-        white-space: nowrap;
-        gap: var(--line-height);
+    @media print {
+        .info {
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            gap: var(--line-height);
+        }
     }
 }
