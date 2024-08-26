@@ -1,6 +1,6 @@
 const jobs = [
     {
-        company: 'TATCS',
+        company: 'T and T Consulting Services',
         location: 'Remote',
         roles: [
             {
@@ -73,7 +73,7 @@ const jobs = [
         ],
     },
     {
-        company: 'TATCS',
+        company: 'T and T Consulting Services',
         location: 'San Antonio, TX',
         roles: [
             {
@@ -98,7 +98,7 @@ const jobs = [
         ],
     },
     {
-        company: 'HID',
+        company: 'HID Global',
         location: 'Austin, TX',
         roles: [
             {
@@ -113,7 +113,7 @@ const jobs = [
         ],
     },
     {
-        company: 'Bravo CG',
+        company: 'Bravo Consulting Group',
         location: 'Reston, VA',
         roles: [
             {
