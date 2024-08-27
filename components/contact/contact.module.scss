@@ -1,13 +1,30 @@
-.comment {
-    color: var(--title-color);
-    margin-bottom: var(--line-height);
-}
-
 .contact {
     .info {
         display: flex;
         flex-direction: column;
         white-space: nowrap;
         gap: var(--line-height);
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--line-height);
+
+        .item {
+            display: flex;
+            gap: 4ch;
+
+            .name {
+                color: var(--muted);
+                min-width: 8ch;
+                max-width: 8ch;
+            }
+
+            .text {
+                gap: var(--line-height);
+                color: var(--primary);
+            }
+        }
     }
 }

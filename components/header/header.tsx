@@ -3,8 +3,7 @@ import contact from '@/data/contact';
 import styles from './header.module.scss';
 
 export function Header() {
-    const { text, href, label }: { text: string; href: string; label: string } =
-        contact.find(({ header }) => header)!;
+    const { href, name, user } = contact.find(({ header }) => header)!;
 
     return (
         <header className={[styles.header].join(' ')}>
@@ -17,9 +16,8 @@ export function Header() {
                 </span>
             </Link>
             <div className={styles.right}>
-                <Link href={href} aria-label={label}>
-                    {text}
-                </Link>
+                <div className={styles.name}>{name}</div>
+                <Link href={href}>{user}</Link>
             </div>
         </header>
     );
