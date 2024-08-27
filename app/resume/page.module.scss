@@ -8,8 +8,8 @@
 
     @media (max-width: 500px) {
         width: 100%;
-        padding-left: 2ch;
-        padding-right: 2ch;
+        padding-left: 3ch;
+        padding-right: 3ch;
     }
 
     h1,
@@ -58,7 +58,7 @@
             height: var(--img-size);
 
             @media (max-width: 500px) {
-                --img-size: calc(400px / 3);
+                --img-size: calc(400px / 3.5);
             }
 
             img {
@@ -204,6 +204,25 @@
 
         svg {
             margin-left: 0.5ch;
+            fill: var(--primary);
+        }
+    }
+
+    .download {
+        position: fixed;
+        top: 2ch;
+        right: 2ch;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        width: 44px;
+        background-color: var(--container-color);
+        border-radius: 50%;
+
+        svg {
+            width: 18px;
+            height: 18px;
             fill: var(--primary);
         }
     }
