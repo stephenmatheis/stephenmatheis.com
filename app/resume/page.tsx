@@ -55,7 +55,8 @@ export default function ResumePage() {
                     Hello there! My name is Stephen Matheis, and I'm the
                     Director of Customer Experience at <span>T and T</span>{' '}
                     Consulting Services in Washington, D.C. While the title may
-                    sound impressive, I'm just a programmer.
+                    sound impressive, I'm just a programmer day-to-day. I
+                    wouldn't want it any other way.
                 </p>
                 <p>I'm grateful to make a living doing what I love.</p>
             </div>
@@ -166,6 +167,27 @@ export default function ResumePage() {
                     })}
                 </div>
             </div>
+
+            {/* Download */}
+            <Link
+                href="/resume.pdf"
+                aria-label="My resume"
+                target="_blank"
+                className={styles.download}
+            >
+                <svg
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    className={styles.mobile}
+                >
+                    <path
+                        fillRule="evenodd"
+                        d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"
+                    />
+                </svg>
+            </Link>
         </div>
     );
 }
