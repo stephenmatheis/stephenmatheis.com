@@ -43,11 +43,7 @@ body {
 }
 
 a {
+    text-decoration: none;
     color: var(--primary);
     -webkit-tap-highlight-color: transparent;
-
-    &,
-    &:hover {
-        text-decoration: none;
-    }
 }
