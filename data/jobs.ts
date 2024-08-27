@@ -1,7 +1,9 @@
 const jobs = [
     {
         company: 'T and T Consulting Services',
-        location: 'Remote',
+        companyShort: 'TATCS',
+        site: 'https://www.tatcs.com/',
+        location: 'Washington, D.C.',
         roles: [
             {
                 title: 'Director, Customer Experience',
@@ -21,6 +23,7 @@ const jobs = [
     },
     {
         company: 'Apple (TEKsystems)',
+        site: 'https://www.apple.com/',
         location: 'Remote',
         roles: [
             {
@@ -36,6 +39,7 @@ const jobs = [
     },
     {
         company: 'GovCIO',
+        site: 'https://govcio.com/',
         location: 'San Antonio, TX',
         roles: [
             {
@@ -51,6 +55,7 @@ const jobs = [
     },
     {
         company: 'Robi',
+        site: 'https://github.com/robijs',
         location: 'San Antonio, TX',
         roles: [
             { title: 'Software Developer', start: 'Apr 2022', end: 'May 2022' },
@@ -59,6 +64,7 @@ const jobs = [
     },
     {
         company: 'Aeyon',
+        site: 'https://aeyon.us/',
         location: 'San Antonio, TX',
         roles: [
             {
@@ -74,6 +80,7 @@ const jobs = [
     },
     {
         company: 'T and T Consulting Services',
+        site: 'https://www.tatcs.com/',
         location: 'San Antonio, TX',
         roles: [
             {
@@ -89,6 +96,7 @@ const jobs = [
     },
     {
         company: 'Robi',
+        site: 'https://github.com/robijs',
         location: 'Washington, D.C.',
         roles: [
             { title: 'Software Developer', start: 'Oct 2017', end: 'Mar 2018' },
@@ -99,6 +107,7 @@ const jobs = [
     },
     {
         company: 'HID Global',
+        site: 'https://www.hidglobal.com/',
         location: 'Austin, TX',
         roles: [
             {
@@ -114,6 +123,7 @@ const jobs = [
     },
     {
         company: 'Bravo Consulting Group',
+        site: 'https://bravocg.com/',
         location: 'Reston, VA',
         roles: [
             {
