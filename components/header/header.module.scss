@@ -23,5 +23,14 @@
 
     .right {
         width: calc(7.5in * (1 / 3));
+
+        display: flex;
+        gap: 4ch;
+
+        .name {
+            color: var(--muted);
+            min-width: 6ch;
+            max-width: 6ch;
+        }
     }
 }
