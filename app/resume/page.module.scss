@@ -94,14 +94,14 @@
         }
     }
 
-    // .about {
-    //     p {
-    //         a {
-    //             white-space: nowrap;
-    //             word-break: normal;
-    //         }
-    //     }
-    // }
+    .about {
+        p {
+            span {
+                white-space: nowrap;
+                word-break: normal;
+            }
+        }
+    }
 
     .experience {
         .list {
