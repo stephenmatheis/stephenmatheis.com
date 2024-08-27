@@ -53,12 +53,9 @@ export default function ResumePage() {
                 <h2>About</h2>
                 <p>
                     Hello there! My name is Stephen Matheis, and I'm the
-                    Director of Customer Experience at{' '}
-                    <Link href="TATCS" target="_blank">
-                        T and T Consulting Services (TATCS)
-                    </Link>{' '}
-                    in Washington, D.C. While the title may sound impressive,
-                    I'm just a programmer.
+                    Director of Customer Experience at <span>T and T</span>{' '}
+                    Consulting Services in Washington, D.C. While the title may
+                    sound impressive, I'm just a programmer.
                 </p>
                 <p>I'm grateful to make a living doing what I love.</p>
             </div>
