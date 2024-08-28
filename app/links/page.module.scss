@@ -1,31 +1,92 @@
 .links {
+    --img-size: calc(400px / 2);
+
     display: flex;
     flex-direction: column;
-    gap: calc(var(--line-height) * 3);
-    width: 75ch;
+    align-items: center;
+    gap: calc(var(--line-height) * 2);
+    min-height: 100svh;
+    width: 34ch;
     margin: 0 auto;
     padding: calc(var(--line-height) * 4) 0;
 
-    @media (max-width: 500px) {
+    .avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var((--container-color));
+        border-radius: 50%;
+        width: var(--img-size);
+        height: var(--img-size);
+
+        img {
+            width: var(--img-size);
+            height: var(--img-size);
+            border-radius: 50%;
+        }
+    }
+
+    .description {
+        text-align: left;
+    }
+
+    nav {
         width: 100%;
-        padding-left: 2ch;
-        padding-right: 2ch;
-    }
 
-    h1,
-    h2 {
-        font-weight: normal;
-        margin-top: 0;
-        margin-bottom: var(--line-height);
-        color: var(--primary);
-    }
+        .group {
+            &:not(:last-child) {
+                margin-bottom: calc((var(--line-height) * 4));
+            }
 
-    p {
-        margin-top: 0;
-        color: var(--color);
+            .text {
+                text-align: center;
+                margin-bottom: calc(var(--line-height) * 2);
 
-        &:not(:last-child) {
-            margin-bottom: var(--line-height);
+                .title {
+                    color: var(--muted);
+                }
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: var(--line-height);
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                li {
+                    width: 100%;
+
+                    a {
+                        position: relative;
+                        width: 100%;
+                        display: inline-block;
+                        background-color: var((--container-color));
+                        color: var(--primary);
+                        text-align: center;
+                        padding: calc(var(--line-height) / 2);
+                        border-radius: 10px;
+
+                        .icon {
+                            position: absolute;
+                            right: 1ch;
+                            top: 0;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: calc(var(--line-height) * 2);
+
+                            svg {
+                                margin-left: 1ch;
+                                fill: var(--primary);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
