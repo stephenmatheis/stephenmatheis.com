@@ -4,12 +4,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: calc(var(--line-height) * 2);
     min-height: 100svh;
     width: fit-content;
     margin: 0 auto;
-    padding: calc(var(--line-height) * 1) 0;
+    padding: calc(var(--line-height) * 4) 0;
 
     .avatar {
         display: flex;
