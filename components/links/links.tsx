@@ -12,9 +12,7 @@ export function Links() {
                 </div>
             </Link>
             <div className={styles.text}>
-                <span className={[styles.name, styles.part].join(' ')}>
-                    Stephen Matheis
-                </span>{' '}
+                <span className={styles.name}>Stephen Matheis</span>{' '}
                 <span className={styles.title}>Software Developer</span>
             </div>
             <nav>
