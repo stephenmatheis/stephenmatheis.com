@@ -12,6 +12,15 @@
         padding-right: 3ch;
     }
 
+    @media print {
+        position: relative;
+        gap: calc(var(--line-height) * 2);
+        width: 8.5in;
+        height: 11in;
+        padding: 0.5in;
+        background-color: #ff000030;
+    }
+
     h1,
     h2 {
         font-weight: normal;
@@ -27,6 +36,10 @@
         &:not(:last-child) {
             margin-bottom: var(--line-height);
         }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     s {
@@ -40,6 +53,11 @@
 
         @media (max-width: 500px) {
             gap: 2ch;
+        }
+
+        @media print {
+            gap: 2ch;
+            margin-bottom: var(--line-height);
         }
 
         h1 {
@@ -61,6 +79,10 @@
                 --img-size: calc(400px / 3.5);
             }
 
+            @media print {
+                --img-size: 96px;
+            }
+
             img {
                 width: var(--img-size);
                 height: var(--img-size);
@@ -79,6 +101,10 @@
 
             .role {
                 color: var(--muted);
+
+                @media print {
+                    display: none;
+                }
             }
 
             .pronouns {
@@ -109,15 +135,27 @@
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
 
+            @media print {
+                gap: calc(var(--line-height) * 1);
+                max-width: 5in;
+            }
+
             .job {
                 display: flex;
                 gap: 4ch;
                 word-break: break-word;
 
+                @media print {
+                    gap: 2ch;
+                }
+
                 .dates {
                     color: var(--muted);
                     min-width: 11ch;
-                    max-width: 11ch;
+
+                    @media print {
+                        min-width: 12ch;
+                    }
                 }
 
                 .role {
@@ -134,19 +172,38 @@
     }
 
     .projects {
+        @media print {
+            background-color: #00ff0030;
+            position: absolute;
+            top: calc((var(--line-height) * 18) + 0.5in);
+            right: 0.5in;
+            width: 2.5in;
+        }
+
         .list {
             display: flex;
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
 
+            @media print {
+                gap: calc(var(--line-height) * 3);
+            }
+
             .project {
                 display: flex;
                 gap: 4ch;
 
+                @media print {
+                    gap: 2ch;
+                }
+
                 .dates {
                     color: var(--muted);
                     min-width: 11ch;
-                    max-width: 11ch;
+
+                    @media print {
+                        min-width: 5ch;
+                    }
                 }
 
                 .info {
@@ -166,8 +223,17 @@
                     .img {
                         height: 90px;
 
+                        @media print {
+                            height: 80px;
+                        }
+
                         img {
                             border-radius: 8px;
+
+                            @media print {
+                                width: 142px;
+                                height: 80px;
+                            }
                         }
                     }
                 }
@@ -176,6 +242,19 @@
     }
 
     .contacts {
+        @media print {
+            background-color: #0000ff30;
+            position: absolute;
+            top: 0.5in;
+            right: 0.5in;
+        }
+
+        h2 {
+            @media print {
+                display: none;
+            }
+        }
+
         .list {
             display: flex;
             flex-direction: column;
@@ -185,10 +264,77 @@
                 display: flex;
                 gap: 4ch;
 
+                @media print {
+                    gap: 2ch;
+
+                    &[data-name='GitHub'] {
+                        display: none;
+                    }
+                }
+
                 .name {
                     color: var(--muted);
                     min-width: 11ch;
-                    max-width: 11ch;
+
+                    @media print {
+                        min-width: 8ch;
+                    }
+                }
+
+                .text {
+                    gap: var(--line-height);
+                    color: var(--primary);
+                }
+            }
+        }
+    }
+
+    .skills {
+        @media print {
+            background-color: #00ffff30;
+            position: absolute;
+            bottom: 0.5in;
+            left: 0.5in;
+            width: 5in;
+        }
+
+        h2 {
+            @media print {
+                display: none;
+            }
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--line-height);
+
+            @media print {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 1ch;
+            }
+
+            .item {
+                display: flex;
+                gap: 4ch;
+
+                @media print {
+                    gap: 2ch;
+                    flex-direction: column;
+
+                    &[data-name='GitHub'] {
+                        display: none;
+                    }
+                }
+
+                .name {
+                    color: var(--muted);
+                    min-width: 11ch;
+
+                    @media print {
+                        min-width: 8ch;
+                    }
                 }
 
                 .text {
@@ -205,6 +351,11 @@
         svg {
             margin-left: 0.5ch;
             fill: var(--primary);
+
+            @media print {
+                height: 11px;
+                width: 11px;
+            }
         }
     }
 
@@ -219,6 +370,10 @@
         width: 44px;
         background-color: var(--container-color);
         border-radius: 50%;
+
+        @media print {
+            display: none;
+        }
 
         svg {
             width: 18px;

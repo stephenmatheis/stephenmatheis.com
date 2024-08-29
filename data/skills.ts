@@ -1,20 +1,11 @@
 const skills = [
     {
-        group: 'Programming Languages',
-        items: [
-            'JavaScript',
-            'TypeScript',
-            'HTML',
-            'CSS',
-            'Sass',
-            'PowerShell',
-            'Python',
-            'Lua',
-        ],
+        group: 'Languages',
+        items: ['TypeScript', 'HTML', 'CSS', 'SCSS', 'Python', 'Lua'],
     },
     {
         group: 'Libraries',
-        items: ['React', 'Fastify', 'Express', 'jQuery'],
+        items: ['React', 'Fastify', 'Express', 'Chart.js', 'ArcGIS'],
     },
     {
         group: 'Frameworks',
@@ -26,7 +17,7 @@ const skills = [
     },
     {
         group: 'Tools',
-        items: ['Git', 'GitHb', 'GitLab', 'Docker', 'Webpack', 'Vite'],
+        items: ['Git', 'Docker', 'Webpack', 'Vite'],
     },
     {
         group: 'Platforms',

@@ -7,6 +7,7 @@ import jobs from '@/data/jobs';
 import projects from '@/data/projects';
 import contact from '@/data/contact';
 import styles from './page.module.scss';
+import skills from '@/data/skills';
 
 function Arrow() {
     return (
@@ -148,13 +149,38 @@ export default function ResumePage() {
                 </div>
             </div>
 
+            {/* Skills */}
+            <div className={styles.skills}>
+                <h2>Skills</h2>
+                <div className={styles.list}>
+                    {skills.map((skill, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className={styles.item}
+                                data-name={skill.group}
+                            >
+                                <div className={styles.name}>{skill.group}</div>
+                                <div className={styles.text}>
+                                    {skill.items.join(', ')}
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+
             {/* Contact */}
             <div className={styles.contacts}>
                 <h2>Contact</h2>
                 <div className={styles.list}>
                     {contact.map((item, index) => {
                         return (
-                            <div key={index} className={styles.item}>
+                            <div
+                                key={index}
+                                className={styles.item}
+                                data-name={item.name}
+                            >
                                 <div className={styles.name}>{item.name}</div>
                                 <div className={styles.text}>
                                     <Link href={item.href}>

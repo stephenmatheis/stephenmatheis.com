@@ -79,7 +79,7 @@ const jobs = [
         ],
     },
     {
-        company: 'T and T Consulting Services',
+        company: 'TATCS',
         site: 'https://www.tatcs.com/',
         location: 'San Antonio, TX',
         roles: [
