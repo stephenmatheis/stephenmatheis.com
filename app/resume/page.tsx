@@ -69,40 +69,59 @@ export default function ResumePage() {
                     {jobs.map((job, index) => {
                         return (
                             <Fragment key={index}>
-                                {job.roles.map((role, index) => {
-                                    const start = role.start.split(' ').at(-1);
-                                    const end = role.end.split(' ').at(-1);
+                                {job.roles.map(
+                                    (
+                                        role: {
+                                            start: string;
+                                            end: string;
+                                            title: string;
+                                            description?: string;
+                                        },
+                                        index: number
+                                    ) => {
+                                        const start = role.start
+                                            .split(' ')
+                                            .at(-1);
+                                        const end = role.end.split(' ').at(-1);
 
-                                    return (
-                                        <div key={index} className={styles.job}>
-                                            <div className={styles.dates}>
-                                                {start} -{' '}
-                                                {end === 'Present'
-                                                    ? 'Now'
-                                                    : end}
-                                            </div>
+                                        return (
                                             <div
                                                 key={index}
-                                                className={styles.role}
+                                                className={styles.job}
                                             >
-                                                <div className={styles.name}>
-                                                    <Link href={job.site}>
-                                                        {' '}
-                                                        {role.title} at{' '}
-                                                        {job.companyShort ||
-                                                            job.company}
-                                                    </Link>
-                                                    <Arrow />
+                                                <div className={styles.dates}>
+                                                    {start} -{' '}
+                                                    {end === 'Present'
+                                                        ? 'Now'
+                                                        : end}
                                                 </div>
                                                 <div
-                                                    className={styles.location}
+                                                    key={index}
+                                                    className={styles.role}
                                                 >
-                                                    {job.location}
+                                                    <div
+                                                        className={styles.name}
+                                                    >
+                                                        <Link href={job.site}>
+                                                            {' '}
+                                                            {role.title} at{' '}
+                                                            {job.companyShort ||
+                                                                job.company}
+                                                        </Link>
+                                                        <Arrow />
+                                                    </div>
+                                                    <div
+                                                        className={
+                                                            styles.location
+                                                        }
+                                                    >
+                                                        {job.location}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    );
-                                })}
+                                        );
+                                    }
+                                )}
                             </Fragment>
                         );
                     })}
