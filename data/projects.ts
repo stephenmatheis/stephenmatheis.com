@@ -4,8 +4,7 @@ const projects = [
         date: '2021',
         link: 'https://robi-command-palette.netlify.app',
         image: '/images/command-palette.webp',
-        description:
-            'A React component to search for and run commands from within an app.',
+        description: 'Run commands from within your app.',
     },
 
     {
@@ -20,8 +19,7 @@ const projects = [
         date: '2017',
         link: 'https://github.com/robijs',
         image: '/images/robi.webp',
-        description:
-            'A client-side single-page application framework for SharePoint, featuring support for ES modules and local development.',
+        description: 'A SPA framework for SharePoint',
     },
 ];
 
