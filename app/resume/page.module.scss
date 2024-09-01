@@ -14,11 +14,10 @@
 
     @media print {
         position: relative;
-        gap: calc(var(--line-height) * 2);
+        gap: calc(var(--line-height) * 4);
         width: 8.5in;
         height: 11in;
         padding: 0.5in;
-        background-color: #ff000010;
     }
 
     h1,
@@ -27,6 +26,12 @@
         margin-top: 0;
         margin-bottom: var(--line-height);
         color: var(--primary);
+    }
+
+    h2 {
+        @media print {
+            color: var(--muted);
+        }
     }
 
     p {
@@ -121,7 +126,7 @@
 
     .about {
         @media print {
-            max-width: 4.5in;
+            display: none;
         }
 
         p {
@@ -151,10 +156,6 @@
                 gap: 4ch;
                 word-break: break-word;
 
-                @media print {
-                    gap: 2ch;
-                }
-
                 .dates {
                     color: var(--muted);
                     min-width: 11ch;
@@ -171,6 +172,10 @@
 
                     .location {
                         color: var(--color);
+
+                        @media print {
+                            color: var(--muted);
+                        }
                     }
                 }
             }
@@ -179,9 +184,8 @@
 
     .projects {
         @media print {
-            background-color: #00ff0030;
             position: absolute;
-            top: calc((var(--line-height) * 18) + 0.5in);
+            bottom: calc((var(--line-height) * 1) + 0.5in);
             right: 0.5in;
             width: 2.5in;
         }
@@ -191,17 +195,12 @@
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
 
-            @media print {
-                // gap: calc(var(--line-height) * 3);
-            }
-
             .project {
                 display: flex;
                 gap: 4ch;
 
                 @media print {
-                    gap: 2ch;
-                    flex: 1;
+                    gap: 4ch;
                 }
 
                 .dates {
@@ -209,8 +208,7 @@
                     min-width: 11ch;
 
                     @media print {
-                        // min-width: 5ch;
-                        display: none;
+                        min-width: 4ch;
                     }
                 }
 
@@ -252,10 +250,10 @@
 
     .contacts {
         @media print {
-            // background-color: #0000ff30;
             position: absolute;
             top: 0.5in;
             right: 0.5in;
+            width: 2.5in;
         }
 
         h2 {
@@ -274,7 +272,7 @@
                 gap: 4ch;
 
                 @media print {
-                    gap: 2ch;
+                    gap: 5ch;
 
                     &[data-name='GitHub'] {
                         display: none;
@@ -300,9 +298,8 @@
 
     .skills {
         @media print {
-            background-color: #00ffff30;
             position: absolute;
-            bottom: calc(0.5in);
+            top: calc((var(--line-height) * 11) + 0.5in);
             right: 0.5in;
             width: 2.5in;
         }
@@ -312,19 +309,11 @@
             flex-direction: column;
             gap: var(--line-height);
 
-            @media print {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                column-gap: 2ch;
-                row-gap: calc(var(--line-height) * 2);
-            }
-
             .item {
                 display: flex;
                 gap: 4ch;
 
                 @media print {
-                    // gap: var(--line-height);
                     gap: 0;
                     flex-direction: column;
 
