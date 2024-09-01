@@ -18,7 +18,7 @@
         width: 8.5in;
         height: 11in;
         padding: 0.5in;
-        background-color: #ff000030;
+        background-color: #ff000010;
     }
 
     h1,
@@ -57,7 +57,6 @@
 
         @media print {
             gap: 2ch;
-            margin-bottom: var(--line-height);
         }
 
         h1 {
@@ -80,7 +79,7 @@
             }
 
             @media print {
-                --img-size: 96px;
+                --img-size: 112px;
             }
 
             img {
@@ -121,6 +120,10 @@
     }
 
     .about {
+        @media print {
+            max-width: 4.5in;
+        }
+
         p {
             span {
                 white-space: nowrap;
@@ -130,6 +133,10 @@
     }
 
     .experience {
+        @media print {
+            max-width: 4.5in;
+        }
+
         .list {
             display: flex;
             flex-direction: column;
@@ -137,7 +144,6 @@
 
             @media print {
                 gap: calc(var(--line-height) * 1);
-                max-width: 5in;
             }
 
             .job {
@@ -186,7 +192,7 @@
             gap: calc(var(--line-height) * 2);
 
             @media print {
-                gap: calc(var(--line-height) * 3);
+                // gap: calc(var(--line-height) * 3);
             }
 
             .project {
@@ -195,6 +201,7 @@
 
                 @media print {
                     gap: 2ch;
+                    flex: 1;
                 }
 
                 .dates {
@@ -202,7 +209,8 @@
                     min-width: 11ch;
 
                     @media print {
-                        min-width: 5ch;
+                        // min-width: 5ch;
+                        display: none;
                     }
                 }
 
@@ -225,6 +233,7 @@
 
                         @media print {
                             height: 80px;
+                            display: none;
                         }
 
                         img {
@@ -243,7 +252,7 @@
 
     .contacts {
         @media print {
-            background-color: #0000ff30;
+            // background-color: #0000ff30;
             position: absolute;
             top: 0.5in;
             right: 0.5in;
@@ -293,15 +302,9 @@
         @media print {
             background-color: #00ffff30;
             position: absolute;
-            bottom: 0.5in;
-            left: 0.5in;
-            width: 5in;
-        }
-
-        h2 {
-            @media print {
-                display: none;
-            }
+            bottom: calc(0.5in);
+            right: 0.5in;
+            width: 2.5in;
         }
 
         .list {
@@ -311,8 +314,9 @@
 
             @media print {
                 display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                gap: 1ch;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 2ch;
+                row-gap: calc(var(--line-height) * 2);
             }
 
             .item {
@@ -320,7 +324,8 @@
                 gap: 4ch;
 
                 @media print {
-                    gap: 2ch;
+                    // gap: var(--line-height);
+                    gap: 0;
                     flex-direction: column;
 
                     &[data-name='GitHub'] {
