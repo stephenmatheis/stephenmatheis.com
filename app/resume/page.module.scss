@@ -17,7 +17,9 @@
         gap: calc(var(--line-height) * 4);
         width: 8.5in;
         height: 11in;
-        padding: 0.5in;
+        padding: 1in;
+
+        background-color: #ff000030;
     }
 
     h1,
@@ -185,15 +187,19 @@
     .projects {
         @media print {
             position: absolute;
-            bottom: calc((var(--line-height) * 1) + 0.5in);
+            bottom: calc((var(--line-height) * 0) + 0.5in);
             right: 0.5in;
-            width: 2.5in;
+            width: 2in;
         }
 
         .list {
             display: flex;
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
+
+            @media print {
+                gap: var(--line-height);
+            }
 
             .project {
                 display: flex;
@@ -208,7 +214,8 @@
                     min-width: 11ch;
 
                     @media print {
-                        min-width: 4ch;
+                        // min-width: 4ch;
+                        display: none;
                     }
                 }
 
@@ -299,9 +306,9 @@
     .skills {
         @media print {
             position: absolute;
-            top: calc((var(--line-height) * 11) + 0.5in);
+            top: calc((var(--line-height) * 14) + 0.5in);
             right: 0.5in;
-            width: 2.5in;
+            width: 2in;
         }
 
         .list {
