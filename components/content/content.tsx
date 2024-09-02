@@ -6,7 +6,7 @@ import styles from './content.module.scss';
 
 export function Content() {
     return (
-        <div className={styles.content}>
+        <main className={styles.content}>
             <section className={styles.left}>
                 <Experience />
             </section>
@@ -15,6 +15,6 @@ export function Content() {
                 <Projects />
                 <Contact />
             </section>
-        </div>
+        </main>
     );
 }
