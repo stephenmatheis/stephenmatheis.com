@@ -6,7 +6,8 @@ import styles from './page.module.scss';
 
 const groups = [
     {
-        label: 'to things I use',
+        name: 'Hardware',
+        label: 'I use',
         links: [
             {
                 label: 'MacBook Pro 16',
@@ -28,10 +29,15 @@ const groups = [
                 label: 'Secretlab MAGNUS Pro',
                 href: 'https://secretlab.co/pages/magnus-pro',
             },
+            {
+                label: 'Keychron K2 Pro',
+                href: 'https://www.keychron.com/products/keychron-k2-pro-qmk-via-wireless-mechanical-keyboard',
+            },
         ],
     },
     {
-        label: 'to software I use',
+        name: 'Software',
+        label: 'I use',
         links: [
             {
                 label: 'VS Code',
@@ -61,19 +67,25 @@ const groups = [
                 label: 'Chrome',
                 href: 'https://www.google.com/chrome/',
             },
+            {
+                label: 'Rectangle',
+                href: 'https://rectangleapp.com/',
+            },
         ],
     },
-    // {
-    //     label: 'to VS Code extensions I use',
-    //     links: [
-    //         {
-    //             label: 'VS Code',
-    //             href: 'https://code.visualstudio.com/',
-    //         },
-    //     ],
-    // },
     {
-        label: 'to tools I use',
+        name: 'VS Code extensions',
+        label: 'I use',
+        links: [
+            {
+                label: 'VS Code',
+                href: 'https://code.visualstudio.com/',
+            },
+        ],
+    },
+    {
+        name: 'Tools',
+        label: 'I use',
         links: [
             {
                 label: 'HTML Color Codes',
@@ -87,10 +99,29 @@ const groups = [
                 label: 'ChatGPT',
                 href: 'https://chatgpt.com/',
             },
+            {
+                label: 'Figma',
+                href: 'https://www.figma.com/',
+            },
+            {
+                label: 'Figma',
+                href: 'https://www.figma.com/',
+            },
         ],
     },
     {
-        label: 'to platforms I use',
+        name: 'Figma plugins',
+        label: 'I use',
+        links: [
+            {
+                label: 'html.to.design',
+                href: 'https://www.figma.com/community/plugin/1159123024924461424/html-to-design-import-websites-to-figma-designs-web-html-css',
+            },
+        ],
+    },
+    {
+        name: 'Platforms',
+        label: 'I use',
         links: [
             {
                 label: 'Vercel',
@@ -111,16 +142,34 @@ const groups = [
         ],
     },
     {
-        label: 'to sites that inspire me',
+        name: 'People',
+        label: 'that inspire me',
         links: [
             {
-                label: 'A Single Div',
+                label: 'Lynn Fisher',
                 href: 'https://a.singlediv.com/',
+            },
+            {
+                label: 'Kevin Powell',
+                href: 'https://www.youtube.com/@KevinPowell',
+            },
+            {
+                label: 'Grazzy',
+                href: 'https://www.youtube.com/@Grazzyy',
+            },
+            {
+                label: 'Ichika Nito',
+                href: 'https://www.youtube.com/@ichika_nito',
+            },
+            {
+                label: 'Lazy Devs',
+                href: 'https://www.youtube.com/@LazyDevs',
             },
         ],
     },
     {
-        label: 'to books I like',
+        name: 'Books',
+        label: 'I like',
         links: [
             {
                 label: 'Cinnamon Bun',
@@ -138,7 +187,6 @@ const groups = [
                 label: 'This Trilogy is Broken',
                 href: 'https://www.amazon.com/dp/B08S3FZZNT',
             },
-
             {
                 label: 'Wheel of Time',
                 href: 'https://us.macmillan.com/series/wheeloftime',
@@ -146,20 +194,20 @@ const groups = [
         ],
     },
     {
-        label: 'to blogs I read',
+        name: 'Sites',
+        label: 'I visit',
         links: [
             {
                 label: 'Daring Fireball',
                 href: 'https://daringfireball.net/',
             },
-        ],
-    },
-    {
-        label: 'to sites I visit',
-        links: [
             {
                 label: 'Hacker News',
                 href: 'https://news.ycombinator.com/',
+            },
+            {
+                label: 'Reddit',
+                href: 'https://www.reddit.com/',
             },
             {
                 label: 'The Verge',
@@ -168,7 +216,8 @@ const groups = [
         ],
     },
     {
-        label: 'to games I love',
+        name: 'Games',
+        label: 'I love',
         links: [
             {
                 label: 'Magic: The Gathering',
@@ -190,10 +239,16 @@ const groups = [
                 label: 'Horizon Series',
                 href: 'https://www.playstation.com/en-us/horizon/',
             },
+
+            {
+                label: 'World of Warcraft',
+                href: 'https://worldofwarcraft.blizzard.com/en-us/',
+            },
         ],
     },
     {
-        label: 'to my vehicles',
+        name: 'Vehicles',
+        label: 'I own',
         links: [
             {
                 label: '2008 HD FLHTCU',
@@ -220,11 +275,11 @@ export default function LinksPage() {
                 </div>
             </Link>
             <nav>
-                {groups.map(({ label, links }) => {
+                {groups.map(({ name, label, links }) => {
                     return (
                         <div key={label} className={styles.group}>
                             <div className={styles.text}>
-                                <span className={styles.name}>Links</span>{' '}
+                                <span className={styles.name}>{name}</span>{' '}
                                 <span className={styles.title}>{label}</span>
                             </div>
                             <ul className={styles.list}>
