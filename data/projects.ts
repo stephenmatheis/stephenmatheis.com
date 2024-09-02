@@ -5,7 +5,7 @@ const projects = [
         link: 'https://robi-command-palette.netlify.app',
         image: '/images/command-palette.webp',
         description:
-            'A React component to search for and run commands from within an app.',
+            'React component and command runner. Built with React and Fastify.',
     },
 
     {
@@ -13,7 +13,8 @@ const projects = [
         date: '2019',
         link: 'https://samepage.netlify.app/',
         image: '/images/samepage.webp',
-        description: 'A Basecamp clone built with Robi.',
+
+        description: /*html*/ `A <a href="https://basecamp.com/" target="_blank">Basecamp</a> clone built with Robi and Netlify.`,
     },
     {
         name: 'Robi',
@@ -21,7 +22,7 @@ const projects = [
         link: 'https://github.com/robijs',
         image: '/images/robi.webp',
         description:
-            'A client-side single-page application framework for SharePoint, featuring support for ES modules and local development.',
+            'A SharePoint client-side single-page application framework, featuring support for ES modules and local development.',
     },
 ];
 
