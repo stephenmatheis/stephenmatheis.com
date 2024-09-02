@@ -11,9 +11,9 @@ export function Content() {
                 <Experience />
             </section>
             <section className={styles.right}>
+                <Contact />
                 <Skills />
                 <Projects />
-                <Contact />
             </section>
         </main>
     );

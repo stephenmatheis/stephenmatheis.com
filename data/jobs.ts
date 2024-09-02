@@ -9,16 +9,20 @@ const jobs = [
                 title: 'Director, Customer Experience',
                 start: 'Apr 2024',
                 end: 'Present',
+                lines: [
+                    'Technical lead supporting NOAA National Environmental Satellite, Data, and Information Service (NESDIS)',
+                    /*html*/ `Redesigning <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a>`,
+                ],
             },
             {
                 title: 'Senior Application Solutions Engineer',
                 start: 'Oct 2023',
                 end: 'March 2024',
+                lines: [
+                    'Built prototypes with Next.js, TypeScript, and MongoDB hosted on Vercel and AWS',
+                    'Web app development for NOAA and NIH',
+                ],
             },
-        ],
-        lines: [
-            /*html*/ `Redesigning <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a>`,
-            'Building prototypes with Next.js, TypeScript, and MongoDB hosted on Vercel and AWS',
         ],
     },
     {
@@ -30,11 +34,11 @@ const jobs = [
                 title: 'Front-end Developer',
                 start: 'Aug 2022',
                 end: 'October 2023',
+                lines: [
+                    'Built prototypes with Next.js, TypeScript, and Sass',
+                    'Developed a tool for scaffolding React components',
+                ],
             },
-        ],
-        lines: [
-            'Built prototypes with Next.js, TypeScript, and Sass',
-            'Developed a system for scaffolding React components with Node.js and Fastly',
         ],
     },
     {
@@ -46,11 +50,11 @@ const jobs = [
                 title: 'Software Programmer 5',
                 start: 'May 2022',
                 end: 'Jul 2022',
+                lines: [
+                    'Application development for the U.S Air Force',
+                    'Developed tools for generating C# source code files',
+                ],
             },
-        ],
-        lines: [
-            'Developed an application for the U.S Air Force in C# with .NET 6, Unity, and MongoDB',
-            'Developed Node.js tools for generating C# source code files',
         ],
     },
     {
@@ -58,9 +62,13 @@ const jobs = [
         site: 'https://github.com/robijs',
         location: 'San Antonio, TX',
         roles: [
-            { title: 'Software Developer', start: 'Apr 2022', end: 'May 2022' },
+            {
+                title: 'Software Developer',
+                start: 'Apr 2022',
+                end: 'May 2022',
+                lines: ['Ported Robi to React with support for PnPjs'],
+            },
         ],
-        lines: ['Ported Robi to React with support for PnPjs'],
     },
     {
         company: 'Aeyon',
@@ -71,11 +79,11 @@ const jobs = [
                 title: 'Subject Matter Expert II',
                 start: 'May 2021',
                 end: 'Apr 2022',
+                lines: [
+                    'Developed a mobile app for the U.S. Marine Corps',
+                    'Developed web apps with Robi for SharePoint',
+                ],
             },
-        ],
-        lines: [
-            'Developed a cross-platform mobile app for the U.S. Marine Corps with React Native, Expo, and Firebase',
-            'Developed web apps with Robi hosted on SharePoint 2013',
         ],
     },
     {
@@ -87,11 +95,11 @@ const jobs = [
                 title: 'Senior SharePoint Developer',
                 start: 'Mar 2018',
                 end: 'May 2021',
+                lines: [
+                    'Developed web apps with Robi for SharePoint',
+                    'SharePoint farm migration',
+                ],
             },
-        ],
-        lines: [
-            'Developed web apps with Robi hosted on SharePoint 2010 and 2013',
-            'Migrated an on-premise SharePoint 2010 farm to a virtualized SharePoint 2013 environment',
         ],
     },
     {
@@ -99,10 +107,14 @@ const jobs = [
         site: 'https://github.com/robijs',
         location: 'Washington, D.C.',
         roles: [
-            { title: 'Software Developer', start: 'Oct 2017', end: 'Mar 2018' },
-        ],
-        lines: [
-            'Created Robi, a framework for building single-page client-side SharePoint apps',
+            {
+                title: 'Software Developer',
+                start: 'Oct 2017',
+                end: 'Mar 2018',
+                lines: [
+                    'Created Robi, a single-page client-side SharePoint app framework',
+                ],
+            },
         ],
     },
     {
@@ -114,11 +126,11 @@ const jobs = [
                 title: 'Systems Programmer 3',
                 start: 'Sep 2016',
                 end: 'Oct 2017',
+                lines: [
+                    'Developed web apps for SharePoint',
+                    'SharePoint farm migration',
+                ],
             },
-        ],
-        lines: [
-            'Developed web apps with jQuery and Bootstrap hosted on SharePoint 2013',
-            'Migrated an on-premise SharePoint farm from 2010 to 2013',
         ],
     },
     {
@@ -130,16 +142,17 @@ const jobs = [
                 title: 'Senior Consultant',
                 start: 'Feb 2015',
                 end: 'May 2016',
+                lines: ['SharePoint development team lead'],
             },
             {
                 title: 'Consultant',
                 start: 'Nov 2014',
                 end: 'Feb 2015',
+                lines: [
+                    'Developed web apps for SharePoint',
+                    'Developed PowerShell tools to export SharePoint data as XML',
+                ],
             },
-        ],
-        lines: [
-            'Developed web apps with jQuery and Bootstrap hosted on SharePoint 2010 and 2013',
-            'Developed PowerShell tools to automate SharePoint app development and administration',
         ],
     },
 ];

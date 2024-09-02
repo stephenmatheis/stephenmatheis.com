@@ -29,6 +29,14 @@
                 }
             }
         }
+
+        .roles {
+            .role {
+                &:not(:last-child) {
+                    margin-bottom: var(--line-height);
+                }
+            }
+        }
     }
 
     .date {
