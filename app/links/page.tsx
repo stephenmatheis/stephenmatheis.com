@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image';
 import Link from 'next/link';
 import macbook from '@/public/images/macbook.webp';
@@ -78,8 +77,108 @@ const groups = [
         phrase: 'I use',
         links: [
             {
-                label: 'VS Code',
-                href: 'https://code.visualstudio.com/',
+                label: 'TODO Highlight',
+                href: 'https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight',
+            },
+            {
+                label: 'Polacode',
+                href: 'https://marketplace.visualstudio.com/items?itemName=pnp.polacode',
+            },
+            {
+                label: 'MDX',
+                href: 'https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx',
+            },
+            {
+                label: 'Live Server',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer',
+            },
+            {
+                label: 'es6-string-javascript',
+                href: 'https://marketplace.visualstudio.com/items?itemName=zjcompt.es6-string-javascript',
+            },
+            {
+                label: 'es6-string-html',
+                href: 'https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html',
+            },
+            {
+                label: 'Docker',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker',
+            },
+            {
+                label: 'Thunder Client',
+                href: 'https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client',
+            },
+            {
+                label: 'ESLint',
+                href: 'https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint',
+            },
+            {
+                label: 'Prettier',
+                href: 'https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode',
+            },
+            {
+                label: 'pico8-theme',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ianjsikes.pico8-theme',
+            },
+            {
+                label: 'GitHub Actions',
+                href: 'https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions',
+            },
+            {
+                label: 'GraphQL: LFS',
+                href: 'https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql',
+            },
+            {
+                label: 'GraphQL: Syntax Highlighting',
+                href: 'https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql-syntax',
+            },
+            {
+                label: 'Dev Containers',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers',
+            },
+            {
+                label: 'Code Spell Checker',
+                href: 'https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker',
+            },
+            {
+                label: 'C#',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp',
+            },
+            {
+                label: 'C# Dev Kit',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit',
+            },
+            {
+                label: 'C/C++',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools',
+            },
+            {
+                label: 'Python',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-python.python',
+            },
+            {
+                label: 'Rainbow CSV',
+                href: 'https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv',
+            },
+            {
+                label: 'SQLite Viewer',
+                href: 'https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer',
+            },
+            {
+                label: 'Playwright Test',
+                href: 'https://marketplace.visualstudio.com/items?itemName=qwtel.sqlite-viewer',
+            },
+            {
+                label: 'XML',
+                href: 'https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml',
+            },
+            {
+                label: 'vscode-pdf',
+                href: 'https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf',
+            },
+            {
+                label: 'WSL',
+                href: 'https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl',
             },
         ],
     },
