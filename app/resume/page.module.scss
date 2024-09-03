@@ -156,6 +156,11 @@
 
                     .description {
                         color: var(--color);
+
+                        a {
+                            padding: 0.5ch;
+                            text-decoration: underline;
+                        }
                     }
 
                     .img {
