@@ -7,7 +7,7 @@ import styles from './page.module.scss';
 const groups = [
     {
         name: 'Hardware',
-        label: 'I use',
+        phrase: 'I use',
         links: [
             {
                 label: 'MacBook Pro 16',
@@ -37,7 +37,7 @@ const groups = [
     },
     {
         name: 'Software',
-        label: 'I use',
+        phrase: 'I use',
         links: [
             {
                 label: 'VS Code',
@@ -75,7 +75,7 @@ const groups = [
     },
     {
         name: 'VS Code extensions',
-        label: 'I use',
+        phrase: 'I use',
         links: [
             {
                 label: 'VS Code',
@@ -85,7 +85,7 @@ const groups = [
     },
     {
         name: 'Tools',
-        label: 'I use',
+        phrase: 'I use',
         links: [
             {
                 label: 'HTML Color Codes',
@@ -103,15 +103,11 @@ const groups = [
                 label: 'Figma',
                 href: 'https://www.figma.com/',
             },
-            {
-                label: 'Figma',
-                href: 'https://www.figma.com/',
-            },
         ],
     },
     {
         name: 'Figma plugins',
-        label: 'I use',
+        phrase: 'I use',
         links: [
             {
                 label: 'html.to.design',
@@ -121,7 +117,7 @@ const groups = [
     },
     {
         name: 'Platforms',
-        label: 'I use',
+        phrase: 'I use',
         links: [
             {
                 label: 'Vercel',
@@ -143,7 +139,7 @@ const groups = [
     },
     {
         name: 'People',
-        label: 'that inspire me',
+        phrase: 'that inspire me',
         links: [
             {
                 label: 'Lynn Fisher',
@@ -169,7 +165,7 @@ const groups = [
     },
     {
         name: 'Books',
-        label: 'I like',
+        phrase: 'I like',
         links: [
             {
                 label: 'Cinnamon Bun',
@@ -195,7 +191,7 @@ const groups = [
     },
     {
         name: 'Sites',
-        label: 'I visit',
+        phrase: 'I visit',
         links: [
             {
                 label: 'Daring Fireball',
@@ -217,7 +213,7 @@ const groups = [
     },
     {
         name: 'Games',
-        label: 'I love',
+        phrase: 'I love',
         links: [
             {
                 label: 'Magic: The Gathering',
@@ -248,7 +244,7 @@ const groups = [
     },
     {
         name: 'Vehicles',
-        label: 'I own',
+        phrase: 'I own',
         links: [
             {
                 label: '2008 HD FLHTCU',
@@ -275,12 +271,12 @@ export default function LinksPage() {
                 </div>
             </Link>
             <nav>
-                {groups.map(({ name, label, links }) => {
+                {groups.map(({ name, phrase, links }) => {
                     return (
-                        <div key={label} className={styles.group}>
+                        <div key={name} className={styles.group}>
                             <div className={styles.text}>
                                 <span className={styles.name}>{name}</span>{' '}
-                                <span className={styles.title}>{label}</span>
+                                <span className={styles.title}>{phrase}</span>
                             </div>
                             <ul className={styles.list}>
                                 {links
