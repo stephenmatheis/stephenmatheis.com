@@ -1,16 +1,11 @@
 .resume {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: calc(var(--line-height) * 3);
-    width: 75ch;
+    max-width: 81ch;
     margin: 0 auto;
-    padding: calc(var(--line-height) * 4) 0;
-
-    @media (max-width: 500px) {
-        width: 100%;
-        padding-left: 3ch;
-        padding-right: 3ch;
-    }
+    padding: calc(var(--line-height) * 4) 3ch;
 
     h1,
     h2 {
@@ -208,22 +203,30 @@
         }
     }
 
-    .download {
+    .toolbar {
         position: fixed;
         top: 2ch;
-        right: 2ch;
+        left: 50%;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 44px;
-        width: 44px;
-        background-color: var(--container-color);
-        border-radius: 50%;
+        justify-content: flex-end;
+        width: calc(100% - 4ch);
+        max-width: calc(81ch + 44px + 2ch);
+        transform: translateX(-50%);
 
-        svg {
-            width: 18px;
-            height: 18px;
-            fill: var(--primary);
+        .download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 44px;
+            width: 44px;
+            background-color: var(--container-color);
+            border-radius: 50%;
+
+            svg {
+                width: 18px;
+                height: 18px;
+                fill: var(--primary);
+            }
         }
     }
 }

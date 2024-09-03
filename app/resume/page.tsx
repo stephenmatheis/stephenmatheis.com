@@ -125,9 +125,12 @@ export default function ResumePage() {
                                         </Link>
                                         <Arrow />
                                     </div>
-                                    <div className={styles.description}>
-                                        {project.description}
-                                    </div>
+                                    <div
+                                        className={styles.description}
+                                        dangerouslySetInnerHTML={{
+                                            __html: project.description,
+                                        }}
+                                    />
                                     <div className={styles.img}>
                                         <Link
                                             href={project.link}
@@ -169,25 +172,27 @@ export default function ResumePage() {
             </div>
 
             {/* Download */}
-            <Link
-                href="/resume.pdf"
-                aria-label="My resume"
-                target="_blank"
-                className={styles.download}
-            >
-                <svg
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                    className={styles.mobile}
+            <div className={styles.toolbar}>
+                <Link
+                    href="/resume.pdf"
+                    aria-label="My resume"
+                    target="_blank"
+                    className={styles.download}
                 >
-                    <path
-                        fillRule="evenodd"
-                        d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"
-                    />
-                </svg>
-            </Link>
+                    <svg
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                        className={styles.mobile}
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"
+                        />
+                    </svg>
+                </Link>
+            </div>
         </div>
     );
 }
