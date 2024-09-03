@@ -220,10 +220,65 @@
         background-color: var(--container-color);
         border-radius: 50%;
 
+        @media (min-width: 769px) {
+            display: none;
+        }
+
         svg {
             width: 18px;
             height: 18px;
             fill: var(--primary);
+        }
+    }
+
+    .toolbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1ch;
+        height: 100dvh;
+        border-right: solid 1px var(--container-color);
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--line-height);
+
+            li {
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 44px;
+                    width: 44px;
+                    border-radius: 8px;
+                    background-color: transparent;
+                    border: none;
+
+                    &.rotate {
+                        transform: rotate(25deg);
+                    }
+
+                    svg {
+                        height: 26px;
+                        width: 26px;
+
+                        fill: var(--color);
+                    }
+                }
+            }
         }
     }
 }
