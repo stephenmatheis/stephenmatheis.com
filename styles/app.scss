@@ -1,9 +1,7 @@
 :root {
     // Shared
-    --font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        Liberation Mono, 'Courier New', monospace;
-    --line-height: 18px;
-    --font-size: 12px;
+    --font-size: 16.5px;
+    --line-height: 24px;
 
     // Theme
     --primary: #e9e9e9;
@@ -30,13 +28,13 @@
 }
 
 html {
-    font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
 }
 
 body {
+    font-family: var(--font-departure-mono);
     background-color: var(--background-color);
     margin: 0;
     padding: 0;

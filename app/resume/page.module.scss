@@ -3,9 +3,18 @@
     display: flex;
     flex-direction: column;
     gap: calc(var(--line-height) * 3);
-    max-width: 81ch;
+    max-width: 70ch;
     margin: 0 auto;
     padding: calc(var(--line-height) * 4) 3ch;
+
+    @media (max-width: 500px) {
+        // --font-size: 11px;
+        // --line-height: 20px;
+
+        padding-top: 0;
+        padding-left: 2ch;
+        padding-right: 2ch;
+    }
 
     h1,
     h2 {
@@ -34,7 +43,23 @@
         gap: 4ch;
 
         @media (max-width: 500px) {
-            gap: 2ch;
+            position: relative;
+            flex-direction: column;
+            gap: calc(var(--line-height) * 2);
+            padding-bottom: calc(var(--line-height) * 2);
+            z-index: 1;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                content: '';
+                width: 100vw;
+                height: 100%;
+                background-color: var((--container-color));
+                z-index: -1;
+            }
         }
 
         h1 {
@@ -44,6 +69,7 @@
         .avatar {
             --img-size: calc(400px / 2.5);
 
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -53,7 +79,23 @@
             height: var(--img-size);
 
             @media (max-width: 500px) {
-                --img-size: calc(400px / 3.5);
+                --img-size: calc(400px / 2.5);
+
+                width: 100%;
+                height: calc(var(--line-height) * 8);
+                z-index: 1;
+
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    content: '';
+                    width: 100vw;
+                    height: 100%;
+                    background-color: var((--container-color));
+                    z-index: -1;
+                }
             }
 
             img {
@@ -85,6 +127,10 @@
                 background-color: var(--container-color);
                 border-radius: 8px;
                 width: fit-content;
+
+                @media (max-width: 500px) {
+                    padding: 0;
+                }
             }
         }
     }
@@ -108,6 +154,11 @@
                 display: flex;
                 gap: 4ch;
                 word-break: break-word;
+
+                @media (max-width: 500px) {
+                    flex-direction: column;
+                    gap: 0;
+                }
 
                 .dates {
                     color: var(--muted);
@@ -137,6 +188,11 @@
             .project {
                 display: flex;
                 gap: 4ch;
+
+                @media (max-width: 500px) {
+                    flex-direction: column;
+                    gap: var(--line-height);
+                }
 
                 .dates {
                     color: var(--muted);
@@ -185,6 +241,11 @@
                 display: flex;
                 gap: 4ch;
 
+                @media (max-width: 500px) {
+                    flex-direction: column;
+                    gap: 0;
+                }
+
                 .name {
                     color: var(--muted);
                     min-width: 11ch;
@@ -217,20 +278,26 @@
         width: calc(100% - 4ch);
         max-width: calc(81ch + 44px + 2ch);
         transform: translateX(-50%);
+        z-index: 1;
+
+        @media (max-width: 500px) {
+            top: 1ch;
+            width: calc(100% - 2ch);
+        }
 
         .download {
+            --line-height: 16px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 44px;
-            width: 44px;
             background-color: var(--container-color);
-            border-radius: 50%;
+            border-radius: 8px;
+            height: 40px;
+            width: 40px;
 
-            svg {
-                width: 18px;
-                height: 18px;
-                fill: var(--primary);
+            span {
+                font-size: 22px;
             }
         }
     }
