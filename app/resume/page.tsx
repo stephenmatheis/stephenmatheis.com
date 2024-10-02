@@ -37,7 +37,6 @@ export default function ResumePage() {
                         Director, Customer Experience at TATCS in Washington,
                         D.C.
                     </div>
-                    {/* <div className={styles.pronouns}>They/Them</div> */}
                     <Link
                         className={styles.site}
                         href="https://github.com/stephenmatheis"
@@ -50,7 +49,6 @@ export default function ResumePage() {
 
             {/* About */}
             <div className={styles.about}>
-                {/* <h2>About</h2> */}
                 <p>
                     Hello there! My name is Stephen Matheis, and I'm the
                     Director of Customer Experience at <span>T and T</span>{' '}
