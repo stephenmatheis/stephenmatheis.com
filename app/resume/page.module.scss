@@ -1,3 +1,24 @@
+// https://codepen.io/albpara/pen/JjRarO
+
+@mixin eight-bit-border($width, $color, $bgcolor) {
+    box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
+        0 $width $bgcolor, 2 * $width 0 $color, -2 * $width 0 $color,
+        0 (-2 * $width) $color, 0 2 * $width $color, 0 0 0 $width $color;
+    margin: 2 * $width 0;
+}
+
+@mixin eight-bit-border-rounder($width, $color, $bgcolor) {
+    box-shadow: 4 * $width 0 $bgcolor, -4 * $width 0 $bgcolor,
+        0 (-4 * $width) $bgcolor, 0 4 * $width $bgcolor,
+        $width 0 0 2 * $width $bgcolor, -$width 0 0 2 * $width $bgcolor,
+        0 (-$width) 0 2 * $width $bgcolor, 0 $width 0 2 * $width $bgcolor,
+        5 * $width 0 $color, -5 * $width 0 $color, 0 (-5 * $width) $color,
+        0 5 * $width $color, 0 0 0 3 * $width $color,
+        0 2 * $width 0 2 * $width $color, 0 (-2 * $width) 0 2 * $width $color,
+        2 * $width 0 0 2 * $width $color, (-2 * $width) 0 0 2 * $width $color;
+    margin: 5 * $width auto;
+}
+
 .resume {
     position: relative;
     display: flex;
@@ -8,10 +29,8 @@
     padding: calc(var(--line-height) * 4) 3ch;
 
     @media (max-width: 500px) {
-        // --font-size: 11px;
-        // --line-height: 20px;
-
-        padding-top: 0;
+        padding-top: calc(2ch - 8px);
+        padding-bottom: calc(var(--line-height) * 2);
         padding-left: 2ch;
         padding-right: 2ch;
     }
@@ -43,65 +62,52 @@
         gap: 4ch;
 
         @media (max-width: 500px) {
-            position: relative;
+            background-color: var(--container-color);
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
-            padding-bottom: calc(var(--line-height) * 2);
-            z-index: 1;
+            padding-top: calc(var(--line-height) * 1 / 2);
+            padding-bottom: calc(var(--line-height) * 1 / 2);
 
-            &::before {
-                position: absolute;
-                top: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                content: '';
-                width: 100vw;
-                height: 100%;
-                background-color: var((--container-color));
-                z-index: -1;
-            }
+            @include eight-bit-border-rounder(
+                4px,
+                var(--border-color),
+                var(--container-color)
+            );
+
+            width: calc(100% - 2ch);
         }
 
         h1 {
             margin-bottom: 0;
         }
 
-        .avatar {
-            --img-size: calc(400px / 2.5);
+        a {
+            .avatar {
+                --img-size: calc((400px / 2.5) - 30px);
 
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var((--container-color));
-            border-radius: 50%;
-            width: var(--img-size);
-            height: var(--img-size);
-
-            @media (max-width: 500px) {
-                --img-size: calc(400px / 2.5);
-
-                width: 100%;
-                height: calc(var(--line-height) * 8);
-                z-index: 1;
-
-                &::before {
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    content: '';
-                    width: 100vw;
-                    height: 100%;
-                    background-color: var((--container-color));
-                    z-index: -1;
-                }
-            }
-
-            img {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var((--container-color));
                 width: var(--img-size);
                 height: var(--img-size);
-                border-radius: 50%;
+
+                @include eight-bit-border-rounder(
+                    4px,
+                    var(--border-color),
+                    var(--container-color)
+                );
+
+                @media (max-width: 500px) {
+                    box-shadow: none;
+                    margin: 0;
+                }
+
+                img {
+                    width: calc(var(--img-size) + 30px);
+                    height: calc(var(--img-size) + 30px);
+                }
             }
         }
 
@@ -123,13 +129,20 @@
             }
 
             .site {
-                padding: calc(var(--line-height) / 2) 1ch;
+                padding: calc((var(--line-height) / 2) - 5px) 1ch;
                 background-color: var(--container-color);
-                border-radius: 8px;
                 width: fit-content;
+
+                @include eight-bit-border(
+                    4px,
+                    var(--border-color),
+                    var(--container-color)
+                );
 
                 @media (max-width: 500px) {
                     padding: 0;
+                    box-shadow: none;
+                    margin: 0;
                 }
             }
         }
@@ -220,10 +233,17 @@
                     }
 
                     .img {
-                        height: 90px;
+                        a {
+                            img {
+                                width: 100%;
+                                height: auto;
 
-                        img {
-                            border-radius: 8px;
+                                @include eight-bit-border(
+                                    4px,
+                                    var(--border-color),
+                                    var(--background-color)
+                                );
+                            }
                         }
                     }
                 }
@@ -281,8 +301,8 @@
         z-index: 1;
 
         @media (max-width: 500px) {
-            top: 1ch;
-            width: calc(100% - 2ch);
+            top: calc(28px);
+            width: calc(100% - 64px);
         }
 
         .download {
@@ -292,13 +312,15 @@
             align-items: center;
             justify-content: center;
             background-color: var(--container-color);
-            border-radius: 8px;
-            height: 40px;
-            width: 40px;
+            height: 27px;
+            width: 27px;
+            font-size: 22px;
 
-            span {
-                font-size: 22px;
-            }
+            @include eight-bit-border(
+                4px,
+                var(--border-color),
+                var(--container-color)
+            );
         }
     }
 }

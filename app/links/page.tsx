@@ -390,6 +390,11 @@ export default function LinksPage() {
                                                     target="_blank"
                                                 >
                                                     {label}
+                                                    <span
+                                                        className={styles.icon}
+                                                    >
+                                                        ↗
+                                                    </span>
                                                 </Link>
                                             </li>
                                         );
