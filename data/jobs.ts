@@ -10,8 +10,9 @@ const jobs = [
                 start: 'Apr 2024',
                 end: 'Present',
                 lines: [
-                    'Technical lead supporting NOAA National Environmental Satellite, Data, and Information Service (NESDIS)',
-                    /*html*/ `Redesigning <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a>`,
+                    /*html*/ `Supporting <a href="https://www.nesdis.noaa.gov/" target="_blank">nesdis.noaa.gov</a>`,
+                    /*html*/ `Redesigning <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a> and <a href="https://gps.gov/" target="_blank">gps.gov</a>`,
+                    'Building an LLM tool for technical writers',
                 ],
             },
             {
@@ -19,8 +20,8 @@ const jobs = [
                 start: 'Oct 2023',
                 end: 'March 2024',
                 lines: [
-                    'Built prototypes with Next.js, TypeScript, and MongoDB hosted on Vercel and AWS',
-                    'Web app development for NOAA and NIH',
+                    'Supported NOAA',
+                    'Built apps with Next.js, TypeScript, Python, and MongoDB hosted on Vercel and AWS',
                 ],
             },
         ],
