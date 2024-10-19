@@ -1,56 +1,83 @@
 :root {
-    // Shared
-    --font-size: 16.5px;
-    --line-height: 24px;
+    --unit: 1em;
+    --t: 0%;
+    --flick: cubic-bezier(0.36, 2.09, 0.07, -1.52);
+    --amber: #ffa133;
+    --pumpkin: #e47b1a;
+    --flux: #c8be50;
+    --foam: #bccabb;
+    --enamel: #eeeeee;
+    --cement: #c0c0c0;
+    --aluminum: #cccccc;
+    --ash: #8e8e8e;
+    --mud: #8a8a6f;
+    --clay: #6c6c58;
+    --smoke: #666666;
+    --dark: #444444;
+    --soot: #333333;
+    --carbon: #222222;
+    --black: #141414;
+    --accent: var(--amber);
+    --fg: var(--dark);
+    --bg: var(--enamel);
 
-    // Theme
-    --primary: #e9e9e9;
-    --color: #c0c0c0;
-    --muted: #868686;
-    --background-color: #1e1e1e;
-    --container-color: #2a2a2a;
-    --border-color: #3e3e3e;
+    font-family: var(--font-departure-mono);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: light dark;
+    font-size: 11px;
 
-    // // Theme
-    // --primary: #283618;
-    // --color: #c0c0c0;
-    // --muted: #606c38;
-    // --background-color: #dda15e;
-    // --container-color: #fefa30;
-    // --border-color: #bc6c25;
+    color: var(--fg);
+    background-color: var(--carbon);
+}
 
-    @media print {
-        --font-size: 11px;
-        --line-height: 16px;
-    }
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 * {
-    box-sizing: border-box;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
+    // box-sizing: border-box;
 
     &::selection {
-        color: var(--background-color);
-        background-color: var(--color);
+        color: var(--enamel);
+        background-color: var(--carbon);
     }
 }
 
-html {
-    background-color: var(--background-color);
-    color: var(--color);
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    font-family: var(--font-departure-mono);
-    background-color: var(--background-color);
+html,
+body,
+div,
+span,
+p,
+h1,
+a,
+menu,
+pre,
+section {
     margin: 0;
     padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 a {
-    text-decoration: none;
-    color: var(--primary);
+    color: currentColor;
+    transition: color 0.15s var(--flick);
     -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        color: var(--accent);
+    }
+}
+
+section {
+    display: grid;
+    place-items: center;
+    padding: 2rem;
 }

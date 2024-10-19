@@ -4,7 +4,7 @@ import localFont from 'next/font/local';
 import '@/styles/app.scss';
 
 const departureMono = localFont({
-    src: './fonts/DepartureMono.woff',
+    src: './fonts/DepartureMono-Regular.woff2',
     variable: '--font-departure-mono',
 });
 
@@ -49,8 +49,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body className={departureMono.variable} suppressHydrationWarning>
+        <html
+            lang="en"
+            className={departureMono.variable}
+            suppressHydrationWarning
+        >
+            <body suppressHydrationWarning>
                 {children}
                 <Analytics />
             </body>
