@@ -1,0 +1,189 @@
+.demo {
+    position: relative;
+    flex: 1;
+    padding-top: 160px;
+    cursor: cell;
+
+    @media screen and (max-width: 1115px) {
+        padding-top: 105px;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding-top: 83px;
+    }
+
+    .split {
+        display: grid;
+        grid-template-columns: 600px 1fr;
+        gap: 88px;
+        position: relative;
+
+        @media screen and (max-width: 1115px) {
+            grid-template-columns: 378px 1fr;
+            gap: 55px;
+        }
+
+        @media screen and (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            gap: 44px;
+        }
+
+        .glyph {
+            --notch: 48px;
+
+            position: sticky;
+            top: 44px;
+            display: grid;
+            grid-template-rows: 237px 80px 240px 80px 1fr;
+            color: var(--carbon);
+            font-size: 11px;
+            width: 100%;
+            min-width: 500px;
+            height: 794px;
+            z-index: 1;
+            clip-path: polygon(
+                0 0,
+                calc(100% - var(--notch)) 0,
+                100% var(--notch),
+                100% 100%,
+                0 100%,
+                0 0
+            );
+            background-color: var(--cement);
+
+            @media screen and (max-width: 1115px) {
+                min-width: unset;
+                width: 378px;
+                height: 580px;
+                grid-template-rows: 188px 48px 144px 48px 1fr;
+            }
+
+            @media screen and (max-width: 767px) {
+                display: block;
+            }
+
+            &::before {
+                position: absolute;
+                content: '';
+                width: 6px;
+                height: 22px;
+                border-radius: 2px;
+                top: 176px;
+                left: 22px;
+                background-color: currentColor;
+
+                @media screen and (max-width: 1115px) {
+                    top: 88px;
+                }
+            }
+
+            &::after {
+                position: absolute;
+                content: '';
+                width: 6px;
+                height: 22px;
+                border-radius: 2px;
+                bottom: 176px;
+                left: 22px;
+                background-color: currentColor;
+
+                @media screen and (max-width: 1115px) {
+                    bottom: 88px;
+                }
+            }
+
+            .big {
+                position: absolute;
+                top: 117.5px;
+                left: calc(50% - 140px);
+                font-size: 440px;
+
+                @media screen and (max-width: 1115px) {
+                    font-size: 264px;
+                    top: 116px;
+                    left: 104.5px;
+                }
+            }
+        }
+
+        .list {
+            display: flex;
+            flex-wrap: wrap;
+
+            .heading {
+                font-size: 11px;
+                margin: 0 auto 16px 11px;
+                padding-top: 66px;
+                width: 100%;
+                color: var(--mud);
+
+                @media screen and (max-width: 1115px) {
+                    padding-top: 46px;
+                }
+            }
+
+            .item {
+                --b: 2px;
+                --c: var(--accent);
+                --w: 12px;
+
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+                font-size: 44px;
+                padding: 2px;
+                margin: 0 6px;
+                border: var(--b) solid transparent;
+
+                @media screen and (max-width: 1115px) {
+                    font-size: 33px;
+                }
+
+                &[data-selected='true'] {
+                    .content {
+                        color: var(--carbon);
+                        background-color: var(--accent);
+                    }
+                }
+
+                &:hover,
+                &:focus-visible {
+                    outline: none;
+                    border: var(--b) solid #0000;
+                    --_g: #0000 90deg, var(--c) 0;
+                    --_p: var(--w) var(--w) border-box no-repeat;
+                    background: conic-gradient(
+                                from 90deg at top var(--b) left var(--b),
+                                var(--_g)
+                            )
+                            0 0 / var(--_p),
+                        conic-gradient(
+                                from 180deg at top var(--b) right var(--b),
+                                var(--_g)
+                            )
+                            100% 0 / var(--_p),
+                        conic-gradient(
+                                from 0deg at bottom var(--b) left var(--b),
+                                var(--_g)
+                            )
+                            0 100% / var(--_p),
+                        conic-gradient(
+                                from -90deg at bottom var(--b) right var(--b),
+                                var(--_g)
+                            )
+                            100% 100% / var(--_p);
+                }
+
+                .content {
+                    flex: 1;
+                    width: 1ch;
+                    padding: 4px;
+                    background-color: transparent;
+                    transition: background-color 0.15s var(--flick);
+                }
+            }
+        }
+    }
+}

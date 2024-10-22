@@ -2,22 +2,17 @@
 import Link from 'next/link';
 import styles from './page.module.scss';
 import { ScrollJacked } from '@/components/scrolljacked';
+import { Demo } from '@/components/demo';
+import classNames from 'classnames';
+import { Title } from '@/components/title';
 
 export default function HomePage() {
     return (
         <div className={styles.home}>
             <header>
-                <div className={styles.maxwidth}>
+                <div className="maxwidth">
                     <div className={styles.heading}>
-                        <div className={styles.title}>
-                            <h1>
-                                <span>STEPHEN</span>
-                                <span className={styles.spacer}>_</span>
-                                <br className={styles.break} />
-                                <span>MATHEIS</span>
-                                <span className={styles.version}>v36</span>
-                            </h1>
-                        </div>
+                        <Title />
                         <menu>
                             <Link href="/resume.pdf">↓ DOWNLOAD</Link>
                             <Link
@@ -57,10 +52,10 @@ export default function HomePage() {
                     </div>
                     <div className={styles['type-samples']}>
                         <div
-                            className={[
+                            className={classNames(
                                 styles['type-sample'],
-                                styles['hidden-small'],
-                            ].join(' ')}
+                                styles['hidden-small']
+                            )}
                             style={{ gap: 3, lineHeight: 1 }}
                         >
                             <div className={styles['type-sample-header']}>
@@ -144,14 +139,9 @@ export default function HomePage() {
                     </div>
                 </div>
             </header>
-            {/* <div className={styles.scrolljacked}>Scroll Jacked</div> */}
             <ScrollJacked />
             <main>
-                <div
-                    className={[styles['diagram1'], styles['maxwidth']].join(
-                        ' '
-                    )}
-                >
+                <div className={[styles['diagram1'], 'maxwidth'].join(' ')}>
                     {/* prettier-ignore */}
                     <p className={styles.comment}>
                         <span> ░  INCLUDED: BOX DRAWING</span>
@@ -198,6 +188,8 @@ export default function HomePage() {
 └─────┴──────┴─────┴─────┴───────────────────────────────┴─────┴─────┴──────┴──────┴──────┘`}
                     </pre>
                 </div>
+                <Demo />
+                <div className={styles.code}>CODE</div>
             </main>
         </div>
     );
