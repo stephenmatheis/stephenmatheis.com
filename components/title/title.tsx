@@ -3,7 +3,6 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import styles from './title.module.scss';
 
-// Define alternate characters for certain letters
 const replacements: { [key: string]: string } = {
     E: '3ΣΞ€Ǝ',
     A: 'Λ',
@@ -47,57 +46,58 @@ export function Title() {
     const [subTitle, setSubTitle] = useState(originalSubTitle);
 
     useEffect(() => {
-        let titleTimeout: NodeJS.Timeout;
-        let spaceTimeout: NodeJS.Timeout;
-        let subTitleTimeout: NodeJS.Timeout;
+        let titleTimeout: NodeJS.Timeout = updateText(
+            originalTitle,
+            [0, 0, 0, 1, 1, 2, 2, 2, 3],
+            setTitle,
+            [2, 3, 4, 4, 5, 5, 5, 6, 6]
+        );
+        let spaceTimeout: NodeJS.Timeout = updateText(
+            originalSpace,
+            [0, 1, 1],
+            setSpace
+        );
+        let subTitleTimeout: NodeJS.Timeout = updateText(
+            originalSubTitle,
+            [0, 0, 0, 1, 1, 2, 2],
+            setSubTitle,
+            [1, 1, 2, 2, 3, 3]
+        );
 
-        updateTitle();
-        updateSpace();
-        updateSubTitle();
+        function updateText(
+            originalText: string,
+            replacePattern: number[],
+            setter: Dispatch<SetStateAction<string>>,
+            flashPattern?: number[]
+        ) {
+            setter(replaceCharacters(originalText, replacePattern));
 
-        function updateTitle() {
-            setTitle(
-                replaceCharacters(originalTitle, [0, 0, 0, 1, 1, 2, 2, 2, 3])
-            );
-
-            if (shouldFlash()) {
+            if (flashPattern && shouldFlash()) {
                 const delay = getDelay();
-                const replacedTitle = replaceCharacters(
-                    originalTitle,
-                    [2, 3, 4, 4, 5, 5, 5, 6, 6]
+                const replacedText = replaceCharacters(
+                    originalText,
+                    flashPattern
                 );
 
-                flashText(originalTitle, replacedTitle, setTitle, delay);
+                flashText(originalText, replacedText, setter, delay);
 
-                titleTimeout = setTimeout(updateTitle, delay + 30 * 4);
-            } else {
-                titleTimeout = setTimeout(updateTitle, getDelay());
-            }
-        }
-
-        function updateSpace() {
-            setSpace(replaceCharacters(originalSpace, [0, 1, 1]));
-
-            spaceTimeout = setTimeout(updateSpace, getDelay());
-        }
-
-        function updateSubTitle() {
-            setSubTitle(
-                replaceCharacters(originalSubTitle, [0, 0, 0, 1, 1, 2, 2])
-            );
-
-            if (shouldFlash()) {
-                const delay = getDelay();
-                const replacedTitle = replaceCharacters(
-                    originalTitle,
-                    [1, 1, 2, 2, 3, 3]
+                return setTimeout(
+                    updateText,
+                    delay + 30 * 4,
+                    originalText,
+                    replacePattern,
+                    setter,
+                    flashPattern
                 );
-
-                flashText(originalTitle, replacedTitle, setSubTitle, delay);
-
-                subTitleTimeout = setTimeout(updateSubTitle, delay + 30 * 4);
             } else {
-                subTitleTimeout = setTimeout(updateSubTitle, getDelay());
+                return setTimeout(
+                    updateText,
+                    getDelay(),
+                    originalText,
+                    replacePattern,
+                    setter,
+                    flashPattern
+                );
             }
         }
 
