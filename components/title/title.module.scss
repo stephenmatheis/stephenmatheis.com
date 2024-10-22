@@ -1,0 +1,58 @@
+.title {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 11px;
+    line-height: 1;
+
+    h1 {
+        font-size: 88px;
+        font-weight: 400;
+        color: var(--soot);
+
+        @media screen and (max-width: 767px) {
+            font-size: 44px;
+            width: 256px;
+        }
+
+        :not(.version) {
+            background-color: var(--aluminum);
+            display: inline-block;
+            line-height: 1;
+            white-space: pre;
+        }
+
+        span {
+            @media screen and (max-width: 1115px) {
+                margin-bottom: 6px;
+            }
+
+            @media screen and (max-width: 767px) {
+                margin-bottom: 2.5px;
+            }
+
+            &.spacer {
+                display: inline-block;
+
+                @media screen and (max-width: 1115px) {
+                    display: none;
+                }
+            }
+
+            &.version {
+                position: relative;
+                top: 10px;
+                left: 11px;
+                font-size: 11px;
+                vertical-align: top;
+            }
+        }
+
+        .break {
+            display: none;
+
+            @media screen and (max-width: 1115px) {
+                display: initial;
+            }
+        }
+    }
+}
