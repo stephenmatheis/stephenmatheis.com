@@ -5,6 +5,7 @@ import { ScrollJacked } from '@/components/scrolljacked';
 import { Demo } from '@/components/demo';
 import classNames from 'classnames';
 import { Title } from '@/components/title';
+import { Code } from '@/components/code';
 
 export default function HomePage() {
     return (
@@ -189,7 +190,7 @@ export default function HomePage() {
                     </pre>
                 </div>
                 <Demo />
-                <div className={styles.code}>CODE</div>
+                <Code />
             </main>
         </div>
     );

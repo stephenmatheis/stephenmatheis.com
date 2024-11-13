@@ -1,0 +1,68 @@
+.code {
+    position: relative;
+    width: 100%;
+
+    .diagram {
+        background-color: #5e4c7b;
+        height: 1523px;
+        width: 1136px;
+
+        position: absolute;
+        top: 127px;
+        left: -505px;
+
+        @media screen and (max-width: 1115px) {
+            top: 88px;
+            left: -642px;
+        }
+
+        @media screen and (max-width: 767px) {
+            left: -953px;
+        }
+    }
+
+    .javascript {
+        position: absolute;
+        top: 198px;
+        left: 798px;
+        font-size: 32px;
+        // white-space: pre;
+
+        @media screen and (max-width: 1115px) {
+            top: 210px;
+            left: 618px;
+        }
+
+        @media screen and (max-width: 767px) {
+            top: 88px;
+            left: 135px;
+        }
+    }
+}
+
+// @media screen and (max-width: 767px) {
+//     #code-sql {
+//         left: 102px;
+//         bottom: 56px;
+//     }
+
+//     #sensor {
+//         left: 75px;
+//         top: 970px;
+//     }
+
+//     #code .comment {
+//         top: 1454px;
+//     }
+
+//     #mission-report {
+//         left: 0;
+//         margin: 1572px 0 320px;
+//     }
+
+//     #mission-report pre {
+//         -webkit-user-select: none;
+//         user-select: none;
+//         pointer-events: none;
+//     }
+// }
