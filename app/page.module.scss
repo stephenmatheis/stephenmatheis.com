@@ -1,4 +1,7 @@
-.home {
+.page {
+    max-width: 940px;
+    margin: 0 auto;
+
     header {
         --time: 1s;
         --easing: cubic-bezier(1, 0.05, 0.48, 0.99);
