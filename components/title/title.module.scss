@@ -7,7 +7,7 @@
     h1 {
         font-size: 88px;
         font-weight: 400;
-        color: var(--soot);
+        color: var(--enamel);
 
         @media screen and (max-width: 767px) {
             font-size: 44px;
@@ -15,7 +15,6 @@
         }
 
         :not(.version) {
-            background-color: var(--aluminum);
             display: inline-block;
             line-height: 1;
             white-space: pre;

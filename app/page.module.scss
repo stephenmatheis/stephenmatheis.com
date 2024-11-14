@@ -5,7 +5,7 @@
 
         padding-top: 137px;
         position: relative;
-        background-color: var(--bg);
+        background-color: var(--carbon);
 
         @media screen and (max-width: 1115px) {
             padding-top: 132px;
@@ -37,7 +37,7 @@
                 align-items: flex-start;
                 gap: 6px;
                 margin: 8px 22px 0 0;
-                color: var(--dark);
+                color: var(--aluminum);
 
                 @media screen and (max-width: 1115px) {
                     margin: 0;

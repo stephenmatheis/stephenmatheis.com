@@ -1,5 +1,10 @@
 .transition {
-    --back: color-mix(in lch, var(--enamel), var(--carbon) var(--t));
+    --background-color: color-mix(
+        in lch,
+        var(--carbon),
+        var(--enamel) var(--t)
+    );
+    --color: color-mix(in lch, var(--amber), var(--smoke) var(--t));
 
     position: relative;
     display: flex;
@@ -7,20 +12,19 @@
     align-items: center;
     height: 1800px;
     transition: color 0.4s ease, background-color 0.4s ease;
-    background-color: var(--back);
-    color: color-mix(in lch, var(--smoke), var(--amber) var(--t));
+    background-color: var(--background-color);
+    color: var(--color);
     padding-top: 100px;
 
     .sticky {
         position: sticky;
         top: 10vh;
-        height: 75vh;
-        margin: 120px 0;
-        font-size: 14px;
-
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 75vh;
+        margin: 120px 0;
+        font-size: 14px;
 
         @media screen and (max-width: 1115px) {
             margin-top: 0;
@@ -29,6 +33,6 @@
 
     .end {
         position: absolute;
-        bottom: 200px; // Matches the CSS for `#tend`
+        bottom: 200px;
     }
 }
