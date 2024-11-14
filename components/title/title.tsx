@@ -13,9 +13,9 @@ const replacements: { [key: string]: string } = {
     O: '0',
     N: 'Ɲ',
 };
-const originalTitle = 'DEPARTURE';
+const originalTitle = 'MANIFESTING';
 const originalSpace = ' ';
-const originalSubTitle = 'MONO';
+const originalSubTitle = 'DREAMs';
 
 function replaceCharacters(text: string, replacementPattern: number[]): string {
     const numReplacements: number =
