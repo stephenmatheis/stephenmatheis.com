@@ -15,7 +15,7 @@ const replacements: { [key: string]: string } = {
 };
 const originalTitle = 'MANIFESTING';
 const originalSpace = ' ';
-const originalSubTitle = 'DREAMs';
+const originalSubTitle = 'DREAMS';
 
 function replaceCharacters(text: string, replacementPattern: number[]): string {
     const numReplacements: number =
@@ -138,7 +138,7 @@ export function Title() {
                 <span className={styles.spacer}>{space}</span>
                 <br className={styles.break} />
                 <span>{subTitle}</span>
-                <span className={styles.version}>v36</span>
+                {/* <span className={styles.version}>v36</span> */}
             </h1>
         </div>
     );

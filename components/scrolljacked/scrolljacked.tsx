@@ -1,39 +1,47 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './scrolljacked.module.scss';
+import Image from 'next/image';
+import cybertruck from '../../public/cybertruck/Cybertruck_95.jpg';
 
 export function ScrollJacked() {
     const tendRef = useRef<HTMLDivElement | null>(null);
+    const [opacity, setOpacity] = useState(0);
 
     useEffect(() => {
-        const tendElement = tendRef.current;
+        const handleScroll = () => {
+            const tendElement = tendRef.current;
 
-        if (!tendElement) return;
+            if (!tendElement) return;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    document.documentElement.style.setProperty('--t', '100%');
-                } else {
-                    document.documentElement.style.setProperty('--t', '0%');
-                }
-            },
-            {
-                threshold: 0, // Trigger as soon as tend enters/exits the viewport
-                rootMargin: '400px', // Adjust to get the timing you need
-            }
-        );
+            const { top } = tendElement.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
 
-        observer.observe(tendElement);
+            const visibleRatio = Math.min(
+                Math.max((windowHeight - top) / windowHeight, 0),
+                1
+            );
 
-        return () => observer.disconnect();
+            setOpacity(visibleRatio);
+
+            document.documentElement.style.setProperty(
+                '--opacity',
+                visibleRatio.toString()
+            );
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        handleScroll();
+
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
         <section className={styles.transition}>
-            <div className={styles.sticky}>
-                Scroll down and watch the magic!
+            <div className={styles.sticky} style={{ opacity }}>
+                <Image src={cybertruck} alt="cybertruck" />
             </div>
             <div className={styles.end} ref={tendRef} />
         </section>
