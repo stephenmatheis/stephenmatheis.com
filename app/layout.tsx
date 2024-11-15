@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import localFont from 'next/font/local';
 import '@/styles/app.scss';
+import { ParticlesContainer } from '@/components/particles-container';
 
 const departureMono = localFont({
     src: './fonts/DepartureMono-Regular.woff2',
@@ -57,6 +58,7 @@ export default function RootLayout({
             <body suppressHydrationWarning>
                 {children}
                 <Analytics />
+                <ParticlesContainer />
             </body>
         </html>
     );

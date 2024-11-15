@@ -1,6 +1,61 @@
 .page {
-    max-width: 760px;
+    position: relative;
+    padding-bottom: 88px;
+    max-width: 720px;
     margin: 0 auto;
+    z-index: 1;
+
+    .progress {
+        max-width: 720px;
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .bar {
+            --p: 100%;
+
+            display: flex;
+            justify-content: center;
+            margin-top: 44px;
+            margin-bottom: 88px;
+            padding-left: 29px;
+            padding-right: 26px;
+
+            .indicator {
+                position: relative;
+                background-color: var(--dark);
+                width: 100%;
+                height: 30px;
+                transform: skew(30deg);
+                font-family: 'Orbitron', monospace;
+
+                .filled {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    background-color: var(--lime);
+                    z-index: 0;
+                    animation: load 0.5s forwards linear;
+                }
+
+                .percent {
+                    width: 50px;
+                    font-weight: 600;
+                    font-size: 16px;
+                    // text-align: center;
+                    color: var(--black);
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translateY(-50%) translateX(-50%) skewX(-30deg);
+                    z-index: 1;
+                }
+            }
+        }
+    }
 
     header {
         --time: 1s;
@@ -8,7 +63,7 @@
 
         padding-top: 137px;
         position: relative;
-        background-color: var(--carbon);
+        // background-color: var(--carbon);
 
         @media screen and (max-width: 1115px) {
             padding-top: 132px;
