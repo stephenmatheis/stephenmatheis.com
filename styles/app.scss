@@ -2,6 +2,7 @@
     --unit: 1em;
     --t: 0%;
     --flick: cubic-bezier(0.36, 2.09, 0.07, -1.52);
+    --lime: #1ae47b;
     --amber: #ffa133;
     --pumpkin: #e47b1a;
     --flux: #c8be50;
@@ -33,12 +34,6 @@
     background-color: var(--carbon);
 }
 
-html,
-body {
-    max-width: 100%;
-    overflow-x: clip;
-}
-
 * {
     // box-sizing: border-box;
 
@@ -46,6 +41,27 @@ body {
         color: var(--enamel);
         background-color: var(--carbon);
     }
+}
+
+body {
+    opacity: 0;
+    animation: fade 1000ms ease-in-out 450ms forwards;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 html,
@@ -109,8 +125,8 @@ footer {
 }
 
 .maxwidth {
-    max-width: 1440px;
-    padding-inline: 44px;
+    // max-width: 1440px;
+    // padding-inline: 44px;
     margin: 0 auto;
 
     @media screen and (max-width: 767px) {
