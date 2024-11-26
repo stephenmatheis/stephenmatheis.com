@@ -1,6 +1,6 @@
 :root {
-    --font-size: 12px;
-    --line-height: 18px;
+    --font-size: 16.5px;
+    --line-height: 24.75px;
 
     // Theme
     --primary: #e9e9e9;
@@ -34,7 +34,7 @@ html {
 }
 
 body {
-    font-family: monospace;
+    font-family: var(--font-departure-mono);
     background-color: var(--background-color);
     margin: 0;
     padding: 0;
