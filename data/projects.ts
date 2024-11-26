@@ -4,8 +4,7 @@ const projects = [
         date: '2021',
         link: 'https://robi-command-palette.netlify.app',
         image: '/images/command-palette.webp',
-        description:
-            'React component and command runner. Built with React and Fastify.',
+        description: 'React command runner. Built with Fastify.',
     },
 
     {
@@ -14,7 +13,7 @@ const projects = [
         link: 'https://samepage.netlify.app/',
         image: '/images/samepage.webp',
 
-        description: /*html*/ `A <a href="https://basecamp.com/" target="_blank">Basecamp</a> clone built with Robi and Netlify.`,
+        description: /*html*/ `A <a href="https://basecamp.com/" target="_blank">Basecamp</a> clone built with Robi.`,
     },
     {
         name: 'Robi',
@@ -22,7 +21,7 @@ const projects = [
         link: 'https://github.com/robijs',
         image: '/images/robi.webp',
         description:
-            'A SharePoint client-side single-page application framework, featuring support for ES modules and local development.',
+            'A client-side single-page application framework for SharePoint. Supports ES modules and local development.',
     },
 ];
 
