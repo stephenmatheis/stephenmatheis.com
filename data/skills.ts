@@ -9,12 +9,15 @@ const skills = [
             'Sass',
             'PowerShell',
             'Python',
-            'Lua',
         ],
     },
     {
         group: 'Libraries',
-        items: ['React', 'Fastify', 'Express', 'jQuery'],
+        items: ['React', 'Fastify', 'Express', 'jQuery', ''],
+    },
+    {
+        group: 'SDKs',
+        items: ['ArcGIS Maps for JavaScript'],
     },
     {
         group: 'Frameworks',
@@ -22,7 +25,7 @@ const skills = [
     },
     {
         group: 'Databases',
-        items: ['MongoDB', 'DynamoDB', 'MS SQL Server', 'Firebase'],
+        items: ['MongoDB', 'DynamoDB', 'Firebase'],
     },
     {
         group: 'Tools',
@@ -30,7 +33,7 @@ const skills = [
     },
     {
         group: 'Platforms',
-        items: ['Vercel', 'AWS', 'PICO-8'],
+        items: ['AWS', 'Vercel', 'Netlify', 'PICO-8'],
     },
     {
         group: 'Design',

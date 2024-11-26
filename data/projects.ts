@@ -21,7 +21,7 @@ const projects = [
         link: 'https://github.com/robijs',
         image: '/images/robi.webp',
         description:
-            'A client-side single-page application framework for SharePoint. Supports ES modules and local development.',
+            'A client-side SPA framework for SharePoint. Supports ES modules and local development.',
     },
 ];
 
