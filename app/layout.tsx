@@ -1,12 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
-import localFont from 'next/font/local';
 import '@/styles/app.scss';
-
-const departureMono = localFont({
-    src: './fonts/DepartureMono.woff',
-    variable: '--font-departure-mono',
-});
 
 export const metadata: Metadata = {
     title: {
@@ -50,7 +44,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={departureMono.variable} suppressHydrationWarning>
+            <body suppressHydrationWarning>
                 {children}
                 <Analytics />
             </body>
