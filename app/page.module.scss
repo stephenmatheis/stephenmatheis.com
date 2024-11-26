@@ -1,15 +1,17 @@
 .resume {
+    --max-width: 70ch;
+
     position: relative;
     display: flex;
     flex-direction: column;
     gap: calc(var(--line-height) * 3);
-    max-width: 70ch;
+    max-width: var(--max-width);
     margin: 0 auto;
     padding: calc(var(--line-height) * 4) 3ch;
 
     @media (max-width: 500px) {
-        padding-top: calc(2ch - 8px);
-        padding-bottom: calc(var(--line-height) * 2);
+        padding-top: calc(var(--line-height) * 1.5);
+        padding-bottom: calc(var(--line-height) * 6);
         padding-left: 2ch;
         padding-right: 2ch;
     }
@@ -41,12 +43,13 @@
         gap: 4ch;
 
         @media (max-width: 500px) {
-            background-color: var(--container-color);
             flex-direction: column;
+            align-items: flex-start;
             gap: calc(var(--line-height) * 2);
-            padding-top: calc(var(--line-height) * 1 / 2);
-            padding-bottom: calc(var(--line-height) * 1 / 2);
-            width: calc(100% - 2ch);
+            // width: calc(100% - 2ch);
+            // padding-top: calc(var(--line-height) * 1 / 2);
+            // padding-bottom: calc(var(--line-height) * 1 / 2);
+            // background-color: var(--container-color);
         }
 
         h1 {
@@ -101,12 +104,6 @@
                 padding: calc((var(--line-height) / 2)) 2ch;
                 border-radius: 8px;
                 background-color: var(--container-color);
-
-                @media (max-width: 500px) {
-                    padding: 0;
-                    box-shadow: none;
-                    margin: 0;
-                }
             }
         }
     }
@@ -248,28 +245,28 @@
 
     .toolbar {
         position: fixed;
-        top: 2ch;
+        top: var(--line-height);
         left: 50%;
         display: flex;
         justify-content: flex-end;
-        width: calc(100% - 4ch);
-        max-width: calc(81ch + 44px + 2ch);
+        width: var(--max-width);
         transform: translateX(-50%);
         z-index: 1;
 
         @media (max-width: 500px) {
-            top: calc(28px);
+            top: calc(var(--line-height) * 1.5);
             width: calc(100% - 64px);
         }
 
         .download {
-            --fontsize: 11px;
+            --font-size: 11px;
             --line-height: 16.5px;
 
-            width: fit-content;
             padding: calc((var(--line-height) / 2)) 2ch;
             border-radius: 8px;
-            background-color: var(--container-color);
+            color: var(--muted);
+            background-color: transparent;
+            backdrop-filter: blur(10px);
         }
     }
 }

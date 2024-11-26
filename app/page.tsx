@@ -155,8 +155,7 @@ export default function ResumePage() {
                     target="_blank"
                     className={styles.download}
                 >
-                    {/* ↓ */}
-                    Download
+                    ↓ Resume
                 </Link>
             </div>
         </div>
