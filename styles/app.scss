@@ -117,3 +117,14 @@ footer {
         padding-inline: 16px;
     }
 }
+
+// Code
+.hljs {
+    // background: white;
+    // color: black;
+
+    code {
+        font-family: inherit;
+        font-size: 23px;
+    }
+}
