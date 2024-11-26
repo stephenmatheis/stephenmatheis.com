@@ -1,24 +1,3 @@
-// https://codepen.io/albpara/pen/JjRarO
-
-@mixin eight-bit-border($width, $color, $bgcolor) {
-    box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
-        0 $width $bgcolor, 2 * $width 0 $color, -2 * $width 0 $color,
-        0 (-2 * $width) $color, 0 2 * $width $color, 0 0 0 $width $color;
-    margin: 2 * $width auto;
-}
-
-@mixin eight-bit-border-rounder($width, $color, $bgcolor) {
-    box-shadow: 4 * $width 0 $bgcolor, -4 * $width 0 $bgcolor,
-        0 (-4 * $width) $bgcolor, 0 4 * $width $bgcolor,
-        $width 0 0 2 * $width $bgcolor, -$width 0 0 2 * $width $bgcolor,
-        0 (-$width) 0 2 * $width $bgcolor, 0 $width 0 2 * $width $bgcolor,
-        5 * $width 0 $color, -5 * $width 0 $color, 0 (-5 * $width) $color,
-        0 5 * $width $color, 0 0 0 3 * $width $color,
-        0 2 * $width 0 2 * $width $color, 0 (-2 * $width) 0 2 * $width $color,
-        2 * $width 0 0 2 * $width $color, (-2 * $width) 0 0 2 * $width $color;
-    margin: 5 * $width auto;
-}
-
 .links {
     display: flex;
     flex-direction: column;
@@ -33,7 +12,7 @@
         width: 100%;
 
         .avatar {
-            --img-size: calc((400px / 2) - 30px);
+            --img-size: calc((400px / 2));
 
             display: flex;
             align-items: center;
@@ -42,15 +21,9 @@
             width: calc(100% - 48px);
             height: var(--img-size);
 
-            @include eight-bit-border-rounder(
-                4px,
-                var(--border-color),
-                var(--container-color)
-            );
-
             img {
-                width: calc(var(--img-size) + 30px);
-                height: calc(var(--img-size) + 30px);
+                width: calc(var(--img-size));
+                height: calc(var(--img-size));
             }
         }
     }
@@ -85,12 +58,6 @@
                     text-align: center;
                     padding: calc(var(--line-height) * 1 / 4);
                     background-color: var(--container-color);
-
-                    @include eight-bit-border(
-                        4px,
-                        var(--border-color),
-                        var(--container-color)
-                    );
 
                     .icon {
                         position: absolute;
