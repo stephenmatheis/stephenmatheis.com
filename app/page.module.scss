@@ -264,16 +264,7 @@
 
         .download {
             --fontsize: 11px;
-            --line-height: 16px;
-
-            // display: flex;
-            // align-items: center;
-            // justify-content: center;
-            // background-color: var(--container-color);
-            // border-radius: 8px;
-            // height: 32px;
-            // width: 32px;
-            // font-size: 22px;
+            --line-height: 16.5px;
 
             width: fit-content;
             padding: calc((var(--line-height) / 2)) 2ch;
