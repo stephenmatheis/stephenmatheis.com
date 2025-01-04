@@ -19,7 +19,7 @@ function Arrow() {
     );
 }
 
-export default function ResumePage() {
+export default function RootPage() {
     return (
         <div className={styles.resume}>
             {/* Header */}
