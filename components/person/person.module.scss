@@ -1,0 +1,47 @@
+.person {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    .head,
+    .torso,
+    .legs,
+    .arms {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .head {
+        width: 25px;
+        height: 25px;
+        background-color: red;
+    }
+
+    .torso {
+        width: 25px;
+        height: 25px;
+        background-color: blue;
+        transform: translate(30px, 30px);
+    }
+
+    .legs {
+        .leg {
+            width: 25px;
+            height: 25px;
+            background-color: green;
+            transform: translate(60px, 60px);
+        }
+    }
+
+    .arms {
+        .arm {
+            width: 25px;
+            height: 25px;
+            background-color: orange;
+            transform: translate(90px, 90px);
+        }
+    }
+}

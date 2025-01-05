@@ -21,12 +21,12 @@
         font-weight: normal;
         margin-top: 0;
         margin-bottom: var(--line-height);
-        color: var(--primary);
+        color: var(--light);
     }
 
     p {
         margin-top: 0;
-        color: var(--color);
+        color: var(--white);
 
         &:not(:last-child) {
             margin-bottom: var(--line-height);
@@ -34,7 +34,7 @@
     }
 
     s {
-        color: var(--muted);
+        color: var(--gray);
     }
 
     .header {
@@ -49,7 +49,7 @@
             // width: calc(100% - 2ch);
             // padding-top: calc(var(--line-height) * 1 / 2);
             // padding-bottom: calc(var(--line-height) * 1 / 2);
-            // background-color: var(--container-color);
+            // background-color: var(--dark);
         }
 
         h1 {
@@ -88,22 +88,22 @@
             gap: var(--line-height);
 
             .name {
-                color: var(--primary);
+                color: var(--light);
             }
 
             .role {
-                color: var(--muted);
+                color: var(--gray);
             }
 
             .pronouns {
-                color: var(--muted);
+                color: var(--gray);
             }
 
             .site {
                 width: fit-content;
                 padding: calc((var(--line-height) / 2)) 2ch;
                 border-radius: 8px;
-                background-color: var(--container-color);
+                background-color: var(--dark);
             }
         }
     }
@@ -134,18 +134,18 @@
                 }
 
                 .dates {
-                    color: var(--muted);
+                    color: var(--gray);
                     min-width: 11ch;
                     max-width: 11ch;
                 }
 
                 .role {
                     .name {
-                        color: var(--primary);
+                        color: var(--light);
                     }
 
                     .location {
-                        color: var(--color);
+                        color: var(--white);
                     }
                 }
             }
@@ -168,7 +168,7 @@
                 }
 
                 .dates {
-                    color: var(--muted);
+                    color: var(--gray);
                     min-width: 11ch;
                     max-width: 11ch;
                 }
@@ -179,12 +179,12 @@
                     gap: var(--line-height);
 
                     .name {
-                        color: var(--primary);
+                        color: var(--light);
                         width: fit-content;
                     }
 
                     .description {
-                        color: var(--color);
+                        color: var(--white);
 
                         a {
                             padding: 0.5ch;
@@ -221,14 +221,14 @@
                 }
 
                 .name {
-                    color: var(--muted);
+                    color: var(--gray);
                     min-width: 11ch;
                     max-width: 11ch;
                 }
 
                 .text {
                     gap: var(--line-height);
-                    color: var(--primary);
+                    color: var(--light);
                 }
             }
         }
@@ -239,7 +239,7 @@
 
         svg {
             margin-left: 0.5ch;
-            fill: var(--primary);
+            fill: var(--light);
         }
     }
 
