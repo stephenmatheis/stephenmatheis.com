@@ -30,7 +30,7 @@
 
     .text {
         .title {
-            color: var(--muted);
+            color: var(--gray);
         }
     }
 
@@ -54,10 +54,10 @@
                     position: relative;
                     width: 100%;
                     display: inline-block;
-                    color: var(--primary);
+                    color: var(--light);
                     text-align: center;
                     padding: calc(var(--line-height) * 1 / 4);
-                    background-color: var(--container-color);
+                    background-color: var(--dark);
 
                     .icon {
                         position: absolute;
@@ -70,7 +70,7 @@
 
                         svg {
                             margin-left: 1ch;
-                            fill: var(--primary);
+                            fill: var(--light);
                         }
                     }
                 }

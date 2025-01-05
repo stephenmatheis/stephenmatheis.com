@@ -11,11 +11,11 @@
         }
 
         .title {
-            color: var(--primary);
+            color: var(--light);
             position: relative;
 
             .company {
-                color: var(--color);
+                color: var(--white);
             }
         }
 
@@ -25,7 +25,7 @@
 
                 .bullet {
                     margin-right: 1ch;
-                    color: var(--muted);
+                    color: var(--gray);
                 }
             }
         }
@@ -40,10 +40,10 @@
     }
 
     .date {
-        color: var(--muted);
+        color: var(--gray);
 
         .location {
-            color: var(--muted);
+            color: var(--gray);
         }
     }
 }

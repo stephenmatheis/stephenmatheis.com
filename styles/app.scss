@@ -3,18 +3,11 @@
     --line-height: 24.75px;
 
     // Theme
-    --primary: whitesmoke;
-    --color: white;
-    --muted: gray;
-    --background-color: black;
-    --container-color: dimgray;
-
-    // // Theme
-    // --primary: #e9e9e9;
-    // --color: #c0c0c0;
-    // --muted: #868686;
-    // --background-color: #1e1e1e;
-    // --container-color: #2a2a2a;
+    --light: whitesmoke;
+    --white: white;
+    --gray: gray;
+    --dark: dimgray;
+    --black: black;
 
     @media print {
         --font-size: 11px;
@@ -28,26 +21,26 @@
     line-height: var(--line-height);
 
     &::selection {
-        color: var(--background-color);
-        background-color: var(--color);
+        color: var(--black);
+        background-color: var(--white);
     }
 }
 
 html {
-    background-color: var(--background-color);
-    color: var(--color);
+    background-color: var(--black);
+    color: var(--white);
     -webkit-text-size-adjust: 100%;
 }
 
 body {
     font-family: var(--font-departure-mono);
-    background-color: var(--background-color);
+    background-color: var(--black);
     margin: 0;
     padding: 0;
 }
 
 a {
     text-decoration: none;
-    color: var(--primary);
+    color: var(--light);
     -webkit-tap-highlight-color: transparent;
 }
