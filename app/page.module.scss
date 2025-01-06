@@ -91,6 +91,88 @@
         }
     }
 
+    .satellites {
+        --planet-size: 200px;
+        --moon-size: 50px;
+        --moon-distance: 100px;
+        --orbit: calc(var(--planet-size) + var(--moon-distance));
+
+        position: absolute;
+        top: 20px;
+        right: 75px;
+        width: var(--orbit);
+        height: var(--orbit);
+        transform: rotateX(75deg);
+        transform-style: preserve-3d;
+
+        .orbit {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transform-style: preserve-3d;
+            animation: orbit 5s linear infinite;
+
+            @keyframes orbit {
+                0% {
+                    transform: rotateZ(0deg);
+                }
+
+                100% {
+                    transform: rotateZ(-360deg);
+                }
+            }
+
+            .satellite {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: var(--moon-size);
+                height: var(--moon-size);
+                transform-style: preserve-3d;
+                transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+                animation: invert 5s linear infinite;
+
+                @keyframes invert {
+                    0% {
+                        transform: rotateX(-90deg) rotateZ(0deg) rotateY(360deg);
+                    }
+
+                    100% {
+                        transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+                    }
+                }
+
+                .graphic {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: var(--moon-size);
+                    height: var(--moon-size);
+                    border-radius: 50%;
+                    background-color: white;
+                    transform-style: preserve-3d;
+                    transform: rotateX(0deg);
+                }
+            }
+        }
+
+        .main {
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            width: var(--planet-size);
+            height: var(--planet-size);
+            background: var(--white);
+            border-radius: 50%;
+            background-color: firebrick;
+            transform-style: preserve-3d;
+            transform: rotateX(-90deg) translateX(-50%);
+        }
+    }
+
     @keyframes fadeIn {
         0% {
             opacity: 0;
