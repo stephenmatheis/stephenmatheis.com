@@ -1,5 +1,5 @@
 .home {
-    --enable-scroll-delay: 3s;
+    --load-delay: 3s;
     --planet-size: 80vw;
     --planet-top: 70vh;
     --moon-size: 50px;
@@ -12,38 +12,84 @@
     width: 100vw;
     overflow-y: hidden;
     overflow-x: hidden;
-    animation: fadeIn 2s ease-in-out,
-        enable-scroll var(--enable-scroll-delay) ease-out forwards;
+    animation: fadeIn var(--load-delay) ease-in-out,
+        enable-scroll var(--load-delay) ease-out forwards;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes enable-scroll {
+        0% {
+            overflow-y: hidden;
+        }
+
+        100% {
+            overflow-y: visible;
+            height: calc(
+                100dvh + var(--planet-top) + calc(var(--moon-distance) * 2) +
+                    calc(100dvh - var(--planet-top))
+            );
+        }
+    }
 
     .stars {
         position: fixed;
         top: 0;
         left: 0;
-        height: 300dvh;
+        height: 100dvh;
         width: 100vw;
         background-color: transparent;
 
         .star {
-            --size: 2px;
-
             position: absolute;
             width: var(--size);
             height: var(--size);
             background: var(--white);
             border-radius: 50%;
-            animation: move-up var(--animation-duration) linear infinite,
-                twinkle 2s ease-in-out infinite;
-            animation-delay: var(--animation-delay),
-                calc(var(--start-left) * 0.03s);
+            animation: move var(--animation-duration) linear
+                    var(--animation-delay) infinite,
+                twinkle var(--twinkle-duration) ease-in-out var(--twinkle-delay)
+                    infinite;
+
+            @keyframes move {
+                0% {
+                    transform: translate(
+                        var(--start-left),
+                        calc(100dvh + var(--start-top))
+                    );
+                }
+
+                100% {
+                    transform: translate(
+                        var(--start-left),
+                        calc(var(--size) * -1)
+                    );
+                }
+            }
+
+            @keyframes twinkle {
+                0%,
+                100% {
+                    opacity: 0.3;
+                }
+                50% {
+                    opacity: 1;
+                }
+            }
 
             &.gray {
                 background: var(--gray);
-                animation-duration: 7s;
             }
 
             &.dark {
                 background: var(--dark);
-                animation-duration: 9s;
             }
         }
     }
@@ -54,8 +100,17 @@
         left: 50%;
         transform: translate(-50%, 100%);
         z-index: 5;
-        animation: rise var(--enable-scroll-delay) ease-out
-            var(--enable-scroll-delay) forwards;
+        animation: rise var(--load-delay) ease-out var(--load-delay) forwards;
+
+        @keyframes rise {
+            0% {
+                transform: translate(-50%, calc(102dvh - var(--planet-top)));
+            }
+
+            100% {
+                transform: translate(-50%, 0);
+            }
+        }
 
         .planet {
             width: var(--planet-size);
@@ -73,8 +128,17 @@
             left: var(--moon-gap);
             width: var(--orbit);
             height: var(--orbit);
-            animation: rotate 40s linear calc(var(--enable-scroll-delay) * 2)
-                infinite;
+            animation: rotate 40s linear calc(var(--load-delay) * 2) infinite;
+
+            @keyframes rotate {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
 
             .moon {
                 position: absolute;
@@ -246,77 +310,6 @@
             &.blue {
                 background-color: dodgerblue;
             }
-        }
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes enable-scroll {
-        0% {
-            overflow-y: hidden;
-        }
-
-        100% {
-            overflow-y: visible;
-            height: calc(
-                100dvh + var(--planet-top) + calc(var(--moon-distance) * 2) +
-                    calc(100dvh - var(--planet-top))
-            );
-        }
-    }
-
-    @keyframes move-up {
-        0% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        90% {
-            opacity: 1;
-        }
-
-        100% {
-            transform: translateY(-100vh);
-            opacity: 0;
-        }
-    }
-
-    @keyframes twinkle {
-        0%,
-        100% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 0.5;
-        }
-    }
-
-    @keyframes rise {
-        0% {
-            transform: translate(-50%, calc(102dvh - var(--planet-top)));
-        }
-
-        100% {
-            transform: translate(-50%, 0);
-        }
-    }
-
-    @keyframes rotate {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
         }
     }
 }
