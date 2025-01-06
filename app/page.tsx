@@ -6,13 +6,15 @@ function Stars({
     count,
     color = '',
     baseDelay = 10,
+    load = false,
 }: {
     count: number;
     color?: string;
     baseDelay?: number;
+    load?: boolean;
 }) {
     return (
-        <div className={styles.stars}>
+        <div className={classNames(styles.stars, { [styles.load]: load })}>
             {Array.from({ length: count }).map((_, i) => (
                 <Star key={i} color={color} baseDelay={baseDelay} />
             ))}
@@ -94,6 +96,7 @@ function PlanetWithRings() {
 export default function RootPage() {
     return (
         <div className={styles.home}>
+            <Stars count={100} load />
             <Stars count={100} />
             <Stars count={50} color="gray" baseDelay={20} />
             <Stars count={25} color="dark" baseDelay={30} />

@@ -47,6 +47,32 @@
         width: 100vw;
         background-color: transparent;
 
+        &.load {
+            .star {
+                transform: translate(var(--start-left), var(--start-top));
+                animation: load var(--animation-duration) linear
+                        var(--animation-delay) forwards,
+                    twinkle var(--twinkle-duration) ease-in-out
+                        var(--twinkle-delay) infinite;
+
+                @keyframes load {
+                    0% {
+                        transform: translate(
+                            var(--start-left),
+                            var(--start-top)
+                        );
+                    }
+
+                    100% {
+                        transform: translate(
+                            var(--start-left),
+                            calc((var(--start-top) + var(--size)) * -1)
+                        );
+                    }
+                }
+            }
+        }
+
         .star {
             position: absolute;
             width: var(--size);
