@@ -2,25 +2,40 @@ import { CSSProperties } from 'react';
 import classNames from 'classnames';
 import styles from './page.module.scss';
 
-function Stars({ count, color = '' }: { count: number; color?: string }) {
+function Stars({
+    count,
+    color = '',
+    baseDelay = 10,
+}: {
+    count: number;
+    color?: string;
+    baseDelay?: number;
+}) {
     return (
         <div className={styles.stars}>
             {Array.from({ length: count }).map((_, i) => (
-                <Star key={i} color={color} />
+                <Star key={i} color={color} baseDelay={baseDelay} />
             ))}
         </div>
     );
 }
 
-function Star({ color = '' }: { color?: string }) {
-    const pageSize = 300;
-    const animationDuration = 10 + Math.random() * 5;
+function Star({
+    color = '',
+    baseDelay,
+}: {
+    color?: string;
+    baseDelay: number;
+}) {
+    const pageSize = 100;
+    const animationDuration = baseDelay + Math.random() * 5;
     const startTop = Math.random() * pageSize;
-    const startLeft = Math.random() * 100;
+    const startLeft = Math.random() * pageSize;
+    const size = Math.random() * 1.5 + 1;
     const negativeDelay =
         -1 * animationDuration * (Math.random() * (startTop / pageSize));
-
-    console.log(animationDuration);
+    const twinkleDuration = 2 + Math.random();
+    const twinkleDelay = -1 * Math.random() * twinkleDuration;
 
     return (
         <div
@@ -29,10 +44,11 @@ function Star({ color = '' }: { color?: string }) {
                 {
                     '--start-top': `${startTop}vh`,
                     '--start-left': `${startLeft}vw`,
+                    '--size': `${size}px`,
                     '--animation-duration': `${animationDuration}s`,
                     '--animation-delay': `${negativeDelay}s`,
-                    top: `var(--start-top)`,
-                    left: `var(--start-left)`,
+                    '--twinkle-duration': `${twinkleDuration}s`,
+                    '--twinkle-delay': `${twinkleDelay}s`,
                 } as CSSProperties
             }
         />
@@ -78,11 +94,11 @@ function PlanetWithRings() {
 export default function RootPage() {
     return (
         <div className={styles.home}>
-            <Stars count={200} />
-            <Stars count={100} color="gray" />
-            <Stars count={50} color="dark" />
-            {/* <Planet />
-            <PlanetWithOrbit /> */}
+            <Stars count={100} />
+            <Stars count={50} color="gray" baseDelay={20} />
+            <Stars count={25} color="dark" baseDelay={30} />
+            <Planet />
+            <PlanetWithOrbit />
             <PlanetWithRings />
         </div>
     );
