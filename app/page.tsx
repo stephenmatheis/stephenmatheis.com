@@ -51,6 +51,19 @@ function Planet() {
     );
 }
 
+function Station() {
+    return (
+        <div className={styles.satellites}>
+            <div className={styles.orbit}>
+                <div className={styles.satellite}>
+                    <div className={styles.graphic} />
+                </div>
+            </div>
+            <div className={styles.main} />
+        </div>
+    );
+}
+
 export default function RootPage() {
     return (
         <div className={styles.home}>
@@ -62,6 +75,8 @@ export default function RootPage() {
             <Stars count={50} color="dark" />
             {/* Planet */}
             <Planet />
+            {/* Station */}
+            <Station />
         </div>
     );
 }
