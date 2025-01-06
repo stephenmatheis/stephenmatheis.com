@@ -51,15 +51,26 @@ function Planet() {
     );
 }
 
-function Station() {
+function PlanetWithOrbit() {
     return (
-        <div className={styles.satellites}>
+        <div className={classNames(styles.plane, styles.right)}>
             <div className={styles.orbit}>
-                <div className={styles.satellite}>
+                <div className={styles.moon}>
                     <div className={styles.graphic} />
                 </div>
             </div>
-            <div className={styles.main} />
+            <div className={classNames(styles.main, styles.red)} />
+        </div>
+    );
+}
+
+function PlanetWithRings() {
+    return (
+        <div className={classNames(styles.plane, styles.rings, styles.left)}>
+            <div className={classNames(styles.ring, styles.one)} />
+            <div className={classNames(styles.ring, styles.two)} />
+            <div className={classNames(styles.ring, styles.three)} />
+            <div className={classNames(styles.main, styles.blue)} />
         </div>
     );
 }
@@ -67,16 +78,12 @@ function Station() {
 export default function RootPage() {
     return (
         <div className={styles.home}>
-            {/* Foreground */}
             <Stars count={200} />
-            {/* Middle ground */}
             <Stars count={100} color="gray" />
-            {/* Background ground */}
             <Stars count={50} color="dark" />
-            {/* Planet */}
-            <Planet />
-            {/* Station */}
-            <Station />
+            {/* <Planet />
+            <PlanetWithOrbit /> */}
+            <PlanetWithRings />
         </div>
     );
 }
