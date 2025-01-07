@@ -1,7 +1,7 @@
-import { CSSProperties } from 'react';
 import classNames from 'classnames';
 import styles from './page.module.scss';
 import { Stars } from '@/components/stars';
+import { Planet } from '@/components/planet';
 
 function System() {
     return (
@@ -35,43 +35,6 @@ function PlanetWithRings() {
             <div className={classNames(styles.ring, styles.two)} />
             <div className={classNames(styles.ring, styles.three)} />
             <div className={classNames(styles.main, styles.blue)} />
-        </div>
-    );
-}
-
-function Planet({
-    top,
-    left,
-    right,
-    bottom,
-    color,
-    size,
-    className = '',
-}: {
-    top?: string;
-    left?: string;
-    right?: string;
-    bottom?: string;
-    color: string;
-    size: number | string;
-    className?: string;
-}) {
-    return (
-        <div
-            style={
-                {
-                    ...(top ? { top } : {}),
-                    ...(left ? { left } : {}),
-                    ...(right ? { right } : {}),
-                    ...(bottom ? { bottom } : {}),
-                    color,
-                    '--planet-size':
-                        typeof size === 'number' ? `${size}px` : size,
-                } as CSSProperties
-            }
-            className={classNames(styles.plane, styles[className])}
-        >
-            <div className={classNames(styles.main, styles[color])} />
         </div>
     );
 }
