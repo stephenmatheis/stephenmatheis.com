@@ -130,7 +130,7 @@
 
         @keyframes rise {
             0% {
-                transform: translate(-50%, calc(102dvh - var(--planet-top)));
+                transform: translate(-50%, calc(100dvh - var(--planet-top)));
             }
 
             100% {
@@ -194,14 +194,6 @@
         transform: rotateX(75deg) rotateY(-15deg);
         transform-style: preserve-3d;
 
-        &.left {
-            left: 75px;
-        }
-
-        &.right {
-            right: 75px;
-        }
-
         &.rings {
             --planet-size: 150px;
 
@@ -210,7 +202,26 @@
             transform: rotateX(75deg) rotateY(30deg);
         }
 
-        &.small {
+        &.rise {
+            top: var(--planet-top);
+            left: 50%;
+            transform: translate(-50%, 100%) rotateX(75deg) rotateY(-15deg);
+            animation: rise var(--load-delay) ease-out var(--load-delay)
+                forwards;
+
+            @keyframes rise {
+                0% {
+                    transform: translate(-50%, calc(100dvh - var(--planet-top)))
+                        rotateX(75deg) rotateY(-15deg);
+                }
+
+                100% {
+                    transform: translate(-50%, 0) rotateX(75deg) rotateY(-15deg);
+                }
+            }
+        }
+
+        &.grow {
             transform: scale(0) rotateX(75deg) rotateY(-15deg);
             animation: scale-in var(--load-delay) ease-in-out
                 calc(var(--load-delay) * 2) forwards;
@@ -222,35 +233,6 @@
 
                 100% {
                     transform: scale(1) rotateX(75deg) rotateY(-15deg);
-                }
-            }
-
-            .main {
-                --inset-shadow-radius: calc(var(--planet-size) / 4);
-                --offset: calc(var(--planet-size) / 7.5);
-                --blur: calc(var(--planet-size) / 6);
-                --spread: calc(var(--planet-size) / 12);
-
-                background-color: var(--background-color);
-                transform: rotateX(-90deg) rotateZ(15deg) translateX(-50%);
-                box-shadow: var(--offset) calc(var(--offset) * -1)
-                        var(--inset-shadow-radius) var(--inset-shadow-radius)
-                        rgba(0, 0, 0, 0.7) inset,
-                    0 0 var(--blur) var(--spread) var(--shadow-color);
-
-                &.tan {
-                    --shadow-color: #e9967a40;
-                    --background-color: #e9967a;
-                }
-
-                &.purple {
-                    --shadow-color: #da70d640;
-                    --background-color: #da70d6;
-                }
-
-                &.green {
-                    --shadow-color: #e9967a40;
-                    --background-color: #e9967a;
                 }
             }
         }
@@ -364,6 +346,11 @@
         }
 
         .main {
+            --inset-shadow-radius: calc(var(--planet-size) / 4);
+            --offset: calc(var(--planet-size) / 7.5);
+            --blur: clamp(10px, calc(var(--planet-size) / 6), 60px);
+            --spread: clamp(5px, calc(var(--planet-size) / 12), 20px);
+
             position: absolute;
             top: 25%;
             left: 50%;
@@ -372,14 +359,36 @@
             background: var(--white);
             border-radius: 50%;
             transform-style: preserve-3d;
-            transform: rotateX(-90deg) translateX(-50%);
+            background-color: var(--background-color);
+            transform: rotateX(-90deg) rotateZ(15deg) translateX(-50%);
+            box-shadow: var(--offset) calc(var(--offset) * -1)
+                    var(--inset-shadow-radius) var(--inset-shadow-radius)
+                    rgba(0, 0, 0, 0.7) inset,
+                0 0 var(--blur) var(--spread) var(--shadow-color);
 
             &.red {
-                background-color: firebrick;
+                --background-color: #b22222;
+                --shadow-color: #b2222240;
             }
 
             &.blue {
-                background-color: dodgerblue;
+                --background-color: #1e90ff;
+                --shadow-color: #1e90ff40;
+            }
+
+            &.tan {
+                --shadow-color: #e9967a40;
+                --background-color: #e9967a;
+            }
+
+            &.purple {
+                --shadow-color: #da70d640;
+                --background-color: #da70d6;
+            }
+
+            &.green {
+                --shadow-color: #20b2aa40;
+                --background-color: #20b2aa;
             }
         }
     }

@@ -57,7 +57,7 @@ function Star({
     );
 }
 
-function Planet() {
+function System() {
     return (
         <div className={styles.system}>
             <div className={styles.planet} />
@@ -93,20 +93,22 @@ function PlanetWithRings() {
     );
 }
 
-function SmallPlanet({
+function Planet({
     top,
     left,
     right,
     bottom,
     color,
     size,
+    className = '',
 }: {
     top?: string;
     left?: string;
     right?: string;
     bottom?: string;
     color: string;
-    size: number;
+    size: number | string;
+    className?: string;
 }) {
     return (
         <div
@@ -117,10 +119,11 @@ function SmallPlanet({
                     ...(right ? { right } : {}),
                     ...(bottom ? { bottom } : {}),
                     color,
-                    '--planet-size': `${size}px`,
+                    '--planet-size':
+                        typeof size === 'number' ? `${size}px` : size,
                 } as CSSProperties
             }
-            className={classNames(styles.plane, styles.small)}
+            className={classNames(styles.plane, styles[className])}
         >
             <div className={classNames(styles.main, styles[color])} />
         </div>
@@ -134,11 +137,11 @@ export default function RootPage() {
             <Stars count={100} />
             <Stars count={50} color="gray" baseDelay={20} />
             <Stars count={25} color="dark" baseDelay={30} />
-            <Planet />
+            <Planet color="green" className="rise" size={'80vw'} />
             {/* <PlanetWithOrbit /> */}
             {/* <PlanetWithRings /> */}
-            <SmallPlanet top="0vh" left="0vw" color="tan" size={100} />
-            <SmallPlanet top="00vh" right="0vw" color="purple" size={50} />
+            {/* <SmallPlanet top="0vh" left="0vw" color="tan" size={100} /> */}
+            {/* <SmallPlanet top="00vh" right="0vw" color="purple" size={50} /> */}
         </div>
     );
 }
