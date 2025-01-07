@@ -351,6 +351,7 @@
             --blur: clamp(10px, calc(var(--planet-size) / 6), 60px);
             --spread: clamp(5px, calc(var(--planet-size) / 12), 20px);
 
+            cursor: pointer;
             position: absolute;
             top: 25%;
             left: 50%;
@@ -360,6 +361,7 @@
             border-radius: 50%;
             transform-style: preserve-3d;
             background-color: var(--background-color);
+            transition: filter 250ms ease-in-out;
             transform: rotateX(-90deg) rotateZ(15deg) translateX(-50%);
             box-shadow: var(--offset) calc(var(--offset) * -1)
                     var(--inset-shadow-radius) var(--inset-shadow-radius)
@@ -389,6 +391,10 @@
             &.green {
                 --shadow-color: #20b2aa40;
                 --background-color: #20b2aa;
+            }
+
+            &:hover {
+                filter: brightness(1.2);
             }
         }
     }
