@@ -29,7 +29,8 @@ function Star({
     color?: string;
     baseDelay: number;
 }) {
-    const pageSize = 100;
+    const pageSize = 130;
+    // const pageSize = 100;
     const animationDuration = baseDelay + Math.random() * 5;
     const startTop = Math.random() * pageSize;
     const startLeft = Math.random() * pageSize;

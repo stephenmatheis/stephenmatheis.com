@@ -21,7 +21,7 @@ export function Planets() {
             <Planet
                 color="green"
                 className="rise"
-                size={'80vw'}
+                size={'125vw'}
                 startMove={startMove}
                 handleMove={handleMove}
                 handleEnter={handleEnter}

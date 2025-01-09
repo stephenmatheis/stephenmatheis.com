@@ -10,9 +10,13 @@
         --planet-top: 70vh;
 
         top: var(--planet-top);
+
+        // DEV:
         transform: translate(-50%, 30dvh);
-        animation: rise var(--load-delay) ease-out var(--load-delay) forwards;
-        transition: top 2000ms ease-in-out;
+        // transform: translate(-50%, 30dvh);
+        animation: rise var(--load-duration) ease-in-out var(--load-delay)
+            forwards;
+        // transition: top 2000ms ease-in-out;
 
         @keyframes rise {
             0% {
