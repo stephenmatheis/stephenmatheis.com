@@ -35,23 +35,43 @@
         height: var(--size);
         background: var(--white);
         border-radius: 50%;
-        animation: move var(--animation-duration) linear var(--animation-delay)
-                infinite,
+
+        // DEV:
+        animation: move var(--load-duration) ease-in-out var(--load-delay)
+                forwards,
             twinkle var(--twinkle-duration) ease-in-out var(--twinkle-delay)
                 infinite;
+        // animation: move var(--animation-duration) linear var(--animation-delay)
+        //         infinite,
+        //     twinkle var(--twinkle-duration) ease-in-out var(--twinkle-delay)
+        //         infinite;
+        transform: translate(var(--start-left), var(--start-top));
 
         @keyframes move {
             0% {
-                transform: translate(
-                    var(--start-left),
-                    calc(100dvh + var(--start-top))
-                );
+                transform: translate(var(--start-left), var(--start-top));
             }
 
             100% {
-                transform: translate(var(--start-left), calc(var(--size) * -1));
+                transform: translate(
+                    var(--start-left),
+                    calc(var(--start-top) - 10dvh)
+                );
             }
         }
+
+        // @keyframes move {
+        //     0% {
+        //         transform: translate(
+        //             var(--start-left),
+        //             calc(100dvh + var(--start-top))
+        //         );
+        //     }
+
+        //     100% {
+        //         transform: translate(var(--start-left), calc(var(--size) * -1));
+        //     }
+        // }
 
         @keyframes twinkle {
             0%,

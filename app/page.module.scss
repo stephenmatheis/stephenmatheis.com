@@ -1,13 +1,20 @@
 .home {
-    --load-delay: 3s;
+    --load-duration: 3s;
+    --load-delay: 1s;
+    // --load-delay: 3s;
     --planet-top: 70vh;
 
     position: relative;
     height: 100dvh;
     width: 100vw;
     overflow: hidden;
-    animation: fadeIn var(--load-delay) ease-in-out,
-        enable-scroll var(--load-delay) ease-out forwards;
+    animation: fadeIn calc(var(--load-duration) / 3) ease-in-out,
+        enable-scroll 0ms ease-out
+            calc(var(--load-delay) + var(--load-duration)) forwards;
+    // animation: fadeIn var(--load-delay) ease-in-out,
+    //     enable-scroll 0ms ease-out calc((var(--load-delay) * 2)) forwards;
+    // overflow-y: visible;
+    // height: calc(200dvh + var(--planet-top));
 
     @keyframes fadeIn {
         0% {
