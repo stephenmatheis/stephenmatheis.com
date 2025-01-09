@@ -1,3 +1,5 @@
+'use client';
+
 import { CSSProperties } from 'react';
 import classNames from 'classnames';
 import styles from './planet.module.scss';
@@ -7,17 +9,25 @@ export function Planet({
     left,
     right,
     bottom,
-    color,
     size,
+    color,
+    moon = false,
     className = '',
+    startMove = false,
+    handleMove = () => {},
+    handleEnter = () => {},
 }: {
     top?: string;
     left?: string;
     right?: string;
     bottom?: string;
-    color: string;
     size: number | string;
+    color: string;
+    moon?: boolean;
     className?: string;
+    startMove?: boolean;
+    handleMove?: () => void;
+    handleEnter?: () => void;
 }) {
     return (
         <div
@@ -27,14 +37,31 @@ export function Planet({
                     ...(left ? { left } : {}),
                     ...(right ? { right } : {}),
                     ...(bottom ? { bottom } : {}),
-                    color,
                     '--planet-size':
                         typeof size === 'number' ? `${size}px` : size,
                 } as CSSProperties
             }
-            className={classNames(styles.plane, styles[className])}
+            className={classNames(styles.planet, styles[className], {
+                [styles.shift]: startMove,
+            })}
         >
-            <div className={classNames(styles.main, styles[color])} />
+            {moon && (
+                <div className={styles.orbit}>
+                    <div className={styles.moon}>
+                        <div className={styles.graphic} />
+                    </div>
+                </div>
+            )}
+            <div
+                className={classNames(styles.body, styles[color])}
+                onClick={() => {
+                    handleMove();
+
+                    setTimeout(() => {
+                        handleEnter();
+                    }, 2000);
+                }}
+            />
         </div>
     );
 }
