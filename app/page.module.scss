@@ -1,17 +1,11 @@
 .home {
     --load-delay: 3s;
-    --planet-size: 80vw;
     --planet-top: 70vh;
-    --moon-size: 50px;
-    --moon-distance: 20vw;
-    --orbit: calc(var(--planet-size) + var(--moon-distance));
-    --moon-gap: calc(var(--moon-distance) * -0.5);
 
     position: relative;
     height: 100dvh;
     width: 100vw;
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: hidden;
     animation: fadeIn var(--load-delay) ease-in-out,
         enable-scroll var(--load-delay) ease-out forwards;
 
@@ -32,71 +26,14 @@
 
         100% {
             overflow-y: visible;
-            height: calc(
-                100dvh + var(--planet-top) + calc(var(--moon-distance) * 2) +
-                    calc(100dvh - var(--planet-top))
-            );
+            height: calc(200dvh + var(--planet-top));
         }
     }
 
-    .system {
-        position: absolute;
-        top: var(--planet-top);
-        left: 50%;
-        transform: translate(-50%, 100%);
-        z-index: 5;
-        animation: rise var(--load-delay) ease-out var(--load-delay) forwards;
-
-        @keyframes rise {
-            0% {
-                transform: translate(-50%, calc(100dvh - var(--planet-top)));
-            }
-
-            100% {
-                transform: translate(-50%, 0);
-            }
-        }
-
-        .planet {
-            width: var(--planet-size);
-            height: var(--planet-size);
-            background: var(--white);
-            border-radius: 50%;
-            background-color: lightseagreen;
-            box-shadow: 8vw -16vw 10vw 20vw rgba(0, 0, 0, 0.5) inset,
-                0 0 20vw 2vw #1a7edf inset, 0 -1vw 7.5vw 0 #0f4880;
-        }
-
-        .moons {
-            position: absolute;
-            top: var(--moon-gap);
-            left: var(--moon-gap);
-            width: var(--orbit);
-            height: var(--orbit);
-            animation: rotate 40s linear calc(var(--load-delay) * 2) infinite;
-
-            @keyframes rotate {
-                0% {
-                    transform: rotate(0deg);
-                }
-
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-
-            .moon {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                width: var(--moon-size);
-                height: var(--moon-size);
-                background: var(--light);
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-                box-shadow: 5px -5px 15px 10px rgba(0, 0, 0, 0.7) inset,
-                    0 0 15px 5px rgba(255, 255, 255, 0.25);
-            }
-        }
+    .background {
+        position: fixed;
+        height: 100dvh;
+        width: 100vw;
+        overflow: hidden;
     }
 }
