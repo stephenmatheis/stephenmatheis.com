@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties } from 'react';
+import { CSSProperties, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import styles from './planet.module.scss';
 
@@ -29,14 +29,43 @@ export function Planet({
     handleMove?: () => void;
     handleEnter?: () => void;
 }) {
+    const planetRef = useRef<HTMLDivElement>(null);
+
+    function onScroll() {
+        if (!planetRef.current) return;
+
+        const maxScroll = 768;
+        const minScale = 0.5;
+        const maxScale = 1;
+
+        const scrollY = Math.min(window.scrollY, maxScroll);
+        const scaleFactor =
+            maxScale - (scrollY / maxScroll) * (maxScale - minScale);
+
+        planetRef.current.style.setProperty(
+            '--scale-factor',
+            scaleFactor.toString()
+        );
+    }
+
+    useEffect(() => {
+        document.addEventListener('scroll', onScroll);
+
+        return () => {
+            document.removeEventListener('scroll', onScroll);
+        };
+    }, [onScroll]);
+
     return (
         <div
+            ref={planetRef}
             style={
                 {
                     ...(top ? { top } : {}),
                     ...(left ? { left } : {}),
                     ...(right ? { right } : {}),
                     ...(bottom ? { bottom } : {}),
+                    '--scale-factor': '1',
                     '--planet-size':
                         typeof size === 'number' ? `${size}px` : size,
                 } as CSSProperties
@@ -54,13 +83,13 @@ export function Planet({
             )}
             <div
                 className={classNames(styles.body, styles[color])}
-                onClick={() => {
-                    handleMove();
+                // onClick={() => {
+                //     handleMove();
 
-                    setTimeout(() => {
-                        handleEnter();
-                    }, 2000);
-                }}
+                //     setTimeout(() => {
+                //         handleEnter();
+                //     }, 2000);
+                // }}
             />
         </div>
     );

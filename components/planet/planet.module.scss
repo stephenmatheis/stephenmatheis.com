@@ -12,7 +12,9 @@
         top: var(--planet-top);
 
         // DEV:
-        transform: translate(-50%, 30dvh);
+        transform: translate(-50%, 30dvh) scale(var(--scale-factor, 1));
+        // transition: transform 200ms ease-out;
+        // transform: translate(-50%, 30dvh);
         // transform: translate(-50%, 30dvh);
         animation: rise var(--load-duration) ease-in-out var(--load-delay)
             forwards;
@@ -20,11 +22,11 @@
 
         @keyframes rise {
             0% {
-                transform: translate(-50%, 30dvh);
+                transform: translate(-50%, 30dvh) scale(var(--scale-factor, 1));
             }
 
             100% {
-                transform: translate(-50%, 0);
+                transform: translate(-50%, 0) scale(var(--scale-factor, 1));
             }
         }
     }
@@ -55,24 +57,92 @@
     }
 
     .body {
-        --inset-shadow-radius: calc(var(--planet-size) / 4);
-        --offset: calc(var(--planet-size) / 7.5);
-        --blur: clamp(10px, calc(var(--planet-size) / 6), 60px);
-        --spread: clamp(5px, calc(var(--planet-size) / 12), 20px);
+        --size: var(--planet-size);
+        --inset-shadow-radius: calc(var(--size) / 4);
+        --offset: calc(var(--size) / 7.5);
+        --blur: clamp(10px, calc(var(--size) / 6), 60px);
+        --spread: clamp(5px, calc(var(--size) / 12), 20px);
+
+        // DEV: Shadow
+
+        // box-shadow: 0 0 var(--blur) var(--spread) var(--shadow-color);
+
+        // box-shadow: var(--offset) calc(var(--offset) * -1)
+        //         var(--inset-shadow-radius) var(--inset-shadow-radius)
+        //         rgba(0, 0, 0, 0.7) inset,
+        //     0 0 var(--blur) var(--spread) var(--shadow-color);
+
+        // DEV:
 
         cursor: pointer;
         position: absolute;
         top: 50%;
         left: 50%;
-        width: var(--planet-size);
-        height: var(--planet-size);
-        background: var(--white);
+        width: var(--size);
+        height: var(--size);
         border-radius: 50%;
-        background-color: var(--background-color);
-        box-shadow: var(--offset) calc(var(--offset) * -1)
-                var(--inset-shadow-radius) var(--inset-shadow-radius)
-                rgba(0, 0, 0, 0.7) inset,
-            0 0 var(--blur) var(--spread) var(--shadow-color);
+
+        background-color: teal;
+
+        // background: radial-gradient(
+        //     circle at 65% 35%,
+        //     var(--background-color) 25%,
+        //     var(--shadow-color) 65%
+        // );
+
+        // background: radial-gradient(
+        //     circle at 65% 35%,
+        //     #e3f5f4 25%,
+        //     #041615 65%
+        // );
+
+        // background: radial-gradient(circle at 65% 35%, white 25%, red 65%);
+
+        // background: radial-gradient(
+        //     circle at 70% 30%,
+        //     #ff6347 0%,
+        //     #ffa500 20%,
+        //     #ffff00 40%,
+        //     #008000 60%,
+        //     #0000ff 80%,
+        //     #4b0082 100%
+        // );
+
+        // background: radial-gradient(
+        //     circle at 70% 30%,
+        //     #20b2aa 0%,
+        //     #1c9c95 16.67%,
+        //     #18857f 33.33%,
+        //     #146f6a 50%,
+        //     #105955 66.67%,
+        //     #0c4340 83.33%,
+        //     black 100%
+        // );
+
+        // background: radial-gradient(
+        //     circle at 70% 30%,
+        //     red 0%,
+        //     blue 100%
+        // );
+
+        // background: radial-gradient(
+        //     circle farthest-side at 70% 35%,
+        //     red 0%,
+        //     blue 70%
+        // );
+
+        // background: radial-gradient(
+        //     circle farthest-side at 70% 35%,
+        //     var(--background-color) 0%,
+        //     var(--shadow-color) 70%
+        // );
+
+        // background: radial-gradient(
+        //     farthest-side at 70% 35%,
+        //     var(--background-color) 0%,
+        //     var(--shadow-color) 70%
+        // );
+
         transform: translate(-50%, -50%);
         transition: filter 250ms ease-in-out, transform 2000ms ease-in-out,
             opacity 1000ms ease-in-out 1000ms;
@@ -101,10 +171,14 @@
         &.green {
             --shadow-color: #20b2aa40;
             --background-color: #20b2aa;
+            // --shadow-color: #062423;
+            // --background-color: #20b2aa;
+            // --shadow-color: #0c4340;
+            // --background-color: #20b2aa;
         }
 
-        &:hover {
-            filter: brightness(1.2);
-        }
+        // &:hover {
+        //     filter: brightness(1.2);
+        // }
     }
 }
