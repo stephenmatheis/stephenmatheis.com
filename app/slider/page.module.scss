@@ -1,0 +1,74 @@
+.slider {
+    position: fixed;
+    height: 100dvh;
+    width: 100vw;
+    background-color: salmon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .box {
+        width: calc(100% - 40px);
+        height: calc(100% - 40px);
+
+        .card,
+        .full {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: 40px;
+        }
+
+        .card {
+            position: absolute;
+            top: calc(50% - 125px);
+            height: 250px;
+            width: 200px;
+            border-radius: 32px;
+            background-color: lightseagreen;
+            z-index: 2;
+        }
+
+        .full {
+            top: 20px !important;
+            left: 20px !important;
+            width: calc(100vw - 40px);
+            height: calc(100vh - 40px);
+            background-color: darkred;
+            border-radius: 32px;
+            z-index: 1;
+        }
+    }
+
+    .controls {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        z-index: 3;
+
+        button {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: none;
+            padding: 0;
+            margin: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+
+            svg {
+                width: 32px;
+                height: 32px;
+                stroke: black;
+            }
+        }
+    }
+}
