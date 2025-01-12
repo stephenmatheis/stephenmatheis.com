@@ -1,37 +1,68 @@
 'use client';
 
-import { useState } from 'react';
+import { CSSProperties, useRef, useState } from 'react';
 import styles from './page.module.scss';
+import classNames from 'classnames';
 
-const cards = ['Card 0', 'Card 1', 'Card 2', 'Card 3', 'Card 4'];
+const animationDuration = 700;
+const cards = [
+    { label: 'Card 0', color: '#FFFFFF' },
+    { label: 'Card 1', color: '#BFBFBF' },
+    { label: 'Card 2', color: '#7F7F7F' },
+    { label: 'Card 3', color: '#3F3F3F' },
+    { label: 'Card 4', color: '#000000' },
+];
 
 export default function RootPage() {
     const [selected, setSelected] = useState<number>(0);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     return (
-        <div className={styles.slider}>
+        <div
+            style={
+                {
+                    '--animation-duration': `${animationDuration}ms`,
+                } as CSSProperties
+            }
+            className={styles.slider}
+        >
             <div className={styles.box}>
-                <div className={styles.full}>{cards[selected]}</div>
-                {cards
-                    .filter((_, index) => index > selected)
-                    .map((card, index) => (
+                {cards.map(({ label, color }, index) => {
+                    const position = index - selected - 1;
+
+                    return (
                         <div
+                            ref={(el) => {
+                                cardRefs.current[index] = el;
+                            }}
                             key={index}
                             style={{
-                                left: `calc(50% + (240px * ${index * 1}))`,
+                                ...(position >= 0
+                                    ? {
+                                          left: `calc(50% + (240px * ${
+                                              position * 1
+                                          }))`,
+                                      }
+                                    : {}),
+                                backgroundColor: color,
                             }}
-                            className={styles.card}
+                            className={classNames(styles.card, {
+                                [styles.full]: index <= selected,
+                            })}
                         >
-                            {card}
+                            {label}
                         </div>
-                    ))}
+                    );
+                })}
             </div>
-            {/* TODO: Add animation to prev/next selection */}
             <div className={styles.controls}>
                 <button
-                    onClick={() =>
-                        setSelected((prev) => (prev - 1 < 0 ? 0 : prev - 1))
-                    }
+                    disabled={selected === 0}
+                    onClick={() => {
+                        const prev = selected - 1 < 0 ? 0 : selected - 1;
+
+                        setSelected(prev);
+                    }}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -46,13 +77,21 @@ export default function RootPage() {
                     </svg>
                 </button>
                 <button
-                    onClick={() =>
-                        setSelected((prev) =>
-                            prev + 1 > cards.length - 2
-                                ? cards.length - 2
-                                : prev + 1
-                        )
-                    }
+                    disabled={selected === cards.length - 1}
+                    onClick={() => {
+                        const next =
+                            selected + 1 > cards.length - 1
+                                ? cards.length - 1
+                                : selected + 1;
+
+                        const node = cardRefs.current[next];
+
+                        node?.classList.add(styles.full);
+
+                        setTimeout(() => {
+                            setSelected(next);
+                        }, animationDuration);
+                    }}
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
