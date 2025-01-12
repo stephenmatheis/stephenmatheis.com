@@ -29,6 +29,8 @@ export default function RootPage() {
             <div className={styles.box}>
                 {cards.map(({ label, color }, index) => {
                     const position = index - selected - 1;
+                    const scale = index === selected ? 5 : 1;
+                    const translateX = position * 240;
 
                     return (
                         <div
@@ -36,16 +38,12 @@ export default function RootPage() {
                                 cardRefs.current[index] = el;
                             }}
                             key={index}
-                            style={{
-                                ...(position >= 0
-                                    ? {
-                                          left: `calc(50% + (240px * ${
-                                              position * 1
-                                          }))`,
-                                      }
-                                    : {}),
-                                backgroundColor: color,
-                            }}
+                            style={
+                                {
+                                    '--step': position,
+                                    backgroundColor: color,
+                                } as CSSProperties
+                            }
                             className={classNames(styles.card, {
                                 [styles.full]: index <= selected,
                             })}
@@ -59,9 +57,7 @@ export default function RootPage() {
                 <button
                     disabled={selected === 0}
                     onClick={() => {
-                        const prev = selected - 1 < 0 ? 0 : selected - 1;
-
-                        setSelected(prev);
+                        setSelected((prev) => (prev - 1 < 0 ? 0 : prev - 1));
                     }}
                 >
                     <svg
@@ -79,18 +75,11 @@ export default function RootPage() {
                 <button
                     disabled={selected === cards.length - 1}
                     onClick={() => {
-                        const next =
-                            selected + 1 > cards.length - 1
+                        setSelected((prev) =>
+                            prev + 1 > cards.length - 1
                                 ? cards.length - 1
-                                : selected + 1;
-
-                        const node = cardRefs.current[next];
-
-                        node?.classList.add(styles.full);
-
-                        setTimeout(() => {
-                            setSelected(next);
-                        }, animationDuration);
+                                : prev + 1
+                        );
                     }}
                 >
                     <svg
