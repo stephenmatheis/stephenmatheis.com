@@ -29,8 +29,6 @@ export default function RootPage() {
             <div className={styles.box}>
                 {cards.map(({ label, color }, index) => {
                     const position = index - selected - 1;
-                    const scale = index === selected ? 5 : 1;
-                    const translateX = position * 240;
 
                     return (
                         <div
@@ -56,9 +54,9 @@ export default function RootPage() {
             <div className={styles.controls}>
                 <button
                     disabled={selected === 0}
-                    onClick={() => {
-                        setSelected((prev) => (prev - 1 < 0 ? 0 : prev - 1));
-                    }}
+                    onClick={() =>
+                        setSelected((prev) => (prev - 1 < 0 ? 0 : prev - 1))
+                    }
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -74,13 +72,13 @@ export default function RootPage() {
                 </button>
                 <button
                     disabled={selected === cards.length - 1}
-                    onClick={() => {
+                    onClick={() =>
                         setSelected((prev) =>
                             prev + 1 > cards.length - 1
                                 ? cards.length - 1
                                 : prev + 1
-                        );
-                    }}
+                        )
+                    }
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

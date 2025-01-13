@@ -24,13 +24,19 @@
             border-radius: 32px;
             background-color: lightseagreen;
             z-index: 2;
-            transition: transform var(--animation-duration) ease-in-out,
+            transition: width var(--animation-duration) ease-in-out,
+                height var(--animation-duration) ease-in-out,
+                transform var(--animation-duration) ease-in-out,
                 border-radius var(--animation-duration) ease-in-out,
-                background-color var(--animation-duration) ease-in-out;
-            transform: translate(calc(50% + (240px * var(--step))), -50%) scale(1);
+                left var(--animation-duration) ease-in-out;
+            transform: translate(calc(50% + (240px * var(--step))), -50%)
+                scale(1);
 
             &.full {
-                transform: translate(-50%, -50%) scale(5);
+                width: 100vw;
+                height: 100vh;
+                transform: translate(0, -50%);
+                left: 0;
                 border-radius: 0;
                 z-index: 1;
             }
