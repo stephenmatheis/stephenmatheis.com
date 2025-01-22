@@ -245,7 +245,7 @@
 
     .toolbar {
         position: fixed;
-        top: var(--line-height);
+        top: 0;
         left: 50%;
         display: flex;
         justify-content: flex-end;
@@ -259,14 +259,12 @@
         }
 
         .download {
-            --font-size: 11px;
-            --line-height: 16.5px;
-
             padding: calc((var(--line-height) / 2)) 2ch;
-            border-radius: 8px;
             color: var(--muted);
-            background-color: transparent;
             backdrop-filter: blur(10px);
+            width: 100%;
+            text-align: center;
+            border-radius: 0 0 8px 8px;
         }
     }
 }
