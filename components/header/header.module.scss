@@ -16,7 +16,7 @@
             }
 
             .title {
-                color: var(--muted);
+                color: var(--color);
             }
         }
     }
@@ -28,7 +28,7 @@
         gap: 4ch;
 
         .name {
-            color: var(--muted);
+            color: var(--color);
             min-width: 6ch;
             max-width: 6ch;
         }

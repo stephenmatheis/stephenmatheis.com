@@ -21,7 +21,7 @@
         font-weight: normal;
         margin-top: 0;
         margin-bottom: var(--line-height);
-        color: var(--primary);
+        color: var(--color);
     }
 
     p {
@@ -33,10 +33,6 @@
         }
     }
 
-    s {
-        color: var(--muted);
-    }
-
     .header {
         display: flex;
         align-items: center;
@@ -46,10 +42,6 @@
             flex-direction: column;
             align-items: flex-start;
             gap: calc(var(--line-height) * 2);
-            // width: calc(100% - 2ch);
-            // padding-top: calc(var(--line-height) * 1 / 2);
-            // padding-bottom: calc(var(--line-height) * 1 / 2);
-            // background-color: var(--container-color);
         }
 
         h1 {
@@ -66,7 +58,6 @@
                 justify-content: center;
                 width: var(--img-size);
                 height: var(--img-size);
-                background-color: var((--container-color));
                 border-radius: 50%;
 
                 @media (max-width: 500px) {
@@ -88,22 +79,21 @@
             gap: var(--line-height);
 
             .name {
-                color: var(--primary);
+                color: var(--color);
             }
 
             .role {
-                color: var(--muted);
+                color: var(--color);
             }
 
             .pronouns {
-                color: var(--muted);
+                color: var(--color);
             }
 
             .site {
                 width: fit-content;
                 padding: calc((var(--line-height) / 2)) 2ch;
                 border-radius: 8px;
-                background-color: var(--container-color);
             }
         }
     }
@@ -134,14 +124,14 @@
                 }
 
                 .dates {
-                    color: var(--muted);
+                    color: var(--color);
                     min-width: 11ch;
                     max-width: 11ch;
                 }
 
                 .role {
                     .name {
-                        color: var(--primary);
+                        color: var(--color);
                     }
 
                     .location {
@@ -168,7 +158,7 @@
                 }
 
                 .dates {
-                    color: var(--muted);
+                    color: var(--color);
                     min-width: 11ch;
                     max-width: 11ch;
                 }
@@ -179,7 +169,7 @@
                     gap: var(--line-height);
 
                     .name {
-                        color: var(--primary);
+                        color: var(--color);
                         width: fit-content;
                     }
 
@@ -221,14 +211,14 @@
                 }
 
                 .name {
-                    color: var(--muted);
+                    color: var(--color);
                     min-width: 11ch;
                     max-width: 11ch;
                 }
 
                 .text {
                     gap: var(--line-height);
-                    color: var(--primary);
+                    color: var(--color);
                 }
             }
         }
@@ -239,7 +229,7 @@
 
         svg {
             margin-left: 0.5ch;
-            fill: var(--primary);
+            fill: var(--color);
         }
     }
 
@@ -260,7 +250,7 @@
 
         .download {
             padding: calc((var(--line-height) / 2)) 2ch;
-            color: var(--muted);
+            color: var(--color);
             backdrop-filter: blur(10px);
             width: 100%;
             text-align: center;
