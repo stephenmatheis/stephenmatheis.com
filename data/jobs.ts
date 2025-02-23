@@ -6,7 +6,7 @@ const jobs = [
         location: 'Washington, D.C.',
         roles: [
             {
-                title: 'Director, Customer Experience',
+                title: 'Director, User Experience',
                 start: 'Apr 2024',
                 end: 'Present',
                 lines: [
