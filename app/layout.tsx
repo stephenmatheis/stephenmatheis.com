@@ -13,7 +13,7 @@ export const metadata: Metadata = {
         template: 'Stephen Matheis | %s',
         default: 'Stephen Matheis',
     },
-    description: 'My blog, portfolio, and resume.',
+    description: 'My site.',
     icons: {
         shortcut: '/favicon.ico',
         icon: '/favicons/icon.png',

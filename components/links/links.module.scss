@@ -17,7 +17,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var((--container-color));
             width: calc(100% - 48px);
             height: var(--img-size);
 
@@ -30,7 +29,7 @@
 
     .text {
         .title {
-            color: var(--muted);
+            color: var(--color);
         }
     }
 
@@ -54,10 +53,9 @@
                     position: relative;
                     width: 100%;
                     display: inline-block;
-                    color: var(--primary);
+                    color: var(--color);
                     text-align: center;
                     padding: calc(var(--line-height) * 1 / 4);
-                    background-color: var(--container-color);
 
                     .icon {
                         position: absolute;
@@ -70,7 +68,7 @@
 
                         svg {
                             margin-left: 1ch;
-                            fill: var(--primary);
+                            fill: var(--color);
                         }
                     }
                 }
