@@ -1,3 +1,3 @@
-export default function ResumePage() {
+export default function RootPage() {
     return <div>Hello World</div>;
 }
