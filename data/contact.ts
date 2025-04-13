@@ -12,14 +12,6 @@ const contact = [
         name: 'Email',
     },
     {
-        href: 'https://github.com/stephenmatheis',
-        text: 'github.com/stephenmatheis',
-        label: 'My GitHub profile',
-        name: 'GitHub',
-        user: 'stephenmatheis',
-        newTab: true,
-    },
-    {
         href: 'https://codepen.io/stephenmatheis',
         text: 'codepen.io/stephenmatheis',
         label: 'My CodePen profile',
