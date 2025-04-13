@@ -1,23 +1,34 @@
+import createMDX from '@next/mdx';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    pageExtensions: ['js', 'jsx', 'ts', 'tsx',],
-    reactStrictMode: true,
     sassOptions: {
+        quietDeps: true,
+        silenceDeprecations: ['legacy-js-api', 'global-builtin', 'import'],
         logger: {
-            /**
-             * @param {string} message
-             */
             warn(message) {
                 console.warn(message);
             },
-            /**
-             * @param {string} message
-             */
             debug(message) {
                 console.log(message);
             },
         },
     },
+    env: {
+        version: process.env.npm_package_version || '',
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'cdn.tidesandcurrents.noaa.gov',
+            },
+        ],
+    },
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+    // Add markdown plugins here, as desired
+});
+
+export default withMDX(nextConfig);

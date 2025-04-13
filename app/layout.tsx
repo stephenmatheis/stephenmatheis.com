@@ -52,7 +52,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <body className={departureMono.variable} suppressHydrationWarning>
                 {children}
-                <Analytics />
+                <Analytics debug={false} />
             </body>
         </html>
     );
