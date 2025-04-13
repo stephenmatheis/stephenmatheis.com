@@ -1,11 +1,18 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
+import { Nunito } from 'next/font/google';
 import localFont from 'next/font/local';
 import '@/styles/app.scss';
+import classNames from 'classnames';
 
 const departureMono = localFont({
     src: './fonts/DepartureMono.woff',
     variable: '--font-departure-mono',
+});
+
+const nunito = Nunito({
+    subsets: ['latin'],
+    variable: '--font-nunito',
 });
 
 export const metadata: Metadata = {
@@ -50,7 +57,10 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={departureMono.variable} suppressHydrationWarning>
+            <body
+                className={classNames(departureMono.variable, nunito.variable)}
+                suppressHydrationWarning
+            >
                 {children}
                 <Analytics />
             </body>
