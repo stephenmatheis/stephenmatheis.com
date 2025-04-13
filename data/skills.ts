@@ -1,15 +1,7 @@
 const skills = [
     {
         group: 'Programming Languages',
-        items: [
-            'JavaScript',
-            'TypeScript',
-            'HTML',
-            'CSS',
-            'Sass',
-            'PowerShell',
-            'Python',
-        ],
+        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS', 'Sass', 'PowerShell', 'Python'],
     },
     {
         group: 'Libraries',

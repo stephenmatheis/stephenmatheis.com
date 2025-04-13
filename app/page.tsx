@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Fragment } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -33,15 +32,8 @@ export default function ResumePage() {
                 {/* Text */}
                 <div className={styles.text}>
                     <h1 className={styles.name}>Stephen Matheis</h1>
-                    <div className={styles.role}>
-                        Director, Customer Experience at TATCS in Washington,
-                        D.C.
-                    </div>
-                    <Link
-                        className={styles.site}
-                        href="https://github.com/stephenmatheis"
-                        target="_blank"
-                    >
+                    <div className={styles.role}>Director, Customer Experience at TATCS in Washington, D.C.</div>
+                    <Link className={styles.site} href="https://github.com/stephenmatheis" target="_blank">
                         github.com/stephenmatheis
                     </Link>
                 </div>
@@ -61,32 +53,17 @@ export default function ResumePage() {
                                     return (
                                         <div key={index} className={styles.job}>
                                             <div className={styles.dates}>
-                                                {start} -{' '}
-                                                {end === 'Present'
-                                                    ? 'Now'
-                                                    : end}
+                                                {start} - {end === 'Present' ? 'Now' : end}
                                             </div>
-                                            <div
-                                                key={index}
-                                                className={styles.role}
-                                            >
+                                            <div key={index} className={styles.role}>
                                                 <div className={styles.name}>
-                                                    <Link
-                                                        href={job.site}
-                                                        target="_blank"
-                                                    >
+                                                    <Link href={job.site} target="_blank">
                                                         {' '}
-                                                        {role.title} at{' '}
-                                                        {job.companyShort ||
-                                                            job.company}
+                                                        {role.title} at {job.companyShort || job.company}
                                                     </Link>
                                                     <Arrow />
                                                 </div>
-                                                <div
-                                                    className={styles.location}
-                                                >
-                                                    {job.location}
-                                                </div>
+                                                <div className={styles.location}>{job.location}</div>
                                             </div>
                                         </div>
                                     );
@@ -104,14 +81,10 @@ export default function ResumePage() {
                     {projects.map((project, index) => {
                         return (
                             <div key={index} className={styles.project}>
-                                <div className={styles.dates}>
-                                    {project.date}
-                                </div>
+                                <div className={styles.dates}>{project.date}</div>
                                 <div key={index} className={styles.info}>
                                     <div className={styles.name}>
-                                        <Link href={project.link}>
-                                            {project.name}
-                                        </Link>
+                                        <Link href={project.link}>{project.name}</Link>
                                         <Arrow />
                                     </div>
                                     <div
@@ -136,9 +109,7 @@ export default function ResumePage() {
                             <div key={index} className={styles.item}>
                                 <div className={styles.name}>{item.name}</div>
                                 <div className={styles.text}>
-                                    <Link href={item.href}>
-                                        {item.user || item.text}
-                                    </Link>
+                                    <Link href={item.href}>{item.user || item.text}</Link>
                                     <Arrow />
                                 </div>
                             </div>
@@ -149,12 +120,7 @@ export default function ResumePage() {
 
             {/* Download */}
             <div className={styles.toolbar}>
-                <Link
-                    href="/resume.pdf"
-                    aria-label="My resume"
-                    target="_blank"
-                    className={styles.download}
-                >
+                <Link href="/resume.pdf" aria-label="My resume" target="_blank" className={styles.download}>
                     ↓ Download Resume
                 </Link>
             </div>
