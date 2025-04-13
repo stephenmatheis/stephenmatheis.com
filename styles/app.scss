@@ -1,8 +1,8 @@
 :root {
     --font-size: 16.5px;
     --line-height: 1.5;
-    --color: #ffb000;
-    --background-color: black;
+    --color: #cccccc;
+    --background-color: #333333;
 
     @media print {
         --primary: #e9e9e9;
@@ -35,7 +35,8 @@ html {
 }
 
 body {
-    font-family: var(--font-departure-mono);
+    // font-family: var(--font-departure-mono);
+    font-family: var(--font-nunito);
     background-color: var(--background-color);
 }
 

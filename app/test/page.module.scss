@@ -1,0 +1,70 @@
+.page {
+    padding: 3rem;
+    color: rgb(124, 23, 94);
+
+    .cart {
+        position: relative;
+        height: 200px;
+        width: 200px;
+
+        .shape {
+            position: absolute;
+            height: 200px;
+            width: 200px;
+            background-color: white;
+            // https://unused-css.com/tools/clip-path-generator?p=22AwLmBoHYFY3BGYoBM0FJIirNPKGAbmIGIAWSSAIwFMqg
+            clip-path: polygon(
+                0% 0%,
+                80% 0%,
+                100% 20%,
+                100% 100%,
+                20% 100%,
+                0% 80%
+            );
+
+            &::before {
+                --border-size: 2px;
+
+                content: '';
+                position: absolute;
+                top: var(--border-size);
+                left: var(--border-size);
+                right: var(--border-size);
+                bottom: var(--border-size);
+                background: linear-gradient(
+                    0deg,
+                    rgb(251, 0, 176) 5%,
+                    rgb(21, 147, 182) 100%
+                );
+                clip-path: polygon(
+                    0% 0%,
+                    80% 0%,
+                    100% 20%,
+                    100% 100%,
+                    20% 100%,
+                    0% 80%
+                );
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+            height: 100%;
+
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3rem;
+                font-weight: 900;
+
+                &:nth-child(1) {
+                    -webkit-text-stroke: 0.5rem rgb(21, 147, 182);
+                }
+            }
+        }
+    }
+}
