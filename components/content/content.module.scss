@@ -3,8 +3,15 @@
     flex-direction: row;
     gap: 0.5in;
     width: 100%;
-    font-family: monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-        Liberation Mono, 'Courier New', monospace;
+    font-family:
+        monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        Liberation Mono,
+        'Courier New',
+        monospace;
 
     .right {
         --width: calc(7.5in * (1 / 3));

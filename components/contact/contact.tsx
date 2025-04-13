@@ -13,9 +13,7 @@ export function Contact() {
                         <div key={index} className={styles.item}>
                             <div className={styles.name}>{item.name}</div>
                             <div className={styles.text}>
-                                <Link href={item.href}>
-                                    {item.user || item.text}
-                                </Link>
+                                <Link href={item.href}>{item.user || item.text}</Link>
                             </div>
                         </div>
                     );

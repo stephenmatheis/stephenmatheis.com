@@ -9,12 +9,7 @@ export function Projects() {
             <Comment text="Projects" />
             <div className={styles.list}>
                 {projects.map(({ name, link, description }) => (
-                    <Project
-                        key={name}
-                        name={name}
-                        link={link}
-                        description={description}
-                    />
+                    <Project key={name} name={name} link={link} description={description} />
                 ))}
             </div>
         </section>

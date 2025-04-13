@@ -14,14 +14,9 @@ export function Skills() {
                             <span className={styles['items-ctr']}>
                                 {items.map((item, index) => {
                                     return (
-                                        <span
-                                            key={item}
-                                            className={styles['item']}
-                                        >
+                                        <span key={item} className={styles['item']}>
                                             {item}
-                                            {index !== items.length - 1
-                                                ? ','
-                                                : ''}
+                                            {index !== items.length - 1 ? ',' : ''}
                                         </span>
                                     );
                                 })}

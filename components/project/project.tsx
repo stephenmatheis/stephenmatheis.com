@@ -7,10 +7,7 @@ export function Project({ name, link, description }) {
             <Link href={link} target="_blank" aria-label={name}>
                 {name}
             </Link>
-            <div
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: description }}
-            />
+            <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
         </div>
     );
 }

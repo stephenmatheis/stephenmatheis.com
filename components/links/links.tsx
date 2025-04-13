@@ -18,28 +18,19 @@ export function Links() {
             <nav>
                 <ul>
                     <li>
-                        <a
-                            href="https://github.com/stephenmatheis"
-                            target="_blank"
-                        >
+                        <a href="https://github.com/stephenmatheis" target="_blank">
                             GitHub
                             <span className={styles.icon}>↗</span>
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="https://codepen.io/stephenmatheis"
-                            target="_blank"
-                        >
+                        <a href="https://codepen.io/stephenmatheis" target="_blank">
                             CodePen
                             <span className={styles.icon}>↗</span>
                         </a>
                     </li>
                     <li>
-                        <a
-                            href="https://www.linkedin.com/in/stephenmatheis/"
-                            target="_blank"
-                        >
+                        <a href="https://www.linkedin.com/in/stephenmatheis/" target="_blank">
                             LinkedIn
                             <span className={styles.icon}>↗</span>
                         </a>

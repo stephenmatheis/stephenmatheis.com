@@ -20,8 +20,7 @@ const projects = [
         date: '2017',
         link: 'https://github.com/robijs',
         image: '/images/robi.webp',
-        description:
-            'A client-side SPA framework for SharePoint. Supports ES modules and local development.',
+        description: 'A client-side SPA framework for SharePoint. Supports ES modules and local development.',
     },
 ];
 
