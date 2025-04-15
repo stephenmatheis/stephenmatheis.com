@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from 'next';
-import { Analytics } from '@vercel/analytics/react';
 import localFont from 'next/font/local';
+import { Analytics } from '@vercel/analytics/react';
 import '@/styles/app.scss';
 
-const departureMono = localFont({
+const mono = localFont({
     src: './fonts/DepartureMono.woff',
-    variable: '--font-departure-mono',
+    variable: '--font-mono',
 });
 
 export const metadata: Metadata = {
@@ -14,12 +14,6 @@ export const metadata: Metadata = {
         default: 'Stephen Matheis',
     },
     description: 'My blog, portfolio, and resume.',
-    icons: {
-        shortcut: '/favicon.ico',
-        icon: '/favicons/icon.png',
-        apple: '/favicons/apple-icon.png',
-    },
-    manifest: '/manifest.json',
     openGraph: {
         title: 'Stephen Matheis',
         description: 'Bio',
@@ -46,7 +40,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={departureMono.variable} suppressHydrationWarning>
+            <body className={mono.variable} suppressHydrationWarning>
                 {children}
                 <Analytics debug={false} />
             </body>
