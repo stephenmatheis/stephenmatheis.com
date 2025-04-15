@@ -1,14 +1,14 @@
 :root {
     --font-size: 11px;
     --line-height: 16px;
-    --primary: #f1f1f3;
-    --color: #bbbbbb;
-    --muted: #757575;
-    --background-color: #010103;
+    --primary: rgb(223, 99, 184);
+    --muted: #868686;
+    --color: #cccccc;
+    --background-color: #1e1e28;
 
-    @media print {
-        --font-size: 11px;
-        --line-height: 16px;
+    @media (max-width: 768px) {
+        --font-size: 13px;
+        --line-height: 18px;
     }
 }
 

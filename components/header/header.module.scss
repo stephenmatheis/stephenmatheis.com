@@ -3,10 +3,6 @@
     display: flex;
     justify-content: space-between;
 
-    @media screen and (max-width: 8.5in) {
-        flex-direction: column;
-    }
-
     a {
         .text {
             @media screen and (max-width: 8.5in) {
@@ -15,22 +11,13 @@
                 margin-bottom: calc(var(--line-height) * 2);
             }
 
+            @media (max-width: 768px) {
+                margin-bottom: 0;
+            }
+
             .title {
                 color: var(--muted);
             }
-        }
-    }
-
-    .right {
-        width: calc(7.5in * (1 / 3));
-
-        display: flex;
-        gap: 4ch;
-
-        .name {
-            color: var(--muted);
-            min-width: 6ch;
-            max-width: 6ch;
         }
     }
 }
