@@ -1,7 +1,4 @@
 .page {
-    --font-size: 11px;
-    --line-height: 16px;
-
     position: relative;
     display: flex;
     flex-direction: column;
@@ -11,14 +8,5 @@
 
     @media screen {
         margin: 0 auto;
-
-        @media (max-width: 8.5in) {
-            --font-size: 14px;
-            --line-height: 28px;
-
-            padding: 0.25in;
-            padding-bottom: 1in;
-            width: 100%;
-        }
     }
 }

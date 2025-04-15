@@ -17,7 +17,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var((--container-color));
+            background-color: var(--color);
             width: calc(100% - 48px);
             height: var(--img-size);
 
@@ -57,7 +57,6 @@
                     color: var(--primary);
                     text-align: center;
                     padding: calc(var(--line-height) * 1 / 4);
-                    background-color: var(--container-color);
 
                     .icon {
                         position: absolute;
