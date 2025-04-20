@@ -1,6 +1,9 @@
 .footer {
     color: var(--color);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8ch;
     margin-top: calc(var(--line-height) * 2);
 
     @media (max-width: 768px) {
@@ -9,5 +12,12 @@
 
     @media print {
         display: none;
+    }
+
+    .toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2ch;
     }
 }
