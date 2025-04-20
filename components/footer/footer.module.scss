@@ -1,5 +1,9 @@
 .footer {
     color: var(--color);
     text-align: center;
-    margin-bottom: calc(var(--line-height) * 3);
+    margin-top: calc(var(--line-height) * 2);
+
+    @media (max-width: 768px) {
+        margin-bottom: calc(var(--line-height) * 2);
+    }
 }

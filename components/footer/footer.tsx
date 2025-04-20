@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from './footer.module.scss';
 
 type FooterProps = {};
@@ -6,9 +5,9 @@ type FooterProps = {};
 export function Footer({}: FooterProps) {
     return (
         <div className={styles.footer}>
-            <Link href="/resume.pdf" title="Link to download my resume as a pdf.">
+            <a href="/resume.pdf" target="_blank" title="Link to download my resume as a pdf.">
                 Download Resume
-            </Link>
+            </a>
         </div>
     );
 }
