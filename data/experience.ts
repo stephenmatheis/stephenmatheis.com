@@ -1,4 +1,4 @@
-const jobs = [
+const experience = [
     {
         company: 'T and T Consulting Services',
         companyShort: 'TATCS',
@@ -18,10 +18,7 @@ const jobs = [
                 title: 'Senior Application Solutions Engineer',
                 start: 'Oct 2023',
                 end: 'March 2024',
-                lines: [
-                    'Supported NOAA',
-                    'Built apps with Next.js, TypeScript, Python, and MongoDB hosted on Vercel and AWS',
-                ],
+                lines: ['Supported NOAA', 'Built apps with TypeScript, Python, MongoDB, Vercel & AWS'],
             },
         ],
     },
@@ -108,7 +105,7 @@ const jobs = [
                 title: 'Software Developer',
                 start: 'Oct 2017',
                 end: 'Mar 2018',
-                lines: ['Created Robi, a client-side SharePoint app framework'],
+                lines: ['Created Robi, a client-side SharePoint app framework', 'Freelance work'],
             },
         ],
     },
@@ -146,4 +143,4 @@ const jobs = [
     },
 ];
 
-export default jobs;
+export default experience;
