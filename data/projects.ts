@@ -1,17 +1,20 @@
 const projects = [
     {
+        name: 'Bookmarks',
+        date: '2023',
+        link: 'https://github.com/stephenmatheis/bookmarks',
+        description: 'Like instapaper, but worse.',
+    },
+    {
         name: 'Command Palette',
         date: '2021',
         link: 'https://robi-command-palette.netlify.app',
-        image: '/images/command-palette.webp',
-        description: 'React command runner. Built with Fastify.',
+        description: 'Command runner built with Fastify.',
     },
-
     {
         name: 'Samepage',
         date: '2019',
         link: 'https://samepage.netlify.app/',
-        image: '/images/samepage.webp',
 
         description: /*html*/ `A <a href="https://basecamp.com/" target="_blank">Basecamp</a> clone built with Robi.`,
     },
@@ -19,8 +22,13 @@ const projects = [
         name: 'Robi',
         date: '2017',
         link: 'https://github.com/robijs',
-        image: '/images/robi.webp',
-        description: 'A client-side SPA framework for SharePoint. Supports ES modules and local development.',
+        description: 'NPMless SharePoint SPA framework.',
+    },
+    {
+        name: 'U.S. Tsunami Warning System',
+        date: '2017',
+        link: 'https://tsunami-gov.vercel.app/',
+        description: /*html*/ `Redesigned <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a>.`,
     },
 ];
 

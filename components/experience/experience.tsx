@@ -1,12 +1,12 @@
 import { Comment } from '@/components/comment';
-import jobs from '@/data/jobs';
+import experience from '@/data/experience';
 import styles from './experience.module.scss';
 
 export function Experience() {
     return (
         <section className={styles.experience}>
             <Comment text="Experience" />
-            {jobs.map(({ company, location, roles }, index) => {
+            {experience.map(({ company, location, roles }, index) => {
                 return (
                     <div key={index} className={styles.job}>
                         <div className={styles.roles}>
@@ -14,15 +14,7 @@ export function Experience() {
                                 return (
                                     <div key={index} className={styles.role}>
                                         <div className={styles.title}>
-                                            <span>{title}</span>{' '}
-                                            {/* {index === 0 && (
-                                                <span
-                                                    className={styles.company}
-                                                >
-                                                    @ {company}
-                                                </span>
-                                            )} */}
-                                            <span className={styles.company}>@ {company}</span>
+                                            <span>{title}</span> <span className={styles.company}>@ {company}</span>
                                         </div>
                                         <div className={styles.date}>
                                             {start} - {end}
