@@ -1,0 +1,12 @@
+.toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2ch;
+    color: var(--muted);
+
+    .selected {
+        color: var(--primary);
+    }
+}

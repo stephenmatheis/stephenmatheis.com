@@ -1,15 +1,22 @@
 :root {
     --font-size: 11px;
     --line-height: 16px;
-    --primary: #f1f1f3;
-    --muted: #868686;
-    --color: #cccccc;
-    --background-color: #1e1e28;
+    --primary: #010101;
+    --muted: #767676;
+    --color: #555555;
+    --background-color: #fefefe;
 
     @media (max-width: 768px) {
         --font-size: 13px;
         --line-height: 18px;
     }
+}
+
+[data-theme='dark'] {
+    --primary: #f1f1f3;
+    --muted: #808080;
+    --color: #bbbbbb;
+    --background-color: #171717;
 }
 
 * {
