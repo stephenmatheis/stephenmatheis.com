@@ -1,0 +1,10 @@
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--line-height) * 1);
+    position: relative;
+
+    a {
+        width: fit-content;
+    }
+}
