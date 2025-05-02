@@ -10,7 +10,7 @@ const experience = [
                 start: 'Apr 2024',
                 end: 'Present',
                 lines: [
-                    /*html*/ `Redesigning <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a> and <a href="https://gps.gov/" target="_blank">gps.gov</a>`,
+                    /*html*/ `Redesigning <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a>`,
                     'Building an LLM tool for technical writers',
                 ],
             },
