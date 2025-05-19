@@ -7,7 +7,7 @@ export function Header() {
             <Link className={styles.name} href="/" aria-label="Home page">
                 <span className={styles.text}>
                     <span className={[styles.name, styles.part].join(' ')}>Stephen Matheis</span>{' '}
-                    <span className={styles.title}>Software Developer</span>
+                    <span className={styles.title}>Full-Stack Software Engineer</span>
                 </span>
             </Link>
         </header>
