@@ -8,10 +8,10 @@ const experience = [
             {
                 title: 'Director, User Experience',
                 start: 'Apr 2024',
-                end: 'Present',
+                end: 'May 2025',
                 lines: [
-                    /*html*/ `Redesigning <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a>`,
-                    'Building an LLM tool for technical writers',
+                    /*html*/ `Redesigned <a href="https://tsunami.gov/" target="_blank">tsunami.gov</a>`,
+                    'Built an LLM tool for technical writers',
                 ],
             },
             {
@@ -30,7 +30,7 @@ const experience = [
             {
                 title: 'Front-end Developer',
                 start: 'Aug 2022',
-                end: 'October 2023',
+                end: 'Oct 2023',
                 lines: [
                     'Built prototypes with Next.js, TypeScript, and Sass',
                     'Developed a tool for scaffolding React components',
