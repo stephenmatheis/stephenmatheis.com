@@ -15,16 +15,6 @@ export function ToggleTheme() {
         setMounted(true);
     }, []);
 
-    if (!mounted) {
-        return (
-            <span className={styles.toggle}>
-                {options.map((option) => {
-                    return <span key={option}>{option}</span>;
-                })}
-            </span>
-        );
-    }
-
     return (
         <span className={styles.toggle}>
             {options.map((option) => {
@@ -33,9 +23,10 @@ export function ToggleTheme() {
                 return (
                     <span
                         key={option}
-                        className={classNames({ [styles.selected]: theme === value })}
+                        className={classNames({ [styles.selected]: mounted && theme === value })}
                         role="button"
                         onClick={() => setTheme(value)}
+                        suppressHydrationWarning
                     >
                         {option}
                     </span>
