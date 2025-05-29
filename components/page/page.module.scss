@@ -10,9 +10,9 @@
         margin: 0 auto;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 8.5in) {
         gap: calc(var(--line-height) * 3);
         width: 100%;
-        padding: 0.25in;
+        padding: 0.5in 0.25in;
     }
 }
