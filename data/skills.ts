@@ -1,19 +1,24 @@
 const skills = [
     {
         group: 'Programming Languages',
-        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS', 'Sass', 'PowerShell', 'Python'],
+        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'Python'],
     },
-    {
-        group: 'Libraries',
-        items: ['React', 'Fastify', 'Express', 'jQuery', ''],
-    },
-    {
-        group: 'SDKs',
-        items: ['ArcGIS Maps for JavaScript'],
-    },
+
     {
         group: 'Frameworks',
         items: ['Next.js', 'React Native', 'Expo'],
+    },
+    {
+        group: 'Runtimes',
+        items: ['Node.js',],
+    },
+    {
+        group: 'Platforms',
+        items: ['AWS', 'Vercel', 'Netlify', 'GCP', 'PICO-8'],
+    },
+    {
+        group: 'Libraries',
+        items: ['React', 'Express', 'Fastify', 'jQuery', ''],
     },
     {
         group: 'Databases',
@@ -24,8 +29,8 @@ const skills = [
         items: ['Git', 'GitHb', 'GitLab', 'Docker', 'Webpack', 'Vite'],
     },
     {
-        group: 'Platforms',
-        items: ['AWS', 'Vercel', 'Netlify', 'PICO-8'],
+        group: 'SDKs',
+        items: ['ArcGIS Maps for JavaScript'],
     },
     {
         group: 'Design',
