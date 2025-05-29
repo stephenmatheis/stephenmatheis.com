@@ -1,17 +1,17 @@
 :root {
     --font-size: 11px;
     --line-height: 16px;
-    --primary: #010101;
-    --muted: #767676;
-    --color: #555555;
+    --primary: #000000;
+    --muted: #afafaf;
+    --color: #656565;
     --background-color: #fefefe;
 }
 
 [data-theme='dark'] {
-    --primary: #f1f1f3;
-    --muted: #808080;
-    --color: #bbbbbb;
-    --background-color: #171717;
+    --primary: #ffffff;
+    --muted: #656565;
+    --color: #b0b0b0;
+    --background-color: #101010;
 }
 
 * {
