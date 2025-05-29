@@ -17,7 +17,7 @@ export function Experience() {
                                             <span>{title}</span> <span className={styles.company}>@ {company}</span>
                                         </div>
                                         <div className={styles.date}>
-                                            {start} - {end}
+                                            {start}–{end}
                                             <span className={styles.location}> • {location}</span>
                                         </div>
                                         <div className={styles.lines}>
