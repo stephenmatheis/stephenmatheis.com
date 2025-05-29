@@ -14,7 +14,7 @@ export const metadata: Metadata = {
         template: 'Stephen Matheis | %s',
         default: 'Stephen Matheis',
     },
-    description: 'My blog, portfolio, and resume.',
+    description: 'My personal site.',
     openGraph: {
         title: 'Stephen Matheis',
         description: 'Bio',
