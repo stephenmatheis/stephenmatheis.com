@@ -5,13 +5,7 @@
 
     a {
         .text {
-            @media screen and (max-width: 8.5in) {
-                display: flex;
-                flex-direction: column;
-                margin-bottom: calc(var(--line-height) * 2);
-            }
-
-            @media (max-width: 768px) {
+            @media (max-width: 8.5in) {
                 margin-bottom: 0;
             }
 

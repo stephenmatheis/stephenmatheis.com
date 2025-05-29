@@ -5,11 +5,6 @@
     --muted: #767676;
     --color: #555555;
     --background-color: #fefefe;
-
-    @media (max-width: 768px) {
-        --font-size: 13px;
-        --line-height: 18px;
-    }
 }
 
 [data-theme='dark'] {
