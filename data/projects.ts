@@ -9,7 +9,7 @@ const projects = [
         name: 'Apple',
         date: '2022',
         link: 'https://www.apple.com/watch/',
-        description: /*html*/ `New apple.com/watch buy flow.`,
+        description: /*html*/ `New <a href="https://apple.com/watch" target="_blank">apple.com/watch</a> buy flow.`,
     },
     {
         name: 'Command Palette',
