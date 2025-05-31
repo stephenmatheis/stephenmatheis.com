@@ -1,4 +1,3 @@
-
 import { ToggleTheme } from '@/components/toggle-theme';
 import styles from './footer.module.scss';
 

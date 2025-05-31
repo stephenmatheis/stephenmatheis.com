@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
-import classNames from 'classnames';
 import styles from './toggle-theme.module.scss';
 
 const options = ['Light', 'Dark', 'System'];
@@ -23,7 +22,7 @@ export function ToggleTheme() {
                 return (
                     <span
                         key={option}
-                        className={classNames({ [styles.selected]: mounted && theme === value })}
+                        className={mounted && theme === value ? styles.selected : ''}
                         role="button"
                         onClick={() => setTheme(value)}
                         suppressHydrationWarning
