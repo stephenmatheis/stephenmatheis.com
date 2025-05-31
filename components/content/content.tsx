@@ -4,6 +4,7 @@ import { Skills } from '@/components/skills';
 import { Projects } from '@/components/projects';
 import { Education } from '../education';
 import styles from './content.module.scss';
+import { Interests } from '../interests';
 
 export function Content() {
     return (
@@ -16,6 +17,7 @@ export function Content() {
                 <Skills />
                 <Projects />
                 <Education />
+                <Interests />
             </section>
         </main>
     );
