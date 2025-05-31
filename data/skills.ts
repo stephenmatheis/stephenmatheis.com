@@ -1,40 +1,48 @@
 const skills = [
     {
         group: 'Programming Languages',
-        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'Python'],
-    },
-
-    {
-        group: 'Frameworks',
-        items: ['Next.js', 'React Native', 'Expo'],
+        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'Python', 'PowerShell'],
     },
     {
-        group: 'Runtimes',
-        items: ['Node.js',],
+        group: 'Frameworks, Libraries, & Runtimes',
+        items: [
+            'Node.js',
+            'React',
+            'Next.js',
+            'Payload CMS',
+            'Motion',
+            'Express',
+            'Fastify',
+            'Three.js',
+            'R3F',
+            'ArcGIS',
+            'jQuery',
+            'Chart.js',
+            'React Native',
+            'Expo',
+        ],
     },
     {
-        group: 'Platforms',
-        items: ['AWS', 'Vercel', 'Netlify', 'GCP', 'PICO-8'],
-    },
-    {
-        group: 'Libraries',
-        items: ['React', 'Express', 'Fastify', 'jQuery', ''],
+        group: 'Platforms & Tools',
+        items: [
+            'AWS',
+            'GCP',
+            'Vercel',
+            'Netlify',
+            'Git',
+            'GitHb',
+            'GitLab',
+            'Docker',
+            'Webpack',
+            'Vite',
+            'Figma',
+            'Sketch',
+            'PICO-8',
+        ],
     },
     {
         group: 'Databases',
         items: ['MongoDB', 'DynamoDB', 'Firebase'],
-    },
-    {
-        group: 'Tools',
-        items: ['Git', 'GitHb', 'GitLab', 'Docker', 'Webpack', 'Vite'],
-    },
-    {
-        group: 'SDKs',
-        items: ['ArcGIS Maps for JavaScript'],
-    },
-    {
-        group: 'Design',
-        items: ['Figma', 'Sketch'],
     },
 ];
 

@@ -20,7 +20,7 @@ const projects = [
     {
         name: 'Robi',
         date: '2017',
-        link: 'https://github.com/robijs',
+        link: 'https://robijs.dev',
         description: 'SharePoint SPA framework.',
     },
 ];
