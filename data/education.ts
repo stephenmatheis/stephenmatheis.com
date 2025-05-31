@@ -4,7 +4,7 @@ const education = [
         degree: 'Dual Seal Diploma',
     },
     {
-        school: 'Armstrong Atlantic St. Uni.',
+        school: 'Armstrong Atlantic',
         degree: 'Creative Writing',
     },
 ];
