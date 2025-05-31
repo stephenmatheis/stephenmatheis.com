@@ -12,18 +12,18 @@
         gap: var(--line-height);
 
         .item {
+            flex: 1;
             display: flex;
-            gap: 7ch;
+            justify-content: space-between;
 
             .name {
                 color: var(--muted);
-                min-width: 8ch;
-                max-width: 8ch;
             }
 
             .text {
                 gap: var(--line-height);
                 color: var(--primary);
+                width: 21ch;
             }
         }
     }

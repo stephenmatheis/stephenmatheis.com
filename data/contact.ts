@@ -19,22 +19,6 @@ const contact = [
         user: 'stephenmatheis',
         newTab: true,
     },
-    {
-        href: 'https://codepen.io/stephenmatheis',
-        text: 'codepen.io/stephenmatheis',
-        label: 'My CodePen profile',
-        name: 'CodePen',
-        user: 'stephenmatheis',
-        newTab: true,
-    },
-    {
-        href: 'https://www.linkedin.com/in/stephenmatheis',
-        text: 'linkedin.com/in/stephenmatheis',
-        label: 'My LinkedIn profile',
-        name: 'LinkedIn',
-        user: 'stephenmatheis',
-        newTab: true,
-    },
 ];
 
 export default contact;

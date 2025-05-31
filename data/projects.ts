@@ -12,12 +12,6 @@ const projects = [
         description: /*html*/ `New <a href="https://apple.com/watch" target="_blank">apple.com/watch</a> buy flow.`,
     },
     {
-        name: 'Command Palette',
-        date: '2021',
-        link: 'https://robi-command-palette.netlify.app',
-        description: 'React command runner.',
-    },
-    {
         name: 'Robi',
         date: '2017',
         link: 'https://robijs.dev',
