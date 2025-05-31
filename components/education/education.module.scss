@@ -1,0 +1,14 @@
+.education {
+    .schools-ctr {
+        display: flex;
+        flex-direction: column;
+        gap: var(--line-height);
+
+        .school {
+            .name {
+                color: var(--primary);
+                position: relative;
+            }
+        }
+    }
+}

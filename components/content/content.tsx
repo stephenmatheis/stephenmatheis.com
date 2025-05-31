@@ -1,7 +1,8 @@
 import { Experience } from '@/components/experience';
+import { Contact } from '@/components/contact';
 import { Skills } from '@/components/skills';
 import { Projects } from '@/components/projects';
-import { Contact } from '@/components/contact';
+import { Education } from '../education';
 import styles from './content.module.scss';
 
 export function Content() {
@@ -14,6 +15,7 @@ export function Content() {
                 <Contact />
                 <Skills />
                 <Projects />
+                <Education />
             </section>
         </main>
     );
