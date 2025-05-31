@@ -30,7 +30,7 @@ const skills = [
             'Vercel',
             'Netlify',
             'Git',
-            'GitHb',
+            'GitHub',
             'GitLab',
             'Docker',
             'Webpack',
