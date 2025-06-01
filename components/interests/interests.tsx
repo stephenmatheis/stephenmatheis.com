@@ -7,7 +7,7 @@ type InterestsProps = {};
 export function Interests({}: InterestsProps) {
     return (
         <div className={styles.interests}>
-            <Comment text="Interests" />
+            <Comment text="Likes" />
             <div className={styles.items}>{interests.join(', ')}</div>
         </div>
     );
