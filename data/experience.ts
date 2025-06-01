@@ -25,7 +25,7 @@ const experience = [
             {
                 title: 'Senior Application Solutions Engineer',
                 start: 'Oct 2023',
-                end: 'March 2024',
+                end: 'Mar 2024',
             },
             {
                 title: 'Senior SharePoint Developer',
@@ -63,7 +63,7 @@ const experience = [
                 end: 'Jul 2022',
             },
         ],
-        list: ['Application development for the U.S Air Force', 'Developed tools for generating C# source code files'],
+        list: ['Application development for the U.S. Air Force', 'Developed tools for generating C# source code files'],
     },
     {
         company: 'Robi',
