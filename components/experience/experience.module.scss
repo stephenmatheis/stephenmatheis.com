@@ -1,49 +1,39 @@
 .experience {
-    .job {
-        break-inside: avoid;
+    .jobs {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--line-height) * 2);
 
-        &:not(:last-child) {
-            margin-bottom: var(--line-height);
+        .job {
+            break-inside: avoid;
 
-            @media screen and (max-width: 8.5in) {
-                margin-bottom: calc(var(--line-height) * 2);
-            }
-        }
+            .title {
+                color: var(--primary);
+                position: relative;
 
-        .title {
-            color: var(--primary);
-            position: relative;
-
-            .company {
-                color: var(--color);
-            }
-        }
-
-        .lines {
-            .line {
-                display: flex;
-
-                .bullet {
-                    margin-right: 1ch;
-                    color: var(--muted);
+                .company {
+                    color: var(--color);
                 }
             }
-        }
 
-        .roles {
-            .role {
-                &:not(:last-child) {
-                    margin-bottom: var(--line-height);
+            .date {
+                color: var(--muted);
+            }
+
+            .list {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                .item {
+                    display: flex;
+
+                    .bullet {
+                        margin-right: 1ch;
+                        color: var(--muted);
+                    }
                 }
             }
-        }
-    }
-
-    .date {
-        color: var(--muted);
-
-        .location {
-            color: var(--muted);
         }
     }
 }
