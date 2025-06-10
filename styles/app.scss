@@ -1,6 +1,4 @@
 :root {
-    --font-size: 11px;
-    --line-height: 16px;
     --primary: #000000;
     --muted: #a3a3a3;
     --color: #767676;
@@ -15,28 +13,24 @@
 }
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-
-    &::selection {
-        color: var(--background-color);
-        background-color: var(--color);
-    }
 }
 
 html {
+    font-size: 16.5px;
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
     position: relative;
     font-family: var(--font-mono);
     background-color: var(--background-color);
-    margin: 0;
-    padding: 0;
 }
 
 a {
