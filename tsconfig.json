@@ -1,7 +1,13 @@
 {
     "compilerOptions": {
-        "typeRoots": ["./node_modules/@types"],
-        "lib": ["dom", "dom.iterable", "esnext"],
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
         "allowJs": true,
         "skipLibCheck": true,
         "strict": false,
@@ -21,12 +27,22 @@
             }
         ],
         "strictNullChecks": true,
-        "target": "ESNext",
+        "target": "es6",
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./*"]
+            "@/*": [
+                "./*"
+            ]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.mjs"],
-    "exclude": ["node_modules"]
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "next.config.mjs"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }
