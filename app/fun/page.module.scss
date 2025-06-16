@@ -115,32 +115,6 @@
                 }
             }
         }
-
-        .chat {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            // prettier-ignore
-            transform: 
-                    perspective(300px)
-                    rotateX(-20deg)
-                    rotateY(-30deg)
-                    translateY(32px);
-
-            .message {
-                border: 1px solid var(--muted);
-                padding: 1rem;
-            }
-        }
-
-        .nav {
-            // prettier-ignore
-            transform: 
-                perspective(200px)
-                rotateX(-10deg)
-                rotateY(30deg)
-                translateY(-20px);
-        }
     }
 
     footer {

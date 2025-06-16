@@ -62,22 +62,22 @@ export default function FunPage() {
                 <div className={styles.spacer} />
                 <h1>
                     {[
-                        { letter: 'a', x: 46, y: 10, r: -12, fontSize: '70px', zIndex: 0 },
-                        { letter: 'c', x: 32, y: 3, r: -10, fontSize: '44px', zIndex: 1 },
-                        { letter: 't', x: 24, y: 4, r: -8, fontSize: '60px', zIndex: 0 },
-                        { letter: 'u', x: 16, y: -8, r: -4, fontSize: '50px', zIndex: 1 },
-                        { letter: 'a', x: 12, y: 2, r: 4, fontSize: '55px', zIndex: 0 },
-                        { letter: 'l', x: 8, y: 1, r: 9, fontSize: '44px', zIndex: 1 },
+                        { letter: 'a', x: 0, y: 0, r: 0, fontSize: '70px', zIndex: 0 },
+                        { letter: 'c', x: 0, y: 0, r: 0, fontSize: '44px', zIndex: 0 },
+                        { letter: 't', x: 0, y: 0, r: 0, fontSize: '60px', zIndex: 0 },
+                        { letter: 'u', x: 0, y: 0, r: 0, fontSize: '50px', zIndex: 0 },
+                        { letter: 'a', x: 0, y: 0, r: 0, fontSize: '55px', zIndex: 0 },
+                        { letter: 'l', x: 0, y: 0, r: 0, fontSize: '44px', zIndex: 0 },
                     ].map(({ letter, x, y, r, fontSize, zIndex }, i) => (
                         <Letter key={i} letter={letter} x={x} y={y} r={r} fontSize={fontSize} zIndex={zIndex} i={i} />
                     ))}
                     {[
-                        { letter: 'p', x: 46, y: 10, r: -12, fontSize: '70px', zIndex: 0 },
-                        { letter: 'o', x: 32, y: 3, r: -10, fontSize: '44px', zIndex: 1 },
-                        { letter: 't', x: 24, y: 4, r: -8, fontSize: '60px', zIndex: 0 },
-                        { letter: 'a', x: 16, y: -8, r: -4, fontSize: '50px', zIndex: 1 },
-                        { letter: 't', x: 12, y: 2, r: 4, fontSize: '55px', zIndex: 0 },
-                        { letter: 'o', x: 8, y: 1, r: 9, fontSize: '44px', zIndex: 1 },
+                        { letter: 'p', x: 0, y: 0, r: 0, fontSize: '70px', zIndex: 0 },
+                        { letter: 'o', x: 0, y: 0, r: 0, fontSize: '44px', zIndex: 0 },
+                        { letter: 't', x: 0, y: 0, r: 0, fontSize: '60px', zIndex: 0 },
+                        { letter: 'a', x: 0, y: 0, r: 0, fontSize: '50px', zIndex: 0 },
+                        { letter: 't', x: 0, y: 0, r: 0, fontSize: '55px', zIndex: 0 },
+                        { letter: 'o', x: 0, y: 0, r: 0, fontSize: '44px', zIndex: 0 },
                     ].map(({ letter, x, y, r, fontSize, zIndex }, i) => (
                         <Letter key={i} letter={letter} x={x} y={y} r={r} fontSize={fontSize} zIndex={zIndex} i={i} />
                     ))}
