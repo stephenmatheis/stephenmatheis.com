@@ -1,8 +1,9 @@
 :root {
-    --primary: #000000;
-    --muted: #a3a3a3;
-    --color: #767676;
     --background-color: #fefefe;
+    --color: #767676;
+    --primary: #000000;
+    --muted: #bbbbbb;
+    --light: #dddddd;
 }
 
 [data-theme='dark'] {
@@ -37,4 +38,27 @@ a {
     text-decoration: none;
     color: var(--primary);
     -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+
+    li {
+        position: relative;
+        padding-left: 2ch;
+
+        &::before {
+            content: '→';
+            position: absolute;
+            left: 0.5ch;
+        }
+    }
 }
