@@ -47,18 +47,3 @@ button {
     font: inherit;
     cursor: pointer;
 }
-
-ul {
-    list-style: none;
-
-    li {
-        position: relative;
-        padding-left: 2ch;
-
-        &::before {
-            content: '→';
-            position: absolute;
-            left: 0.5ch;
-        }
-    }
-}

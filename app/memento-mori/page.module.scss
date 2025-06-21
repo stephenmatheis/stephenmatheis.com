@@ -46,6 +46,21 @@
         }
     }
 
+    ul {
+        list-style: none;
+
+        li {
+            position: relative;
+            padding-left: 2ch;
+
+            &::before {
+                content: '→';
+                position: absolute;
+                left: 0.5ch;
+            }
+        }
+    }
+
     .toolbar {
         display: flex;
         align-items: center;

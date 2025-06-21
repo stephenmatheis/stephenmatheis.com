@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import styles from './page.module.scss';
+import { Surface } from '@/components/surface';
 
 const born = new Date('1988-04-13T00:00:00Z');
 const now = new Date();
@@ -20,8 +21,6 @@ const daysLeft = Math.floor((estimatedDeath.getTime() - now.getTime()) / (1000 *
 const hoursLeft = Math.floor((estimatedDeath.getTime() - now.getTime()) / (1000 * 60 * 60));
 const minutesLeft = Math.floor((estimatedDeath.getTime() - now.getTime()) / (1000 * 60));
 
-const spacing = 8;
-
 const options = [
     { label: 'Years', value: 1 },
     { label: 'Weeks', value: 52 },
@@ -38,21 +37,6 @@ const columnsByUnit: Record<number, number> = {
 
 function formatNumber(num: number): string {
     return num.toLocaleString('en-US', { maximumFractionDigits: 0 });
-}
-
-function formatNumberShort(num: number): string {
-    const formatted = num.toLocaleString('en-US', { maximumFractionDigits: 0 });
-
-    switch (true) {
-        case num >= 1_000_000_000:
-            return (num / 1_000_000_000).toFixed(0) + 'B';
-        case num >= 1_000_000:
-            return (num / 1_000_000).toFixed(0) + 'M';
-        case num >= 1_000:
-            return (num / 1_000).toFixed(0) + 'K';
-        default:
-            return formatted;
-    }
 }
 
 function getPercentage(part: number, total: number): string {
@@ -74,125 +58,6 @@ function DataPoint({ label, value }: { label: string; value: number }) {
 export default function MementoMoriPage() {
     const [selectedButton, setSelectedButton] = useState<number>(1);
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const scaleRef = useRef(1);
-    const offsetRef = useRef({ x: 0, y: 0 });
-
-    useEffect(() => {
-        if (!canvasRef.current) return;
-
-        const canvas = canvasRef.current;
-
-        let isDragging = false;
-        let lastX = 0;
-        let lastY = 0;
-
-        function resize() {
-            canvas.width = canvas.parentElement!.clientWidth;
-            canvas.height = canvas.parentElement!.clientHeight;
-
-            draw();
-        }
-
-        function draw() {
-            const canvas = canvasRef.current!;
-            const ctx = canvas.getContext('2d')!;
-            const { width, height } = canvas;
-            const scale = scaleRef.current;
-            const { x: offsetX, y: offsetY } = offsetRef.current;
-
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.clearRect(0, 0, width, height);
-            ctx.translate(offsetX, offsetY);
-            ctx.scale(scale, scale);
-
-            const totalSquares = expectedLifespan * selectedButton;
-            const spentSquares = age * selectedButton;
-            const columns = columnsByUnit[selectedButton];
-            const cellSize = width / columns;
-
-            for (let i = 0; i < totalSquares; i++) {
-                const col = i % columns;
-                const row = Math.floor(i / columns);
-                const x = col * cellSize;
-                const y = row * cellSize;
-
-                ctx.fillStyle = i < spentSquares ? '#aaaaaa' : '#dddddd';
-                ctx.fillRect(x + spacing, y + spacing, cellSize - spacing * 2, cellSize - spacing * 2);
-                
-                // ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color');
-                // ctx.font = `16.5px ${getComputedStyle(document.body).getPropertyValue('--font-mono')}`;
-                // ctx.textAlign = 'center';
-                // ctx.textBaseline = 'middle';
-                // ctx.fillText((i + 1).toString(), x + cellSize / 2, y + cellSize / 2);
-            }
-        }
-
-        function onWheel(e: WheelEvent) {
-            e.preventDefault();
-
-            // Zoom toward cursor
-            const zoomFactor = 1.1;
-            const { offsetX: x, offsetY: y, deltaY } = e;
-            const prevScale = scaleRef.current;
-            const newScale = prevScale * (deltaY < 0 ? zoomFactor : 1 / zoomFactor);
-
-            // adjust offsets so that zoom is centered under cursor
-            const rect = canvas.getBoundingClientRect();
-            const cx = x - rect.left - offsetRef.current.x;
-            const cy = y - rect.top - offsetRef.current.y;
-
-            offsetRef.current.x -= (newScale / prevScale - 1) * cx;
-            offsetRef.current.y -= (newScale / prevScale - 1) * cy;
-            scaleRef.current = newScale;
-
-            requestAnimationFrame(draw);
-        }
-
-        function onMouseDown(e: MouseEvent) {
-            isDragging = true;
-            lastX = e.clientX;
-            lastY = e.clientY;
-        }
-
-        function onMouseMove(e: MouseEvent) {
-            if (!isDragging) return;
-
-            const dx = e.clientX - lastX;
-            const dy = e.clientY - lastY;
-
-            lastX = e.clientX;
-            lastY = e.clientY;
-
-            offsetRef.current.x += dx;
-            offsetRef.current.y += dy;
-
-            requestAnimationFrame(draw);
-        }
-
-        function onMouseUp() {
-            isDragging = false;
-        }
-
-        window.addEventListener('resize', resize);
-
-        canvas.addEventListener('wheel', onWheel, { passive: false });
-        canvas.addEventListener('mousedown', onMouseDown);
-
-        window.addEventListener('mousemove', onMouseMove);
-        window.addEventListener('mouseup', onMouseUp);
-
-        resize();
-
-        return () => {
-            window.removeEventListener('resize', resize);
-
-            canvas.removeEventListener('wheel', onWheel);
-            canvas.removeEventListener('mousedown', onMouseDown);
-
-            window.removeEventListener('mousemove', onMouseMove);
-            window.removeEventListener('mouseup', onMouseUp);
-        };
-    }, [selectedButton]);
 
     return (
         <div className={styles.mori}>
@@ -283,9 +148,7 @@ export default function MementoMoriPage() {
                     </strong>
                 </p>
             </div>
-            <div id={styles.canvas}>
-                <canvas ref={canvasRef} />
-            </div>
+            <Surface />
         </div>
     );
 }
