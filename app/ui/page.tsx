@@ -27,13 +27,35 @@ export default function UIPage() {
         setGoTo((prev) => (prev === 'center' ? direction : 'center'));
     }
 
+    function animateTo(name: room) {
+        if (name === 'center') return goTo;
+        return goTo === name ? 'end' : 'start';
+    }
+
+    function showWhen(direction: room) {
+        if (goTo === 'center') return true;
+
+        switch (direction) {
+            case 'up':
+                return 'down';
+            case 'down':
+                return 'up';
+            case 'left':
+                return 'right';
+            case 'right':
+                return 'left';
+            default:
+                return false;
+        }
+    }
+
     return (
         <div className={styles.page} onKeyDown={handleKeyDown}>
             {/* Rooms */}
             {(
                 [
                     {
-                        key: 'center',
+                        name: 'center',
                         label: 'Center',
                         className: `${styles.room} ${styles.center}`,
                         initial: 'center',
@@ -44,60 +66,55 @@ export default function UIPage() {
                             left: { translateX: '100dvw', translateY: 0 },
                             right: { translateX: '-100dvw', translateY: 0 },
                         },
-                        animate: (goTo: room) => goTo,
                     },
                     {
-                        key: 'up',
+                        name: 'up',
                         label: 'Up',
-                        className: `${styles.room} ${styles.center}`,
+                        className: `${styles.room} ${styles.up}`,
                         initial: 'start',
                         variants: {
                             start: { translateX: 0, translateY: '-100dvh' },
                             end: { translateX: 0, translateY: 0 },
                         },
-                        animate: (goTo: room) => (goTo === 'up' ? 'end' : 'start'),
                     },
                     {
-                        key: 'down',
+                        name: 'down',
                         label: 'Down',
-                        className: `${styles.room} ${styles.center}`,
+                        className: `${styles.room} ${styles.down}`,
                         initial: 'start',
                         variants: {
                             start: { translateX: 0, translateY: '100dvh' },
                             end: { translateX: 0, translateY: 0 },
                         },
-                        animate: (goTo: room) => (goTo === 'down' ? 'end' : 'start'),
                     },
                     {
-                        key: 'left',
+                        name: 'left',
                         label: 'Left',
-                        className: `${styles.room} ${styles.center}`,
+                        className: `${styles.room} ${styles.left}`,
                         initial: 'start',
                         variants: {
                             start: { translateX: '-100dvw', translateY: 0 },
                             end: { translateX: 0, translateY: 0 },
                         },
-                        animate: (goTo: room) => (goTo === 'left' ? 'end' : 'start'),
                     },
                     {
-                        key: 'right',
+                        name: 'right',
                         label: 'Right',
-                        className: `${styles.room} ${styles.center}`,
+                        className: `${styles.room} ${styles.right}`,
                         initial: 'start',
                         variants: {
                             start: { translateX: '100dvw', translateY: 0 },
                             end: { translateX: 0, translateY: 0 },
                         },
-                        animate: (goTo: room) => (goTo === 'right' ? 'end' : 'start'),
                     },
                 ] as const
-            ).map(({ key, label, className, initial, variants, animate }) => (
+            ).map(({ name, label, className, initial, variants }) => (
                 <motion.div
-                    key={key}
+                    key={name}
                     className={className}
                     initial={initial}
                     variants={variants}
-                    animate={animate(goTo)}
+                    animate={animateTo(name as room)}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 >
                     {label}
@@ -111,28 +128,24 @@ export default function UIPage() {
                         direction: 'up',
                         className: `${styles.arrow} ${styles.up}`,
                         label: '▲',
-                        showWhen: (goTo: room) => goTo === 'center' || goTo === 'down',
                     },
                     {
                         direction: 'down',
                         className: `${styles.arrow} ${styles.down}`,
                         label: '▼',
-                        showWhen: (goTo: room) => goTo === 'center' || goTo === 'up',
                     },
                     {
                         direction: 'left',
                         className: `${styles.arrow} ${styles.left}`,
                         label: '◄',
-                        showWhen: (goTo: room) => goTo === 'center' || goTo === 'right',
                     },
                     {
                         direction: 'right',
                         className: `${styles.arrow} ${styles.right}`,
                         label: '►',
-                        showWhen: (goTo: room) => goTo === 'center' || goTo === 'left',
                     },
                 ] as const
-            ).map(({ direction, className, label, showWhen }) => (
+            ).map(({ direction, className, label }) => (
                 <motion.button
                     key={direction}
                     className={className}
@@ -142,7 +155,7 @@ export default function UIPage() {
                         visible: { opacity: 1, scale: 1 },
                         hidden: { opacity: 0, scale: 0.5, pointerEvents: 'none' },
                     }}
-                    animate={showWhen(goTo) ? 'visible' : 'hidden'}
+                    animate={showWhen(direction) ? 'visible' : 'hidden'}
                     transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 >
                     {label}
