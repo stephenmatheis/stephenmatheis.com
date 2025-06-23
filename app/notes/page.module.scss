@@ -10,27 +10,17 @@
     padding: 44px;
     overflow: hidden;
 
-    // &.target {
-    //     textarea {
-    //         background-color: lightblue;
-    //     }
-    // }
-
     textarea {
         flex: 1;
         font-family: var(--font-mono);
         height: 100%;
         width: 100%;
         border: none;
-        // background-color: lightcoral;
         font-size: 16px;
         padding: 44px;
         resize: none;
         outline: none;
-
-        &::placeholder {
-            color: var(--muted);
-        }
+        color: var(--primary);
     }
 }
 
@@ -41,7 +31,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 22px;
+    color: var(--muted);
 
     &.up {
         top: 0;
@@ -65,5 +56,30 @@
         top: 50%;
         left: 0;
         transform: translateY(-50%);
+    }
+}
+
+.statusbar {
+    height: 44px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--muted);
+
+    .left {
+        .crossbar {
+            height: 44px;
+            width: 44px;
+            font-size: 22px;
+        }
+    }
+
+    .right {
+        padding-inline: 1ch;
+        font-size: 13.75px;
     }
 }
