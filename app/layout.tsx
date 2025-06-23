@@ -5,7 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import '@/styles/app.scss';
 
 const mono = localFont({
-    src: './fonts/DepartureMono.woff',
+    src: './fonts/DepartureMono-Regular.woff2',
     variable: '--font-mono',
 });
 
