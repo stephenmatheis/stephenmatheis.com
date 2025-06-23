@@ -53,7 +53,25 @@ function getNextPosition(currentPos: string, direction: actions): string {
     }
 }
 
+function getActionLabel(currentPos: string, direction: actions): string {
+    const [x, y] = currentPos.split(',').map(Number);
+
+    switch (direction) {
+        case 'up':
+            return `${x},${y - 1}`;
+        case 'down':
+            return `${x},${y + 1}`;
+        case 'left':
+            return `${x + 1},${y}`;
+        case 'right':
+            return `${x - 1},${y}`;
+        default:
+            return currentPos;
+    }
+}
+
 export default function UIPage() {
+    const [showMenu, setShowMenu] = useState<boolean>(true);
     const [action, setAction] = useState<actions>('center');
     const [pos, setPos] = useState<string>('0,0');
     const [notes, setNotes] = useState<Note[]>([]);
@@ -98,6 +116,8 @@ export default function UIPage() {
                     ref={noteRef}
                     className={styles.note}
                     autoFocus
+                    autoCorrect="off"
+                    spellCheck="false"
                     // placeholder="new note"
                     value={notes.find((note) => note.id === pos)?.content || ''}
                     onChange={(event) => {
@@ -138,14 +158,37 @@ export default function UIPage() {
                     <textarea
                         className={styles.note}
                         autoFocus
+                        autoCorrect="off"
+                        spellCheck="false"
+                        readOnly
                         // TODO:
                         defaultValue={notes.find((note) => note.id === getNextPosition(pos, action))?.content || ''}
                     />
                 </motion.div>
             )}
 
+            {/* Menu bar */}
+            <div className={styles.menubar}>
+                <div className={styles.left}>
+                    <button className={styles.togglemenu} onClick={() => setShowMenu((prev) => !prev)}>
+                        {showMenu ? 'O┄' : '┈0'}
+                    </button>
+                </div>
+
+                <div className={styles.right}>❱❯❭</div>
+            </div>
+
             {/* Status bar */}
-            <div className={styles.statusbar}>
+            <motion.div
+                variants={{
+                    show: { opacity: 1, y: 0 },
+                    hide: { opacity: 0, y: '100%' },
+                }}
+                initial="show"
+                animate={showMenu ? 'show' : 'hide'}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                className={styles.statusbar}
+            >
                 <div className={styles.left}>
                     <button className={styles.crossbar}>✧</button>
                 </div>
@@ -153,25 +196,37 @@ export default function UIPage() {
                 <div className={styles.right}>
                     <span>Position: {pos}</span> <span>Notes: {notes.length}</span>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Actions */}
             {[
-                { direction: 'up', label: '↑' },
-                { direction: 'down', label: '↓' },
-                { direction: 'right', label: '→' },
-                { direction: 'left', label: '←' },
-            ].map(({ direction, label }) => (
-                <button
-                    key={direction}
-                    className={`${styles.arrow} ${styles[direction]}`}
-                    onClick={() => {
-                        setAction(direction as actions);
-                    }}
-                >
-                    {label}
-                </button>
-            ))}
+                { direction: 'up', label: '↑', hide: { opacity: 0, y: '-100%' } },
+                { direction: 'down', label: '↓', hide: { opacity: 0, y: '100%' } },
+                { direction: 'right', label: '→', hide: { opacity: 0, x: '100%' } },
+                { direction: 'left', label: '←', hide: { opacity: 0, x: '-100%' } },
+            ].map(({ direction, label, hide }) => {
+                const nextPos = getActionLabel(pos, direction as actions);
+                const existingNote = notes.find((note) => note.id === nextPos);
+
+                return (
+                    <motion.button
+                        key={direction}
+                        className={`${styles.arrow} ${styles[direction]}`}
+                        onClick={() => {
+                            setAction(direction as actions);
+                        }}
+                        variants={{
+                            show: { opacity: 1, y: 0 },
+                            hide,
+                        }}
+                        initial="show"
+                        animate={showMenu ? 'show' : 'hide'}
+                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                    >
+                        {existingNote ? label : '+'}
+                    </motion.button>
+                );
+            })}
         </>
     );
 }

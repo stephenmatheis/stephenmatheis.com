@@ -59,6 +59,35 @@
     }
 }
 
+.menubar {
+    height: 44px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--muted);
+
+    .left {
+        .togglemenu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            height: 44px;
+            width: 44px;
+            font-size: 22px;
+        }
+    }
+
+    .right {
+        padding-inline: 1ch;
+        font-size: 22px;
+    }
+}
+
 .statusbar {
     height: 44px;
     width: 100%;
