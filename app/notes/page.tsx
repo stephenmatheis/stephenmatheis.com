@@ -20,7 +20,6 @@ const variants = {
     right: { translateX: '-100dvw', translateY: 0 },
 };
 const transition = { type: 'spring', stiffness: 150, damping: 15 };
-// const transition = { ease: 'linear', duration: 2 };
 
 function getOppositeDirection(direction: actions): actions {
     switch (direction) {
@@ -42,9 +41,9 @@ function getNextPosition(currentPos: string, direction: actions): string {
 
     switch (direction) {
         case 'up':
-            return `${x},${y - 1}`;
-        case 'down':
             return `${x},${y + 1}`;
+        case 'down':
+            return `${x},${y - 1}`;
         case 'left':
             return `${x - 1},${y}`;
         case 'right':
@@ -94,6 +93,7 @@ export default function UIPage() {
                 animate={action}
                 transition={transition}
             >
+                {/* Note field */}
                 <textarea
                     ref={noteRef}
                     className={styles.note}
@@ -120,6 +120,8 @@ export default function UIPage() {
                     }}
                 />
             </motion.div>
+
+            {/* Animate to next note */}
             {action !== 'center' && (
                 <motion.div
                     ref={pageRef}
@@ -141,6 +143,19 @@ export default function UIPage() {
                     />
                 </motion.div>
             )}
+
+            {/* Status bar */}
+            <div className={styles.statusbar}>
+                <div className={styles.left}>
+                    <button className={styles.crossbar}>✧</button>
+                </div>
+
+                <div className={styles.right}>
+                    <span>Position: {pos}</span> <span>Notes: {notes.length}</span>
+                </div>
+            </div>
+
+            {/* Actions */}
             {[
                 { direction: 'up', label: '↑' },
                 { direction: 'down', label: '↓' },
@@ -159,50 +174,4 @@ export default function UIPage() {
             ))}
         </>
     );
-}
-
-{
-    /* <motion.div
-className={`${styles.page} ${styles.animating}`}
-    variants={animatingVariants}
-    initial={direction}
-    // initial={getOppositeDirection('down')}
-    animate="center"
-    transition={transition}
-    onAnimationComplete={() => {
-        // console.log('#2 animation completed for direction:', direction);
-        // setTimeout(() => {
-        //     console.log('#2 resetting direction to center');
-        //     setDirection('reset');
-        //     setAnimating(false);
-        // }, 1000);
-        // DEV:
-        // const [x, y] = pos.split(',').map(Number);
-        // const newPos = `${x + (direction === 'right' ? 1 : direction === 'left' ? -1 : 0)},${
-        //     y + (direction === 'down' ? 1 : direction === 'up' ? -1 : 0)
-        // }`;
-        // setPos(newPos);
-        // console.log('New position:', newPos);
-        // if (noteRef.current) {
-        //     const currentNote = notes.find((note) => note.id === newPos);
-        //     if (currentNote) {
-        //         noteRef.current.value = currentNote.content;
-        //         console.log('Loaded note for position:', newPos);
-        //     }
-        // }
-    }}
->
-    {[
-        { direction: 'upleft', label: '' },
-        { direction: 'up', label: '' },
-        { direction: 'upright', label: '' },
-        { direction: 'left', label: '' },
-    ].map(({ direction, label }) => (
-        <div key={direction} className={`${styles.move} ${styles[direction]}`}>
-            {label}
-        </div>
-    ))}
-    <div className={styles.note} />
-    <div key={direction} className={`${styles.move} ${styles.right}`} />
-</motion.div> */
 }
