@@ -75,7 +75,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            
+
             height: 44px;
             width: 44px;
             font-size: 22px;
@@ -83,8 +83,29 @@
     }
 
     .right {
-        padding-inline: 1ch;
-        font-size: 22px;
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 44px;
+            width: 44px;
+            font-size: 22px;
+
+            span {
+                &:nth-child(1) {
+                    transform: translateX(0.5ch);
+                }
+
+                &:nth-child(2) {
+                    transform: translateX(.25ch);
+                }
+
+                &:nth-child(3) {
+                    transform: translateX(-0.25ch);
+                }
+            }
+        }
     }
 }
 
@@ -109,6 +130,5 @@
 
     .right {
         padding-inline: 1ch;
-        font-size: 13.75px;
     }
 }
