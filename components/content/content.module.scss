@@ -6,8 +6,8 @@
     width: 100%;
 
     @media screen and (max-width: 8.5in) {
-        flex-direction: column;
-        gap: calc(var(--line-height) * 3);
+        flex-direction: column-reverse;
+        gap: calc(var(--line-height) * 2);
     }
 
     .right {
