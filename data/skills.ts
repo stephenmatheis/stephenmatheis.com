@@ -1,7 +1,7 @@
 const skills = [
     {
         group: 'Programming Languages',
-        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'Python', 'PowerShell'],
+        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'Python', 'PowerShell', 'Lua', 'GDScript'],
     },
     {
         group: 'Frameworks, Libraries, & Runtimes',
@@ -38,6 +38,7 @@ const skills = [
             'Figma',
             'Sketch',
             'PICO-8',
+            'Godot',
         ],
     },
     {

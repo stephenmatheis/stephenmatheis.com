@@ -16,7 +16,7 @@ export function Content() {
                 <Contact />
                 <Skills />
                 <Projects />
-                <Education />
+                {/* <Education /> */}
                 <Interests />
             </section>
         </main>
