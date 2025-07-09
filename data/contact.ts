@@ -1,9 +1,11 @@
 const contact = [
     {
-        href: 'tel:9124922522',
-        text: '(912) 492-2522',
-        label: 'My phone number',
-        name: 'Phone',
+        href: 'https://github.com/stephenmatheis',
+        text: 'github.com/stephenmatheis',
+        label: 'My GitHub profile',
+        name: 'GitHub',
+        user: 'stephenmatheis',
+        newTab: true,
     },
     {
         href: 'mailto:stephen@matheis.email',
@@ -12,12 +14,10 @@ const contact = [
         name: 'Email',
     },
     {
-        href: 'https://github.com/stephenmatheis',
-        text: 'github.com/stephenmatheis',
-        label: 'My GitHub profile',
-        name: 'GitHub',
-        user: 'stephenmatheis',
-        newTab: true,
+        href: 'tel:9124922522',
+        text: '(912) 492-2522',
+        label: 'My phone number',
+        name: 'Phone',
     },
 ];
 
