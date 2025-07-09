@@ -1,7 +1,8 @@
 .content {
     display: flex;
     flex-direction: row;
-    gap: 0.5in;
+    // gap: 0.5in;
+    gap: 0.25in;
     width: 100%;
 
     @media screen and (max-width: 8.5in) {

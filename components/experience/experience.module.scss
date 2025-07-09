@@ -2,7 +2,7 @@
     .jobs {
         display: flex;
         flex-direction: column;
-        gap: calc(var(--line-height) * 2);
+        gap: var(--line-height);
 
         .job {
             break-inside: avoid;

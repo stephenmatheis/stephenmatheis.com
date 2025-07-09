@@ -8,6 +8,22 @@ export function Experience() {
             <Comment text="Experience" />
             <div className={styles.jobs}>
                 {experience.map(({ company, roles, list }, index) => {
+                    if (company === 'sabbatical') {
+                        return (
+                            <div key={index} className={styles.job}>
+                                Sabbatical,{' '}
+                                {roles.map(({ start, end }, index) => {
+                                    return (
+                                        <span key={index} className={styles.role}>
+                                            <span className={styles.date}>
+                                                {start}–{end}
+                                            </span>
+                                        </span>
+                                    );
+                                })}
+                            </div>
+                        );
+                    }
                     return (
                         <div key={index} className={styles.job}>
                             <div className={styles.roles}>
