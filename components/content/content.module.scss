@@ -8,11 +8,44 @@
         flex-direction: column;
     }
 
+    .breadcrumbs {
+        position: absolute;
+        top: calc(var(--line-height) * -2);
+        left: 0;
+        color: var(--lighter);
+
+        a {
+            color: var(--lighter);
+        }
+    }
+
     .lines {
         position: absolute;
         top: 0;
         left: -4ch;
         color: var(--lighter);
+    }
+
+    .statusbar {
+        width: 100%;
+        max-width: 8.5in;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: calc(var(--line-height) * -2);
+        left: 0;
+        color: var(--lighter);
+
+        button {
+            cursor: pointer;
+            color: var(--lighter);
+            background-color: transparent;
+            border: none;
+        }
+
+        .buttons {
+            flex: 1;
+        }
     }
 
     .left {

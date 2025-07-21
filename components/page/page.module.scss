@@ -6,13 +6,12 @@
     padding: calc(var(--line-height) * 3) 0;
 
     @media screen {
-        margin: 0.5in auto;
+        margin: var(--line-height) auto;
 
         @media (max-width: 939px) {
-            margin: 0 auto;
             width: 100%;
             height: 100%;
-            padding: 4ch;
+            padding: 5ch;
         }
     }
 }
