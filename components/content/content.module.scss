@@ -3,6 +3,10 @@
     justify-content: space-between;
     gap: 4ch;
 
+    @media (max-width: 939px) {
+        flex-direction: column;
+    }
+
     .left {
         display: flex;
         flex-direction: column;
@@ -15,11 +19,8 @@
         gap: calc(var(--line-height) * 2);
         width: 35ch;
 
-        @media screen and (max-width: 8.5in) {
-            --width: 100%;
-
-            flex-direction: column;
-            margin-top: 0;
+        @media (max-width: 939px) {
+            width: 100%;
         }
     }
 }
