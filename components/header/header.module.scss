@@ -1,17 +1,19 @@
-.header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+.name {
+    .website {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
 
-    a {
-        .text {
-            @media (max-width: 8.5in) {
-                margin-bottom: 0;
-            }
+        .primary {
+            color: var(--primary);
+        }
 
-            .title {
-                color: var(--muted);
-            }
+        .muted {
+            color: var(--muted);
+        }
+
+        .light {
+            color: var(--light);
         }
     }
 }

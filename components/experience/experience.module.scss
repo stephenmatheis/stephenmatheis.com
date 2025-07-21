@@ -7,17 +7,19 @@
         .job {
             break-inside: avoid;
 
-            .title {
-                color: var(--primary);
-                position: relative;
+            .role {
+                .title {
+                    color: var(--primary);
+                    position: relative;
 
-                .company {
-                    color: var(--color);
+                    .company {
+                        color: var(--color);
+                    }
                 }
-            }
 
-            .date {
-                color: var(--muted);
+                .date {
+                    color: var(--muted);
+                }
             }
 
             .list {
@@ -33,6 +35,10 @@
                         color: var(--muted);
                     }
                 }
+            }
+
+            .stack {
+                color: var(--muted);
             }
         }
     }

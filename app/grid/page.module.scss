@@ -1,0 +1,20 @@
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5in auto;
+    width: 8.5in;
+    height: 11in;
+    // box-shadow: 0px 0px 32px -4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(100, 1ch);
+        grid-template-rows: repeat(56, var(--line-height));
+        width: 100ch;
+        height: calc(var(--line-height) * 56);
+        gap: 0.25in;
+        background-color: var(--lighter);
+    }
+}

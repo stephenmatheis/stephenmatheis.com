@@ -1,23 +1,15 @@
 .contact {
-    .info {
-        display: flex;
-        flex-direction: column;
-        white-space: nowrap;
-        gap: var(--line-height);
-    }
-
     .list {
         display: flex;
         flex-direction: column;
-        gap: var(--line-height);
 
         .item {
             flex: 1;
             display: flex;
-            justify-content: space-between;
 
             .name {
                 color: var(--muted);
+                width: 14ch;
             }
 
             .text {

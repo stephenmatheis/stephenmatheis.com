@@ -7,12 +7,12 @@ export function Experience() {
         <section className={styles.experience}>
             <Comment text="Experience" />
             <div className={styles.jobs}>
-                {experience.map(({ company, roles, list }, index) => {
-                    if (company === 'sabbatical') {
+                {experience.map(({ company, site, stack, roles, list }, index) => {
+                    if (company === 'Break') {
                         return (
                             <div key={index} className={styles.job}>
-                                Sabbatical,{' '}
-                                {roles.map(({ start, end }, index) => {
+                                Break{' '}
+                                {roles.map(({ start, end }, index: number) => {
                                     return (
                                         <span key={index} className={styles.role}>
                                             <span className={styles.date}>
@@ -24,15 +24,20 @@ export function Experience() {
                             </div>
                         );
                     }
+
                     return (
                         <div key={index} className={styles.job}>
                             <div className={styles.roles}>
-                                {roles.map(({ title, start, end }, index) => {
+                                {roles.map(({ title, start, end }, index: number) => {
                                     return (
                                         <div key={index} className={styles.role}>
                                             <div className={styles.title}>
                                                 <span>{title}</span>{' '}
-                                                {index === 0 && <span className={styles.company}>@ {company}</span>}
+                                                {index === 0 && (
+                                                    <a href={site} target="_blank" className={styles.company}>
+                                                        @ {company}
+                                                    </a>
+                                                )}
                                             </div>
                                             <div className={styles.date}>
                                                 {start}–{end}
@@ -42,19 +47,19 @@ export function Experience() {
                                 })}
                             </div>
                             <ul className={styles.list}>
-                                {list?.map((item, index) => {
+                                {list?.map((item: string | React.ReactNode, index: number) => {
                                     return (
                                         <li key={index} className={styles.item}>
-                                            <span className={styles.bullet}>*</span>
-                                            <span
-                                                dangerouslySetInnerHTML={{
-                                                    __html: item,
-                                                }}
-                                            />
+                                            <span>{item}</span>
                                         </li>
                                     );
                                 })}
                             </ul>
+                            <div className={styles.stack}>
+                                {'[ '}
+                                {stack?.join(', ')}
+                                {' ]'}
+                            </div>
                         </div>
                     );
                 })}
