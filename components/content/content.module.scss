@@ -3,7 +3,7 @@
     justify-content: space-between;
     gap: 4ch;
 
-    @media (max-width: 939px) {
+    @media screen and (max-width: 939px) {
         flex-direction: column;
     }
 
@@ -19,7 +19,7 @@
         gap: calc(var(--line-height) * 2);
         width: 35ch;
 
-        @media (max-width: 939px) {
+        @media screen and (max-width: 939px) {
             width: 100%;
         }
     }
