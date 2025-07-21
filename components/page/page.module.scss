@@ -1,23 +1,12 @@
 .page {
-    position: relative;
     display: flex;
-    flex-direction: column;
-    gap: calc(var(--line-height) * 2);
+    justify-content: center;
     width: 8.5in;
-    // padding: 0.5in;
-    padding: 0.25in;
+    height: 11in;
+    padding: calc(var(--line-height) * 3) 0;
 
     @media screen {
-        margin: 0 auto;
-    }
-
-    @media screen and (max-width: 8.5in) {
-        gap: calc(var(--line-height) * 3);
-        width: 100%;
-        padding: 0.5in 0.25in;
-    }
-
-    @media print {
-        height: 11in;
+        margin: 0.5in auto;
+        box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.2);
     }
 }

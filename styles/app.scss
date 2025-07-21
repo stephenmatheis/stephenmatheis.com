@@ -1,10 +1,16 @@
 :root {
     --font-size: 11px;
-    --line-height: 16px;
-    --primary: #000000;
-    --muted: #a3a3a3;
-    --color: #767676;
+    --line-height: 16.5px;
     --background-color: #fefefe;
+    --primary: #333333;
+    --color: #787878;
+    --muted: #a5a5a5;
+    --light: #bbbbbb;
+    --lighter: #dddddd;
+
+    @media print {
+        --background-color: #ffffff;
+    }
 }
 
 [data-theme='dark'] {
