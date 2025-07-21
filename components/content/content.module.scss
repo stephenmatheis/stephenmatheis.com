@@ -1,10 +1,18 @@
 .content {
+    position: relative;
     display: flex;
     justify-content: space-between;
     gap: 4ch;
 
     @media screen and (max-width: 939px) {
         flex-direction: column;
+    }
+
+    .lines {
+        position: absolute;
+        top: 0;
+        left: -4ch;
+        color: var(--lighter);
     }
 
     .left {
