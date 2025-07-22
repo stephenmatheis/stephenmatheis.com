@@ -2,7 +2,7 @@ const experience = [
     {
         company: 'Compassion (TEKsystems)',
         site: 'https://www.compassion.com/',
-        stack: ['Next.js', 'TypeScript', 'AWS'],
+        stack: ['Next.js', 'AWS'],
         roles: [
             {
                 title: 'Front-end Developer',
@@ -15,7 +15,7 @@ const experience = [
     {
         company: 'NEXTdotgov',
         site: 'https://www.nextdotgov.com/',
-        stack: ['Next.js', 'TypeScript', 'AWS'],
+        stack: ['Next.js', 'TypeScript', 'Vercel'],
         roles: [
             {
                 title: 'Founder',
@@ -28,7 +28,7 @@ const experience = [
     {
         company: 'TATCS',
         site: 'https://www.tatcs.com/',
-        stack: ['Next.js', 'TypeScript', 'AWS'],
+        stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
             {
                 title: 'Director, User Experience',
@@ -59,7 +59,7 @@ const experience = [
     {
         company: 'Apple (TEKsystems)',
         site: 'https://www.apple.com/',
-        stack: ['Next.js', 'TypeScript', 'AWS'],
+        stack: ['Next.js', 'TypeScript'],
         roles: [
             {
                 title: 'Front-end Developer',
@@ -72,7 +72,7 @@ const experience = [
     {
         company: 'GovCIO',
         site: 'https://govcio.com/',
-        stack: ['Next.js', 'TypeScript', 'AWS'],
+        stack: ['C#', '.NET', 'MongoDB', 'Unity'],
         roles: [
             {
                 title: 'Software Programmer 5',
@@ -94,7 +94,7 @@ const experience = [
     {
         company: 'Aeyon',
         site: 'https://aeyon.us/',
-        stack: ['Next.js', 'TypeScript', 'AWS'],
+        stack: ['React Native', 'TypeScript', 'Expo', 'Firebase', 'GCP'],
         roles: [
             {
                 title: 'Subject Matter Expert II',
@@ -116,7 +116,7 @@ const experience = [
     {
         company: 'HID Global',
         site: 'https://www.hidglobal.com/',
-        stack: ['Next.js', 'TypeScript', 'AWS'],
+        stack: ['jQuery', 'Bootstrap', 'SharePoint', 'ASP.NET'],
         roles: [
             {
                 title: 'Systems Programmer 3',
@@ -129,7 +129,7 @@ const experience = [
     {
         company: 'Bravo Consulting Group',
         site: 'https://bravocg.com/',
-        stack: ['Next.js', 'TypeScript', 'AWS'],
+        stack: ['jQuery', 'SharePoint', 'ASP.NET'],
         roles: [
             {
                 title: 'Senior Consultant',

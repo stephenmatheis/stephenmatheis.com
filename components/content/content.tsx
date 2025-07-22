@@ -1,14 +1,49 @@
+import Link from 'next/link';
 import { Header } from '@/components/header';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
 import { Skills } from '@/components/skills';
 import { Projects } from '@/components/projects';
 import styles from './content.module.scss';
-import Link from 'next/link';
+
+// TODO: Add a console game.
 
 export function Content() {
     return (
         <main className={styles.content}>
+            {/* Left Column Width */}
+            <div className={styles.leftwidth}>
+                <svg width="392" height="18" viewBox="0 0 392 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 18H8V16H10V18Z" fill="currentColor" />
+                    <path d="M384 18H382V16H384V18Z" fill="currentColor" />
+                    <path d="M8 16H6V14H8V16Z" fill="currentColor" />
+                    <path d="M386 16H384V14H386V16Z" fill="currentColor" />
+                    <path d="M6 14H4V12H6V14Z" fill="currentColor" />
+                    <path d="M388 14H386V12H388V14Z" fill="currentColor" />
+                    <path d="M4 8H388V6H390V8H392V10H390V12H388V10H4V12H2V10H0V8H2V6H4V8Z" fill="currentColor" />
+                    <path d="M6 6H4V4H6V6Z" fill="currentColor" />
+                    <path d="M388 6H386V4H388V6Z" fill="currentColor" />
+                    <path d="M8 4H6V2H8V4Z" fill="currentColor" />
+                    <path d="M386 4H384V2H386V4Z" fill="currentColor" />
+                    <path d="M10 2H8V0H10V2Z" fill="currentColor" />
+                    <path d="M384 2H382V0H384V2Z" fill="currentColor" />
+                </svg>
+
+                <div className={styles.label}>56ch</div>
+            </div>
+
+            {/* Right Column Width */}
+            <div className={styles.rightwidth}>
+                <svg width="245" height="18" viewBox="0 0 245 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 18H8V16H10V18ZM237 18H235V16H237V18ZM8 16H6V14H8V16ZM239 16H237V14H239V16ZM6 14H4V12H6V14ZM241 14H239V12H241V14ZM243 12H241V10H4V12H2V10H0V8H2V6H4V8H241V6H243V8H245V10H243V12ZM6 6H4V4H6V6ZM241 6H239V4H241V6ZM8 4H6V2H8V4ZM239 4H237V2H239V4ZM10 2H8V0H10V2ZM237 2H235V0H237V2Z"
+                        fill="currentColor"
+                    />
+                </svg>
+
+                <div className={styles.label}>35ch</div>
+            </div>
+
             {/* Breadcrumbs */}
             <div className={styles.breadcrumbs}>
                 {['app', 'page', 'resume'].map((crumb, i, arr) => (
@@ -20,8 +55,8 @@ export function Content() {
             </div>
 
             {/* Lines */}
-            <div className={styles.lines}>
-                {Array.from({ length: 121 }, (_, i) => (
+            <div className={styles.linenumbers}>
+                {Array.from({ length: 107 }, (_, i) => (
                     <div key={i} className={styles.line}>
                         {i + 1}
                     </div>
@@ -31,38 +66,37 @@ export function Content() {
             {/* Status Bar */}
             <div className={styles.statusbar}>
                 <div className={styles.block}>
-                    <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/main" target="_blank">
-                        <span className={styles.git}>
-                            <svg
-                                width="7"
-                                height="11"
-                                viewBox="0 0 7 11"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path d="M2.54545 11H0.636364V10.3123H2.54545V11Z" fill="currentColor" />
-                                <path d="M0.636364 10.3123H0V8.24914H0.636364V10.3123Z" fill="currentColor" />
-                                <path d="M3.18182 10.3123H2.54545V8.24914H3.18182V10.3123Z" fill="currentColor" />
-                                <path
-                                    d="M2.54545 3.43857H1.90909V6.186H2.54545V5.50172H3.18182V5.49828H5.09091V4.814H5.72727V5.50172H5.09091V6.186H3.18182V6.18943H2.54545V6.87371H1.90909V7.56143H2.54545V8.24914H0.636364V7.56143H1.27273V3.43857H0.636364V2.75086H2.54545V3.43857Z"
-                                    fill="currentColor"
-                                />
-                                <path d="M6.36364 4.81057H4.45455V4.12285H6.36364V4.81057Z" fill="currentColor" />
-                                <path d="M4.45455 4.12285H3.81818V2.05971H4.45455V4.12285Z" fill="currentColor" />
-                                <path d="M7 4.12285H6.36364V2.05971H7V4.12285Z" fill="currentColor" />
-                                <path d="M0.636364 2.75086H0V0.687715H0.636364V2.75086Z" fill="currentColor" />
-                                <path d="M3.18182 2.75086H2.54545V0.687715H3.18182V2.75086Z" fill="currentColor" />
-                                <path d="M6.36364 2.05971H4.45455V1.37199H6.36364V2.05971Z" fill="currentColor" />
-                                <path d="M2.54545 0.687715H0.636364V0H2.54545V0.687715Z" fill="currentColor" />
-                            </svg>
-                        </span>
+                    <Link href="https://github.com/stephenmatheis/stephenmatheis.com/tree/main" target="_blank">
+                        <svg width="11" height="17" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 17H1V16H4V17Z" fill="currentColor" />
+                            <path d="M1 16H0V13H1V16Z" fill="currentColor" />
+                            <path d="M5 16H4V13H5V16Z" fill="currentColor" />
+                            <path d="M4 5H3V10H4V11H3V12H4V13H1V12H2V5H1V4H4V5Z" fill="currentColor" />
+                            <path d="M8 10H4V9H8V10Z" fill="currentColor" />
+                            <path d="M10 8H9V9H8V8H7V7H10V8Z" fill="currentColor" />
+                            <path d="M7 7H6V4H7V7Z" fill="currentColor" />
+                            <path d="M11 7H10V4H11V7Z" fill="currentColor" />
+                            <path d="M1 4H0V1H1V4Z" fill="currentColor" />
+                            <path d="M5 4H4V1H5V4Z" fill="currentColor" />
+                            <path d="M10 4H7V3H10V4Z" fill="currentColor" />
+                            <path d="M4 1H1V0H4V1Z" fill="currentColor" />
+                        </svg>
                         main*
-                    </a>
+                    </Link>
                 </div>
                 <div className={styles.block}>
-                    <span>UTF-8</span>
-                    <span>LF</span>
-                    <span>{'¶'} Plain Text</span>
+                    <Link href="https://www.unicode.org/versions/Unicode8.0.0/" target="_blank">
+                        UTF-8
+                    </Link>
+                    <Link
+                        href="https://docs.github.com/en/get-started/git-basics/configuring-git-to-handle-line-endings"
+                        target="_blank"
+                    >
+                        LF
+                    </Link>
+                    <Link href="https://en.wikipedia.org/wiki/Plain_text" target="_blank">
+                        {'¶'} Plain Text
+                    </Link>
                 </div>
             </div>
 
