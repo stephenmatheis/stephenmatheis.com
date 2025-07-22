@@ -6,6 +6,7 @@
 
     @media screen and (max-width: 939px) {
         flex-direction: column;
+        gap: calc(var(--line-height) * 2);
     }
 
     .breadcrumbs {
@@ -25,6 +26,14 @@
         top: 0;
         left: -4ch;
         color: var(--lighter);
+
+        @media (min-width: 940px), print {
+            .line {
+                &:nth-child(n + 59) {
+                    display: none;
+                }
+            }
+        }
     }
 
     .statusbar {

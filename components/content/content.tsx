@@ -21,7 +21,7 @@ export function Content() {
 
             {/* Lines */}
             <div className={styles.lines}>
-                {Array.from({ length: 58 }, (_, i) => (
+                {Array.from({ length: 121 }, (_, i) => (
                     <div key={i} className={styles.line}>
                         {i + 1}
                     </div>
