@@ -144,9 +144,6 @@
         gap: calc(var(--line-height) * 2);
         width: 35ch;
 
-        // DEV:
-        // background-color: #0000ff10;
-
         @media screen and (max-width: 939px) {
             width: 100%;
         }
