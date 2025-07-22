@@ -116,48 +116,22 @@ export function Page({ children }) {
 
                 {/* Page Padding */}
                 <div className={styles.paddingtop}>
-                    {/* <svg width="6" height="50" viewBox="0 0 6 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 0V2H4V47.5H6V49.5H0V47.5H2V2H0V0H6Z" fill="currentColor" />
-                    </svg> */}
                     <svg width="3" height="50" viewBox="0 0 3 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 0V1H2V48.5H3V49.5H0V48.5H1V1H0V0H3Z" fill="currentColor" />
                     </svg>
-
                     <div className={styles.label}>3 lines</div>
                 </div>
 
                 {/* Page Padding */}
                 <div className={styles.paddingbottom}>
-                    {/* <svg width="6" height="50" viewBox="0 0 6 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 0V2H4V47.5H6V49.5H0V47.5H2V2H0V0H6Z" fill="currentColor" />
-                    </svg> */}
                     <svg width="3" height="50" viewBox="0 0 3 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 0V1H2V48.5H3V49.5H0V48.5H1V1H0V0H3Z" fill="currentColor" />
                     </svg>
-
                     <div className={styles.label}>3 lines</div>
                 </div>
 
                 {/* Lines */}
                 <div className={styles.lines}>
-                    {/* <svg width="18" height="958" viewBox="0 0 18 958" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10 2.50209H12V4.50418H10V953.496H12V955.498H10V957.5H8V955.498H6V953.496H8V4.50418H6V2.50209H8V0.5H10V2.50209Z"
-                            fill="currentColor"
-                        />
-                        <path d="M6 953.496H4V951.494H6V953.496Z" fill="currentColor" />
-                        <path d="M14 953.496H12V951.494H14V953.496Z" fill="currentColor" />
-                        <path d="M4 951.494H2V949.492H4V951.494Z" fill="currentColor" />
-                        <path d="M16 951.494H14V949.492H16V951.494Z" fill="currentColor" />
-                        <path d="M2 949.492H0V947.49H2V949.492Z" fill="currentColor" />
-                        <path d="M18 949.492H16V947.49H18V949.492Z" fill="currentColor" />
-                        <path d="M2 10.5105H0V8.50837H2V10.5105Z" fill="currentColor" />
-                        <path d="M18 10.5105H16V8.50837H18V10.5105Z" fill="currentColor" />
-                        <path d="M4 8.50837H2V6.50628H4V8.50837Z" fill="currentColor" />
-                        <path d="M16 8.50837H14V6.50628H16V8.50837Z" fill="currentColor" />
-                        <path d="M6 6.50628H4V4.50418H6V6.50628Z" fill="currentColor" />
-                        <path d="M14 6.50628H12V4.50418H14V6.50628Z" fill="currentColor" />
-                    </svg> */}
                     <svg width="7" height="957" viewBox="0 0 7 957" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 1H5V2H4V955H5V956H4V957H3V956H2V955H3V2H2V1H3V0H4V1Z" fill="currentColor" />
                         <path d="M2 955H1V954H2V955Z" fill="currentColor" />
@@ -169,25 +143,11 @@ export function Page({ children }) {
                         <path d="M2 3H1V2H2V3Z" fill="currentColor" />
                         <path d="M6 3H5V2H6V3Z" fill="currentColor" />
                     </svg>
-
                     <div className={styles.label}>58 lines</div>
                 </div>
 
                 {/* Page Height */}
                 <div className={styles.pageheight}>
-                    {/* <svg width="18" height="1056" viewBox="0 0 18 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6 1056H0V1054H6V1056Z" fill="currentColor" />
-                        <path d="M10 1054H6V1052H10V1054Z" fill="currentColor" />
-                        <path d="M12 1052H10V1050H12V1052Z" fill="currentColor" />
-                        <path d="M14 1050H12V1046H14V1050Z" fill="currentColor" />
-                        <path d="M16 1046H14V1040H16V1046Z" fill="currentColor" />
-                        <path d="M18 1040H16V16H18V1040Z" fill="currentColor" />
-                        <path d="M16 16H14V10H16V16Z" fill="currentColor" />
-                        <path d="M14 10H12V6H14V10Z" fill="currentColor" />
-                        <path d="M12 6H10V4H12V6Z" fill="currentColor" />
-                        <path d="M10 4H6V2H10V4Z" fill="currentColor" />
-                        <path d="M6 2H0V0H6V2Z" fill="currentColor" />
-                    </svg> */}
                     <svg width="9" height="1056" viewBox="0 0 9 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 1056H0V1055H3V1056Z" fill="currentColor" />
                         <path d="M5 1055H3V1054H5V1055Z" fill="currentColor" />
@@ -201,25 +161,11 @@ export function Page({ children }) {
                         <path d="M5 2H3V1H5V2Z" fill="currentColor" />
                         <path d="M3 1H0V0H3V1Z" fill="currentColor" />
                     </svg>
-
                     <div className={styles.label}>11in</div>
                 </div>
 
                 {/* Page Width */}
                 <div className={styles.pagewidth}>
-                    {/* <svg width="816" height="18" viewBox="0 0 816 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.28882e-05 6V0H1.54548V6H2.28882e-05Z" fill="currentColor" />
-                        <path d="M1.54548 10V6H3.09093V10H1.54548Z" fill="currentColor" />
-                        <path d="M3.09093 12V10H4.63639V12H3.09093Z" fill="currentColor" />
-                        <path d="M4.63639 14V12H7.7273V14H4.63639Z" fill="currentColor" />
-                        <path d="M7.7273 16V14H12.3637V16H7.7273Z" fill="currentColor" />
-                        <path d="M12.3637 18V16H803.636V18H12.3637Z" fill="currentColor" />
-                        <path d="M803.636 16V14H808.273V16H803.636Z" fill="currentColor" />
-                        <path d="M808.273 14V12H811.364V14H808.273Z" fill="currentColor" />
-                        <path d="M811.364 12V10H812.909V12H811.364Z" fill="currentColor" />
-                        <path d="M812.909 10V6H814.455V10H812.909Z" fill="currentColor" />
-                        <path d="M814.455 6V0H816V6H814.455Z" fill="currentColor" />
-                    </svg> */}
                     <svg width="816" height="9" viewBox="0 0 816 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M808 9H8V8H808V9Z" fill="currentColor" />
                         <path d="M8 8H5V7H8V8Z" fill="currentColor" />
