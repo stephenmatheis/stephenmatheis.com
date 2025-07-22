@@ -11,7 +11,8 @@
     .breadcrumbs {
         position: absolute;
         top: calc(var(--line-height) * -2);
-        left: 0;
+        left: -4ch;
+        width: calc(100% + 4ch);
         color: var(--lighter);
 
         a {
@@ -27,24 +28,34 @@
     }
 
     .statusbar {
-        width: 100%;
+        position: relative;
+        width: calc(100% + 4ch);
         max-width: 8.5in;
         display: flex;
         justify-content: space-between;
         position: absolute;
         bottom: calc(var(--line-height) * -2);
-        left: 0;
+        left: -4ch;
         color: var(--lighter);
 
-        button {
-            cursor: pointer;
+        a {
             color: var(--lighter);
-            background-color: transparent;
-            border: none;
         }
 
-        .buttons {
-            flex: 1;
+        .block {
+            display: flex;
+            gap: 3ch;
+        }
+
+        .git {
+            display: inline-block;
+            position: relative;
+            margin-right: 0.5ch;
+            transform: translateY(1.5px);
+
+            svg {
+                fill: var(--lighter);
+            }
         }
     }
 
