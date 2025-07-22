@@ -167,7 +167,7 @@
         }
 
         .title {
-            color: var(--primary);
+            color: var(--color);
         }
 
         .item {
@@ -175,17 +175,17 @@
             gap: 4ch;
 
             .name {
-                color: var(--muted);
+                color: var(--light);
                 width: 16ch;
             }
 
             .value {
-                color: var(--color);
+                color: var(--muted);
                 width: 8ch;
             }
 
             .alt {
-                color: var(--light);
+                color: var(--lighter);
             }
         }
     }
@@ -210,7 +210,7 @@
 
         .viewport {
             .title {
-                color: var(--primary);
+                color: var(--color);
                 text-align: right;
 
                 @media (max-width: 1366px) {
@@ -223,25 +223,21 @@
                 gap: 4ch;
 
                 .name {
-                    color: var(--muted);
+                    color: var(--light);
                     width: 6ch;
                 }
 
                 .value {
-                    color: var(--color);
+                    color: var(--muted);
                     width: 6ch;
                     text-align: right;
-
-                    // @media (max-width: 1366px) {
-                    //     text-align: left;
-                    // }
                 }
             }
         }
 
         .pointer {
             .title {
-                color: var(--primary);
+                color: var(--color);
                 text-align: right;
 
                 @media (max-width: 1366px) {
@@ -254,7 +250,7 @@
                 gap: 4ch;
 
                 .name {
-                    color: var(--muted);
+                    color: var(--light);
                     width: 6ch;
                     text-align: right;
 
@@ -264,13 +260,9 @@
                 }
 
                 .value {
-                    color: var(--color);
+                    color: var(--muted);
                     width: 6ch;
                     text-align: right;
-
-                    // @media (max-width: 1366px) {
-                    //     text-align: left;
-                    // }
                 }
             }
         }
