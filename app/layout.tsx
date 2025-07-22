@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import '@/styles/app.scss';
 
 const mono = localFont({
-    src: './fonts/DepartureMono.woff',
+    src: './fonts/DepartureMono.woff2',
     variable: '--font-mono',
 });
 
