@@ -10,6 +10,7 @@
     }
 
     .breadcrumbs {
+        user-select: none;
         position: absolute;
         top: calc(var(--line-height) * -2);
         left: -4ch;
@@ -35,6 +36,7 @@
     }
 
     .linenumbers {
+        user-select: none;
         position: absolute;
         top: 0;
         left: -4ch;
@@ -58,6 +60,7 @@
     }
 
     .statusbar {
+        user-select: none;
         position: relative;
         width: calc(100% + 4ch);
         height: calc(var(--line-height) * 1);

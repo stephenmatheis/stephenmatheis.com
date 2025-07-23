@@ -12,7 +12,7 @@ import styles from './content.module.scss';
 // TODO: Add a console game.
 
 export function Content() {
-    const { overlays, setOverlays } = useOverlay();
+    const { overlays } = useOverlay();
 
     return (
         <main className={styles.content}>
