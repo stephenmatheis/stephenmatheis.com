@@ -9,63 +9,6 @@
         gap: calc(var(--line-height) * 2);
     }
 
-    .leftwidth,
-    .rightwidth {
-        position: absolute;
-        height: 18px;
-        color: var(--lighter);
-
-        @media (max-width: 939px) {
-            display: none;
-        }
-
-        .label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--background-color);
-            height: calc(var(--line-height) * 1);
-            transform: translate(-50%, -50%);
-            width: max-content;
-            padding-inline: 2ch;
-        }
-    }
-
-    .leftwidth {
-        top: calc(var(--line-height) * 5.5);
-        left: 0;
-    }
-
-    .rightwidth {
-        top: calc(var(--line-height) * -2);
-        right: 0;
-    }
-
-    .gap {
-        position: absolute;
-        top: calc(var(--line-height) * 37.5);
-        left: 56ch;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 16.5px;
-        color: var(--lighter);
-
-        @media (max-width: 939px) {
-            display: none;
-        }
-
-        .label {
-            position: absolute;
-            top: 0;
-            background-color: var(--background-color);
-        }
-    }
-
     .breadcrumbs {
         position: absolute;
         top: calc(var(--line-height) * -2);
