@@ -174,7 +174,7 @@
 
                 .name {
                     color: var(--light);
-                    width: 10ch;
+                    width: 14ch;
 
                     @media (max-width: 1366px) {
                         text-align: left;
@@ -238,6 +238,10 @@
             height: 18px;
             color: var(--lighter);
 
+            &.on {
+                color: red;
+            }
+
             @media (max-width: 939px) {
                 display: none;
             }
@@ -278,6 +282,10 @@
             justify-content: center;
             height: 16.5px;
             color: var(--lighter);
+
+            &.on {
+                color: red;
+            }
 
             @media (max-width: 939px) {
                 display: none;
@@ -330,6 +338,10 @@
         height: calc(var(--line-height) * 3);
         color: var(--lighter);
 
+        &.on {
+            color: red;
+        }
+
         @media (max-width: 939px) {
             display: none;
         }
@@ -356,13 +368,17 @@
         bottom: 0;
     }
 
-    .lines {
+    .contentheight {
         pointer-events: all;
         position: absolute;
         top: calc(var(--line-height) * 3);
         right: 4ch;
         height: calc(var(--line-height) * 58);
         color: var(--lighter);
+
+        &.on {
+            color: red;
+        }
 
         @media (max-width: 939px) {
             display: none;
@@ -382,6 +398,33 @@
         }
     }
 
+    .contentwidth {
+        pointer-events: all;
+        position: absolute;
+        bottom: -5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--lighter);
+
+        &.on {
+            color: red;
+        }
+
+        @media (max-width: 939px) {
+            display: none;
+        }
+
+        .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            line-height: 14px;
+            background-color: var(--background-color);
+            transform: translate(-50%, -50%);
+            padding-inline: 2ch;
+        }
+    }
+
     .pageheight {
         pointer-events: all;
         position: absolute;
@@ -389,6 +432,10 @@
         right: -6ch;
         height: 11in;
         color: var(--lighter);
+
+        &.on {
+            color: red;
+        }
 
         @media (max-width: 939px) {
             display: none;
@@ -410,9 +457,13 @@
     .pagewidth {
         pointer-events: all;
         position: absolute;
-        bottom: -4rem;
+        bottom: -10rem;
         right: 0;
         color: var(--lighter);
+
+        &.on {
+            color: red;
+        }
 
         @media (max-width: 939px) {
             display: none;
@@ -420,9 +471,8 @@
 
         .label {
             position: absolute;
-            top: 75%;
+            top: calc(50% + 3px);
             left: 50%;
-            line-height: 18px;
             background-color: var(--background-color);
             transform: translate(-50%, -50%);
             padding-inline: 2ch;
