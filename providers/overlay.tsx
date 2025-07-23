@@ -9,6 +9,14 @@ type Overlay = {
     numbers: boolean;
     tabs: boolean;
     statusBar: boolean;
+    pageWidth: boolean;
+    pageHeight: boolean;
+    paddingTop: boolean;
+    paddingBottom: boolean;
+    contentHeight: boolean;
+    contentWidth: boolean;
+    rightWidth: boolean;
+    leftWidth: boolean;
 };
 
 type OverlayContext = {
@@ -36,6 +44,14 @@ export function OverlayProvider({ children }: { children: ReactNode }) {
         numbers: false,
         tabs: false,
         statusBar: false,
+        pageWidth: false,
+        pageHeight: false,
+        paddingTop: false,
+        paddingBottom: false,
+        contentHeight: false,
+        contentWidth: false,
+        rightWidth: false,
+        leftWidth: false,
     });
 
     return (

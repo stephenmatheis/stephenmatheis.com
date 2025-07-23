@@ -4,9 +4,7 @@ import { useEffect, useState } from 'react';
 import { useOverlay } from '@/providers/overlay';
 import styles from './overlay.module.scss';
 
-type OverlayProps = {};
-
-export function Overlay({}: OverlayProps) {
+export function Overlay() {
     const [viewport, setViewport] = useState({ width: 0, height: 0 });
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const { overlays, setOverlays } = useOverlay();
@@ -160,7 +158,7 @@ export function Overlay({}: OverlayProps) {
             <div className={`${styles.page}${overlays.page ? ` ${styles.on}` : ''}`}>
                 <main className={styles.content}>
                     {/* Left Column Width */}
-                    <div className={styles.leftwidth}>
+                    <div className={`${styles.leftwidth}${overlays.leftWidth ? ` ${styles.on}` : ''}`}>
                         <svg width="392" height="7" viewBox="0 0 392 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M4 7H3V6H4V7ZM389 7H388V6H389V7ZM3 6H2V5H3V6ZM390 6H389V5H390V6ZM2 3H390V2H391V3H392V4H391V5H390V4H2V5H1V4H0V3H1V2H2V3ZM3 2H2V1H3V2ZM390 2H389V1H390V2ZM4 1H3V0H4V1ZM389 1H388V0H389V1Z"
@@ -179,7 +177,7 @@ export function Overlay({}: OverlayProps) {
                     </div>
 
                     {/* Right Column Width */}
-                    <div className={styles.rightwidth}>
+                    <div className={`${styles.rightwidth}${overlays.rightWidth ? ` ${styles.on}` : ''}`}>
                         <svg width="245" height="7" viewBox="0 0 245 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M4 7H3V6H4V7ZM242 7H241V6H242V7ZM3 6H2V5H3V6ZM243 6H242V5H243V6ZM2 3H243V2H244V3H245V4H244V5H243V4H2V5H1V4H0V3H1V2H2V3ZM3 2H2V1H3V2ZM243 2H242V1H243V2ZM4 1H3V0H4V1ZM242 1H241V0H242V1Z"
@@ -194,7 +192,7 @@ export function Overlay({}: OverlayProps) {
                 </main>
 
                 {/* Page Padding */}
-                <div className={styles.paddingtop}>
+                <div className={`${styles.paddingbottom}${overlays.paddingBottom ? ` ${styles.on}` : ''}`}>
                     <svg width="3" height="50" viewBox="0 0 3 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 0V1H2V48.5H3V49.5H0V48.5H1V1H0V0H3Z" fill="currentColor" />
                     </svg>
@@ -202,15 +200,15 @@ export function Overlay({}: OverlayProps) {
                 </div>
 
                 {/* Page Padding */}
-                <div className={styles.paddingbottom}>
+                <div className={`${styles.paddingtop}${overlays.paddingTop ? ` ${styles.on}` : ''}`}>
                     <svg width="3" height="50" viewBox="0 0 3 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 0V1H2V48.5H3V49.5H0V48.5H1V1H0V0H3Z" fill="currentColor" />
                     </svg>
                     <div className={styles.label}>3 lines</div>
                 </div>
 
-                {/* Lines */}
-                <div className={styles.lines}>
+                {/* Content Height */}
+                <div className={`${styles.contentheight}${overlays.contentHeight ? ` ${styles.on}` : ''}`}>
                     <svg width="7" height="957" viewBox="0 0 7 957" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 1H5V2H4V955H5V956H4V957H3V956H2V955H3V2H2V1H3V0H4V1Z" fill="currentColor" />
                         <path d="M2 955H1V954H2V955Z" fill="currentColor" />
@@ -225,8 +223,19 @@ export function Overlay({}: OverlayProps) {
                     <div className={styles.label}>58 lines</div>
                 </div>
 
+                {/* Content Width */}
+                <div className={`${styles.contentwidth}${overlays.contentWidth ? ` ${styles.on}` : ''}`}>
+                    <svg width="665" height="7" viewBox="0 0 665 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M4 7H3V6H4V7ZM662 7H661V6H662V7ZM3 6H2V5H3V6ZM663 6H662V5H663V6ZM2 3H663V2H664V3H665V4H664V5H663V4H2V5H1V4H0V3H1V2H2V3ZM3 2H2V1H3V2ZM663 2H662V1H663V2ZM4 1H3V0H4V1ZM662 1H661V0H662V1Z"
+                            fill="currentColor"
+                        />
+                    </svg>
+                    <div className={styles.label}>95ch</div>
+                </div>
+
                 {/* Page Height */}
-                <div className={styles.pageheight}>
+                <div className={`${styles.pageheight}${overlays.pageHeight ? ` ${styles.on}` : ''}`}>
                     <svg width="9" height="1056" viewBox="0 0 9 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3 1056H0V1055H3V1056Z" fill="currentColor" />
                         <path d="M5 1055H3V1054H5V1055Z" fill="currentColor" />
@@ -244,7 +253,7 @@ export function Overlay({}: OverlayProps) {
                 </div>
 
                 {/* Page Width */}
-                <div className={styles.pagewidth}>
+                <div className={`${styles.pagewidth}${overlays.pageWidth ? ` ${styles.on}` : ''}`}>
                     <svg width="816" height="9" viewBox="0 0 816 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M808 9H8V8H808V9Z" fill="currentColor" />
                         <path d="M8 8H5V7H8V8Z" fill="currentColor" />
