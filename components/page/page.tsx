@@ -111,6 +111,7 @@ export function Page({ children }) {
             {/* Overlay */}
             <div className={styles.overlay}>
                 {/* Legend */}
+                {/* TODO: Add bidirectional on hover effect for line or legend  */}
                 <div className={styles.legend}>
                     <div className={styles.title}>Legend</div>
                     <div className={styles.item}>
@@ -143,22 +144,24 @@ export function Page({ children }) {
                         <span className={styles.value}>4ch</span>
                         <span className={styles.alt}>28px</span>
                     </div>
+                    {/* TODO: Add vertical line next to name */}
                     <div className={styles.item}>
                         <span className={styles.name}>Font Size</span>
                         <span className={styles.value}>11px</span>
                         <span className={styles.alt}>1rem</span>
                     </div>
+                    {/* TODO: Add vertical line at end of title */}
                     <div className={styles.item}>
                         <span className={styles.name}>Line Height</span>
                         <span className={styles.value}>16.5px</span>
                         <span className={styles.alt}>1.5rem</span>
                     </div>
+                    {/* TODO: Add horizontal line next to name */}
                     <div className={styles.item}>
                         <span className={styles.name}>Character Width</span>
                         <span className={styles.value}>7px</span>
                         <span className={styles.alt}>1ch</span>
                     </div>
-
                     <div className={styles.item}>
                         <span className={styles.name}>Padding Top</span>
                         <span className={styles.value}>3 Lines</span>
