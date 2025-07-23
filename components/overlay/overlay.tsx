@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useOverlay } from '@/providers/overlay';
 import styles from './overlay.module.scss';
 
 type OverlayProps = {};
@@ -9,6 +9,7 @@ type OverlayProps = {};
 export function Overlay({}: OverlayProps) {
     const [viewport, setViewport] = useState({ width: 0, height: 0 });
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const { overlays, setOverlays } = useOverlay();
 
     useEffect(() => {
         function updateMousePosition(event: PointerEvent) {
@@ -121,7 +122,7 @@ export function Overlay({}: OverlayProps) {
                             <span className={styles.value}>{viewport.height}px</span>
                         </div>
                     </div>
-                    {/* Mouse Position */}
+                    {/* Pointer */}
                     <div className={styles.pointer}>
                         <div className={styles.title}>Pointer</div>
                         <div className={styles.item}>
@@ -133,9 +134,30 @@ export function Overlay({}: OverlayProps) {
                             <span className={styles.value}>{mousePosition.y}px</span>
                         </div>
                     </div>
+                    {/* Toggles */}
+                    <div className={styles.toggles}>
+                        <div className={styles.title}>Toggle Overlays</div>
+                        {Object.entries(overlays).map(([key, value]) => (
+                            <button
+                                key={key}
+                                className={`${styles.item}${value ? ` ${styles.on}` : ''}`}
+                                onClick={() =>
+                                    setOverlays((prev) => ({
+                                        ...prev,
+                                        [key]: !prev[key as keyof typeof overlays],
+                                    }))
+                                }
+                            >
+                                <span className={styles.name}>
+                                    {key.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase())}
+                                </span>
+                                <span className={styles.value}>{value ? 'ON' : 'OFF'}</span>
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
-            <div className={styles.page}>
+            <div className={`${styles.page}${overlays.page ? ` ${styles.on}` : ''}`}>
                 <main className={styles.content}>
                     {/* Left Column Width */}
                     <div className={styles.leftwidth}>
@@ -167,8 +189,8 @@ export function Overlay({}: OverlayProps) {
                         <div className={styles.label}>35ch</div>
                     </div>
 
-                    <div className={styles.left} />
-                    <div className={styles.right} />
+                    <div className={`${styles.left}${overlays.left ? ` ${styles.on}` : ''}`} />
+                    <div className={`${styles.right}${overlays.right ? ` ${styles.on}` : ''}`} />
                 </main>
 
                 {/* Page Padding */}

@@ -16,6 +16,10 @@
         width: calc(100% + 4ch);
         color: var(--lighter);
 
+        &.on {
+            box-shadow: 0 0 0 1px red;
+        }
+
         @media print {
             display: none;
         }
@@ -35,6 +39,10 @@
         top: 0;
         left: -4ch;
         color: var(--light);
+
+        &.on {
+            box-shadow: 0 0 0 1px red;
+        }
 
         @media (min-width: 940px), print {
             .line {
@@ -60,6 +68,10 @@
         bottom: calc(var(--line-height) * -2);
         left: -4ch;
         color: var(--light);
+
+        &.on {
+            box-shadow: 0 0 0 1px red;
+        }
 
         @media print {
             display: none;
