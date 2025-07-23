@@ -158,11 +158,7 @@ export function Page({ children }) {
                         <span className={styles.value}>7px</span>
                         <span className={styles.alt}>1ch</span>
                     </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Lines</span>
-                        <span className={styles.value}>64</span>
-                        <span className={styles.alt}>1056px</span>
-                    </div>
+
                     <div className={styles.item}>
                         <span className={styles.name}>Padding Top</span>
                         <span className={styles.value}>3 Lines</span>

@@ -22,6 +22,14 @@ export function Content() {
                 <div className={styles.label}>56ch</div>
             </div>
 
+            {/* Gap */}
+            <div className={styles.gap}>
+                <svg width="28" height="3" viewBox="0 0 28 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1H27V0H28V3H27V2H1V3H0V0H1V1Z" fill="currentColor" />
+                </svg>
+                <div className={styles.label}>4ch</div>
+            </div>
+
             {/* Right Column Width */}
             <div className={styles.rightwidth}>
                 <svg width="245" height="7" viewBox="0 0 245 7" fill="none" xmlns="http://www.w3.org/2000/svg">
