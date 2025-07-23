@@ -41,8 +41,29 @@
 
     .rightwidth {
         top: calc(var(--line-height) * -2);
-
         right: 0;
+    }
+
+    .gap {
+        position: absolute;
+        top: calc(var(--line-height) * 37.5);
+        left: 56ch;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 16.5px;
+        color: var(--lighter);
+
+        @media (max-width: 939px) {
+            display: none;
+        }
+
+        .label {
+            position: absolute;
+            top: 0;
+            background-color: var(--background-color);
+        }
     }
 
     .breadcrumbs {
