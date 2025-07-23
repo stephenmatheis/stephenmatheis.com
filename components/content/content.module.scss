@@ -9,69 +9,17 @@
         gap: calc(var(--line-height) * 2);
     }
 
-    .leftwidth,
-    .rightwidth {
-        position: absolute;
-        height: 18px;
-        color: var(--lighter);
-
-        @media (max-width: 939px) {
-            display: none;
-        }
-
-        .label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--background-color);
-            height: calc(var(--line-height) * 1);
-            transform: translate(-50%, -50%);
-            width: max-content;
-            padding-inline: 2ch;
-        }
-    }
-
-    .leftwidth {
-        top: calc(var(--line-height) * 5.5);
-        left: 0;
-    }
-
-    .rightwidth {
-        top: calc(var(--line-height) * -2);
-        right: 0;
-    }
-
-    .gap {
-        position: absolute;
-        top: calc(var(--line-height) * 37.5);
-        left: 56ch;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 16.5px;
-        color: var(--lighter);
-
-        @media (max-width: 939px) {
-            display: none;
-        }
-
-        .label {
-            position: absolute;
-            top: 0;
-            background-color: var(--background-color);
-        }
-    }
-
     .breadcrumbs {
+        user-select: none;
         position: absolute;
         top: calc(var(--line-height) * -2);
         left: -4ch;
         width: calc(100% + 4ch);
         color: var(--lighter);
+
+        &.on {
+            box-shadow: 0 0 0 1px red;
+        }
 
         @media print {
             display: none;
@@ -88,10 +36,15 @@
     }
 
     .linenumbers {
+        user-select: none;
         position: absolute;
         top: 0;
         left: -4ch;
         color: var(--light);
+
+        &.on {
+            box-shadow: 0 0 0 1px red;
+        }
 
         @media (min-width: 940px), print {
             .line {
@@ -107,6 +60,7 @@
     }
 
     .statusbar {
+        user-select: none;
         position: relative;
         width: calc(100% + 4ch);
         height: calc(var(--line-height) * 1);
@@ -117,6 +71,10 @@
         bottom: calc(var(--line-height) * -2);
         left: -4ch;
         color: var(--light);
+
+        &.on {
+            box-shadow: 0 0 0 1px red;
+        }
 
         @media print {
             display: none;

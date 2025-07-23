@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
+import { OverlayProvider } from '@/providers/overlay';
 import '@/styles/app.scss';
 
 const mono = localFont({
@@ -41,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={mono.variable} suppressHydrationWarning>
-                {children}
+                <OverlayProvider>{children}</OverlayProvider>
                 <Analytics debug={false} />
             </body>
         </html>
