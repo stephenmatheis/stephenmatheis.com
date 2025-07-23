@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useOverlay } from '@/providers/overlay';
 import { Header } from '@/components/header';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
@@ -9,40 +12,12 @@ import styles from './content.module.scss';
 // TODO: Add a console game.
 
 export function Content() {
+    const { overlays } = useOverlay();
+
     return (
         <main className={styles.content}>
-            {/* Left Column Width */}
-            <div className={styles.leftwidth}>
-                <svg width="392" height="7" viewBox="0 0 392 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M4 7H3V6H4V7ZM389 7H388V6H389V7ZM3 6H2V5H3V6ZM390 6H389V5H390V6ZM2 3H390V2H391V3H392V4H391V5H390V4H2V5H1V4H0V3H1V2H2V3ZM3 2H2V1H3V2ZM390 2H389V1H390V2ZM4 1H3V0H4V1ZM389 1H388V0H389V1Z"
-                        fill="currentColor"
-                    />
-                </svg>
-                <div className={styles.label}>56ch</div>
-            </div>
-
-            {/* Gap */}
-            <div className={styles.gap}>
-                <svg width="28" height="3" viewBox="0 0 28 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1H27V0H28V3H27V2H1V3H0V0H1V1Z" fill="currentColor" />
-                </svg>
-                <div className={styles.label}>4ch</div>
-            </div>
-
-            {/* Right Column Width */}
-            <div className={styles.rightwidth}>
-                <svg width="245" height="7" viewBox="0 0 245 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M4 7H3V6H4V7ZM242 7H241V6H242V7ZM3 6H2V5H3V6ZM243 6H242V5H243V6ZM2 3H243V2H244V3H245V4H244V5H243V4H2V5H1V4H0V3H1V2H2V3ZM3 2H2V1H3V2ZM243 2H242V1H243V2ZM4 1H3V0H4V1ZM242 1H241V0H242V1Z"
-                        fill="currentColor"
-                    />
-                </svg>
-                <div className={styles.label}>35ch</div>
-            </div>
-
             {/* Breadcrumbs */}
-            <div className={styles.breadcrumbs}>
+            <div className={`${styles.breadcrumbs}${overlays.tabs ? ` ${styles.on}` : ''}`}>
                 {['app', 'page', 'resume'].map((crumb, i, arr) => (
                     <span key={i}>
                         <Link href="/">{crumb}</Link>
@@ -51,8 +26,8 @@ export function Content() {
                 ))}
             </div>
 
-            {/* Lines */}
-            <div className={styles.linenumbers}>
+            {/* Line Numbers */}
+            <div className={`${styles.linenumbers}${overlays.numbers ? ` ${styles.on}` : ''}`}>
                 {Array.from({ length: 107 }, (_, i) => (
                     <div key={i} className={styles.line}>
                         {i + 1}
@@ -61,7 +36,7 @@ export function Content() {
             </div>
 
             {/* Status Bar */}
-            <div className={styles.statusbar}>
+            <div className={`${styles.statusbar}${overlays.statusBar ? ` ${styles.on}` : ''}`}>
                 <div className={styles.block}>
                     <Link href="https://github.com/stephenmatheis/stephenmatheis.com/tree/main" target="_blank">
                         <svg width="11" height="17" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
