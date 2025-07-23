@@ -159,7 +159,6 @@
             position: static;
             display: inline-flex;
             flex-direction: column;
-            // margin-right: 10ch;
         }
 
         @media (max-width: 939px) {
@@ -176,7 +175,7 @@
 
             .name {
                 color: var(--light);
-                width: 16ch;
+                width: 15ch;
             }
 
             .value {

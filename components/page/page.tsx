@@ -124,36 +124,59 @@ export function Page({ children }) {
                         <span className={styles.alt}> 1056px</span>
                     </div>
                     <div className={styles.item}>
+                        <span className={styles.name}>Content Width</span>
+                        <span className={styles.value}>95ch</span>
+                        <span className={styles.alt}>665px</span>
+                    </div>
+                    <div className={styles.item}>
+                        <span className={styles.name}>Left Column</span>
+                        <span className={styles.value}>56ch</span>
+                        <span className={styles.alt}>392px</span>
+                    </div>
+                    <div className={styles.item}>
+                        <span className={styles.name}>Right Column</span>
+                        <span className={styles.value}>35ch</span>
+                        <span className={styles.alt}>245px</span>
+                    </div>
+                    <div className={styles.item}>
+                        <span className={styles.name}>Gap</span>
+                        <span className={styles.value}>4ch</span>
+                        <span className={styles.alt}>28px</span>
+                    </div>
+                    <div className={styles.item}>
                         <span className={styles.name}>Font Size</span>
                         <span className={styles.value}>11px</span>
+                        <span className={styles.alt}>1rem</span>
                     </div>
                     <div className={styles.item}>
                         <span className={styles.name}>Line Height</span>
                         <span className={styles.value}>16.5px</span>
+                        <span className={styles.alt}>1.5rem</span>
                     </div>
                     <div className={styles.item}>
                         <span className={styles.name}>Character Width</span>
                         <span className={styles.value}>7px</span>
+                        <span className={styles.alt}>1ch</span>
                     </div>
                     <div className={styles.item}>
                         <span className={styles.name}>Lines</span>
                         <span className={styles.value}>64</span>
+                        <span className={styles.alt}>1056px</span>
                     </div>
                     <div className={styles.item}>
                         <span className={styles.name}>Padding Top</span>
                         <span className={styles.value}>3 Lines</span>
+                        <span className={styles.alt}>49.5px</span>
                     </div>
                     <div className={styles.item}>
                         <span className={styles.name}>Padding Bottom</span>
                         <span className={styles.value}>3 Lines</span>
+                        <span className={styles.alt}>49.5px</span>
                     </div>
                     <div className={styles.item}>
                         <span className={styles.name}>Content height</span>
                         <span className={styles.value}>58 lines</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Content Width</span>
-                        <span className={styles.value}>FIXME:</span>
+                        <span className={styles.alt}>957px</span>
                     </div>
                 </div>
                 {/* Controls */}
