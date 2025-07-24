@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Dots } from '@/components/dots';
+import { Squares } from '@/components/squares';
+import { TwoZeroThreeFive } from '../two-zero-three-five';
 import { useOverlay } from '@/providers/overlay';
 import styles from './overlay.module.scss';
 
@@ -106,6 +109,7 @@ export function Overlay() {
                         <span className={styles.alt}>957px</span>
                     </div>
                 </div>
+
                 {/* Controls */}
                 <div className={styles.controls}>
                     {/* Viewport */}
@@ -154,6 +158,15 @@ export function Overlay() {
                         ))}
                     </div>
                 </div>
+
+                {/* Shapes */}
+                <div className={styles.shapes}>
+                    <Squares />
+                    <Dots />
+                </div>
+
+                {/* TwoZeroThreeFive */}
+                <TwoZeroThreeFive />
             </div>
             <div className={`${styles.page}${overlays.page ? ` ${styles.on}` : ''}`}>
                 <main className={styles.content}>
