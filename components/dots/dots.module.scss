@@ -1,6 +1,6 @@
 .dots {
     display: grid;
-    grid-template-columns: repeat(6, calc(var(--line-height) * 2));
+    grid-template-columns: repeat(5, calc(var(--line-height) * 2));
     grid-template-rows: repeat(3, calc(var(--line-height) * 2));
     gap: var(--line-height);
     color: var(--light);

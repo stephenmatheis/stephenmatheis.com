@@ -1,10 +1,10 @@
 .two-zero-three-five {
     pointer-events: all;
-    position: absolute;
-    bottom: calc(var(--line-height) * 0);
+    position: fixed;
+    bottom: calc(var(--line-height) * 2);
     right: 4ch;
     gap: var(--line-height);
-    color: var(--light);
+    color: var(--lighter);
     display: flex;
     gap: 12px;
     align-items: center;
@@ -17,6 +17,10 @@
     }
 
     @media print {
+        display: none;
+    }
+
+    @media (max-width: 1365px) {
         display: none;
     }
 }
