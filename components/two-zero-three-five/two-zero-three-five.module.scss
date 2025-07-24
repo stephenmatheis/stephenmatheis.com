@@ -1,29 +1,10 @@
 .two-zero-three-five {
-    pointer-events: all;
-    position: fixed;
-    bottom: calc(var(--line-height) * 2);
-    right: 4ch;
-    gap: var(--line-height);
-    color: var(--lighter);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 3px;
-
-    @media (max-width: 1400px) {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-    }
-
-    @media print {
-        display: none;
-    }
-
-    @media (max-width: 1365px) {
-        display: none;
-    }
+    color: var(--lightest);
 
     .barcode,
     .digits {

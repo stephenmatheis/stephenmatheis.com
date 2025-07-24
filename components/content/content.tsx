@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useOverlay } from '@/providers/overlay';
-import { Header } from '@/components/header';
+import { Name } from '@/components/name';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
 import { Skills } from '@/components/skills';
@@ -72,7 +72,7 @@ export function Content() {
                 </div>
             </div>
             <div className={styles.left}>
-                <Header />
+                <Name />
                 <Experience />
             </div>
             <div className={styles.right}>

@@ -1,23 +1,8 @@
-.name {
-    .website {
-        display: flex;
-        flex-direction: column;
-        width: fit-content;
+.header {
+    width: 100%;
+    padding: 6px 0px;
 
-        .primary {
-            color: var(--primary);
-        }
-
-        .color {
-            color: var(--color);
-        }
-
-        .muted {
-            color: var(--muted);
-        }
-
-        .light {
-            color: var(--light);
-        }
+    @media print {
+        display: none;
     }
 }

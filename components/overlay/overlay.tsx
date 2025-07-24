@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { Dots } from '@/components/dots';
 import { Squares } from '@/components/squares';
-import { TwoZeroThreeFive } from '../two-zero-three-five';
 import { useOverlay } from '@/providers/overlay';
 import styles from './overlay.module.scss';
 
@@ -166,7 +165,7 @@ export function Overlay() {
                 </div>
 
                 {/* TwoZeroThreeFive */}
-                <TwoZeroThreeFive />
+                <div className={styles.barcode}>{/* <TwoZeroThreeFive /> */}</div>
             </div>
             <div className={`${styles.page}${overlays.page ? ` ${styles.on}` : ''}`}>
                 <main className={styles.content}>
