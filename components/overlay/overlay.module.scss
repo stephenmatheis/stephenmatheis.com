@@ -207,13 +207,28 @@
             display: none;
         }
     }
+
+    .barcode {
+        pointer-events: all;
+        position: fixed;
+        bottom: calc(var(--line-height) * 2);
+        right: 4ch;
+
+        @media print {
+            display: none;
+        }
+
+        @media (max-width: 1365px) {
+            display: none;
+        }
+    }
 }
 
 .page {
     pointer-events: none;
     user-select: none;
     position: absolute;
-    top: calc(var(--line-height) * -2);
+    top: 103px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -233,6 +248,10 @@
             width: 100%;
             padding-inline: 5ch;
         }
+    }
+
+    @media print {
+        top: calc(var(--line-height) * -2);
     }
 
     .content {
@@ -266,10 +285,14 @@
                 color: red;
             }
 
+            @media (max-width: 939px) {
+                display: none;
+            }
+
             .label {
                 line-height: 8.25px;
                 font-size: 8.25px;
-                margin-top: .5px;
+                margin-top: 0.5px;
             }
         }
 
@@ -285,6 +308,10 @@
 
             &.on {
                 color: red;
+            }
+
+            @media (max-width: 939px) {
+                display: none;
             }
 
             .label {
