@@ -1,15 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Dots } from '@/components/dots';
 import { Squares } from '@/components/squares';
 import { useOverlay } from '@/providers/overlay';
+import type { Overlay } from '@/providers/overlay';
 import styles from './overlay.module.scss';
 
 export function Overlay() {
     const [viewport, setViewport] = useState({ width: 0, height: 0 });
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const { overlays, setOverlays } = useOverlay();
+    const isAllOn = useMemo(() => Object.values(overlays).every((value) => value), [overlays]);
 
     useEffect(() => {
         function updateMousePosition(event: PointerEvent) {
@@ -74,19 +76,16 @@ export function Overlay() {
                         <span className={styles.value}>4ch</span>
                         <span className={styles.alt}>28px</span>
                     </div>
-                    {/* TODO: Add vertical line next to name */}
                     <div className={styles.item}>
                         <span className={styles.name}>Font Size</span>
                         <span className={styles.value}>11px</span>
                         <span className={styles.alt}>1rem</span>
                     </div>
-                    {/* TODO: Add vertical line at end of title */}
                     <div className={styles.item}>
                         <span className={styles.name}>Line Height</span>
                         <span className={styles.value}>16.5px</span>
                         <span className={styles.alt}>1.5rem</span>
                     </div>
-                    {/* TODO: Add horizontal line next to name */}
                     <div className={styles.item}>
                         <span className={styles.name}>Character Width</span>
                         <span className={styles.value}>7px</span>
@@ -155,6 +154,23 @@ export function Overlay() {
                                 <span className={styles.value}>{value ? 'ON' : 'OFF'}</span>
                             </button>
                         ))}
+                        <button
+                            className={`${styles.item}${isAllOn ? ` ${styles.on}` : ''}`}
+                            onClick={() =>
+                                setOverlays((prev) => {
+                                    return Object.fromEntries(
+                                        Object.entries(prev).map(([key, _]) => {
+                                            return [key, isAllOn ? false : true];
+                                        })
+                                    ) as Overlay;
+                                })
+                            }
+                        >
+                            <span className={styles.name}>All</span>
+                            <span className={styles.value}>
+                                {Object.values(overlays).every((value) => value) ? 'ON' : 'OFF'}
+                            </span>
+                        </button>
                     </div>
                 </div>
 

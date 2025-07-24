@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
-type Overlay = {
+export type Overlay = {
     page: boolean;
     left: boolean;
     right: boolean;
