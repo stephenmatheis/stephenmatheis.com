@@ -170,6 +170,41 @@ export function Overlay() {
             </div>
             <div className={`${styles.page}${overlays.page ? ` ${styles.on}` : ''}`}>
                 <main className={styles.content}>
+                    {/* Character Width */}
+                    <div className={`${styles.charWidth}${overlays.charWidth ? ` ${styles.on}` : ''}`}>
+                        <svg width="7" height="2" viewBox="0 0 7 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="1" width="7" height="1" fill="currentColor" />
+                            <rect width="1" height="1" fill="currentColor" />
+                            <rect x="6" width="1" height="1" fill="currentColor" />
+                        </svg>
+                        <div className={styles.label}>7px</div>
+                    </div>
+
+                    {/* Font Size */}
+                    <div className={`${styles.fontsize}${overlays.fontSize ? ` ${styles.on}` : ''}`}>
+                        <svg width="2" height="11" viewBox="0 0 2 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" width="1" height="11" fill="currentColor" />
+                            <rect width="1" height="1" fill="currentColor" />
+                            <rect y="10" width="1" height="1" fill="currentColor" />
+                        </svg>
+                        <div className={styles.label}>11px</div>
+                    </div>
+
+                    {/* Line Height */}
+                    <div className={`${styles.lineheight}${overlays.lineHeight ? ` ${styles.on}` : ''}`}>
+                        {/* <svg width="3" height="17" viewBox="0 0 3 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 1H2V15.5H3V16.5H0V15.5H1V1H0V0H3V1Z" fill="currentColor" />
+                        </svg> */}
+                        <svg width="3" height="16.5" viewBox="0 0 3 16.5" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="0" width="1" height="1" fill="currentColor" />
+                            <rect x="2" y="0" width="1" height="1" fill="currentColor" />
+                            <line x1="1.5" y1="0" x2="1.5" y2="16.5" stroke="currentColor" strokeWidth="1" />
+                            <rect x="0" y="15.5" width="1" height="1" fill="currentColor" />
+                            <rect x="2" y="15.5" width="1" height="1" fill="currentColor" />
+                        </svg>
+                        <div className={styles.label}>16.5px</div>
+                    </div>
+
                     {/* Left Column Width */}
                     <div className={`${styles.leftwidth}${overlays.leftWidth ? ` ${styles.on}` : ''}`}>
                         <svg width="392" height="7" viewBox="0 0 392 7" fill="none" xmlns="http://www.w3.org/2000/svg">

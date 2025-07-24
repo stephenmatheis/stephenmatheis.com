@@ -17,6 +17,9 @@ type Overlay = {
     contentWidth: boolean;
     rightWidth: boolean;
     leftWidth: boolean;
+    lineHeight: boolean;
+    fontSize: boolean;
+    charWidth: boolean;
 };
 
 type OverlayContext = {
@@ -52,6 +55,9 @@ export function OverlayProvider({ children }: { children: ReactNode }) {
         contentWidth: false,
         rightWidth: false,
         leftWidth: false,
+        lineHeight: false,
+        fontSize: false,
+        charWidth: false,
     });
 
     return (

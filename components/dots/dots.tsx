@@ -3,7 +3,7 @@ import styles from './dots.module.scss';
 export function Dots() {
     return (
         <div className={styles.dots}>
-            {Array.from({ length: 18 }, (_, i) => (
+            {Array.from({ length: 15 }, (_, i) => (
                 <div key={i} className={styles.dot}>
                     <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 33H13V32H20V33Z" fill="currentColor" />
