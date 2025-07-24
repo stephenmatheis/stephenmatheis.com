@@ -6,9 +6,10 @@
     gap: var(--line-height);
     color: var(--lighter);
     display: flex;
-    gap: 12px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 3px;
 
     @media (max-width: 1400px) {
         display: grid;
@@ -22,5 +23,13 @@
 
     @media (max-width: 1365px) {
         display: none;
+    }
+
+    .barcode,
+    .digits {
+        display: flex;
+        gap: 3px;
+        align-items: center;
+        justify-content: center;
     }
 }
