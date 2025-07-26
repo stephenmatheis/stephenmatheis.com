@@ -29,6 +29,42 @@
         display: none;
     }
 
+    .topleftarm,
+    .toprightarm {
+        pointer-events: all;
+        position: fixed;
+        top: var(--line-height);
+        color: var(--lighter);
+        height: var(--line-height);
+        display: flex;
+        align-items: center;
+    }
+
+    .topleftarm {
+        left: 4ch;
+    }
+
+    .toprightarm {
+        right: 4ch;
+    }
+
+    .leftarm,
+    .rightarm {
+        pointer-events: all;
+        position: fixed;
+        top: 2ch;
+        height: calc(100% - 28px);
+        color: var(--lighter);
+    }
+
+    .leftarm {
+        left: 0ch;
+    }
+
+    .rightarm {
+        right: 0ch;
+    }
+
     .legend {
         position: fixed;
         top: calc(var(--line-height) * 2);
@@ -190,7 +226,7 @@
         }
     }
 
-    .shapes {
+    .bottomleft {
         pointer-events: all;
         position: fixed;
         bottom: calc(var(--line-height) * 2);
@@ -208,7 +244,7 @@
         }
     }
 
-    .barcode {
+    .bottomright {
         pointer-events: all;
         position: fixed;
         bottom: calc(var(--line-height) * 2);
@@ -222,13 +258,54 @@
             display: none;
         }
     }
+
+    .card {
+        position: relative;
+        width: 256px;
+        height: 256px;
+        padding: 22px 40px;
+        color: var(--muted);
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            path {
+                fill: var(--lightest);
+            }
+        }
+    }
+
+    .card_two {
+        --width: 128px;
+        --height: 256px;
+
+        position: relative;
+        width: var(--width);
+        height: var(--height);
+        padding: 1ch;
+        color: var(--muted);
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: var(--width);
+            height: var(--height);
+
+            path {
+                fill: var(--lightest);
+            }
+        }
+    }
 }
 
 .page {
     pointer-events: none;
     user-select: none;
     position: absolute;
-    top: 103px;
+    top: 124px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -318,7 +395,7 @@
             .label {
                 line-height: 8.25px;
                 font-size: 8.25px;
-                margin-left: .75ch;
+                margin-left: 0.75ch;
             }
         }
 

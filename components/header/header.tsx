@@ -4,9 +4,9 @@ import styles from './header.module.scss';
 export function Header() {
     return (
         <header className={styles.header}>
-            <span>{'///////////////////////////'}</span>
-            <TwoZeroThreeFive />
-            <span>{'///////////////////////////'}</span>
+            <div className={styles.logo}>
+                <TwoZeroThreeFive />
+            </div>
         </header>
     );
 }

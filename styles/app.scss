@@ -27,8 +27,8 @@
     line-height: var(--line-height);
 
     &::selection {
-        color: var(--background-color);
-        background-color: var(--color);
+        color: var(--primary);
+        background-color: var(--lightest);
     }
 }
 
