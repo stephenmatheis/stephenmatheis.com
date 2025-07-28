@@ -1,21 +1,19 @@
 .overlay {
     pointer-events: none;
     user-select: none;
+    margin-inline: auto;
 
-    @media (max-width: 1365px) {
+    @media (max-width: 1364px) {
         display: flex;
         justify-content: center;
         gap: 4ch;
         width: 8.5in;
-        margin-inline: auto;
-        margin-top: calc(var(--line-height) * 7);
         margin-bottom: calc(var(--line-height) * 2);
     }
 
     @media (max-width: 939px) {
         width: 82ch;
         justify-content: space-between;
-        margin-top: calc(var(--line-height) * 2);
     }
 
     @media (max-width: 644px) {
@@ -29,49 +27,13 @@
         display: none;
     }
 
-    .topleftarm,
-    .toprightarm {
-        pointer-events: all;
-        position: fixed;
-        top: var(--line-height);
-        color: var(--lighter);
-        height: var(--line-height);
-        display: flex;
-        align-items: center;
-    }
-
-    .topleftarm {
-        left: 4ch;
-    }
-
-    .toprightarm {
-        right: 4ch;
-    }
-
-    .leftarm,
-    .rightarm {
-        pointer-events: all;
-        position: fixed;
-        top: 2ch;
-        height: calc(100% - 28px);
-        color: var(--lighter);
-    }
-
-    .leftarm {
-        left: 0ch;
-    }
-
-    .rightarm {
-        right: 0ch;
-    }
-
     .legend {
         position: fixed;
-        top: calc(var(--line-height) * 2);
+        top: calc(var(--line-height) * 3);
         left: 4ch;
         width: 56ch;
 
-        @media (max-width: 1365px) {
+        @media (max-width: 1364px) {
             position: static;
             display: inline-flex;
             flex-direction: column;
@@ -107,16 +69,16 @@
 
     .controls {
         pointer-events: all;
+        position: fixed;
+        top: calc(var(--line-height) * 3);
+        right: 4ch;
+        width: 35ch;
         display: inline-flex;
         flex-direction: column;
         align-items: flex-end;
         gap: calc(var(--line-height) * 2);
-        position: fixed;
-        top: calc(var(--line-height) * 2);
-        right: 4ch;
-        width: 35ch;
 
-        @media (max-width: 1365px) {
+        @media (max-width: 1364px) {
             position: static;
         }
 
@@ -130,7 +92,7 @@
                 color: var(--color);
                 text-align: right;
 
-                @media (max-width: 1365px) {
+                @media (max-width: 1364px) {
                     text-align: left;
                 }
             }
@@ -159,7 +121,7 @@
                 color: var(--color);
                 text-align: right;
 
-                @media (max-width: 1365px) {
+                @media (max-width: 1364px) {
                     text-align: left;
                 }
             }
@@ -173,7 +135,7 @@
                     width: 6ch;
                     text-align: right;
 
-                    @media (max-width: 1365px) {
+                    @media (max-width: 1364px) {
                         text-align: left;
                     }
                 }
@@ -193,7 +155,7 @@
                 color: var(--color);
                 text-align: right;
 
-                @media (max-width: 1365px) {
+                @media (max-width: 1364px) {
                     text-align: left;
                 }
             }
@@ -213,7 +175,7 @@
                     color: var(--light);
                     width: 14ch;
 
-                    @media (max-width: 1365px) {
+                    @media (max-width: 1364px) {
                         text-align: left;
                     }
                 }
@@ -239,7 +201,7 @@
             display: none;
         }
 
-        @media (max-width: 1365px) {
+        @media (max-width: 1364px) {
             display: none;
         }
     }
@@ -254,49 +216,8 @@
             display: none;
         }
 
-        @media (max-width: 1365px) {
+        @media (max-width: 1364px) {
             display: none;
-        }
-    }
-
-    .card {
-        position: relative;
-        width: 256px;
-        height: 256px;
-        padding: 22px 40px;
-        color: var(--muted);
-
-        svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            path {
-                fill: var(--lightest);
-            }
-        }
-    }
-
-    .card_two {
-        --width: 128px;
-        --height: 256px;
-
-        position: relative;
-        width: var(--width);
-        height: var(--height);
-        padding: 1ch;
-        color: var(--muted);
-
-        svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: var(--width);
-            height: var(--height);
-
-            path {
-                fill: var(--lightest);
-            }
         }
     }
 }
@@ -305,7 +226,7 @@
     pointer-events: none;
     user-select: none;
     position: absolute;
-    top: 124px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -319,8 +240,6 @@
     }
 
     @media screen {
-        margin: calc(var(--line-height) * 2) auto;
-
         @media (max-width: 939px) {
             width: 100%;
             padding-inline: 5ch;

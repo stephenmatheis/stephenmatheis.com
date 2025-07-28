@@ -6,7 +6,7 @@ import { Overlay } from '@/components/overlay';
 export default function ResumePage() {
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <Page>
                 <Content />
             </Page>
