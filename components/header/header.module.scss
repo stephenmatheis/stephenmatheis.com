@@ -15,5 +15,12 @@
         align-items: flex-start;
         justify-content: center;
         width: 8.5in;
+        gap: 3px;
+
+        .side {
+            width: 57px;
+            height: 91px;
+            color: var(--lightest);
+        }
     }
 }
