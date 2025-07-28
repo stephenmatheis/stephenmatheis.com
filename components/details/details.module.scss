@@ -1,0 +1,42 @@
+.details {
+    .title {
+        color: var(--color);
+    }
+
+    .item {
+        cursor: pointer;
+
+        display: flex;
+        gap: 4ch;
+        padding: 0;
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: var(--font-size);
+        text-align: left;
+
+        &.on {
+            color: var(--accent);
+
+            .name,
+            .value,
+            .alt {
+                color: var(--accent);
+            }
+        }
+
+        .name {
+            color: var(--light);
+            width: 15ch;
+        }
+
+        .value {
+            color: var(--muted);
+            width: 8ch;
+        }
+
+        .alt {
+            color: var(--lighter);
+        }
+    }
+}

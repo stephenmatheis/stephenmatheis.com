@@ -4,10 +4,10 @@
     justify-content: space-between;
     gap: 4ch;
 
-    @media screen and (max-width: 939px) {
-        flex-direction: column;
-        gap: calc(var(--line-height) * 2);
-    }
+    // @media screen and (max-width: 939px) {
+    //     flex-direction: column;
+    //     gap: calc(var(--line-height) * 2);
+    // }
 
     .breadcrumbs {
         user-select: none;
