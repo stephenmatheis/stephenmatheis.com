@@ -18,7 +18,13 @@
         color: var(--lighter);
 
         &.on {
-            box-shadow: 0 0 0 1px red;
+            // box-shadow: 0 0 0 1px red;
+
+            color: var(--accent);
+
+            a {
+                color: var(--accent);
+            }
         }
 
         @media print {
@@ -43,7 +49,8 @@
         color: var(--light);
 
         &.on {
-            box-shadow: 0 0 0 1px red;
+            // box-shadow: 0 0 0 1px red;
+            color: var(--accent);
         }
 
         @media (min-width: 940px), print {
@@ -73,7 +80,11 @@
         color: var(--light);
 
         &.on {
-            box-shadow: 0 0 0 1px red;
+            // box-shadow: 0 0 0 1px red;
+
+            a {
+                color: var(--accent);
+            }
         }
 
         @media print {

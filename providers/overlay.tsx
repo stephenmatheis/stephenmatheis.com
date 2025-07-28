@@ -15,6 +15,7 @@ export type Overlay = {
     paddingBottom: boolean;
     contentHeight: boolean;
     contentWidth: boolean;
+    gap: boolean;
     rightWidth: boolean;
     leftWidth: boolean;
     lineHeight: boolean;
@@ -53,6 +54,7 @@ export function OverlayProvider({ children }: { children: ReactNode }) {
         paddingBottom: false,
         contentHeight: false,
         contentWidth: false,
+        gap: false,
         rightWidth: false,
         leftWidth: false,
         lineHeight: false,
