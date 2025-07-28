@@ -5,147 +5,6 @@ import { useOverlay } from '@/providers/overlay';
 import type { Overlay } from '@/providers/overlay';
 import styles from './overlay.module.scss';
 
-function CardTwo({ children }: { children: React.ReactNode }) {
-    return (
-        <div className={styles.card_two}>
-            <svg width="32" height="64" viewBox="0 0 32 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M32 64H2V63H31V2H32V64ZM2 63H1V62H2V63ZM30 0V1H1V62H0V0H30ZM31 2H30V1H31V2Z" fill="black" />
-            </svg>
-            {children}
-        </div>
-    );
-}
-
-function Card({ children }: { children: React.ReactNode }) {
-    return (
-        <div className={styles.card}>
-            <svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M48 252H229V248H233V252H237V256H40V252H44V248H48V252Z" fill="currentColor" />
-                <path d="M40 252H36V248H40V252Z" fill="currentColor" />
-                <path d="M241 252H237V248H241V252Z" fill="currentColor" />
-                <path d="M36 248H32V244H36V248Z" fill="currentColor" />
-                <path d="M44 248H40V244H44V248Z" fill="currentColor" />
-                <path d="M237 248H233V244H237V248Z" fill="currentColor" />
-                <path d="M249 248H241V244H237V240H241V8H249V248Z" fill="currentColor" />
-                <path d="M32 244H28V240H32V244Z" fill="currentColor" />
-                <path d="M40 244H36V240H40V244Z" fill="currentColor" />
-                <path d="M28 240H24V236H28V240Z" fill="currentColor" />
-                <path d="M36 240H32V236H36V240Z" fill="currentColor" />
-                <path d="M256 240H253V0H256V240Z" fill="currentColor" />
-                <path d="M24 236H20V232H24V236Z" fill="currentColor" />
-                <path d="M32 236H28V232H32V236Z" fill="currentColor" />
-                <path d="M20 232H16V228H20V232Z" fill="currentColor" />
-                <path d="M28 232H24V228H28V232Z" fill="currentColor" />
-                <path d="M16 220H20V224H16V228H8V16H16V220Z" fill="currentColor" />
-                <path d="M24 228H20V224H24V228Z" fill="currentColor" />
-                <path d="M4 220H0V8H4V220Z" fill="currentColor" />
-                <path d="M24 52H20V44H24V52Z" fill="currentColor" />
-                <path d="M237 44H233V40H237V44Z" fill="currentColor" />
-                <path d="M24 40H20V36H24V40Z" fill="currentColor" />
-                <path d="M237 36H225V28H237V36Z" fill="currentColor" />
-                <path d="M32 28H20V24H32V28Z" fill="currentColor" />
-                <path d="M237 24H225V20H237V24Z" fill="currentColor" />
-                <path d="M32 12H28V20H20V16H24V8H32V12Z" fill="currentColor" />
-                <path d="M40 16H36V8H40V16Z" fill="currentColor" />
-                <path d="M48 16H44V8H48V16Z" fill="currentColor" />
-                <path d="M237 16H229V12H225V8H237V16Z" fill="currentColor" />
-                <path d="M20 8H16V12H8V4H16V0H20V8Z" fill="currentColor" />
-                <path d="M56 12H52V8H56V12Z" fill="currentColor" />
-                <path d="M188 8H180V4H176V0H188V8Z" fill="currentColor" />
-                <path d="M148 4H28V0H148V4Z" fill="currentColor" />
-                <path d="M168 4H156V0H168V4Z" fill="currentColor" />
-                <path d="M216 4H196V0H216V4Z" fill="currentColor" />
-                <path d="M249 4H224V0H249V4Z" fill="currentColor" />
-            </svg>
-            {children}
-        </div>
-    );
-}
-
-function BackSlash() {
-    return (
-        <svg width="245" height="14" viewBox="0 0 245 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="245" height="14" fill="url(#pattern0_119_1098)" />
-            <defs>
-                <pattern
-                    id="pattern0_119_1098"
-                    patternUnits="userSpaceOnUse"
-                    viewBox="1 -27 7 14"
-                    width="2.8571428571428572%"
-                    height="100%"
-                    patternContentUnits="objectBoundingBox"
-                >
-                    <path
-                        d="M7 -13H8V-15H7V-13ZM6 -15H7V-17H6V-15ZM5 -17H6V-19H5V-17ZM4 -19H5V-21H4V-19ZM3 -21H4V-23H3V-21ZM2 -23H3V-25H2V-23ZM1 -25H2V-27H1V-25Z"
-                        fill="currentColor"
-                    />
-                </pattern>
-            </defs>
-        </svg>
-    );
-}
-
-function ForwardSlash() {
-    return (
-        <svg width="245" height="14" viewBox="0 0 245 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="245" height="14" fill="url(#pattern0_119_1050)" />
-            <defs>
-                <pattern
-                    id="pattern0_119_1050"
-                    patternUnits="userSpaceOnUse"
-                    viewBox="0 -51 7 14"
-                    width="2.8571428571428572%"
-                    height="100%"
-                    patternContentUnits="objectBoundingBox"
-                >
-                    <path
-                        d="M1 -37H0V-39H1V-37ZM2 -39H1V-41H2V-39ZM3 -41H2V-43H3V-41ZM4 -43H3V-45H4V-43ZM5 -45H4V-47H5V-45ZM6 -47H5V-49H6V-47ZM7 -49H6V-51H7V-49Z"
-                        fill="currentColor"
-                    />
-                </pattern>
-            </defs>
-        </svg>
-    );
-}
-
-function DownSlash() {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="100%">
-            <defs>
-                <pattern id="down-slash" patternUnits="userSpaceOnUse" width="14px" height="7px">
-                    <path d="M14 6V7H12V6H14Z" fill="currentColor" />
-                    <path d="M12 6H10V5H12V6Z" fill="currentColor" />
-                    <path d="M10 5H8V4H10V5Z" fill="currentColor" />
-                    <path d="M8 4H6V3H8V4Z" fill="currentColor" />
-                    <path d="M6 3H4V2H6V3Z" fill="currentColor" />
-                    <path d="M4 2H2V1H4V2Z" fill="currentColor" />
-                    <path d="M2 1H0V0H2V1Z" fill="currentColor" />
-                </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#down-slash)" />
-        </svg>
-    );
-}
-
-function UpSlash() {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="100%">
-            <defs>
-                <pattern id="up-slash" patternUnits="userSpaceOnUse" width="14px" height="7px">
-                    <path d="M2 7H0V6H2V7Z" fill="currentColor" />
-                    <path d="M4 6H2V5H4V6Z" fill="currentColor" />
-                    <path d="M6 5H4V4H6V5Z" fill="currentColor" />
-                    <path d="M8 4H6V3H8V4Z" fill="currentColor" />
-                    <path d="M10 3H8V2H10V3Z" fill="currentColor" />
-                    <path d="M12 2H10V1H12V2Z" fill="currentColor" />
-                    <path d="M14 1H12V0H14V1Z" fill="currentColor" />
-                </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#up-slash)" />
-        </svg>
-    );
-}
-
 export function Overlay() {
     const [viewport, setViewport] = useState({ width: 0, height: 0 });
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -181,26 +40,6 @@ export function Overlay() {
     return (
         <>
             <div className={styles.overlay}>
-                {/* Top Left */}
-                <div className={styles.topleftarm}>
-                    <ForwardSlash />
-                </div>
-
-                {/* Top Right Arm */}
-                <div className={styles.toprightarm}>
-                    <BackSlash />
-                </div>
-
-                {/* Left Arm */}
-                {/* <div className={styles.leftarm}>
-                    <UpSlash />
-                </div> */}
-
-                {/* Right Arm */}
-                {/* <div className={styles.rightarm}>
-                    <DownSlash />
-                </div> */}
-
                 {/* Legend */}
                 <div className={styles.legend}>
                     <div className={styles.title}>Legend</div>
@@ -333,12 +172,7 @@ export function Overlay() {
                 </div>
 
                 {/* Bottom Left */}
-                <div className={styles.bottomleft}>
-                    <CardTwo>Test</CardTwo>
-                    <br />
-                    <br />
-                    <Card>Test</Card>
-                </div>
+                <div className={styles.bottomleft}></div>
 
                 {/* Bottom Right */}
                 <div className={styles.bottomright}></div>
