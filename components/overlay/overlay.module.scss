@@ -28,6 +28,7 @@
     }
 
     .legend {
+        pointer-events: all;
         position: fixed;
         top: calc(var(--line-height) * 3);
         left: 4ch;
@@ -48,8 +49,46 @@
         }
 
         .item {
+            cursor: pointer;
+
             display: flex;
             gap: 4ch;
+            padding: 0;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: var(--font-size);
+            text-align: left;
+
+            &.on {
+                color: var(--accent);
+
+                .name,
+                .value,
+                .alt {
+                    color: var(--accent);
+                }
+
+                &:hover {
+                    color: var(--accent);
+
+                    .name,
+                    .value,
+                    .alt {
+                        color: var(--accent);
+                    }
+                }
+            }
+
+            &:hover {
+                color: var(--primary);
+
+                .name,
+                .value,
+                .alt {
+                    color: var(--primary);
+                }
+            }
 
             .name {
                 color: var(--light);
@@ -236,7 +275,7 @@
     padding: calc(var(--line-height) * 3) 0;
 
     &.on {
-        box-shadow: 0 0 0 1px red;
+        box-shadow: 0 0 0 1px var(--accent);
     }
 
     @media screen {
@@ -279,7 +318,7 @@
             color: var(--lighter);
 
             &.on {
-                color: red;
+                color: var(--accent);
             }
 
             @media (max-width: 939px) {
@@ -304,7 +343,7 @@
             color: var(--lighter);
 
             &.on {
-                color: red;
+                color: var(--accent);
             }
 
             @media (max-width: 939px) {
@@ -328,7 +367,7 @@
             color: var(--lighter);
 
             &.on {
-                color: red;
+                color: var(--accent);
             }
 
             @media (max-width: 939px) {
@@ -349,7 +388,7 @@
             color: var(--lighter);
 
             &.on {
-                color: red;
+                color: var(--accent);
             }
 
             @media (max-width: 939px) {
@@ -394,7 +433,7 @@
             color: var(--lighter);
 
             &.on {
-                color: red;
+                color: var(--accent);
             }
 
             @media (max-width: 939px) {
@@ -417,7 +456,7 @@
             width: 56ch;
 
             &.on {
-                box-shadow: 0 0 0 1px red;
+                box-shadow: 0 0 0 1px var(--accent);
             }
 
             @media screen and (max-width: 939px) {
@@ -432,7 +471,7 @@
             width: 35ch;
 
             &.on {
-                box-shadow: 0 0 0 1px red;
+                box-shadow: 0 0 0 1px var(--accent);
             }
 
             @media screen and (max-width: 939px) {
@@ -451,7 +490,7 @@
         color: var(--lighter);
 
         &.on {
-            color: red;
+            color: var(--accent);
         }
 
         @media (max-width: 939px) {
@@ -489,7 +528,7 @@
         color: var(--lighter);
 
         &.on {
-            color: red;
+            color: var(--accent);
         }
 
         @media (max-width: 939px) {
@@ -519,7 +558,7 @@
         color: var(--lighter);
 
         &.on {
-            color: red;
+            color: var(--accent);
         }
 
         @media (max-width: 939px) {
@@ -546,7 +585,7 @@
         color: var(--lighter);
 
         &.on {
-            color: red;
+            color: var(--accent);
         }
 
         @media (max-width: 939px) {
@@ -574,7 +613,7 @@
         color: var(--lighter);
 
         &.on {
-            color: red;
+            color: var(--accent);
         }
 
         @media (max-width: 939px) {
