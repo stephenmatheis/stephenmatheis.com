@@ -69,26 +69,26 @@
                     color: var(--accent);
                 }
 
-                &:hover {
-                    color: var(--accent);
+                // &:hover {
+                //     color: var(--accent);
 
-                    .name,
-                    .value,
-                    .alt {
-                        color: var(--accent);
-                    }
-                }
+                //     .name,
+                //     .value,
+                //     .alt {
+                //         color: var(--accent);
+                //     }
+                // }
             }
 
-            &:hover {
-                color: var(--primary);
+            // &:hover {
+            //     color: var(--primary);
 
-                .name,
-                .value,
-                .alt {
-                    color: var(--primary);
-                }
-            }
+            //     .name,
+            //     .value,
+            //     .alt {
+            //         color: var(--primary);
+            //     }
+            // }
 
             .name {
                 color: var(--light);

@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useOverlay } from '@/providers/overlay';
 import { Name } from '@/components/name';
@@ -12,22 +13,37 @@ import styles from './content.module.scss';
 // TODO: Add a console game.
 
 export function Content() {
+    const pathname = usePathname();
     const { overlays } = useOverlay();
 
     return (
         <main className={styles.content}>
             {/* Breadcrumbs */}
-            <div className={`${styles.breadcrumbs}${overlays.tabs ? ` ${styles.on}` : ''}`}>
-                {['app', 'page', 'resume'].map((crumb, i, arr) => (
+            <div
+                className={`${styles.breadcrumbs}${
+                    overlays.tabs.isHovered || overlays.tabs.isOn ? ` ${styles.on}` : ''
+                }`}
+            >
+                {[
+                    { label: 'resume', path: '/' },
+                    { label: 'work', path: '/work' },
+                    { label: 'blog', path: '/blog' },
+                ].map((crumb, i, arr) => (
                     <span key={i}>
-                        <Link href="/">{crumb}</Link>
+                        <Link href={crumb.path} className={pathname === crumb.path ? styles.pathname : ''}>
+                            {crumb.label}
+                        </Link>
                         {i < arr.length - 1 && ' > '}
                     </span>
                 ))}
             </div>
 
             {/* Line Numbers */}
-            <div className={`${styles.linenumbers}${overlays.numbers ? ` ${styles.on}` : ''}`}>
+            <div
+                className={`${styles.linenumbers}${
+                    overlays.numbers.isHovered || overlays.numbers.isOn ? ` ${styles.on}` : ''
+                }`}
+            >
                 {Array.from({ length: 107 }, (_, i) => (
                     <div key={i} className={styles.line}>
                         {i + 1}
@@ -36,7 +52,11 @@ export function Content() {
             </div>
 
             {/* Status Bar */}
-            <div className={`${styles.statusbar}${overlays.statusBar ? ` ${styles.on}` : ''}`}>
+            <div
+                className={`${styles.statusbar}${
+                    overlays.statusBar.isHovered || overlays.statusBar.isOn ? ` ${styles.on}` : ''
+                }`}
+            >
                 <div className={styles.block}>
                     <Link href="https://github.com/stephenmatheis/stephenmatheis.com/tree/main" target="_blank">
                         <svg width="11" height="17" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
