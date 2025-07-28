@@ -1,13 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useOverlay } from '@/providers/overlay';
+import type { Overlay } from '@/providers/overlay';
 import styles from './overlay.module.scss';
 
 export function Overlay() {
     const [viewport, setViewport] = useState({ width: 0, height: 0 });
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const { overlays, setOverlays } = useOverlay();
+    const isAllOn = useMemo(() => Object.values(overlays).every((value) => value), [overlays]);
 
     useEffect(() => {
         function updateMousePosition(event: PointerEvent) {
@@ -39,73 +41,172 @@ export function Overlay() {
         <>
             <div className={styles.overlay}>
                 {/* Legend */}
-                {/* TODO: Add bidirectional on hover effect for line or legend  */}
                 <div className={styles.legend}>
                     <div className={styles.title}>Legend</div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Page Width</span>
-                        <span className={styles.value}>8.5in</span>
-                        <span className={styles.alt}> 816px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Page Height</span>
-                        <span className={styles.value}>11in</span>
-                        <span className={styles.alt}> 1056px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Content Width</span>
-                        <span className={styles.value}>95ch</span>
-                        <span className={styles.alt}>665px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Left Column</span>
-                        <span className={styles.value}>56ch</span>
-                        <span className={styles.alt}>392px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Right Column</span>
-                        <span className={styles.value}>35ch</span>
-                        <span className={styles.alt}>245px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Gap</span>
-                        <span className={styles.value}>4ch</span>
-                        <span className={styles.alt}>28px</span>
-                    </div>
-                    {/* TODO: Add vertical line next to name */}
-                    <div className={styles.item}>
-                        <span className={styles.name}>Font Size</span>
-                        <span className={styles.value}>11px</span>
-                        <span className={styles.alt}>1rem</span>
-                    </div>
-                    {/* TODO: Add vertical line at end of title */}
-                    <div className={styles.item}>
-                        <span className={styles.name}>Line Height</span>
-                        <span className={styles.value}>16.5px</span>
-                        <span className={styles.alt}>1.5rem</span>
-                    </div>
-                    {/* TODO: Add horizontal line next to name */}
-                    <div className={styles.item}>
-                        <span className={styles.name}>Character Width</span>
-                        <span className={styles.value}>7px</span>
-                        <span className={styles.alt}>1ch</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Padding Top</span>
-                        <span className={styles.value}>3 Lines</span>
-                        <span className={styles.alt}>49.5px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Padding Bottom</span>
-                        <span className={styles.value}>3 Lines</span>
-                        <span className={styles.alt}>49.5px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Content height</span>
-                        <span className={styles.value}>58 lines</span>
-                        <span className={styles.alt}>957px</span>
-                    </div>
+                    {[
+                        {
+                            key: 'fontSize',
+                            name: 'Font Size',
+                            value: '11px',
+                            alt: '1rem',
+                        },
+                        {
+                            key: 'lineHeight',
+                            name: 'Line Height',
+                            value: '16.5px',
+                            alt: '1.5rem',
+                        },
+                        {
+                            key: 'charWidth',
+                            name: 'Character Width',
+                            value: '7px',
+                            alt: '1ch',
+                        },
+                        {
+                            key: 'pageWidth',
+                            name: 'Page Width',
+                            value: '8.5in',
+                            alt: '816px',
+                        },
+                        {
+                            key: 'pageHeight',
+                            name: 'Page Height',
+                            value: '11in',
+                            alt: '1056px',
+                        },
+                        {
+                            key: 'contentWidth',
+                            name: 'Content Width',
+                            value: '95ch',
+                            alt: '665px',
+                        },
+                        {
+                            key: 'contentHeight',
+                            name: 'Content height',
+                            value: '58 lines',
+                            alt: '957px',
+                        },
+                        {
+                            key: 'leftWidth',
+                            name: 'Left Width',
+                            value: '56ch',
+                            alt: '392px',
+                        },
+                        {
+                            key: 'rightWidth',
+                            name: 'Right Column',
+                            value: '35ch',
+                            alt: '245px',
+                        },
+                        {
+                            key: 'gap',
+                            name: 'Gap',
+                            value: '4ch',
+                            alt: '28px',
+                        },
+                        {
+                            key: 'paddingTop',
+                            name: 'Padding Top',
+                            value: '3 Lines',
+                            alt: '49.5px',
+                        },
+                        {
+                            key: 'paddingBottom',
+                            name: 'Padding Bottom',
+                            value: '3 Lines',
+                            alt: '49.5px',
+                        },
+                    ].map(({ key, name, value, alt }) => (
+                        <button
+                            key={key}
+                            className={`${styles.item}${overlays[key as keyof Overlay] ? ` ${styles.on}` : ''}`}
+                            onClick={() => {
+                                setOverlays((prev) => ({
+                                    ...prev,
+                                    [key]: !prev[key as keyof Overlay],
+                                }));
+                            }}
+                        >
+                            <span className={styles.name}>{name}</span>
+                            <span className={styles.value}>{value}</span>
+                            <span className={styles.alt}>{alt}</span>
+                        </button>
+                    ))}
+                    <br />
+                    <div className={styles.title}>User Interface</div>
+                    {[
+                        {
+                            key: 'tabs',
+                            name: 'Navigation',
+                        },
+                        {
+                            key: 'numbers',
+                            name: 'Numbers',
+                        },
+                        {
+                            key: 'statusBar',
+                            name: 'Status Bar',
+                        },
+                    ].map(({ key, name }) => (
+                        <button
+                            key={key}
+                            className={`${styles.item}${overlays[key as keyof Overlay] ? ` ${styles.on}` : ''}`}
+                            onClick={() => {
+                                setOverlays((prev) => ({
+                                    ...prev,
+                                    [key]: !prev[key as keyof Overlay],
+                                }));
+                            }}
+                        >
+                            <span className={styles.name}>{name}</span>
+                        </button>
+                    ))}
+                    <br />
+                    <div className={styles.title}>Bounding Boxes</div>
+                    {[
+                        {
+                            key: 'page',
+                            name: 'Page',
+                        },
+                        {
+                            key: 'left',
+                            name: 'Left Column',
+                        },
+                        {
+                            key: 'right',
+                            name: 'Right Column',
+                        },
+                    ].map(({ key, name }) => (
+                        <button
+                            key={key}
+                            className={`${styles.item}${overlays[key as keyof Overlay] ? ` ${styles.on}` : ''}`}
+                            onClick={() => {
+                                setOverlays((prev) => ({
+                                    ...prev,
+                                    [key]: !prev[key as keyof Overlay],
+                                }));
+                            }}
+                        >
+                            <span className={styles.name}>{name}</span>
+                        </button>
+                    ))}
+                    <br />
+                    <button
+                        className={`${styles.item}${isAllOn ? ` ${styles.on}` : ''}`}
+                        onClick={() =>
+                            setOverlays((prev) => {
+                                return Object.fromEntries(
+                                    Object.entries(prev).map(([key, _]) => {
+                                        return [key, isAllOn ? false : true];
+                                    })
+                                ) as Overlay;
+                            })
+                        }
+                    >
+                        <span className={styles.name}>All</span>
+                    </button>
                 </div>
+
                 {/* Controls */}
                 <div className={styles.controls}>
                     {/* Viewport */}
@@ -132,31 +233,48 @@ export function Overlay() {
                             <span className={styles.value}>{mousePosition.y}px</span>
                         </div>
                     </div>
-                    {/* Toggles */}
-                    <div className={styles.toggles}>
-                        <div className={styles.title}>Toggle Overlays</div>
-                        {Object.entries(overlays).map(([key, value]) => (
-                            <button
-                                key={key}
-                                className={`${styles.item}${value ? ` ${styles.on}` : ''}`}
-                                onClick={() =>
-                                    setOverlays((prev) => ({
-                                        ...prev,
-                                        [key]: !prev[key as keyof typeof overlays],
-                                    }))
-                                }
-                            >
-                                <span className={styles.name}>
-                                    {key.replace(/([A-Z])/g, ' $1').replace(/^./, (str) => str.toUpperCase())}
-                                </span>
-                                <span className={styles.value}>{value ? 'ON' : 'OFF'}</span>
-                            </button>
-                        ))}
-                    </div>
                 </div>
+
+                {/* Bottom Left */}
+                <div className={styles.bottomleft}></div>
+
+                {/* Bottom Right */}
+                <div className={styles.bottomright}></div>
             </div>
             <div className={`${styles.page}${overlays.page ? ` ${styles.on}` : ''}`}>
                 <main className={styles.content}>
+                    {/* Character Width */}
+                    <div className={`${styles.charWidth}${overlays.charWidth ? ` ${styles.on}` : ''}`}>
+                        <svg width="7" height="2" viewBox="0 0 7 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="1" width="7" height="1" fill="currentColor" />
+                            <rect width="1" height="1" fill="currentColor" />
+                            <rect x="6" width="1" height="1" fill="currentColor" />
+                        </svg>
+                        <div className={styles.label}>7px</div>
+                    </div>
+
+                    {/* Font Size */}
+                    <div className={`${styles.fontsize}${overlays.fontSize ? ` ${styles.on}` : ''}`}>
+                        <svg width="2" height="11" viewBox="0 0 2 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" width="1" height="11" fill="currentColor" />
+                            <rect width="1" height="1" fill="currentColor" />
+                            <rect y="10" width="1" height="1" fill="currentColor" />
+                        </svg>
+                        <div className={styles.label}>11px</div>
+                    </div>
+
+                    {/* Line Height */}
+                    <div className={`${styles.lineheight}${overlays.lineHeight ? ` ${styles.on}` : ''}`}>
+                        <svg width="3" height="16.5" viewBox="0 0 3 16.5" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="0" width="1" height="1" fill="currentColor" />
+                            <rect x="2" y="0" width="1" height="1" fill="currentColor" />
+                            <line x1="1.5" y1="0" x2="1.5" y2="16.5" stroke="currentColor" strokeWidth="1" />
+                            <rect x="0" y="15.5" width="1" height="1" fill="currentColor" />
+                            <rect x="2" y="15.5" width="1" height="1" fill="currentColor" />
+                        </svg>
+                        <div className={styles.label}>16.5px</div>
+                    </div>
+
                     {/* Left Column Width */}
                     <div className={`${styles.leftwidth}${overlays.leftWidth ? ` ${styles.on}` : ''}`}>
                         <svg width="392" height="7" viewBox="0 0 392 7" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +287,7 @@ export function Overlay() {
                     </div>
 
                     {/* Gap */}
-                    <div className={styles.gap}>
+                    <div className={`${styles.gap}${overlays.gap ? ` ${styles.on}` : ''}`}>
                         <svg width="28" height="3" viewBox="0 0 28 3" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M1 1H27V0H28V3H27V2H1V3H0V0H1V1Z" fill="currentColor" />
                         </svg>

@@ -13,7 +13,7 @@ const skills = [
     },
     {
         group: 'Runtimes',
-        items: ['Node.js', 'Blink', 'WebKit', '.NET Core', 'PICO-8'],
+        items: ['Node.js', 'Blink', 'WebKit', '.NET Core'],
     },
     {
         group: 'Tools',
@@ -21,7 +21,7 @@ const skills = [
     },
     {
         group: 'Platforms',
-        items: ['AWS', 'GCP', 'GitHub', 'GitLab', 'Netlify', 'Vercel'],
+        items: ['AWS', 'GCP', 'GitHub', 'GitLab', 'Netlify', 'Vercel', 'PICO-8'],
     },
     {
         group: 'Design',

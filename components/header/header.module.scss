@@ -1,23 +1,26 @@
-.name {
-    .website {
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: var(--line-height) 0px;
+    color: var(--lightest);
+
+    @media print {
+        display: none;
+    }
+
+    .logo {
         display: flex;
-        flex-direction: column;
-        width: fit-content;
+        align-items: flex-start;
+        justify-content: center;
+        width: 8.5in;
+        gap: 3px;
 
-        .primary {
-            color: var(--primary);
-        }
-
-        .color {
-            color: var(--color);
-        }
-
-        .muted {
-            color: var(--muted);
-        }
-
-        .light {
-            color: var(--light);
+        .side {
+            width: 57px;
+            height: 91px;
+            color: var(--lightest);
         }
     }
 }
