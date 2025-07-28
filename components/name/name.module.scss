@@ -1,0 +1,23 @@
+.name {
+    .website {
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+
+        .primary {
+            color: var(--primary);
+        }
+
+        .color {
+            color: var(--color);
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .light {
+            color: var(--light);
+        }
+    }
+}

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
-type Overlay = {
+export type Overlay = {
     page: boolean;
     left: boolean;
     right: boolean;
@@ -15,8 +15,12 @@ type Overlay = {
     paddingBottom: boolean;
     contentHeight: boolean;
     contentWidth: boolean;
+    gap: boolean;
     rightWidth: boolean;
     leftWidth: boolean;
+    lineHeight: boolean;
+    fontSize: boolean;
+    charWidth: boolean;
 };
 
 type OverlayContext = {
@@ -50,8 +54,12 @@ export function OverlayProvider({ children }: { children: ReactNode }) {
         paddingBottom: false,
         contentHeight: false,
         contentWidth: false,
+        gap: false,
         rightWidth: false,
         leftWidth: false,
+        lineHeight: false,
+        fontSize: false,
+        charWidth: false,
     });
 
     return (
