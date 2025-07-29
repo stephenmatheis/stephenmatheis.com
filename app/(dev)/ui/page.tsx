@@ -1,6 +1,6 @@
 import styles from './page.module.scss';
 
-export default function ResumePage() {
+export default function UIPage() {
     return (
         <>
             <div className={styles.background} />
