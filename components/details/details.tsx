@@ -17,26 +17,9 @@ export function Details({}: DetailsProps) {
     return (
         <div className={styles['details-wrapper']}>
             <div className={styles.details}>
-                <div className={styles.title}>Legend</div>
+                {/* Page */}
+                <div className={styles.title}>Page</div>
                 {[
-                    {
-                        key: 'fontSize',
-                        name: 'Font Size',
-                        value: '11px',
-                        alt: '1rem',
-                    },
-                    {
-                        key: 'lineHeight',
-                        name: 'Line Height',
-                        value: '16.5px',
-                        alt: '1.5rem',
-                    },
-                    {
-                        key: 'charWidth',
-                        name: 'Character Width',
-                        value: '7px',
-                        alt: '1ch',
-                    },
                     {
                         key: 'pageWidth',
                         name: 'Page Width',
@@ -137,6 +120,175 @@ export function Details({}: DetailsProps) {
                     </button>
                 ))}
                 <br />
+
+                {/* Font */}
+                <div className={styles.title}>Text</div>
+                {[
+                    {
+                        key: 'fontFamily',
+                        name: 'Font Family',
+                        value: 'Departure Mono',
+                        alt: 'v1.500',
+                    },
+                    {
+                        key: 'fontSize',
+                        name: 'Font Size',
+                        value: '11px',
+                        alt: '1rem',
+                    },
+                    {
+                        key: 'lineHeight',
+                        name: 'Line Height',
+                        value: '16.5px',
+                        alt: '1.5rem',
+                    },
+                    {
+                        key: 'charWidth',
+                        name: 'Character Width',
+                        value: '7px',
+                        alt: '1ch',
+                    },
+                ].map(({ key, name, value, alt }) => (
+                    <button
+                        key={key}
+                        className={`${styles.item}${
+                            overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
+                                ? ` ${styles.on}`
+                                : ''
+                        }`}
+                        onClick={() => {
+                            setOverlays((prev) => ({
+                                ...prev,
+                                [key]: {
+                                    ...prev[key as keyof Overlay],
+                                    isOn: !prev[key as keyof Overlay].isOn,
+                                },
+                            }));
+                        }}
+                        onMouseOver={() => {
+                            setOverlays((prev) => {
+                                return {
+                                    ...prev,
+                                    [key]: {
+                                        ...prev[key as keyof Overlay],
+                                        isHovered: true,
+                                    },
+                                };
+                            });
+                        }}
+                        onMouseLeave={() => {
+                            setOverlays((prev) => {
+                                return {
+                                    ...prev,
+                                    [key]: {
+                                        ...prev[key as keyof Overlay],
+                                        isHovered: false,
+                                    },
+                                };
+                            });
+                        }}
+                    >
+                        <span className={styles.name}>{name}</span>
+                        <span className={styles.value}>{value}</span>
+                        <span className={styles.alt}>{alt}</span>
+                    </button>
+                ))}
+                <br />
+                <br />
+
+                {/* Colors */}
+                <div className={styles.title}>Colors</div>
+                {[
+                    {
+                        key: 'backgroundColor',
+                        name: 'Background Color',
+                        value: '#fefefe',
+                        alt: '--background-color',
+                    },
+                    {
+                        key: 'color',
+                        name: 'Color',
+                        value: '#787878',
+                        alt: '--background-color',
+                    },
+                    {
+                        key: 'muted',
+                        name: 'Muted',
+                        value: '#a5a5a5',
+                        alt: '--muted',
+                    },
+                    {
+                        key: 'light',
+                        name: 'Light',
+                        value: '#bbbbbb',
+                        alt: '--light',
+                    },
+                    {
+                        key: 'lighter',
+                        name: 'Lighter',
+                        value: '#dddddd',
+                        alt: '--lighter',
+                    },
+                    {
+                        key: 'lightest',
+                        name: 'Lightest',
+                        value: '#e0e0e0',
+                        alt: '--lightest',
+                    },
+                    {
+                        key: 'accent',
+                        name: 'Accent',
+                        value: '#ff0000',
+                        alt: '--accent',
+                    },
+                ].map(({ key, name, value, alt }) => (
+                    <button
+                        key={key}
+                        className={`${styles.item}${
+                            overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
+                                ? ` ${styles.on}`
+                                : ''
+                        }`}
+                        onClick={() => {
+                            setOverlays((prev) => ({
+                                ...prev,
+                                [key]: {
+                                    ...prev[key as keyof Overlay],
+                                    isOn: !prev[key as keyof Overlay].isOn,
+                                },
+                            }));
+                        }}
+                        onMouseOver={() => {
+                            setOverlays((prev) => {
+                                return {
+                                    ...prev,
+                                    [key]: {
+                                        ...prev[key as keyof Overlay],
+                                        isHovered: true,
+                                    },
+                                };
+                            });
+                        }}
+                        onMouseLeave={() => {
+                            setOverlays((prev) => {
+                                return {
+                                    ...prev,
+                                    [key]: {
+                                        ...prev[key as keyof Overlay],
+                                        isHovered: false,
+                                    },
+                                };
+                            });
+                        }}
+                    >
+                        <span className={styles.name}>{name}</span>
+                        <span className={styles.value}>{value}</span>
+                        <span className={styles.alt}>{alt}</span>
+                    </button>
+                ))}
+                <br />
+
+                {/* User Interface */}
                 <div className={styles.title}>User Interface</div>
                 {[
                     {
@@ -193,6 +345,8 @@ export function Details({}: DetailsProps) {
                     </button>
                 ))}
                 <br />
+
+                {/* Bounding Boxes */}
                 <div className={styles.title}>Bounding Boxes</div>
                 {[
                     {
@@ -249,6 +403,8 @@ export function Details({}: DetailsProps) {
                     </button>
                 ))}
                 <br />
+
+                {/* All */}
                 <button
                     className={`${styles.item}${isAllOn ? ` ${styles.on}` : ''}`}
                     onClick={() =>
@@ -279,7 +435,7 @@ export function Details({}: DetailsProps) {
                         });
                     }}
                 >
-                    <span className={styles.name}>All</span>
+                    <span className={styles.name}>Display All</span>
                 </button>
             </div>
         </div>
