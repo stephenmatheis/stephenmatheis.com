@@ -4,6 +4,125 @@
     padding-bottom: calc(var(--line-height) * 8);
     padding-inline: 4ch;
 
+    .breadcrumbs {
+        user-select: none;
+        position: absolute;
+        top: calc(var(--line-height) * 1);
+        left: 7ch;
+        width: calc(100% + 4ch);
+        color: var(--light);
+
+        &.on {
+            color: var(--accent);
+
+            a {
+                color: var(--accent);
+
+                &.pathname {
+                    color: var(--accent);
+                }
+            }
+        }
+
+        @media print {
+            display: none;
+        }
+
+        @media (max-width: 644px) {
+            width: 100%;
+            left: 0;
+        }
+
+        a {
+            color: var(--light);
+
+            &.pathname {
+                color: var(--color);
+            }
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+    }
+
+    .linenumbers {
+        user-select: none;
+        position: absolute;
+        top: calc(var(--line-height) * 3);
+        left: 7ch;
+        color: var(--light);
+
+        &.on {
+            color: var(--accent);
+        }
+
+        @media (min-width: 940px), print {
+            .line {
+                &:nth-child(n + 59) {
+                    display: none;
+                }
+            }
+        }
+
+        @media (max-width: 644px) {
+            opacity: 0;
+        }
+    }
+
+    .statusbar {
+        user-select: none;
+        bottom: calc(var(--line-height) * 1);
+        left: 7ch;
+        display: flex;
+        position: absolute;
+        justify-content: space-between;
+        width: 99ch;
+        max-width: 8.5in;
+        height: var(--line-height);
+        color: var(--light);
+
+        &.on {
+            a {
+                color: var(--accent);
+            }
+        }
+
+        @media print {
+            display: none;
+        }
+
+        @media (max-width: 644px) {
+            width: 100%;
+            left: 0;
+        }
+
+        a {
+            color: var(--light);
+        }
+
+        .block {
+            display: flex;
+            gap: 3ch;
+
+            a {
+                display: flex;
+                align-items: center;
+
+                svg {
+                    margin-right: 0.5ch;
+                }
+            }
+        }
+
+        .git {
+            display: inline-block;
+            position: relative;
+            margin-right: 0.5ch;
+            transform: translateY(1.5px);
+        }
+    }
+
     .hud {
         @media screen and (min-width: 1228px) {
             position: fixed;
