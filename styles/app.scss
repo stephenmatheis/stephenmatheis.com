@@ -34,6 +34,7 @@
 }
 
 html {
+    cursor: url(/cursor.svg) 6.5 6.5, auto;
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
@@ -52,3 +53,13 @@ a {
     color: var(--primary);
     -webkit-tap-highlight-color: transparent;
 }
+
+a {
+    cursor: url(/pointer.svg) 0 0, pointer;
+    // cursor: url(/pointer.svg) 13.5 18, pointer;
+    cursor: url(/pointer.svg) 6.75 9, pointer;
+}
+
+// button {
+//     cursor: url(/pointer.svg), pointer;
+// }
