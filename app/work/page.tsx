@@ -1,6 +1,6 @@
 import { Viewport } from '@/components/viewport';
-import styles from './page.module.scss';
 import { Comment } from '@/components/comment';
+import styles from './page.module.scss';
 
 export default function WorkPage() {
     return (

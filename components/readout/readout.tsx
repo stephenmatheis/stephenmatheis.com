@@ -36,7 +36,7 @@ export function Readout() {
     return (
         <div className={styles['readout-wrapper']}>
             <div className={styles.readout}>
-                <div className={styles.dimensions}>
+                <div className={styles.block}>
                     <div className={styles.title}>Viewport</div>
                     <div className={styles.item}>
                         <span className={styles.name}>Width</span>
@@ -47,7 +47,7 @@ export function Readout() {
                         <span className={styles.value}>{viewport.height}px</span>
                     </div>
                 </div>
-                <div className={styles.pointer}>
+                <div className={styles.block}>
                     <div className={styles.title}>Pointer</div>
                     <div className={styles.item}>
                         <span className={styles.name}>X</span>
