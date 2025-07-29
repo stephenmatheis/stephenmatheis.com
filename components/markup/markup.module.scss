@@ -1,8 +1,7 @@
 .middle {
     pointer-events: none;
     position: absolute;
-    top: calc(var(--line-height) * 2);
-    left: 4ch;
+    top: 0;
     display: flex;
     justify-content: center;
     width: 8.5in;

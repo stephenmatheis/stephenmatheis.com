@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Corners } from '@/components/corners';
 import styles from './readout.module.scss';
 
 export function Readout() {
@@ -36,7 +35,6 @@ export function Readout() {
 
     return (
         <div className={styles['readout-wrapper']}>
-            <Corners />
             <div className={styles.readout}>
                 <div className={styles.dimensions}>
                     <div className={styles.title}>Viewport</div>
