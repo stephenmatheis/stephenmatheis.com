@@ -1,6 +1,6 @@
 .readout-wrapper {
-    // flex: 1;
     position: relative;
+    padding: calc(var(--line-height) * 1) 2ch;
 
     .readout {
         display: inline-flex;
@@ -8,23 +8,10 @@
         align-items: flex-end;
         gap: calc(var(--line-height) * 1);
 
-        // @media (max-width: 1364px) {
-        //     position: static;
-        //     align-items: flex-start;
-        // }
-
-        // @media (max-width: 644px) {
-        //     width: fit-content;
-        // }
-
         .dimensions {
             .title {
                 color: var(--color);
                 text-align: right;
-
-                // @media (max-width: 1364px) {
-                //     text-align: left;
-                // }
             }
 
             .item {
@@ -50,10 +37,6 @@
             .title {
                 color: var(--color);
                 text-align: right;
-
-                // @media (max-width: 1364px) {
-                //     text-align: left;
-                // }
             }
 
             .item {
@@ -64,10 +47,6 @@
                     color: var(--light);
                     width: 6ch;
                     text-align: right;
-
-                    // @media (max-width: 1364px) {
-                    //     text-align: left;
-                    // }
                 }
 
                 .value {

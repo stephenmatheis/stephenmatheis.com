@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { useOverlay } from '@/providers/overlay';
 import type { Overlay } from '@/providers/overlay';
+import { Corners } from '@/components/corners';
 import styles from './details.module.scss';
 
 type DetailsProps = {};
@@ -16,6 +17,7 @@ export function Details({}: DetailsProps) {
 
     return (
         <div className={styles['details-wrapper']}>
+            <Corners />
             <div className={styles.details}>
                 <div className={styles.title}>Legend</div>
                 {[
