@@ -1,11 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import styles from './pointer.module.scss';
+import styles from './readout.module.scss';
 
-type PointerProps = {};
-
-export function Pointer({}: PointerProps) {
+export function Readout() {
     const [viewport, setViewport] = useState({ width: 0, height: 0 });
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
