@@ -1,10 +1,12 @@
 .readout-wrapper {
+    // flex: 1;
+    position: relative;
+
     .readout {
         display: inline-flex;
         flex-direction: column;
         align-items: flex-end;
         gap: calc(var(--line-height) * 1);
-        width: 37ch;
 
         // @media (max-width: 1364px) {
         //     position: static;
