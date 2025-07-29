@@ -6,14 +6,16 @@ import styles from './viewport.module.scss';
 
 export function Viewport() {
     return (
-        <div className={styles.viewport}>
-            <Page>
-                <Content />
-            </Page>
-            <div className={styles.hud}>
-                <Details />
-                <Readout />
+        <>
+            <div className={styles.viewport}>
+                <Page>
+                    <Content />
+                </Page>
+                <div className={styles.hud}>
+                    <Details />
+                    <Readout />
+                </div>
             </div>
-        </div>
+        </>
     );
 }
