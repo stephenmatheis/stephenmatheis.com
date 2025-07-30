@@ -3,7 +3,6 @@ import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { OverlayProvider } from '@/providers/overlay';
 import '@/styles/app.scss';
-import { Cursor } from '@/components/cursor';
 
 const mono = localFont({
     src: './fonts/DepartureMono.woff2',
@@ -43,10 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={mono.variable} suppressHydrationWarning>
-                <OverlayProvider>
-                    {children}
-                    <Cursor />
-                </OverlayProvider>
+                <OverlayProvider>{children}</OverlayProvider>
                 <Analytics debug={false} />
             </body>
         </html>
