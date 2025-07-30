@@ -55,8 +55,6 @@ export function Cursor() {
         };
     }, []);
 
-    console.log(grow, width);
-
     return (
         <motion.div
             ref={ref}
