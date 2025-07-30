@@ -26,7 +26,6 @@
     box-sizing: border-box;
     font-size: var(--font-size);
     line-height: var(--line-height);
-    // cursor: none;
 
     &::selection {
         color: var(--primary);
@@ -35,9 +34,16 @@
 }
 
 html {
+    cursor: url(/cursor.svg) 8 8, pointer;
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
+
+    &.cursor-loaded {
+        * {
+            cursor: none;
+        }
+    }
 }
 
 body {
@@ -53,11 +59,3 @@ a {
     color: var(--primary);
     -webkit-tap-highlight-color: transparent;
 }
-
-// a {
-//     cursor: url(/pointer.svg) 9 9, pointer;
-// }
-
-// button {
-//     cursor: url(/pointer.svg), pointer;
-// }

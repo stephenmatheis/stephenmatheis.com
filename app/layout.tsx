@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { OverlayProvider } from '@/providers/overlay';
+import { Cursor } from '@/components/cursor';
 import '@/styles/app.scss';
 
 const mono = localFont({
@@ -42,7 +43,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={mono.variable} suppressHydrationWarning>
-                <OverlayProvider>{children}</OverlayProvider>
+                <OverlayProvider>
+                    {children}
+                    <Cursor />
+                </OverlayProvider>
                 <Analytics debug={false} />
             </body>
         </html>
