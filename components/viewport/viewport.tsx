@@ -38,14 +38,10 @@ export function Viewport({ children }: { children: React.ReactNode }) {
 
                                 const { width } = rect;
 
-                                console.log('link start', width);
-
                                 setWidth(width);
                                 setGrow(true);
                             }}
                             onHoverEnd={() => {
-                                console.log('link end');
-
                                 setGrow(false);
                             }}
                         >

@@ -7,7 +7,7 @@
     padding-bottom: calc(var(--line-height) * 2);
     padding-inline: 4ch;
 
-    @media screen and (min-width: 1228px) {
+    @media screen and (min-width: 1300px) {
         align-items: flex-start;
         padding-bottom: calc(var(--line-height) * 8);
     }
@@ -140,7 +140,7 @@
         width: 100%;
         max-width: 8.5in;
 
-        @media screen and (min-width: 1228px) {
+        @media screen and (min-width: 1300px) {
             position: fixed;
             top: 0;
             right: 0;

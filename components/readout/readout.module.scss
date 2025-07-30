@@ -7,7 +7,7 @@
         display: flex;
         gap: calc(var(--line-height) * 1);
 
-        @media screen and (min-width: 1228px) {
+        @media screen and (min-width: 1300px) {
             flex-direction: column;
             align-items: flex-end;
         }
@@ -16,7 +16,7 @@
             .title {
                 color: var(--color);
 
-                @media screen and (min-width: 1228px) {
+                @media screen and (min-width: 1300px) {
                     text-align: right;
                 }
             }
@@ -47,7 +47,7 @@
                     color: var(--light);
                     width: 6ch;
 
-                    @media screen and (min-width: 1228px) {
+                    @media screen and (min-width: 1300px) {
                         text-align: right;
                     }
                 }
@@ -56,7 +56,7 @@
                     color: var(--muted);
                     width: 6ch;
 
-                    @media screen and (min-width: 1228px) {
+                    @media screen and (min-width: 1300px) {
                         text-align: right;
                     }
                 }
