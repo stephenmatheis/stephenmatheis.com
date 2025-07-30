@@ -20,36 +20,36 @@
     .top {
         top: 0;
         left: 0;
-        transform: translateX(calc(50vw - var(--line-width) / 2));
         width: var(--line-width);
-        height: calc(50dvh - var(--line-width) / 2);
+        // height: calc(50dvh - var(--line-width) / 2);
+        // transform: translateX(calc(50vw - var(--line-width) / 2));
         border-top: none;
     }
 
     .bottom {
         bottom: 0;
         left: 0;
-        transform: translateX(calc(50vw - var(--line-width) / 2));
         width: var(--line-width);
-        height: calc(50dvh - var(--line-width) / 2);
+        // height: calc(50dvh - var(--line-width) / 2);
+        // transform: translateX(calc(50vw - var(--line-width) / 2));
         border-bottom: none;
     }
 
     .left {
         top: 0;
         left: 0;
-        transform: translateY(calc(50dvh - var(--line-width) / 2));
-        width: calc(50vw - var(--line-width) / 2);
         height: var(--line-width);
+        // width: calc(50vw - var(--line-width) / 2);
+        // transform: translateY(calc(50dvh - var(--line-width) / 2));
         border-left: none;
     }
 
     .right {
         top: 0;
         right: 0;
-        transform: translateY(calc(50dvh - var(--line-width) / 2));
-        width: calc(50vw - var(--line-width) / 2);
         height: var(--line-width);
+        // width: calc(50vw - var(--line-width) / 2);
+        // transform: translateY(calc(50dvh - var(--line-width) / 2));
         border-right: none;
     }
 }
