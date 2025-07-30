@@ -12,7 +12,7 @@ import styles from './viewport.module.scss';
 
 export function Viewport({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const { setGrow } = useCursor();
+    const { setGrow, setWidth } = useCursor();
     const { overlays } = useOverlay();
 
     return (
@@ -31,9 +31,16 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                     ].map((crumb, i, arr) => (
                         <motion.span
                             key={i}
-                            onHoverStart={() => {
-                                console.log('link start');
+                            onHoverStart={(event) => {
+                                const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
 
+                                if (!rect) return;
+
+                                const { width } = rect;
+
+                                console.log('link start', width);
+
+                                setWidth(width);
                                 setGrow(true);
                             }}
                             onHoverEnd={() => {

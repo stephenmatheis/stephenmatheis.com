@@ -6,7 +6,7 @@ import { useCursor } from '@/providers/cursor';
 import styles from './cursor.module.scss';
 
 export function Cursor() {
-    const { grow } = useCursor();
+    const { width, grow } = useCursor();
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -55,6 +55,8 @@ export function Cursor() {
         };
     }, []);
 
+    console.log(grow, width);
+
     return (
         <motion.div
             ref={ref}
@@ -69,9 +71,9 @@ export function Cursor() {
                 },
                 link: {
                     height: 16,
-                    width: 48,
+                    width: width + 14,
                     borderRadius: 4,
-                    left: -24,
+                    left: (width + 14) / -2,
                     backgroundColor: 'rgba(0, 0, 0, 0.15)',
                 },
             }}

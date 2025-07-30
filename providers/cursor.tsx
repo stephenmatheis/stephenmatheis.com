@@ -3,6 +3,8 @@
 import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
 type CursorContext = {
+    width: number;
+    setWidth: Dispatch<SetStateAction<number>>;
     grow: boolean;
     setGrow: Dispatch<SetStateAction<boolean>>;
 };
@@ -20,11 +22,14 @@ export function useCursor() {
 }
 
 export function CursorProvider({ children }: { children: ReactNode }) {
+    const [width, setWidth] = useState<number>(48);
     const [grow, setGrow] = useState<boolean>(false);
 
     return (
         <CursorContext.Provider
             value={{
+                width,
+                setWidth,
                 grow,
                 setGrow,
             }}
