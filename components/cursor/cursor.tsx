@@ -3,7 +3,7 @@
 import { CSSProperties, useEffect, useRef } from 'react';
 import styles from './cursor.module.scss';
 
-const LINE_WIDTH = 88;
+const LINE_WIDTH = 1;
 const OFFSET = LINE_WIDTH / 2;
 
 export function Cursor() {

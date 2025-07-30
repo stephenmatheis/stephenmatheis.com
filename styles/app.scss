@@ -26,6 +26,7 @@
     box-sizing: border-box;
     font-size: var(--font-size);
     line-height: var(--line-height);
+    cursor: none;
 
     &::selection {
         color: var(--primary);
@@ -34,8 +35,6 @@
 }
 
 html {
-    cursor: url(/cursor.svg) 2 2, auto;
-    // cursor: none;
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
