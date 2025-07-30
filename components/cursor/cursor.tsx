@@ -2,9 +2,11 @@
 
 import { useEffect, useRef } from 'react';
 import * as motion from 'motion/react-client';
+import { useCursor } from '@/providers/cursor';
 import styles from './cursor.module.scss';
 
 export function Cursor() {
+    const { grow } = useCursor();
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -19,8 +21,6 @@ export function Cursor() {
         }
 
         function onLeave() {
-            console.log('leave');
-
             let cursor = ref.current;
 
             if (!cursor) return;
@@ -59,9 +59,25 @@ export function Cursor() {
         <motion.div
             ref={ref}
             className={styles.cursor}
-            // initial={{}}
-            // animate={{}}
-            // transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+            variants={{
+                normal: {
+                    height: 16,
+                    width: 16,
+                    borderRadius: 8,
+                    left: -8,
+                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                },
+                link: {
+                    height: 16,
+                    width: 48,
+                    borderRadius: 4,
+                    left: -24,
+                    backgroundColor: 'rgba(0, 0, 0, 0.15)',
+                },
+            }}
+            initial="normal"
+            animate={grow ? 'link' : 'normal'}
+            transition={{ type: 'spring', stiffness: 300, damping: 15 }}
         />
     );
 }

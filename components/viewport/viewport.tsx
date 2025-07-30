@@ -2,6 +2,8 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import * as motion from 'motion/react-client';
+import { useCursor } from '@/providers/cursor';
 import { useOverlay } from '@/providers/overlay';
 import { Page } from '@/components/page';
 import { Details } from '@/components/details';
@@ -10,6 +12,7 @@ import styles from './viewport.module.scss';
 
 export function Viewport({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
+    const { setGrow } = useCursor();
     const { overlays } = useOverlay();
 
     return (
@@ -26,12 +29,24 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                         { label: 'work', path: '/work' },
                         { label: 'blog', path: '/blog' },
                     ].map((crumb, i, arr) => (
-                        <span key={i}>
+                        <motion.span
+                            key={i}
+                            onHoverStart={() => {
+                                console.log('link start');
+
+                                setGrow(true);
+                            }}
+                            onHoverEnd={() => {
+                                console.log('link end');
+
+                                setGrow(false);
+                            }}
+                        >
                             <Link href={crumb.path} className={pathname === crumb.path ? styles.pathname : ''}>
                                 {crumb.label}
                             </Link>
                             {i < arr.length - 1 && ' > '}
-                        </span>
+                        </motion.span>
                     ))}
                 </nav>
 
