@@ -55,5 +55,13 @@
                 color: var(--lighter);
             }
         }
+
+        .page-details,
+        .box-details,
+        .ui-details {
+            @media screen and (max-width: 1299px) {
+                display: none;
+            }
+        }
     }
 }
