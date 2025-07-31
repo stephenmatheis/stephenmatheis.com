@@ -34,12 +34,17 @@
 }
 
 html {
-    cursor: url(/cursor.svg) 8 8, pointer;
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
 
+    &,
+    * {
+        cursor: url(/cursor.svg) 8 8, auto;
+    }
+
     &.cursor-loaded {
+        &,
         * {
             @media screen {
                 cursor: none;

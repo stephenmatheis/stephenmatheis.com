@@ -25,14 +25,11 @@
         color: var(--light);
 
         &.on {
-            color: var(--accent);
-
-            a {
+            &,
+            a,
+            a.pathname {
                 color: var(--accent);
-
-                &.pathname {
-                    color: var(--accent);
-                }
+                transition: color 250ms ease-in-out;
             }
         }
 
