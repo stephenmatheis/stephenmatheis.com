@@ -12,7 +12,7 @@ import styles from './viewport.module.scss';
 
 export function Viewport({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const { setLeft, setGrow, setWidth } = useCursor();
+    const { setGrow, setWidth } = useCursor();
     const { overlays } = useOverlay();
 
     return (
@@ -36,14 +36,12 @@ export function Viewport({ children }: { children: React.ReactNode }) {
 
                                 if (!rect) return;
 
-                                const { width, left } = rect;
+                                const { width } = rect;
 
-                                // setLeft(left);
                                 setWidth(width);
                                 setGrow('link');
                             }}
                             onHoverEnd={() => {
-                                // setLeft(0);
                                 setWidth(0);
                                 setGrow('normal');
                             }}
