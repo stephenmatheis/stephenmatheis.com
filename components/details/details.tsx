@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 import { useOverlay } from '@/providers/overlay';
 import type { Overlay } from '@/providers/overlay';
+import { Legend } from '@/components/legend';
 import styles from './details.module.scss';
 
 type DetailsProps = {};
@@ -18,9 +19,8 @@ export function Details({}: DetailsProps) {
         <div className={styles['details-wrapper']}>
             <div className={styles.details}>
                 {/* Page */}
-                <div className={styles['page-details']}>
-                    <div className={styles.title}>Page</div>
-                    {[
+                <Legend
+                    items={[
                         {
                             key: 'pageWidth',
                             name: 'Page Width',
@@ -75,62 +75,12 @@ export function Details({}: DetailsProps) {
                             value: '3 Lines',
                             alt: '49.5px',
                         },
-                    ].map(({ key, name, value, alt }) => (
-                        <button
-                            key={key}
-                            className={`${styles.item}${
-                                overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
-                                    ? ` ${styles.on}`
-                                    : ''
-                            }`}
-                            onClick={() => {
-                                setOverlays((prev) => ({
-                                    ...prev,
-                                    [key]: {
-                                        ...prev[key as keyof Overlay],
-                                        isOn: !prev[key as keyof Overlay].isOn,
-                                    },
-                                }));
-                            }}
-                            onPointerOver={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => {
-                                    return {
-                                        ...prev,
-                                        [key]: {
-                                            ...prev[key as keyof Overlay],
-                                            isHovered: true,
-                                        },
-                                    };
-                                });
-                            }}
-                            onPointerLeave={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => {
-                                    return {
-                                        ...prev,
-                                        [key]: {
-                                            ...prev[key as keyof Overlay],
-                                            isHovered: false,
-                                        },
-                                    };
-                                });
-                            }}
-                        >
-                            <span className={styles.name}>{name}</span>
-                            <span className={styles.value}>{value}</span>
-                            <span className={styles.alt}>{alt}</span>
-                        </button>
-                    ))}
-                    <br />
-                </div>
+                    ]}
+                />
 
                 {/* Font */}
-                <div className={styles['font-details']}>
-                    <div className={styles.title}>Text</div>
-                    {[
+                <Legend
+                    items={[
                         {
                             key: 'fontFamily',
                             name: 'Font Family',
@@ -155,62 +105,12 @@ export function Details({}: DetailsProps) {
                             value: '7px',
                             alt: '1ch',
                         },
-                    ].map(({ key, name, value, alt }) => (
-                        <button
-                            key={key}
-                            className={`${styles.item}${
-                                overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
-                                    ? ` ${styles.on}`
-                                    : ''
-                            }`}
-                            onClick={() => {
-                                setOverlays((prev) => ({
-                                    ...prev,
-                                    [key]: {
-                                        ...prev[key as keyof Overlay],
-                                        isOn: !prev[key as keyof Overlay].isOn,
-                                    },
-                                }));
-                            }}
-                            onPointerOver={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => {
-                                    return {
-                                        ...prev,
-                                        [key]: {
-                                            ...prev[key as keyof Overlay],
-                                            isHovered: true,
-                                        },
-                                    };
-                                });
-                            }}
-                            onPointerLeave={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => {
-                                    return {
-                                        ...prev,
-                                        [key]: {
-                                            ...prev[key as keyof Overlay],
-                                            isHovered: false,
-                                        },
-                                    };
-                                });
-                            }}
-                        >
-                            <span className={styles.name}>{name}</span>
-                            <span className={styles.value}>{value}</span>
-                            <span className={styles.alt}>{alt}</span>
-                        </button>
-                    ))}
-                    <br />
-                </div>
+                    ]}
+                />
 
                 {/* Colors */}
-                <div className={styles['color-details']}>
-                    <div className={styles.title}>Colors</div>
-                    {[
+                <Legend
+                    items={[
                         {
                             key: 'backgroundColor',
                             name: '--background-color',
@@ -227,7 +127,7 @@ export function Details({}: DetailsProps) {
                             key: 'muted',
                             name: '--muted',
                             value: '#a5a5a5',
-                            alt: 'x',
+                            alt: '',
                         },
                         {
                             key: 'light',
@@ -253,185 +153,56 @@ export function Details({}: DetailsProps) {
                             value: '#ff0000',
                             alt: '',
                         },
-                    ].map(({ key, name, value, alt }) => (
-                        <button
-                            key={key}
-                            className={`${styles.item}${
-                                overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
-                                    ? ` ${styles.on}`
-                                    : ''
-                            }`}
-                            onClick={() => {
-                                setOverlays((prev) => ({
-                                    ...prev,
-                                    [key]: {
-                                        ...prev[key as keyof Overlay],
-                                        isOn: !prev[key as keyof Overlay].isOn,
-                                    },
-                                }));
-                            }}
-                            onPointerOver={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => {
-                                    return {
-                                        ...prev,
-                                        [key]: {
-                                            ...prev[key as keyof Overlay],
-                                            isHovered: true,
-                                        },
-                                    };
-                                });
-                            }}
-                            onPointerLeave={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => {
-                                    return {
-                                        ...prev,
-                                        [key]: {
-                                            ...prev[key as keyof Overlay],
-                                            isHovered: false,
-                                        },
-                                    };
-                                });
-                            }}
-                        >
-                            <span className={styles.name}>{name}</span>
-                            <span className={styles.value}>{value}</span>
-                            <span className={styles.alt}>{alt}</span>
-                        </button>
-                    ))}
-                    <br />
-                </div>
+                    ]}
+                />
 
                 {/* Bounding Boxes */}
-                <div className={styles['box-details']}>
-                    <div className={styles.title}>Bounding Boxes</div>
-                    {[
+                <Legend
+                    items={[
                         {
                             key: 'page',
                             name: 'Page',
+                            value: '',
+                            alt: '',
                         },
                         {
                             key: 'left',
                             name: 'Left Column',
+                            value: '',
+                            alt: '',
                         },
                         {
                             key: 'right',
                             name: 'Right Column',
+                            value: '',
+                            alt: '',
                         },
-                    ].map(({ key, name }) => (
-                        <button
-                            key={key}
-                            className={`${styles.item}${
-                                overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
-                                    ? ` ${styles.on}`
-                                    : ''
-                            }`}
-                            onClick={() => {
-                                setOverlays((prev) => ({
-                                    ...prev,
-                                    [key]: {
-                                        ...prev[key as keyof Overlay],
-                                        isOn: !prev[key as keyof Overlay].isOn,
-                                    },
-                                }));
-                            }}
-                            onPointerOver={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => {
-                                    return {
-                                        ...prev,
-                                        [key]: {
-                                            ...prev[key as keyof Overlay],
-                                            isHovered: true,
-                                        },
-                                    };
-                                });
-                            }}
-                            onPointerLeave={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => ({
-                                    ...prev,
-                                    [key]: {
-                                        ...prev[key as keyof Overlay],
-                                        isHovered: false,
-                                    },
-                                }));
-                            }}
-                        >
-                            <span className={styles.name}>{name}</span>
-                        </button>
-                    ))}
-                    <br />
-                </div>
+                    ]}
+                />
 
                 {/* User Interface */}
-                <div className={styles['ui-details']}>
-                    <div className={styles.title}>User Interface</div>
-                    {[
+                <Legend
+                    items={[
                         {
                             key: 'tabs',
                             name: 'Navigation',
+                            value: '',
+                            alt: '',
                         },
                         {
                             key: 'numbers',
                             name: 'Numbers',
+                            value: '',
+                            alt: '',
                         },
                         {
                             key: 'statusBar',
                             name: 'Status Bar',
+                            value: '',
+                            alt: '',
                         },
-                    ].map(({ key, name }) => (
-                        <button
-                            key={key}
-                            className={`${styles.item}${
-                                overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
-                                    ? ` ${styles.on}`
-                                    : ''
-                            }`}
-                            onClick={() => {
-                                setOverlays((prev) => ({
-                                    ...prev,
-                                    [key]: {
-                                        ...prev[key as keyof Overlay],
-                                        isOn: !prev[key as keyof Overlay].isOn,
-                                    },
-                                }));
-                            }}
-                            onPointerOver={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => {
-                                    return {
-                                        ...prev,
-                                        [key]: {
-                                            ...prev[key as keyof Overlay],
-                                            isHovered: true,
-                                        },
-                                    };
-                                });
-                            }}
-                            onPointerLeave={(event: React.PointerEvent) => {
-                                if (event.pointerType === 'touch') return;
-
-                                setOverlays((prev) => ({
-                                    ...prev,
-                                    [key]: {
-                                        ...prev[key as keyof Overlay],
-                                        isHovered: false,
-                                    },
-                                }));
-                            }}
-                        >
-                            <span className={styles.name}>{name}</span>
-                        </button>
-                    ))}
-                    <br />
-                </div>
+                    ]}
+                />
 
                 {/* All */}
                 <button

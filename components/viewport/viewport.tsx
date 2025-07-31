@@ -12,7 +12,7 @@ import styles from './viewport.module.scss';
 
 export function Viewport({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const { setGrow, setWidth } = useCursor();
+    const { setLeft, setGrow, setWidth } = useCursor();
     const { overlays } = useOverlay();
 
     return (
@@ -36,13 +36,16 @@ export function Viewport({ children }: { children: React.ReactNode }) {
 
                                 if (!rect) return;
 
-                                const { width } = rect;
+                                const { width, left } = rect;
 
+                                // setLeft(left);
                                 setWidth(width);
-                                setGrow(true);
+                                setGrow('link');
                             }}
                             onHoverEnd={() => {
-                                setGrow(false);
+                                // setLeft(0);
+                                setWidth(0);
+                                setGrow('normal');
                             }}
                         >
                             <Link href={crumb.path} className={pathname === crumb.path ? styles.pathname : ''}>
