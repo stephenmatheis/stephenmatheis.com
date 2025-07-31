@@ -1,8 +1,10 @@
 'use client';
 
 import { useMemo } from 'react';
+import * as motion from 'motion/react-client';
 import { useOverlay } from '@/providers/overlay';
 import type { Overlay } from '@/providers/overlay';
+import { useCursor } from '@/providers/cursor';
 import { Legend } from '@/components/legend';
 import styles from './details.module.scss';
 
@@ -10,6 +12,7 @@ type DetailsProps = {};
 
 export function Details({}: DetailsProps) {
     const { overlays, setOverlays } = useOverlay();
+    const { setGrow, setWidth, setLeft } = useCursor();
     const isAllOn = useMemo(
         () => Object.values(overlays).every(({ isOn, isHovered }) => isOn || isHovered),
         [overlays]
@@ -205,8 +208,8 @@ export function Details({}: DetailsProps) {
                 />
 
                 {/* All */}
-                <button
-                    className={`${styles.item}${isAllOn ? ` ${styles.on}` : ''}`}
+                <motion.button
+                    className={`${styles.all}${isAllOn ? ` ${styles.on}` : ''}`}
                     onClick={() =>
                         setOverlays((prev) => {
                             return Object.fromEntries(
@@ -234,9 +237,25 @@ export function Details({}: DetailsProps) {
                             ) as Overlay;
                         });
                     }}
+                    onHoverStart={(event) => {
+                        const rect = (event.target as HTMLElement)?.getBoundingClientRect();
+
+                        if (!rect) return;
+
+                        const { width, left } = rect;
+
+                        setWidth(width);
+                        setLeft(left);
+                        setGrow('item');
+                    }}
+                    onHoverEnd={() => {
+                        setLeft(0);
+                        setWidth(0);
+                        setGrow('normal');
+                    }}
                 >
-                    <span className={styles.name}>Display All</span>
-                </button>
+                    Display All
+                </motion.button>
             </div>
         </div>
     );

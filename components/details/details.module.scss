@@ -2,16 +2,23 @@
     position: relative;
     padding: calc(var(--line-height) * 1) 2ch;
 
-    .top {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+    .all {
+        cursor: pointer;
 
-    .bottom {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+        display: flex;
+        gap: 4ch;
+        padding: 0;
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-size: var(--font-size);
+        text-align: left;
+        color: var(--light);
+
+        &.on {
+            color: var(--accent);
+            transition: color 250ms ease-in-out;
+        }
     }
 
     .details {
@@ -19,49 +26,12 @@
             color: var(--color);
         }
 
-        .item {
-            cursor: pointer;
-
-            display: flex;
-            gap: 4ch;
-            padding: 0;
-            background: none;
-            border: none;
-            font-family: inherit;
-            font-size: var(--font-size);
-            text-align: left;
-
-            &.on {
-                color: var(--accent);
-
-                .name,
-                .value,
-                .alt {
-                    color: var(--accent);
-                }
-            }
-
-            .name {
-                color: var(--light);
-                width: 18ch;
-            }
-
-            .value {
-                color: var(--muted);
-                width: 14ch;
-            }
-
-            .alt {
-                color: var(--lighter);
-            }
-        }
-
-        .page-details,
-        .box-details,
-        .ui-details {
-            @media screen and (max-width: 1299px) {
-                display: none;
-            }
-        }
+        // .page-details,
+        // .box-details,
+        // .ui-details {
+        //     @media screen and (max-width: 1299px) {
+        //         display: none;
+        //     }
+        // }
     }
 }
