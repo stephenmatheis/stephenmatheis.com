@@ -41,7 +41,9 @@ html {
 
     &.cursor-loaded {
         * {
-            cursor: none;
+            @media screen {
+                cursor: none;
+            }
         }
     }
 }

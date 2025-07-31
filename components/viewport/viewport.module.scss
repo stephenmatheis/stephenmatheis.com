@@ -1,15 +1,19 @@
 .viewport {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     padding-top: calc(var(--line-height) * 2);
-    padding-bottom: calc(var(--line-height) * 2);
     padding-inline: 4ch;
+    padding-bottom: calc(var(--line-height) * 8);
 
-    @media screen and (min-width: 1300px) {
-        align-items: flex-start;
-        padding-bottom: calc(var(--line-height) * 8);
+    @media screen and (max-width: 1299px) {
+        padding-top: calc(var(--line-height) * 1);
+        padding-bottom: calc(var(--line-height) * 2);
+    }
+
+    @media print {
+        padding: 0;
     }
 
     .breadcrumbs {
@@ -36,7 +40,7 @@
             display: none;
         }
 
-        @media (max-width: 644px) {
+        @media screen and (max-width: 1299px) {
             width: 100%;
             left: 0;
         }
@@ -65,16 +69,8 @@
             color: var(--accent);
         }
 
-        @media (min-width: 940px), print {
-            .line {
-                &:nth-child(n + 59) {
-                    display: none;
-                }
-            }
-        }
-
-        @media (max-width: 644px) {
-            opacity: 0;
+        @media screen and (max-width: 1299px) {
+            display: none;
         }
     }
 
@@ -100,7 +96,7 @@
             display: none;
         }
 
-        @media (max-width: 644px) {
+        @media screen and (max-width: 1299px) {
             width: 100%;
             left: 0;
         }
@@ -132,24 +128,32 @@
     }
 
     .hud {
-        position: static;
+        position: fixed;
+        top: 0;
+        right: 0;
         display: flex;
         justify-content: space-between;
-        margin-top: calc(var(--line-height) * 8);
-        padding-inline: 5ch;
-        width: 100%;
-        max-width: 8.5in;
+        flex-direction: column;
+        align-items: flex-end;
+        height: 100dvh;
+        width: max-content;
+        padding: calc(var(--line-height) * 2) 4ch;
+        margin-top: 0;
+        overflow: hidden;
 
-        @media screen and (min-width: 1300px) {
-            position: fixed;
-            top: 0;
-            right: 0;
-            flex-direction: column;
-            align-items: flex-end;
-            height: 100dvh;
-            padding: calc(var(--line-height) * 2) 4ch;
-            margin-top: 0;
-            overflow: hidden;
+        @media screen and (max-width: 1299) {
+            padding-top: calc(var(--line-height) * 1);
+            // position: static;
+            // display: flex;
+            // justify-content: space-between;
+            // margin-top: calc(var(--line-height) * 8);
+            // padding-inline: 5ch;
+            // width: 100%;
+            // max-width: 8.5in;
+        }
+
+        @media print {
+            display: none;
         }
     }
 }

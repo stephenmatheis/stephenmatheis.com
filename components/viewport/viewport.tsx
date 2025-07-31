@@ -59,7 +59,7 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                         overlays.numbers.isHovered || overlays.numbers.isOn ? ` ${styles.on}` : ''
                     }`}
                 >
-                    {Array.from({ length: 107 }, (_, i) => (
+                    {Array.from({ length: 58 }, (_, i) => (
                         <div key={i} className={styles.line}>
                             {i + 1}
                         </div>

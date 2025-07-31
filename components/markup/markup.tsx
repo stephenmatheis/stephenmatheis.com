@@ -9,7 +9,7 @@ export function Markup({}: MarkupProps) {
     const { overlays } = useOverlay();
 
     return (
-        <div className={`${styles.middle}${overlays.page.isOn || overlays.page.isHovered ? ` ${styles.on}` : ''}`}>
+        <div className={`${styles.markup}${overlays.page.isOn || overlays.page.isHovered ? ` ${styles.on}` : ''}`}>
             <main className={styles.content}>
                 {/* Character Width */}
                 <div

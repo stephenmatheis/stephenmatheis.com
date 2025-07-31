@@ -1,4 +1,4 @@
-.middle {
+.markup {
     pointer-events: none;
     position: absolute;
     top: 0;
@@ -13,15 +13,19 @@
     }
 
     @media screen {
-        @media (max-width: 939px) {
-            width: 100%;
-            padding-inline: 5ch;
+        @media (max-width: 1299px) {
+            display: none;
         }
+
+        // @media (max-width: 939px) {
+        //     width: 100%;
+        //     padding-inline: 5ch;
+        // }
     }
 
-    @media print {
-        top: calc(var(--line-height) * -2);
-    }
+    // @media print {
+    //     top: calc(var(--line-height) * -2);
+    // }
 
     .content {
         position: relative;
