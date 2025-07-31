@@ -129,9 +129,7 @@
         top: 0;
         right: 0;
         display: flex;
-        justify-content: space-between;
         flex-direction: column;
-        align-items: flex-end;
         height: 100dvh;
         width: max-content;
         padding: calc(var(--line-height) * 2) 4ch;
