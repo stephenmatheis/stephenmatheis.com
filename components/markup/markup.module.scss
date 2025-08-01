@@ -16,6 +16,10 @@
         display: none;
     }
 
+    @media print {
+        display: none;
+    }
+
     .content {
         position: relative;
         display: flex;
@@ -49,8 +53,8 @@
         .fontsize {
             pointer-events: all;
             position: absolute;
-            top: 0;
-            left: 7.75ch;
+            top: -0.5px;
+            left: 7.25ch;
             height: var(--line-height);
             display: flex;
             align-items: center;

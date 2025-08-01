@@ -5,20 +5,14 @@ import { Skills } from '@/components/skills';
 import { Projects } from '@/components/projects';
 import styles from './content.module.scss';
 
-// TODO: Add a console game.
-
 export function Content() {
     return (
         <main className={styles.content}>
-            <div className={styles.left}>
-                <Name />
-                <Experience />
-            </div>
-            <div className={styles.right}>
-                <Contact />
-                <Skills />
-                <Projects />
-            </div>
+            <Name />
+            <Contact />
+            <Experience />
+            <Skills />
+            <Projects />
         </main>
     );
 }

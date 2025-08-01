@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { Comment } from '@/components/comment';
+import { Section } from '@/components/section';
 import contact from '@/data/contact';
 import styles from './contact.module.scss';
 
 export function Contact() {
     return (
-        <section className={styles.contact}>
-            <Comment text="Contact" />
+        <Section className={styles.contact} heading="Contact">
             <div className={styles.list}>
                 {contact.map((item, index) => {
                     return (
@@ -19,6 +18,6 @@ export function Contact() {
                     );
                 })}
             </div>
-        </section>
+        </Section>
     );
 }
