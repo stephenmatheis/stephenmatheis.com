@@ -4,10 +4,12 @@
     overflow: auto;
     padding-top: var(--line-height);
     padding-bottom: var(--line-height);
+    padding-left: 2ch;
 
     .block {
         display: flex;
         gap: 2ch;
+        margin-right: 2ch;
 
         .title {
             color: var(--color);
@@ -36,12 +38,10 @@
 
             .name {
                 color: var(--light);
-                // width: 6ch;
             }
 
             .value {
                 color: var(--muted);
-                // width: 6ch;
 
                 @media screen and (min-width: 1300px) {
                     text-align: right;
