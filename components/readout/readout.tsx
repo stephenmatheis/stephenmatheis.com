@@ -34,29 +34,27 @@ export function Readout() {
     }, []);
 
     return (
-        <div className={styles['readout-wrapper']}>
-            <div className={styles.readout}>
-                <div className={styles.block}>
-                    <div className={styles.title}>Viewport</div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Width</span>
-                        <span className={styles.value}>{viewport.width}px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Height</span>
-                        <span className={styles.value}>{viewport.height}px</span>
-                    </div>
+        <div className={styles.readout}>
+            <div className={styles.block}>
+                <div className={styles.title}>Viewport</div>
+                <div className={styles.item}>
+                    <span className={styles.name}>Width</span>
+                    <span className={styles.value}>{viewport.width}px</span>
                 </div>
-                <div className={styles.block}>
-                    <div className={styles.title}>Pointer</div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>X</span>
-                        <span className={styles.value}>{mousePosition.x}px</span>
-                    </div>
-                    <div className={styles.item}>
-                        <span className={styles.name}>Y</span>
-                        <span className={styles.value}>{mousePosition.y}px</span>
-                    </div>
+                <div className={styles.item}>
+                    <span className={styles.name}>Height</span>
+                    <span className={styles.value}>{viewport.height}px</span>
+                </div>
+            </div>
+            <div className={styles.block}>
+                <div className={styles.title}>Pointer</div>
+                <div className={styles.item}>
+                    <span className={styles.name}>X</span>
+                    <span className={styles.value}>{mousePosition.x}px</span>
+                </div>
+                <div className={styles.item}>
+                    <span className={styles.name}>Y</span>
+                    <span className={styles.value}>{mousePosition.y}px</span>
                 </div>
             </div>
         </div>

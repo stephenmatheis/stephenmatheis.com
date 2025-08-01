@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
@@ -9,17 +10,45 @@ import { Page } from '@/components/page';
 import { Details } from '@/components/details';
 import { Readout } from '@/components/readout';
 import styles from './viewport.module.scss';
-import { Fragment } from 'react';
 
 export function Viewport({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const { setWidth, setGrow } = useCursor();
     const { overlays } = useOverlay();
+    const hudRef = useRef<HTMLDivElement>(null);
+    const hudTabRef = useRef<HTMLDivElement>(null);
+    const toolbarRef = useRef<HTMLDivElement>(null);
+    const toolbarTabRef = useRef<HTMLDivElement>(null);
 
     return (
         <div className={styles.viewport}>
-            <div className={styles.hud}>
+            <div ref={hudRef} className={styles.hud}>
                 <Details />
+                <motion.div
+                    ref={hudTabRef}
+                    className={styles.pulltab}
+                    onHoverStart={() => {
+                        setGrow('tab');
+                    }}
+                    onHoverEnd={() => {
+                        setGrow('normal');
+                    }}
+                    onPan={(event, info) => {
+                        setGrow('moving');
+
+                        if (!hudRef.current) return;
+
+                        const { height } = hudRef.current.getBoundingClientRect();
+                        const newHeight = height + info.delta.y;
+
+                        hudRef.current.style.height = `${newHeight > 0 ? newHeight : 0}px`;
+                    }}
+                    onPanEnd={() => {
+                        setGrow('normal');
+                    }}
+                >
+                    Pull tab
+                </motion.div>
             </div>
             <div className={styles.workspace}>
                 <Page>
@@ -125,7 +154,35 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                     </div>
                 </Page>
             </div>
-            <div className={styles.toolbar}>
+            <div ref={toolbarRef} className={styles.toolbar}>
+                <motion.div
+                    ref={toolbarTabRef}
+                    className={styles.pulltab}
+                    onHoverStart={() => {
+                        setGrow('tab');
+                    }}
+                    onHoverEnd={() => {
+                        setGrow('normal');
+                    }}
+                    onPan={(event, info) => {
+                        console.log(info.delta.y);
+
+                        setGrow('moving');
+
+                        if (!toolbarRef.current) return;
+
+                        const { height } = toolbarRef.current.getBoundingClientRect();
+                        const newHeight = height - info.delta.y;
+
+                        // toolbarRef.current.style.height = `${newHeight > 0 ? newHeight : 0}px`;
+                        toolbarRef.current.style.height = `${newHeight}px`;
+                    }}
+                    onPanEnd={(event, info) => {
+                        setGrow('normal');
+                    }}
+                >
+                    Pull tab
+                </motion.div>
                 <Readout />
             </div>
         </div>

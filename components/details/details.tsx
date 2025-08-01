@@ -19,7 +19,7 @@ export function Details({}: DetailsProps) {
     );
 
     return (
-        <div className={styles['details-wrapper']}>
+        <div className={styles.details}>
             {/* Page */}
             <Legend
                 title="Page"
