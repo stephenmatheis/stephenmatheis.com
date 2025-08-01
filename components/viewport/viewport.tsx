@@ -177,7 +177,6 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                         const newHeight = height - info.delta.y;
 
                         toolbarRef.current.style.height = `${newHeight > 16.5 ? newHeight : 16.5}px`;
-                        // toolbarRef.current.style.height = `${newHeight}px`;
                     }}
                     onPanEnd={(event, info) => {
                         setGrow('normal');

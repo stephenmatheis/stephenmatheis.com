@@ -145,7 +145,6 @@
         position: relative;
         display: flex;
         justify-content: center;
-        // padding-left: 2ch;
 
         @media print {
             display: none;
@@ -165,7 +164,6 @@
         user-select: none;
         position: relative;
         display: flex;
-        // padding-left: 2ch;
 
         button {
             height: 4rem;
@@ -189,6 +187,7 @@
         width: 100%;
         text-align: center;
         background-color: var(--lightest);
+        touch-action: none;
 
         &::after {
             position: absolute;
