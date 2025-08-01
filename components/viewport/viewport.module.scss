@@ -38,7 +38,7 @@
         left: 0;
         width: 100%;
         max-width: 100%;
-        
+
         // background-color: #0000ff20;
 
         a {
@@ -100,7 +100,7 @@
             left: 0;
             width: 100%;
             max-width: 100%;
-            
+
             // background-color: #ff000020;
         }
 
@@ -149,6 +149,14 @@
         position: relative;
         display: flex;
         justify-content: center;
+
+        // @media (max-width: 927px) {
+        //     // ?
+        // }
+
+        @media (max-height: 667px) {
+            height: calc(var(--line-height) * 3);
+        }
 
         @media print {
             display: none;
