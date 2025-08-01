@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import { Comment } from '@/components/comment';
+import { Section } from '@/components/section';
 import styles from './name.module.scss';
 
 export function Name() {
     return (
-        <section className={styles.name}>
-            <Comment text="Name" />
+        <Section className={styles.name} heading="Name">
             <div className={styles.text}>
                 <div>
                     <span className={styles.primary}>Stephen Matheis</span>{' '}
@@ -16,6 +15,6 @@ export function Name() {
                 </Link>
                 <div className={styles.light}>38° N, 77° W</div>
             </div>
-        </section>
+        </Section>
     );
 }

@@ -1,4 +1,11 @@
 .projects {
+    @media screen and (min-width: 928px) {
+        position: absolute;
+        top: calc(var(--line-height) * 38);
+        right: 0;
+        width: 35ch;
+    }
+
     .list {
         display: flex;
         flex-direction: column;

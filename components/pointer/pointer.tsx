@@ -3,9 +3,7 @@
 import { useEffect, useState } from 'react';
 import styles from './pointer.module.scss';
 
-type PointerProps = {};
-
-export function Pointer({}: PointerProps) {
+export function Pointer() {
     const [viewport, setViewport] = useState({ width: 0, height: 0 });
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 

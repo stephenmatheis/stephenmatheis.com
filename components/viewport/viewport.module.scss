@@ -1,17 +1,15 @@
 .viewport {
-    display: flex;
-    flex-direction: column;
-    height: 100dvh;
-    width: 100%;
-    padding-inline: 2ch;
-    overflow: hidden;
+    @media screen {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh;
+        width: 100%;
+        padding-inline: 2ch;
+        overflow: hidden;
 
-    @media screen and (max-width: 1299px) {
-        padding-inline: 0ch;
-    }
-
-    @media print {
-        padding: 0;
+        @media (max-width: 1299px) {
+            padding-inline: 0ch;
+        }
     }
 
     .breadcrumbs {
@@ -31,14 +29,14 @@
             }
         }
 
-        @media print {
-            display: none;
-        }
-
         @media screen and (max-width: 927px) {
             left: 0;
 
             // background-color: #0000ff20;
+        }
+
+        @media print {
+            display: none;
         }
 
         a {
@@ -131,16 +129,18 @@
     }
 
     .workspace {
-        display: flex;
-        justify-content: center;
-        overflow: auto;
-        padding-top: calc(var(--line-height) * 1);
-        padding-bottom: calc(var(--line-height) * 8);
-        padding-inline: 2ch;
+        @media screen {
+            display: flex;
+            justify-content: center;
+            overflow: auto;
+            padding-top: calc(var(--line-height) * 1);
+            padding-bottom: calc(var(--line-height) * 8);
+            padding-inline: 2ch;
 
-        @media screen and (max-width: 927px) {
-            padding-top: 0;
-            padding-bottom: 0;
+            @media (max-width: 927px) {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
         }
     }
 
@@ -176,6 +176,10 @@
         user-select: none;
         position: relative;
         display: flex;
+
+        @media print {
+            display: none;
+        }
 
         button {
             height: 4rem;

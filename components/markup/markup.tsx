@@ -3,9 +3,7 @@
 import { useOverlay } from '@/providers/overlay';
 import styles from './markup.module.scss';
 
-type MarkupProps = {};
-
-export function Markup({}: MarkupProps) {
+export function Markup() {
     const { overlays } = useOverlay();
 
     return (

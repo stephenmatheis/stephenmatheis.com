@@ -8,9 +8,7 @@ import { useCursor } from '@/providers/cursor';
 import { Legend } from '@/components/legend';
 import styles from './details.module.scss';
 
-type DetailsProps = {};
-
-export function Details({}: DetailsProps) {
+export function Details() {
     const { overlays, setOverlays } = useOverlay();
     const { setGrow, setWidth, setLeft } = useCursor();
     const isAllOn = useMemo(
