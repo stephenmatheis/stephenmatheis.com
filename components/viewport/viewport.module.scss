@@ -145,10 +145,6 @@
         display: flex;
         justify-content: center;
 
-        // @media (max-width: 927px) {
-        //     // ?
-        // }
-
         @media (max-height: 667px) {
             height: calc(var(--line-height) * 3);
         }
