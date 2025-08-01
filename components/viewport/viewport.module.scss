@@ -139,7 +139,6 @@
         position: relative;
         display: flex;
         justify-content: center;
-        padding-bottom: var(--line-height);
         padding-inline: 2ch;
 
         @media print {
@@ -147,12 +146,12 @@
         }
 
         .pulltab {
-            position: absolute;
-            bottom: 0;
+            bottom: 0px;
             left: 0;
-            width: 100%;
-            background-color: #ff000050;
-            text-align: center;
+
+            &::after {
+                bottom: -10.5px;
+            }
         }
     }
 
@@ -161,7 +160,6 @@
         position: relative;
         display: flex;
         justify-content: center;
-        padding-bottom: var(--line-height);
         padding-inline: 2ch;
 
         button {
@@ -170,12 +168,29 @@
         }
 
         .pulltab {
-            position: absolute;
             top: 0;
             left: 0;
+
+            &::after {
+                top: -10.5px;
+            }
+        }
+    }
+
+    .pulltab {
+        position: absolute;
+        height: 1px;
+        border-radius: 1px;
+        width: 100%;
+        text-align: center;
+        background-color: var(--lightest);
+
+        &::after {
+            position: absolute;
+            left: 0;
+            content: '';
             width: 100%;
-            background-color: #0000ff50;
-            text-align: center;
+            height: 22px;
         }
     }
 }

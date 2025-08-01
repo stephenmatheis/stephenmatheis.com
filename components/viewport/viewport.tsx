@@ -41,14 +41,16 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                         const { height } = hudRef.current.getBoundingClientRect();
                         const newHeight = height + info.delta.y;
 
-                        hudRef.current.style.height = `${newHeight > 0 ? newHeight : 0}px`;
+                        hudRef.current.style.height = `${newHeight > 16.5 ? newHeight : 16.5}px`;
                     }}
                     onPanEnd={() => {
                         setGrow('normal');
                     }}
-                >
-                    Pull tab
-                </motion.div>
+                    whileHover={{
+                        boxShadow: '0px 0px 0px 1px var(--lightest)',
+                        transition: { type: 'spring', stiffness: 300, damping: 15 },
+                    }}
+                />
             </div>
             <div className={styles.workspace}>
                 <Page>
@@ -174,15 +176,17 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                         const { height } = toolbarRef.current.getBoundingClientRect();
                         const newHeight = height - info.delta.y;
 
-                        // toolbarRef.current.style.height = `${newHeight > 0 ? newHeight : 0}px`;
-                        toolbarRef.current.style.height = `${newHeight}px`;
+                        toolbarRef.current.style.height = `${newHeight > 16.5 ? newHeight : 16.5}px`;
+                        // toolbarRef.current.style.height = `${newHeight}px`;
                     }}
                     onPanEnd={(event, info) => {
                         setGrow('normal');
                     }}
-                >
-                    Pull tab
-                </motion.div>
+                    whileHover={{
+                        boxShadow: '0px 0px 0px 1px var(--lightest)',
+                        transition: { type: 'spring', stiffness: 300, damping: 15 },
+                    }}
+                />
                 <Readout />
             </div>
         </div>
