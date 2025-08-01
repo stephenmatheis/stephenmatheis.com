@@ -1,21 +1,14 @@
 .readout-wrapper {
-    position: relative;
-    padding-top: calc(var(--line-height) * 3);
-    padding-inline: 2ch;
+    padding: var(--line-height) 0;
 
     .readout {
         position: relative;
         display: flex;
-        flex-direction: column;
-        gap: calc(var(--line-height) * 1);
+        gap: 6ch;
 
         .block {
             .title {
                 color: var(--color);
-
-                @media screen and (min-width: 1300px) {
-                    text-align: right;
-                }
             }
 
             .item {
@@ -28,7 +21,6 @@
                 border: none;
                 font-family: inherit;
                 font-size: var(--font-size);
-                text-align: left;
 
                 &.on {
                     color: var(--accent);
@@ -43,10 +35,6 @@
                 .name {
                     color: var(--light);
                     width: 6ch;
-
-                    @media screen and (min-width: 1300px) {
-                        text-align: right;
-                    }
                 }
 
                 .value {

@@ -20,22 +20,25 @@
             .value,
             .alt {
                 color: var(--accent);
-                transition: color 250ms ease-in-out;
+                transition: color 100ms ease-in-out;
             }
         }
 
         .name {
             color: var(--light);
-            width: 18ch;
+            // width: 18ch;
+            width: max-content;
         }
 
         .value {
             color: var(--muted);
-            width: 14ch;
+            // width: 14ch;
+            width: max-content;
         }
 
         .alt {
             color: var(--lighter);
+            width: max-content;
         }
     }
 
