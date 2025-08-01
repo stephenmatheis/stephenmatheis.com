@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
-type grow = 'link' | 'item' | 'button' | 'normal';
+type grow = 'link' | 'item' | 'button' | 'tab' | 'moving' | 'normal';
 
 type CursorContext = {
     left: number;

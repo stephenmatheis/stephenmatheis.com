@@ -107,7 +107,6 @@ export function Legend({ title, items }: LegendProps) {
                     )}
                 </motion.button>
             ))}
-            <br />
         </div>
     );
 }

@@ -1,7 +1,8 @@
-.details-wrapper {
+.details {
     display: flex;
     gap: 6ch;
     overflow: auto;
+    padding-top: var(--line-height);
 
     .all {
         height: var(--line-height);
