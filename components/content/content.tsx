@@ -2,7 +2,7 @@ import { Name } from '@/components/name';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
 import { Skills } from '@/components/skills';
-import { Projects } from '@/components/projects';
+import { Work } from '@/components/work';
 import styles from './content.module.scss';
 
 export function Content() {
@@ -12,7 +12,7 @@ export function Content() {
             <Contact />
             <Experience />
             <Skills />
-            <Projects />
+            <Work />
         </main>
     );
 }
