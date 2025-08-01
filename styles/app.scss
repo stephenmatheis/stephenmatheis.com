@@ -26,6 +26,8 @@
     box-sizing: border-box;
     font-size: var(--font-size);
     line-height: var(--line-height);
+    margin: 0;
+    padding: 0;
 
     &::selection {
         color: var(--primary);
@@ -57,12 +59,19 @@ body {
     position: relative;
     font-family: var(--font-mono);
     background-color: var(--background-color);
-    margin: 0;
-    padding: 0;
 }
 
 a {
     text-decoration: none;
     color: var(--primary);
     -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: var(--font-size);
+    color: var(--color);
 }

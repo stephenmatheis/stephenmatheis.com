@@ -1,23 +1,15 @@
 .details-wrapper {
-    position: relative;
-    padding: calc(var(--line-height) * 1) 2ch;
+    display: flex;
+    gap: 6ch;
+    overflow: auto;
 
     .all {
-        cursor: pointer;
-
-        display: flex;
-        gap: 4ch;
-        padding: 0;
-        background: none;
-        border: none;
-        font-family: inherit;
-        font-size: var(--font-size);
-        text-align: left;
-        color: var(--color);
+        height: var(--line-height);
+        min-width: max-content;
 
         &.on {
             color: var(--accent);
-            transition: color 250ms ease-in-out;
+            transition: color 100ms ease-in-out;
         }
     }
 }

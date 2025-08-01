@@ -14,16 +14,24 @@ type Item = {
 };
 
 type LegendProps = {
+    title: string;
     items: Item[];
 };
 
-export function Legend({ items }: LegendProps) {
+function getMaxLength(items: Item[], key: string): number {
+    return Math.max(...items.map((item) => item[key].length));
+}
+
+export function Legend({ title, items }: LegendProps) {
     const { overlays, setOverlays } = useOverlay();
     const { setGrow, setWidth, setLeft } = useCursor();
+    const nameLength = getMaxLength(items, 'name');
+    const valueLength = getMaxLength(items, 'value');
+    const altLength = getMaxLength(items, 'alt');
 
     return (
         <div className={styles.legend}>
-            <div className={styles.title}>Page</div>
+            <div className={styles.title}>{title}</div>
             {items.map(({ key, name, value, alt }) => (
                 <motion.button
                     key={key}
@@ -84,9 +92,19 @@ export function Legend({ items }: LegendProps) {
                         setGrow('normal');
                     }}
                 >
-                    <span className={styles.name}>{name}</span>
-                    <span className={styles.value}>{value}</span>
-                    <span className={styles.alt}>{alt}</span>
+                    <span style={{ width: `${nameLength}ch` }} className={styles.name}>
+                        {name}
+                    </span>
+                    {value && (
+                        <span style={{ width: `${valueLength}ch` }} className={styles.value}>
+                            {value}
+                        </span>
+                    )}
+                    {alt && (
+                        <span style={{ width: `${altLength}ch` }} className={styles.alt}>
+                            {alt}
+                        </span>
+                    )}
                 </motion.button>
             ))}
             <br />

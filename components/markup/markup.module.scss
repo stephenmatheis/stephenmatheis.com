@@ -14,18 +14,9 @@
 
     @media screen {
         @media (max-width: 1299px) {
-            display: none;
+            // display: none;
         }
-
-        // @media (max-width: 939px) {
-        //     width: 100%;
-        //     padding-inline: 5ch;
-        // }
     }
-
-    // @media print {
-    //     top: calc(var(--line-height) * -2);
-    // }
 
     .content {
         position: relative;
@@ -33,14 +24,14 @@
         justify-content: space-between;
         gap: 4ch;
 
-        @media screen and (max-width: 939px) {
-            flex-direction: column;
-            gap: calc(var(--line-height) * 2);
-        }
+        // @media screen and (max-width: 939px) {
+        //     flex-direction: column;
+        //     gap: calc(var(--line-height) * 2);
+        // }
 
-        @media (max-width: 644px) {
-            width: 100%;
-        }
+        // @media (max-width: 644px) {
+        //     width: 100%;
+        // }
 
         .charWidth {
             pointer-events: all;
@@ -59,9 +50,9 @@
                 color: var(--accent);
             }
 
-            @media (max-width: 939px) {
-                display: none;
-            }
+            // @media (max-width: 939px) {
+            //     display: none;
+            // }
 
             .label {
                 line-height: 8.25px;
@@ -84,9 +75,9 @@
                 color: var(--accent);
             }
 
-            @media (max-width: 939px) {
-                display: none;
-            }
+            // @media (max-width: 939px) {
+            //     display: none;
+            // }
 
             .label {
                 line-height: 8.25px;
@@ -108,9 +99,9 @@
                 color: var(--accent);
             }
 
-            @media (max-width: 939px) {
-                display: none;
-            }
+            // @media (max-width: 939px) {
+            //     display: none;
+            // }
 
             .label {
                 line-height: 8.25px;
@@ -129,9 +120,9 @@
                 color: var(--accent);
             }
 
-            @media (max-width: 939px) {
-                display: none;
-            }
+            // @media (max-width: 939px) {
+            //     display: none;
+            // }
 
             .label {
                 position: absolute;
@@ -174,9 +165,9 @@
                 color: var(--accent);
             }
 
-            @media (max-width: 939px) {
-                display: none;
-            }
+            // @media (max-width: 939px) {
+            //     display: none;
+            // }
 
             .label {
                 position: absolute;
@@ -197,9 +188,9 @@
                 box-shadow: 0 0 0 1px var(--accent);
             }
 
-            @media screen and (max-width: 939px) {
-                width: 82ch;
-            }
+            // @media (max-width: 939px) {
+            //     width: 82ch;
+            // }
         }
 
         .right {
@@ -212,9 +203,9 @@
                 box-shadow: 0 0 0 1px var(--accent);
             }
 
-            @media screen and (max-width: 939px) {
-                width: 100%;
-            }
+            // @media (max-width: 939px) {
+            //     width: 100%;
+            // }
         }
     }
 
@@ -231,9 +222,9 @@
             color: var(--accent);
         }
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
@@ -269,9 +260,9 @@
             color: var(--accent);
         }
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
@@ -296,9 +287,9 @@
             color: var(--accent);
         }
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
@@ -325,9 +316,9 @@
             color: var(--accent);
         }
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
@@ -351,9 +342,9 @@
             color: var(--accent);
         }
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
