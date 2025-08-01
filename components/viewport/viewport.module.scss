@@ -4,12 +4,7 @@
         flex-direction: column;
         height: 100dvh;
         width: 100%;
-        padding-inline: 2ch;
         overflow: hidden;
-
-        @media (max-width: 1299px) {
-            padding-inline: 0ch;
-        }
     }
 
     .breadcrumbs {
