@@ -19,7 +19,7 @@
         position: absolute;
         top: calc(var(--line-height) * 1);
         left: 7ch;
-        width: calc(100% - 18ch);
+        max-width: calc(100% - 18ch);
         color: var(--light);
 
         &.on {
@@ -35,11 +35,11 @@
             display: none;
         }
 
-        left: 0;
-        width: 100%;
-        max-width: 100%;
+        @media screen and (max-width: 927px) {
+            left: 0;
 
-        // background-color: #0000ff20;
+            // background-color: #0000ff20;
+        }
 
         a {
             color: var(--light);
