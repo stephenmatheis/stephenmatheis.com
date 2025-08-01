@@ -3,10 +3,13 @@
     gap: 6ch;
     overflow: auto;
     padding-bottom: var(--line-height);
+    padding-left: 2ch;
 
     .all {
+        padding-top: var(--line-height);
         height: var(--line-height);
         min-width: max-content;
+        margin-right: 2ch;
 
         &.on {
             color: var(--accent);

@@ -7,6 +7,6 @@
     padding: calc(var(--line-height) * 3) 0;
 
     @media screen and (max-width: 1299px) {
-        //
+        height: max-content;
     }
 }

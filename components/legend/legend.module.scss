@@ -3,6 +3,7 @@
 
     .title {
         color: var(--color);
+        width: max-content;
     }
 
     .item {
@@ -28,13 +29,11 @@
 
         .name {
             color: var(--light);
-            // width: 18ch;
             width: max-content;
         }
 
         .value {
             color: var(--muted);
-            // width: 14ch;
             width: max-content;
         }
 
