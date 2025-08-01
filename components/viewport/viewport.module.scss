@@ -19,7 +19,7 @@
         position: absolute;
         top: calc(var(--line-height) * 1);
         left: 7ch;
-        width: calc(100% + 4ch);
+        width: calc(100% - 18ch);
         color: var(--light);
 
         &.on {
@@ -35,10 +35,11 @@
             display: none;
         }
 
-        @media screen and (max-width: 1299px) {
-            left: 0;
-            width: 100%;
-        }
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        
+        // background-color: #0000ff20;
 
         a {
             color: var(--light);
@@ -68,7 +69,7 @@
             color: var(--accent);
         }
 
-        @media screen and (max-width: 1299px) {
+        @media screen and (max-width: 927px) {
             display: none;
         }
     }
@@ -95,9 +96,12 @@
             display: none;
         }
 
-        @media screen and (max-width: 1299px) {
-            width: 100%;
+        @media screen and (max-width: 927px) {
             left: 0;
+            width: 100%;
+            max-width: 100%;
+            
+            // background-color: #ff000020;
         }
 
         a {
@@ -134,7 +138,7 @@
         padding-bottom: calc(var(--line-height) * 8);
         padding-inline: 2ch;
 
-        @media screen and (max-width: 1299px) {
+        @media screen and (max-width: 927px) {
             padding-top: 0;
             padding-bottom: 0;
         }

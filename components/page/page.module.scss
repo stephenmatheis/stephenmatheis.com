@@ -6,7 +6,11 @@
     height: 11in;
     padding: calc(var(--line-height) * 3) 0;
 
-    @media screen and (max-width: 1299px) {
+    @media screen and (max-width: 927px) {
+        justify-content: flex-start;
+        width: 100%;
         height: max-content;
+
+        // background-color: #ff00ff10;
     }
 }
