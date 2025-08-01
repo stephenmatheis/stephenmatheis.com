@@ -1,7 +1,3 @@
-'use client';
-
-import Link from 'next/link';
-import { useOverlay } from '@/providers/overlay';
 import { Name } from '@/components/name';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
@@ -12,8 +8,6 @@ import styles from './content.module.scss';
 // TODO: Add a console game.
 
 export function Content() {
-    const { overlays } = useOverlay();
-
     return (
         <main className={styles.content}>
             <div className={styles.left}>
