@@ -1,6 +1,6 @@
 .readout {
     display: flex;
-    gap: 4ch;
+    gap: 2ch;
     overflow: auto;
     padding-top: var(--line-height);
     padding-bottom: var(--line-height);
@@ -17,7 +17,6 @@
 
         .item {
             cursor: pointer;
-
             display: flex;
             gap: 1ch;
             padding: 0;
