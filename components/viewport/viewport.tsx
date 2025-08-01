@@ -13,7 +13,7 @@ import styles from './viewport.module.scss';
 
 export function Viewport({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const { setWidth, setGrow } = useCursor();
+    const { setLeft, setWidth, setGrow } = useCursor();
     const { overlays } = useOverlay();
     const hudRef = useRef<HTMLDivElement>(null);
     const hudTabRef = useRef<HTMLDivElement>(null);
@@ -74,12 +74,14 @@ export function Viewport({ children }: { children: React.ReactNode }) {
 
                                         if (!rect) return;
 
-                                        const { width } = rect;
+                                        const { width, left } = rect;
 
+                                        setLeft(left);
                                         setWidth(width);
                                         setGrow('link');
                                     }}
                                     onHoverEnd={() => {
+                                        setLeft(0);
                                         setWidth(0);
                                         setGrow('normal');
                                     }}
