@@ -1,5 +1,5 @@
 .experience {
-    @media screen and (min-width: 928px) {
+    @media (min-width: 946px), print {
         position: absolute;
         top: calc(var(--line-height) * 7);
         left: 0;

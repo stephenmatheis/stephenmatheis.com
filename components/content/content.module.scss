@@ -6,7 +6,7 @@
     width: 95ch;
     height: calc(var(--line-height) * 58);
 
-    @media screen and (max-width: 927px) {
+    @media screen and (max-width: 945px) {
         height: max-content;
         width: 100%;
         max-width: 95ch;
@@ -17,7 +17,7 @@
     // justify-content: space-between;
     // gap: 4ch;
 
-    // @media screen and (max-width: 927px) {
+    // @media screen and (max-width: 945px) {
     //     flex-direction: column;
     // }
 
@@ -33,7 +33,7 @@
     //     gap: calc(var(--line-height) * 2);
     //     width: 35ch;
 
-    //     @media screen and (max-width: 927px) {
+    //     @media screen and (max-width: 945px) {
     //         width: 100%;
     //     }
     // }

@@ -256,7 +256,7 @@ export function Details() {
                     setGrow('normal');
                 }}
             >
-                Display All
+                All
             </motion.button>
         </div>
     );

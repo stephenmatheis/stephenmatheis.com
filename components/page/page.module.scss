@@ -7,12 +7,16 @@
     padding: calc(var(--line-height) * 3) 0;
 
     @media screen {
-        @media (max-width: 927px) {
+        margin-inline: auto;
+        margin-top: var(--line-height);
+        margin-bottom: calc(var(--line-height) * 8);
+
+        @media (max-width: 945px) {
             justify-content: flex-start;
             width: 100%;
             height: max-content;
-
-            // background-color: #ff00ff10;
+            margin: 0;
+            padding: calc(var(--line-height) * 3) 2ch;
         }
     }
 }

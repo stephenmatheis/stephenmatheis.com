@@ -1,16 +1,18 @@
 .details {
+    user-select: none;
+    position: sticky;
+    top: 0;
     display: flex;
-    gap: 6ch;
-    overflow: auto;
-    padding-bottom: var(--line-height);
-    padding-left: 2ch;
+    justify-content: center;
+    width: 100%;
+    gap: 4ch;
+    padding-top: var(--line-height);
+
+    @media print {
+        display: none;
+    }
 
     .all {
-        padding-top: var(--line-height);
-        height: var(--line-height);
-        min-width: max-content;
-        margin-right: 2ch;
-
         &.on {
             color: var(--accent);
             transition: color 100ms ease-in-out;
