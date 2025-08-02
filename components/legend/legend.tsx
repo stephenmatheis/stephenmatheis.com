@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import * as motion from 'motion/react-client';
 import { useOverlay } from '@/providers/overlay';
 import type { Overlay } from '@/providers/overlay';
@@ -28,85 +29,87 @@ export function Legend({ title, items }: LegendProps) {
     const nameLength = getMaxLength(items, 'name');
     const valueLength = getMaxLength(items, 'value');
     const altLength = getMaxLength(items, 'alt');
+    const [show, setShow] = useState<boolean>(false);
 
     return (
         <div className={styles.legend}>
-            <div className={styles.title}>{title}</div>
-            {items.map(({ key, name, value, alt }) => (
-                <motion.button
-                    key={key}
-                    className={`${styles.item}${
-                        overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
-                            ? ` ${styles.on}`
-                            : ''
-                    }`}
-                    onClick={() => {
-                        setOverlays((prev) => ({
-                            ...prev,
-                            [key]: {
-                                ...prev[key as keyof Overlay],
-                                isOn: !prev[key as keyof Overlay].isOn,
-                            },
-                        }));
-                    }}
-                    onPointerOver={(event: React.PointerEvent) => {
-                        if (event.pointerType === 'touch') return;
-
-                        setOverlays((prev) => {
-                            return {
+            <motion.div className={styles.title}>{title}</motion.div>
+            {show &&
+                items.map(({ key, name, value, alt }) => (
+                    <motion.button
+                        key={key}
+                        className={`${styles.item}${
+                            overlays[key as keyof Overlay].isHovered || overlays[key as keyof Overlay].isOn
+                                ? ` ${styles.on}`
+                                : ''
+                        }`}
+                        onClick={() => {
+                            setOverlays((prev) => ({
                                 ...prev,
                                 [key]: {
                                     ...prev[key as keyof Overlay],
-                                    isHovered: true,
+                                    isOn: !prev[key as keyof Overlay].isOn,
                                 },
-                            };
-                        });
-                    }}
-                    onPointerLeave={(event: React.PointerEvent) => {
-                        if (event.pointerType === 'touch') return;
+                            }));
+                        }}
+                        onPointerOver={(event: React.PointerEvent) => {
+                            if (event.pointerType === 'touch') return;
 
-                        setOverlays((prev) => {
-                            return {
-                                ...prev,
-                                [key]: {
-                                    ...prev[key as keyof Overlay],
-                                    isHovered: false,
-                                },
-                            };
-                        });
-                    }}
-                    onHoverStart={(event) => {
-                        const rect = (event.target as HTMLElement)?.getBoundingClientRect();
+                            setOverlays((prev) => {
+                                return {
+                                    ...prev,
+                                    [key]: {
+                                        ...prev[key as keyof Overlay],
+                                        isHovered: true,
+                                    },
+                                };
+                            });
+                        }}
+                        onPointerLeave={(event: React.PointerEvent) => {
+                            if (event.pointerType === 'touch') return;
 
-                        if (!rect) return;
+                            setOverlays((prev) => {
+                                return {
+                                    ...prev,
+                                    [key]: {
+                                        ...prev[key as keyof Overlay],
+                                        isHovered: false,
+                                    },
+                                };
+                            });
+                        }}
+                        onHoverStart={(event) => {
+                            const rect = (event.target as HTMLElement)?.getBoundingClientRect();
 
-                        const { width, left } = rect;
+                            if (!rect) return;
 
-                        setWidth(width);
-                        setLeft(left);
-                        setGrow('item');
-                    }}
-                    onHoverEnd={() => {
-                        setLeft(0);
-                        setWidth(0);
-                        setGrow('normal');
-                    }}
-                >
-                    <span style={{ width: `${nameLength}ch` }} className={styles.name}>
-                        {name}
-                    </span>
-                    {value && (
-                        <span style={{ width: `${valueLength}ch` }} className={styles.value}>
-                            {value}
+                            const { width, left } = rect;
+
+                            setWidth(width);
+                            setLeft(left);
+                            setGrow('item');
+                        }}
+                        onHoverEnd={() => {
+                            setLeft(0);
+                            setWidth(0);
+                            setGrow('normal');
+                        }}
+                    >
+                        <span style={{ width: `${nameLength}ch` }} className={styles.name}>
+                            {name}
                         </span>
-                    )}
-                    {alt && (
-                        <span style={{ width: `${altLength}ch` }} className={styles.alt}>
-                            {alt}
-                        </span>
-                    )}
-                </motion.button>
-            ))}
+                        {value && (
+                            <span style={{ width: `${valueLength}ch` }} className={styles.value}>
+                                {value}
+                            </span>
+                        )}
+                        {alt && (
+                            <span style={{ width: `${altLength}ch` }} className={styles.alt}>
+                                {alt}
+                            </span>
+                        )}
+                    </motion.button>
+                ))}
         </div>
     );
 }
