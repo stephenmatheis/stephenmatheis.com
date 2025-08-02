@@ -9,6 +9,7 @@ type Values = {
 
 export type Overlay = {
     fontFamily: Values;
+    fontWeight: Values;
     backgroundColor: Values;
     color: Values;
     muted: Values;
@@ -56,6 +57,10 @@ export function useOverlay() {
 export function OverlayProvider({ children }: { children: ReactNode }) {
     const [overlays, setOverlays] = useState({
         fontFamily: {
+            isHovered: false,
+            isOn: false,
+        },
+        fontWeight: {
             isHovered: false,
             isOn: false,
         },
