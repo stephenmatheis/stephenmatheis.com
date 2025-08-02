@@ -95,6 +95,12 @@ export function Details() {
                         value: '11px',
                         alt: '1rem',
                     },
+                         {
+                        key: 'fontWeight',
+                        name: 'Font Weight',
+                        value: 'Normal',
+                        alt: '400',
+                    },
                     {
                         key: 'lineHeight',
                         name: 'Line Height',
