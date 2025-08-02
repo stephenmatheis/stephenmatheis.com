@@ -8,7 +8,6 @@
 
     @media screen {
         margin-inline: auto;
-        margin-top: calc(var(--line-height) * 12);
         margin-bottom: calc(var(--line-height) * 8);
 
         @media (max-width: 945px) {
