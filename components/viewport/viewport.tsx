@@ -13,7 +13,7 @@ import styles from './viewport.module.scss';
 
 export function Viewport({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const { setLeft, setWidth, setGrow } = useCursor();
+    const { setPosition } = useCursor();
     const { overlays } = useOverlay();
     const hudRef = useRef<HTMLDivElement>(null);
     const hudTabRef = useRef<HTMLDivElement>(null);
@@ -28,13 +28,22 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                     ref={hudTabRef}
                     className={styles.pulltab}
                     onHoverStart={() => {
-                        setGrow('tab');
+                        setPosition((prev) => ({
+                            ...prev,
+                            type: 'tab',
+                        }));
                     }}
                     onHoverEnd={() => {
-                        setGrow('normal');
+                        setPosition((prev) => ({
+                            ...prev,
+                            type: 'normal',
+                        }));
                     }}
                     onPan={(event, info) => {
-                        setGrow('moving');
+                        setPosition((prev) => ({
+                            ...prev,
+                            type: 'moving',
+                        }));
 
                         if (!hudRef.current) return;
 
@@ -44,7 +53,10 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                         hudRef.current.style.height = `${newHeight > 16.5 ? newHeight : 16.5}px`;
                     }}
                     onPanEnd={() => {
-                        setGrow('normal');
+                        setPosition((prev) => ({
+                            ...prev,
+                            type: 'normal',
+                        }));
                     }}
                     whileHover={{
                         boxShadow: '0px 0px 0px 1px var(--lightest)',
@@ -74,16 +86,26 @@ export function Viewport({ children }: { children: React.ReactNode }) {
 
                                         if (!rect) return;
 
-                                        const { width, left } = rect;
+                                        const { top, left, height, width } = rect;
 
-                                        setLeft(left);
-                                        setWidth(width);
-                                        setGrow('link');
+                                        setPosition((prev) => ({
+                                            ...prev,
+                                            top,
+                                            left,
+                                            height,
+                                            width,
+                                            type: 'link',
+                                        }));
                                     }}
                                     onHoverEnd={() => {
-                                        setLeft(0);
-                                        setWidth(0);
-                                        setGrow('normal');
+                                        setPosition((prev) => ({
+                                            ...prev,
+                                            top: 0,
+                                            left: 0,
+                                            height: 0,
+                                            width: 0,
+                                            type: 'normal',
+                                        }));
                                     }}
                                 >
                                     <Link href={crumb.path} className={pathname === crumb.path ? styles.pathname : ''}>
@@ -125,16 +147,26 @@ export function Viewport({ children }: { children: React.ReactNode }) {
 
                                     if (!rect) return;
 
-                                    const { width, left } = rect;
+                                    const { top, left, height, width } = rect;
 
-                                    setLeft(left);
-                                    setWidth(width);
-                                    setGrow('link');
+                                    setPosition((prev) => ({
+                                        ...prev,
+                                        top,
+                                        left,
+                                        height,
+                                        width,
+                                        type: 'link',
+                                    }));
                                 }}
                                 onHoverEnd={() => {
-                                    setLeft(0);
-                                    setWidth(0);
-                                    setGrow('normal');
+                                    setPosition((prev) => ({
+                                        ...prev,
+                                        top: 0,
+                                        left: 0,
+                                        height: 0,
+                                        width: 0,
+                                        type: 'normal',
+                                    }));
                                 }}
                             >
                                 <Link
@@ -190,16 +222,26 @@ export function Viewport({ children }: { children: React.ReactNode }) {
 
                                             if (!rect) return;
 
-                                            const { width, left } = rect;
+                                            const { top, left, height, width } = rect;
 
-                                            setLeft(left);
-                                            setWidth(width);
-                                            setGrow('link');
+                                            setPosition((prev) => ({
+                                                ...prev,
+                                                top,
+                                                left,
+                                                height,
+                                                width,
+                                                type: 'link',
+                                            }));
                                         }}
                                         onHoverEnd={() => {
-                                            setLeft(0);
-                                            setWidth(0);
-                                            setGrow('normal');
+                                            setPosition((prev) => ({
+                                                ...prev,
+                                                top: 0,
+                                                left: 0,
+                                                height: 0,
+                                                width: 0,
+                                                type: 'normal',
+                                            }));
                                         }}
                                     >
                                         <Link href={href} target="_blank">
@@ -217,15 +259,24 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                     ref={toolbarTabRef}
                     className={styles.pulltab}
                     onHoverStart={() => {
-                        setGrow('tab');
+                        setPosition((prev) => ({
+                            ...prev,
+                            type: 'tab',
+                        }));
                     }}
                     onHoverEnd={() => {
-                        setGrow('normal');
+                        setPosition((prev) => ({
+                            ...prev,
+                            type: 'normal',
+                        }));
                     }}
                     onPan={(event, info) => {
                         console.log(info.delta.y);
 
-                        setGrow('moving');
+                        setPosition((prev) => ({
+                            ...prev,
+                            type: 'moving',
+                        }));
 
                         if (!toolbarRef.current) return;
 
@@ -235,7 +286,10 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                         toolbarRef.current.style.height = `${newHeight > 16.5 ? newHeight : 16.5}px`;
                     }}
                     onPanEnd={(event, info) => {
-                        setGrow('normal');
+                        setPosition((prev) => ({
+                            ...prev,
+                            type: 'normal',
+                        }));
                     }}
                     whileHover={{
                         boxShadow: '0px 0px 0px 1px var(--lightest)',

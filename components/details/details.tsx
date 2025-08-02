@@ -10,7 +10,7 @@ import styles from './details.module.scss';
 
 export function Details() {
     const { overlays, setOverlays } = useOverlay();
-    const { setGrow, setWidth, setLeft } = useCursor();
+    const { setPosition } = useCursor();
     const isAllOn = useMemo(
         () => Object.values(overlays).every(({ isOn, isHovered }) => isOn || isHovered),
         [overlays]
@@ -244,16 +244,26 @@ export function Details() {
 
                     if (!rect) return;
 
-                    const { width, left } = rect;
+                    const { top, left, height, width } = rect;
 
-                    setWidth(width);
-                    setLeft(left);
-                    setGrow('item');
+                    setPosition((prev) => ({
+                        ...prev,
+                        top,
+                        left,
+                        height,
+                        width,
+                        type: 'tab',
+                    }));
                 }}
                 onHoverEnd={() => {
-                    setLeft(0);
-                    setWidth(0);
-                    setGrow('normal');
+                    setPosition((prev) => ({
+                        ...prev,
+                        top: 0,
+                        left: 0,
+                        height: 0,
+                        width: 0,
+                        type: 'normal',
+                    }));
                 }}
             >
                 All

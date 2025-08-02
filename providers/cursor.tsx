@@ -2,15 +2,17 @@
 
 import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
-type grow = 'link' | 'item' | 'button' | 'tab' | 'moving' | 'normal';
+type Position = {
+    top: number;
+    left: number;
+    height: number;
+    width: number;
+    type: 'link' | 'item' | 'button' | 'tab' | 'moving' | 'normal';
+};
 
 type CursorContext = {
-    left: number;
-    setLeft: Dispatch<SetStateAction<number>>;
-    width: number;
-    setWidth: Dispatch<SetStateAction<number>>;
-    grow: grow;
-    setGrow: Dispatch<SetStateAction<grow>>;
+    position: Position;
+    setPosition: Dispatch<SetStateAction<Position>>;
 };
 
 const CursorContext = createContext<CursorContext | undefined>(undefined);
@@ -26,19 +28,19 @@ export function useCursor() {
 }
 
 export function CursorProvider({ children }: { children: ReactNode }) {
-    const [width, setWidth] = useState<number>(48);
-    const [left, setLeft] = useState<number>(0);
-    const [grow, setGrow] = useState<grow>('normal');
+    const [position, setPosition] = useState<Position>({
+        top: 0,
+        left: 0,
+        height: 16,
+        width: 48,
+        type: 'normal',
+    });
 
     return (
         <CursorContext.Provider
             value={{
-                width,
-                left,
-                setLeft,
-                setWidth,
-                grow,
-                setGrow,
+                position,
+                setPosition,
             }}
         >
             {children}

@@ -8,7 +8,7 @@ import contact from '@/data/contact';
 import styles from './contact.module.scss';
 
 export function Contact() {
-    const { setLeft, setWidth, setGrow } = useCursor();
+    const { setPosition } = useCursor();
 
     return (
         <Section className={styles.contact} heading="Contact">
@@ -26,16 +26,26 @@ export function Contact() {
 
                                     if (!rect) return;
 
-                                    const { width, left } = rect;
+                                    const { top, left, height, width } = rect;
 
-                                    setLeft(left);
-                                    setWidth(width);
-                                    setGrow('link');
+                                    setPosition((prev) => ({
+                                        ...prev,
+                                        top,
+                                        left,
+                                        height,
+                                        width,
+                                        type: 'link',
+                                    }));
                                 }}
                                 onHoverEnd={() => {
-                                    setLeft(0);
-                                    setWidth(0);
-                                    setGrow('normal');
+                                    setPosition((prev) => ({
+                                        ...prev,
+                                        top: 0,
+                                        left: 0,
+                                        height: 0,
+                                        width: 0,
+                                        type: 'normal',
+                                    }));
                                 }}
                             >
                                 <Link href={item.href}>{item.user || item.text}</Link>

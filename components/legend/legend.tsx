@@ -25,7 +25,7 @@ function getMaxLength(items: Item[], key: string): number {
 
 export function Legend({ title, items }: LegendProps) {
     const { overlays, setOverlays } = useOverlay();
-    const { setGrow, setWidth, setLeft } = useCursor();
+    const { setPosition } = useCursor();
     const nameLength = getMaxLength(items, 'name');
     const valueLength = getMaxLength(items, 'value');
     const altLength = getMaxLength(items, 'alt');
@@ -33,7 +33,37 @@ export function Legend({ title, items }: LegendProps) {
 
     return (
         <div className={styles.legend}>
-            <motion.div className={styles.title}>{title}</motion.div>
+            <motion.div
+                className={styles.title}
+                onHoverStart={(event) => {
+                    const rect = (event.target as HTMLElement)?.getBoundingClientRect();
+
+                    if (!rect) return;
+
+                    const { top, left, height, width } = rect;
+
+                    setPosition((prev) => ({
+                        ...prev,
+                        top,
+                        left,
+                        height,
+                        width,
+                        type: 'button',
+                    }));
+                }}
+                onHoverEnd={() => {
+                    setPosition((prev) => ({
+                        ...prev,
+                        top: 0,
+                        left: 0,
+                        height: 0,
+                        width: 0,
+                        type: 'normal',
+                    }));
+                }}
+            >
+                {title}
+            </motion.div>
             {show &&
                 items.map(({ key, name, value, alt }) => (
                     <motion.button
@@ -83,16 +113,26 @@ export function Legend({ title, items }: LegendProps) {
 
                             if (!rect) return;
 
-                            const { width, left } = rect;
+                            const { top, left, height, width } = rect;
 
-                            setWidth(width);
-                            setLeft(left);
-                            setGrow('item');
+                            setPosition((prev) => ({
+                                ...prev,
+                                top,
+                                left,
+                                height,
+                                width,
+                                type: 'item',
+                            }));
                         }}
                         onHoverEnd={() => {
-                            setLeft(0);
-                            setWidth(0);
-                            setGrow('normal');
+                            setPosition((prev) => ({
+                                ...prev,
+                                top: 0,
+                                left: 0,
+                                height: 0,
+                                width: 0,
+                                type: 'normal',
+                            }));
                         }}
                     >
                         <span style={{ width: `${nameLength}ch` }} className={styles.name}>

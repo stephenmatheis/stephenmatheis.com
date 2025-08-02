@@ -12,7 +12,7 @@ import styles from './app.module.scss';
 
 export function App({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const { setLeft, setWidth, setGrow } = useCursor();
+    const { setPosition } = useCursor();
     const { overlays } = useOverlay();
 
     return (
@@ -39,16 +39,26 @@ export function App({ children }: { children: React.ReactNode }) {
 
                                     if (!rect) return;
 
-                                    const { width, left } = rect;
+                                    const { top, left, height, width } = rect;
 
-                                    setLeft(left);
-                                    setWidth(width);
-                                    setGrow('link');
+                                    setPosition((prev) => ({
+                                        ...prev,
+                                        top,
+                                        left,
+                                        height,
+                                        width,
+                                        type: 'link',
+                                    }));
                                 }}
                                 onHoverEnd={() => {
-                                    setLeft(0);
-                                    setWidth(0);
-                                    setGrow('normal');
+                                    setPosition((prev) => ({
+                                        ...prev,
+                                        top: 0,
+                                        left: 0,
+                                        height: 0,
+                                        width: 0,
+                                        type: 'normal',
+                                    }));
                                 }}
                             >
                                 <Link href={crumb.path} className={pathname === crumb.path ? styles.pathname : ''}>
@@ -88,16 +98,26 @@ export function App({ children }: { children: React.ReactNode }) {
 
                                 if (!rect) return;
 
-                                const { width, left } = rect;
+                                const { top, left, height, width } = rect;
 
-                                setLeft(left);
-                                setWidth(width);
-                                setGrow('link');
+                                setPosition((prev) => ({
+                                    ...prev,
+                                    top,
+                                    left,
+                                    height,
+                                    width,
+                                    type: 'link',
+                                }));
                             }}
                             onHoverEnd={() => {
-                                setLeft(0);
-                                setWidth(0);
-                                setGrow('normal');
+                                setPosition((prev) => ({
+                                    ...prev,
+                                    top: 0,
+                                    left: 0,
+                                    height: 0,
+                                    width: 0,
+                                    type: 'normal',
+                                }));
                             }}
                         >
                             <Link href="https://github.com/stephenmatheis/stephenmatheis.com/tree/main" target="_blank">
@@ -150,16 +170,26 @@ export function App({ children }: { children: React.ReactNode }) {
 
                                         if (!rect) return;
 
-                                        const { width, left } = rect;
+                                        const { top, left, height, width } = rect;
 
-                                        setLeft(left);
-                                        setWidth(width);
-                                        setGrow('link');
+                                        setPosition((prev) => ({
+                                            ...prev,
+                                            top,
+                                            left,
+                                            height,
+                                            width,
+                                            type: 'link',
+                                        }));
                                     }}
                                     onHoverEnd={() => {
-                                        setLeft(0);
-                                        setWidth(0);
-                                        setGrow('normal');
+                                        setPosition((prev) => ({
+                                            ...prev,
+                                            top: 0,
+                                            left: 0,
+                                            height: 0,
+                                            width: 0,
+                                            type: 'normal',
+                                        }));
                                     }}
                                 >
                                     <Link href={href} target="_blank">
