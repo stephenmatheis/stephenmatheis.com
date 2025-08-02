@@ -1,6 +1,5 @@
 'use client';
 
-import { Fragment } from 'react';
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor';
@@ -9,7 +8,7 @@ import work from '@/data/work';
 import styles from './work.module.scss';
 
 export function Work() {
-    const { setLeft, setWidth, setGrow } = useCursor();
+    const { setPosition } = useCursor();
 
     return (
         <Section className={styles.work} heading="Work">
@@ -23,16 +22,26 @@ export function Work() {
 
                                 if (!rect) return;
 
-                                const { width, left } = rect;
+                                const { top, left, height, width } = rect;
 
-                                setLeft(left);
-                                setWidth(width);
-                                setGrow('link');
+                                setPosition((prev) => ({
+                                    ...prev,
+                                    top,
+                                    left,
+                                    height,
+                                    width,
+                                    type: 'link',
+                                }));
                             }}
                             onHoverEnd={() => {
-                                setLeft(0);
-                                setWidth(0);
-                                setGrow('normal');
+                                setPosition((prev) => ({
+                                    ...prev,
+                                    top: 0,
+                                    left: 0,
+                                    height: 0,
+                                    width: 0,
+                                    type: 'normal',
+                                }));
                             }}
                         >
                             <Link href={href} target="_blank" aria-label={name}>

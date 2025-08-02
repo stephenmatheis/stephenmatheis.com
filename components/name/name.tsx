@@ -7,7 +7,7 @@ import { Section } from '@/components/section';
 import styles from './name.module.scss';
 
 export function Name() {
-    const { setLeft, setWidth, setGrow } = useCursor();
+    const { setPosition } = useCursor();
 
     return (
         <Section className={styles.name} heading="Name">
@@ -22,16 +22,26 @@ export function Name() {
 
                         if (!rect) return;
 
-                        const { width, left } = rect;
+                        const { top, left, height, width } = rect;
 
-                        setLeft(left);
-                        setWidth(width);
-                        setGrow('link');
+                        setPosition((prev) => ({
+                            ...prev,
+                            top,
+                            left,
+                            height,
+                            width,
+                            type: 'link',
+                        }));
                     }}
                     onHoverEnd={() => {
-                        setLeft(0);
-                        setWidth(0);
-                        setGrow('normal');
+                        setPosition((prev) => ({
+                            ...prev,
+                            top: 0,
+                            left: 0,
+                            height: 0,
+                            width: 0,
+                            type: 'normal',
+                        }));
                     }}
                 >
                     <Link className={styles.muted} href="/" title="Go to home">

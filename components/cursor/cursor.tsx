@@ -6,7 +6,7 @@ import { useCursor } from '@/providers/cursor';
 import styles from './cursor.module.scss';
 
 export function Cursor() {
-    const { left, width, grow } = useCursor();
+    const { position } = useCursor();
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -23,16 +23,10 @@ export function Cursor() {
 
             if (!cursor) return;
 
-            // console.log('x:', x, 'left:', left);
-
-            cursor.style.transform = `translate(${x - (left > 0 ? x - left - width / 2 : 0)}px, ${y}px)`;
-
-            // if (left > 0) {
-            //     cursor.style.transition =
-            //         'transform 281ms linear(0.00, -0.0298, 0.0324, 0.153, 0.306, 0.468, 0.624, 0.763, 0.880, 0.971, 1.04, 1.08, 1.10, 1.11, 1.11, 1.10, 1.08, 1.07, 1.05, 1.03, 1.02, 1.01, 0.998, 0.993, 0.989, 0.988, 0.988, 0.989, 0.990, 0.992, 0.994, 0.996, 0.997, 0.999, 1.00, 1.00)';
-            // } else {
-            //     cursor.style.transition = 'none';
-            // }
+            // cursor.style.transform = `translate(${x - (left > 0 ? x - left - width / 2 : 0)}px, ${y}px)`;
+            cursor.style.transform = `translate(${
+                x - (position.left > 0 ? x - position.left - position.width / 2 : 0)
+            }px, ${y - (position.top > 0 ? y - position.top - position.height / 2 : 0)}px)`;
         }
 
         function onLeave() {
@@ -69,7 +63,7 @@ export function Cursor() {
             document.removeEventListener('pointerleave', onLeave);
             document.removeEventListener('pointerenter', onEnter);
         };
-    }, [left, width]);
+    }, [position]);
 
     return (
         <motion.div
@@ -83,25 +77,8 @@ export function Cursor() {
                     top: -8,
                     left: -8,
                     backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                    transition: { type: 'spring', stiffness: 300, damping: 25 },
-                },
-                link: {
-                    height: 16,
-                    width: width + 14,
-                    borderRadius: 4,
-                    top: -8,
-                    left: (width + 14) / -2,
-                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    // transition: { type: 'spring', stiffness: 300, damping: 25 },
                     transition: { type: 'spring', stiffness: 300, damping: 15 },
-                },
-                item: {
-                    height: 16,
-                    width: width + 28,
-                    borderRadius: 4,
-                    top: -8,
-                    left: (width + 28) / -2,
-                    backgroundColor: 'rgba(255, 0, 0, 0.1)',
-                    transition: { type: 'spring', stiffness: 200, damping: 12 },
                 },
                 tab: {
                     height: 32,
@@ -121,10 +98,36 @@ export function Cursor() {
                     backgroundColor: 'rgba(0, 0, 0, 0.7)',
                     transition: { type: 'spring', stiffness: 300, damping: 15 },
                 },
+                link: {
+                    height: position.height,
+                    width: position.width + 14,
+                    borderRadius: 4,
+                    top: position.height / -2,
+                    left: (position.width + 14) / -2,
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    transition: { type: 'spring', stiffness: 300, damping: 15 },
+                },
+                item: {
+                    height: position.height,
+                    width: position.width + 28,
+                    borderRadius: 4,
+                    top: position.height / -2,
+                    left: (position.width + 28) / -2,
+                    backgroundColor: 'rgba(255, 0, 0, 0.1)',
+                    transition: { type: 'spring', stiffness: 200, damping: 12 },
+                },
+                button: {
+                    height: position.height,
+                    width: position.width + 14,
+                    borderRadius: 4,
+                    top: position.height / -2,
+                    left: (position.width + 14) / -2,
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    transition: { type: 'spring', stiffness: 300, damping: 15 },
+                },
             }}
             initial="normal"
-            animate={grow}
-            // transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+            animate={position.type}
         />
     );
 }
