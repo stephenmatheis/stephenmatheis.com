@@ -9,6 +9,7 @@
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.4);
     transform: translate(-50%, -50%);
+    z-index: 100;
 
     @media print {
         display: none;
