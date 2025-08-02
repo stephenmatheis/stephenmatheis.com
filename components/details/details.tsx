@@ -252,7 +252,7 @@ export function Details() {
                         left,
                         height,
                         width,
-                        type: 'tab',
+                        type: 'button',
                     }));
                 }}
                 onHoverEnd={() => {
