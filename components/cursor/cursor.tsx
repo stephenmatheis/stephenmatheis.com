@@ -46,15 +46,12 @@ export function Cursor() {
             cursor.style.opacity = '1';
         }
 
-        document.addEventListener(
-            'pointermove',
-            () => {
-                console.log('remove custom cursor');
-                document.documentElement.classList.add('cursor-loaded');
-            },
-            { once: true }
-        );
+        function hideCustomCursor() {
+            console.log('remove custom cursor');
+            document.documentElement.classList.add('cursor-loaded');
+        }
 
+        document.addEventListener('pointermove', hideCustomCursor, { once: true });
         document.addEventListener('pointermove', onMove);
         document.addEventListener('pointerleave', onLeave);
         document.addEventListener('pointerenter', onEnter);
@@ -64,7 +61,7 @@ export function Cursor() {
             document.removeEventListener('pointerleave', onLeave);
             document.removeEventListener('pointerenter', onEnter);
         };
-    }, [position]);
+    }, []);
 
     return (
         <>
