@@ -1,19 +1,49 @@
 'use client';
 
-import { useOverlay } from '@/providers/overlay';
+import * as motion from 'motion/react-client';
+import { useCursor } from '@/providers/cursor';
 import styles from './markup.module.scss';
+import { EventInfo } from 'motion';
 
 export function Markup() {
-    const { overlays } = useOverlay();
+    const { setPosition } = useCursor();
+
+    function handleOnHoverStart(event: MouseEvent, info: EventInfo) {
+        const rect = (event.target as HTMLElement)?.getBoundingClientRect();
+
+        if (!rect) return;
+
+        const { top, left, height, width } = rect;
+
+        setPosition((prev) => ({
+            ...prev,
+            top,
+            left,
+            height,
+            width,
+            type: 'markup',
+        }));
+    }
+
+    function handleOnHoverEnd() {
+        setPosition((prev) => ({
+            ...prev,
+            top: 0,
+            left: 0,
+            height: 0,
+            width: 0,
+            type: 'normal',
+        }));
+    }
 
     return (
-        <div className={`${styles.markup}${overlays.page.isOn || overlays.page.isHovered ? ` ${styles.on}` : ''}`}>
+        <div className={styles.markup}>
             <main className={styles.content}>
                 {/* Character Width */}
-                <div
-                    className={`${styles.charWidth}${
-                        overlays.charWidth.isOn || overlays.charWidth.isHovered ? ` ${styles.on}` : ''
-                    }`}
+                <motion.div
+                    className={styles.charWidth}
+                    onHoverStart={handleOnHoverStart}
+                    onHoverEnd={handleOnHoverEnd}
                 >
                     <svg width="7" height="2" viewBox="0 0 7 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect y="1" width="7" height="1" fill="currentColor" />
@@ -21,27 +51,23 @@ export function Markup() {
                         <rect x="6" width="1" height="1" fill="currentColor" />
                     </svg>
                     <div className={styles.label}>7px</div>
-                </div>
+                </motion.div>
 
                 {/* Font Size */}
-                <div
-                    className={`${styles.fontsize}${
-                        overlays.fontSize.isOn || overlays.fontSize.isHovered ? ` ${styles.on}` : ''
-                    }`}
-                >
+                <motion.div className={styles.fontsize} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd}>
                     <svg width="2" height="11" viewBox="0 0 2 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" width="1" height="11" fill="currentColor" />
                         <rect width="1" height="1" fill="currentColor" />
                         <rect y="10" width="1" height="1" fill="currentColor" />
                     </svg>
                     <div className={styles.label}>11px</div>
-                </div>
+                </motion.div>
 
                 {/* Line Height */}
-                <div
-                    className={`${styles.lineheight}${
-                        overlays.lineHeight.isOn || overlays.lineHeight.isHovered ? ` ${styles.on}` : ''
-                    }`}
+                <motion.div
+                    className={styles.lineheight}
+                    onHoverStart={handleOnHoverStart}
+                    onHoverEnd={handleOnHoverEnd}
                 >
                     <svg width="3" height="16.5" viewBox="0 0 3 16.5" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0" y="0" width="1" height="1" fill="currentColor" />
@@ -51,13 +77,13 @@ export function Markup() {
                         <rect x="2" y="15.5" width="1" height="1" fill="currentColor" />
                     </svg>
                     <div className={styles.label}>16.5px</div>
-                </div>
+                </motion.div>
 
                 {/* Left Column Width */}
-                <div
-                    className={`${styles.leftwidth}${
-                        overlays.leftWidth.isOn || overlays.leftWidth.isHovered ? ` ${styles.on}` : ''
-                    }`}
+                <motion.div
+                    className={styles.leftwidth}
+                    onHoverStart={handleOnHoverStart}
+                    onHoverEnd={handleOnHoverEnd}
                 >
                     <svg width="392" height="7" viewBox="0 0 392 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -66,21 +92,21 @@ export function Markup() {
                         />
                     </svg>
                     <div className={styles.label}>56ch</div>
-                </div>
+                </motion.div>
 
                 {/* Gap */}
-                <div className={`${styles.gap}${overlays.gap.isOn || overlays.gap.isHovered ? ` ${styles.on}` : ''}`}>
+                <motion.div className={styles.gap} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd}>
                     <svg width="28" height="3" viewBox="0 0 28 3" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1 1H27V0H28V3H27V2H1V3H0V0H1V1Z" fill="currentColor" />
                     </svg>
                     <div className={styles.label}>4ch</div>
-                </div>
+                </motion.div>
 
                 {/* Right Column Width */}
-                <div
-                    className={`${styles.rightwidth}${
-                        overlays.rightWidth.isOn || overlays.rightWidth.isHovered ? ` ${styles.on}` : ''
-                    }`}
+                <motion.div
+                    className={styles.rightwidth}
+                    onHoverStart={handleOnHoverStart}
+                    onHoverEnd={handleOnHoverEnd}
                 >
                     <svg width="245" height="7" viewBox="0 0 245 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -89,22 +115,16 @@ export function Markup() {
                         />
                     </svg>
                     <div className={styles.label}>35ch</div>
-                </div>
+                </motion.div>
 
-                <div
-                    className={`${styles.left}${overlays.left.isOn || overlays.left.isHovered ? ` ${styles.on}` : ''}`}
-                />
-                <div
-                    className={`${styles.right}${
-                        overlays.right.isOn || overlays.right.isHovered ? ` ${styles.on}` : ''
-                    }`}
-                />
+                <motion.div className={styles.left} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd} />
+                <motion.div className={styles.right} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd} />
 
                 {/* Content Height */}
-                <div
-                    className={`${styles.contentheight}${
-                        overlays.contentHeight.isOn || overlays.contentHeight.isHovered ? ` ${styles.on}` : ''
-                    }`}
+                <motion.div
+                    className={styles.contentheight}
+                    onHoverStart={handleOnHoverStart}
+                    onHoverEnd={handleOnHoverEnd}
                 >
                     <svg width="7" height="957" viewBox="0 0 7 957" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 1H5V2H4V955H5V956H4V957H3V956H2V955H3V2H2V1H3V0H4V1Z" fill="currentColor" />
@@ -122,27 +142,19 @@ export function Markup() {
                         <br />
                         lines
                     </div>
-                </div>
+                </motion.div>
             </main>
 
             {/* Padding Top */}
-            <div
-                className={`${styles.paddingtop}${
-                    overlays.paddingTop.isOn || overlays.paddingTop.isHovered ? ` ${styles.on}` : ''
-                }`}
-            >
+            <motion.div className={styles.paddingtop} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd}>
                 <svg width="3" height="50" viewBox="0 0 3 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 0V1H2V48.5H3V49.5H0V48.5H1V1H0V0H3Z" fill="currentColor" />
                 </svg>
                 <div className={styles.label}>3 lines</div>
-            </div>
+            </motion.div>
 
             {/* Page Height */}
-            <div
-                className={`${styles.pageheight}${
-                    overlays.pageHeight.isOn || overlays.pageHeight.isHovered ? ` ${styles.on}` : ''
-                }`}
-            >
+            <motion.div className={styles.pageheight} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd}>
                 <svg width="14" height="1056" viewBox="0 0 14 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.5 1048.5H6.5V0H7.5V1048.5Z" fill="currentColor" />
                     <path d="M5.5 0L6.5 0V1H5.5V0Z" fill="currentColor" />
@@ -157,14 +169,10 @@ export function Markup() {
                     <br />
                     in
                 </div>
-            </div>
+            </motion.div>
 
             {/* Page Width */}
-            <div
-                className={`${styles.pagewidth}${
-                    overlays.pageWidth.isOn || overlays.pageWidth.isHovered ? ` ${styles.on}` : ''
-                }`}
-            >
+            <motion.div className={styles.pagewidth} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd}>
                 <svg width="816" height="14" viewBox="0 0 816 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 7.5V6.5H808.5V7.5H0Z" fill="currentColor" />
                     <path d="M0 7.5H1V8.5H0V7.5Z" fill="currentColor" />
@@ -174,7 +182,7 @@ export function Markup() {
                     <path d="M815 7.5H816V8.5H815V7.5Z" fill="currentColor" />
                 </svg>
                 <div className={styles.label}>8.5in</div>
-            </div>
+            </motion.div>
         </div>
     );
 }
