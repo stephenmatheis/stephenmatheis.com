@@ -1,0 +1,35 @@
+.readout {
+    display: flex;
+    gap: 2ch;
+    overflow: auto;
+
+    .block {
+        display: flex;
+        gap: 2ch;
+
+        .title {
+            color: var(--color);
+        }
+
+        .item {
+            display: flex;
+            gap: 1ch;
+            padding: 0;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: var(--font-size);
+
+            .name {
+                color: var(--light);
+                text-align: right;
+            }
+
+            .value {
+                color: var(--muted);
+                min-width: 6ch;
+                text-align: right;
+            }
+        }
+    }
+}

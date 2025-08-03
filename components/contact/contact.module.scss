@@ -1,4 +1,11 @@
 .contact {
+    @media (min-width: 830px), print {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 35ch;
+    }
+
     .list {
         display: flex;
         flex-direction: column;
