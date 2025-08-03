@@ -7,6 +7,7 @@
     height: calc(var(--line-height) * 58);
 
     @media screen and (max-width: 829px) {
+        gap: var(--line-height);
         height: max-content;
         width: 100%;
         max-width: 95ch;
@@ -32,7 +33,7 @@
         color: var(--light);
 
         @media screen and (max-width: 829px) {
-            left: 2ch;
+            left: 0;
         }
 
         a {
@@ -67,8 +68,6 @@
         @media screen and (max-width: 829px) {
             left: 0;
             width: 100%;
-            max-width: 100%;
-            padding-inline: 2ch;
         }
 
         a {
