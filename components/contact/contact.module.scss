@@ -14,9 +14,17 @@
             flex: 1;
             display: flex;
 
+            @media screen and (max-width: 829px) {
+                gap: 2ch;
+            }
+
             .name {
                 color: var(--muted);
                 width: 14ch;
+
+                @media screen and (max-width: 829px) {
+                    width: 6ch;
+                }
             }
 
             .text {
