@@ -235,8 +235,8 @@
     .contentheight {
         pointer-events: all;
         position: absolute;
-        top: calc(var(--line-height) * 3);
-        right: 4ch;
+        top: 0;
+        right: -2ch;
         height: calc(var(--line-height) * 58);
         color: var(--lighter);
 
@@ -255,15 +255,17 @@
             background-color: var(--background-color);
             height: calc(var(--line-height) * 2);
             width: max-content;
+            text-align: center;
         }
     }
 
     .pagewidth {
         pointer-events: all;
         position: absolute;
-        bottom: -8rem;
+        bottom: 0;
         right: 0;
         color: var(--lighter);
+        height: 14px;
 
         &.on {
             color: var(--accent);
@@ -271,11 +273,12 @@
 
         .label {
             position: absolute;
-            top: calc(50% + 3px);
+            top: 50%;
             left: 50%;
             background-color: var(--background-color);
             transform: translate(-50%, -50%);
             padding-inline: 2ch;
+            line-height: 14px;
         }
     }
 
@@ -283,7 +286,8 @@
         pointer-events: all;
         position: absolute;
         top: 0;
-        right: -6ch;
+        right: 0;
+        width: 14px;
         height: 11in;
         color: var(--lighter);
 
@@ -294,13 +298,13 @@
         .label {
             position: absolute;
             top: 50%;
-            left: 25%;
+            left: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: var(--background-color);
             height: calc(var(--line-height) * 2);
-            transform: translateY(-50%);
+            transform: translate(-50%, -50%);
         }
     }
 

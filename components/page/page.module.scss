@@ -6,11 +6,9 @@
     height: 11in;
     padding: calc(var(--line-height) * 3) 0;
 
-    @media screen {
-        margin-inline: auto;
-        margin-top: calc(var(--line-height) * 1);
-        margin-bottom: calc(var(--line-height) * 8);
+    background-color: #ff000015;
 
+    @media screen {
         @media (max-width: 945px) {
             justify-content: flex-start;
             width: 100%;
