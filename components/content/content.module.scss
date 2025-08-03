@@ -6,7 +6,7 @@
     width: 95ch;
     height: calc(var(--line-height) * 58);
 
-    @media screen and (max-width: 945px) {
+    @media screen and (max-width: 829px) {
         height: max-content;
         width: 100%;
         max-width: 95ch;
@@ -23,7 +23,7 @@
             color: var(--accent);
         }
 
-        @media (max-width: 945px), print {
+        @media (max-width: 829px), print {
             display: none;
         }
     }
@@ -44,7 +44,7 @@
             }
         }
 
-        @media screen and (max-width: 945px) {
+        @media screen and (max-width: 829px) {
             left: 2ch;
         }
 
@@ -90,7 +90,7 @@
             display: none;
         }
 
-        @media screen and (max-width: 945px) {
+        @media screen and (max-width: 829px) {
             left: 0;
             width: 100%;
             max-width: 100%;

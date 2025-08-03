@@ -26,7 +26,7 @@ export function Details() {
                         key: 'pageWidth',
                         name: 'Page Width',
                         value: '8.5in',
-                        alt: '816px',
+                        alt: '830px',
                     },
                     {
                         key: 'pageHeight',
