@@ -1,1 +1,0 @@
-export { Corners } from './corners';
