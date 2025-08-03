@@ -8,15 +8,7 @@
     height: 11in;
     padding: calc(var(--line-height) * 3) 0;
 
-    &.on {
-        box-shadow: 0 0 0 1px var(--accent);
-    }
-
     @media screen and (max-width: 829px) {
-        display: none;
-    }
-
-    @media print {
         display: none;
     }
 
@@ -39,10 +31,6 @@
 
             color: var(--lighter);
 
-            &.on {
-                color: var(--accent);
-            }
-
             .label {
                 line-height: 8.25px;
                 font-size: 8.25px;
@@ -60,10 +48,6 @@
             align-items: center;
             color: var(--lighter);
 
-            &.on {
-                color: var(--accent);
-            }
-
             .label {
                 line-height: 8.25px;
                 font-size: 8.25px;
@@ -75,14 +59,10 @@
             pointer-events: all;
             position: absolute;
             top: calc(var(--line-height) * 2);
-            left: 33ch;
+            left: 33.5ch;
             display: flex;
             align-items: center;
             color: var(--lighter);
-
-            &.on {
-                color: var(--accent);
-            }
 
             .label {
                 line-height: 8.25px;
@@ -96,10 +76,6 @@
             position: absolute;
             height: 18px;
             color: var(--lighter);
-
-            &.on {
-                color: var(--accent);
-            }
 
             .label {
                 position: absolute;
@@ -138,10 +114,6 @@
             height: 16.5px;
             color: var(--lighter);
 
-            &.on {
-                color: var(--accent);
-            }
-
             .label {
                 position: absolute;
                 top: -8.25px;
@@ -156,10 +128,6 @@
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
             width: 56ch;
-
-            &.on {
-                box-shadow: 0 0 0 1px var(--accent);
-            }
         }
 
         .right {
@@ -167,10 +135,6 @@
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
             width: 35ch;
-
-            &.on {
-                box-shadow: 0 0 0 1px var(--accent);
-            }
         }
     }
 
@@ -181,10 +145,6 @@
         transform: translateX(50%);
         height: calc(var(--line-height) * 3);
         color: var(--lighter);
-
-        &.on {
-            color: var(--accent);
-        }
 
         .label {
             position: absolute;
@@ -212,10 +172,6 @@
         height: calc(var(--line-height) * 58);
         color: var(--lighter);
 
-        &.on {
-            color: var(--accent);
-        }
-
         .label {
             position: absolute;
             top: 50%;
@@ -239,8 +195,8 @@
         color: var(--lighter);
         height: 14px;
 
-        &.on {
-            color: var(--accent);
+        @media print {
+            display: none;
         }
 
         .label {
@@ -263,8 +219,8 @@
         height: 11in;
         color: var(--lighter);
 
-        &.on {
-            color: var(--accent);
+        @media print {
+            display: none;
         }
 
         .label {

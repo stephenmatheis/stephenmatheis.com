@@ -14,17 +14,6 @@
         font-size: var(--font-size);
         text-align: left;
 
-        &.on {
-            color: var(--accent);
-
-            .name,
-            .value,
-            .alt {
-                color: var(--accent);
-                transition: color 100ms ease-in-out;
-            }
-        }
-
         .name {
             color: var(--light);
             width: max-content;

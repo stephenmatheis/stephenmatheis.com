@@ -5,9 +5,10 @@
     width: 8.5in;
     height: 11in;
     padding: calc(var(--line-height) * 3) 0;
-    margin: auto;
 
     @media screen {
+        margin: auto;
+
         @media (max-width: 829px) {
             justify-content: flex-start;
             width: 100%;

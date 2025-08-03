@@ -20,10 +20,5 @@
 
     .all {
         color: var(--light);
-
-        &.on {
-            color: var(--accent);
-            transition: color 100ms ease-in-out;
-        }
     }
 }
