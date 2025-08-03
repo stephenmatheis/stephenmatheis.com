@@ -6,21 +6,16 @@ import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor';
 import { useOverlay } from '@/providers/overlay';
-import { Name } from '@/components/name';
-import { Experience } from '@/components/experience';
-import { Contact } from '@/components/contact';
-import { Skills } from '@/components/skills';
-import { Work } from '@/components/work';
+
 import styles from './content.module.scss';
 
-export function Content() {
+export function Content({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const { setPosition } = useCursor();
     const { overlays } = useOverlay();
 
     return (
         <main className={styles.content}>
-            {/* Breadcrumbs */}
             <nav
                 className={`${styles.breadcrumbs}${
                     overlays.tabs.isHovered || overlays.tabs.isOn ? ` ${styles.on}` : ''
@@ -68,8 +63,6 @@ export function Content() {
                     </Fragment>
                 ))}
             </nav>
-
-            {/* Line Numbers */}
             <div
                 className={`${styles.linenumbers}${
                     overlays.numbers.isHovered || overlays.numbers.isOn ? ` ${styles.on}` : ''
@@ -81,14 +74,7 @@ export function Content() {
                     </div>
                 ))}
             </div>
-
-            <Name />
-            <Contact />
-            <Experience />
-            <Skills />
-            <Work />
-
-            {/* Status Bar */}
+            {children}
             <div
                 className={`${styles.statusbar}${
                     overlays.statusBar.isHovered || overlays.statusBar.isOn ? ` ${styles.on}` : ''
