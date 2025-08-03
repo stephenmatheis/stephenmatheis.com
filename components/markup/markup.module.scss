@@ -1,0 +1,258 @@
+.markup {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    width: 8.5in;
+    height: 11in;
+    padding: calc(var(--line-height) * 3) 0;
+
+    @media screen and (max-width: 829px) {
+        display: none;
+    }
+
+    .content {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        gap: 4ch;
+
+        .charWidth {
+            pointer-events: all;
+            position: absolute;
+            top: calc(var(--line-height) * 1);
+            left: calc(2ch);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 21px;
+
+            color: var(--lighter);
+
+            .label {
+                line-height: 8.25px;
+                font-size: 8.25px;
+                margin-top: 3px;
+            }
+        }
+
+        .fontsize {
+            pointer-events: all;
+            position: absolute;
+            top: -0.5px;
+            left: 7.25ch;
+            height: var(--line-height);
+            display: flex;
+            align-items: center;
+            color: var(--lighter);
+
+            .label {
+                line-height: 8.25px;
+                font-size: 8.25px;
+                margin-left: 0.75ch;
+            }
+        }
+
+        .lineheight {
+            pointer-events: all;
+            position: absolute;
+            top: calc(var(--line-height) * 2);
+            left: 33.5ch;
+            display: flex;
+            align-items: center;
+            color: var(--lighter);
+
+            .label {
+                line-height: 8.25px;
+                font-size: 8.25px;
+            }
+        }
+
+        .leftwidth,
+        .rightwidth {
+            pointer-events: all;
+            position: absolute;
+            height: 18px;
+            color: var(--lighter);
+
+            .label {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--background-color);
+                height: calc(var(--line-height) * 1);
+                transform: translate(-50%, -50%);
+                width: max-content;
+                padding-inline: 2ch;
+            }
+        }
+
+        .leftwidth {
+            top: calc(var(--line-height) * 5.5);
+            left: 0;
+        }
+
+        .rightwidth {
+            top: calc(var(--line-height) * -2);
+            right: 0;
+        }
+
+        .gap {
+            pointer-events: all;
+            position: absolute;
+            top: calc(var(--line-height) * 36.5);
+            left: 56ch;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 16.5px;
+            color: var(--lighter);
+
+            .label {
+                position: absolute;
+                top: -8.25px;
+                background-color: var(--background-color);
+                font-size: 8.25px;
+                height: 8.25px;
+            }
+        }
+
+        .left {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--line-height) * 2);
+            width: 56ch;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--line-height) * 2);
+            width: 35ch;
+        }
+    }
+
+    .paddingtop {
+        pointer-events: all;
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        height: calc(var(--line-height) * 3);
+        color: var(--lighter);
+
+        .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--background-color);
+            height: calc(var(--line-height) * 1);
+            transform: translate(-50%, -50%);
+            width: max-content;
+        }
+    }
+
+    .paddingtop {
+        top: 0;
+    }
+
+    .contentheight {
+        pointer-events: all;
+        position: absolute;
+        top: 0;
+        right: -2ch;
+        height: calc(var(--line-height) * 58);
+        color: var(--lighter);
+
+        .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--background-color);
+            height: calc(var(--line-height) * 2);
+            width: max-content;
+            text-align: center;
+        }
+    }
+
+    .pagewidth {
+        pointer-events: all;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: var(--lighter);
+        height: 14px;
+
+        @media print {
+            display: none;
+        }
+
+        .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-color: var(--background-color);
+            transform: translate(-50%, -50%);
+            padding-inline: 2ch;
+            line-height: 14px;
+        }
+    }
+
+    .pageheight {
+        pointer-events: all;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 14px;
+        height: 11in;
+        color: var(--lighter);
+
+        @media print {
+            display: none;
+        }
+
+        .label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--background-color);
+            height: calc(var(--line-height) * 2);
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .charWidth,
+    .fontsize,
+    .lineheight,
+    .gap,
+    .paddingtop,
+    .paddingbottom,
+    .contentheight,
+    .leftwidth,
+    .rightwidth,
+    .pagewidth,
+    .pageheight {
+        pointer-events: all;
+
+        @media (pointer: fine) {
+            &:hover {
+                color: var(--accent);
+            }
+        }
+    }
+}

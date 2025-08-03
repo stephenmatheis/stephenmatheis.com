@@ -1,4 +1,11 @@
 .skills {
+    @media (min-width: 830px), print {
+        position: absolute;
+        top: calc(var(--line-height) * 7);
+        right: 0;
+        width: 35ch;
+    }
+
     .groups-ctr {
         display: flex;
         flex-direction: column;

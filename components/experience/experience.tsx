@@ -1,11 +1,10 @@
-import { Comment } from '@/components/comment';
+import { Section } from '@/components/section';
 import experience from '@/data/experience';
 import styles from './experience.module.scss';
 
 export function Experience() {
     return (
-        <section className={styles.experience}>
-            <Comment text="Experience" />
+        <Section className={styles.experience} heading="Experience">
             <div className={styles.jobs}>
                 {experience.map(({ company, site, stack, roles, list }, index) => {
                     if (company === 'Break') {
@@ -64,6 +63,6 @@ export function Experience() {
                     );
                 })}
             </div>
-        </section>
+        </Section>
     );
 }

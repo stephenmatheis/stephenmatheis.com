@@ -1,4 +1,11 @@
 .experience {
+    @media (min-width: 830px), print {
+        position: absolute;
+        top: calc(var(--line-height) * 7);
+        left: 0;
+        width: 56ch;
+    }
+
     .jobs {
         display: flex;
         flex-direction: column;

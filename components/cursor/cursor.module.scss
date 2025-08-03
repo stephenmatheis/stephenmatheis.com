@@ -1,0 +1,35 @@
+.cursor {
+    user-select: none;
+    pointer-events: none;
+    position: fixed;
+    top: -8px;
+    left: -8px;
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: translate(-50%, -50%);
+    z-index: 100;
+
+    @media print {
+        display: none;
+    }
+}
+
+.shadow {
+    user-select: none;
+    pointer-events: none;
+    position: fixed;
+    top: -2px;
+    left: -2px;
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 1);
+    transform: translate(-50%, -50%);
+    z-index: 101;
+
+    @media print {
+        display: none;
+    }
+}

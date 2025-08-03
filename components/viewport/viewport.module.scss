@@ -1,0 +1,11 @@
+.viewport {
+    @media screen {
+        min-height: 100dvh;
+        display: flex;
+        padding: var(--line-height) 2ch;
+
+        @media (max-width: 829px ) {
+            padding: 0;
+        }
+    }
+}

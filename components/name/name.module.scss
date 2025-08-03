@@ -1,5 +1,16 @@
 .name {
-    .website {
+    @media (min-width: 830px), print {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 56ch;
+    }
+
+    .link {
+        width: fit-content;
+    }
+
+    .text {
         display: flex;
         flex-direction: column;
         width: fit-content;

@@ -1,13 +1,13 @@
 :root {
     --font-size: 11px;
     --line-height: 16.5px;
-    --background-color: #fefefe;
-    --primary: #333333;
+    --primary: #909090;
     --accent: red;
-    --color: #787878;
-    --muted: #a5a5a5;
-    --light: #bbbbbb;
-    --lighter: #dddddd;
+    --background-color: #fefefe;
+    --color: #a5a5a5;
+    --muted: #bbbbbb;
+    --light: #dddddd;
+    --lighter: #e0e0e0;
     --lightest: #e0e0e0;
 
     @media print {
@@ -26,6 +26,8 @@
     box-sizing: border-box;
     font-size: var(--font-size);
     line-height: var(--line-height);
+    margin: 0;
+    padding: 0;
 
     &::selection {
         color: var(--primary);
@@ -37,18 +39,38 @@ html {
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
+
+    &,
+    * {
+        cursor: url(/cursor.svg) 8 8, auto;
+    }
+
+    &.cursor-loaded {
+        &,
+        * {
+            @media screen {
+                cursor: none;
+            }
+        }
+    }
 }
 
 body {
-    position: relative;
     font-family: var(--font-mono);
     background-color: var(--background-color);
-    margin: 0;
-    padding: 0;
 }
 
 a {
     text-decoration: none;
     color: var(--primary);
     -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: var(--font-size);
+    color: var(--color);
 }
