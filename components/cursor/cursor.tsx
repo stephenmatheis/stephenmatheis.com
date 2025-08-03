@@ -90,10 +90,10 @@ export function Cursor() {
                     },
                     item: {
                         height: position.height,
-                        width: position.width + 28,
+                        width: position.width + 14,
                         borderRadius: 4,
                         top: position.height / -2,
-                        left: (position.width + 28) / -2,
+                        left: (position.width + 14) / -2,
                         backgroundColor: 'rgba(255, 0, 0, 0.1)',
                         transition: { type: 'spring', stiffness: 200, damping: 15 },
                     },
