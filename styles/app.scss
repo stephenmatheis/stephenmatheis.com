@@ -45,14 +45,14 @@ html {
         cursor: url(/cursor.svg) 8 8, auto;
     }
 
-    // &.cursor-loaded {
-    //     &,
-    //     * {
-    //         @media screen {
-    //             cursor: none;
-    //         }
-    //     }
-    // }
+    &.cursor-loaded {
+        &,
+        * {
+            @media screen {
+                cursor: none;
+            }
+        }
+    }
 }
 
 body {
