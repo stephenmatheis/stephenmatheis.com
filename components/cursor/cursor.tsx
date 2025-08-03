@@ -23,11 +23,11 @@ export function Cursor() {
 
             if (!cursor) return;
 
-            // cursor.style.transform = `translate(${
-            //     cx - (position.left > 0 ? cx - position.left - position.width / 2 : 0)
-            // }px, ${cy - (position.top > 0 ? cy - position.top - position.height / 2 : 0)}px)`;
+            cursor.style.transform = `translate(${
+                x - (position.left > 0 ? x - position.left - position.width / 2 : 0)
+            }px, ${y - (position.top > 0 ? y - position.top - position.height / 2 : 0)}px)`;
 
-            cursor.style.transform = `translate(${x}px, ${y}px)`;
+            // cursor.style.transform = `translate(${x}px, ${y}px)`;
         }
 
         function onLeave() {
@@ -61,7 +61,7 @@ export function Cursor() {
             document.removeEventListener('pointerleave', onLeave);
             document.removeEventListener('pointerenter', onEnter);
         };
-    }, []);
+    }, [position]);
 
     return (
         <>
@@ -104,6 +104,15 @@ export function Cursor() {
                         top: position.height / -2,
                         left: (position.width + 14) / -2,
                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                        transition: { type: 'spring', stiffness: 300, damping: 15 },
+                    },
+                    markup: {
+                        height: position.height + 16.5,
+                        width: position.width + 14,
+                        borderRadius: 4,
+                        top: (position.height + 16.5) / -2,
+                        left: (position.width + 14) / -2,
+                        backgroundColor: 'rgba(255, 0, 0, 0.1)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
                     tab: {
