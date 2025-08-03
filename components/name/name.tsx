@@ -17,6 +17,7 @@ export function Name() {
                     <span className={styles.color}>Software Engineer</span>
                 </div>
                 <motion.div
+                    className={styles.link}
                     onHoverStart={(event) => {
                         const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
 

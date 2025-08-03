@@ -23,9 +23,11 @@ export function Cursor() {
 
             if (!cursor) return;
 
-            cursor.style.transform = `translate(${
-                x - (position.left > 0 ? x - position.left - position.width / 2 : 0)
-            }px, ${y - (position.top > 0 ? y - position.top - position.height / 2 : 0)}px)`;
+            // cursor.style.transform = `translate(${
+            //     cx - (position.left > 0 ? cx - position.left - position.width / 2 : 0)
+            // }px, ${cy - (position.top > 0 ? cy - position.top - position.height / 2 : 0)}px)`;
+
+            cursor.style.transform = `translate(${x}px, ${y}px)`;
         }
 
         function onLeave() {
@@ -76,27 +78,10 @@ export function Cursor() {
                         borderRadius: 8,
                         top: -8,
                         left: -8,
-                        backgroundColor: 'rgba(0, 0, 0, .2)',
+                        backgroundColor: 'rgba(0, 0, 0, .3)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
-                    tab: {
-                        height: 32,
-                        width: 24,
-                        borderRadius: 4,
-                        top: -16,
-                        left: -12,
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                        transition: { type: 'spring', stiffness: 300, damping: 15 },
-                    },
-                    moving: {
-                        height: 24,
-                        width: 48,
-                        borderRadius: 4,
-                        top: -12,
-                        left: -24,
-                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                        transition: { type: 'spring', stiffness: 300, damping: 15 },
-                    },
+
                     link: {
                         height: position.height,
                         width: position.width + 14,
@@ -122,6 +107,24 @@ export function Cursor() {
                         top: position.height / -2,
                         left: (position.width + 14) / -2,
                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                        transition: { type: 'spring', stiffness: 300, damping: 15 },
+                    },
+                    tab: {
+                        height: 32,
+                        width: 24,
+                        borderRadius: 4,
+                        top: -16,
+                        left: -12,
+                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                        transition: { type: 'spring', stiffness: 300, damping: 15 },
+                    },
+                    moving: {
+                        height: 24,
+                        width: 48,
+                        borderRadius: 4,
+                        top: -12,
+                        left: -24,
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
                 }}
