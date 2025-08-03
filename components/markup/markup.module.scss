@@ -174,8 +174,7 @@
         }
     }
 
-    .paddingtop,
-    .paddingbottom {
+    .paddingtop {
         pointer-events: all;
         position: absolute;
         right: 50%;
@@ -203,33 +202,6 @@
 
     .paddingtop {
         top: 0;
-    }
-
-    .paddingbottom {
-        bottom: 0;
-    }
-
-    .contentwidth {
-        pointer-events: all;
-        position: absolute;
-        bottom: -4rem;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--lighter);
-
-        &.on {
-            color: var(--accent);
-        }
-
-        .label {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            line-height: 14px;
-            background-color: var(--background-color);
-            transform: translate(-50%, -50%);
-            padding-inline: 2ch;
-        }
     }
 
     .contentheight {
@@ -314,12 +286,17 @@
     .gap,
     .paddingtop,
     .paddingbottom,
-    .contentwidth,
     .contentheight,
     .leftwidth,
     .rightwidth,
     .pagewidth,
     .pageheight {
         pointer-events: all;
+
+        @media (pointer: fine) {
+            &:hover {
+                color: var(--accent);
+            }
+        }
     }
 }
