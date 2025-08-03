@@ -1,12 +1,10 @@
-.page {
+.sheet {
     position: relative;
     display: flex;
     justify-content: center;
     width: 8.5in;
     height: 11in;
     padding: calc(var(--line-height) * 3) 0;
-
-    background-color: #ff000015;
 
     @media screen {
         @media (max-width: 945px) {
