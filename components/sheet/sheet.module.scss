@@ -5,6 +5,7 @@
     width: 8.5in;
     height: 11in;
     padding: calc(var(--line-height) * 3) 0;
+    margin: auto;
 
     @media screen {
         @media (max-width: 945px) {
