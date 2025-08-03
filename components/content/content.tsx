@@ -5,22 +5,15 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor';
-import { useOverlay } from '@/providers/overlay';
-
 import styles from './content.module.scss';
 
 export function Content({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const { setPosition } = useCursor();
-    const { overlays } = useOverlay();
 
     return (
         <main className={styles.content}>
-            <nav
-                className={`${styles.breadcrumbs}${
-                    overlays.tabs.isHovered || overlays.tabs.isOn ? ` ${styles.on}` : ''
-                }`}
-            >
+            <nav className={styles.breadcrumbs}>
                 {[
                     { label: 'bio', path: '/' },
                     { label: 'work', path: '/work' },
@@ -63,11 +56,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                     </Fragment>
                 ))}
             </nav>
-            <div
-                className={`${styles.linenumbers}${
-                    overlays.numbers.isHovered || overlays.numbers.isOn ? ` ${styles.on}` : ''
-                }`}
-            >
+            <div className={styles.linenumbers}>
                 {Array.from({ length: 58 }, (_, i) => (
                     <div key={i} className={styles.line}>
                         {i + 1}
@@ -75,11 +64,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                 ))}
             </div>
             {children}
-            <div
-                className={`${styles.statusbar}${
-                    overlays.statusBar.isHovered || overlays.statusBar.isOn ? ` ${styles.on}` : ''
-                }`}
-            >
+            <div className={styles.statusbar}>
                 <div className={styles.block}>
                     <motion.span
                         onHoverStart={(event) => {
