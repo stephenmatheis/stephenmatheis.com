@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { CursorProvider } from '@/providers/cursor';
-import { OverlayProvider } from '@/providers/overlay';
 import { Cursor } from '@/components/cursor';
 import '@/styles/app.scss';
 
@@ -44,12 +43,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={mono.variable} suppressHydrationWarning>
-                <OverlayProvider>
-                    <CursorProvider>
-                        {children}
-                        <Cursor />
-                    </CursorProvider>
-                </OverlayProvider>
+                <CursorProvider>
+                    {children}
+                    <Cursor />
+                </CursorProvider>
                 <Analytics debug={false} />
             </body>
         </html>
