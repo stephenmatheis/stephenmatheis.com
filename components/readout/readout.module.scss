@@ -20,15 +20,6 @@
             font-family: inherit;
             font-size: var(--font-size);
 
-            &.on {
-                color: var(--accent);
-
-                .name,
-                .value {
-                    color: var(--accent);
-                }
-            }
-
             .name {
                 color: var(--light);
                 text-align: right;
