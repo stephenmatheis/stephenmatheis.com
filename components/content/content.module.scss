@@ -34,7 +34,6 @@
         top: calc(var(--line-height) * -1.5);
         left: -6ch;
         color: var(--light);
-        background-color: #ff000020;
 
         &.on {
             &,
@@ -80,8 +79,6 @@
         width: calc(100% + 6ch);
         height: var(--line-height);
         color: var(--light);
-
-        background-color: #0000ff20;
 
         &.on {
             a {
