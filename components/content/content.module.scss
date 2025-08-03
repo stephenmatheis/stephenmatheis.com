@@ -12,29 +12,117 @@
         max-width: 95ch;
     }
 
-    // position: relative;
-    // display: flex;
-    // justify-content: space-between;
-    // gap: 4ch;
+    .linenumbers {
+        user-select: none;
+        position: absolute;
+        top: 0;
+        left: -6ch;
+        color: var(--light);
 
-    // @media screen and (max-width: 945px) {
-    //     flex-direction: column;
-    // }
+        &.on {
+            color: var(--accent);
+        }
 
-    // .left {
-    //     display: flex;
-    //     flex-direction: column;
-    //     gap: calc(var(--line-height) * 2);
-    // }
+        @media (max-width: 945px), print {
+            display: none;
+        }
+    }
 
-    // .right {
-    //     display: flex;
-    //     flex-direction: column;
-    //     gap: calc(var(--line-height) * 2);
-    //     width: 35ch;
+    .breadcrumbs {
+        user-select: none;
+        position: absolute;
+        top: calc(var(--line-height) * -1.5);
+        left: -6ch;
+        color: var(--light);
+        background-color: #ff000020;
 
-    //     @media screen and (max-width: 945px) {
-    //         width: 100%;
-    //     }
-    // }
+        &.on {
+            &,
+            a,
+            a.pathname {
+                color: var(--accent);
+                transition: color 100ms ease-in-out;
+            }
+        }
+
+        @media screen and (max-width: 945px) {
+            left: 2ch;
+        }
+
+        @media print {
+            display: none;
+        }
+
+        a {
+            color: var(--light);
+
+            &.pathname {
+                color: var(--color);
+            }
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+
+        .spacer {
+            margin-inline: 1ch;
+        }
+    }
+
+    .statusbar {
+        user-select: none;
+        bottom: calc(var(--line-height) * -1.5);
+        left: -6ch;
+        display: flex;
+        position: absolute;
+        justify-content: space-between;
+        width: calc(100% + 6ch);
+        height: var(--line-height);
+        color: var(--light);
+
+        background-color: #0000ff20;
+
+        &.on {
+            a {
+                color: var(--accent);
+            }
+        }
+
+        @media print {
+            display: none;
+        }
+
+        @media screen and (max-width: 945px) {
+            left: 0;
+            width: 100%;
+            max-width: 100%;
+            padding-inline: 2ch;
+        }
+
+        a {
+            color: var(--light);
+        }
+
+        .block {
+            display: flex;
+            gap: 3ch;
+
+            a {
+                display: flex;
+                align-items: center;
+
+                svg {
+                    margin-right: 0.5ch;
+                }
+            }
+        }
+
+        .git {
+            display: inline-block;
+            position: relative;
+            margin-right: 0.5ch;
+            transform: translateY(1.5px);
+        }
+    }
 }

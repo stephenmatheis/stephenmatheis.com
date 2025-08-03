@@ -99,21 +99,33 @@ export function Markup() {
                         overlays.right.isOn || overlays.right.isHovered ? ` ${styles.on}` : ''
                     }`}
                 />
+
+                {/* Content Height */}
+                <div
+                    className={`${styles.contentheight}${
+                        overlays.contentHeight.isOn || overlays.contentHeight.isHovered ? ` ${styles.on}` : ''
+                    }`}
+                >
+                    <svg width="7" height="957" viewBox="0 0 7 957" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 1H5V2H4V955H5V956H4V957H3V956H2V955H3V2H2V1H3V0H4V1Z" fill="currentColor" />
+                        <path d="M2 955H1V954H2V955Z" fill="currentColor" />
+                        <path d="M6 955H5V954H6V955Z" fill="currentColor" />
+                        <path d="M1 954H0V953H1V954Z" fill="currentColor" />
+                        <path d="M7 954H6V953H7V954Z" fill="currentColor" />
+                        <path d="M1 4H0V3H1V4Z" fill="currentColor" />
+                        <path d="M7 4H6V3H7V4Z" fill="currentColor" />
+                        <path d="M2 3H1V2H2V3Z" fill="currentColor" />
+                        <path d="M6 3H5V2H6V3Z" fill="currentColor" />
+                    </svg>
+                    <div className={styles.label}>
+                        58
+                        <br />
+                        lines
+                    </div>
+                </div>
             </main>
 
-            {/* Page Padding */}
-            <div
-                className={`${styles.paddingbottom}${
-                    overlays.paddingBottom.isOn || overlays.paddingBottom.isHovered ? ` ${styles.on}` : ''
-                }`}
-            >
-                <svg width="3" height="50" viewBox="0 0 3 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 0V1H2V48.5H3V49.5H0V48.5H1V1H0V0H3Z" fill="currentColor" />
-                </svg>
-                <div className={styles.label}>3 lines</div>
-            </div>
-
-            {/* Page Padding */}
+            {/* Padding Top */}
             <div
                 className={`${styles.paddingtop}${
                     overlays.paddingTop.isOn || overlays.paddingTop.isHovered ? ` ${styles.on}` : ''
@@ -125,61 +137,26 @@ export function Markup() {
                 <div className={styles.label}>3 lines</div>
             </div>
 
-            {/* Content Height */}
-            <div
-                className={`${styles.contentheight}${
-                    overlays.contentHeight.isOn || overlays.contentHeight.isHovered ? ` ${styles.on}` : ''
-                }`}
-            >
-                <svg width="7" height="957" viewBox="0 0 7 957" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 1H5V2H4V955H5V956H4V957H3V956H2V955H3V2H2V1H3V0H4V1Z" fill="currentColor" />
-                    <path d="M2 955H1V954H2V955Z" fill="currentColor" />
-                    <path d="M6 955H5V954H6V955Z" fill="currentColor" />
-                    <path d="M1 954H0V953H1V954Z" fill="currentColor" />
-                    <path d="M7 954H6V953H7V954Z" fill="currentColor" />
-                    <path d="M1 4H0V3H1V4Z" fill="currentColor" />
-                    <path d="M7 4H6V3H7V4Z" fill="currentColor" />
-                    <path d="M2 3H1V2H2V3Z" fill="currentColor" />
-                    <path d="M6 3H5V2H6V3Z" fill="currentColor" />
-                </svg>
-                <div className={styles.label}>58 lines</div>
-            </div>
-
-            {/* Content Width */}
-            <div
-                className={`${styles.contentwidth}${
-                    overlays.contentWidth.isOn || overlays.contentWidth.isHovered ? ` ${styles.on}` : ''
-                }`}
-            >
-                <svg width="665" height="7" viewBox="0 0 665 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M4 7H3V6H4V7ZM662 7H661V6H662V7ZM3 6H2V5H3V6ZM663 6H662V5H663V6ZM2 3H663V2H664V3H665V4H664V5H663V4H2V5H1V4H0V3H1V2H2V3ZM3 2H2V1H3V2ZM663 2H662V1H663V2ZM4 1H3V0H4V1ZM662 1H661V0H662V1Z"
-                        fill="currentColor"
-                    />
-                </svg>
-                <div className={styles.label}>95ch</div>
-            </div>
-
             {/* Page Height */}
             <div
                 className={`${styles.pageheight}${
                     overlays.pageHeight.isOn || overlays.pageHeight.isHovered ? ` ${styles.on}` : ''
                 }`}
             >
-                <svg width="9" height="1056" viewBox="0 0 9 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 1056H0V1055H3V1056Z" fill="currentColor" />
-                    <path d="M5 1055H3V1054H5V1055Z" fill="currentColor" />
-                    <path d="M6 1054H5V1053H6V1054Z" fill="currentColor" />
-                    <path d="M7 1053H6V1051H7V1053Z" fill="currentColor" />
-                    <path d="M8 1051H7V1048H8V1051Z" fill="currentColor" />
-                    <path d="M9 1048H8V8H9V1048Z" fill="currentColor" />
-                    <path d="M8 8H7V5H8V8Z" fill="currentColor" />
-                    <path d="M7 5H6V3H7V5Z" fill="currentColor" />
-                    <path d="M6 3H5V2H6V3Z" fill="currentColor" />
-                    <path d="M5 2H3V1H5V2Z" fill="currentColor" />
-                    <path d="M3 1H0V0H3V1Z" fill="currentColor" />
+                <svg width="14" height="1056" viewBox="0 0 14 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.5 1048.5H6.5V0H7.5V1048.5Z" fill="currentColor" />
+                    <path d="M5.5 0L6.5 0V1H5.5V0Z" fill="currentColor" />
+                    <path d="M7.5 0L8.5 0V1H7.5V0Z" fill="currentColor" />
+                    <path d="M5.5 1055H6.5V1056H5.5V1055Z" fill="currentColor" />
+                    <path d="M7.5 1055H8.5V1056H7.5V1055Z" fill="currentColor" />
+                    <path d="M6.5 1049.5H7.5V1056H6.5V1049.5Z" fill="currentColor" />
                 </svg>
-                <div className={styles.label}>11in</div>
+
+                <div className={styles.label}>
+                    11
+                    <br />
+                    in
+                </div>
             </div>
 
             {/* Page Width */}
@@ -188,20 +165,14 @@ export function Markup() {
                     overlays.pageWidth.isOn || overlays.pageWidth.isHovered ? ` ${styles.on}` : ''
                 }`}
             >
-                <svg width="816" height="9" viewBox="0 0 816 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M808 9H8V8H808V9Z" fill="currentColor" />
-                    <path d="M8 8H5V7H8V8Z" fill="currentColor" />
-                    <path d="M811 7V8H808V7H811Z" fill="currentColor" />
-                    <path d="M5 7H3V6H5V7Z" fill="currentColor" />
-                    <path d="M813 7H811V6H813V7Z" fill="currentColor" />
-                    <path d="M3 6H2V5H3V6Z" fill="currentColor" />
-                    <path d="M814 6H813V5H814V6Z" fill="currentColor" />
-                    <path d="M2 5H1V3H2V5Z" fill="currentColor" />
-                    <path d="M815 5H814V3H815V5Z" fill="currentColor" />
-                    <path d="M1 3H0V0H1V3Z" fill="currentColor" />
-                    <path d="M816 3H815V0H816V3Z" fill="currentColor" />
+                <svg width="816" height="14" viewBox="0 0 816 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 7.5V6.5H808.5V7.5H0Z" fill="currentColor" />
+                    <path d="M0 7.5H1V8.5H0V7.5Z" fill="currentColor" />
+                    <path d="M0 5.5H1V6.5H0V5.5Z" fill="currentColor" />
+                    <path d="M815 5.5H816V6.5H815V5.5Z" fill="currentColor" />
+                    <path d="M809.5 6.5H816V7.5H809.5V6.5Z" fill="currentColor" />
+                    <path d="M815 7.5H816V8.5H815V7.5Z" fill="currentColor" />
                 </svg>
-
                 <div className={styles.label}>8.5in</div>
             </div>
         </div>
