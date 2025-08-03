@@ -1,13 +1,12 @@
 import { Viewport } from '@/components/viewport';
-import { Comment } from '@/components/comment';
-import styles from './page.module.scss';
+import { Content } from '@/components/content';
 
-export default function WorkPage() {
+export default function BlogPage() {
     return (
         <Viewport>
-            <div className={styles.content}>
-                <Comment text="Blog" />
-            </div>
+            <Content>
+                <h2>Blog</h2>
+            </Content>
         </Viewport>
     );
 }
