@@ -2,21 +2,16 @@
     display: flex;
     gap: 2ch;
     overflow: auto;
-    padding-top: var(--line-height);
-    padding-bottom: var(--line-height);
-    padding-left: 2ch;
 
     .block {
         display: flex;
         gap: 2ch;
-        margin-right: 2ch;
 
         .title {
             color: var(--color);
         }
 
         .item {
-            cursor: pointer;
             display: flex;
             gap: 1ch;
             padding: 0;
@@ -29,22 +24,20 @@
                 color: var(--accent);
 
                 .name,
-                .value,
-                .alt {
+                .value {
                     color: var(--accent);
                 }
             }
 
             .name {
                 color: var(--light);
+                text-align: right;
             }
 
             .value {
                 color: var(--muted);
-
-                @media screen and (min-width: 1300px) {
-                    text-align: right;
-                }
+                min-width: 6ch;
+                text-align: right;
             }
         }
     }
