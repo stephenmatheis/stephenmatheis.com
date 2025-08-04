@@ -1,23 +1,25 @@
 const contact = [
+       {
+        href: 'https://stephenmatheis.com',
+        text: 'stephenmatheis.com',
+        title: 'My website',
+        newTab: true,
+    },
     {
         href: 'https://github.com/stephenmatheis',
         text: 'github.com/stephenmatheis',
-        label: 'My GitHub profile',
-        name: 'GitHub',
-        user: 'stephenmatheis',
+        title: 'My GitHub profile',
         newTab: true,
     },
     {
         href: 'mailto:stephen@matheis.email',
         text: 'stephen@matheis.email',
-        label: 'My email address',
-        name: 'Email',
+        title: 'My email address',
     },
     {
         href: 'tel:9124922522',
         text: '(912) 492-2522',
-        label: 'My phone number',
-        name: 'Phone',
+        title: 'My phone number',
     },
 ];
 

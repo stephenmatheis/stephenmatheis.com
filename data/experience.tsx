@@ -46,15 +46,7 @@ const experience = [
                 end: 'May 2021',
             },
         ],
-        list: [
-            <>
-                Redesigned{' '}
-                <a href="https://tsunami.gov/" target="_blank">
-                    tsunami.gov
-                </a>{' '}
-                with Next.js, MongoDB, & Vercel.
-            </>,
-        ],
+        list: ['Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.'],
     },
     {
         company: 'Apple (TEKsystems)',

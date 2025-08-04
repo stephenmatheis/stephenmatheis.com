@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
-import { useCursor } from '@/providers/cursor';
+import { useCursor } from '@/providers/cursor-provider';
 import styles from './content.module.scss';
 
 export function Content({ children }: { children: React.ReactNode }) {
@@ -34,7 +34,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                                     left,
                                     height,
                                     width,
-                                    type: 'link',
+                                    type: 'path',
                                 }));
                             }}
                             onHoverEnd={() => {
@@ -80,7 +80,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                                 left,
                                 height,
                                 width,
-                                type: 'link',
+                                type: 'path',
                             }));
                         }}
                         onHoverEnd={() => {
@@ -152,7 +152,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                                         left,
                                         height,
                                         width,
-                                        type: 'link',
+                                        type: 'path',
                                     }));
                                 }}
                                 onHoverEnd={() => {

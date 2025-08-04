@@ -1,7 +1,7 @@
 'use client';
 
 import * as motion from 'motion/react-client';
-import { useCursor } from '@/providers/cursor';
+import { useCursor } from '@/providers/cursor-provider';
 import styles from './markup.module.scss';
 import { EventInfo } from 'motion';
 

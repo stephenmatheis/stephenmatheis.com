@@ -33,9 +33,10 @@ export function Experience() {
                                             <div className={styles.title}>
                                                 <span>{title}</span>{' '}
                                                 {index === 0 && (
-                                                    <a href={site} target="_blank" className={styles.company}>
-                                                        @ {company}
-                                                    </a>
+                                                    // <a href={site} target="_blank" className={styles.company}>
+                                                    //     @ {company}
+                                                    // </a>
+                                                    <span className={styles.company}>@ {company}</span>
                                                 )}
                                             </div>
                                             <div className={styles.date}>

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import * as motion from 'motion/react-client';
-import { useCursor } from '@/providers/cursor';
+import { useCursor } from '@/providers/cursor-provider';
 import styles from './cursor.module.scss';
 
 export function Cursor() {
@@ -76,8 +76,16 @@ export function Cursor() {
                         backgroundColor: 'rgba(0, 0, 0, .3)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
-
                     link: {
+                        height: position.height,
+                        width: position.width + 14,
+                        borderRadius: 4,
+                        top: position.height / -2,
+                        left: (position.width + 14) / -2,
+                        backgroundColor: 'rgba(0, 0, 255, 0.1)',
+                        transition: { type: 'spring', stiffness: 300, damping: 15 },
+                    },
+                    path: {
                         height: position.height,
                         width: position.width + 14,
                         borderRadius: 4,

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
-import { CursorProvider } from '@/providers/cursor';
+import { CursorProvider } from '@/providers/cursor-provider';
 import { Cursor } from '@/components/cursor';
 import '@/styles/app.scss';
 
