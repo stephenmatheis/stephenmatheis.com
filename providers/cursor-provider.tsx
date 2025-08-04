@@ -31,8 +31,8 @@ export function CursorProvider({ children }: { children: ReactNode }) {
     const [position, setPosition] = useState<Position>({
         top: 0,
         left: 0,
-        height: 16,
-        width: 48,
+        height: 0,
+        width: 0,
         type: 'normal',
     });
 
