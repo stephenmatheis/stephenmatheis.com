@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
-import { useCursor } from '@/providers/cursor';
+import { useCursor } from '@/providers/cursor-provider';
 import { Section } from '@/components/section';
 import work from '@/data/work';
 import styles from './work.module.scss';
