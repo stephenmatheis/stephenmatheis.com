@@ -1,15 +1,43 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
 import styles from './cursor.module.scss';
 
 export function Cursor() {
-    const { position } = useCursor();
+    const pathname = usePathname();
+    const { position, setPosition } = useCursor();
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        setPosition((prev) => ({
+            ...prev,
+            top: 0,
+            left: 0,
+            height: 0,
+            width: 0,
+            type: 'normal',
+        }));
+    }, [pathname, setPosition]);
+
+    useEffect(() => {
+        function hideCustomCursor() {
+            console.log('remove custom cursor');
+            document.documentElement.classList.add('cursor-loaded');
+        }
+
+        document.addEventListener('pointermove', hideCustomCursor, { once: true });
+
+        return () => {
+            document.removeEventListener('pointermove', hideCustomCursor);
+        };
+    }, []);
+
+    useEffect(() => {
+        console.log('Cursor: ', position);
+
         function onMove(event: PointerEvent) {
             if (event.pointerType === 'touch') {
                 console.log('touch event');
@@ -44,12 +72,6 @@ export function Cursor() {
             cursor.style.opacity = '1';
         }
 
-        function hideCustomCursor() {
-            console.log('remove custom cursor');
-            document.documentElement.classList.add('cursor-loaded');
-        }
-
-        document.addEventListener('pointermove', hideCustomCursor, { once: true });
         document.addEventListener('pointermove', onMove);
         document.addEventListener('pointerleave', onLeave);
         document.addEventListener('pointerenter', onEnter);
