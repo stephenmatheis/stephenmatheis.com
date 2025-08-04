@@ -20,7 +20,7 @@
                     position: relative;
 
                     .company {
-                        color: var(--color);
+                        color: var(--light);
                     }
                 }
 
@@ -45,7 +45,7 @@
             }
 
             .stack {
-                color: var(--muted);
+                color: var(--light);
             }
         }
     }

@@ -56,9 +56,8 @@ export function Experience() {
                                 })}
                             </ul>
                             <div className={styles.stack}>
-                                {'[ '}
+                                {'› '}
                                 {stack?.join(', ')}
-                                {' ]'}
                             </div>
                         </div>
                     );
