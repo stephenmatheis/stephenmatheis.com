@@ -169,8 +169,10 @@
         position: absolute;
         bottom: 0;
         right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         color: var(--lighter);
-        height: 14px;
 
         @media print {
             display: none;
@@ -180,10 +182,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            background-color: var(--background-color);
             transform: translate(-50%, -50%);
-            padding-inline: 2ch;
-            line-height: 14px;
         }
     }
 
