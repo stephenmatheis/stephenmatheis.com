@@ -21,17 +21,20 @@
         .charWidth {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--line-height) * 1);
-            left: calc(2ch);
+            top: calc(var(--line-height) * 0.5);
+            left: 3ch;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 21px;
-
+            height: var(--line-height);
             color: var(--lighter);
 
             .label {
+                position: absolute;
+                bottom: -8.25px;
+                left: 50%;
+                transform: translateX(-50%);
                 font-size: 8.25px;
             }
         }
@@ -39,7 +42,7 @@
         .fontsize {
             pointer-events: all;
             position: absolute;
-            top: -0.5px;
+            top: 0.25px;
             left: 7.5ch;
             height: var(--line-height);
             display: flex;
@@ -47,9 +50,8 @@
             color: var(--lighter);
 
             .label {
-                line-height: 8.25px;
                 font-size: 8.25px;
-                margin-left: 0.75ch;
+                margin-left: 0.5ch;
             }
         }
 
