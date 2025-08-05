@@ -1,97 +1,16 @@
 'use client';
 
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
+// import { LoadingCanvas } from '@/components/loading-canvas';
 import styles from './content.module.scss';
-
-type Letter = {
-    x: number;
-    y: number;
-    delay: number;
-};
-
-const wait = 500;
 
 export function Content({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const { setPosition } = useCursor();
-    const patternRef = useRef<HTMLDivElement>(null);
-    const [mounted, setMounted] = useState<boolean>(false);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setMounted(true);
-        }, wait);
-    }, []);
-
-    useEffect(() => {
-        if (!patternRef.current) return;
-
-        const cols = 95;
-        const rows = 58;
-        const width = 7;
-        const height = 16.5;
-
-        const canvas = patternRef.current.querySelector('#canvas') as HTMLCanvasElement;
-        const ctx = canvas.getContext('2d');
-        const devicePixelRatio = window.devicePixelRatio || 1;
-
-        const canvasWidth = 665;
-        const canvasHeight = 957;
-
-        canvas.width = canvasWidth * devicePixelRatio;
-        canvas.height = canvasHeight * devicePixelRatio;
-        canvas.style.width = `${canvasWidth}px`;
-        canvas.style.height = `${canvasHeight}px`;
-
-        if (!ctx) return;
-
-        ctx.scale(devicePixelRatio, devicePixelRatio);
-
-        const letters: Letter[] = [];
-
-        if (!ctx) return;
-
-        for (let row = 0; row < rows; row++) {
-            for (let col = 0; col < cols; col++) {
-                const letter = {
-                    x: col * width,
-                    y: row * height,
-                    delay: (Math.random() + Math.random()) * 250 + wait,
-                };
-
-                letters.push(letter);
-            }
-        }
-
-        let start: number;
-
-        function animate(timestamp: number) {
-            if (!ctx) return;
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            if (start === undefined) {
-                start = timestamp;
-            }
-
-            const progress = timestamp - start;
-
-            letters.forEach(({ x, y, delay }, index) => {
-                let opacity = progress < delay ? 1 : 0;
-
-                ctx.fillStyle = `rgba(255,255,255,${opacity})`;
-                ctx.fillRect(x, y, width, height);
-            });
-
-            requestAnimationFrame(animate);
-        }
-
-        requestAnimationFrame(animate);
-    }, []);
 
     return (
         <main className={styles.content}>
@@ -270,11 +189,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                 </div>
             </div>
 
-            {/* Fade SVG */}
-            <div ref={patternRef} className={styles.pattern}>
-                <canvas id="canvas" width={665} height={957} />
-                {!mounted && <div className={styles.backdrop} />}
-            </div>
+            {/* DEV: */}
+            {/* <LoadingCanvas /> */}
         </main>
     );
 }
