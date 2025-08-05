@@ -41,19 +41,24 @@
             display: none;
         }
 
-        a {
-            color: var(--light);
+        .link {
+            display: inline-block;
 
-            &.pathname {
-                color: var(--color);
-            }
+            a {
+                color: var(--light);
 
-            &:hover {
-                color: var(--primary);
+                &.pathname {
+                    color: var(--color);
+                }
+
+                &:hover {
+                    color: var(--primary);
+                }
             }
         }
 
         .spacer {
+            display: inline-block;
             margin-inline: 1ch;
             color: var(--lighter);
         }
@@ -103,11 +108,5 @@
             margin-right: 0.5ch;
             transform: translateY(1.5px);
         }
-    }
-
-    .linenumbers,
-    .breadcrumbs,
-    .statusbar {
-        display: none;
     }
 }

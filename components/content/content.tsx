@@ -14,63 +14,85 @@ export function Content({ children }: { children: React.ReactNode }) {
 
     return (
         <main className={styles.content}>
+            {/* NOTE: Done */}
             <nav className={styles.breadcrumbs}>
                 {[
                     { label: '/', path: '/' },
                     { label: 'work', path: '/work' },
                     { label: 'blog', path: '/blog' },
                     { label: 'about', path: '/about' },
-                ].map((crumb, i, arr) => (
-                    <Fragment key={i}>
-                        <motion.span
-                            onHoverStart={(event) => {
-                                const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
+                ].map((crumb, i, arr) => {
+                    const duration = 0.3;
+                    const i2 = (i + 1) * 2 - 1;
+                    const i1 = i2 - 1;
+                    const d2 = i2 * 0.04;
+                    const d1 = i1 * 0.04;
 
-                                if (!rect) return;
+                    return (
+                        <Fragment key={i}>
+                            <motion.span
+                                className={styles.link}
+                                initial={{ opacity: 0, scale: 1.5 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration, delay: d1 }}
+                                onHoverStart={(event) => {
+                                    const rect = (event.target as HTMLElement)
+                                        .querySelector('a')
+                                        ?.getBoundingClientRect();
 
-                                const { top, left, height, width } = rect;
+                                    if (!rect) return;
 
-                                setPosition((prev) => ({
-                                    ...prev,
-                                    top,
-                                    left,
-                                    height,
-                                    width,
-                                    type: 'path',
-                                }));
-                            }}
-                            onHoverEnd={() => {
-                                setPosition((prev) => ({
-                                    ...prev,
-                                    top: 0,
-                                    left: 0,
-                                    height: 0,
-                                    width: 0,
-                                    type: 'normal',
-                                }));
-                            }}
-                        >
-                            <Link href={crumb.path} className={pathname === crumb.path ? styles.pathname : ''}>
-                                {crumb.label}
-                            </Link>
-                        </motion.span>
-                        {i < arr.length - 1 && <span className={styles.spacer}>{'>'}</span>}
-                    </Fragment>
-                ))}
+                                    const { top, left, height, width } = rect;
+
+                                    setPosition((prev) => ({
+                                        ...prev,
+                                        top,
+                                        left,
+                                        height,
+                                        width,
+                                        type: 'path',
+                                    }));
+                                }}
+                                onHoverEnd={() => {
+                                    setPosition((prev) => ({
+                                        ...prev,
+                                        top: 0,
+                                        left: 0,
+                                        height: 0,
+                                        width: 0,
+                                        type: 'normal',
+                                    }));
+                                }}
+                            >
+                                <Link href={crumb.path} className={pathname === crumb.path ? styles.pathname : ''}>
+                                    {crumb.label}
+                                </Link>
+                            </motion.span>
+                            {i < arr.length - 1 && (
+                                <motion.span
+                                    className={styles.spacer}
+                                    initial={{ opacity: 0, scale: 1.5 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration, delay: d2 }}
+                                >
+                                    {'>'}
+                                </motion.span>
+                            )}
+                        </Fragment>
+                    );
+                })}
             </nav>
+
+            {/* NOTE: Done */}
             <div className={styles.linenumbers}>
                 {Array.from({ length: 58 }, (_, i) => {
-                    const delay = Math.random() * 0.5;
-
-                    // console.log(delay);
-
                     return (
                         <motion.div
                             key={i}
                             className={styles.line}
-                            // initial={{ opacity: 0 }}
-                            // animate={{ opacity: 1 }}
-                            // transition={{ type: 'spring', stiffness: 300, damping: 20, delay }}
+                            initial={{ opacity: 0, scale: 2 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.2, delay: i * 0.015 }}
                         >
                             {i + 1}
                         </motion.div>
