@@ -96,20 +96,92 @@ export function Markup() {
                 {/* Line Height */}
                 <motion.div
                     className={styles.lineheight}
-                    initial={{ opacity: 0, scale: fromScale, filter: fromFilter }}
-                    animate={{ opacity: 1, scale: toScale, filter: toFilter }}
-                    transition={{ ease: 'easeOut', duration, delay }}
                     onHoverStart={handleOnHoverStart}
                     onHoverEnd={handleOnHoverEnd}
                 >
-                    <svg width="3" height="16.5" viewBox="0 0 3 16.5" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0" y="0" width="1" height="1" fill="currentColor" />
-                        <rect x="2" y="0" width="1" height="1" fill="currentColor" />
-                        <line x1="1.5" y1="0" x2="1.5" y2="16.5" stroke="currentColor" strokeWidth="1" />
-                        <rect x="0" y="15.5" width="1" height="1" fill="currentColor" />
-                        <rect x="2" y="15.5" width="1" height="1" fill="currentColor" />
+                    <svg width="3" height="16.5" viewBox="0 0 3 16.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* Top */}
+                        <motion.line
+                            x1="1.5"
+                            y1="8.25"
+                            x2="1.5"
+                            y2="0"
+                            stroke="currentColor"
+                            strokeWidth={1}
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                        />
+
+                        {/* Bottom */}
+                        <motion.line
+                            x1="1.5"
+                            y1="8.25"
+                            x2="1.5"
+                            y2="16.5"
+                            stroke="currentColor"
+                            strokeWidth={1}
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                        />
+
+                        {/* Top Left */}
+                        <motion.rect
+                            x="0"
+                            y="0"
+                            width="1"
+                            height="1"
+                            fill="currentColor"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                        />
+
+                        {/* Top Right */}
+                        <motion.rect
+                            x="2"
+                            y="0"
+                            width="1"
+                            height="1"
+                            fill="currentColor"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                        />
+
+                        {/* Bottom left */}
+                        <motion.rect
+                            x="0"
+                            y="15.5"
+                            width="1"
+                            height="1"
+                            fill="currentColor"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                        />
+
+                        {/* Bottom Right */}
+                        <motion.rect
+                            x="2"
+                            y="15.5"
+                            width="1"
+                            height="1"
+                            fill="currentColor"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                        />
                     </svg>
-                    <div className={styles.label}>16.5px</div>
+                    <motion.div
+                        className={styles.label}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                    >
+                        16.5px
+                    </motion.div>
                 </motion.div>
 
                 {/* Left Content Width */}
@@ -906,15 +978,6 @@ export function Markup() {
                 onHoverStart={handleOnHoverStart}
                 onHoverEnd={handleOnHoverEnd}
             >
-                {/* <svg width="816" height="14" viewBox="0 0 816 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 7.5V6.5H808.5V7.5H0Z" fill="currentColor" />
-                    <path d="M0 7.5H1V8.5H0V7.5Z" fill="currentColor" />
-                    <path d="M0 5.5H1V6.5H0V5.5Z" fill="currentColor" />
-                    <path d="M815 5.5H816V6.5H815V5.5Z" fill="currentColor" />
-                    <path d="M809.5 6.5H816V7.5H809.5V6.5Z" fill="currentColor" />
-                    <path d="M815 7.5H816V8.5H815V7.5Z" fill="currentColor" />
-                </svg>
-                <div className={styles.label}>8.5in</div> */}
                 <svg width="816" height="3" viewBox="0 0 816 3" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {/* Left */}
                     <motion.line
