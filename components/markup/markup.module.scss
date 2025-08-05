@@ -70,8 +70,8 @@
             }
         }
 
-        .leftwidth,
-        .rightwidth {
+        .left-content-width,
+        .right-content-width {
             pointer-events: all;
             position: absolute;
             height: var(--line-height);
@@ -91,12 +91,12 @@
             }
         }
 
-        .leftwidth {
+        .left-content-width {
             top: calc(var(--line-height) * 5);
             left: 0;
         }
 
-        .rightwidth {
+        .right-content-width {
             top: calc(var(--line-height) * -2);
             right: 0;
         }
@@ -104,21 +104,18 @@
         .gap {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--line-height) * 36.5);
+            top: calc(var(--line-height) * 1);
             left: 56ch;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 16.5px;
+            height: var(--line-height);
             color: var(--lighter);
 
             .label {
                 position: absolute;
-                top: -8.25px;
-                background-color: var(--background-color);
                 font-size: 8.25px;
-                height: 8.25px;
             }
         }
 
@@ -235,10 +232,9 @@
     .lineheight,
     .gap,
     .paddingtop,
-    .paddingbottom,
     .contentheight,
-    .leftwidth,
-    .rightwidth,
+    .left-content-width,
+    .right-content-width,
     .pagewidth,
     .pageheight {
         pointer-events: all;
