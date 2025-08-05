@@ -79,15 +79,10 @@
 
             .label {
                 position: absolute;
-                top: 0;
-                left: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                line-height: var(--line-height);
-                width: 100%;
-                padding-inline: 2ch;
-                transform-origin: center center;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: max-content;
             }
         }
 
@@ -147,10 +142,6 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: calc(var(--line-height) * 1);
             transform: translate(-50%, -50%);
             width: max-content;
         }
@@ -160,7 +151,7 @@
         pointer-events: all;
         position: absolute;
         top: 0;
-        right: -2ch;
+        right: -3ch;
         height: calc(var(--line-height) * 58);
         color: var(--lighter);
 
@@ -169,12 +160,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: calc(var(--line-height) * 2);
             width: max-content;
-            text-align: center;
         }
     }
 
@@ -206,6 +192,9 @@
         position: absolute;
         top: 0;
         right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 14px;
         height: 11in;
         color: var(--lighter);
@@ -218,12 +207,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--background-color);
-            height: calc(var(--line-height) * 2);
             transform: translate(-50%, -50%);
+            width: max-content;
         }
     }
 
