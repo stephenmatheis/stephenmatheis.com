@@ -661,10 +661,92 @@ export function Markup() {
                 onHoverStart={handleOnHoverStart}
                 onHoverEnd={handleOnHoverEnd}
             >
-                <svg width="3" height="50" viewBox="0 0 3 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* <svg width="3" height="50" viewBox="0 0 3 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 0V1H2V48.5H3V49.5H0V48.5H1V1H0V0H3Z" fill="currentColor" />
+                </svg> */}
+                <svg width="3" height="49.5" viewBox="0 0 3 49.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* Top */}
+                    <motion.line
+                        x1="1.5"
+                        y1="16.5"
+                        x2="1.5"
+                        y2="0"
+                        stroke="currentColor"
+                        strokeWidth={1}
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                    />
+
+                    {/* Bottom */}
+                    <motion.line
+                        x1="1.5"
+                        y1="33"
+                        x2="1.5"
+                        y2="49.5"
+                        stroke="currentColor"
+                        strokeWidth={1}
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                    />
+
+                    {/* Top Left */}
+                    <motion.rect
+                        x="0"
+                        y="0"
+                        width="1"
+                        height="1"
+                        fill="currentColor"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                    />
+
+                    {/* Top Right */}
+                    <motion.rect
+                        x="2"
+                        y="0"
+                        width="1"
+                        height="1"
+                        fill="currentColor"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                    />
+
+                    {/* Bottom left */}
+                    <motion.rect
+                        x="0"
+                        y="48.5"
+                        width="1"
+                        height="1"
+                        fill="currentColor"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                    />
+
+                    {/* Bottom Right */}
+                    <motion.rect
+                        x="2"
+                        y="48.5"
+                        width="1"
+                        height="1"
+                        fill="currentColor"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                    />
                 </svg>
-                <div className={styles.label}>3 lines</div>
+                <motion.div
+                    className={styles.label}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
+                >
+                    3 lines
+                </motion.div>
             </motion.div>
 
             {/* Page Height */}
