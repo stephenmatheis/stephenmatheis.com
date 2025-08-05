@@ -36,8 +36,6 @@ export function Cursor() {
     }, []);
 
     useEffect(() => {
-        console.log('Cursor: ', position);
-
         function onMove(event: PointerEvent) {
             if (event.pointerType === 'touch') {
                 console.log('touch event');

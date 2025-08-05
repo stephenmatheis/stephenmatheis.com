@@ -1,23 +1,16 @@
 import { Viewport } from '@/components/viewport';
 import { Content } from '@/components/content';
-import { Name } from '@/components/name';
-import { Experience } from '@/components/experience';
-import { Contact } from '@/components/contact';
-import { Skills } from '@/components/skills';
-import { Work } from '@/components/work';
-import { Markup } from '@/components/markup';
+import styles from './page.module.scss';
 
 export default function RootPage() {
     return (
         <Viewport>
             <Content>
-                <Name />
-                <Contact />
-                <Experience />
-                <Skills />
-                <Work />
+                <div className={styles.root}>
+                    <p>hi</p>
+                    <p>line 2</p>
+                </div>
             </Content>
-            <Markup />
         </Viewport>
     );
 }
