@@ -74,21 +74,20 @@
         .rightwidth {
             pointer-events: all;
             position: absolute;
-            height: 18px;
+            height: var(--line-height);
             color: var(--lighter);
 
             .label {
                 position: absolute;
-                top: 50%;
-                left: 50%;
+                top: 0;
+                left: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: var(--background-color);
-                height: calc(var(--line-height) * 1);
-                transform: translate(-50%, -50%);
-                width: max-content;
+                line-height: var(--line-height);
+                width: 100%;
                 padding-inline: 2ch;
+                transform-origin: center center;
             }
         }
 
@@ -141,6 +140,7 @@
     .paddingtop {
         pointer-events: all;
         position: absolute;
+        top: 0;
         right: 50%;
         transform: translateX(50%);
         height: calc(var(--line-height) * 3);
@@ -160,10 +160,6 @@
         }
     }
 
-    .paddingtop {
-        top: 0;
-    }
-
     .contentheight {
         pointer-events: all;
         position: absolute;
@@ -180,7 +176,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: var(--background-color);
             height: calc(var(--line-height) * 2);
             width: max-content;
             text-align: center;
