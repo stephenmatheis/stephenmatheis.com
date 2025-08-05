@@ -32,9 +32,7 @@
             color: var(--lighter);
 
             .label {
-                line-height: 8.25px;
                 font-size: 8.25px;
-                margin-top: 3px;
             }
         }
 
@@ -42,7 +40,7 @@
             pointer-events: all;
             position: absolute;
             top: -0.5px;
-            left: 7.25ch;
+            left: 7.5ch;
             height: var(--line-height);
             display: flex;
             align-items: center;
@@ -67,6 +65,7 @@
             .label {
                 line-height: 8.25px;
                 font-size: 8.25px;
+                margin-left: 0.75ch;
             }
         }
 
