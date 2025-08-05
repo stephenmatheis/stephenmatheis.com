@@ -33,8 +33,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                             <motion.span
                                 className={styles.link}
                                 initial={{ opacity: 0, scale: 1.5 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration, delay: d1 }}
+                                // animate={{ opacity: 1, scale: 1 }}
+                                // transition={{ duration, delay: d1 }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)
                                         .querySelector('a')
@@ -72,8 +72,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                                 <motion.span
                                     className={styles.spacer}
                                     initial={{ opacity: 0, scale: 1.5 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration, delay: d2 }}
+                                    // animate={{ opacity: 1, scale: 1 }}
+                                    // transition={{ duration, delay: d2 }}
                                 >
                                     {'>'}
                                 </motion.span>
@@ -91,8 +91,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                             key={i}
                             className={styles.line}
                             initial={{ opacity: 0, scale: 2 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.2, delay: i * 0.015 }}
+                            // animate={{ opacity: 1, scale: 1 }}
+                            // transition={{ duration: 0.2, delay: i * 0.015 }}
                         >
                             {i + 1}
                         </motion.div>
@@ -100,9 +100,15 @@ export function Content({ children }: { children: React.ReactNode }) {
                 })}
             </div>
             {children}
+
+            {/* NOTE: Done  */}
             <div className={styles.statusbar}>
                 <div className={styles.block}>
                     <motion.span
+                        className={styles.spacer}
+                        initial={{ opacity: 0, scale: 2 }}
+                        // animate={{ opacity: 1, scale: 1 }}
+                        // transition={{ ease: 'easeOut', duration: 0.5, delay: 0.5 }}
                         onHoverStart={(event) => {
                             const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
 
@@ -169,10 +175,13 @@ export function Content({ children }: { children: React.ReactNode }) {
                             label: '¶ Plain Text',
                             href: 'https://en.wikipedia.org/wiki/Plain_text',
                         },
-                    ].map(({ label, href }) => {
+                    ].map(({ label, href }, i) => {
                         return (
                             <motion.span
                                 key={label}
+                                initial={{ opacity: 0, scale: 2 }}
+                                // animate={{ opacity: 1, scale: 1 }}
+                                // transition={{ ease: 'easeOut', duration: 0.5, delay: (i + 2) * 0.5 }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)
                                         .querySelector('a')
