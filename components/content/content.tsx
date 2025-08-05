@@ -14,7 +14,7 @@ export function Content({ children }: { children: React.ReactNode }) {
 
     return (
         <main className={styles.content}>
-            {/* NOTE: Done */}
+            {/* Bread Crumbs */}
             <nav className={styles.breadcrumbs}>
                 {[
                     { label: '/', path: '/' },
@@ -83,7 +83,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                 })}
             </nav>
 
-            {/* NOTE: Done */}
+            {/* Line Numbers */}
             <div className={styles.linenumbers}>
                 {Array.from({ length: 58 }, (_, i) => {
                     return (
@@ -101,7 +101,7 @@ export function Content({ children }: { children: React.ReactNode }) {
             </div>
             {children}
 
-            {/* NOTE: Done  */}
+            {/* Status Bar  */}
             <div className={styles.statusbar}>
                 <div className={styles.block}>
                     <motion.span
