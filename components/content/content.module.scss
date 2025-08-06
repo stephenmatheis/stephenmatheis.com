@@ -111,4 +111,12 @@
             transform: translateY(1.5px);
         }
     }
+
+    .linenumbers,
+    .breadcrumbs,
+    .statusbar {
+        @media print {
+            display: none;
+        }
+    }
 }
