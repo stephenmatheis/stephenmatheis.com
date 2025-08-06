@@ -84,3 +84,11 @@ button {
     font-size: var(--font-size);
     color: var(--color);
 }
+
+#markup-overlay {
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+}
