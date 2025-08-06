@@ -10,7 +10,7 @@ type Letter = {
     delay: number;
 };
 
-const wait = 500;
+const wait = 0.25;
 
 export function LoadingCanvas() {
     const [mounted, setMounted] = useState<boolean>(false);
@@ -55,7 +55,7 @@ export function LoadingCanvas() {
                 const letter = {
                     x: col * width,
                     y: row * height,
-                    delay: (Math.random() + Math.random()) * 250 + wait,
+                    delay: (Math.random() + Math.random()) * 500 + wait,
                 };
 
                 letters.push(letter);

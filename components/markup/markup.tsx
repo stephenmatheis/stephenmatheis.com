@@ -6,7 +6,8 @@ import { useCursor } from '@/providers/cursor-provider';
 import styles from './markup.module.scss';
 import { EventInfo } from 'motion';
 
-const wait = 1;
+// const wait = 0.4;
+const wait = 0.7;
 const duration = 0.5;
 const delay = 0.5;
 const fromFilter = 'brightness(0)';
