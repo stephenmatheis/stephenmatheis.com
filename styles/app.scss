@@ -2,23 +2,27 @@
     --font-size: 11px;
     --line-height: 16.5px;
 
-    // --background-color: #ffffff;
-    // --primary: #000000;
-    // --color: #767676;
-    // --muted: #a0a0a0;
-    // --light: #bbbbbb;
-    // --lighter: #dddddd;
-    // --accent: red;
-    // --link: blue;
-
     --background-color: #ffffff;
     --primary: #000000;
     --color: #505050;
     --muted: #909090;
     --light: #ababab;
     --lighter: #cccccc;
+    --link: #000000;
+
+    // --accent: red;
+    // --path-hover: green;
+    // --link-hover: blue;
+    // --accent-background: rgba(255, 0, 0, 0.1);
+    // --path-background: rgba(0, 255, 0, 0.1);
+    // --link-background: rgba(0, 0, 255, 0.1);
+
     --accent: red;
-    --link: blue;
+    --path-hover: red;
+    --link-hover: red;
+    --accent-background: rgba(255, 0, 0, 0.1);
+    --path-background: rgba(255, 0, 0, 0.1);
+    --link-background: rgba(255, 0, 0, 0.1);
 
     @media print {
         --background-color: #ffffff;
@@ -64,9 +68,12 @@ body {
 }
 
 a {
-    text-decoration: none;
     color: var(--link);
     -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        color: var(--link-hover);
+    }
 }
 
 button {
