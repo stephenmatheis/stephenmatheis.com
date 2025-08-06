@@ -7,7 +7,6 @@ import styles from './markup.module.scss';
 import { EventInfo } from 'motion';
 import { createPortal } from 'react-dom';
 
-// const wait = 0.4;
 const wait = 0.7;
 const duration = 0.5;
 const delay = 0.5;
@@ -980,9 +979,9 @@ export function Markup() {
                         </motion.div>
                     </main>
 
-                    {/* Padding Top */}
+                    {/* Padding  */}
                     <motion.div
-                        className={styles.paddingtop}
+                        className={styles.padding}
                         onHoverStart={handleOnHoverStart}
                         onHoverEnd={handleOnHoverEnd}
                     >
