@@ -5,8 +5,10 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
-// import { LoadingCanvas } from '@/components/loading-canvas';
+import { LoadingCanvas } from '@/components/loading-canvas';
 import styles from './content.module.scss';
+
+const wait = 0.7;
 
 export function Content({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -33,8 +35,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                             <motion.span
                                 className={styles.link}
                                 initial={{ opacity: 0, scale: 1.5 }}
-                                // animate={{ opacity: 1, scale: 1 }}
-                                // transition={{ duration, delay: d1 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration, delay: d1 + wait }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)
                                         .querySelector('a')
@@ -72,8 +74,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                                 <motion.span
                                     className={styles.spacer}
                                     initial={{ opacity: 0, scale: 1.5 }}
-                                    // animate={{ opacity: 1, scale: 1 }}
-                                    // transition={{ duration, delay: d2 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration, delay: d2 + wait }}
                                 >
                                     {'>'}
                                 </motion.span>
@@ -90,9 +92,9 @@ export function Content({ children }: { children: React.ReactNode }) {
                         <motion.div
                             key={i}
                             className={styles.line}
-                            initial={{ opacity: 0, scale: 2 }}
-                            // animate={{ opacity: 1, scale: 1 }}
-                            // transition={{ duration: 0.2, delay: i * 0.015 }}
+                            initial={{ opacity: 0, scale: 1.5 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.2, delay: i * 0.015 + wait }}
                         >
                             {i + 1}
                         </motion.div>
@@ -107,8 +109,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                     <motion.span
                         className={styles.spacer}
                         initial={{ opacity: 0, scale: 2 }}
-                        // animate={{ opacity: 1, scale: 1 }}
-                        // transition={{ ease: 'easeOut', duration: 0.5, delay: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ ease: 'easeOut', duration: 0.25, delay: 0.15 + wait }}
                         onHoverStart={(event) => {
                             const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
 
@@ -179,9 +181,9 @@ export function Content({ children }: { children: React.ReactNode }) {
                         return (
                             <motion.span
                                 key={label}
-                                initial={{ opacity: 0, scale: 2 }}
-                                // animate={{ opacity: 1, scale: 1 }}
-                                // transition={{ ease: 'easeOut', duration: 0.5, delay: (i + 2) * 0.5 }}
+                                initial={{ opacity: 0, scale: 1.5 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ ease: 'easeOut', duration: 0.25, delay: (i + 1) * 0.15 + wait }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)
                                         .querySelector('a')
@@ -220,8 +222,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                 </div>
             </div>
 
-            {/* DEV: */}
-            {/* <LoadingCanvas /> */}
+            <LoadingCanvas />
         </main>
     );
 }
