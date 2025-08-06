@@ -153,6 +153,9 @@
         position: absolute;
         top: 0;
         right: -3ch;
+        display: flex;
+        justify-content: center;
+        width: 2ch;
         height: calc(var(--line-height) * 58);
         color: var(--lighter);
 
@@ -173,6 +176,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        height: var(--line-height);
         color: var(--lighter);
 
         @media print {
@@ -191,11 +195,10 @@
         pointer-events: all;
         position: absolute;
         top: 0;
-        right: 0;
+        right: 2ch;
         display: flex;
-        align-items: center;
         justify-content: center;
-        width: 14px;
+        width: 2ch;
         height: 11in;
         color: var(--lighter);
 
