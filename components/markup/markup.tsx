@@ -5,6 +5,7 @@ import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
 import styles from './markup.module.scss';
 import { EventInfo } from 'motion';
+import { createPortal } from 'react-dom';
 
 // const wait = 0.4;
 const wait = 0.7;
@@ -58,1147 +59,1220 @@ export function Markup() {
     if (!shouldMount) return null;
 
     return (
-        <div className={styles.markup}>
-            <main className={styles.content}>
-                {/* Character Width */}
-                <motion.div
-                    className={styles.charWidth}
-                    onHoverStart={handleOnHoverStart}
-                    onHoverEnd={handleOnHoverEnd}
-                >
-                    <svg width="7" height="3" viewBox="0 0 7 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* Left */}
-                        <motion.line
-                            x1="3.5"
-                            y1="2"
-                            x2="0"
-                            y2="2"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+        <>
+            {createPortal(
+                <div className={styles.markup}>
+                    <main className={styles.content}>
+                        {/* Character Width */}
+                        <motion.div
+                            className={styles.charWidth}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
+                        >
+                            <svg width="7" height="3" viewBox="0 0 7 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                {/* Left */}
+                                <motion.line
+                                    x1="3.5"
+                                    y1="2"
+                                    x2="0"
+                                    y2="2"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Right */}
+                                <motion.line
+                                    x1="3.5"
+                                    y1="2"
+                                    x2="7"
+                                    y2="2"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Top Left */}
+                                <motion.rect
+                                    x="0"
+                                    y="1"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="0"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Top Right */}
+                                <motion.rect
+                                    x="6"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="6"
+                                    y="1"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                            </svg>
+                            <motion.div
+                                className={styles.label}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                            >
+                                7px
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Font Size */}
+                        <motion.div
+                            className={styles.fontsize}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
+                        >
+                            <svg
+                                width="3"
+                                height="11"
+                                viewBox="0 0 3 11"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {/* Top */}
+                                <motion.line
+                                    x1="2"
+                                    y1="5.5"
+                                    x2="2"
+                                    y2="0"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Bottom */}
+                                <motion.line
+                                    x1="2"
+                                    y1="5.5"
+                                    x2="2"
+                                    y2="11"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Top */}
+                                <motion.rect
+                                    x="0"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="1"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom */}
+                                <motion.rect
+                                    x="0"
+                                    y="10"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="1"
+                                    y="10"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                            </svg>
+                            <motion.div
+                                className={styles.label}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                            >
+                                11px
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Line Height */}
+                        <motion.div
+                            className={styles.lineheight}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
+                        >
+                            <svg
+                                width="3"
+                                height="16.5"
+                                viewBox="0 0 3 16.5"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {/* Top */}
+                                <motion.line
+                                    x1="1.5"
+                                    y1="8.25"
+                                    x2="1.5"
+                                    y2="0"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Bottom */}
+                                <motion.line
+                                    x1="1.5"
+                                    y1="8.25"
+                                    x2="1.5"
+                                    y2="16.5"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Top Left */}
+                                <motion.rect
+                                    x="0"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Top Right */}
+                                <motion.rect
+                                    x="2"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom left */}
+                                <motion.rect
+                                    x="0"
+                                    y="15.5"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom Right */}
+                                <motion.rect
+                                    x="2"
+                                    y="15.5"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                            </svg>
+                            <motion.div
+                                className={styles.label}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                            >
+                                16.5px
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Left Content Width */}
+                        <motion.div
+                            className={styles['left-content-width']}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
+                        >
+                            <svg
+                                width="392"
+                                height="7"
+                                viewBox="0 0 392 7"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {/* Left */}
+                                <motion.line
+                                    x1="175"
+                                    y1="3.5"
+                                    x2="0"
+                                    y2="3.5"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Right */}
+                                <motion.line
+                                    x1="217"
+                                    y1="3.5"
+                                    x2="392"
+                                    y2="3.5"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Top Left */}
+                                <motion.rect
+                                    x="3"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                                <motion.rect
+                                    x="2"
+                                    y="1"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="1"
+                                    y="2"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom Left */}
+                                <motion.rect
+                                    x="1"
+                                    y="4"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="2"
+                                    y="5"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="3"
+                                    y="6"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+
+                                {/* Top Right */}
+                                <motion.rect
+                                    x="388"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                                <motion.rect
+                                    x="389"
+                                    y="1"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="390"
+                                    y="2"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom Right */}
+                                <motion.rect
+                                    x="390"
+                                    y="4"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="389"
+                                    y="5"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="388"
+                                    y="6"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                            </svg>
+                            <motion.div
+                                className={styles.label}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
+                            >
+                                56ch
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Gap */}
+                        <motion.div
+                            className={styles.gap}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
+                        >
+                            <svg
+                                width="28"
+                                height="3"
+                                viewBox="0 0 28 3"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {/* Left */}
+                                <motion.line
+                                    x1="5"
+                                    y1="1.5"
+                                    x2="0"
+                                    y2="1.5"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Right */}
+                                <motion.line
+                                    x1="23"
+                                    y1="1.5"
+                                    x2="28"
+                                    y2="1.5"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Top Left */}
+                                <motion.rect
+                                    x="0"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom Left */}
+                                <motion.rect
+                                    x="0"
+                                    y="2"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Top Right */}
+                                <motion.rect
+                                    x="27"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom Right */}
+                                <motion.rect
+                                    x="27"
+                                    y="2"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                            </svg>
+                            <motion.div
+                                className={styles.label}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                            >
+                                4ch
+                            </motion.div>
+                        </motion.div>
+
+                        {/* Right Content Width */}
+                        <motion.div
+                            className={styles['right-content-width']}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
+                        >
+                            <svg
+                                width="245"
+                                height="7"
+                                viewBox="0 0 245 7"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {/* Left */}
+                                <motion.line
+                                    x1="101.5"
+                                    y1="3.5"
+                                    x2="0"
+                                    y2="3.5"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Right */}
+                                <motion.line
+                                    x1="143.5"
+                                    y1="3.5"
+                                    x2="392"
+                                    y2="3.5"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
+
+                                {/* Top Left */}
+                                <motion.rect
+                                    x="3"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                                <motion.rect
+                                    x="2"
+                                    y="1"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="1"
+                                    y="2"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom Left */}
+                                <motion.rect
+                                    x="1"
+                                    y="4"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="2"
+                                    y="5"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="3"
+                                    y="6"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+
+                                {/* Top Right */}
+                                <motion.rect
+                                    x="241"
+                                    y="0"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                                <motion.rect
+                                    x="242"
+                                    y="1"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="243"
+                                    y="2"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom Right */}
+                                <motion.rect
+                                    x="243"
+                                    y="4"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="242"
+                                    y="5"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="241"
+                                    y="6"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                            </svg>
+                            <motion.div
+                                className={styles.label}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
+                            >
+                                35ch
+                            </motion.div>
+                        </motion.div>
+
+                        <motion.div
+                            className={styles.left}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
+                        />
+                        <motion.div
+                            className={styles.right}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
                         />
 
-                        {/* Right */}
-                        <motion.line
-                            x1="3.5"
-                            y1="2"
-                            x2="7"
-                            y2="2"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
+                        {/* Content Height */}
+                        <motion.div
+                            className={styles.contentheight}
+                            onHoverStart={handleOnHoverStart}
+                            onHoverEnd={handleOnHoverEnd}
+                        >
+                            <svg
+                                width="7"
+                                height="957"
+                                viewBox="0 0 7 957"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                {/* Top */}
+                                <motion.line
+                                    x1="3.5"
+                                    y1="470.25"
+                                    x2="3.5"
+                                    y2="0"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
 
-                        {/* Top Left */}
-                        <motion.rect
-                            x="0"
-                            y="1"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="0"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
+                                {/* Bottom */}
+                                <motion.line
+                                    x1="3.5"
+                                    y1="486.75"
+                                    x2="3.5"
+                                    y2="957"
+                                    stroke="currentColor"
+                                    strokeWidth={1}
+                                    initial={{ pathLength: 0 }}
+                                    animate={{ pathLength: 1 }}
+                                    transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                                />
 
-                        {/* Top Right */}
-                        <motion.rect
-                            x="6"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="6"
-                            y="1"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                    </svg>
+                                {/* Top Left */}
+                                <motion.rect
+                                    x="2"
+                                    y="1"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                                <motion.rect
+                                    x="1"
+                                    y="2"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="0"
+                                    y="3"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Top Right */}
+                                <motion.rect
+                                    x="4"
+                                    y="1"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="5"
+                                    y="2"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="6"
+                                    y="3"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+
+                                {/* Bottom left */}
+                                <motion.rect
+                                    x="0"
+                                    y="953"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                                <motion.rect
+                                    x="1"
+                                    y="954"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="2"
+                                    y="955"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+
+                                {/* Bottom Right */}
+                                <motion.rect
+                                    x="4"
+                                    y="955"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                                />
+                                <motion.rect
+                                    x="5"
+                                    y="954"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
+                                />
+                                <motion.rect
+                                    x="6"
+                                    y="953"
+                                    width="1"
+                                    height="1"
+                                    fill="currentColor"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
+                                />
+                            </svg>
+                            <motion.div
+                                className={styles.label}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
+                            >
+                                58 lns
+                            </motion.div>
+                        </motion.div>
+                    </main>
+
+                    {/* Padding Top */}
                     <motion.div
-                        className={styles.label}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                        className={styles.paddingtop}
+                        onHoverStart={handleOnHoverStart}
+                        onHoverEnd={handleOnHoverEnd}
                     >
-                        7px
+                        <svg
+                            width="3"
+                            height="49.5"
+                            viewBox="0 0 3 49.5"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            {/* Top */}
+                            <motion.line
+                                x1="1.5"
+                                y1="16.5"
+                                x2="1.5"
+                                y2="0"
+                                stroke="currentColor"
+                                strokeWidth={1}
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                            />
+
+                            {/* Bottom */}
+                            <motion.line
+                                x1="1.5"
+                                y1="33"
+                                x2="1.5"
+                                y2="49.5"
+                                stroke="currentColor"
+                                strokeWidth={1}
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                            />
+
+                            {/* Top Left */}
+                            <motion.rect
+                                x="0"
+                                y="0"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Top Right */}
+                            <motion.rect
+                                x="2"
+                                y="0"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Bottom left */}
+                            <motion.rect
+                                x="0"
+                                y="48.5"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Bottom Right */}
+                            <motion.rect
+                                x="2"
+                                y="48.5"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+                        </svg>
+                        <motion.div
+                            className={styles.label}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                        >
+                            3 lns
+                        </motion.div>
                     </motion.div>
-                </motion.div>
 
-                {/* Font Size */}
-                <motion.div className={styles.fontsize} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd}>
-                    <svg width="3" height="11" viewBox="0 0 3 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* Top */}
-                        <motion.line
-                            x1="2"
-                            y1="5.5"
-                            x2="2"
-                            y2="0"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Bottom */}
-                        <motion.line
-                            x1="2"
-                            y1="5.5"
-                            x2="2"
-                            y2="11"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Top */}
-                        <motion.rect
-                            x="0"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="1"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom */}
-                        <motion.rect
-                            x="0"
-                            y="10"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="1"
-                            y="10"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                    </svg>
+                    {/* Page Height */}
                     <motion.div
-                        className={styles.label}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                        className={styles.pageheight}
+                        initial={{ opacity: 0, scale: fromScale * 0.625, filter: fromFilter }}
+                        animate={{ opacity: 1, scale: toScale, filter: toFilter }}
+                        transition={{ ease: 'easeOut', duration, delay }}
+                        onHoverStart={handleOnHoverStart}
+                        onHoverEnd={handleOnHoverEnd}
                     >
-                        11px
+                        <svg
+                            width="3"
+                            height="1056"
+                            viewBox="0 0 3 1056"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            {/* Top */}
+                            <motion.line
+                                x1="1.5"
+                                y1="519.75"
+                                x2="1.5"
+                                y2="0"
+                                stroke="currentColor"
+                                strokeWidth={1}
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                            />
+
+                            {/* Bottom */}
+                            <motion.line
+                                x1="1.5"
+                                y1="536.25"
+                                x2="1.5"
+                                y2="1056"
+                                stroke="currentColor"
+                                strokeWidth={1}
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                            />
+
+                            {/* Top Left */}
+                            <motion.rect
+                                x="0"
+                                y="0"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Top Right */}
+                            <motion.rect
+                                x="2"
+                                y="0"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Bottom left */}
+                            <motion.rect
+                                x="0"
+                                y="1055"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Bottom Right */}
+                            <motion.rect
+                                x="2"
+                                y="1055"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+                        </svg>
+                        <motion.div
+                            className={styles.label}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
+                        >
+                            11in
+                        </motion.div>
                     </motion.div>
-                </motion.div>
 
-                {/* Line Height */}
-                <motion.div
-                    className={styles.lineheight}
-                    onHoverStart={handleOnHoverStart}
-                    onHoverEnd={handleOnHoverEnd}
-                >
-                    <svg width="3" height="16.5" viewBox="0 0 3 16.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* Top */}
-                        <motion.line
-                            x1="1.5"
-                            y1="8.25"
-                            x2="1.5"
-                            y2="0"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Bottom */}
-                        <motion.line
-                            x1="1.5"
-                            y1="8.25"
-                            x2="1.5"
-                            y2="16.5"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Top Left */}
-                        <motion.rect
-                            x="0"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Top Right */}
-                        <motion.rect
-                            x="2"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom left */}
-                        <motion.rect
-                            x="0"
-                            y="15.5"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom Right */}
-                        <motion.rect
-                            x="2"
-                            y="15.5"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                    </svg>
+                    {/* Page Width */}
                     <motion.div
-                        className={styles.label}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                        className={styles.pagewidth}
+                        initial={{ opacity: 0, scale: fromScale * 0.625, filter: fromFilter }}
+                        animate={{ opacity: 1, scale: toScale, filter: toFilter }}
+                        transition={{ ease: 'easeOut', duration, delay }}
+                        onHoverStart={handleOnHoverStart}
+                        onHoverEnd={handleOnHoverEnd}
                     >
-                        16.5px
+                        <svg width="816" height="3" viewBox="0 0 816 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* Left */}
+                            <motion.line
+                                x1="387"
+                                y1="1.5"
+                                x2="0"
+                                y2="1.5"
+                                stroke="currentColor"
+                                strokeWidth={1}
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                            />
+
+                            {/* Right */}
+                            <motion.line
+                                x1="429"
+                                y1="1.5"
+                                x2="816"
+                                y2="1.5"
+                                stroke="currentColor"
+                                strokeWidth={1}
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
+                            />
+
+                            {/* Top Left */}
+                            <motion.rect
+                                x="0"
+                                y="0"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Bottom Left */}
+                            <motion.rect
+                                x="0"
+                                y="2"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Top Right */}
+                            <motion.rect
+                                x="815"
+                                y="0"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+
+                            {/* Bottom Right */}
+                            <motion.rect
+                                x="815"
+                                y="2"
+                                width="1"
+                                height="1"
+                                fill="currentColor"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
+                            />
+                        </svg>
+                        <motion.div
+                            className={styles.label}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
+                        >
+                            8.5in
+                        </motion.div>
                     </motion.div>
-                </motion.div>
-
-                {/* Left Content Width */}
-                <motion.div
-                    className={styles['left-content-width']}
-                    onHoverStart={handleOnHoverStart}
-                    onHoverEnd={handleOnHoverEnd}
-                >
-                    <svg width="392" height="7" viewBox="0 0 392 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* Left */}
-                        <motion.line
-                            x1="175"
-                            y1="3.5"
-                            x2="0"
-                            y2="3.5"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Right */}
-                        <motion.line
-                            x1="217"
-                            y1="3.5"
-                            x2="392"
-                            y2="3.5"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Top Left */}
-                        <motion.rect
-                            x="3"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                        <motion.rect
-                            x="2"
-                            y="1"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="1"
-                            y="2"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom Left */}
-                        <motion.rect
-                            x="1"
-                            y="4"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="2"
-                            y="5"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="3"
-                            y="6"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-
-                        {/* Top Right */}
-                        <motion.rect
-                            x="388"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                        <motion.rect
-                            x="389"
-                            y="1"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="390"
-                            y="2"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom Right */}
-                        <motion.rect
-                            x="390"
-                            y="4"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="389"
-                            y="5"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="388"
-                            y="6"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                    </svg>
-                    <motion.div
-                        className={styles.label}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
-                    >
-                        56ch
-                    </motion.div>
-                </motion.div>
-
-                {/* Gap */}
-                <motion.div className={styles.gap} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd}>
-                    <svg width="28" height="3" viewBox="0 0 28 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* Left */}
-                        <motion.line
-                            x1="5"
-                            y1="1.5"
-                            x2="0"
-                            y2="1.5"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Right */}
-                        <motion.line
-                            x1="23"
-                            y1="1.5"
-                            x2="28"
-                            y2="1.5"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Top Left */}
-                        <motion.rect
-                            x="0"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom Left */}
-                        <motion.rect
-                            x="0"
-                            y="2"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Top Right */}
-                        <motion.rect
-                            x="27"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom Right */}
-                        <motion.rect
-                            x="27"
-                            y="2"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                    </svg>
-                    <motion.div
-                        className={styles.label}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
-                    >
-                        4ch
-                    </motion.div>
-                </motion.div>
-
-                {/* Right Content Width */}
-                <motion.div
-                    className={styles['right-content-width']}
-                    onHoverStart={handleOnHoverStart}
-                    onHoverEnd={handleOnHoverEnd}
-                >
-                    <svg width="245" height="7" viewBox="0 0 245 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* Left */}
-                        <motion.line
-                            x1="101.5"
-                            y1="3.5"
-                            x2="0"
-                            y2="3.5"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Right */}
-                        <motion.line
-                            x1="143.5"
-                            y1="3.5"
-                            x2="392"
-                            y2="3.5"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Top Left */}
-                        <motion.rect
-                            x="3"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                        <motion.rect
-                            x="2"
-                            y="1"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="1"
-                            y="2"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom Left */}
-                        <motion.rect
-                            x="1"
-                            y="4"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="2"
-                            y="5"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="3"
-                            y="6"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-
-                        {/* Top Right */}
-                        <motion.rect
-                            x="241"
-                            y="0"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                        <motion.rect
-                            x="242"
-                            y="1"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="243"
-                            y="2"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom Right */}
-                        <motion.rect
-                            x="243"
-                            y="4"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="242"
-                            y="5"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="241"
-                            y="6"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                    </svg>
-                    <motion.div
-                        className={styles.label}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
-                    >
-                        35ch
-                    </motion.div>
-                </motion.div>
-
-                <motion.div className={styles.left} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd} />
-                <motion.div className={styles.right} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd} />
-
-                {/* Content Height */}
-                <motion.div
-                    className={styles.contentheight}
-                    onHoverStart={handleOnHoverStart}
-                    onHoverEnd={handleOnHoverEnd}
-                >
-                    <svg width="7" height="957" viewBox="0 0 7 957" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* Top */}
-                        <motion.line
-                            x1="3.5"
-                            y1="470.25"
-                            x2="3.5"
-                            y2="0"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Bottom */}
-                        <motion.line
-                            x1="3.5"
-                            y1="486.75"
-                            x2="3.5"
-                            y2="957"
-                            stroke="currentColor"
-                            strokeWidth={1}
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                        />
-
-                        {/* Top Left */}
-                        <motion.rect
-                            x="2"
-                            y="1"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                        <motion.rect
-                            x="1"
-                            y="2"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="0"
-                            y="3"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Top Right */}
-                        <motion.rect
-                            x="4"
-                            y="1"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="5"
-                            y="2"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="6"
-                            y="3"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-
-                        {/* Bottom left */}
-                        <motion.rect
-                            x="0"
-                            y="953"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                        <motion.rect
-                            x="1"
-                            y="954"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="2"
-                            y="955"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-
-                        {/* Bottom Right */}
-                        <motion.rect
-                            x="4"
-                            y="955"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                        />
-                        <motion.rect
-                            x="5"
-                            y="954"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
-                        />
-                        <motion.rect
-                            x="6"
-                            y="953"
-                            width="1"
-                            height="1"
-                            fill="currentColor"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
-                        />
-                    </svg>
-                    <motion.div
-                        className={styles.label}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
-                    >
-                        58 lns
-                    </motion.div>
-                </motion.div>
-            </main>
-
-            {/* Padding Top */}
-            <motion.div className={styles.paddingtop} onHoverStart={handleOnHoverStart} onHoverEnd={handleOnHoverEnd}>
-                <svg width="3" height="49.5" viewBox="0 0 3 49.5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Top */}
-                    <motion.line
-                        x1="1.5"
-                        y1="16.5"
-                        x2="1.5"
-                        y2="0"
-                        stroke="currentColor"
-                        strokeWidth={1}
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                    />
-
-                    {/* Bottom */}
-                    <motion.line
-                        x1="1.5"
-                        y1="33"
-                        x2="1.5"
-                        y2="49.5"
-                        stroke="currentColor"
-                        strokeWidth={1}
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                    />
-
-                    {/* Top Left */}
-                    <motion.rect
-                        x="0"
-                        y="0"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Top Right */}
-                    <motion.rect
-                        x="2"
-                        y="0"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Bottom left */}
-                    <motion.rect
-                        x="0"
-                        y="48.5"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Bottom Right */}
-                    <motion.rect
-                        x="2"
-                        y="48.5"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-                </svg>
-                <motion.div
-                    className={styles.label}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
-                >
-                    3 lns
-                </motion.div>
-            </motion.div>
-
-            {/* Page Height */}
-            <motion.div
-                className={styles.pageheight}
-                initial={{ opacity: 0, scale: fromScale * 0.625, filter: fromFilter }}
-                animate={{ opacity: 1, scale: toScale, filter: toFilter }}
-                transition={{ ease: 'easeOut', duration, delay }}
-                onHoverStart={handleOnHoverStart}
-                onHoverEnd={handleOnHoverEnd}
-            >
-                <svg width="3" height="1056" viewBox="0 0 3 1056" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Top */}
-                    <motion.line
-                        x1="1.5"
-                        y1="519.75"
-                        x2="1.5"
-                        y2="0"
-                        stroke="currentColor"
-                        strokeWidth={1}
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                    />
-
-                    {/* Bottom */}
-                    <motion.line
-                        x1="1.5"
-                        y1="536.25"
-                        x2="1.5"
-                        y2="1056"
-                        stroke="currentColor"
-                        strokeWidth={1}
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                    />
-
-                    {/* Top Left */}
-                    <motion.rect
-                        x="0"
-                        y="0"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Top Right */}
-                    <motion.rect
-                        x="2"
-                        y="0"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Bottom left */}
-                    <motion.rect
-                        x="0"
-                        y="1055"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Bottom Right */}
-                    <motion.rect
-                        x="2"
-                        y="1055"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-                </svg>
-                <motion.div
-                    className={styles.label}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
-                >
-                    11in
-                </motion.div>
-            </motion.div>
-
-            {/* Page Width */}
-            <motion.div
-                className={styles.pagewidth}
-                initial={{ opacity: 0, scale: fromScale * 0.625, filter: fromFilter }}
-                animate={{ opacity: 1, scale: toScale, filter: toFilter }}
-                transition={{ ease: 'easeOut', duration, delay }}
-                onHoverStart={handleOnHoverStart}
-                onHoverEnd={handleOnHoverEnd}
-            >
-                <svg width="816" height="3" viewBox="0 0 816 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    {/* Left */}
-                    <motion.line
-                        x1="387"
-                        y1="1.5"
-                        x2="0"
-                        y2="1.5"
-                        stroke="currentColor"
-                        strokeWidth={1}
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                    />
-
-                    {/* Right */}
-                    <motion.line
-                        x1="429"
-                        y1="1.5"
-                        x2="816"
-                        y2="1.5"
-                        stroke="currentColor"
-                        strokeWidth={1}
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ ease: 'easeOut', duration, delay: (duration + delay) / 1.25 }}
-                    />
-
-                    {/* Top Left */}
-                    <motion.rect
-                        x="0"
-                        y="0"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Bottom Left */}
-                    <motion.rect
-                        x="0"
-                        y="2"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Top Right */}
-                    <motion.rect
-                        x="815"
-                        y="0"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-
-                    {/* Bottom Right */}
-                    <motion.rect
-                        x="815"
-                        y="2"
-                        width="1"
-                        height="1"
-                        fill="currentColor"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
-                    />
-                </svg>
-                <motion.div
-                    className={styles.label}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
-                >
-                    8.5in
-                </motion.div>
-            </motion.div>
-        </div>
+                </div>,
+                document.querySelector('#markup-overlay')!
+            )}
+        </>
     );
 }

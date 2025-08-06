@@ -1,5 +1,4 @@
 .markup {
-    pointer-events: none;
     position: absolute;
     top: 0;
     display: flex;
@@ -7,6 +6,7 @@
     width: 8.5in;
     height: 11in;
     padding: calc(var(--line-height) * 3) 0;
+    margin: auto;
 
     @media screen and (max-width: 829px) {
         display: none;
@@ -21,20 +21,23 @@
         .charWidth {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--line-height) * 0.5);
-            left: 3ch;
+            top: calc(var(--font-size) * 1.25);
+            left: 2ch;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: var(--line-height);
+            gap: 2px;
+            width: 3ch;
+            height: calc(var(--line-height) * 1);
             color: var(--lighter);
 
             .label {
-                position: absolute;
-                bottom: -8.25px;
-                left: 50%;
-                transform: translateX(-50%);
+                // position: absolute;
+                // bottom: -6px;
+                // left: 50%;
+                // transform: translateX(-50%);
+                line-height: 8.25px;
                 font-size: 8.25px;
             }
         }

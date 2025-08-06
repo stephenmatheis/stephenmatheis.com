@@ -104,7 +104,7 @@ export function Cursor() {
                         borderRadius: 4,
                         top: position.height / -2,
                         left: (position.width + 14) / -2,
-                        backgroundColor: 'var(--link-background',
+                        backgroundColor: 'var(--link-background)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
                     path: {
@@ -113,7 +113,7 @@ export function Cursor() {
                         borderRadius: 4,
                         top: (position.height + 4) / -2,
                         left: (position.width + 14) / -2,
-                        backgroundColor: 'var(--path-background',
+                        backgroundColor: 'var(--path-background)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
                     item: {
@@ -140,7 +140,7 @@ export function Cursor() {
                         borderRadius: 4,
                         top: (position.height + 4) / -2,
                         left: (position.width + 7) / -2,
-                        backgroundColor: 'var(--accent-background',
+                        backgroundColor: 'var(--accent-background)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
                     tab: {

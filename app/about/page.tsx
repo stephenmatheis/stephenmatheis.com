@@ -1,5 +1,3 @@
-import { Viewport } from '@/components/viewport';
-import { Content } from '@/components/content';
 import { Name } from '@/components/name';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
@@ -9,15 +7,13 @@ import { Markup } from '@/components/markup';
 
 export default function AboutPage() {
     return (
-        <Viewport>
-            <Content>
-                <Name />
-                <Contact />
-                <Experience />
-                <Skills />
-                <Work />
-            </Content>
+        <>
+            <Name />
+            <Contact />
+            <Experience />
+            <Skills />
+            <Work />
             <Markup />
-        </Viewport>
+        </>
     );
 }
