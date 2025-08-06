@@ -1039,7 +1039,7 @@ export function Markup() {
                         x1="1.5"
                         y1="536.25"
                         x2="1.5"
-                        y2="957"
+                        y2="1056"
                         stroke="currentColor"
                         strokeWidth={1}
                         initial={{ pathLength: 0 }}
@@ -1074,7 +1074,7 @@ export function Markup() {
                     {/* Bottom left */}
                     <motion.rect
                         x="0"
-                        y="956"
+                        y="1055"
                         width="1"
                         height="1"
                         fill="currentColor"
@@ -1086,7 +1086,7 @@ export function Markup() {
                     {/* Bottom Right */}
                     <motion.rect
                         x="2"
-                        y="956"
+                        y="1055"
                         width="1"
                         height="1"
                         fill="currentColor"

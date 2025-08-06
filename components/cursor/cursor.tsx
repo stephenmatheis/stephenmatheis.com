@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
 import styles from './cursor.module.scss';
+
+// TODO: Don't allow mouse movement until boot
 
 export function Cursor() {
     const pathname = usePathname();
@@ -133,11 +135,11 @@ export function Cursor() {
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
                     markup: {
-                        height: position.height + 8,
-                        width: position.width + 14,
+                        height: position.height + 4,
+                        width: position.width + 7,
                         borderRadius: 4,
-                        top: (position.height + 8) / -2,
-                        left: (position.width + 14) / -2,
+                        top: (position.height + 4) / -2,
+                        left: (position.width + 7) / -2,
                         backgroundColor: 'rgba(255, 0, 0, 0.1)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
