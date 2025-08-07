@@ -12,13 +12,17 @@
         display: none;
     }
 
+    @media print {
+        display: none;
+    }
+
     .content {
         position: relative;
         display: flex;
         justify-content: space-between;
         gap: 8ch;
 
-        .charWidth {
+        .charwidth {
             pointer-events: all;
             position: absolute;
             top: calc(var(--font-size) * 7.25);
@@ -214,7 +218,7 @@
         }
     }
 
-    .charWidth,
+    .charwidth,
     .fontsize,
     .lineheight,
     .gap,

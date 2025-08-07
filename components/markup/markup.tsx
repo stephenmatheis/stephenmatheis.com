@@ -64,7 +64,7 @@ export function Markup() {
                     <main className={styles.content}>
                         {/* Character Width */}
                         <motion.div
-                            className={styles.charWidth}
+                            className={styles.charwidth}
                             onHoverStart={handleOnHoverStart}
                             onHoverEnd={handleOnHoverEnd}
                         >
