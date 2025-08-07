@@ -128,6 +128,18 @@ const experience = [
             },
         ],
     },
+    {
+        company: 'Applied Integrated Technologies',
+        site: 'https://www.ait-i.com/',
+        stack: ['VBA', 'SharePoint'],
+        roles: [
+            {
+                title: 'Access Control Specialist',
+                start: 'Feb 2011',
+                end: 'Nov 2014',
+            },
+        ],
+    },
 ];
 
 export default experience;

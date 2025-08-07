@@ -1,7 +1,7 @@
 .name {
     @media (min-width: 830px), print {
         position: absolute;
-        top: 0;
+        top: calc(var(--line-height) * 2);
         left: 0;
         width: 56ch;
     }
@@ -10,25 +10,19 @@
         width: fit-content;
     }
 
-    .text {
-        display: flex;
-        flex-direction: column;
-        width: fit-content;
+    .primary {
+        color: var(--primary);
+    }
 
-        .primary {
-            color: var(--primary);
-        }
+    .color {
+        color: var(--color);
+    }
 
-        .color {
-            color: var(--color);
-        }
+    .light {
+        color: var(--light);
+    }
 
-        .muted {
-            color: var(--muted);
-        }
-
-        .light {
-            color: var(--light);
-        }
+    .about {
+        color: var(--color);
     }
 }
