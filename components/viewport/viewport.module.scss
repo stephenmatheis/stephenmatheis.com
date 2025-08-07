@@ -1,10 +1,58 @@
 .viewport {
+    // .background {
+    //     position: fixed;
+
+    //     // top: 0;
+    //     // left: 0;
+
+    //     top: 100;
+    //     left: 100;
+
+    //     // width: 100%;
+    //     // height: 100dvh;
+
+    //     width: 200px;
+    //     height: 200px;
+    //     border-radius: 50%;
+
+    //     // background-image: url('/grid-pattern.svg');
+    //     // background-color: #f1f1f3;
+    //     background-color: #ff000099;
+    // }
+
+    .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100dvh;
+        background-image: url('/noise.svg');
+    }
+
+    .foreground {
+        // position: fixed;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        // height: 100dvh;
+        // background-color: rgba(255, 255, 255, 0.75);
+        // backdrop-filter: blur(4px);
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100dvh;
+        background-color: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(4px);
+    }
+
     @media screen {
         min-height: 100dvh;
         display: flex;
         padding: var(--line-height) 2ch;
 
-        @media (max-width: 829px ) {
+        @media (max-width: 829px) {
             padding: 0;
         }
     }
