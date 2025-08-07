@@ -5,24 +5,16 @@
     --background-color: #ffffff;
     --primary: #000000;
     --color: #767676;
-    --muted: #999999;
-    --light: #ababab;
+    --muted: #a0a0a0;
+    --light: #bbbbbb;
     --lighter: #cccccc;
-    --link: #000000;
-
-    // --accent: red;
-    // --path-hover: green;
-    // --link-hover: blue;
-    // --accent-background: rgba(255, 0, 0, 0.1);
-    // --path-background: rgba(0, 255, 0, 0.1);
-    // --link-background: rgba(0, 0, 255, 0.1);
-
-    --accent: red;
-    --path-hover: red;
-    --link-hover: red;
-    --accent-background: rgba(255, 0, 0, 0.1);
-    --path-background: rgba(255, 0, 0, 0.1);
-    --link-background: rgba(255, 0, 0, 0.1);
+    --accent: #ff3131;
+    --accent-background: rgba(255, 49, 049, 0.1);
+    --path-hover: #ff3131;
+    --path-background: rgba(255, 49, 49, 0.1);
+    --link: #ff3131;
+    --link-hover: #ff3131;
+    --link-background: rgba(255, 49, 49, 0.1);
 
     @media print {
         --background-color: #ffffff;
@@ -68,6 +60,7 @@ body {
 }
 
 a {
+    text-decoration: none;
     color: var(--link);
     -webkit-tap-highlight-color: transparent;
 

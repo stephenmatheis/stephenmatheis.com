@@ -10,7 +10,6 @@ const experience = [
                 end: 'Now',
             },
         ],
-        list: ['Building a new online giving platform for live events.'],
     },
     {
         company: 'NEXTdotgov',
@@ -23,10 +22,9 @@ const experience = [
                 end: 'Now',
             },
         ],
-        list: ['Founded NEXTdotgov, a web consultancy for government.'],
     },
     {
-        company: 'TATCS',
+        company: 'T and T Consulting Services',
         site: 'https://www.tatcs.com/',
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
@@ -46,7 +44,6 @@ const experience = [
                 end: 'May 2021',
             },
         ],
-        list: ['Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.'],
     },
     {
         company: 'Apple (TEKsystems)',
@@ -59,7 +56,6 @@ const experience = [
                 end: 'Oct 2023',
             },
         ],
-        list: ['Prototyping with Next.js, TypeScript, and Storybook.'],
     },
     {
         company: 'GovCIO',
@@ -72,7 +68,6 @@ const experience = [
                 end: 'Jul 2022',
             },
         ],
-        list: ['Developed 3D software for the U.S. Air Force with Unity.'],
     },
     {
         company: 'Break',
@@ -94,7 +89,6 @@ const experience = [
                 end: 'Apr 2022',
             },
         ],
-        list: ['Built a mobile app for the U.S. Marine Corps.'],
     },
     {
         company: 'Break',
@@ -116,7 +110,6 @@ const experience = [
                 end: 'Oct 2017',
             },
         ],
-        list: ['Built client-side SharePoint apps.'],
     },
     {
         company: 'Bravo Consulting Group',
@@ -134,7 +127,6 @@ const experience = [
                 end: 'Feb 2015',
             },
         ],
-        list: ['Team Lead at the Executive Office of the President.'],
     },
 ];
 

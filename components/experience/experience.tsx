@@ -6,7 +6,7 @@ export function Experience() {
     return (
         <Section className={styles.experience} heading="Experience">
             <div className={styles.jobs}>
-                {experience.map(({ company, site, stack, roles, list }, index) => {
+                {experience.map(({ company, stack, roles }, index) => {
                     if (company === 'Break') {
                         return (
                             <div key={index} className={styles.job}>
@@ -26,39 +26,20 @@ export function Experience() {
 
                     return (
                         <div key={index} className={styles.job}>
+                            <div className={styles.company}>{company}</div>
                             <div className={styles.roles}>
                                 {roles.map(({ title, start, end }, index: number) => {
                                     return (
                                         <div key={index} className={styles.role}>
-                                            <div className={styles.title}>
-                                                <span>{title}</span>{' '}
-                                                {index === 0 && (
-                                                    // <a href={site} target="_blank" className={styles.company}>
-                                                    //     @ {company}
-                                                    // </a>
-                                                    <span className={styles.company}>@ {company}</span>
-                                                )}
-                                            </div>
-                                            <div className={styles.date}>
-                                                {start}–{end}
-                                            </div>
+                                            <span className={styles.title}>{title}</span>{' '}
+                                            <span className={styles.date}>
+                                                {start} – {end}
+                                            </span>
                                         </div>
                                     );
                                 })}
                             </div>
-                            <ul className={styles.list}>
-                                {list?.map((item: string | React.ReactNode, index: number) => {
-                                    return (
-                                        <li key={index} className={styles.item}>
-                                            <span>{item}</span>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                            <div className={styles.stack}>
-                                {'› '}
-                                {stack?.join(', ')}
-                            </div>
+                            <div className={styles.stack}>{stack?.join(', ')}</div>
                         </div>
                     );
                 })}
