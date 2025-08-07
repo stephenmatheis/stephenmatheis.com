@@ -1,5 +1,11 @@
 const contact = [
-       {
+    {
+        href: 'https://nextdotgov.com',
+        text: 'nextdotgov.com',
+        title: 'My website',
+        newTab: true,
+    },
+    {
         href: 'https://stephenmatheis.com',
         text: 'stephenmatheis.com',
         title: 'My website',

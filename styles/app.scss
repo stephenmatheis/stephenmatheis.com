@@ -10,9 +10,10 @@
     --lighter: #cccccc;
     --accent: #ff3131;
     --accent-background: rgba(255, 49, 049, 0.1);
+    --path: #000000;
     --path-hover: #ff3131;
     --path-background: rgba(255, 49, 49, 0.1);
-    --link: #ff3131;
+    --link: #000000;
     --link-hover: #ff3131;
     --link-background: rgba(255, 49, 49, 0.1);
 
@@ -60,9 +61,10 @@ body {
 }
 
 a {
-    text-decoration: none;
+    // text-decoration: none;
     color: var(--link);
     -webkit-tap-highlight-color: transparent;
+    transition: color 150ms ease-in-out;
 
     &:hover {
         color: var(--link-hover);

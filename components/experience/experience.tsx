@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Section } from '@/components/section';
 import experience from '@/data/experience';
 import styles from './experience.module.scss';
@@ -44,6 +45,10 @@ export function Experience() {
                     );
                 })}
             </div>
+            <br />
+            <Link className={styles.more} href="/work">
+                More →
+            </Link>
         </Section>
     );
 }

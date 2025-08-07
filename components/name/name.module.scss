@@ -1,22 +1,36 @@
 .name {
+    display: flex;
+    align-items: center;
+    gap: 2ch;
+
     @media (min-width: 830px), print {
         position: absolute;
-        // top: calc(var(--line-height) * 2);
         top: 0;
         left: 0;
         width: 56ch;
     }
 
     .link {
-        width: fit-content;
+        height: fit-content;
+        color: var(--primary);
+
+        &:hover {
+            color: var(--link-hover);
+        }
+
+        .qr {
+            display: flex;
+            justify-content: center;
+            width: 6ch;
+
+            svg {
+                margin-bottom: 1px;
+            }
+        }
     }
 
     .primary {
         color: var(--primary);
-    }
-
-    .color {
-        color: var(--color);
     }
 
     .muted {
@@ -25,9 +39,5 @@
 
     .light {
         color: var(--light);
-    }
-
-    .about {
-        color: var(--color);
     }
 }

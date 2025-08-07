@@ -126,12 +126,12 @@ export function Cursor() {
                         transition: { type: 'spring', stiffness: 200, damping: 15 },
                     },
                     button: {
-                        height: position.height,
+                        height: position.height + 14,
                         width: position.width + 14,
                         borderRadius: 4,
-                        top: position.height / -2,
+                        top: (position.height + 14) / -2,
                         left: (position.width + 14) / -2,
-                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                        backgroundColor: 'var(--link-background)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
                     markup: {
