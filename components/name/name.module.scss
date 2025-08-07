@@ -1,7 +1,8 @@
 .name {
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 2);
+        // top: calc(var(--line-height) * 2);
+        top: 0;
         left: 0;
         width: 56ch;
     }
@@ -16,6 +17,10 @@
 
     .color {
         color: var(--color);
+    }
+
+    .muted {
+        color: var(--muted);
     }
 
     .light {

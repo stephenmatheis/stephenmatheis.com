@@ -1,7 +1,24 @@
 .footer {
-    color: var(--light);
+    .barcode {
+        width: fit-content;
 
-    background-color: #0000ff10;
+        .code {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: var(--line-height);
+            color: var(--muted);
+        }
+
+        .text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: var(--line-height);
+            font-size: 8.25px;
+            color: var(--light);
+        }
+    }
 
     @media (min-width: 830px), print {
         position: absolute;
