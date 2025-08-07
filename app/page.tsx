@@ -1,7 +1,7 @@
 export default function RootPage() {
     return (
         <>
-            <h2>Home</h2>
+            <h2>🚧 Under development</h2>
         </>
     );
 }
