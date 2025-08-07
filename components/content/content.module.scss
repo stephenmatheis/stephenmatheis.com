@@ -3,14 +3,14 @@
     display: flex;
     flex-direction: column;
     gap: calc(var(--line-height) * 2);
-    width: 95ch;
+    width: 92ch;
     height: calc(var(--line-height) * 58);
 
     @media screen and (max-width: 829px) {
         gap: var(--line-height);
         height: max-content;
         width: 100%;
-        max-width: 95ch;
+        max-width: 92ch;
     }
 
     .linenumbers {
@@ -46,10 +46,10 @@
 
             a {
                 text-decoration: none;
-                color: var(--light);
+                color: var(--muted);
 
                 &.pathname {
-                    color: var(--color);
+                    color: var(--accent);
                 }
 
                 &:hover {

@@ -9,7 +9,7 @@ const skills = [
     },
     {
         group: 'Libraries',
-        items: ['React', 'React Native', 'Motion', 'Express', 'Fastify', 'Three.js', 'React Three Fiber', 'ArcGIS'],
+        items: ['React', 'React Native', 'Motion', 'Express', 'Fastify', 'Three.js', 'R3F', 'ArcGIS'],
     },
     {
         group: 'Runtimes',

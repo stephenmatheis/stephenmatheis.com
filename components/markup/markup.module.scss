@@ -16,7 +16,7 @@
         position: relative;
         display: flex;
         justify-content: space-between;
-        gap: 4ch;
+        gap: 8ch;
 
         .charWidth {
             pointer-events: all;
@@ -96,8 +96,9 @@
         .gap {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--line-height) * 1);
-            left: 56ch;
+            // top: calc(var(--line-height) * 1);
+            top: calc(var(--line-height) * 28);
+            left: 57ch;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -113,14 +114,14 @@
             display: flex;
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
-            width: 56ch;
+            width: 57ch;
         }
 
         .right {
             display: flex;
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
-            width: 35ch;
+            width: 27ch;
         }
     }
 

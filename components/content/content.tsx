@@ -19,7 +19,7 @@ export function Content({ children }: { children: React.ReactNode }) {
             {/* Bread Crumbs */}
             <nav className={styles.breadcrumbs}>
                 {[
-                    { label: '/', path: '/' },
+                    { label: 'home', path: '/' },
                     { label: 'work', path: '/work' },
                     { label: 'blog', path: '/blog' },
                     { label: 'about', path: '/about' },
@@ -34,8 +34,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                         <Fragment key={i}>
                             <motion.span
                                 className={styles.link}
-                                initial={{ opacity: 0, scale: 1.5 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, scale: 0.75, x: '-2ch' }}
+                                animate={{ opacity: 1, scale: 1, x: '0' }}
                                 transition={{ duration, delay: d1 + wait }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)
@@ -73,8 +73,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                             {i < arr.length - 1 && (
                                 <motion.span
                                     className={styles.spacer}
-                                    initial={{ opacity: 0, scale: 1.5 }}
-                                    animate={{ opacity: 1, scale: 1 }}
+                                    initial={{ opacity: 0, scale: 0.75, x: '-2ch' }}
+                                    animate={{ opacity: 1, scale: 1, x: '0' }}
                                     transition={{ duration, delay: d2 + wait }}
                                 >
                                     {'>'}
@@ -92,7 +92,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                         <motion.div
                             key={i}
                             className={styles.line}
-                            initial={{ opacity: 0, scale: 1.5 }}
+                            initial={{ opacity: 0, scale: 0.75 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.2, delay: i * 0.015 + wait }}
                         >
@@ -101,6 +101,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                     );
                 })}
             </div>
+
+            {/* Main */}
             {children}
 
             {/* Status Bar  */}
@@ -108,7 +110,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                 <div className={styles.block}>
                     <motion.span
                         className={styles.spacer}
-                        initial={{ opacity: 0, scale: 2 }}
+                        initial={{ opacity: 0, scale: 0.75 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ ease: 'easeOut', duration: 0.25, delay: 0.15 + wait }}
                         onHoverStart={(event) => {
@@ -181,8 +183,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                         return (
                             <motion.span
                                 key={label}
-                                initial={{ opacity: 0, scale: 1.5 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, scale: 0.75, x: '-2ch' }}
+                                animate={{ opacity: 1, scale: 1, x: '0' }}
                                 transition={{ ease: 'easeOut', duration: 0.25, delay: (i + 1) * 0.15 + wait }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)

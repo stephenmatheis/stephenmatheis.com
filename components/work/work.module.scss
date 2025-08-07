@@ -1,9 +1,9 @@
 .work {
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 38);
+        top: calc(var(--line-height) * 45);
         right: 0;
-        width: 35ch;
+        width: 27ch;
     }
 
     .list {

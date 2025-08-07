@@ -346,15 +346,15 @@ export function Markup() {
                             onHoverEnd={handleOnHoverEnd}
                         >
                             <svg
-                                width="392"
+                                width="399"
                                 height="7"
-                                viewBox="0 0 392 7"
+                                viewBox="0 0 399 7"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 {/* Left */}
                                 <motion.line
-                                    x1="175"
+                                    x1="178.5"
                                     y1="3.5"
                                     x2="0"
                                     y2="3.5"
@@ -367,9 +367,9 @@ export function Markup() {
 
                                 {/* Right */}
                                 <motion.line
-                                    x1="217"
+                                    x1="220.5"
                                     y1="3.5"
-                                    x2="392"
+                                    x2="399"
                                     y2="3.5"
                                     stroke="currentColor"
                                     strokeWidth={1}
@@ -444,7 +444,7 @@ export function Markup() {
 
                                 {/* Top Right */}
                                 <motion.rect
-                                    x="388"
+                                    x="395"
                                     y="0"
                                     width="1"
                                     height="1"
@@ -454,7 +454,7 @@ export function Markup() {
                                     transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
                                 />
                                 <motion.rect
-                                    x="389"
+                                    x="396"
                                     y="1"
                                     width="1"
                                     height="1"
@@ -464,7 +464,7 @@ export function Markup() {
                                     transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
                                 />
                                 <motion.rect
-                                    x="390"
+                                    x="397"
                                     y="2"
                                     width="1"
                                     height="1"
@@ -476,7 +476,7 @@ export function Markup() {
 
                                 {/* Bottom Right */}
                                 <motion.rect
-                                    x="390"
+                                    x="397"
                                     y="4"
                                     width="1"
                                     height="1"
@@ -486,7 +486,7 @@ export function Markup() {
                                     transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
                                 />
                                 <motion.rect
-                                    x="389"
+                                    x="396"
                                     y="5"
                                     width="1"
                                     height="1"
@@ -496,7 +496,7 @@ export function Markup() {
                                     transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
                                 />
                                 <motion.rect
-                                    x="388"
+                                    x="395"
                                     y="6"
                                     width="1"
                                     height="1"
@@ -512,7 +512,7 @@ export function Markup() {
                                 animate={{ opacity: 1 }}
                                 transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
                             >
-                                56ch
+                                57ch
                             </motion.div>
                         </motion.div>
 
@@ -523,15 +523,15 @@ export function Markup() {
                             onHoverEnd={handleOnHoverEnd}
                         >
                             <svg
-                                width="28"
+                                width="56"
                                 height="3"
-                                viewBox="0 0 28 3"
+                                viewBox="0 0 56 3"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 {/* Left */}
                                 <motion.line
-                                    x1="5"
+                                    x1="14"
                                     y1="1.5"
                                     x2="0"
                                     y2="1.5"
@@ -544,9 +544,9 @@ export function Markup() {
 
                                 {/* Right */}
                                 <motion.line
-                                    x1="23"
+                                    x1="42"
                                     y1="1.5"
-                                    x2="28"
+                                    x2="56"
                                     y2="1.5"
                                     stroke="currentColor"
                                     strokeWidth={1}
@@ -581,7 +581,7 @@ export function Markup() {
 
                                 {/* Top Right */}
                                 <motion.rect
-                                    x="27"
+                                    x="55"
                                     y="0"
                                     width="1"
                                     height="1"
@@ -593,7 +593,7 @@ export function Markup() {
 
                                 {/* Bottom Right */}
                                 <motion.rect
-                                    x="27"
+                                    x="55"
                                     y="2"
                                     width="1"
                                     height="1"
@@ -609,7 +609,7 @@ export function Markup() {
                                 animate={{ opacity: 1 }}
                                 transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
                             >
-                                4ch
+                                8ch
                             </motion.div>
                         </motion.div>
 
@@ -620,15 +620,15 @@ export function Markup() {
                             onHoverEnd={handleOnHoverEnd}
                         >
                             <svg
-                                width="245"
+                                width="189"
                                 height="7"
-                                viewBox="0 0 245 7"
+                                viewBox="0 0 189 7"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 {/* Left */}
                                 <motion.line
-                                    x1="101.5"
+                                    x1="73.5"
                                     y1="3.5"
                                     x2="0"
                                     y2="3.5"
@@ -641,9 +641,9 @@ export function Markup() {
 
                                 {/* Right */}
                                 <motion.line
-                                    x1="143.5"
+                                    x1="115.5"
                                     y1="3.5"
-                                    x2="392"
+                                    x2="189"
                                     y2="3.5"
                                     stroke="currentColor"
                                     strokeWidth={1}
@@ -718,7 +718,7 @@ export function Markup() {
 
                                 {/* Top Right */}
                                 <motion.rect
-                                    x="241"
+                                    x="185"
                                     y="0"
                                     width="1"
                                     height="1"
@@ -728,7 +728,7 @@ export function Markup() {
                                     transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.3 }}
                                 />
                                 <motion.rect
-                                    x="242"
+                                    x="186"
                                     y="1"
                                     width="1"
                                     height="1"
@@ -738,7 +738,7 @@ export function Markup() {
                                     transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
                                 />
                                 <motion.rect
-                                    x="243"
+                                    x="187"
                                     y="2"
                                     width="1"
                                     height="1"
@@ -750,7 +750,7 @@ export function Markup() {
 
                                 {/* Bottom Right */}
                                 <motion.rect
-                                    x="243"
+                                    x="187"
                                     y="4"
                                     width="1"
                                     height="1"
@@ -760,7 +760,7 @@ export function Markup() {
                                     transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.1 }}
                                 />
                                 <motion.rect
-                                    x="242"
+                                    x="186"
                                     y="5"
                                     width="1"
                                     height="1"
@@ -770,7 +770,7 @@ export function Markup() {
                                     transition={{ ease: 'linear', duration: 0, delay: duration + delay + 0.2 }}
                                 />
                                 <motion.rect
-                                    x="241"
+                                    x="185"
                                     y="6"
                                     width="1"
                                     height="1"
@@ -786,7 +786,7 @@ export function Markup() {
                                 animate={{ opacity: 1 }}
                                 transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
                             >
-                                35ch
+                                27ch
                             </motion.div>
                         </motion.div>
 
