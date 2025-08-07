@@ -1,28 +1,22 @@
 .footer {
-    .barcode {
-        width: fit-content;
+    display: flex;
+    gap: 2ch;
 
-        .code {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: var(--line-height);
-            color: var(--muted);
-        }
+    .version {
+        color: var(--light);
+    }
 
-        .text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: var(--line-height);
-            font-size: 8.25px;
-            color: var(--light);
-        }
+    .date {
+        color: var(--light);
+    }
+
+    .time {
+        color: var(--light);
     }
 
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 56);
+        top: calc(var(--line-height) * 57);
         left: 0;
         width: 57ch;
     }

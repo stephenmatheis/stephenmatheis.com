@@ -20,9 +20,9 @@ export function Content({ children }: { children: React.ReactNode }) {
             <nav className={styles.breadcrumbs}>
                 {[
                     { label: 'home', path: '/' },
+                    { label: 'about', path: '/about' },
                     { label: 'work', path: '/work' },
                     { label: 'blog', path: '/blog' },
-                    { label: 'about', path: '/about' },
                 ].map((crumb, i, arr) => {
                     const duration = 0.3;
                     const i2 = (i + 1) * 2 - 1;
