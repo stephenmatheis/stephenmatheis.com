@@ -28,7 +28,7 @@ export function LoadingCanvas() {
         const cols = 95;
         const rows = 58;
         const width = 7;
-        const height = 16.5;
+        const height = 14;
 
         const canvas = patternRef.current.querySelector('#canvas') as HTMLCanvasElement;
         const ctx = canvas.getContext('2d');

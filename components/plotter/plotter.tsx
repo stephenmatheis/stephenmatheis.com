@@ -6,7 +6,7 @@ import styles from './plotter.module.scss';
 
 const LINE_WIDTH = 1;
 const OFFSET = LINE_WIDTH / 2;
-const START_Y = 16.5 * 4;
+const START_Y = 14 * 4;
 const START_X = 7 * 10;
 const STIFFNESS = 200;
 const DAMPING = 25;
