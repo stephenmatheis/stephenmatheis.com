@@ -250,15 +250,15 @@ export function Markup() {
                         >
                             <svg
                                 width="3"
-                                height="16.5"
-                                viewBox="0 0 3 16.5"
+                                height="14"
+                                viewBox="0 0 3 14"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 {/* Top */}
                                 <motion.line
                                     x1="1.5"
-                                    y1="8.25"
+                                    y1="7"
                                     x2="1.5"
                                     y2="0"
                                     stroke="currentColor"
@@ -271,9 +271,9 @@ export function Markup() {
                                 {/* Bottom */}
                                 <motion.line
                                     x1="1.5"
-                                    y1="8.25"
+                                    y1="7"
                                     x2="1.5"
-                                    y2="16.5"
+                                    y2="14"
                                     stroke="currentColor"
                                     strokeWidth={1}
                                     initial={{ pathLength: 0 }}
@@ -308,7 +308,7 @@ export function Markup() {
                                 {/* Bottom left */}
                                 <motion.rect
                                     x="0"
-                                    y="15.5"
+                                    y="13"
                                     width="1"
                                     height="1"
                                     fill="currentColor"
@@ -320,7 +320,7 @@ export function Markup() {
                                 {/* Bottom Right */}
                                 <motion.rect
                                     x="2"
-                                    y="15.5"
+                                    y="13"
                                     width="1"
                                     height="1"
                                     fill="currentColor"
@@ -335,7 +335,7 @@ export function Markup() {
                                 animate={{ opacity: 1 }}
                                 transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
                             >
-                                16.5px
+                                14px
                             </motion.div>
                         </motion.div>
 
@@ -985,17 +985,11 @@ export function Markup() {
                         onHoverStart={handleOnHoverStart}
                         onHoverEnd={handleOnHoverEnd}
                     >
-                        <svg
-                            width="3"
-                            height="49.5"
-                            viewBox="0 0 3 49.5"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
+                        <svg width="3" height="42" viewBox="0 0 3 42" fill="none" xmlns="http://www.w3.org/2000/svg">
                             {/* Top */}
                             <motion.line
                                 x1="1.5"
-                                y1="16.5"
+                                y1="14"
                                 x2="1.5"
                                 y2="0"
                                 stroke="currentColor"
@@ -1008,9 +1002,9 @@ export function Markup() {
                             {/* Bottom */}
                             <motion.line
                                 x1="1.5"
-                                y1="33"
+                                y1="28"
                                 x2="1.5"
-                                y2="49.5"
+                                y2="42"
                                 stroke="currentColor"
                                 strokeWidth={1}
                                 initial={{ pathLength: 0 }}
@@ -1045,7 +1039,7 @@ export function Markup() {
                             {/* Bottom left */}
                             <motion.rect
                                 x="0"
-                                y="48.5"
+                                y="41"
                                 width="1"
                                 height="1"
                                 fill="currentColor"
@@ -1057,7 +1051,7 @@ export function Markup() {
                             {/* Bottom Right */}
                             <motion.rect
                                 x="2"
-                                y="48.5"
+                                y="41"
                                 width="1"
                                 height="1"
                                 fill="currentColor"
