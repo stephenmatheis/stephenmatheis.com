@@ -24,18 +24,20 @@ export function Content({ children }: { children: React.ReactNode }) {
                     { label: 'work', path: '/work' },
                     { label: 'blog', path: '/blog' },
                 ].map((crumb, i, arr) => {
-                    const duration = 0.3;
+                    const duration = 0;
                     const i2 = (i + 1) * 2 - 1;
                     const i1 = i2 - 1;
-                    const d2 = i2 * 0.04;
-                    const d1 = i1 * 0.04;
+                    // const d2 = i2 * 0.04;
+                    // const d1 = i1 * 0.04;
+                    const d2 = i2 * 0.1;
+                    const d1 = i1 * 0.1;
 
                     return (
                         <Fragment key={i}>
                             <motion.span
                                 className={styles.link}
-                                initial={{ opacity: 0, scale: 0.75, x: '-2ch' }}
-                                animate={{ opacity: 1, scale: 1, x: '0' }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
                                 transition={{ duration, delay: d1 + wait }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)
@@ -73,8 +75,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                             {i < arr.length - 1 && (
                                 <motion.span
                                     className={styles.spacer}
-                                    initial={{ opacity: 0, scale: 0.75, x: '-2ch' }}
-                                    animate={{ opacity: 1, scale: 1, x: '0' }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
                                     transition={{ duration, delay: d2 + wait }}
                                 >
                                     {'>'}
@@ -94,7 +96,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                             className={styles.line}
                             initial={{ opacity: 0, scale: 0.75 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.2, delay: i * 0.015 + wait }}
+                            transition={{ duration: 0, delay: i * 0.015 + wait }}
                         >
                             {i + 1}
                         </motion.div>
@@ -110,9 +112,9 @@ export function Content({ children }: { children: React.ReactNode }) {
                 <div className={styles.block}>
                     <motion.span
                         className={styles.spacer}
-                        initial={{ opacity: 0, scale: 0.75 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ ease: 'easeOut', duration: 0.25, delay: 0.15 + wait }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ ease: 'easeOut', duration: 0, delay: 0.1 + 1 + wait }}
                         onHoverStart={(event) => {
                             const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
 
@@ -183,9 +185,9 @@ export function Content({ children }: { children: React.ReactNode }) {
                         return (
                             <motion.span
                                 key={label}
-                                initial={{ opacity: 0, scale: 0.75, x: '-2ch' }}
-                                animate={{ opacity: 1, scale: 1, x: '0' }}
-                                transition={{ ease: 'easeOut', duration: 0.25, delay: (i + 1) * 0.15 + wait }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ ease: 'easeOut', duration: 0, delay: (i + 2) * 0.1 + 1 + wait }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)
                                         .querySelector('a')
