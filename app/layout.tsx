@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: 'My personal site.',
     openGraph: {
         title: 'Stephen Matheis',
-        description: 'The personal website of Stephen Matheis.',
+        description: '[next (dot) gov] https://nextdotgov.com',
         url: 'https://stephenmatheis.com',
         siteName: 'Stephen Matheis',
         images: [
