@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         siteName: 'Stephen Matheis',
         images: [
             {
-                url: 'https://stephenmatheis.com/images/og.png',
+                url: 'https://stephenmatheis.com/og.png',
                 width: 1200,
                 height: 630,
             },
