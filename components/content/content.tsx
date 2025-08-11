@@ -15,9 +15,8 @@ export function Content({ children }: { children: React.ReactNode }) {
         <main className={styles.content}>
             <nav className={styles.breadcrumbs}>
                 {[
-                    { label: 'bio', path: '/' },
-                    { label: 'work', path: '/work' },
-                    { label: 'blog', path: '/blog' },
+                    { label: '/', path: '/' },
+                    { label: 'resume', path: '/stephen-matheis-resume.pdf' },
                 ].map((crumb, i, arr) => (
                     <Fragment key={i}>
                         <motion.span
