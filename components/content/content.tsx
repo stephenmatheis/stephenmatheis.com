@@ -23,12 +23,11 @@ export function Content({ children }: { children: React.ReactNode }) {
                     { label: 'about', path: '/about' },
                     { label: 'work', path: '/work' },
                     { label: 'blog', path: '/blog' },
-                ].map((crumb, i, arr) => {
+                    { label: 'resume', path: '/stephen-matheis-resume.pdf', newTab: true },
+                ].map(({ label, path, newTab }, i, arr) => {
                     const duration = 0;
                     const i2 = (i + 1) * 2 - 1;
                     const i1 = i2 - 1;
-                    // const d2 = i2 * 0.04;
-                    // const d1 = i1 * 0.04;
                     const d2 = i2 * 0.1;
                     const d1 = i1 * 0.1;
 
@@ -68,9 +67,15 @@ export function Content({ children }: { children: React.ReactNode }) {
                                     }));
                                 }}
                             >
-                                <Link href={crumb.path} className={pathname === crumb.path ? styles.pathname : ''}>
-                                    {crumb.label}
-                                </Link>
+                                {newTab ? (
+                                    <a href={path} className={pathname === path ? styles.pathname : ''} target="_blank">
+                                        {label}
+                                    </a>
+                                ) : (
+                                    <Link href={path} className={pathname === path ? styles.pathname : ''}>
+                                        {label}
+                                    </Link>
+                                )}
                             </motion.span>
                             {i < arr.length - 1 && (
                                 <motion.span
@@ -112,9 +117,9 @@ export function Content({ children }: { children: React.ReactNode }) {
                 <div className={styles.block}>
                     <motion.span
                         className={styles.spacer}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ ease: 'easeOut', duration: 0, delay: 0.1 + 1 + wait }}
+                        initial={{ opacity: 0, x: -14 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ ease: 'easeOut', duration: 0.25, delay: 0.1 + 0.75 + wait }}
                         onHoverStart={(event) => {
                             const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
 
@@ -185,9 +190,9 @@ export function Content({ children }: { children: React.ReactNode }) {
                         return (
                             <motion.span
                                 key={label}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ ease: 'easeOut', duration: 0, delay: (i + 2) * 0.1 + 1 + wait }}
+                                initial={{ opacity: 0, x: -14 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ ease: 'easeOut', duration: 0.25, delay: (i + 2) * 0.1 + 0.75 + wait }}
                                 onHoverStart={(event) => {
                                     const rect = (event.target as HTMLElement)
                                         .querySelector('a')
