@@ -1,15 +1,21 @@
 const projects = [
     {
-        name: 'U.S. Tsunami Warning System',
-        href: 'https://tsunami-gov.vercel.app/',
+        name: 'NEXTdotgov',
+        href: 'https://nextdotgov.com',
+        date: '2017',
+        description: 'Founded next (dot) gov.',
+    },
+    {
+        name: 'Tsunami Warning System',
+        href: 'https://tsunami-gov.vercel.app',
         date: '2017',
         description: 'Redesigned tsunami.gov.',
     },
     {
         name: 'Line Writer',
-        href: 'https://linewriter.app/',
+        href: 'https://linewriter.app',
         date: '2017',
-        description: 'Focused writing extension.',
+        description: 'Focused place to write.',
         links: [
             { label: 'linewriter.app', href: 'https://linewriter.app/' },
             {
@@ -20,7 +26,7 @@ const projects = [
     },
     {
         name: 'Apple',
-        href: 'https://www.apple.com/watch/',
+        href: 'https://www.apple.com/watch',
         date: '2022',
         description: 'New Apple Watch buy flow.',
     },
@@ -28,7 +34,7 @@ const projects = [
         name: 'Robi',
         href: 'https://robijs.dev',
         date: '2017',
-        description: 'A SharePoint SPA framework.',
+        description: 'Client-side SharePoint.',
     },
 ];
 

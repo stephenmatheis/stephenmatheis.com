@@ -1,17 +1,4 @@
-const experience = [
-    {
-        company: 'Compassion',
-        site: 'https://www.compassion.com/',
-        stack: ['Next.js', 'AWS'],
-        roles: [
-            {
-                title: 'Front-end Developer',
-                start: 'July 2025',
-                end: 'Now',
-                list: ['Building a new online giving platform for live events.'],
-            },
-        ],
-    },
+const clients = [
     {
         company: 'NEXTdotgov',
         site: 'https://www.nextdotgov.com/',
@@ -76,7 +63,6 @@ const experience = [
             },
         ],
     },
-
     {
         company: 'Aeyon',
         site: 'https://aeyon.us/',
@@ -138,4 +124,4 @@ const experience = [
     },
 ];
 
-export default experience;
+export default clients;

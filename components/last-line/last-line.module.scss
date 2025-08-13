@@ -1,0 +1,20 @@
+.last-line {
+    display: flex;
+    align-items: flex-end;
+    gap: 2ch;
+    color: var(--color);
+
+    @media (min-width: 830px), print {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 57ch;
+    }
+
+    .link {
+        .qr {
+            display: inline-block;
+            height: calc(var(--line-height) * 4);
+        }
+    }
+}

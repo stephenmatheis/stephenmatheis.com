@@ -11,7 +11,7 @@ export function Contact() {
     const { setPosition } = useCursor();
 
     return (
-        <Section className={styles.contact}>
+        <Section className={styles.contact} heading="Contact">
             <div className={styles.list}>
                 {contact.map(({ href, text, title, newTab }) => {
                     return (

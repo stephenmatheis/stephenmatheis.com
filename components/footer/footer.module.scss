@@ -14,10 +14,10 @@
         color: var(--light);
     }
 
-    @media (min-width: 830px), print {
-        position: absolute;
-        top: calc(var(--line-height) * 57);
-        left: 0;
-        width: 57ch;
-    }
+    // @media (min-width: 830px), print {
+    //     position: absolute;
+    //     top: calc(var(--line-height) * 57);
+    //     left: 0;
+    //     width: 57ch;
+    // }
 }
