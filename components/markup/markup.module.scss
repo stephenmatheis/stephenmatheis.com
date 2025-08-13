@@ -12,21 +12,17 @@
         display: none;
     }
 
-    @media print {
-        display: none;
-    }
-
     .content {
         position: relative;
         display: flex;
         justify-content: space-between;
-        gap: 8ch;
+        gap: 10ch;
 
         .charwidth {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--font-size) * 4.25);
-            left: calc(41px + 1ch);
+            top: calc(var(--font-size) * 1.5);
+            left: -1ch;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -34,7 +30,7 @@
             gap: 2px;
             width: 3ch;
             height: calc(var(--line-height) * 1);
-            color: var(--lighter);
+            color: var(--lightest);
 
             .label {
                 line-height: 8.25px;
@@ -44,12 +40,12 @@
         .fontsize {
             pointer-events: all;
             position: absolute;
-            top: calc((var(--line-height) * 2) + 0.25px);
-            left: 20.5ch;
+            top: 0;
+            left: 33.5ch;
             height: var(--line-height);
             display: flex;
             align-items: center;
-            color: var(--lighter);
+            color: var(--lightest);
 
             .label {
                 margin-left: 0.5ch;
@@ -59,11 +55,11 @@
         .lineheight {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--line-height) * 1);
-            left: 25.5ch;
+            top: 0;
+            left: 38ch;
             display: flex;
             align-items: center;
-            color: var(--lighter);
+            color: var(--lightest);
 
             .label {
                 line-height: 8.25px;
@@ -76,7 +72,7 @@
             pointer-events: all;
             position: absolute;
             height: var(--line-height);
-            color: var(--lighter);
+            color: var(--lightest);
 
             .label {
                 position: absolute;
@@ -88,7 +84,7 @@
         }
 
         .left-content-width {
-            top: calc(var(--line-height) * 7);
+            top: calc(var(--line-height) * 4);
             left: 0;
         }
 
@@ -100,14 +96,13 @@
         .gap {
             pointer-events: all;
             position: absolute;
-            // top: calc(var(--line-height) * 1);
-            top: calc(var(--line-height) * 28);
+            top: calc(var(--line-height) * 29);
             left: 57ch;
             display: flex;
             align-items: center;
             justify-content: center;
             height: var(--line-height);
-            color: var(--lighter);
+            color: var(--lightest);
 
             .label {
                 position: absolute;
@@ -119,13 +114,17 @@
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
             width: 57ch;
+
+            // background-color: #ff000010;
         }
 
         .right {
             display: flex;
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
-            width: 27ch;
+            width: 25ch;
+
+            // background-color: #0000ff10;
         }
     }
 
@@ -140,7 +139,7 @@
         justify-content: center;
         width: 2ch;
         height: calc(var(--line-height) * 3);
-        color: var(--lighter);
+        color: var(--lightest);
 
         @media screen {
             top: 0;
@@ -168,7 +167,7 @@
         justify-content: center;
         width: 2ch;
         height: calc(var(--line-height) * 58);
-        color: var(--lighter);
+        color: var(--lightest);
 
         .label {
             position: absolute;
@@ -188,7 +187,7 @@
         align-items: center;
         justify-content: center;
         height: var(--line-height);
-        color: var(--lighter);
+        color: var(--lightest);
 
         .label {
             position: absolute;
@@ -207,7 +206,7 @@
         justify-content: center;
         width: 2ch;
         height: 11in;
-        color: var(--lighter);
+        color: var(--lightest);
 
         .label {
             position: absolute;

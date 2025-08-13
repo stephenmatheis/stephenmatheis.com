@@ -134,6 +134,16 @@ export function Cursor() {
                         backgroundColor: 'var(--link-background)',
                         transition: { type: 'spring', stiffness: 300, damping: 15 },
                     },
+                    line: {
+                        height: position.height + 4,
+                        width: 644 + 28 + 42,
+                        borderRadius: 4,
+                        top: (position.height + 4) / -2,
+                        // left: (position.width + 7) / -2,
+                        left: -21,
+                        backgroundColor: 'var(--accent-background)',
+                        transition: { type: 'spring', stiffness: 300, damping: 15 },
+                    },
                     markup: {
                         height: position.height + 4,
                         width: position.width + 7,

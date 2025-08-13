@@ -523,15 +523,15 @@ export function Markup() {
                             onHoverEnd={handleOnHoverEnd}
                         >
                             <svg
-                                width="56"
+                                width="70"
                                 height="3"
-                                viewBox="0 0 56 3"
+                                viewBox="0 0 70 3"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 {/* Left */}
                                 <motion.line
-                                    x1="14"
+                                    x1="21"
                                     y1="1.5"
                                     x2="0"
                                     y2="1.5"
@@ -544,9 +544,9 @@ export function Markup() {
 
                                 {/* Right */}
                                 <motion.line
-                                    x1="42"
+                                    x1="49"
                                     y1="1.5"
-                                    x2="56"
+                                    x2="70"
                                     y2="1.5"
                                     stroke="currentColor"
                                     strokeWidth={1}
@@ -581,7 +581,7 @@ export function Markup() {
 
                                 {/* Top Right */}
                                 <motion.rect
-                                    x="55"
+                                    x="69"
                                     y="0"
                                     width="1"
                                     height="1"
@@ -593,7 +593,7 @@ export function Markup() {
 
                                 {/* Bottom Right */}
                                 <motion.rect
-                                    x="55"
+                                    x="69"
                                     y="2"
                                     width="1"
                                     height="1"
@@ -609,7 +609,7 @@ export function Markup() {
                                 animate={{ opacity: 1 }}
                                 transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.2 }}
                             >
-                                8ch
+                                10ch
                             </motion.div>
                         </motion.div>
 
@@ -786,7 +786,7 @@ export function Markup() {
                                 animate={{ opacity: 1 }}
                                 transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
                             >
-                                27ch
+                                25ch
                             </motion.div>
                         </motion.div>
 

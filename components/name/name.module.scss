@@ -1,32 +1,12 @@
 .name {
     display: flex;
-    align-items: center;
-    gap: 2ch;
+    gap: 1ch;
 
     @media (min-width: 830px), print {
         position: absolute;
         top: 0;
         left: 0;
-        width: 56ch;
-    }
-
-    .link {
-        height: fit-content;
-        color: var(--primary);
-
-        &:hover {
-            color: var(--link-hover);
-        }
-
-        .qr {
-            display: flex;
-            justify-content: center;
-            width: 6ch;
-
-            svg {
-                margin-bottom: 1px;
-            }
-        }
+        width: 92ch;
     }
 
     .primary {

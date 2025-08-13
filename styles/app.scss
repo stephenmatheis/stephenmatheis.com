@@ -4,11 +4,23 @@
 
     // Light theme
     --background-color: #ffffff;
-    --primary: #000000;
-    --color: #606060;
-    --muted: #909090;
-    --light: #a0a0a0;
-    --lighter: #c0c0c0;
+
+    // --primary: #000000;
+    // --color: #767676;
+    // --muted: #999999;
+    // --light: #aaaaaa;
+    // --lighter: #cccccc;
+    // --lightest: #cccccc;
+
+    // 255 / 6
+
+    --primary: rgb(0, 0, 0);
+    --color: rgb(42.5, 42.5, 42.5);
+    --muted: rgb(85, 85, 85);
+    --light: rgb(127.5, 127.5, 127.5);
+    --lighter: rgb(170, 170, 170);
+    --lightest: rgb(212.5, 212.5, 212.5);
+
     --accent: #ff3131;
     --accent-background: rgba(255, 49, 049, 0.1);
     --path: #000000;
@@ -62,7 +74,7 @@ body {
 }
 
 a {
-    // text-decoration: none;
+    text-decoration: none;
     color: var(--link);
     -webkit-tap-highlight-color: transparent;
     transition: color 150ms ease-in-out;

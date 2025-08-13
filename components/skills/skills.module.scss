@@ -1,12 +1,12 @@
 .skills {
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 9);
+        top: calc(var(--line-height) * 6);
         right: 0;
-        width: 27ch;
+        width: 25ch;
     }
 
-    .groups-ctr {
+    .groups {
         display: flex;
         flex-direction: column;
         gap: var(--line-height);
@@ -17,7 +17,7 @@
                 position: relative;
             }
 
-            .items-ctr {
+            .items {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 0ch 1ch;

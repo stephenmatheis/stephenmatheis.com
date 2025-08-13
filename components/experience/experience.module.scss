@@ -1,7 +1,7 @@
 .experience {
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 9);
+        top: calc(var(--line-height) * 6);
         left: 0;
         width: 57ch;
     }
@@ -9,28 +9,52 @@
     .jobs {
         display: flex;
         flex-direction: column;
-        gap: var(--line-height);
+        gap: calc(var(--line-height) * 1);
 
         .job {
             break-inside: avoid;
 
             .company {
-                color: var(--primary);
+                display: flex;
+                gap: 1ch;
+
+                .name {
+                    color: var(--primary);
+                }
+
+                .location {
+                    color: var(--primary);
+                }
+            }
+
+            .dots {
+                color: var(--lighter);
             }
 
             .role {
-                .title {
-                    color: var(--color);
-                    position: relative;
-                }
+                .details {
+                    display: flex;
+                    justify-content: space-between;
 
-                .date {
-                    color: var(--muted);
+                    .title {
+                        color: var(--primary);
+                        position: relative;
+                    }
+
+                    .date {
+                        color: var(--primary);
+                    }
+                }
+            }
+
+            .list {
+                .line {
+                    color: var(--primary);
                 }
             }
 
             .stack {
-                color: var(--light);
+                color: var(--primary);
             }
         }
     }
