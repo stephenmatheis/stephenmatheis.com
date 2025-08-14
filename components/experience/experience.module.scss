@@ -2,8 +2,17 @@
     @media (min-width: 830px), print {
         position: absolute;
         top: calc(var(--line-height) * 4);
-        left: 0;
         width: 70ch;
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-top: calc(var(--line-height) * 23);
+        }
     }
 
     .jobs {
@@ -11,9 +20,20 @@
         flex-direction: column;
         gap: calc(var(--line-height) * 1);
 
-        .job {
-            break-inside: avoid;
+        .break {
+            display: flex;
+            gap: 1ch;
 
+            .name {
+                color: var(--muted);
+            }
+
+            .date {
+                color: var(--muted);
+            }
+        }
+
+        .job {
             .company {
                 display: flex;
                 gap: 1ch;
@@ -27,52 +47,20 @@
                 }
             }
 
-            .break {
-                display: flex;
-                gap: 1ch;
+            .roles {
+                .role {
+                    .details {
+                        display: flex;
+                        justify-content: space-between;
 
-                .name {
-                    color: var(--muted);
-                }
+                        .title {
+                            color: var(--color);
+                            position: relative;
+                        }
 
-                .date {
-                    color: var(--muted);
-                }
-            }
-
-            .dots {
-                display: flex;
-                height: var(--line-height);
-
-                .dot {
-                    position: relative;
-                    width: 1ch;
-                    height: var(--line-height);
-
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        bottom: 3;
-                        left: 3px;
-                        width: 1px;
-                        height: 1px;
-                        background-color: var(--muted);
-                    }
-                }
-            }
-
-            .role {
-                .details {
-                    display: flex;
-                    justify-content: space-between;
-
-                    .title {
-                        color: var(--color);
-                        position: relative;
-                    }
-
-                    .date {
-                        color: var(--color);
+                        .date {
+                            color: var(--color);
+                        }
                     }
                 }
             }
@@ -85,6 +73,111 @@
 
             .stack {
                 color: var(--color);
+            }
+        }
+
+        .dots {
+            display: flex;
+            height: var(--line-height);
+
+            .dot {
+                position: relative;
+                width: 1ch;
+                height: var(--line-height);
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 3;
+                    left: 3px;
+                    width: 1px;
+                    height: 1px;
+                    background-color: var(--muted);
+                }
+            }
+        }
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            .jobs {
+                position: relative;
+
+                .break {
+                    position: absolute;
+                }
+
+                .job {
+                    position: absolute;
+
+                    .company {
+                        .name,
+                        .location {
+                            color: red;
+                        }
+                    }
+                }
+
+                .break,
+                .job {
+                    width: 70ch;
+
+                    &:nth-child(1) {
+                        top: calc(var(--line-height) * 0);
+                        left: 0;
+                    }
+
+                    &:nth-child(2) {
+                        top: calc(var(--line-height) * 7);
+                        left: 0;
+                    }
+
+                    &:nth-child(3) {
+                        top: calc(var(--line-height) * 16);
+                        left: 0;
+                    }
+
+                    &:nth-child(4) {
+                        top: calc(var(--line-height) * 23);
+                        left: 0;
+                    }
+
+                    &:nth-child(5) {
+                        top: calc(var(--line-height) * 30);
+                        left: 0;
+                    }
+
+                    &:nth-child(6) {
+                        top: calc(var(--line-height) * -23);
+                        right: 0;
+                    }
+
+                    &:nth-child(7) {
+                        top: calc(var(--line-height) * -16);
+                        right: 0;
+                    }
+
+                    &:nth-child(8) {
+                        top: calc(var(--line-height) * -14);
+                        right: 0;
+                    }
+
+                    &:nth-child(9) {
+                        top: calc(var(--line-height) * -7);
+                        right: 0;
+                    }
+
+                    &:nth-child(10) {
+                        top: calc(var(--line-height) * 1);
+                        right: 0;
+                    }
+                }
+            }
+
+            .dots {
+                .dot {
+                    opacity: 0;
+                }
             }
         }
     }

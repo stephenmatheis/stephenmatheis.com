@@ -1,15 +1,20 @@
 .last-line {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2ch;
-    color: var(--color);
-
     @media (min-width: 830px), print {
         position: absolute;
         bottom: 0;
         left: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2ch;
         width: 70ch;
+        color: var(--color);
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            display: none;
+        }
     }
 
     .link {

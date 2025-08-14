@@ -2,14 +2,21 @@
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 8.5in;
     height: 11in;
     padding: calc(var(--line-height) * 2) 0;
 
-    // background-color: #0000ff10;
-
     @media screen {
+        background-color: #0000ff10;
         margin: auto;
+
+        @media (max-height: 1056px) {
+            height: 8.5in;
+            width: 11in;
+            padding: calc(var(--line-height) * 1) 0ch;
+            background-color: #ff000010;
+        }
 
         @media (max-width: 829px) {
             justify-content: flex-start;
