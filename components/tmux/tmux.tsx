@@ -1,6 +1,6 @@
 import styles from './tmux.module.scss';
 
-export default function Tmux() {
+export function Tmux() {
     return (
         <>
             <div className={styles.tmux}>
