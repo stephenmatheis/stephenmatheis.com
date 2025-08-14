@@ -25,17 +25,26 @@ export function LoadingCanvas() {
     useEffect(() => {
         if (!patternRef.current) return;
 
-        const cols = 108;
-        const rows = 71;
-        const width = 7;
-        const height = 14;
+        let cols = 108;
+        let rows = 71;
+        let width = 7;
+        let height = 14;
+        let canvasWidth = 756;
+        let canvasHeight = 994;
+
+        if (window.innerHeight < 1056) {
+            console.log('landscape');
+            cols = 146;
+            rows = 56;
+            width = 7;
+            height = 14;
+            canvasWidth = 1022;
+            canvasHeight = 784;
+        }
 
         const canvas = patternRef.current.querySelector('#canvas') as HTMLCanvasElement;
         const ctx = canvas.getContext('2d');
         const devicePixelRatio = window.devicePixelRatio || 1;
-
-        const canvasWidth = 756;
-        const canvasHeight = 994;
 
         canvas.width = canvasWidth * devicePixelRatio;
         canvas.height = canvasHeight * devicePixelRatio;
@@ -76,7 +85,8 @@ export function LoadingCanvas() {
             const progress = timestamp - start;
 
             letters.forEach(({ x, y, delay }, index) => {
-                let opacity = progress < delay ? 1 : 0;
+                // let opacity = progress < delay ? 1 : 0;
+                let opacity = progress < delay ? 0 : 1;
 
                 ctx.fillStyle = `rgba(255,255,255,${opacity})`;
                 ctx.fillRect(x, y, width, height);
@@ -90,7 +100,8 @@ export function LoadingCanvas() {
 
     return (
         <div ref={patternRef} className={styles['loading-canvas']}>
-            <canvas id="canvas" width={756} height={994} />
+            {/* <canvas id="canvas" width={756} height={994} /> */}
+            <canvas id="canvas" />
             {!mounted && <div className={styles.backdrop} />}
         </div>
     );

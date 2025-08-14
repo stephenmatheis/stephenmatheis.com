@@ -6,6 +6,7 @@ import { Cursor } from '@/components/cursor';
 import { Viewport as App } from '@/components/viewport';
 import { Content } from '@/components/content';
 import '@/styles/app.scss';
+import { PageProvider } from '@/providers/page-provider';
 
 const mono = localFont({
     src: './fonts/DepartureMono.woff2',
@@ -47,7 +48,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body className={mono.variable} suppressHydrationWarning>
                 <CursorProvider>
                     <App>
-                        <Content>{children}</Content>
+                        <PageProvider>
+                            <Content>{children}</Content>
+                        </PageProvider>
                         <div id="markup-overlay" />
                     </App>
                     <Cursor />

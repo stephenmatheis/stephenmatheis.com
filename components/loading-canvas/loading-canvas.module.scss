@@ -12,5 +12,13 @@
         width: 756px;
         height: 994px;
         background-color: var(--background-color);
+
+        @media screen {
+            @media (max-height: 1056px) {
+                height: 784px;
+                width: 1022px;
+                background-color: transparent;
+            }
+        }
     }
 }

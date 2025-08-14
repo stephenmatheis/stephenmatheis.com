@@ -6,32 +6,33 @@
     height: calc(var(--line-height) * 71);
 
     @media screen {
-        background-color: #0000ff10;
+        // background-color: #0000ff10;
 
         @media (max-height: 1056px) {
             width: 146ch;
             height: calc(var(--line-height) * 56);
+
             background-color: #ff000010;
 
-            &::before,
-            &::after {
-                pointer-events: none;
-                content: '';
-                position: absolute;
-                top: 0;
-                width: 50%;
-                height: 100%;
-            }
+            // &::before,
+            // &::after {
+            //     pointer-events: none;
+            //     content: '';
+            //     position: absolute;
+            //     top: 0;
+            //     width: 50%;
+            //     height: 100%;
+            // }
 
-            &::before {
-                left: 0;
-                background-color: #ff00ff10;
-            }
+            // &::before {
+            //     left: 0;
+            //     background-color: #ff00ff10;
+            // }
 
-            &::after {
-                right: 0;
-                background-color: #00ff0010;
-            }
+            // &::after {
+            //     right: 0;
+            //     background-color: #00ff0010;
+            // }
         }
 
         @media (max-width: 829px) {
@@ -49,9 +50,15 @@
         left: 0;
         color: var(--muted);
 
-        @media screen and (max-width: 829px) {
-            position: static;
-            left: 0;
+        @media screen {
+            @media (max-width: 829px) {
+                position: static;
+                left: 0;
+            }
+
+            @media (max-height: 1056px) {
+                display: none;
+            }
         }
 
         @media print {
@@ -105,28 +112,38 @@
 
     .statusbar {
         user-select: none;
+        position: absolute;
         bottom: calc(var(--line-height) * -2);
         left: -6ch;
         display: flex;
-        position: absolute;
         justify-content: center;
         width: calc(100% + 6ch);
-        height: var(--line-height);
 
-        @media screen and (max-width: 829px) {
+        @media screen {
             position: static;
             left: 0;
             width: 100%;
+
+            @media (max-height: 1056px) {
+                position: absolute;
+                align-items: center;
+                justify-content: space-between;
+                bottom: calc(var(--line-height) * -1);
+
+                .left,
+                .right {
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    color: var(--muted);
+                }
+            }
         }
     }
 
     .breadcrumbs,
     .linenumbers,
     .statusbar {
-        @media screen {
-            display: none;
-        }
-
         @media print {
             display: none;
         }

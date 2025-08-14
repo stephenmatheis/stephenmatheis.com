@@ -7,15 +7,27 @@
 
     @media screen {
         @media (max-height: 1056px) {
+            pointer-events: none;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            padding-top: calc(var(--line-height) * 23);
+            padding-top: calc(var(--line-height) * 21);
+
+            // transition: opacity 0ms ease-out;
+
+            // &[data-page='1'] {
+            //     opacity: 1;
+            // }
+
+            // &:not([data-page='1']) {
+            //     opacity: 0;
+            // }
         }
     }
 
     .jobs {
+        pointer-events: all;
         display: flex;
         flex-direction: column;
         gap: calc(var(--line-height) * 1);
@@ -109,13 +121,6 @@
 
                 .job {
                     position: absolute;
-
-                    .company {
-                        .name,
-                        .location {
-                            color: red;
-                        }
-                    }
                 }
 
                 .break,
@@ -148,27 +153,27 @@
                     }
 
                     &:nth-child(6) {
-                        top: calc(var(--line-height) * -23);
+                        top: calc(var(--line-height) * -21);
                         right: 0;
                     }
 
                     &:nth-child(7) {
-                        top: calc(var(--line-height) * -16);
-                        right: 0;
-                    }
-
-                    &:nth-child(8) {
                         top: calc(var(--line-height) * -14);
                         right: 0;
                     }
 
+                    &:nth-child(8) {
+                        top: calc(var(--line-height) * -12);
+                        right: 0;
+                    }
+
                     &:nth-child(9) {
-                        top: calc(var(--line-height) * -7);
+                        top: calc(var(--line-height) * -5);
                         right: 0;
                     }
 
                     &:nth-child(10) {
-                        top: calc(var(--line-height) * 1);
+                        top: calc(var(--line-height) * 3);
                         right: 0;
                     }
                 }

@@ -1,3 +1,5 @@
+'use client';
+
 import { Name } from '@/components/name';
 import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
