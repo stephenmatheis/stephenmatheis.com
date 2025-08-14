@@ -2,16 +2,18 @@
 
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
+import { usePage } from '@/providers/page-provider';
 import { useCursor } from '@/providers/cursor-provider';
 import { Section } from '@/components/section';
 import contact from '@/data/contact';
 import styles from './contact.module.scss';
 
 export function Contact() {
+    const { page } = usePage();
     const { setPosition } = useCursor();
 
     return (
-        <Section className={styles.contact}>
+        <Section className={styles.contact} data-page={page}>
             <div className={styles.list}>
                 {contact.map(({ href, text, title, newTab }) => {
                     return (

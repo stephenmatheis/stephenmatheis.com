@@ -2,16 +2,18 @@
 
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
+import { usePage } from '@/providers/page-provider';
 import { useCursor } from '@/providers/cursor-provider';
 import { Section } from '@/components/section';
 import { Footer } from '@/components/footer';
 import styles from './last-line.module.scss';
 
 export function LastLine() {
+    const { page } = usePage();
     const { setPosition } = useCursor();
 
     return (
-        <Section className={styles['last-line']}>
+        <Section className={styles['last-line']} data-page={page}>
             <Footer />
             <motion.span
                 className={styles.link}

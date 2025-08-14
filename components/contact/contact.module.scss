@@ -5,11 +5,21 @@
         right: 0;
         width: 34ch;
     }
+
     @media screen {
         @media (max-height: 1056px) {
-            top: calc(var(--line-height) * 2);
-            right: unset;
-            left: 0;
+            width: 70ch;
+            top: calc(var(--line-height) * 51);
+            right: 0;
+            transition: opacity 0ms ease-out;
+
+            &[data-page='1'] {
+                opacity: 1;
+            }
+
+            &:not([data-page='1']) {
+                opacity: 0;
+            }
         }
     }
 
@@ -17,6 +27,15 @@
         .item {
             a {
                 color: var(--accent);
+            }
+        }
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            .list {
+                display: flex;
+                justify-content: space-between;
             }
         }
     }

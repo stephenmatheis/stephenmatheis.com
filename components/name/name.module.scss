@@ -9,6 +9,16 @@
     @media screen {
         @media (max-height: 1056px) {
             width: 73ch;
+
+            // transition: opacity 0ms ease-out;
+
+            // &[data-page='1'] {
+            //     opacity: 1;
+            // }
+
+            // &:not([data-page='1']) {
+            //     opacity: 0;
+            // }
         }
     }
 
@@ -32,11 +42,9 @@
     @media screen {
         @media (max-height: 1056px) {
             .row {
-                .primary,
-                .muted,
-                .light {
-                    color: red;
-                }
+                // justify-content: flex-end;
+                align-items: center;
+                height: calc(var(--line-height) * 21);
             }
         }
     }

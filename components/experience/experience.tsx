@@ -1,10 +1,13 @@
+import { usePage } from '@/providers/page-provider';
 import { Section } from '@/components/section';
 import experience from '@/data/experience';
 import styles from './experience.module.scss';
 
 export function Experience() {
+    const { page } = usePage();
+
     return (
-        <Section className={styles.experience} heading="Experience">
+        <Section className={styles.experience} heading="Experience" data-page={page}>
             <div className={styles.jobs}>
                 {experience.map(({ company, location, start, end, roles, stack, list }, index) => {
                     if (company === 'Break') {
@@ -17,7 +20,8 @@ export function Experience() {
                                     ))}
                                 </span>
                                 <span className={styles.date}>
-                                    {start} – {end}
+                                    {start}
+                                    {end && <>—{end}</>}
                                 </span>
                             </div>
                         );
@@ -41,7 +45,8 @@ export function Experience() {
                                             <div className={styles.details}>
                                                 <span className={styles.title}>{title}</span>{' '}
                                                 <span className={styles.date}>
-                                                    {start} – {end}
+                                                    {start}
+                                                    {end && <>-{end}</>}
                                                 </span>
                                             </div>
                                         </div>
@@ -52,11 +57,12 @@ export function Experience() {
                                 {list!.map((line: string, i: number) => (
                                     <div key={i} className={styles.line}>
                                         {'•'} {line}
+                                        {/* {'╶╴'} {line} */}
                                     </div>
                                 ))}
                             </div>
                             <div className={styles.stack}>
-                                {'('} {stack!.join(', ')} {')'}
+                                {'{'} {stack!.join(', ')} {'}'}
                             </div>
                         </div>
                     );

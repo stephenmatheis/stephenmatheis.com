@@ -7,8 +7,8 @@ const experience = [
         roles: [
             {
                 title: 'Founder',
-                start: 'June 2025',
-                end: 'Now',
+                start: 'Jun 2025',
+                end: '',
             },
         ],
         list: [
