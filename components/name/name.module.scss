@@ -1,16 +1,18 @@
 .name {
-    display: flex;
-    gap: 1ch;
-
     @media (min-width: 830px), print {
         position: absolute;
         top: 0;
         left: 0;
-        width: 92ch;
+        width: 70ch;
+    }
+
+    .row {
+        display: flex;
+        gap: 1ch;
     }
 
     .primary {
-        color: var(--primary);
+        color: var(--color);
     }
 
     .muted {

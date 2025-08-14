@@ -3,14 +3,16 @@
     display: flex;
     flex-direction: column;
     gap: calc(var(--line-height) * 2);
-    width: 92ch;
-    height: calc(var(--line-height) * 58);
+    width: 108ch;
+    height: calc(var(--line-height) * 71);
+
+    // background-color: #0000ff10;
 
     @media screen and (max-width: 829px) {
         gap: var(--line-height);
         height: max-content;
         width: 100%;
-        max-width: 92ch;
+        max-width: 108ch;
     }
 
     .linenumbers {
@@ -18,7 +20,7 @@
         position: absolute;
         top: 0;
         left: -6ch;
-        color: var(--lighter);
+        color: var(--muted);
 
         .line {
             &:hover {
@@ -36,7 +38,7 @@
         position: absolute;
         top: calc(var(--line-height) * -1.5);
         left: -6ch;
-        color: var(--light);
+        color: var(--muted);
 
         @media screen and (max-width: 829px) {
             position: static;
@@ -52,14 +54,14 @@
 
             a {
                 text-decoration: none;
-                color: var(--light);
+                color: var(--muted);
 
                 &.pathname {
                     color: var(--path);
                 }
 
                 &:hover {
-                    color: var(--path-hover);
+                    color: var(--accent);
                 }
             }
         }
@@ -67,7 +69,7 @@
         .spacer {
             display: inline-block;
             margin-inline: 1ch;
-            color: var(--lighter);
+            color: var(--muted);
         }
     }
 
@@ -88,7 +90,7 @@
         }
 
         a {
-            color: var(--light);
+            color: var(--muted);
         }
 
         .block {
@@ -121,6 +123,8 @@
     .linenumbers,
     .breadcrumbs,
     .statusbar {
+        display: none;
+
         @media print {
             display: none;
         }

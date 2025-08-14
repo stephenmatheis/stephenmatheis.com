@@ -3,15 +3,14 @@
         position: absolute;
         top: 0;
         right: 0;
-        width: 25ch;
+        width: 34ch;
     }
 
     .list {
-        display: flex;
-        flex-direction: column;
-
         .item {
-            color: var(--primary);
+            a {
+                color: var(--accent);
+            }
         }
     }
 }

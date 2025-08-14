@@ -4,8 +4,10 @@ import styles from './name.module.scss';
 export function Name() {
     return (
         <Section className={styles.name}>
-            <div className={styles.primary}>Stephen Matheis</div>
-            <div className={styles.muted}>Software Engineer</div>
+            <div className={styles.row}>
+                <span className={styles.primary}>Stephen Matheis</span>
+                <span className={styles.muted}>Software Engineer</span>
+            </div>
         </Section>
     );
 }

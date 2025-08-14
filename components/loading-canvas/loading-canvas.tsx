@@ -25,17 +25,17 @@ export function LoadingCanvas() {
     useEffect(() => {
         if (!patternRef.current) return;
 
-        const cols = 95;
-        const rows = 58;
+        const cols = 108;
+        const rows = 71;
         const width = 7;
-        const height = 16.5;
+        const height = 14;
 
         const canvas = patternRef.current.querySelector('#canvas') as HTMLCanvasElement;
         const ctx = canvas.getContext('2d');
         const devicePixelRatio = window.devicePixelRatio || 1;
 
-        const canvasWidth = 665;
-        const canvasHeight = 957;
+        const canvasWidth = 756;
+        const canvasHeight = 994;
 
         canvas.width = canvasWidth * devicePixelRatio;
         canvas.height = canvasHeight * devicePixelRatio;
@@ -90,7 +90,7 @@ export function LoadingCanvas() {
 
     return (
         <div ref={patternRef} className={styles['loading-canvas']}>
-            <canvas id="canvas" width={665} height={957} />
+            <canvas id="canvas" width={756} height={994} />
             {!mounted && <div className={styles.backdrop} />}
         </div>
     );

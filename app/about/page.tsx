@@ -15,7 +15,7 @@ export default function AboutPage() {
             <Skills />
             <Work />
             <LastLine />
-            <Markup />
+            {/* <Markup /> */}
         </>
     );
 }

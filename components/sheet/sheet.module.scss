@@ -4,7 +4,9 @@
     justify-content: center;
     width: 8.5in;
     height: 11in;
-    padding: calc(var(--line-height) * 3) 0;
+    padding: calc(var(--line-height) * 2) 0;
+
+    // background-color: #0000ff10;
 
     @media screen {
         margin: auto;

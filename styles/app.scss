@@ -1,34 +1,13 @@
 :root {
     --font-size: 11px;
-    --line-height: 16.5px;
-
-    // Light theme
+    --line-height: 14px;
     --background-color: #ffffff;
-
-    // --primary: #000000;
-    // --color: #767676;
-    // --muted: #999999;
-    // --light: #aaaaaa;
-    // --lighter: #cccccc;
-    // --lightest: #cccccc;
-
-    // 255 / 6
-
-    --primary: rgb(0, 0, 0);
-    --color: rgb(42.5, 42.5, 42.5);
-    --muted: rgb(85, 85, 85);
-    --light: rgb(127.5, 127.5, 127.5);
-    --lighter: rgb(170, 170, 170);
-    --lightest: rgb(212.5, 212.5, 212.5);
-
-    --accent: #ff3131;
-    --accent-background: rgba(255, 49, 049, 0.1);
+    --color: #000000;
+    --muted: #767676;
+    --light: #aaaaaa;
+    --accent: #0000ee;
+    --accent-background: #0000ee1a;
     --path: #000000;
-    --path-hover: #ff3131;
-    --path-background: rgba(255, 49, 49, 0.1);
-    --link: #000000;
-    --link-hover: #ff3131;
-    --link-background: rgba(255, 49, 49, 0.1);
 
     @media print {
         --background-color: #ffffff;
@@ -44,7 +23,7 @@
 
     &::selection {
         color: var(--background-color);
-        background-color: var(--primary);
+        background-color: var(--color);
     }
 }
 
@@ -75,12 +54,12 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--link);
+    color: var(--accent);
     -webkit-tap-highlight-color: transparent;
     transition: color 150ms ease-in-out;
 
     &:hover {
-        color: var(--link-hover);
+        color: var(--accent);
     }
 }
 

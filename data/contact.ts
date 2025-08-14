@@ -1,10 +1,10 @@
 const contact = [
-    // {
-    //     href: 'https://stephenmatheis.com',
-    //     text: 'stephenmatheis.com',
-    //     title: 'My website',
-    //     newTab: true,
-    // },
+    {
+        href: 'https://stephenmatheis.com',
+        text: 'stephenmatheis.com',
+        title: 'My website',
+        newTab: true,
+    },
     // {
     //     href: 'https://nextdotgov.com',
     //     text: 'nextdotgov.com',
@@ -25,7 +25,7 @@ const contact = [
     },
     {
         href: 'tel:9124922522',
-        text: '(912) 492-2522',
+        text: '912.492.2522',
         title: 'My phone number',
         newTab: false,
     },
