@@ -3,21 +3,21 @@
     gap: 2ch;
 
     .version {
-        color: var(--light);
+        color: var(--muted);
     }
 
     .date {
-        color: var(--light);
+        color: var(--muted);
     }
 
     .time {
-        color: var(--light);
+        color: var(--muted);
     }
 
     // @media (min-width: 830px), print {
     //     position: absolute;
     //     top: calc(var(--line-height) * 57);
     //     left: 0;
-    //     width: 57ch;
+    //     width: 70ch;
     // }
 }

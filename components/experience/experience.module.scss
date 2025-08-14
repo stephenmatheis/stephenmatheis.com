@@ -1,9 +1,9 @@
 .experience {
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 6);
+        top: calc(var(--line-height) * 4);
         left: 0;
-        width: 57ch;
+        width: 70ch;
     }
 
     .jobs {
@@ -19,16 +19,46 @@
                 gap: 1ch;
 
                 .name {
-                    color: var(--primary);
+                    color: var(--muted);
                 }
 
                 .location {
-                    color: var(--primary);
+                    color: var(--muted);
+                }
+            }
+
+            .break {
+                display: flex;
+                gap: 1ch;
+
+                .name {
+                    color: var(--muted);
+                }
+
+                .date {
+                    color: var(--muted);
                 }
             }
 
             .dots {
-                color: var(--lighter);
+                display: flex;
+                height: var(--line-height);
+
+                .dot {
+                    position: relative;
+                    width: 1ch;
+                    height: var(--line-height);
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 3;
+                        left: 3px;
+                        width: 1px;
+                        height: 1px;
+                        background-color: var(--muted);
+                    }
+                }
             }
 
             .role {
@@ -37,24 +67,24 @@
                     justify-content: space-between;
 
                     .title {
-                        color: var(--primary);
+                        color: var(--color);
                         position: relative;
                     }
 
                     .date {
-                        color: var(--primary);
+                        color: var(--color);
                     }
                 }
             }
 
             .list {
                 .line {
-                    color: var(--primary);
+                    color: var(--color);
                 }
             }
 
             .stack {
-                color: var(--primary);
+                color: var(--color);
             }
         }
     }

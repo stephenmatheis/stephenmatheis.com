@@ -3,7 +3,7 @@
         position: absolute;
         top: calc(var(--line-height) * 0);
         left: 0;
-        max-width: 92ch;
+        max-width: 108ch;
     }
 
     .jobs {
@@ -16,7 +16,7 @@
             gap: 4ch;
 
             .company {
-                color: var(--primary);
+                color: var(--color);
                 width: 10ch;
             }
 
@@ -29,12 +29,12 @@
                     .role {
                         .details {
                             .title {
-                                color: var(--light);
+                                color: var(--muted);
                                 position: relative;
                             }
 
                             .date {
-                                color: var(--lighter);
+                                color: var(--muted);
                             }
                         }
 

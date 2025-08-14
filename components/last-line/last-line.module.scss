@@ -1,6 +1,7 @@
 .last-line {
     display: flex;
     align-items: flex-end;
+    justify-content: space-between;
     gap: 2ch;
     color: var(--color);
 
@@ -8,13 +9,18 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 57ch;
+        width: 70ch;
     }
 
     .link {
+        height: calc(var(--line-height) * 2);
+
         .qr {
-            display: inline-block;
-            height: calc(var(--line-height) * 4);
+            display: flex;
+            align-items: flex-end;
+            gap: 2ch;
+            height: calc(var(--line-height) * 2);
+            color: var(--accent);
         }
     }
 }

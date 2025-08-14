@@ -512,7 +512,7 @@ export function Markup() {
                                 animate={{ opacity: 1 }}
                                 transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
                             >
-                                57ch
+                                70ch
                             </motion.div>
                         </motion.div>
 
@@ -786,7 +786,7 @@ export function Markup() {
                                 animate={{ opacity: 1 }}
                                 transition={{ ease: 'easeOut', duration, delay: duration + delay + 0.4 }}
                             >
-                                25ch
+                                34ch
                             </motion.div>
                         </motion.div>
 

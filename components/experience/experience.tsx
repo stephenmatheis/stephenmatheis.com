@@ -10,9 +10,13 @@ export function Experience() {
                     if (company === 'Break') {
                         return (
                             <div key={index} className={styles.job}>
-                                <div className={styles.company}>
+                                <div className={styles.break}>
                                     <span className={styles.name}>{company}</span>
-                                    <span className={styles.dots}>{Array.from({ length: 32 }).join('.')}</span>
+                                    <span className={styles.dots}>
+                                        {Array.from({ length: 44 }).map((_, i) => (
+                                            <div key={i} className={styles.dot} />
+                                        ))}
+                                    </span>
                                     <span className={styles.date}>
                                         {start} – {end}
                                     </span>
@@ -26,7 +30,9 @@ export function Experience() {
                             <div className={styles.company}>
                                 <span className={styles.name}>{company}</span>
                                 <span className={styles.dots}>
-                                    {Array.from({ length: 57 - company.length - location!.length - 1 }).join('.')}
+                                    {Array.from({ length: 70 - company.length - location!.length - 2 }).map((_, i) => (
+                                        <div key={i} className={styles.dot} />
+                                    ))}
                                 </span>
                                 <span className={styles.location}>{location}</span>
                             </div>
@@ -47,12 +53,13 @@ export function Experience() {
                             <div className={styles.list}>
                                 {list!.map((line: string, i: number) => (
                                     <div key={i} className={styles.line}>
-                                        - {line}
+                                        {'•'} {line}
                                     </div>
                                 ))}
                             </div>
                             <div className={styles.stack}>
-                                {'</>'} {stack!.join(', ')}
+                                {/* {'</>'} {stack!.join(', ')} */}
+                                {'{'} {stack!.join(', ')} {'}'}
                             </div>
                         </div>
                     );

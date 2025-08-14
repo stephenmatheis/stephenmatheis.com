@@ -1,9 +1,9 @@
 .skills {
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 6);
+        top: calc(var(--line-height) * 4);
         right: 0;
-        width: 25ch;
+        width: 34ch;
     }
 
     .groups {
@@ -13,7 +13,7 @@
 
         .group {
             .name {
-                color: var(--primary);
+                color: var(--muted);
                 position: relative;
             }
 
@@ -25,6 +25,7 @@
                 .item {
                     display: inline-block;
                     border-radius: 4px;
+                    color: var(--color);
                 }
             }
         }

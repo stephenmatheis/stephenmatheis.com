@@ -11,7 +11,11 @@ const experience = [
                 end: 'Now',
             },
         ],
-        list: ['Founded NEXTdotgov, a web consultancy for government.'],
+        list: [
+            'Founded NEXTdotgov, a web consultancy for government.',
+            'Developing Pink Draft, a request for proposal aid.',
+            'Developing Messer, a montly status report tool.',
+        ],
     },
     {
         company: 'T and T Consulting Services',
@@ -38,11 +42,11 @@ const experience = [
         list: [
             'Led UI/UX.',
             'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.',
-            'Developed internal apps for U.S. Army MEDCOM.',
+            'Developed an app for U.S. Army MEDCOM to track required training.',
         ],
     },
     {
-        company: 'Apple (TEKsystems)',
+        company: 'Apple',
         location: 'Remote',
         site: 'https://www.apple.com/',
         stack: ['Next.js', 'TypeScript'],
@@ -53,7 +57,11 @@ const experience = [
                 end: 'Oct 2023',
             },
         ],
-        list: ['Prototyped with Next.js, TypeScript, and Storybook.'],
+        list: [
+            'Part of the Marking and Communications (MARCOM) prototyping team.',
+            'Built a new Apple Watch buy flow with Next.js and TypeScript.',
+            'Created Juice, a scaffolding tool.',
+        ],
     },
     {
         company: 'GovCIO',
@@ -67,7 +75,11 @@ const experience = [
                 end: 'Jul 2022',
             },
         ],
-        list: ['Developed 3D software for the U.S. Air Force with Unity.'],
+        list: [
+            'Supported a U.S. Air Force Tactical Data Link (TDL) program.',
+            'Implemented the MIL-STD-6016 TDL protocol in C#.',
+            'Developed a 3D geospatial application with Unity.',
+        ],
     },
     {
         company: 'Break',
@@ -86,7 +98,11 @@ const experience = [
                 end: 'Apr 2022',
             },
         ],
-        list: ['Built a mobile app for the U.S. Marine Corps.'],
+        list: [
+            'Digitized new Defense Health Agency (DHA) processes.',
+            'Developed large internal line-of-business applications for DHA. ',
+            'Built a mobile app for the U.S. Marine Corps.',
+        ],
     },
     {
         company: 'Break',
@@ -105,7 +121,11 @@ const experience = [
                 end: 'Oct 2017',
             },
         ],
-        list: ['Built client-side SharePoint apps.'],
+        list: [
+            'Developed line-of-business application for operations and finance.',
+            'Upgraded SharePoint 2010 to SharePoint 2013.',
+            'Migrated Lotus Notes apps to SharePoint 2013.',
+        ],
     },
     {
         company: 'Bravo Consulting Group',
@@ -126,7 +146,26 @@ const experience = [
         ],
         list: [
             'Team Lead at the Executive Office of the President.',
-            'Reduced SharePoint backup requirements at the VA.',
+            'Created a presidential records export tool for National Archives.',
+            'Reduced backup requirements at the Department of Veterans Affairs.',
+        ],
+    },
+    {
+        company: 'National Ground Intelligence Center',
+        location: 'Charlottesville, VA',
+        site: 'https://www.ait-i.com/',
+        stack: ['VBA', 'SharePoint'],
+        roles: [
+            {
+                title: 'Access Control Specialist',
+                start: 'Feb 2011',
+                end: 'Nov 2014',
+            },
+        ],
+        list: [
+            'Used Excel and VBA to analyze physical security infraction data',
+            'SharePoint site administration.',
+            'Created a tool to track and review daily metrics for leadership.',
         ],
     },
 ];

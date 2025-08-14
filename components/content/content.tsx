@@ -149,7 +149,8 @@ export function Content({ children }: { children: React.ReactNode }) {
                 [ Status Bar ]{/* <Footer /> */}
             </motion.div>
 
-            <LoadingCanvas />
+            {/* Randomized text load  */}
+            {/* <LoadingCanvas /> */}
         </main>
     );
 }

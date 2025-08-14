@@ -7,7 +7,7 @@ type Position = {
     left: number;
     height: number;
     width: number;
-    type: 'link' | 'path' | 'item' | 'button' | 'line' | 'markup' | 'tab' | 'moving' | 'normal';
+    type: 'link' | 'path' | 'button' | 'line' | 'markup' | 'tab' | 'moving' | 'normal';
 };
 
 type CursorContext = {
