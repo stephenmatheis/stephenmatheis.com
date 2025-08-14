@@ -6,6 +6,12 @@
         width: 70ch;
     }
 
+    @media screen {
+        @media (max-height: 1056px) {
+            width: 73ch;
+        }
+    }
+
     .row {
         display: flex;
         gap: 1ch;
@@ -21,5 +27,17 @@
 
     .light {
         color: var(--light);
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            .row {
+                .primary,
+                .muted,
+                .light {
+                    color: red;
+                }
+            }
+        }
     }
 }

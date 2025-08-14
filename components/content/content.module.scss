@@ -1,43 +1,52 @@
 .content {
     position: relative;
     display: flex;
-    flex-direction: column;
     gap: calc(var(--line-height) * 2);
     width: 108ch;
     height: calc(var(--line-height) * 71);
 
-    // background-color: #0000ff10;
+    @media screen {
+        background-color: #0000ff10;
 
-    @media screen and (max-width: 829px) {
-        gap: var(--line-height);
-        height: max-content;
-        width: 100%;
-        max-width: 108ch;
-    }
+        @media (max-height: 1056px) {
+            width: 146ch;
+            height: calc(var(--line-height) * 56);
+            background-color: #ff000010;
 
-    .linenumbers {
-        user-select: none;
-        position: absolute;
-        top: 0;
-        left: -6ch;
-        color: var(--muted);
+            &::before,
+            &::after {
+                pointer-events: none;
+                content: '';
+                position: absolute;
+                top: 0;
+                width: 50%;
+                height: 100%;
+            }
 
-        .line {
-            &:hover {
-                color: var(--accent);
+            &::before {
+                left: 0;
+                background-color: #ff00ff10;
+            }
+
+            &::after {
+                right: 0;
+                background-color: #00ff0010;
             }
         }
 
-        @media screen and (max-width: 829px) {
-            display: none;
+        @media (max-width: 829px) {
+            flex-direction: column;
+            gap: var(--line-height);
+            height: max-content;
+            width: 100%;
         }
     }
 
     .breadcrumbs {
         user-select: none;
         position: absolute;
-        top: calc(var(--line-height) * -1.5);
-        left: -6ch;
+        top: calc(var(--line-height) * -2);
+        left: 0;
         color: var(--muted);
 
         @media screen and (max-width: 829px) {
@@ -73,9 +82,30 @@
         }
     }
 
+    .linenumbers {
+        // DEV:
+        display: none;
+
+        user-select: none;
+        position: absolute;
+        top: 0;
+        left: -3ch;
+        color: var(--muted);
+
+        .line {
+            &:hover {
+                color: var(--accent);
+            }
+        }
+
+        @media screen and (max-width: 829px) {
+            display: none;
+        }
+    }
+
     .statusbar {
         user-select: none;
-        bottom: calc(var(--line-height) * -1.5);
+        bottom: calc(var(--line-height) * -2);
         left: -6ch;
         display: flex;
         position: absolute;
@@ -88,42 +118,14 @@
             left: 0;
             width: 100%;
         }
-
-        a {
-            color: var(--muted);
-        }
-
-        .block {
-            display: flex;
-            gap: 3ch;
-
-            a {
-                text-decoration: none;
-                display: flex;
-                align-items: center;
-
-                &:hover {
-                    color: var(--accent);
-                }
-
-                svg {
-                    margin-right: 0.5ch;
-                }
-            }
-        }
-
-        .git {
-            display: inline-block;
-            position: relative;
-            margin-right: 0.5ch;
-            transform: translateY(1.5px);
-        }
     }
 
-    .linenumbers,
     .breadcrumbs,
+    .linenumbers,
     .statusbar {
-        display: none;
+        @media screen {
+            display: none;
+        }
 
         @media print {
             display: none;

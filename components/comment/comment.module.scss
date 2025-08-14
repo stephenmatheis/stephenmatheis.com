@@ -3,4 +3,10 @@
     color: var(--muted);
     margin-bottom: var(--line-height);
     text-transform: uppercase;
+
+    @media screen {
+        @media (max-height: 1056px) {
+            width: 73ch;
+        }
+    }
 }

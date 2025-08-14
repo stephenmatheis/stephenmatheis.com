@@ -6,6 +6,12 @@
         width: 34ch;
     }
 
+    @media screen {
+        @media (max-height: 1056px) {
+            display: none;
+        }
+    }
+
     .list {
         display: flex;
         flex-direction: column;
