@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-
+import { useEffect, useRef } from 'react';
+import { usePage } from '@/providers/page-provider';
 import styles from './loading-canvas.module.scss';
 
 type Letter = {
@@ -10,17 +10,13 @@ type Letter = {
     delay: number;
 };
 
-const wait = 0.25;
+type LoadingCanvasProps = {
+    animationDirection?: 'enter' | 'exit';
+};
 
-export function LoadingCanvas() {
-    const [mounted, setMounted] = useState<boolean>(false);
+export function LoadingCanvas({ animationDirection = 'enter' }: LoadingCanvasProps) {
+    const { page, setDirection, setCanUpdate } = usePage();
     const patternRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        setTimeout(() => {
-            setMounted(true);
-        }, wait);
-    }, []);
 
     useEffect(() => {
         if (!patternRef.current) return;
@@ -33,13 +29,16 @@ export function LoadingCanvas() {
         let canvasHeight = 994;
 
         if (window.innerHeight < 1056) {
-            console.log('landscape');
+            console.log('Orientation: Landscape');
+
             cols = 146;
             rows = 56;
             width = 7;
             height = 14;
             canvasWidth = 1022;
             canvasHeight = 784;
+        } else {
+            console.log('Orientation: Portrait');
         }
 
         const canvas = patternRef.current.querySelector('#canvas') as HTMLCanvasElement;
@@ -64,7 +63,7 @@ export function LoadingCanvas() {
                 const letter = {
                     x: col * width,
                     y: row * height,
-                    delay: (Math.random() + Math.random()) * 500 + wait,
+                    delay: (Math.random() + Math.random()) * 500,
                 };
 
                 letters.push(letter);
@@ -72,6 +71,8 @@ export function LoadingCanvas() {
         }
 
         let start: number;
+        let direction = animationDirection;
+        let passes = 0;
 
         function animate(timestamp: number) {
             if (!ctx) return;
@@ -83,26 +84,48 @@ export function LoadingCanvas() {
             }
 
             const progress = timestamp - start;
+            const fromValue = direction === 'enter' ? 1 : 0;
+            const toValue = direction === 'enter' ? 0 : 1;
+            const completed = [
+                ...new Set(
+                    letters.map(({ x, y, delay }) => {
+                        const opacity = progress < delay ? fromValue : toValue;
 
-            letters.forEach(({ x, y, delay }, index) => {
-                // let opacity = progress < delay ? 1 : 0;
-                let opacity = progress < delay ? 0 : 1;
+                        ctx.fillStyle = `rgba(255,255,255,${opacity})`;
+                        ctx.fillRect(x, y, width, height);
 
-                ctx.fillStyle = `rgba(255,255,255,${opacity})`;
-                ctx.fillRect(x, y, width, height);
-            });
+                        return opacity;
+                    })
+                ),
+            ];
+
+            if (completed.length === 1 && completed[0] === toValue) {
+                if (passes === 0) {
+                    console.log('first pass complete. reverse. can update.');
+
+                    start = timestamp;
+                    direction = direction === 'enter' ? 'exit' : 'enter';
+
+                    setCanUpdate(true);
+
+                    passes++;
+                } else {
+                    console.log('animation complete. set direction to null. set can update to false.');
+                    setDirection(null);
+                    setCanUpdate(false);
+                    return;
+                }
+            }
 
             requestAnimationFrame(animate);
         }
 
         requestAnimationFrame(animate);
-    }, []);
+    }, [animationDirection, setCanUpdate, setDirection]);
 
     return (
         <div ref={patternRef} className={styles['loading-canvas']}>
-            {/* <canvas id="canvas" width={756} height={994} /> */}
             <canvas id="canvas" />
-            {!mounted && <div className={styles.backdrop} />}
         </div>
     );
 }

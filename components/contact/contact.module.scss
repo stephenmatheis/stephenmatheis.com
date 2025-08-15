@@ -11,14 +11,19 @@
             width: 70ch;
             top: calc(var(--line-height) * 51);
             right: 0;
-            transition: opacity 0ms ease-out;
 
-            &[data-page='1'] {
-                opacity: 1;
+            &[data-direction='forward'] {
+                &[data-can-update='true'] {
+                    display: none;
+                }
             }
 
-            &:not([data-page='1']) {
-                opacity: 0;
+            &[data-direction='null'] {
+                &[data-can-update='false'] {
+                    &:not([data-page='1']) {
+                        display: none;
+                    }
+                }
             }
         }
     }

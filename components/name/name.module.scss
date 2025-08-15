@@ -10,15 +10,19 @@
         @media (max-height: 1056px) {
             width: 73ch;
 
-            // transition: opacity 0ms ease-out;
+            &[data-direction='forward'] {
+                &[data-can-update='true'] {
+                    display: none;
+                }
+            }
 
-            // &[data-page='1'] {
-            //     opacity: 1;
-            // }
-
-            // &:not([data-page='1']) {
-            //     opacity: 0;
-            // }
+            &[data-direction='null'] {
+                &[data-can-update='false'] {
+                    &:not([data-page='1']) {
+                        display: none;
+                    }
+                }
+            }
         }
     }
 

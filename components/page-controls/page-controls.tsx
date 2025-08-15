@@ -7,7 +7,7 @@ import styles from './page-controls.module.scss';
 
 export function PageControls() {
     const { setPosition } = useCursor();
-    const { page, setPage } = usePage();
+    const { page, setPage, setDirection } = usePage();
 
     function resetCursor() {
         setPosition((prev) => ({
@@ -27,6 +27,7 @@ export function PageControls() {
                     <motion.button
                         onClick={() => {
                             setPage((prev) => prev - 1);
+                            setDirection('back');
                             resetCursor();
                         }}
                         onHoverStart={(event) => {
@@ -55,6 +56,7 @@ export function PageControls() {
                 <motion.button
                     onClick={() => {
                         setPage((prev) => prev + 1);
+                        setDirection('forward');
                     }}
                     onHoverStart={(event) => {
                         const rect = (event.target as HTMLElement).getBoundingClientRect();

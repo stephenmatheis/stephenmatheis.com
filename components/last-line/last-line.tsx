@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { usePage } from '@/providers/page-provider';
 import { useCursor } from '@/providers/cursor-provider';
@@ -44,7 +43,7 @@ export function LastLine() {
                     }));
                 }}
             >
-                <Link className={styles.qr} href="/">
+                <a className={styles.qr} href="https://nextdotgov.com" target="_blank">
                     <span>https://nextdotgov.com</span>
                     <span>
                         <svg
@@ -60,7 +59,7 @@ export function LastLine() {
                             />
                         </svg>
                     </span>
-                </Link>
+                </a>
             </motion.span>
         </Section>
     );
