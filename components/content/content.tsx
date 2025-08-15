@@ -7,7 +7,6 @@ import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
 import { usePage } from '@/providers/page-provider';
 import { LoadingCanvas } from '@/components/loading-canvas';
-import { Footer } from '@/components/footer';
 import { PageControls } from '@/components/page-controls';
 import styles from './content.module.scss';
 
@@ -16,7 +15,7 @@ const wait = 0.7;
 export function Content({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const { setPosition } = useCursor();
-    const { page } = usePage();
+    const { page, direction } = usePage();
 
     return (
         <main className={styles.content}>
@@ -156,7 +155,7 @@ export function Content({ children }: { children: React.ReactNode }) {
             <PageControls />
 
             {/* Loading Canvas  */}
-            {page > 1 && <LoadingCanvas />}
+            {direction && <LoadingCanvas animationDirection='exit' />}
         </main>
     );
 }

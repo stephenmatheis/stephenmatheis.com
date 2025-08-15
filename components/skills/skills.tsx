@@ -4,10 +4,16 @@ import skills from '@/data/skills';
 import styles from './skills.module.scss';
 
 export function Skills() {
-    const { page } = usePage();
+    const { page, canUpdate, direction } = usePage();
 
     return (
-        <Section className={styles.skills} heading="Skills" data-page={page}>
+        <Section
+            className={styles.skills}
+            heading="Skills"
+            data-page={page}
+            data-can-update={canUpdate}
+            data-direction={direction === null ? 'null' : direction}
+        >
             <div className={styles.groups}>
                 {skills.map(({ group, items }, index) => {
                     return (

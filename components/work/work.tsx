@@ -2,16 +2,24 @@
 
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
+import { usePage } from '@/providers/page-provider';
 import { useCursor } from '@/providers/cursor-provider';
 import { Section } from '@/components/section';
 import work from '@/data/work';
 import styles from './work.module.scss';
 
 export function Work() {
+    const { page, direction, canUpdate } = usePage();
     const { setPosition } = useCursor();
 
     return (
-        <Section className={styles.work} heading="Work">
+        <Section
+            className={styles.work}
+            heading="Work"
+            data-page={page}
+            data-can-update={canUpdate}
+            data-direction={direction === null ? 'null' : direction}
+        >
             <div className={styles.list}>
                 {work.map(({ name, href, description }) => (
                     <div key={name} className={styles.item}>

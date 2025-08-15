@@ -8,7 +8,18 @@
 
     @media screen {
         @media (max-height: 1056px) {
-            display: none;
+            top: calc(var(--line-height) * 2);
+            left: 0;
+            right: unset;
+            width: 70ch;
+
+            &[data-direction='null'] {
+                &[data-can-update='false'] {
+                    &:not([data-page='2']) {
+                        display: none;
+                    }
+                }
+            }
         }
     }
 
