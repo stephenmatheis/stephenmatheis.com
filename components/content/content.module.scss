@@ -49,15 +49,16 @@
         top: calc(var(--line-height) * -2);
         left: 0;
         color: var(--muted);
+        display: flex;
+        gap: 2ch;
 
         @media screen {
             @media (max-width: 829px) {
                 position: static;
-                left: 0;
             }
 
             @media (max-height: 1056px) {
-                display: none;
+                top: calc(var(--line-height) * 0);
             }
         }
 
@@ -111,24 +112,18 @@
     }
 
     .statusbar {
-        user-select: none;
-        position: absolute;
-        bottom: calc(var(--line-height) * -2);
-        left: -6ch;
-        display: flex;
-        justify-content: center;
-        width: calc(100% + 6ch);
+        display: none;
 
         @media screen {
-            position: static;
-            left: 0;
-            width: 100%;
-
             @media (max-height: 1056px) {
+                user-select: none;
                 position: absolute;
+                bottom: calc(var(--line-height) * -1);
+                left: 0;
+                display: flex;
                 align-items: center;
                 justify-content: space-between;
-                bottom: calc(var(--line-height) * -1);
+                width: 100%;
 
                 .left,
                 .right {

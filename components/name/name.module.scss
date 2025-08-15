@@ -8,6 +8,7 @@
 
     @media screen {
         @media (max-height: 1056px) {
+            top: calc(var(--line-height) * 18);
             width: 73ch;
 
             &:not([data-page='1']) {
@@ -36,9 +37,8 @@
     @media screen {
         @media (max-height: 1056px) {
             .row {
-                // justify-content: flex-end;
                 align-items: center;
-                height: calc(var(--line-height) * 21);
+                height: var(--line-height);
             }
         }
     }

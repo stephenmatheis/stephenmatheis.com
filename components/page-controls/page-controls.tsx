@@ -22,6 +22,7 @@ export function PageControls() {
 
     return (
         <div className={styles['page-controls']}>
+            {/* Buttons */}
             {page > 1 && (
                 <div className={styles.back}>
                     <motion.button
@@ -79,6 +80,10 @@ export function PageControls() {
                     ┈→
                 </motion.button>
             </div>
+
+            {/* Page Numbers */}
+            <div className={styles.left}>{page}</div>
+            <div className={styles.right}>{page + 1}</div>
         </div>
     );
 }
