@@ -27,6 +27,25 @@
             .forward {
                 justify-content: flex-end;
             }
+
+            .left,
+            .right {
+                pointer-events: none;
+                position: absolute;
+                top: 0;
+                display: flex;
+                justify-content: center;
+                color: var(--muted);
+                width: 70ch;
+            }
+
+            .left {
+                left: 0;
+            }
+
+            .right {
+                right: 0;
+            }
         }
     }
 }

@@ -5,8 +5,6 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
-import { usePage } from '@/providers/page-provider';
-
 import { PageControls } from '@/components/page-controls';
 import styles from './content.module.scss';
 
@@ -15,7 +13,6 @@ const wait = 0.7;
 export function Content({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const { setPosition } = useCursor();
-    const { page } = usePage();
 
     return (
         <main className={styles.content}>
@@ -80,16 +77,6 @@ export function Content({ children }: { children: React.ReactNode }) {
                                     </Link>
                                 )}
                             </motion.span>
-                            {i < arr.length - 1 && (
-                                <motion.span
-                                    className={styles.spacer}
-                                    // initial={{ opacity: 0 }}
-                                    // animate={{ opacity: 1 }}
-                                    // transition={{ duration, delay: d2 + wait }}
-                                >
-                                    {'>'}
-                                </motion.span>
-                            )}
                         </Fragment>
                     );
                 })}
@@ -148,9 +135,9 @@ export function Content({ children }: { children: React.ReactNode }) {
                 // animate={{ opacity: 1, x: 0 }}
                 // transition={{ duration: 0.25, delay: 1.3 + wait }}
             >
-                <div className={styles.left}>{page}</div>
-                <div className={styles.right}>{page + 1}</div>
+                {/*  */}
             </motion.div>
+
             {/* Page Controls */}
             <PageControls />
         </main>
