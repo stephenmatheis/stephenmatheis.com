@@ -13,12 +13,8 @@
             right: unset;
             width: 70ch;
 
-            &[data-direction='null'] {
-                &[data-can-update='false'] {
-                    &:not([data-page='2']) {
-                        display: none;
-                    }
-                }
+            &:not([data-page='2']) {
+                display: none;
             }
         }
     }

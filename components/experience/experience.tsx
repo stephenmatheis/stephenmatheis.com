@@ -6,16 +6,10 @@ import experience from '@/data/experience';
 import styles from './experience.module.scss';
 
 export function Experience() {
-    const { page, direction, canUpdate } = usePage();
+    const { page } = usePage();
 
     return (
-        <Section
-            className={styles.experience}
-            heading="Experience"
-            data-page={page}
-            data-can-update={canUpdate}
-            data-direction={direction === null ? 'null' : direction}
-        >
+        <Section className={styles.experience} heading="Experience" data-page={page}>
             <div className={styles.jobs}>
                 {experience.map(({ company, location, start, end, roles, stack, list }, index) => {
                     if (company === 'Break') {

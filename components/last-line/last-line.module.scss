@@ -13,19 +13,13 @@
 
     @media screen {
         @media (max-height: 1056px) {
-            bottom: unset;
-            top: 0;
-            display: none;
+            left: unset;
+            right: 0;
+            bottom: calc(var(--line-height) * 2);
 
-            // transition: opacity 0ms ease-out;
-
-            // &[data-page='1'] {
-            //     opacity: 1;
-            // }
-
-            // &:not([data-page='1']) {
-            //     opacity: 0;
-            // }
+            &:not([data-page='2']) {
+                display: none;
+            }
         }
     }
 

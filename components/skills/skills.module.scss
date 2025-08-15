@@ -11,18 +11,8 @@
             top: calc(var(--line-height) * 33);
             width: 70ch;
 
-            &[data-direction='forward'] {
-                &[data-can-update='true'] {
-                    display: none;
-                }
-            }
-
-            &[data-direction='null'] {
-                &[data-can-update='false'] {
-                    &:not([data-page='1']) {
-                        display: none;
-                    }
-                }
+            &:not([data-page='1']) {
+                display: none;
             }
         }
     }
