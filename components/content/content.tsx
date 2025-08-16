@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
-import { PageControls } from '@/components/page-controls';
 import styles from './content.module.scss';
 
 const wait = 0.7;
@@ -137,9 +136,6 @@ export function Content({ children }: { children: React.ReactNode }) {
             >
                 {/*  */}
             </motion.div>
-
-            {/* Page Controls */}
-            <PageControls />
         </main>
     );
 }

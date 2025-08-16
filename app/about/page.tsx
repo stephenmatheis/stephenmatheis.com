@@ -6,6 +6,7 @@ import { Contact } from '@/components/contact';
 import { Skills } from '@/components/skills';
 import { Work } from '@/components/work';
 import { LastLine } from '@/components/last-line';
+import { PageControls } from '@/components/page-controls';
 import { Markup } from '@/components/markup';
 
 export default function AboutPage() {
@@ -17,6 +18,7 @@ export default function AboutPage() {
             <Skills />
             <Work />
             <LastLine />
+            <PageControls />
             {/* <Markup /> */}
         </>
     );
