@@ -1,7 +1,9 @@
+import styles from './page.module.scss';
+
 export default function RootPage() {
     return (
-        <>
-            <h2>{'</>'} Under development</h2>
-        </>
+        <div className={styles.home}>
+            <h2>Table of Contents</h2>
+        </div>
     );
 }
