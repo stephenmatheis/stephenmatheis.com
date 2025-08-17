@@ -11,7 +11,7 @@ const wait = 0.7;
 
 export function Content({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
-    const { setPosition } = useCursor();
+    const { setPosition, resetPosition } = useCursor();
 
     return (
         <main className={styles.content}>
@@ -55,16 +55,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                                         type: 'path',
                                     }));
                                 }}
-                                onHoverEnd={() => {
-                                    setPosition((prev) => ({
-                                        ...prev,
-                                        top: 0,
-                                        left: 0,
-                                        height: 0,
-                                        width: 0,
-                                        type: 'normal',
-                                    }));
-                                }}
+                                onHoverEnd={() => resetPosition()}
                             >
                                 {newTab ? (
                                     <a href={path} className={pathname === path ? styles.pathname : ''} target="_blank">

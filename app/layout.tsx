@@ -5,8 +5,8 @@ import { CursorProvider } from '@/providers/cursor-provider';
 import { Cursor } from '@/components/cursor';
 import { Viewport as App } from '@/components/viewport';
 import { Content } from '@/components/content';
-import '@/styles/app.scss';
 import { PageProvider } from '@/providers/page-provider';
+import '@/styles/app.scss';
 
 const mono = localFont({
     src: './fonts/DepartureMono.woff2',

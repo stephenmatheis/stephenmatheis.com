@@ -35,17 +35,9 @@ html {
     -webkit-text-size-adjust: 100%;
 
     &,
-    * {
-        cursor: url(/cursor.svg) 8 8, auto;
-    }
-
-    &.cursor-loaded {
-        &,
-        * {
-            @media screen {
-                cursor: none;
-            }
-        }
+    a,
+    button {
+        cursor: url(/crosshair-16x16.svg) 8 8, auto;
     }
 }
 
