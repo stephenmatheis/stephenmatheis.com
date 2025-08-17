@@ -6,19 +6,8 @@ import { usePage } from '@/providers/page-provider';
 import styles from './page-controls.module.scss';
 
 export function PageControls() {
-    const { setPosition } = useCursor();
+    const { setPosition, resetPosition } = useCursor();
     const { page, setPage, setDirection } = usePage();
-
-    function resetCursor() {
-        setPosition((prev) => ({
-            ...prev,
-            top: 0,
-            left: 0,
-            height: 0,
-            width: 0,
-            type: 'normal',
-        }));
-    }
 
     return (
         <div className={styles['page-controls']}>
@@ -29,7 +18,7 @@ export function PageControls() {
                         onClick={() => {
                             setPage((prev) => prev - 1);
                             setDirection('back');
-                            resetCursor();
+                            resetPosition();
                         }}
                         onHoverStart={(event) => {
                             const rect = (event.target as HTMLElement).getBoundingClientRect();
@@ -47,7 +36,7 @@ export function PageControls() {
                                 type: 'button',
                             }));
                         }}
-                        onHoverEnd={() => resetCursor()}
+                        onHoverEnd={() => resetPosition()}
                     >
                         ←┄
                     </motion.button>
@@ -75,7 +64,7 @@ export function PageControls() {
                             type: 'button',
                         }));
                     }}
-                    onHoverEnd={() => resetCursor()}
+                    onHoverEnd={() => resetPosition()}
                 >
                     ┈→
                 </motion.button>
