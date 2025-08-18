@@ -24,8 +24,8 @@
     padding: 0;
 
     &::selection {
-        color: var(--background-color);
-        background-color: var(--color);
+        color: var(--accent);
+        background-color: var(--accent-background);
     }
 }
 
