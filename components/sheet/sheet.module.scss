@@ -10,13 +10,13 @@
     @media screen {
         margin: auto;
 
-        @media (max-height: 1056px) {
+        @media (max-height: 1055px) {
             height: 8.5in;
             width: 11in;
             padding: calc(var(--line-height) * 1) 0ch;
         }
 
-        @media (max-width: 829px) {
+        @media (max-width: 815px) {
             justify-content: flex-start;
             width: 100%;
             height: max-content;

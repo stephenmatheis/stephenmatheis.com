@@ -6,12 +6,12 @@
     height: calc(var(--line-height) * 71);
 
     @media screen {
-        @media (max-height: 1056px) {
+        @media (max-height: 1055px) {
             width: 146ch;
             height: calc(var(--line-height) * 56);
         }
 
-        @media (max-width: 829px) {
+        @media (max-width: 815px) {
             flex-direction: column;
             gap: var(--line-height);
             height: max-content;
@@ -32,11 +32,11 @@
         display: none;
 
         @media screen {
-            @media (max-width: 829px) {
+            @media (max-width: 815px) {
                 position: static;
             }
 
-            @media (max-height: 1056px) {
+            @media (max-height: 1055px) {
                 top: calc(var(--line-height) * 0);
             }
         }
@@ -85,7 +85,7 @@
             }
         }
 
-        @media screen and (max-width: 829px) {
+        @media screen and (max-width: 815px) {
             display: none;
         }
     }
@@ -94,7 +94,7 @@
         display: none;
 
         @media screen {
-            @media (max-height: 1056px) {
+            @media (max-height: 1055px) {
                 user-select: none;
                 position: absolute;
                 bottom: calc(var(--line-height) * -1);

@@ -7,7 +7,7 @@
     }
 
     @media screen {
-        @media (max-height: 1056px) {
+        @media (max-height: 1055px) {
             top: calc(var(--line-height) * 33);
             width: 70ch;
 
@@ -43,7 +43,7 @@
     }
 
     @media screen {
-        @media (max-height: 1056px) {
+        @media (max-height: 1055px) {
             .groups {
                 display: grid;
                 grid-template-columns: repeat(2, 35ch);
