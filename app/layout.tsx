@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     description: 'My personal site.',
     openGraph: {
         title: 'Stephen Matheis',
-        description: 'Bio',
+        description: '[next (dot) gov] https://nextdotgov.com',
         url: 'https://stephenmatheis.com',
         siteName: 'Stephen Matheis',
         images: [
             {
-                url: 'https://stephenmatheis.com/images/og.png',
+                url: 'https://stephenmatheis.com/og.png',
                 width: 1200,
                 height: 630,
             },

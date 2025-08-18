@@ -66,8 +66,8 @@
             display: none;
         }
 
-        .link {
-            display: inline-block;
+        a {
+            color: var(--light);
 
             a {
                 text-decoration: none;
