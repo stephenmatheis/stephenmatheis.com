@@ -18,10 +18,10 @@ export function Content({ children }: { children: React.ReactNode }) {
             {/* Bread Crumbs */}
             <nav className={styles.breadcrumbs}>
                 {[
-                    { label: 'home', path: '/' },
-                    { label: 'about', path: '/about' },
-                    { label: 'work', path: '/work' },
-                    { label: 'blog', path: '/blog' },
+                    // { label: 'home', path: '/' },
+                    // { label: 'about', path: '/about' },
+                    // { label: 'work', path: '/work' },
+                    // { label: 'blog', path: '/blog' },
                     { label: 'resume', path: '/stephen-matheis-resume.pdf', newTab: true },
                 ].map(({ label, path, newTab }, i, arr) => {
                     const duration = 0;
