@@ -13,11 +13,13 @@
     .time {
         color: var(--muted);
     }
+    @media screen {
+        // @media (max-height: 1056px) {
 
-    // @media (min-width: 830px), print {
-    //     position: absolute;
-    //     top: calc(var(--line-height) * 57);
-    //     left: 0;
-    //     width: 70ch;
-    // }
+        // }
+
+        @media (max-width: 1055px) {
+            gap: 1ch;
+        }
+    }
 }
