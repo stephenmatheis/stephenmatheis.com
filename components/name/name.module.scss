@@ -3,32 +3,43 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 56ch;
+        width: 70ch;
     }
 
-    .link {
-        width: fit-content;
+    @media screen {
+        @media (max-height: 1056px) {
+            top: calc(var(--line-height) * 18);
+            width: 73ch;
+
+            &:not([data-page='1']) {
+                display: none;
+            }
+        }
     }
 
-    .text {
+    .row {
         display: flex;
-        flex-direction: column;
-        width: fit-content;
+        gap: 1ch;
+    }
 
-        .primary {
-            color: var(--primary);
-        }
+    .primary {
+        color: var(--color);
+    }
 
-        .color {
-            color: var(--color);
-        }
+    .muted {
+        color: var(--muted);
+    }
 
-        .muted {
-            color: var(--muted);
-        }
+    .light {
+        color: var(--light);
+    }
 
-        .light {
-            color: var(--light);
+    @media screen {
+        @media (max-height: 1056px) {
+            .row {
+                align-items: center;
+                height: var(--line-height);
+            }
         }
     }
 }

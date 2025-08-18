@@ -1,32 +1,26 @@
+// TODO: convert to MD
 const experience = [
     {
-        company: 'Compassion (TEKsystems)',
-        site: 'https://www.compassion.com/',
-        stack: ['Next.js', 'AWS'],
-        roles: [
-            {
-                title: 'Front-end Developer',
-                start: 'July 2025',
-                end: 'Now',
-            },
-        ],
-        list: ['Building a new online giving platform for live events.'],
-    },
-    {
         company: 'NEXTdotgov',
+        location: 'Remote',
         site: 'https://www.nextdotgov.com/',
         stack: ['Next.js', 'TypeScript', 'Vercel'],
         roles: [
             {
                 title: 'Founder',
-                start: 'June 2025',
-                end: 'Now',
+                start: 'Jun 2025',
+                end: '',
             },
         ],
-        list: ['Founded NEXTdotgov, a web consultancy for government.'],
+        list: [
+            'Founded NEXTdotgov, a web consultancy for government.',
+            'Developing Pink Draft, a request for proposal aid.',
+            'Developing MSR, a program-level status reporting tool.',
+        ],
     },
     {
-        company: 'TATCS',
+        company: 'T and T Consulting Services',
+        location: 'Remote',
         site: 'https://www.tatcs.com/',
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
@@ -46,10 +40,21 @@ const experience = [
                 end: 'May 2021',
             },
         ],
-        list: ['Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.'],
+        list: [
+            'Led UI/UX.',
+            'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.',
+            'Developed an app for U.S. Army MEDCOM to track required training.',
+            // Team lead.
+            // Developed an app for U.S. Army MEDCOM to track required training.
+            // Inherited 15 internal applications for maintenance, end-user support, and new feature development.
+            // Created 18 new internal applications.
+            // Taught a class on SharePoint site administration for officers in a classroom setting.
+            // Updated and migrated from SharePoint 2010 to SharePoint 2013, then 2016, then SharePoint online.
+        ],
     },
     {
-        company: 'Apple (TEKsystems)',
+        company: 'Apple',
+        location: 'Remote',
         site: 'https://www.apple.com/',
         stack: ['Next.js', 'TypeScript'],
         roles: [
@@ -59,10 +64,15 @@ const experience = [
                 end: 'Oct 2023',
             },
         ],
-        list: ['Prototyping with Next.js, TypeScript, and Storybook.'],
+        list: [
+            'Part of the Marking and Communications (MARCOM) prototyping team.',
+            'Built a new Apple Watch buy flow with Next.js and TypeScript.',
+            'Created Juice, a scaffolding tool.',
+        ],
     },
     {
         company: 'GovCIO',
+        location: 'Hybrid',
         site: 'https://govcio.com/',
         stack: ['C#', '.NET', 'MongoDB', 'Unity'],
         roles: [
@@ -72,19 +82,20 @@ const experience = [
                 end: 'Jul 2022',
             },
         ],
-        list: ['Developed 3D software for the U.S. Air Force with Unity.'],
-    },
-    {
-        company: 'Break',
-        roles: [
-            {
-                start: 'Apr 2022',
-                end: 'May 2022',
-            },
+        list: [
+            'Supported a U.S. Air Force Tactical Data Link (TDL) program.',
+            'Implemented the MIL-STD-6016 TDL protocol in C#.',
+            'Developed a 3D geospatial application with Unity.',
         ],
     },
     {
+        company: 'Break',
+        start: 'Apr 2022',
+        end: 'May 2022',
+    },
+    {
         company: 'Aeyon',
+        location: 'Remote',
         site: 'https://aeyon.us/',
         stack: ['React Native', 'TypeScript', 'Expo', 'Firebase', 'GCP'],
         roles: [
@@ -94,19 +105,20 @@ const experience = [
                 end: 'Apr 2022',
             },
         ],
-        list: ['Built a mobile app for the U.S. Marine Corps.'],
-    },
-    {
-        company: 'Break',
-        roles: [
-            {
-                start: 'Oct 2017',
-                end: 'Mar 2018',
-            },
+        list: [
+            'Digitized new Defense Health Agency (DHA) processes.',
+            'Developed large internal line-of-business applications for DHA. ',
+            'Built a mobile app for the U.S. Marine Corps.',
         ],
     },
     {
+        company: 'Break',
+        start: 'Oct 2017',
+        end: 'Mar 2018',
+    },
+    {
         company: 'HID Global',
+        location: 'Austin, TX',
         site: 'https://www.hidglobal.com/',
         stack: ['jQuery', 'Bootstrap', 'SharePoint', 'ASP.NET'],
         roles: [
@@ -116,10 +128,15 @@ const experience = [
                 end: 'Oct 2017',
             },
         ],
-        list: ['Built client-side SharePoint apps.'],
+        list: [
+            'Developed line-of-business application for operations and finance.',
+            'Upgraded SharePoint 2010 to SharePoint 2013.',
+            'Migrated Lotus Notes apps to SharePoint 2013.',
+        ],
     },
     {
         company: 'Bravo Consulting Group',
+        location: 'Reston, VA',
         site: 'https://bravocg.com/',
         stack: ['jQuery', 'SharePoint', 'ASP.NET'],
         roles: [
@@ -134,7 +151,29 @@ const experience = [
                 end: 'Feb 2015',
             },
         ],
-        list: ['Team Lead at the Executive Office of the President.'],
+        list: [
+            'Team Lead at the Executive Office of the President.',
+            'Created a presidential records export tool for National Archives.',
+            'Reduced backup requirements at the Department of Veterans Affairs.',
+        ],
+    },
+    {
+        company: 'National Ground Intelligence Center',
+        location: 'Charlottesville, VA',
+        site: 'https://www.ait-i.com/',
+        stack: ['VBA', 'SharePoint'],
+        roles: [
+            {
+                title: 'Access Control Specialist',
+                start: 'Feb 2011',
+                end: 'Nov 2014',
+            },
+        ],
+        list: [
+            'Used Excel and VBA to analyze physical security infraction data',
+            'SharePoint site administration.',
+            'Created a tool to track and review daily metrics for leadership.',
+        ],
     },
 ];
 

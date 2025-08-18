@@ -7,12 +7,13 @@ type Position = {
     left: number;
     height: number;
     width: number;
-    type: 'link' | 'path' | 'item' | 'button' | 'markup' | 'tab' | 'moving' | 'normal';
+    type: 'link' | 'path' | 'button' | 'line' | 'markup' | 'tab' | 'moving' | 'normal';
 };
 
 type CursorContext = {
     position: Position;
     setPosition: Dispatch<SetStateAction<Position>>;
+    resetPosition: () => void;
 };
 
 const CursorContext = createContext<CursorContext | undefined>(undefined);
@@ -36,11 +37,21 @@ export function CursorProvider({ children }: { children: ReactNode }) {
         type: 'normal',
     });
 
+    function resetPosition() {
+        setPosition((prev) => ({
+            ...prev,
+            // height: 0,
+            // width: 0,
+            type: 'normal',
+        }));
+    }
+
     return (
         <CursorContext.Provider
             value={{
                 position,
                 setPosition,
+                resetPosition,
             }}
         >
             {children}

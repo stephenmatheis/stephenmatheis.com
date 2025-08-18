@@ -1,6 +1,6 @@
 const skills = [
     {
-        group: 'Programming Languages',
+        group: 'Languages',
         items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'Python', 'C#', 'Lua'],
     },
     {
@@ -9,7 +9,7 @@ const skills = [
     },
     {
         group: 'Libraries',
-        items: ['React', 'React Native', 'Motion', 'Express', 'Fastify', 'Three.js', 'React Three Fiber', 'ArcGIS'],
+        items: ['React', 'React Native', 'Motion', 'Three.js', 'R3F', 'ArcGIS'],
     },
     {
         group: 'Runtimes',
@@ -29,7 +29,7 @@ const skills = [
     },
     {
         group: 'Databases',
-        items: ['MongoDB', 'DynamoDB', 'Firebase'],
+        items: ['MongoDB', 'DynamoDB', 'Firebase', 'Supabase', 'IndexedDB'],
     },
 ];
 

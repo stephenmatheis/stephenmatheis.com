@@ -1,51 +1,182 @@
 .experience {
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 7);
-        left: 0;
-        width: 56ch;
+        top: calc(var(--line-height) * 4);
+        width: 70ch;
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-top: calc(var(--line-height) * 21);
+
+            &:not([data-page='1']) {
+                display: none;
+            }
+        }
     }
 
     .jobs {
+        pointer-events: all;
         display: flex;
         flex-direction: column;
-        gap: var(--line-height);
+        gap: calc(var(--line-height) * 1);
+
+        .break {
+            display: flex;
+            gap: 1ch;
+
+            .name {
+                color: var(--muted);
+            }
+
+            .date {
+                color: var(--muted);
+            }
+        }
 
         .job {
-            break-inside: avoid;
+            .company {
+                display: flex;
+                gap: 1ch;
 
-            .role {
-                .title {
-                    color: var(--primary);
-                    position: relative;
-
-                    .company {
-                        color: var(--light);
-                    }
+                .name {
+                    color: var(--muted);
                 }
 
-                .date {
+                .location {
                     color: var(--muted);
                 }
             }
 
-            .list {
-                margin: 0;
-                padding: 0;
-                list-style: none;
+            .roles {
+                .role {
+                    .details {
+                        display: flex;
+                        justify-content: space-between;
 
-                .item {
-                    display: flex;
+                        .title {
+                            color: var(--color);
+                            position: relative;
+                        }
 
-                    .bullet {
-                        margin-right: 1ch;
-                        color: var(--muted);
+                        .date {
+                            color: var(--color);
+                        }
                     }
                 }
             }
 
+            .list {
+                .line {
+                    color: var(--color);
+                }
+            }
+
             .stack {
-                color: var(--light);
+                color: var(--color);
+            }
+        }
+
+        .dots {
+            display: flex;
+            height: var(--line-height);
+
+            .dot {
+                position: relative;
+                width: 1ch;
+                height: var(--line-height);
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 3;
+                    left: 3px;
+                    width: 1px;
+                    height: 1px;
+                    background-color: var(--muted);
+                }
+            }
+        }
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            .jobs {
+                position: relative;
+
+                .break {
+                    position: absolute;
+                }
+
+                .job {
+                    position: absolute;
+                }
+
+                .break,
+                .job {
+                    width: 70ch;
+
+                    &:nth-child(1) {
+                        top: calc(var(--line-height) * 0);
+                        left: 0;
+                    }
+
+                    &:nth-child(2) {
+                        top: calc(var(--line-height) * 7);
+                        left: 0;
+                    }
+
+                    &:nth-child(3) {
+                        top: calc(var(--line-height) * 16);
+                        left: 0;
+                    }
+
+                    &:nth-child(4) {
+                        top: calc(var(--line-height) * 23);
+                        left: 0;
+                    }
+
+                    &:nth-child(5) {
+                        top: calc(var(--line-height) * 30);
+                        left: 0;
+                    }
+
+                    &:nth-child(6) {
+                        top: calc(var(--line-height) * -21);
+                        right: 0;
+                    }
+
+                    &:nth-child(7) {
+                        top: calc(var(--line-height) * -14);
+                        right: 0;
+                    }
+
+                    &:nth-child(8) {
+                        top: calc(var(--line-height) * -12);
+                        right: 0;
+                    }
+
+                    &:nth-child(9) {
+                        top: calc(var(--line-height) * -5);
+                        right: 0;
+                    }
+
+                    &:nth-child(10) {
+                        top: calc(var(--line-height) * 3);
+                        right: 0;
+                    }
+                }
+            }
+
+            .dots {
+                .dot {
+                    opacity: 0;
+                }
             }
         }
     }

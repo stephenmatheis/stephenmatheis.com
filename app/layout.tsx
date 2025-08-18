@@ -3,6 +3,9 @@ import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { CursorProvider } from '@/providers/cursor-provider';
 import { Cursor } from '@/components/cursor';
+import { Viewport as App } from '@/components/viewport';
+import { Content } from '@/components/content';
+import { PageProvider } from '@/providers/page-provider';
 import '@/styles/app.scss';
 
 const mono = localFont({
@@ -44,7 +47,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en" suppressHydrationWarning>
             <body className={mono.variable} suppressHydrationWarning>
                 <CursorProvider>
-                    {children}
+                    <App>
+                        <PageProvider>
+                            <Content>{children}</Content>
+                        </PageProvider>
+                        <div id="markup-overlay" />
+                    </App>
                     <Cursor />
                 </CursorProvider>
                 <Analytics debug={false} />

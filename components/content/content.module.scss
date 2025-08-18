@@ -1,103 +1,146 @@
 .content {
     position: relative;
     display: flex;
-    flex-direction: column;
     gap: calc(var(--line-height) * 2);
-    width: 95ch;
-    height: calc(var(--line-height) * 58);
+    width: 108ch;
+    height: calc(var(--line-height) * 71);
 
-    @media screen and (max-width: 829px) {
-        gap: var(--line-height);
-        height: max-content;
-        width: 100%;
-        max-width: 95ch;
-    }
+    @media screen {
+        // background-color: #0000ff10;
 
-    .linenumbers {
-        user-select: none;
-        position: absolute;
-        top: 0;
-        left: -6ch;
-        color: var(--lighter);
+        @media (max-height: 1056px) {
+            width: 146ch;
+            height: calc(var(--line-height) * 56);
 
-        @media screen and (max-width: 829px) {
-            display: none;
+            background-color: #ff000010;
+
+            // &::before,
+            // &::after {
+            //     pointer-events: none;
+            //     content: '';
+            //     position: absolute;
+            //     top: 0;
+            //     width: 50%;
+            //     height: 100%;
+            // }
+
+            // &::before {
+            //     left: 0;
+            //     background-color: #ff00ff10;
+            // }
+
+            // &::after {
+            //     right: 0;
+            //     background-color: #00ff0010;
+            // }
+        }
+
+        @media (max-width: 829px) {
+            flex-direction: column;
+            gap: var(--line-height);
+            height: max-content;
+            width: 100%;
         }
     }
 
     .breadcrumbs {
         user-select: none;
         position: absolute;
-        top: calc(var(--line-height) * -1.5);
-        left: -6ch;
-        color: var(--light);
+        top: calc(var(--line-height) * -2);
+        left: 0;
+        color: var(--muted);
+        display: flex;
+        gap: 2ch;
 
-        @media screen and (max-width: 829px) {
-            position: static;
-            left: 0;
+        @media screen {
+            @media (max-width: 829px) {
+                position: static;
+            }
+
+            @media (max-height: 1056px) {
+                top: calc(var(--line-height) * 0);
+            }
+        }
+
+        @media print {
+            display: none;
         }
 
         a {
             color: var(--light);
 
-            &.pathname {
-                color: var(--color);
-            }
+            a {
+                text-decoration: none;
+                color: var(--muted);
 
-            &:hover {
-                color: var(--primary);
+                &.pathname {
+                    color: var(--path);
+                }
+
+                &:hover {
+                    color: var(--accent);
+                }
             }
         }
 
         .spacer {
+            display: inline-block;
             margin-inline: 1ch;
-            color: var(--lighter);
+            color: var(--muted);
+        }
+    }
+
+    .linenumbers {
+        // DEV:
+        display: none;
+
+        user-select: none;
+        position: absolute;
+        top: 0;
+        left: -3ch;
+        color: var(--muted);
+
+        .line {
+            &:hover {
+                color: var(--accent);
+            }
+        }
+
+        @media screen and (max-width: 829px) {
+            display: none;
         }
     }
 
     .statusbar {
-        user-select: none;
-        bottom: calc(var(--line-height) * -1.5);
-        left: -6ch;
-        display: flex;
-        position: absolute;
-        justify-content: space-between;
-        width: calc(100% + 6ch);
-        height: var(--line-height);
+        display: none;
 
-        @media screen and (max-width: 829px) {
-            position: static;
-            left: 0;
-            width: 100%;
-        }
-
-        a {
-            color: var(--light);
-        }
-
-        .block {
-            display: flex;
-            gap: 3ch;
-
-            a {
+        @media screen {
+            @media (max-height: 1056px) {
+                user-select: none;
+                position: absolute;
+                bottom: calc(var(--line-height) * -1);
+                left: 0;
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
+                width: 100%;
 
-                &:hover {
-                    color: var(--primary);
-                }
-
-                svg {
-                    margin-right: 0.5ch;
+                .left,
+                .right {
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    color: var(--muted);
                 }
             }
         }
+    }
 
-        .git {
-            display: inline-block;
-            position: relative;
-            margin-right: 0.5ch;
-            transform: translateY(1.5px);
+    .breadcrumbs,
+    .linenumbers,
+    .statusbar {
+        @media print {
+            display: none;
         }
     }
 }

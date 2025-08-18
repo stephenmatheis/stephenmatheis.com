@@ -1,5 +1,4 @@
 .markup {
-    pointer-events: none;
     position: absolute;
     top: 0;
     display: flex;
@@ -7,6 +6,7 @@
     width: 8.5in;
     height: 11in;
     padding: calc(var(--line-height) * 3) 0;
+    margin: auto;
 
     @media screen and (max-width: 829px) {
         display: none;
@@ -16,88 +16,79 @@
         position: relative;
         display: flex;
         justify-content: space-between;
-        gap: 4ch;
+        gap: 10ch;
 
-        .charWidth {
+        .charwidth {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--line-height) * 1);
-            left: calc(2ch);
+            top: calc(var(--font-size) * 1.5);
+            left: -1ch;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 21px;
-
-            color: var(--lighter);
+            gap: 2px;
+            width: 3ch;
+            height: calc(var(--line-height) * 1);
+            color: var(--light);
 
             .label {
                 line-height: 8.25px;
-                font-size: 8.25px;
-                margin-top: 3px;
             }
         }
 
         .fontsize {
             pointer-events: all;
             position: absolute;
-            top: -0.5px;
-            left: 7.25ch;
+            top: 0;
+            left: 33.5ch;
             height: var(--line-height);
             display: flex;
             align-items: center;
-            color: var(--lighter);
+            color: var(--light);
 
             .label {
-                line-height: 8.25px;
-                font-size: 8.25px;
-                margin-left: 0.75ch;
+                margin-left: 0.5ch;
             }
         }
 
         .lineheight {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--line-height) * 2);
-            left: 33.5ch;
+            top: 0;
+            left: 38ch;
             display: flex;
             align-items: center;
-            color: var(--lighter);
+            color: var(--light);
 
             .label {
                 line-height: 8.25px;
-                font-size: 8.25px;
+                margin-left: 0.75ch;
             }
         }
 
-        .leftwidth,
-        .rightwidth {
+        .left-content-width,
+        .right-content-width {
             pointer-events: all;
             position: absolute;
-            height: 18px;
-            color: var(--lighter);
+            height: var(--line-height);
+            color: var(--light);
 
             .label {
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: var(--background-color);
-                height: calc(var(--line-height) * 1);
                 transform: translate(-50%, -50%);
                 width: max-content;
-                padding-inline: 2ch;
             }
         }
 
-        .leftwidth {
-            top: calc(var(--line-height) * 5);
+        .left-content-width {
+            top: calc(var(--line-height) * 4);
             left: 0;
         }
 
-        .rightwidth {
+        .right-content-width {
             top: calc(var(--line-height) * -2);
             right: 0;
         }
@@ -105,21 +96,16 @@
         .gap {
             pointer-events: all;
             position: absolute;
-            top: calc(var(--line-height) * 36.5);
-            left: 56ch;
+            top: calc(var(--line-height) * 29);
+            left: 70ch;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 16.5px;
-            color: var(--lighter);
+            height: var(--line-height);
+            color: var(--light);
 
             .label {
                 position: absolute;
-                top: -8.25px;
-                background-color: var(--background-color);
-                font-size: 8.25px;
-                height: 8.25px;
             }
         }
 
@@ -127,63 +113,68 @@
             display: flex;
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
-            width: 56ch;
+            width: 70ch;
+
+            // background-color: #ff000010;
         }
 
         .right {
             display: flex;
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
-            width: 35ch;
+            width: 34ch;
+
+            // background-color: #0000ff10;
         }
     }
 
-    .paddingtop {
+    .padding {
         pointer-events: all;
         position: absolute;
+        top: 0;
         right: 50%;
         transform: translateX(50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2ch;
         height: calc(var(--line-height) * 3);
-        color: var(--lighter);
+        color: var(--light);
+
+        @media screen {
+            top: 0;
+        }
+
+        @media print {
+            bottom: 0;
+        }
 
         .label {
             position: absolute;
             top: 50%;
             left: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--background-color);
-            height: calc(var(--line-height) * 1);
             transform: translate(-50%, -50%);
             width: max-content;
         }
-    }
-
-    .paddingtop {
-        top: 0;
     }
 
     .contentheight {
         pointer-events: all;
         position: absolute;
         top: 0;
-        right: -2ch;
+        right: -3ch;
+        display: flex;
+        justify-content: center;
+        width: 2ch;
         height: calc(var(--line-height) * 58);
-        color: var(--lighter);
+        color: var(--light);
 
         .label {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--background-color);
-            height: calc(var(--line-height) * 2);
             width: max-content;
-            text-align: center;
         }
     }
 
@@ -192,21 +183,17 @@
         position: absolute;
         bottom: 0;
         right: 0;
-        color: var(--lighter);
-        height: 14px;
-
-        @media print {
-            display: none;
-        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: var(--line-height);
+        color: var(--light);
 
         .label {
             position: absolute;
             top: 50%;
             left: 50%;
-            background-color: var(--background-color);
             transform: translate(-50%, -50%);
-            padding-inline: 2ch;
-            line-height: 14px;
         }
     }
 
@@ -214,37 +201,30 @@
         pointer-events: all;
         position: absolute;
         top: 0;
-        right: 0;
-        width: 14px;
+        right: 2ch;
+        display: flex;
+        justify-content: center;
+        width: 2ch;
         height: 11in;
-        color: var(--lighter);
-
-        @media print {
-            display: none;
-        }
+        color: var(--light);
 
         .label {
             position: absolute;
             top: 50%;
             left: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--background-color);
-            height: calc(var(--line-height) * 2);
             transform: translate(-50%, -50%);
+            width: max-content;
         }
     }
 
-    .charWidth,
+    .charwidth,
     .fontsize,
     .lineheight,
     .gap,
-    .paddingtop,
-    .paddingbottom,
+    .padding,
     .contentheight,
-    .leftwidth,
-    .rightwidth,
+    .left-content-width,
+    .right-content-width,
     .pagewidth,
     .pageheight {
         pointer-events: all;
@@ -253,6 +233,17 @@
             &:hover {
                 color: var(--accent);
             }
+        }
+
+        .label {
+            font-size: 8.25px;
+        }
+    }
+
+    .pagewidth,
+    .pageheight {
+        @media print {
+            display: none;
         }
     }
 }

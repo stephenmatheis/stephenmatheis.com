@@ -1,23 +1,34 @@
 .skills {
     @media (min-width: 830px), print {
         position: absolute;
-        top: calc(var(--line-height) * 7);
+        top: calc(var(--line-height) * 4);
         right: 0;
-        width: 35ch;
+        width: 34ch;
     }
 
-    .groups-ctr {
+    @media screen {
+        @media (max-height: 1056px) {
+            top: calc(var(--line-height) * 33);
+            width: 70ch;
+
+            &:not([data-page='1']) {
+                display: none;
+            }
+        }
+    }
+
+    .groups {
         display: flex;
         flex-direction: column;
         gap: var(--line-height);
 
         .group {
             .name {
-                color: var(--primary);
+                color: var(--muted);
                 position: relative;
             }
 
-            .items-ctr {
+            .items {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 0ch 1ch;
@@ -25,7 +36,37 @@
                 .item {
                     display: inline-block;
                     border-radius: 4px;
+                    color: var(--color);
                 }
+            }
+        }
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            .groups {
+                display: grid;
+                grid-template-columns: repeat(2, 35ch);
+                gap: var(--line-height) 0;
+
+                // .group {
+                //     .name {
+                //         color: var(--muted);
+                //         position: relative;
+                //     }
+
+                //     .items {
+                //         display: flex;
+                //         flex-wrap: wrap;
+                //         gap: 0ch 1ch;
+
+                //         .item {
+                //             display: inline-block;
+                //             border-radius: 4px;
+                //             color: var(--color);
+                //         }
+                //     }
+                // }
             }
         }
     }

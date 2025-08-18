@@ -1,0 +1,78 @@
+'use client';
+
+import * as motion from 'motion/react-client';
+import { useCursor } from '@/providers/cursor-provider';
+import { usePage } from '@/providers/page-provider';
+import styles from './page-controls.module.scss';
+
+export function PageControls() {
+    const { setPosition, resetPosition } = useCursor();
+    const { page, setPage, setDirection } = usePage();
+
+    return (
+        <div className={styles['page-controls']}>
+            {/* Buttons */}
+            {page > 1 && (
+                <div className={styles.back}>
+                    <motion.button
+                        onClick={() => {
+                            setPage((prev) => prev - 1);
+                            setDirection('back');
+                            resetPosition();
+                        }}
+                        onHoverStart={(event) => {
+                            const rect = (event.target as HTMLElement).getBoundingClientRect();
+
+                            if (!rect) return;
+
+                            const { top, left, height, width } = rect;
+
+                            setPosition((prev) => ({
+                                ...prev,
+                                top,
+                                left,
+                                height,
+                                width,
+                                type: 'button',
+                            }));
+                        }}
+                        onHoverEnd={() => resetPosition()}
+                    >
+                        ←┄
+                    </motion.button>
+                </div>
+            )}
+            <div className={styles.forward}>
+                <motion.button
+                    onClick={() => {
+                        setPage((prev) => prev + 1);
+                        setDirection('forward');
+                    }}
+                    onHoverStart={(event) => {
+                        const rect = (event.target as HTMLElement).getBoundingClientRect();
+
+                        if (!rect) return;
+
+                        const { top, left, height, width } = rect;
+
+                        setPosition((prev) => ({
+                            ...prev,
+                            top,
+                            left,
+                            height,
+                            width,
+                            type: 'button',
+                        }));
+                    }}
+                    onHoverEnd={() => resetPosition()}
+                >
+                    ┈→
+                </motion.button>
+            </div>
+
+            {/* Page Numbers */}
+            <div className={styles.left}>{page}</div>
+            <div className={styles.right}>{page + 1}</div>
+        </div>
+    );
+}
