@@ -6,33 +6,9 @@
     height: calc(var(--line-height) * 71);
 
     @media screen {
-        // background-color: #0000ff10;
-
         @media (max-height: 1056px) {
             width: 146ch;
             height: calc(var(--line-height) * 56);
-
-            background-color: #ff000010;
-
-            // &::before,
-            // &::after {
-            //     pointer-events: none;
-            //     content: '';
-            //     position: absolute;
-            //     top: 0;
-            //     width: 50%;
-            //     height: 100%;
-            // }
-
-            // &::before {
-            //     left: 0;
-            //     background-color: #ff00ff10;
-            // }
-
-            // &::after {
-            //     right: 0;
-            //     background-color: #00ff0010;
-            // }
         }
 
         @media (max-width: 829px) {
