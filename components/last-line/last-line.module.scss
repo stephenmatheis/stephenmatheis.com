@@ -1,0 +1,35 @@
+.last-line {
+    @media (min-width: 830px), print {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2ch;
+        width: 70ch;
+        color: var(--color);
+    }
+
+    @media screen {
+        @media (max-height: 1056px) {
+            bottom: calc(var(--line-height) * 2);
+
+            &:not([data-page='2']) {
+                display: none;
+            }
+        }
+    }
+
+    .link {
+        height: calc(var(--line-height) * 2);
+
+        .qr {
+            display: flex;
+            align-items: flex-end;
+            gap: 2ch;
+            height: calc(var(--line-height) * 2);
+            color: var(--accent);
+        }
+    }
+}

@@ -2,34 +2,36 @@
     user-select: none;
     pointer-events: none;
     position: fixed;
-    top: -8px;
-    left: -8px;
-    height: 16px;
-    width: 16px;
-    border-radius: 8px;
-    background-color: rgba(0, 0, 0, 0.4);
-    transform: translate(-50%, -50%);
     z-index: 100;
+    top: 0;
+    left: 0;
+    color: var(--accent);
 
     @media print {
         display: none;
     }
-}
 
-.shadow {
-    user-select: none;
-    pointer-events: none;
-    position: fixed;
-    top: -2px;
-    left: -2px;
-    height: 4px;
-    width: 4px;
-    border-radius: 2px;
-    background-color: rgba(0, 0, 0, 1);
-    transform: translate(-50%, -50%);
-    z-index: 101;
+    svg {
+        position: absolute;
 
-    @media print {
-        display: none;
+        &.topleft {
+            top: 0;
+            left: 0;
+        }
+
+        &.topright {
+            top: 0;
+            right: 0;
+        }
+
+        &.bottomleft {
+            bottom: 0;
+            left: 0;
+        }
+
+        &.bottomright {
+            bottom: 0;
+            right: 0;
+        }
     }
 }

@@ -1,8 +1,16 @@
 .section {
-    @media screen and (max-width: 829px) {
-        position: relative;
-        top: unset;
-        left: unset;
-        width: fit-content;
+    @media screen {
+        // background-color: #0000ff10;
+
+        @media (max-width: 829px) {
+            position: relative;
+            top: unset;
+            left: unset;
+            width: fit-content;
+        }
+
+        @media (max-height: 1056px) {
+            // background-color: #ff000010;
+        }
     }
 }

@@ -1,15 +1,15 @@
 :root {
     --font-size: 11px;
-    --line-height: 16.5px;
-
+    --line-height: 14px;
     --background-color: #ffffff;
-    --primary: #000000;
-    --color: #767676;
-    --muted: #a0a0a0;
-    --light: #bbbbbb;
-    --lighter: #cccccc;
-    --accent: red;
-    --link: #4c4cff;
+    --color: #000000;
+    --muted: #767676;
+    --light: #aaaaaa;
+    // --accent: #0000ee;
+    // --accent-background: #0000ee1a;
+    --accent: #f8463a;
+    --accent-background: #f8463a1a;
+    --path: #000000;
 
     @media print {
         --background-color: #ffffff;
@@ -25,7 +25,7 @@
 
     &::selection {
         color: var(--background-color);
-        background-color: var(--primary);
+        background-color: var(--color);
     }
 }
 
@@ -35,17 +35,9 @@ html {
     -webkit-text-size-adjust: 100%;
 
     &,
-    * {
-        cursor: url(/cursor.svg) 8 8, auto;
-    }
-
-    &.cursor-loaded {
-        &,
-        * {
-            @media screen {
-                cursor: none;
-            }
-        }
+    a,
+    button {
+        cursor: url(/crosshair-16x16.svg) 8 8, auto;
     }
 }
 
@@ -56,8 +48,13 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--link);
+    color: var(--accent);
     -webkit-tap-highlight-color: transparent;
+    transition: color 150ms ease-in-out;
+
+    &:hover {
+        color: var(--accent);
+    }
 }
 
 button {
@@ -67,4 +64,16 @@ button {
     font-family: inherit;
     font-size: var(--font-size);
     color: var(--color);
+
+    &:hover {
+        color: var(--accent);
+    }
+}
+
+#markup-overlay {
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
 }

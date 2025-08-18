@@ -1,0 +1,24 @@
+.loading-canvas {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 756px;
+        height: 994px;
+        background-color: var(--background-color);
+
+        @media screen {
+            @media (max-height: 1056px) {
+                height: 784px;
+                width: 1022px;
+                background-color: transparent;
+            }
+        }
+    }
+}

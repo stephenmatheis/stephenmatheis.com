@@ -1,0 +1,23 @@
+.footer {
+    display: flex;
+    gap: 2ch;
+
+    .version {
+        color: var(--muted);
+    }
+
+    .date {
+        color: var(--muted);
+    }
+
+    .time {
+        color: var(--muted);
+    }
+
+    // @media (min-width: 830px), print {
+    //     position: absolute;
+    //     top: calc(var(--line-height) * 57);
+    //     left: 0;
+    //     width: 70ch;
+    // }
+}
