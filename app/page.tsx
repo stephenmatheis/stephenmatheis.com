@@ -1,11 +1,23 @@
+import { Name } from '@/components/name';
+import { Experience } from '@/components/experience';
+import { Contact } from '@/components/contact';
+import { Skills } from '@/components/skills';
+import { Work } from '@/components/work';
+import { LastLine } from '@/components/last-line';
 import { PageControls } from '@/components/page-controls';
-import { TableOfContents } from '@/components/table-of-contents';
+import { Markup } from '@/components/markup';
 
-export default function RootPage() {
+export default function AboutPage() {
     return (
         <>
-            <TableOfContents />
+            <Name />
+            <Contact />
+            <Experience />
+            <Skills />
+            <Work />
+            <LastLine />
             <PageControls />
+            {/* <Markup /> */}
         </>
     );
 }
