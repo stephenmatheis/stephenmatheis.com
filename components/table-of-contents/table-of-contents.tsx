@@ -12,8 +12,8 @@ export function TableOfContents() {
             <div className={styles.title}>Contents</div>
             <div className={styles.chapters}>
                 {[
-                    { name: 'Prologue', pg: '10' },
-                    { name: 'Chapter 1: Awakening', pg: '20' },
+                    { name: 'Prologue', pg: '3' },
+                    { name: 'Chapter 1: Awakening', pg: '5' },
                     { name: 'Chapter 2: Walking', pg: '30' },
                     { name: 'Chapter 3: Hiding', pg: '40' },
                     { name: 'Chapter 3: Running', pg: '50' },
