@@ -17,7 +17,7 @@ export function Experience() {
                             <div key={index} className={styles.break}>
                                 <span className={styles.name}>{company}</span>
                                 <span className={styles.dots}>
-                                    {Array.from({ length: 44 }).map((_, i) => (
+                                    {Array.from({ length: 46 }).map((_, i) => (
                                         <div key={i} className={styles.dot} />
                                     ))}
                                 </span>
@@ -58,13 +58,11 @@ export function Experience() {
                             <div className={styles.list}>
                                 {list!.map((line: string, i: number) => (
                                     <div key={i} className={styles.line}>
-                                        {'-'} {line}
+                                        {line}
                                     </div>
                                 ))}
                             </div>
-                            <div className={styles.stack}>
-                                {'{'} {stack!.join(', ')} {'}'}
-                            </div>
+                            <div className={styles.stack}>{stack!.join(', ')}</div>
                         </div>
                     );
                 })}
