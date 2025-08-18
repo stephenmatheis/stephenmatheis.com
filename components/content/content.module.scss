@@ -28,6 +28,9 @@
         display: flex;
         gap: 2ch;
 
+        // DEV:
+        display: none;
+
         @media screen {
             @media (max-width: 829px) {
                 position: static;
