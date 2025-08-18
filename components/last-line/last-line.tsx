@@ -44,7 +44,7 @@ export function LastLine() {
                 }}
             >
                 <a className={styles.qr} href="https://nextdotgov.com" target="_blank">
-                    <span>https://nextdotgov.com</span>
+                    <span>nextdotgov.com</span>
                     <span>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
