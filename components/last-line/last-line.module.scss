@@ -1,10 +1,12 @@
 .last-line {
-    @media (min-width: 830px), print {
+    display: flex;
+    align-items: flex-end;
+    gap: 1ch;
+
+    @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
         bottom: 0;
         left: 0;
-        display: flex;
-        align-items: flex-end;
         justify-content: space-between;
         gap: 2ch;
         width: 70ch;
@@ -12,18 +14,12 @@
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             bottom: calc(var(--line-height) * 2);
 
             &:not([data-page='2']) {
                 display: none;
             }
-        }
-
-        @media (max-height: 1055px) and (max-width: 1055px) {
-            display: flex;
-            align-items: flex-end;
-            gap: 1ch;
         }
     }
 
@@ -33,13 +29,9 @@
         .qr {
             display: flex;
             align-items: flex-end;
-            gap: 2ch;
+            gap: 1ch;
             height: calc(var(--line-height) * 2);
             color: var(--accent);
-
-            @media (max-width: 1055px) {
-                gap: 1ch;
-            }
         }
     }
 }

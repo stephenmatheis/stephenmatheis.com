@@ -1,5 +1,5 @@
 .name {
-    @media (min-width: 830px), print {
+    @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
         top: 0;
         left: 0;
@@ -7,7 +7,7 @@
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             top: calc(var(--line-height) * 18);
             width: 73ch;
 
@@ -35,7 +35,7 @@
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             .row {
                 align-items: center;
                 height: var(--line-height);

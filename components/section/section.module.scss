@@ -1,10 +1,9 @@
 .section {
     @media screen {
-        @media (max-width: 815px) {
-            position: relative;
-            top: unset;
-            left: unset;
-            width: fit-content;
+        width: fit-content;
+
+        @media (min-width: 1056px) and (min-height: 816px) {
+            position: absolute;
         }
     }
 }

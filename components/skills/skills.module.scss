@@ -1,5 +1,5 @@
 .skills {
-    @media (min-width: 830px), print {
+    @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
         top: calc(var(--line-height) * 4);
         right: 0;
@@ -7,8 +7,9 @@
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             top: calc(var(--line-height) * 33);
+            right: 0;
             width: 70ch;
 
             &:not([data-page='1']) {
@@ -43,30 +44,11 @@
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             .groups {
                 display: grid;
                 grid-template-columns: repeat(2, 35ch);
                 gap: var(--line-height) 0;
-
-                // .group {
-                //     .name {
-                //         color: var(--muted);
-                //         position: relative;
-                //     }
-
-                //     .items {
-                //         display: flex;
-                //         flex-wrap: wrap;
-                //         gap: 0ch 1ch;
-
-                //         .item {
-                //             display: inline-block;
-                //             border-radius: 4px;
-                //             color: var(--color);
-                //         }
-                //     }
-                // }
             }
         }
     }

@@ -10,7 +10,7 @@ import styles from './work.module.scss';
 
 export function Work() {
     const { page, direction, canUpdate } = usePage();
-    const { setPosition } = useCursor();
+    const { setPosition, resetPosition } = useCursor();
 
     return (
         <Section
@@ -41,16 +41,7 @@ export function Work() {
                                     type: 'link',
                                 }));
                             }}
-                            onHoverEnd={() => {
-                                setPosition((prev) => ({
-                                    ...prev,
-                                    top: 0,
-                                    left: 0,
-                                    height: 0,
-                                    width: 0,
-                                    type: 'normal',
-                                }));
-                            }}
+                            onHoverEnd={() => resetPosition()}
                         >
                             <Link href={href} target="_blank" aria-label={name}>
                                 {name}
