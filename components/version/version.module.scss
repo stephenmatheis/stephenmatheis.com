@@ -1,0 +1,23 @@
+.version {
+    display: flex;
+    gap: 1ch;
+    color: var(--muted);
+
+    @media (min-width: 816px) and (min-height: 1056px), print {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        gap: 1ch;
+        width: 70ch;
+    }
+
+    @media screen {
+        @media (min-width: 1056px) and (min-height: 816px) {
+            bottom: calc(var(--line-height) * 2);
+
+            &:not([data-page='2']) {
+                display: none;
+            }
+        }
+    }
+}

@@ -3,9 +3,8 @@ import { Experience } from '@/components/experience';
 import { Contact } from '@/components/contact';
 import { Skills } from '@/components/skills';
 import { Work } from '@/components/work';
-import { LastLine } from '@/components/last-line';
+import { Version } from '@/components/version';
 import { PageControls } from '@/components/page-controls';
-import { Markup } from '@/components/markup';
 
 export default function AboutPage() {
     return (
@@ -15,9 +14,8 @@ export default function AboutPage() {
             <Experience />
             <Skills />
             <Work />
-            <LastLine />
+            <Version />
             <PageControls />
-            {/* <Markup /> */}
         </>
     );
 }
