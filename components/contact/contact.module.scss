@@ -21,10 +21,9 @@
         @media (min-width: 1056px) and (min-height: 816px) {
             top: unset;
             bottom: calc(var(--line-height) * 2);
-            right: 0;
+            right: 20ch;
             display: flex;
             gap: 4ch;
-            width: 70ch;
 
             &:not([data-page='1']) {
                 display: none;

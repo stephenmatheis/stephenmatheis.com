@@ -1,4 +1,8 @@
 .name {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
     @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
         top: 0;
@@ -34,11 +38,29 @@
         color: var(--light);
     }
 
+    .code {
+        height: calc(var(--line-height) * 2);
+
+        .qr {
+            display: flex;
+            align-items: flex-end;
+            gap: 1ch;
+            height: calc(var(--line-height) * 2);
+            color: var(--accent);
+        }
+    }
+
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
             .row {
                 align-items: center;
                 height: var(--line-height);
+            }
+
+            .qr {
+                position: absolute;
+                bottom: calc(var(--line-height) * -33);
+                right: -73ch;
             }
         }
     }
