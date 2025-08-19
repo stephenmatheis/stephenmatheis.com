@@ -1,33 +1,12 @@
 .contact {
-    @media (min-width: 816px) and (min-height: 1056px), print {
-        .group {
-            position: absolute;
-
-            &.personal {
-                top: var(--line-height);
-                left: 0;
-                width: 34ch;
-            }
-
-            &.sites {
-                top: 0;
-                right: 0;
-                width: 34ch;
-            }
-        }
-    }
-
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
             top: unset;
-            bottom: calc(var(--line-height) * 2);
-            right: 20ch;
+            bottom: calc(var(--line-height) * 4);
+            right: 0ch;
             display: flex;
             gap: 4ch;
-
-            &:not([data-page='1']) {
-                display: none;
-            }
+            width: 70ch;
         }
     }
 
@@ -42,9 +21,45 @@
     }
 
     @media screen {
+        @media (min-width: 816px) and (min-height: 1056px), print {
+            .group {
+                position: absolute;
+
+                &.personal {
+                    top: var(--line-height);
+                    left: 0;
+                    width: 34ch;
+                }
+
+                &.sites {
+                    top: 0;
+                    right: 0;
+                    width: 34ch;
+                }
+            }
+        }
+
         @media (min-width: 1056px) and (min-height: 816px) {
             .group {
-                position: static;
+                // position: static;
+
+                &.personal {
+                    position: absolute;
+                    top: calc(var(--line-height) * -49);
+                    right: 76ch;
+                    flex-direction: row;
+                    gap: 1ch;
+                    // top: var(--line-height);
+                    // left: 0;
+                    // width: 34ch;
+                }
+
+                &.sites {
+                    position: static;
+                    // top: 0;
+                    // right: 0;
+                    // width: 34ch;
+                }
             }
         }
     }

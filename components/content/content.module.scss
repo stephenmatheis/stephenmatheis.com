@@ -18,6 +18,8 @@
         @media (min-width: 1056px) and (min-height: 816px) {
             width: 146ch;
             height: calc(var(--line-height) * 56);
+
+            background-color: #ff000010;
         }
 
         @media (max-width: 500px) {
