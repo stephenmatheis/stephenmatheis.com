@@ -30,20 +30,20 @@
 }
 
 html {
+    cursor: url(/crosshair-16x16.svg) 8 8, auto;
     background-color: var(--background-color);
     color: var(--color);
     -webkit-text-size-adjust: 100%;
-
-    &,
-    a,
-    button {
-        cursor: url(/crosshair-16x16.svg) 8 8, auto;
-    }
 }
 
 body {
     font-family: var(--font-mono);
     background-color: var(--background-color);
+}
+
+a,
+b {
+    cursor: url(/crosshair-16x16-hover.svg) 8 8, auto;
 }
 
 a {
