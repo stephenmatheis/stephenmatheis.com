@@ -1,17 +1,30 @@
 .contact {
     @media (min-width: 816px) and (min-height: 1056px), print {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 34ch;
+        .group {
+            position: absolute;
+
+            &.personal {
+                top: var(--line-height);
+                left: 0;
+                width: 34ch;
+            }
+
+            &.sites {
+                top: 0;
+                right: 0;
+                width: 34ch;
+            }
+        }
     }
 
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
-            width: 70ch;
             top: unset;
             bottom: calc(var(--line-height) * 2);
             right: 0;
+            display: flex;
+            gap: 4ch;
+            width: 70ch;
 
             &:not([data-page='1']) {
                 display: none;
@@ -19,19 +32,20 @@
         }
     }
 
-    .list {
-        .item {
-            a {
-                color: var(--accent);
-            }
+    .group {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            width: fit-content;
+            color: var(--accent);
         }
     }
 
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
-            .list {
-                display: flex;
-                justify-content: space-between;
+            .group {
+                position: static;
             }
         }
     }
