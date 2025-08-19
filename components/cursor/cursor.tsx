@@ -29,9 +29,9 @@ export function Cursor() {
                         opacity: 1,
                     },
                     button: {
-                        top: (position.height + 14) / -2,
+                        top: (position.height + 7) / -2,
                         left: (position.width + 14) / -2,
-                        height: position.height + 14,
+                        height: position.height + 7,
                         width: position.width + 14,
                         opacity: 1,
                     },
