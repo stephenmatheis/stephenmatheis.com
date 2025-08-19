@@ -2,7 +2,46 @@
     display: none;
 
     @media (min-width: 816px) and (min-height: 1056px), print {
-        //
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        // width: 146ch;
+        width: 108ch;
+        bottom: calc(var(--line-height) * -2);
+        left: 0;
+
+        .back,
+        .forward {
+            flex: 1;
+            display: flex;
+        }
+
+        .back {
+            justify-content: flex-start;
+        }
+
+        .forward {
+            justify-content: flex-end;
+        }
+
+        .left,
+        .right {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            color: var(--muted);
+            width: 70ch;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            right: 0;
+        }
     }
 
     @media screen {
