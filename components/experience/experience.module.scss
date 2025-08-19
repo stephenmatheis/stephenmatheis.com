@@ -1,12 +1,12 @@
 .experience {
-    @media (min-width: 830px), print {
+    @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
         top: calc(var(--line-height) * 4);
         width: 70ch;
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             pointer-events: none;
             top: 0;
             left: 0;
@@ -105,7 +105,7 @@
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             .jobs {
                 position: relative;
 
@@ -176,6 +176,27 @@
             .dots {
                 .dot {
                     opacity: 0;
+                }
+            }
+        }
+
+        @media (max-width: 500px) {
+            .jobs {
+                .job {
+                    .roles {
+                        .role {
+                            .details {
+                                .date {
+                                    // flex: 1;
+                                    min-width: 17ch;
+                                    text-align: right;
+                                }
+                            }
+                        }
+                    }
+                }
+                .dots {
+                    display: none;
                 }
             }
         }

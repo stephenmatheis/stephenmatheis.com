@@ -1,5 +1,5 @@
 .contact {
-    @media (min-width: 830px), print {
+    @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
         top: 0;
         right: 0;
@@ -7,7 +7,7 @@
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             width: 70ch;
             top: unset;
             bottom: calc(var(--line-height) * 2);
@@ -28,7 +28,7 @@
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             .list {
                 display: flex;
                 justify-content: space-between;

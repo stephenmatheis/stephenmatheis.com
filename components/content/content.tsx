@@ -98,16 +98,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                                     type: 'line',
                                 }));
                             }}
-                            onHoverEnd={() => {
-                                setPosition((prev) => ({
-                                    ...prev,
-                                    top: 0,
-                                    left: 0,
-                                    height: 0,
-                                    width: 0,
-                                    type: 'normal',
-                                }));
-                            }}
+                            onHoverEnd={() => resetPosition()}
                         >
                             {i + 1}
                         </motion.div>

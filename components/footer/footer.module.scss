@@ -1,6 +1,6 @@
 .footer {
     display: flex;
-    gap: 2ch;
+    gap: 1ch;
 
     .version {
         color: var(--muted);
@@ -14,12 +14,8 @@
         color: var(--muted);
     }
     @media screen {
-        // @media (max-height: 1055px) {
+        // @media (min-width: 1056px) and (min-height: 816px) {
 
         // }
-
-        @media (max-width: 1055px) {
-            gap: 1ch;
-        }
     }
 }

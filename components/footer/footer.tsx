@@ -20,28 +20,22 @@ export function Footer({}: FooterProps) {
         <div className={styles.footer}>
             <span className={styles.version}>v2.0.35</span>
             <span className={styles.date} suppressHydrationWarning>
-                {now.toLocaleString('en-US', {
+                {Intl.DateTimeFormat('en-US', {
                     day: '2-digit',
-                })}
-                .
-                {now.toLocaleString('en-US', {
+                }).format(now)}
+                -
+                {Intl.DateTimeFormat('en-US', {
                     month: '2-digit',
-                })}
-                .{now.getFullYear()}
+                }).format(now)}
+                -{now.getFullYear()}
             </span>
             <span className={styles.time} suppressHydrationWarning>
-                {now.toLocaleString('en-US', {
+                {Intl.DateTimeFormat('en-US', {
                     hour: '2-digit',
-                    hour12: false,
-                })}
-                .
-                {now.toLocaleString('en-US', {
                     minute: '2-digit',
-                })}
-                .
-                {now.toLocaleString('en-US', {
                     second: '2-digit',
-                })}
+                    hour12: false,
+                }).format(now)}
             </span>
         </div>
     );

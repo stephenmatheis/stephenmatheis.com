@@ -58,7 +58,7 @@ export function Experience() {
                             <div className={styles.list}>
                                 {list!.map((line: string, i: number) => (
                                     <div key={i} className={styles.line}>
-                                        {line}
+                                        - {line}
                                     </div>
                                 ))}
                             </div>

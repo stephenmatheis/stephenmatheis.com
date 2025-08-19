@@ -16,7 +16,7 @@ const fromScale = 2;
 const toScale = 1;
 
 export function Markup() {
-    const { setPosition } = useCursor();
+    const { setPosition, resetPosition } = useCursor();
     const [shouldMount, setShouldMount] = useState<boolean>(false);
 
     useEffect(() => {
@@ -45,14 +45,7 @@ export function Markup() {
     }
 
     function handleOnHoverEnd() {
-        setPosition((prev) => ({
-            ...prev,
-            top: 0,
-            left: 0,
-            height: 0,
-            width: 0,
-            type: 'normal',
-        }));
+        resetPosition();
     }
 
     if (!shouldMount) return null;

@@ -1,20 +1,20 @@
 'use client';
 
-import * as motion from 'motion/react-client';
+// import * as motion from 'motion/react-client';
 import { usePage } from '@/providers/page-provider';
-import { useCursor } from '@/providers/cursor-provider';
+// import { useCursor } from '@/providers/cursor-provider';
 import { Section } from '@/components/section';
 import { Footer } from '@/components/footer';
 import styles from './last-line.module.scss';
 
 export function LastLine() {
     const { page } = usePage();
-    const { setPosition } = useCursor();
+    // const { setPosition, resetPosition } = useCursor();
 
     return (
         <Section className={styles['last-line']} data-page={page}>
             <Footer />
-            <motion.span
+            {/* <motion.span
                 className={styles.link}
                 onHoverStart={(event) => {
                     const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
@@ -32,16 +32,7 @@ export function LastLine() {
                         type: 'button',
                     }));
                 }}
-                onHoverEnd={() => {
-                    setPosition((prev) => ({
-                        ...prev,
-                        top: 0,
-                        left: 0,
-                        height: 0,
-                        width: 0,
-                        type: 'normal',
-                    }));
-                }}
+                onHoverEnd={() => resetPosition()}
             >
                 <a className={styles.qr} href="https://nextdotgov.com" target="_blank">
                     <span>nextdotgov.com</span>
@@ -60,7 +51,7 @@ export function LastLine() {
                         </svg>
                     </span>
                 </a>
-            </motion.span>
+            </motion.span> */}
         </Section>
     );
 }

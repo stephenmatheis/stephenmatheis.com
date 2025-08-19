@@ -40,8 +40,6 @@ export function CursorProvider({ children }: { children: ReactNode }) {
     function resetPosition() {
         setPosition((prev) => ({
             ...prev,
-            // height: 0,
-            // width: 0,
             type: 'normal',
         }));
     }

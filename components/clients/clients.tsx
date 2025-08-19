@@ -8,7 +8,7 @@ import experience from '@/data/clients';
 import styles from './clients.module.scss';
 
 export function Clients() {
-    const { setPosition } = useCursor();
+    const { setPosition, resetPosition } = useCursor();
 
     return (
         <Section className={styles.clients}>
@@ -61,16 +61,7 @@ export function Clients() {
                         type: 'path',
                     }));
                 }}
-                onHoverEnd={() => {
-                    setPosition((prev) => ({
-                        ...prev,
-                        top: 0,
-                        left: 0,
-                        height: 0,
-                        width: 0,
-                        type: 'normal',
-                    }));
-                }}
+                onHoverEnd={() => resetPosition()}
             >
                 <br />
                 <Link className={styles.more} href="/work">

@@ -1,21 +1,27 @@
 .content {
     position: relative;
-    display: flex;
-    gap: calc(var(--line-height) * 2);
-    width: 108ch;
-    height: calc(var(--line-height) * 71);
 
     @media screen {
-        @media (max-height: 1055px) {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--line-height) * 1);
+    }
+
+    @media (min-width: 816px) and (min-height: 1056px), print {
+        display: flex;
+        gap: calc(var(--line-height) * 2);
+        width: 108ch;
+        height: calc(var(--line-height) * 71);
+    }
+
+    @media screen {
+        @media (min-width: 1056px) and (min-height: 816px) {
             width: 146ch;
             height: calc(var(--line-height) * 56);
         }
 
-        @media (max-width: 815px) {
-            flex-direction: column;
-            gap: var(--line-height);
-            height: max-content;
-            width: 100%;
+        @media (max-width: 500px) {
+            padding-inline: 2ch;
         }
     }
 
@@ -36,7 +42,7 @@
                 position: static;
             }
 
-            @media (max-height: 1055px) {
+            @media (min-width: 1056px) and (min-height: 816px) {
                 top: calc(var(--line-height) * 0);
             }
         }
@@ -94,7 +100,7 @@
         display: none;
 
         @media screen {
-            @media (max-height: 1055px) {
+            @media (min-width: 1056px) and (min-height: 816px) {
                 user-select: none;
                 position: absolute;
                 bottom: calc(var(--line-height) * -1);

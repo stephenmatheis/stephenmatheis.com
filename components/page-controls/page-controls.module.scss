@@ -1,12 +1,12 @@
 .page-controls {
     display: none;
 
-    @media (min-width: 830px), print {
+    @media (min-width: 816px) and (min-height: 1056px), print {
         //
     }
 
     @media screen {
-        @media (max-height: 1055px) {
+        @media (min-width: 1056px) and (min-height: 816px) {
             position: absolute;
             display: flex;
             justify-content: space-between;

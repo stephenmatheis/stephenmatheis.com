@@ -1,5 +1,5 @@
 .clients {
-    @media (min-width: 830px), print {
+    @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
         top: calc(var(--line-height) * 0);
         left: 0;
