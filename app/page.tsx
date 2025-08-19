@@ -4,7 +4,6 @@ import { Contact } from '@/components/contact';
 import { Skills } from '@/components/skills';
 import { Work } from '@/components/work';
 import { Version } from '@/components/version';
-import { PageControls } from '@/components/page-controls';
 
 export default function AboutPage() {
     return (
@@ -15,7 +14,6 @@ export default function AboutPage() {
             <Skills />
             <Work />
             <Version />
-            <PageControls />
         </>
     );
 }

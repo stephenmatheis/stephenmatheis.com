@@ -13,11 +13,8 @@
 
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
-            bottom: calc(var(--line-height) * 2);
-
-            &:not([data-page='2']) {
-                display: none;
-            }
+            bottom: 0;
+            left: 76ch;
         }
     }
 }

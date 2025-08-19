@@ -14,10 +14,6 @@
             left: 0;
             right: unset;
             width: 70ch;
-
-            &:not([data-page='2']) {
-                display: none;
-            }
         }
     }
 
@@ -37,6 +33,21 @@
 
             .description {
                 color: var(--color);
+            }
+        }
+    }
+
+    @media screen {
+        @media (min-width: 1056px) and (min-height: 816px) {
+            .list {
+                display: grid;
+                grid-template-columns: repeat(2, 35ch);
+                width: 70ch;
+                gap: 0;
+
+                .item {
+                    width: 35ch;
+                }
             }
         }
     }

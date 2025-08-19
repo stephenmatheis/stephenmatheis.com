@@ -12,8 +12,9 @@
 
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
-            top: calc(var(--line-height) * 18);
+            top: calc(var(--line-height) * 0);
             width: 73ch;
+            height: var(--line-height);
 
             &:not([data-page='1']) {
                 display: none;
@@ -57,10 +58,10 @@
                 height: var(--line-height);
             }
 
-            .qr {
+            .code {
                 position: absolute;
-                bottom: calc(var(--line-height) * -33);
-                right: -73ch;
+                left: 143ch;
+                top: calc(var(--line-height) * 54)
             }
         }
     }

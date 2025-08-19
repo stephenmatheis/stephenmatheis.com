@@ -8,15 +8,10 @@
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
             pointer-events: none;
-            top: 0;
+            padding-top: calc(var(--line-height) * 23);
             left: 0;
             width: 100%;
             height: 100%;
-            padding-top: calc(var(--line-height) * 21);
-
-            &:not([data-page='1']) {
-                display: none;
-            }
         }
     }
 
@@ -147,27 +142,27 @@
                     }
 
                     &:nth-child(6) {
-                        top: calc(var(--line-height) * -21);
+                        top: calc(var(--line-height) * -25);
                         right: 0;
                     }
 
                     &:nth-child(7) {
-                        top: calc(var(--line-height) * -14);
+                        top: calc(var(--line-height) * -18);
                         right: 0;
                     }
 
                     &:nth-child(8) {
-                        top: calc(var(--line-height) * -12);
+                        top: calc(var(--line-height) * -16);
                         right: 0;
                     }
 
                     &:nth-child(9) {
-                        top: calc(var(--line-height) * -5);
+                        top: calc(var(--line-height) * -9);
                         right: 0;
                     }
 
                     &:nth-child(10) {
-                        top: calc(var(--line-height) * 3);
+                        top: calc(var(--line-height) * -1);
                         right: 0;
                     }
                 }
