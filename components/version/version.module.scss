@@ -1,7 +1,8 @@
 .version {
     display: flex;
-    gap: 1ch;
-    color: var(--muted);
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
 
     @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
@@ -15,6 +16,25 @@
         @media (min-width: 1056px) and (min-height: 816px) {
             bottom: 0;
             left: 76ch;
+            width: 70ch;
+        }
+    }
+
+    .text {
+        display: flex;
+        gap: 1ch;
+        color: var(--muted);
+    }
+
+    .code {
+        height: calc(var(--line-height) * 2);
+
+        .qr {
+            display: flex;
+            align-items: flex-end;
+            gap: 1ch;
+            height: calc(var(--line-height) * 2);
+            color: var(--accent);
         }
     }
 }

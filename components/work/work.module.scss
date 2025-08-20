@@ -43,7 +43,7 @@
                 display: grid;
                 grid-template-columns: repeat(2, 35ch);
                 width: 70ch;
-                gap: 0;
+                column-gap: 0;
 
                 .item {
                     width: 35ch;
