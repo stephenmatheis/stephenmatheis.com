@@ -1,6 +1,5 @@
 .version {
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
     width: 100%;
 
@@ -9,32 +8,28 @@
         bottom: 0;
         left: 0;
         gap: 1ch;
-        width: 70ch;
     }
 
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
             bottom: 0;
-            left: 76ch;
-            width: 70ch;
+            left: 0;
+            width: 100%;
         }
     }
 
-    .text {
+    .links {
         display: flex;
-        gap: 1ch;
+        gap: 2ch;
+    }
+
+    .value {
         color: var(--muted);
     }
 
-    .code {
-        height: calc(var(--line-height) * 2);
-
-        .qr {
-            display: flex;
-            align-items: flex-end;
-            gap: 1ch;
-            height: calc(var(--line-height) * 2);
-            color: var(--accent);
-        }
+    .date {
+        display: flex;
+        gap: 1ch;
+        color: var(--muted);
     }
 }

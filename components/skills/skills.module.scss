@@ -1,20 +1,16 @@
 .skills {
     @media (min-width: 816px) and (min-height: 1056px), print {
         position: absolute;
-        top: calc(var(--line-height) * 4);
+        top: calc(var(--line-height) * 2);
         right: 0;
         width: 34ch;
     }
 
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
-            top: calc(var(--line-height) * 31);
+            top: calc(var(--line-height) * 17);
             right: 0;
             width: 70ch;
-
-            &:not([data-page='1']) {
-                display: none;
-            }
         }
     }
 
@@ -47,8 +43,26 @@
         @media (min-width: 1056px) and (min-height: 816px) {
             .groups {
                 display: grid;
-                grid-template-columns: repeat(2, 35ch);
-                gap: var(--line-height) 0;
+                grid-template-columns: repeat(2, 33ch);
+                gap: var(--line-height) 4ch;
+
+                .group {
+                    &:nth-child(6) {
+                        transform: translateY(calc(var(--line-height) * -1));
+                    }
+
+                    &:nth-child(7) {
+                        transform: translateY(calc(var(--line-height) * -1));
+                    }
+
+                    &:nth-child(8) {
+                        transform: translateY(calc(var(--line-height) * -1));
+                    }
+
+                    // &:nth-child(7) {
+                    //     transform: translateY(calc(var(--line-height) * -2));
+                    // }
+                }
             }
         }
     }

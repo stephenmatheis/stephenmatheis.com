@@ -1,14 +1,9 @@
-'use client';
-
-import { usePage } from '@/providers/page-provider';
 import { Section } from '@/components/section';
 import styles from './table-of-contents.module.scss';
 
 export function TableOfContents() {
-    const { page } = usePage();
-
     return (
-        <Section className={styles.toc} data-page={page}>
+        <Section className={styles.toc}>
             <div className={styles.title}>Contents</div>
             <div className={styles.chapters}>
                 {[
