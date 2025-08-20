@@ -15,10 +15,6 @@
             top: calc(var(--line-height) * 0);
             width: 73ch;
             height: var(--line-height);
-
-            &:not([data-page='1']) {
-                display: none;
-            }
         }
     }
 

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { usePage } from '@/providers/page-provider';
 import styles from './loading-canvas.module.scss';
 
 type Letter = {
@@ -15,7 +14,6 @@ type LoadingCanvasProps = {
 };
 
 export function LoadingCanvas({ animationDirection = 'enter' }: LoadingCanvasProps) {
-    const { page, setDirection, setCanUpdate } = usePage();
     const patternRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -71,8 +69,6 @@ export function LoadingCanvas({ animationDirection = 'enter' }: LoadingCanvasPro
         }
 
         let start: number;
-        let direction = animationDirection;
-        let passes = 0;
 
         function animate(timestamp: number) {
             if (!ctx) return;
@@ -84,8 +80,8 @@ export function LoadingCanvas({ animationDirection = 'enter' }: LoadingCanvasPro
             }
 
             const progress = timestamp - start;
-            const fromValue = direction === 'enter' ? 1 : 0;
-            const toValue = direction === 'enter' ? 0 : 1;
+            const fromValue = animationDirection === 'enter' ? 1 : 0;
+            const toValue = animationDirection === 'enter' ? 0 : 1;
             const completed = [
                 ...new Set(
                     letters.map(({ x, y, delay }) => {
@@ -99,29 +95,15 @@ export function LoadingCanvas({ animationDirection = 'enter' }: LoadingCanvasPro
                 ),
             ];
 
-            if (completed.length === 1 && completed[0] === toValue) {
-                if (passes === 0) {
-                    console.log('first pass complete. reverse. can update.');
-
-                    start = timestamp;
-                    direction = direction === 'enter' ? 'exit' : 'enter';
-
-                    setCanUpdate(true);
-
-                    passes++;
-                } else {
-                    console.log('animation complete. set direction to null. set can update to false.');
-                    setDirection(null);
-                    setCanUpdate(false);
-                    return;
-                }
+            if (completed[0] === toValue) {
+                console.log('animation complete. set direction to null. set can update to false.');
             }
 
             requestAnimationFrame(animate);
         }
 
         requestAnimationFrame(animate);
-    }, [animationDirection, setCanUpdate, setDirection]);
+    }, [animationDirection]);
 
     return (
         <div ref={patternRef} className={styles['loading-canvas']}>

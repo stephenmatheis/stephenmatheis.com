@@ -1,4 +1,3 @@
-// TODO: convert to MD
 const experience = [
     {
         company: 'NEXTdotgov',
@@ -44,12 +43,6 @@ const experience = [
             'Led UI/UX.',
             'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.',
             'Developed an app for U.S. Army MEDCOM to track required training.',
-            // Team lead.
-            // Developed an app for U.S. Army MEDCOM to track required training.
-            // Inherited 15 internal applications for maintenance, end-user support, and new feature development.
-            // Created 18 new internal applications.
-            // Taught a class on SharePoint site administration for officers in a classroom setting.
-            // Updated and migrated from SharePoint 2010 to SharePoint 2013, then 2016, then SharePoint online.
         ],
     },
     {
@@ -89,11 +82,6 @@ const experience = [
         ],
     },
     {
-        company: 'Break',
-        start: 'Apr 2022',
-        end: 'May 2022',
-    },
-    {
         company: 'Aeyon',
         location: 'Remote',
         site: 'https://aeyon.us/',
@@ -112,9 +100,10 @@ const experience = [
         ],
     },
     {
-        company: 'Break',
+        isBreak: true,
         start: 'Oct 2017',
         end: 'Mar 2018',
+        list: ['Started working on what became Robi'],
     },
     {
         company: 'HID Global',

@@ -3,7 +3,7 @@ const projects = [
         name: 'NEXTdotgov',
         href: 'https://nextdotgov.com',
         date: '2017',
-        description: 'Founded. A web consultancy for government. Fourteen years in the making.',
+        description: 'Founded next (dot) gov. A web consultancy for government.',
     },
     {
         name: 'U.S. Tsunami Warning System',
@@ -15,7 +15,7 @@ const projects = [
         name: 'Line Writer',
         href: 'https://linewriter.app',
         date: '2017',
-        description: 'A Chrome extension that replaces your new tab page with a focused text editor.',
+        description: 'Chrome extension that replaces your new tab page with a focused text editor.',
         links: [
             { label: 'linewriter.app', href: 'https://linewriter.app/' },
             {
@@ -29,7 +29,7 @@ const projects = [
         href: 'https://www.apple.com/watch',
         date: '2022',
         description:
-            'A React component and Next.js route scaffolding tool. Used to prototype a new Apple Watch buy flow.',
+            'React component and Next.js route scaffolding tool. Used to prototype a new Apple Watch buy flow and Today at apple pages.',
     },
     {
         name: 'ICTL',
@@ -41,13 +41,13 @@ const projects = [
         name: 'Accountability Roster',
         href: 'https://accountabilityroster.dev',
         date: '2017',
-        description: 'Just some jQuery and a SharePoint list. Saved our First Sergeant a couple hours every day.',
+        description: "Just some jQuery and a SharePoint list. Saved our First Sergeant a couple hours every day.",
     },
     {
         name: 'Robi',
         href: 'https://robijs.dev',
         date: '2017',
-        description: 'SharePoint single-page application framework for air-gapped networks.',
+        description: 'SharePoint single-page application framework for client-side development.',
     },
 ];
 
