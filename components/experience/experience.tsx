@@ -18,7 +18,9 @@ export function Experience() {
                                 <span className={styles.name}>{company}</span>
                                 <span className={styles.dots}>
                                     {Array.from({ length: 46 }).map((_, i) => (
-                                        <div key={i} className={styles.dot} />
+                                        <span key={i} className={styles.dot}>
+                                            .
+                                        </span>
                                     ))}
                                 </span>
                                 <span className={styles.date}>
@@ -35,7 +37,9 @@ export function Experience() {
                                 <span className={styles.name}>{company}</span>
                                 <span className={styles.dots}>
                                     {Array.from({ length: 70 - company.length - location!.length - 2 }).map((_, i) => (
-                                        <div key={i} className={styles.dot} />
+                                        <span key={i} className={styles.dot}>
+                                            .
+                                        </span>
                                     ))}
                                 </span>
                                 <span className={styles.location}>{location}</span>

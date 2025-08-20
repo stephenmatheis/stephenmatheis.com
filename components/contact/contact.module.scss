@@ -1,8 +1,26 @@
 .contact {
+    @media (min-width: 816px) and (min-height: 1056px), print {
+        .group {
+            position: absolute;
+
+            &.personal {
+                top: var(--line-height);
+                left: 0;
+                width: 34ch;
+            }
+
+            &.sites {
+                top: 0;
+                right: 0;
+                width: 34ch;
+            }
+        }
+    }
+
     @media screen {
         @media (min-width: 1056px) and (min-height: 816px) {
             top: unset;
-            bottom: calc(var(--line-height) * 4);
+            bottom: calc(var(--line-height) * 2);
             right: 0ch;
             display: flex;
             gap: 4ch;
@@ -21,24 +39,6 @@
     }
 
     @media screen {
-        @media (min-width: 816px) and (min-height: 1056px), print {
-            .group {
-                position: absolute;
-
-                &.personal {
-                    top: var(--line-height);
-                    left: 0;
-                    width: 34ch;
-                }
-
-                &.sites {
-                    top: 0;
-                    right: 0;
-                    width: 34ch;
-                }
-            }
-        }
-
         @media (min-width: 1056px) and (min-height: 816px) {
             .group {
                 // position: static;
@@ -55,10 +55,7 @@
                 }
 
                 &.sites {
-                    position: static;
-                    // top: 0;
-                    // right: 0;
-                    // width: 34ch;
+                    gap: var(--line-height);
                 }
             }
         }

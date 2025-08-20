@@ -79,22 +79,9 @@
 
         .dots {
             display: flex;
-            height: var(--line-height);
 
             .dot {
-                position: relative;
-                width: 1ch;
-                height: var(--line-height);
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    bottom: 3;
-                    left: 3px;
-                    width: 1px;
-                    height: 1px;
-                    background-color: var(--muted);
-                }
+                color: var(--muted);
             }
         }
     }
@@ -167,12 +154,6 @@
                     }
                 }
             }
-
-            .dots {
-                .dot {
-                    opacity: 0;
-                }
-            }
         }
 
         @media (max-width: 500px) {
@@ -182,7 +163,6 @@
                         .role {
                             .details {
                                 .date {
-                                    // flex: 1;
                                     min-width: 17ch;
                                     text-align: right;
                                 }
