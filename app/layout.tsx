@@ -1,15 +1,16 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
-import { CursorProvider } from '@/providers/cursor-provider';
-import { Cursor } from '@/components/cursor';
-import { Viewport as App } from '@/components/viewport';
-import { Content } from '@/components/content';
-import '@/styles/app.scss';
+import './layout.scss';
 
 const mono = localFont({
     src: './fonts/DepartureMono.woff2',
     variable: '--font-mono',
+});
+
+const pixel = localFont({
+    src: './fonts/AsepriteFont.woff2',
+    variable: '--font-pixel',
 });
 
 export const metadata: Metadata = {
@@ -44,14 +45,8 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={mono.variable} suppressHydrationWarning>
-                <CursorProvider>
-                    <App>
-                        <Content>{children}</Content>
-                        <div id="markup-overlay" />
-                    </App>
-                    <Cursor />
-                </CursorProvider>
+            <body className={`${mono.variable} ${pixel.variable}`} suppressHydrationWarning>
+                {children}
                 <Analytics debug={false} />
             </body>
         </html>
