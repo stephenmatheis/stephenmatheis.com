@@ -5,8 +5,6 @@
     --color: #000000;
     --muted: #767676;
     --light: #aaaaaa;
-    // --accent: #0000ee;
-    // --accent-background: #0000ee1a;
     --accent: #f8463a;
     --accent-background: #f8463a1a;
     --path: #000000;
@@ -14,8 +12,6 @@
 
 * {
     box-sizing: border-box;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
     margin: 0;
     padding: 0;
 
@@ -25,28 +21,16 @@
     }
 }
 
-html {
-    cursor: url(/crosshair-16x16.svg) 8 8, auto;
-    background-color: var(--background-color);
-    color: var(--color);
-    -webkit-text-size-adjust: 100%;
-}
-
 body {
-    font-family: var(--font-mono);
+    font-family: var(--font-pixel);
     background-color: var(--background-color);
-}
-
-a,
-b {
-    cursor: url(/crosshair-16x16-hover.svg) 8 8, auto;
+    font-size: 64px;
 }
 
 a {
     text-decoration: none;
     color: var(--accent);
     -webkit-tap-highlight-color: transparent;
-    transition: color 150ms ease-in-out;
 
     &:hover {
         color: var(--accent);
@@ -54,22 +38,13 @@ a {
 }
 
 button {
-    cursor: pointer;
     background: none;
     border: none;
     font-family: inherit;
-    font-size: var(--font-size);
+    font-size: 1rem;
     color: var(--color);
 
     &:hover {
         color: var(--accent);
     }
-}
-
-#markup-overlay {
-    position: absolute;
-    top: 0;
-    pointer-events: none;
-    display: flex;
-    justify-content: center;
 }

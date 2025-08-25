@@ -1,0 +1,50 @@
+:root {
+    --font-size: 11px;
+    --line-height: 14px;
+    --background-color: #ffffff;
+    --color: #000000;
+    --muted: #767676;
+    --light: #aaaaaa;
+    --accent: #f8463a;
+    --accent-background: #f8463a1a;
+    --path: #000000;
+}
+
+* {
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+}
+
+html {
+    cursor: url(/crosshair-16x16.svg) 8 8, auto;
+}
+
+body {
+    font-family: var(--font-mono);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+a,
+b {
+    cursor: url(/crosshair-16x16-hover.svg) 8 8, auto;
+}
+
+button {
+    font-size: var(--font-size);
+}
+
+#markup-overlay {
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+}
