@@ -3,6 +3,11 @@ import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import './layout.scss';
 
+const sans = localFont({
+    src: './fonts/sans.woff2',
+    variable: '--font-sans',
+});
+
 const mono = localFont({
     src: './fonts/DepartureMono.woff2',
     variable: '--font-mono',
@@ -45,7 +50,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${mono.variable} ${pixel.variable}`} suppressHydrationWarning>
+            <body className={`${mono.variable} ${pixel.variable} ${sans.variable}`} suppressHydrationWarning>
                 {children}
                 <Analytics debug={false} />
             </body>
