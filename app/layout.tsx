@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from 'next';
+import { Open_Sans, Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import './layout.scss';
 
-const sans = localFont({
-    src: './fonts/sans.woff2',
+const sans = Inter({
+    subsets: ['latin'],
+    display: 'swap',
     variable: '--font-sans',
 });
 

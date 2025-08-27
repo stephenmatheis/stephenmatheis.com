@@ -1,11 +1,5 @@
 const projects = [
     {
-        name: 'NEXTdotgov',
-        href: 'https://nextdotgov.com',
-        date: '2017',
-        description: 'Founded next (dot) gov. A web consultancy for government.',
-    },
-    {
         name: 'U.S. Tsunami Warning System',
         href: 'https://tsunami-gov.vercel.app',
         date: '2017',
@@ -31,24 +25,12 @@ const projects = [
         description:
             'React component and Next.js route scaffolding tool. Used to prototype a new Apple Watch buy flow and Today at apple pages.',
     },
-    {
-        name: 'ICTL',
-        href: 'https://ictl.dev',
-        date: '2017',
-        description: 'Individual Critical Tasks Lists. Tracks U.S. Army medical provider training.',
-    },
-    {
-        name: 'Accountability Roster',
-        href: 'https://accountabilityroster.dev',
-        date: '2017',
-        description: "Just some jQuery and a SharePoint list. Saved our First Sergeant a couple hours every day.",
-    },
-    {
-        name: 'Robi',
-        href: 'https://robijs.dev',
-        date: '2017',
-        description: 'SharePoint single-page application framework for client-side development.',
-    },
+    // {
+    //     name: 'Robi',
+    //     href: 'https://robijs.dev',
+    //     date: '2017',
+    //     description: 'SharePoint single-page application framework for client-side development.',
+    // },
 ];
 
 export default projects;

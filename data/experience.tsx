@@ -18,7 +18,7 @@ const experience = [
         ],
     },
     {
-        company: 'T and T Consulting Services',
+        company: 'TATCS',
         location: 'Remote',
         site: 'https://www.tatcs.com/',
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
@@ -63,24 +63,24 @@ const experience = [
             'Created Juice, a scaffolding tool.',
         ],
     },
-    {
-        company: 'GovCIO',
-        location: 'Hybrid',
-        site: 'https://govcio.com/',
-        stack: ['C#', '.NET', 'MongoDB', 'Unity'],
-        roles: [
-            {
-                title: 'Software Programmer 5',
-                start: 'May 2022',
-                end: 'Jul 2022',
-            },
-        ],
-        list: [
-            'Supported a U.S. Air Force Tactical Data Link (TDL) program.',
-            'Implemented the MIL-STD-6016 TDL protocol in C#.',
-            'Developed a 3D geospatial application with Unity.',
-        ],
-    },
+    // {
+    //     company: 'GovCIO',
+    //     location: 'Hybrid',
+    //     site: 'https://govcio.com/',
+    //     stack: ['C#', '.NET', 'MongoDB', 'Unity'],
+    //     roles: [
+    //         {
+    //             title: 'Software Programmer 5',
+    //             start: 'May 2022',
+    //             end: 'Jul 2022',
+    //         },
+    //     ],
+    //     list: [
+    //         'Supported a U.S. Air Force Tactical Data Link (TDL) program.',
+    //         'Implemented the MIL-STD-6016 TDL protocol in C#.',
+    //         'Developed a 3D geospatial application with Unity.',
+    //     ],
+    // },
     {
         company: 'Aeyon',
         location: 'Remote',
@@ -98,12 +98,6 @@ const experience = [
             'Developed large internal line-of-business applications for DHA. ',
             'Built a mobile app for the U.S. Marine Corps.',
         ],
-    },
-    {
-        isBreak: true,
-        start: 'Oct 2017',
-        end: 'Mar 2018',
-        list: ['Started working on what became Robi'],
     },
     {
         company: 'HID Global',
@@ -144,24 +138,6 @@ const experience = [
             'Team Lead at the Executive Office of the President.',
             'Created a presidential records export tool for National Archives.',
             'Reduced backup requirements at the Department of Veterans Affairs.',
-        ],
-    },
-    {
-        company: 'National Ground Intelligence Center',
-        location: 'Charlottesville, VA',
-        site: 'https://www.ait-i.com/',
-        stack: ['VBA', 'SharePoint'],
-        roles: [
-            {
-                title: 'Access Control Specialist',
-                start: 'Feb 2011',
-                end: 'Nov 2014',
-            },
-        ],
-        list: [
-            'Used Excel and VBA to analyze physical security infraction data',
-            'SharePoint site administration.',
-            'Created a tool to track and review daily metrics for leadership.',
         ],
     },
 ];

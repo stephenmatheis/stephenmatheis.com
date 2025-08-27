@@ -1,3 +1,15 @@
 .skills {
-    //
+    font-size: 10pt;
+
+    .groups {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .group {
+            .name {
+                font-weight: 600;
+            }
+        }
+    }
 }
