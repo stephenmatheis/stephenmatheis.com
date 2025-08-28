@@ -1,35 +1,3 @@
 .version {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    @media (min-width: 816px) and (min-height: 1056px), print {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        gap: 1ch;
-    }
-
-    @media screen {
-        @media (min-width: 1056px) and (min-height: 816px) {
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-    }
-
-    .links {
-        display: flex;
-        gap: 2ch;
-    }
-
-    .value {
-        color: var(--muted);
-    }
-
-    .date {
-        display: flex;
-        gap: 1ch;
-        color: var(--muted);
-    }
+    //
 }

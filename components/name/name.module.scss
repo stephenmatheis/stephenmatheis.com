@@ -1,46 +1,16 @@
 .name {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    @media (min-width: 816px) and (min-height: 1056px), print {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 70ch;
+    h1,
+    p {
+        display: inline-block;
+        font-size: 24px;
+        line-height: 36px;
     }
 
-    @media screen {
-        @media (min-width: 1056px) and (min-height: 816px) {
-            top: calc(var(--line-height) * 0);
-            width: 73ch;
-            height: var(--line-height);
-        }
+    h1 {
+        font-weight: 600;
     }
 
-    .row {
-        display: flex;
-        gap: 1ch;
-    }
-
-    .primary {
-        color: var(--color);
-    }
-
-    .muted {
-        color: var(--muted);
-    }
-
-    .light {
-        color: var(--light);
-    }
-
-    @media screen {
-        @media (min-width: 1056px) and (min-height: 816px) {
-            .row {
-                align-items: center;
-                height: var(--line-height);
-            }
-        }
+    p {
+        font-weight: 300;
     }
 }

@@ -18,19 +18,31 @@ const projects = [
             },
         ],
     },
-    {
-        name: 'Juice',
-        href: 'https://www.apple.com/watch',
-        date: '2022',
-        description:
-            'React component and Next.js route scaffolding tool. Used to prototype a new Apple Watch buy flow and Today at apple pages.',
-    },
     // {
-    //     name: 'Robi',
-    //     href: 'https://robijs.dev',
+    //     name: 'ICTL',
+    //     href: 'https://ictl.dev',
     //     date: '2017',
-    //     description: 'SharePoint single-page application framework for client-side development.',
+    //     description: 'Individual Critical Tasks Lists. Tracks U.S. Army medical provider training.',
     // },
+    // {
+    //     name: 'Accountability Roster',
+    //     href: 'https://accountabilityroster.dev',
+    //     date: '2017',
+    //     description: 'Just some jQuery and a SharePoint list. Saved our First Sergeant a couple hours every day.',
+    // },
+    // {
+    //     name: 'Juice',
+    //     href: 'https://www.apple.com/watch',
+    //     date: '2022',
+    //     description:
+    //         'React component and Next.js route scaffolding tool. Used to prototype a new Apple Watch buy flow and Today at apple pages.',
+    // },
+    {
+        name: 'Robi',
+        href: 'https://robijs.dev',
+        date: '2017',
+        description: 'SharePoint single-page application framework for client-side development.',
+    },
 ];
 
 export default projects;

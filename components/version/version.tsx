@@ -20,32 +20,6 @@ export function Version() {
 
     return (
         <Section className={styles.version}>
-            <div className={styles.links}>
-                <motion.a
-                    href="https://stephenmatheis.com"
-                    target="_blank"
-                    title="My website"
-                    onHoverStart={(event) => {
-                        const rect = (event.target as HTMLElement).getBoundingClientRect();
-
-                        if (!rect) return;
-
-                        const { top, left, height, width } = rect;
-
-                        setPosition((prev) => ({
-                            ...prev,
-                            top,
-                            left,
-                            height,
-                            width,
-                            type: 'link',
-                        }));
-                    }}
-                    onHoverEnd={() => resetPosition()}
-                >
-                    stephenmatheis.com
-                </motion.a>
-            </div>
             <div className={styles.value}>v2.0.35</div>
             <div className={styles.date}>
                 <span className={styles.date} suppressHydrationWarning>

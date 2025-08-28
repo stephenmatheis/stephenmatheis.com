@@ -1,12 +1,16 @@
-.skills {
-    .groups {
+.education {
+    .schools {
         display: flex;
         flex-direction: column;
         gap: 1rem;
 
-        .group {
+        .school {
             .name {
                 font-weight: 600;
+            }
+
+            .dates {
+                font-weight: 300;
             }
         }
     }

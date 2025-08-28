@@ -1,20 +1,59 @@
 :root {
     --background-color: #ffffff;
     --color: #1d1d1d;
+    --dark: #000000;
+    --light: #767676;
+    --accent: #d7350a;
+
+    font-size: 12px;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-size: 1rem;
 }
 
-html,
-body {
-    background-color: var(--background-color);
-    color: var(--color);
+html {
+    cursor: url(/pointer.svg) 0 0, auto;
 }
 
 body {
     font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+a,
+b {
+    cursor: url(/pointer.svg) 0 0, auto;
+}
+
+a {
+    color: var(--color);
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+    font-size: var(--font-size);
+}
+
+ul {
+    padding-left: 20px;
+
+    // li {
+    //     &::marker {
+    //         color: var(--light);
+    //     }
+    // }
 }
