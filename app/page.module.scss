@@ -1,0 +1,22 @@
+.columns {
+    width: 100%;
+    display: flex;
+    gap: 0.5in;
+    // height: 100%;
+
+    background-color: #0000ff10;
+
+    .left {
+        background-color: #0000ff10;
+        flex: 3;
+    }
+
+    .right {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 30%;
+
+        background-color: #ff000010;
+    }
+}

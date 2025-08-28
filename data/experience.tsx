@@ -1,22 +1,22 @@
 const experience = [
-    {
-        company: 'NEXTdotgov',
-        location: 'Remote',
-        site: 'https://www.nextdotgov.com/',
-        stack: ['Next.js', 'TypeScript', 'Vercel'],
-        roles: [
-            {
-                title: 'Founder',
-                start: 'Jun 2025',
-                end: '',
-            },
-        ],
-        list: [
-            'Founded NEXTdotgov, a web consultancy for government.',
-            'Developing Pink Draft, a request for proposal aid.',
-            'Developing MSR, a program-level status reporting tool.',
-        ],
-    },
+    // {
+    //     company: 'NEXTdotgov',
+    //     location: 'Remote',
+    //     site: 'https://www.nextdotgov.com/',
+    //     stack: ['Next.js', 'TypeScript', 'Vercel'],
+    //     roles: [
+    //         {
+    //             title: 'Founder',
+    //             start: 'Jun 2025',
+    //             end: '',
+    //         },
+    //     ],
+    //     list: [
+    //         'Founded NEXTdotgov, a web consultancy for government.',
+    //         'Developing Pink Draft, a request for proposal aid.',
+    //         'Developing MSR, a program-level status reporting tool.',
+    //     ],
+    // },
     {
         company: 'TATCS',
         location: 'Remote',
@@ -88,7 +88,7 @@ const experience = [
         stack: ['React Native', 'TypeScript', 'Expo', 'Firebase', 'GCP'],
         roles: [
             {
-                title: 'Subject Matter Expert II',
+                title: 'Senior Software Engineer',
                 start: 'May 2021',
                 end: 'Apr 2022',
             },
@@ -106,7 +106,7 @@ const experience = [
         stack: ['jQuery', 'Bootstrap', 'SharePoint', 'ASP.NET'],
         roles: [
             {
-                title: 'Systems Programmer 3',
+                title: 'Senior Software Engineer',
                 start: 'Sep 2016',
                 end: 'Oct 2017',
             },

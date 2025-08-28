@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import { Open_Sans, Inter } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
+import { CursorProvider } from '@/providers/cursor-provider';
+import { Cursor } from '@/components/cursor';
 import './layout.scss';
 
 const sans = Inter({
@@ -53,7 +55,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${mono.variable} ${pixel.variable} ${sans.variable}`} suppressHydrationWarning>
-                {children}
+                <CursorProvider>
+                    {children}
+                    <Cursor />
+                </CursorProvider>
                 <Analytics debug={false} />
             </body>
         </html>
