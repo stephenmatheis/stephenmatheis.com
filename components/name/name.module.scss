@@ -1,17 +1,13 @@
 .name {
-    display: flex;
-    align-items: center;
-    gap: 1ch;
-    margin-bottom: 1.5rem;
+    position: absolute;
+    top: -0.5in;
+    left: -0.5in;
+    font-size: 144px;
+    line-height: 1;
+    color: var(--name);
+    font-weight: 400;
 
-    h1,
-    p {
-        font-size: 20px;
-        line-height: 3rem;
-    }
-
-    h1 {
-        // font-weight: 600;
-        width: fit-content;
+    span {
+        display: block;
     }
 }

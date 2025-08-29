@@ -6,10 +6,10 @@ import { CursorProvider } from '@/providers/cursor-provider';
 import { Cursor } from '@/components/cursor';
 import './layout.scss';
 
-const sans = Inter({
+const inter = Inter({
     subsets: ['latin'],
     display: 'swap',
-    variable: '--font-sans',
+    variable: '--font-inter',
 });
 
 const commit_mono = localFont({
@@ -17,7 +17,7 @@ const commit_mono = localFont({
     variable: '--font-commit-mono',
 });
 
-const mono = localFont({
+const departure_mono = localFont({
     src: './fonts/DepartureMono.woff2',
     variable: '--font-mono',
 });
@@ -60,7 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${mono.variable} ${pixel.variable} ${sans.variable} ${commit_mono.variable}`}
+                className={`${departure_mono.variable} ${pixel.variable} ${inter.variable} ${commit_mono.variable}`}
                 suppressHydrationWarning
             >
                 <CursorProvider>
