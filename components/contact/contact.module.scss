@@ -1,4 +1,6 @@
 .contact {
-    display: flex;
-    justify-content: space-between;
+    .links {
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -12,6 +12,11 @@ const sans = Inter({
     variable: '--font-sans',
 });
 
+const commit_mono = localFont({
+    src: './fonts/CommitMonoV143-VF.woff2',
+    variable: '--font-commit-mono',
+});
+
 const mono = localFont({
     src: './fonts/DepartureMono.woff2',
     variable: '--font-mono',
@@ -54,7 +59,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${mono.variable} ${pixel.variable} ${sans.variable}`} suppressHydrationWarning>
+            <body
+                className={`${mono.variable} ${pixel.variable} ${sans.variable} ${commit_mono.variable}`}
+                suppressHydrationWarning
+            >
                 <CursorProvider>
                     {children}
                     <Cursor />

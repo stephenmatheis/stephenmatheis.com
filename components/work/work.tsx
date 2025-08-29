@@ -11,7 +11,7 @@ export function Work() {
     const { setPosition, resetPosition } = useCursor();
 
     return (
-        <Section className={styles.work} heading="Work">
+        <Section className={styles.work} heading="04 Work">
             <div className={styles.list}>
                 {work.map(({ name, href, description }) => (
                     <div key={name} className={styles.item}>

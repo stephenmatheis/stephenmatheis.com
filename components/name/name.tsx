@@ -6,7 +6,8 @@ import styles from './name.module.scss';
 export function Name() {
     return (
         <Section className={styles.name}>
-            <h1>Stephen Matheis</h1> <p>Software Engineer</p>
+            <h1>Stephen Matheis</h1>
+            <p>Software Engineer</p>
         </Section>
     );
 }
