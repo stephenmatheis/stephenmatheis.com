@@ -13,14 +13,14 @@ export default function AboutPage() {
     return (
         <Sheet>
             <Content>
-                <Name />
-                <About />
-                <Contact />
                 <div className={styles.columns}>
                     <div className={styles.left}>
+                        <Name />
+                        <About />
                         <Experience />
                     </div>
                     <div className={styles.right}>
+                        <Contact />
                         <Skills />
                         <Work />
                         <Education />

@@ -3,7 +3,7 @@ import styles from './education.module.scss';
 
 export function Education() {
     return (
-        <Section className={styles.education} heading="Education">
+        <Section className={styles.education} heading="05 Education">
             <div className={styles.schools}>
                 <div className={styles.school}>
                     <div className={styles.name}>Armstrong Atlantic State University</div>

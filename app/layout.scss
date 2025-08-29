@@ -1,6 +1,7 @@
 :root {
     --background-color: #ffffff;
-    --color: #1d1d1d;
+    // --color: #1d1d1d;
+    --color: #000000;
     --dark: #000000;
     --light: #767676;
     --accent: #d7350a;
@@ -20,7 +21,12 @@ html {
 }
 
 body {
-    font-family: var(--font-sans);
+    font-family: var(--font-commit-mono);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -45,15 +51,17 @@ a {
 button {
     border: none;
     background-color: transparent;
-    font-size: var(--font-size);
+    font-size: inherit;
 }
 
 ul {
-    padding-left: 20px;
+    padding-left: 1ch;
 
-    // li {
-    //     &::marker {
-    //         color: var(--light);
-    //     }
-    // }
+    li {
+        padding-left: 1ch;
+
+        &::marker {
+            content: '•';
+        }
+    }
 }

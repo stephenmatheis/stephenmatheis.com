@@ -1,16 +1,9 @@
 .sheet {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 8.5in;
     height: 11in;
-    padding-top: 1in;
-    padding-bottom: 1in;
-    padding-inline: 0.5in;
 
     background-color: #0000ff10;
 }

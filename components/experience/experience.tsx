@@ -4,7 +4,7 @@ import styles from './experience.module.scss';
 
 export function Experience() {
     return (
-        <Section className={styles.experience} heading="Experience">
+        <Section className={styles.experience} heading="02 Experience">
             <div className={styles.jobs}>
                 {experience.map(({ company, location, roles, list }, index) => {
                     return (

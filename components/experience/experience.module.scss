@@ -2,32 +2,34 @@
     .jobs {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
 
         .job {
             .company {
                 display: flex;
                 justify-content: space-between;
-                .name {
-                    font-weight: 600;
-                }
 
-                .location {
-                    font-weight: 300;
-                }
+                // .name {
+                //     font-weight: 600;
+                // }
+
+                // .location {
+                //     font-weight: 300;
+                // }
             }
 
             .roles {
                 .role {
                     display: flex;
                     justify-content: space-between;
-                    .title {
-                        font-weight: 500;
-                    }
 
-                    .date {
-                        font-weight: 300;
-                    }
+                    // .title {
+                    //     font-weight: 500;
+                    // }
+
+                    // .date {
+                    //     font-weight: 300;
+                    // }
                 }
             }
         }
