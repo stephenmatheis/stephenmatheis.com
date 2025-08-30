@@ -18,10 +18,10 @@ export function Experience() {
                                                 <span>
                                                     <span className={styles.title}>{title}</span>{' '}
                                                     {index === 0 && (
-                                                        <>
+                                                        <span className={styles.company}>
                                                             <span className={styles.name}>at {company}</span>
                                                             <span className={styles.name}> in {location}</span>
-                                                        </>
+                                                        </span>
                                                     )}
                                                 </span>
                                                 <span className={styles.date}>

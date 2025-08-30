@@ -6,5 +6,10 @@
     height: 11in;
     padding: 0.5in;
 
-    box-shadow: inset 0px 0px 0px 2px #ff000050;
+    // box-shadow: inset 0px 0px 0px 2px #ff000050;
+
+    @media screen and (max-width: 815px) {
+        height: 100%;
+        width: 100%;
+    }
 }
