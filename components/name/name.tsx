@@ -1,12 +1,11 @@
-'use client';
-
 import styles from './name.module.scss';
 
 export function Name() {
     return (
-        <h1 className={styles.name}>
-            <span>Steve</span>
-            <span>Matheis</span>
-        </h1>
+        <header className={styles.name}>
+            <h1>
+                Stephen Matheis <span>Software Engineer</span>
+            </h1>
+        </header>
     );
 }

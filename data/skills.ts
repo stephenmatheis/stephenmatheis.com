@@ -1,15 +1,15 @@
 const skills = [
     {
         group: 'Languages',
-        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS'],
+        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS'],
     },
     {
         group: 'Frameworks & Libraries',
-        items: ['Node.js', 'Next.js', 'Payload CMS', 'React', 'Motion', 'Three.js', 'R3F', 'ArcGIS'],
+        items: ['Node.js', 'React', 'Next.js'],
     },
     {
         group: 'Platforms & Tools',
-        items: ['AWS', 'MongoDB', 'Firebase', 'Docker', 'Vite', 'Webpack', 'Figma', 'Sketch'],
+        items: ['AWS', 'MongoDB', 'Docker', 'Figma'],
     },
 ];
 

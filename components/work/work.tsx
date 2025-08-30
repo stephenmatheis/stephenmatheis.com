@@ -3,15 +3,16 @@
 import Link from 'next/link';
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
-import { Section } from '@/components/section';
 import work from '@/data/work';
 import styles from './work.module.scss';
+import { Heading } from '../heading';
 
 export function Work() {
     const { setPosition, resetPosition } = useCursor();
 
     return (
-        <Section className={styles.work} heading="04 Work">
+        <div className={styles.work}>
+            <Heading>06 Work</Heading>
             <div className={styles.list}>
                 {work.map(({ name, href, description }) => (
                     <div key={name} className={styles.item}>
@@ -43,6 +44,6 @@ export function Work() {
                     </div>
                 ))}
             </div>
-        </Section>
+        </div>
     );
 }

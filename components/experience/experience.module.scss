@@ -18,18 +18,21 @@
                 // }
             }
 
-            .roles {
-                .role {
-                    display: flex;
-                    justify-content: space-between;
+            .details {
+                .roles {
+                    .role {
+                        display: flex;
+                        justify-content: space-between;
 
-                    // .title {
-                    //     font-weight: 500;
-                    // }
+                        .title {
+                            font-weight: 700;
+                        }
 
-                    // .date {
-                    //     font-weight: 300;
-                    // }
+                        .date {
+                            // font-weight: 300;
+                            // font-family: var(--font-commit-mono);
+                        }
+                    }
                 }
             }
         }

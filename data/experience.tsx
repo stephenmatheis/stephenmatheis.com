@@ -25,18 +25,24 @@ const experience = [
         roles: [
             {
                 title: 'Director, User Experience',
-                start: 'Apr 2024',
-                end: 'May 2025',
+                // start: 'Apr 2024',
+                // end: 'May 2025',
+                start: '04.2024',
+                end: '05.2025',
             },
             {
-                title: 'Senior Application Solutions Engineer',
-                start: 'Oct 2023',
-                end: 'Mar 2024',
+                title: 'Sr. App. Solutions Engineer',
+                // start: 'Oct 2023',
+                // end: 'Mar 2024',
+                start: '10.2023',
+                end: '03.2024',
             },
             {
                 title: 'Senior SharePoint Developer',
-                start: 'Mar 2018',
-                end: 'May 2021',
+                // start: 'Mar 2018',
+                // end: 'May 2021',
+                start: '03.2018',
+                end: '05.2021',
             },
         ],
         list: [
@@ -53,8 +59,10 @@ const experience = [
         roles: [
             {
                 title: 'Front-end Developer',
-                start: 'Aug 2022',
-                end: 'Oct 2023',
+                // start: 'Aug 2022',
+                // end: 'Oct 2023',
+                start: '08.2022',
+                end: '10.2023',
             },
         ],
         list: [
@@ -89,8 +97,10 @@ const experience = [
         roles: [
             {
                 title: 'Senior Software Engineer',
-                start: 'May 2021',
-                end: 'Apr 2022',
+                // start: 'May 2021',
+                // end: 'Apr 2022',
+                start: '05.2021',
+                end: '04.2022',
             },
         ],
         list: [
@@ -107,8 +117,10 @@ const experience = [
         roles: [
             {
                 title: 'Senior Software Engineer',
-                start: 'Sep 2016',
-                end: 'Oct 2017',
+                // start: 'Sep 2016',
+                // end: 'Oct 2017',
+                start: '09.2016',
+                end: '10.2017',
             },
         ],
         list: [
@@ -118,20 +130,24 @@ const experience = [
         ],
     },
     {
-        company: 'Bravo Consulting Group',
+        company: 'Bravo CG',
         location: 'Reston, VA',
         site: 'https://bravocg.com/',
         stack: ['jQuery', 'SharePoint', 'ASP.NET'],
         roles: [
             {
                 title: 'Senior Consultant',
-                start: 'Feb 2015',
-                end: 'May 2016',
+                // start: 'Feb 2015',
+                // end: 'May 2016',
+                start: '02.2015',
+                end: '05.2016',
             },
             {
                 title: 'Consultant',
-                start: 'Nov 2014',
-                end: 'Feb 2015',
+                // start: 'Nov 2014',
+                // end: 'Feb 2015',
+                start: '11.2014',
+                end: '02.2015',
             },
         ],
         list: [
