@@ -4,9 +4,11 @@
     align-items: center;
     width: 8.5in;
     height: 11in;
-    padding: 0.5in;
+    padding: 1in;
 
-    // box-shadow: inset 0px 0px 0px 2px #ff000050;
+    &.guide {
+        box-shadow: inset 0px 0px 0px 2px #ff000050;
+    }
 
     @media screen and (max-width: 815px) {
         height: 100%;

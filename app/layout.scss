@@ -19,11 +19,11 @@
 }
 
 html {
-    cursor: url(/pointer.svg) 0 0, auto;
+    cursor: url(/cursor.svg) 0 0, auto;
 }
 
 body {
-    font-family: var(--font-inter);
+    font-family: var(--font-sans);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +32,7 @@ body {
 }
 
 a,
-b {
+button {
     cursor: url(/pointer.svg) 0 0, auto;
 }
 
@@ -54,7 +54,7 @@ ul {
         padding-left: 1ch;
 
         &::marker {
-            content: '•';
+            content: '-';
         }
     }
 }
