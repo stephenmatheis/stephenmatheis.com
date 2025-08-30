@@ -31,7 +31,7 @@ const experience = [
                 end: '05.2025',
             },
             {
-                title: 'Sr. App. Solutions Engineer',
+                title: 'Senior Application Solutions Engineer',
                 // start: 'Oct 2023',
                 // end: 'Mar 2024',
                 start: '10.2023',

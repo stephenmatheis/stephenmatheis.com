@@ -5,32 +5,26 @@
         gap: 1.5rem;
 
         .job {
-            .company {
-                display: flex;
-                justify-content: space-between;
-
-                // .name {
-                //     font-weight: 600;
-                // }
-
-                // .location {
-                //     font-weight: 300;
-                // }
-            }
-
             .details {
                 .roles {
                     .role {
                         display: flex;
                         justify-content: space-between;
+                        gap: 2ch;
 
                         .title {
                             font-weight: 700;
                         }
 
+                        .company {
+                            @media screen and (max-width: 815px) {
+                                display: flex;
+                                flex-direction: column;
+                            }
+                        }
+
                         .date {
-                            // font-weight: 300;
-                            // font-family: var(--font-commit-mono);
+                            min-width: max-content;
                         }
                     }
                 }
