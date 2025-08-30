@@ -7,10 +7,9 @@ export function Skills() {
         <div className={styles.skills}>
             <Heading>03 Skills</Heading>
             <div className={styles.groups}>
-                {skills.map(({ group, items }, index) => {
+                {skills.map(({ items }, index) => {
                     return (
                         <div key={index} className={styles.group}>
-                            {/* <div className={styles.name}>{group}</div> */}
                             <div className={styles.items}>
                                 {items.map((item) => {
                                     return (

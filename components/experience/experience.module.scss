@@ -5,29 +5,31 @@
         gap: 1.5rem;
 
         .job {
-            .details {
-                .roles {
-                    .role {
-                        display: flex;
-                        justify-content: space-between;
-                        gap: 2ch;
+            .roles {
+                .role {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 2ch;
 
-                        .title {
-                            font-weight: 700;
-                        }
+                    .title {
+                        font-weight: 700;
+                    }
 
-                        .company {
-                            @media screen and (max-width: 815px) {
-                                display: flex;
-                                flex-direction: column;
-                            }
-                        }
-
-                        .date {
-                            min-width: max-content;
+                    .company {
+                        @media screen and (max-width: 815px) {
+                            display: flex;
+                            flex-direction: column;
                         }
                     }
+
+                    .date {
+                        min-width: max-content;
+                    }
                 }
+            }
+
+            .list {
+                //
             }
         }
     }

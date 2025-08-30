@@ -1,14 +1,10 @@
 const skills = [
     {
-        group: 'Languages',
-        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS'],
+        group: 'Tech',
+        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'Node.js', 'React', 'Next.js'],
     },
     {
-        group: 'Frameworks & Libraries',
-        items: ['Node.js', 'React', 'Next.js'],
-    },
-    {
-        group: 'Platforms & Tools',
+        group: 'Tools',
         items: ['AWS', 'MongoDB', 'Docker', 'Figma'],
     },
 ];

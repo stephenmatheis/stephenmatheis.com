@@ -40,7 +40,7 @@ export function Work() {
                                 {name}
                             </Link>
                         </motion.div>
-                        <div className={styles.description}>{description}</div>
+                        <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
                     </div>
                 ))}
             </div>

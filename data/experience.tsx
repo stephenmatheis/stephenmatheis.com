@@ -25,31 +25,16 @@ const experience = [
         roles: [
             {
                 title: 'Director, User Experience',
-                // start: 'Apr 2024',
-                // end: 'May 2025',
-                start: '04.2024',
-                end: '05.2025',
+                start: '04.24',
+                end: '05.25',
             },
             {
                 title: 'Senior Application Solutions Engineer',
-                // start: 'Oct 2023',
-                // end: 'Mar 2024',
-                start: '10.2023',
-                end: '03.2024',
-            },
-            {
-                title: 'Senior SharePoint Developer',
-                // start: 'Mar 2018',
-                // end: 'May 2021',
-                start: '03.2018',
-                end: '05.2021',
+                start: '10.23',
+                end: '03.24',
             },
         ],
-        list: [
-            'Led UI/UX.',
-            'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.',
-            'Developed an app for U.S. Army MEDCOM to track required training.',
-        ],
+        list: ['Lead our UI/UX team.', 'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.'],
     },
     {
         company: 'Apple',
@@ -59,17 +44,11 @@ const experience = [
         roles: [
             {
                 title: 'Front-end Developer',
-                // start: 'Aug 2022',
-                // end: 'Oct 2023',
-                start: '08.2022',
-                end: '10.2023',
+                start: '08.22',
+                end: '10.23',
             },
         ],
-        list: [
-            'Part of the Marking and Communications (MARCOM) prototyping team.',
-            'Built a new Apple Watch buy flow with Next.js and TypeScript.',
-            'Created Juice, a scaffolding tool.',
-        ],
+        list: ['Built a new Apple Watch buy flow.', 'Created a React component scaffolding tool.'],
     },
     // {
     //     company: 'GovCIO',
@@ -97,17 +76,25 @@ const experience = [
         roles: [
             {
                 title: 'Senior Software Engineer',
-                // start: 'May 2021',
-                // end: 'Apr 2022',
-                start: '05.2021',
-                end: '04.2022',
+                start: '05.21',
+                end: '04.22',
             },
         ],
-        list: [
-            'Digitized new Defense Health Agency (DHA) processes.',
-            'Developed large internal line-of-business applications for DHA. ',
-            'Built a mobile app for the U.S. Marine Corps.',
+        list: ['Created a process improvement tracking tool. ', 'Built a mobile app for the U.S. Marine Corps.'],
+    },
+    {
+        company: 'TATCS',
+        location: 'Remote',
+        site: 'https://www.tatcs.com/',
+        stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
+        roles: [
+            {
+                title: 'Senior SharePoint Developer',
+                start: '03.18',
+                end: '05.21',
+            },
         ],
+        list: ['Team lead to 3 developers and 2 admins.', 'Designed & developed a MEDCOM required training app.'],
     },
     {
         company: 'HID Global',
@@ -117,17 +104,11 @@ const experience = [
         roles: [
             {
                 title: 'Senior Software Engineer',
-                // start: 'Sep 2016',
-                // end: 'Oct 2017',
-                start: '09.2016',
-                end: '10.2017',
+                start: '09.16',
+                end: '10.17',
             },
         ],
-        list: [
-            'Developed line-of-business application for operations and finance.',
-            'Upgraded SharePoint 2010 to SharePoint 2013.',
-            'Migrated Lotus Notes apps to SharePoint 2013.',
-        ],
+        list: ['Upgraded SharePoint 2010 to SharePoint 2013.', 'Migrated Lotus Notes apps to SharePoint 2013.'],
     },
     {
         company: 'Bravo CG',
@@ -137,23 +118,18 @@ const experience = [
         roles: [
             {
                 title: 'Senior Consultant',
-                // start: 'Feb 2015',
-                // end: 'May 2016',
-                start: '02.2015',
-                end: '05.2016',
+                start: '02.15',
+                end: '05.16',
             },
             {
                 title: 'Consultant',
-                // start: 'Nov 2014',
-                // end: 'Feb 2015',
-                start: '11.2014',
-                end: '02.2015',
+                start: '11.14',
+                end: '02.15',
             },
         ],
         list: [
             'Team Lead at the Executive Office of the President.',
-            'Created a presidential records export tool for National Archives.',
-            'Reduced backup requirements at the Department of Veterans Affairs.',
+            'Created a tool to preserve presidential records.',
         ],
     },
 ];
