@@ -20,7 +20,7 @@ export function useGuides() {
 }
 
 export function GuidesProvider({ children }: { children: ReactNode }) {
-    const [isOn, setIsOn] = useState<boolean>(false);
+    const [isOn, setIsOn] = useState<boolean>(true);
 
     return (
         <GuidesContext.Provider
