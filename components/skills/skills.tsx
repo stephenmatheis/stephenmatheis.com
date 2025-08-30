@@ -1,20 +1,29 @@
-import { Section } from '@/components/section';
+import { Heading } from '@/components/heading';
 import skills from '@/data/skills';
 import styles from './skills.module.scss';
 
 export function Skills() {
     return (
-        <Section className={styles.skills} heading="03 Skills">
+        <div className={styles.skills}>
+            <Heading>03 Skills</Heading>
             <div className={styles.groups}>
                 {skills.map(({ group, items }, index) => {
                     return (
                         <div key={index} className={styles.group}>
-                            <div className={styles.name}>{group}</div>
-                            <span className={styles.items}>{items.join(', ')}</span>
+                            {/* <div className={styles.name}>{group}</div> */}
+                            <div className={styles.items}>
+                                {items.map((item) => {
+                                    return (
+                                        <div key={item} className={styles.item}>
+                                            {item}
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
                     );
                 })}
             </div>
-        </Section>
+        </div>
     );
 }

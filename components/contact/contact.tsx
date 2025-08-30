@@ -2,14 +2,15 @@
 
 import * as motion from 'motion/react-client';
 import { useCursor } from '@/providers/cursor-provider';
-import { Section } from '@/components/section';
 import styles from './contact.module.scss';
+import { Heading } from '../heading';
 
 export function Contact() {
     const { setPosition, resetPosition } = useCursor();
 
     return (
-        <Section className={styles.contact} heading="01 Contact">
+        <div className={styles.contact}>
+            <Heading>02 Contact</Heading>
             <div className={styles.links}>
                 <motion.a
                     href="mailto:stephen@matheis.email"
@@ -108,6 +109,6 @@ export function Contact() {
                     stephenmatheis.com
                 </motion.a>
             </div>
-        </Section>
+        </div>
     );
 }

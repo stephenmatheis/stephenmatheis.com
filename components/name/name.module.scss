@@ -1,13 +1,9 @@
 .name {
-    position: absolute;
-    top: -0.5in;
-    left: -0.5in;
-    font-size: 144px;
-    line-height: 1;
-    color: var(--name);
-    font-weight: 400;
+    h1 {
+        font-weight: 800;
 
-    span {
-        display: block;
+        span {
+            font-weight: 400;
+        }
     }
 }

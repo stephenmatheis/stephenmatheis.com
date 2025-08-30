@@ -6,27 +6,24 @@ import { Work } from '@/components/work';
 import { Sheet } from '@/components/sheet';
 import { Content } from '@/components/content';
 import { About } from '@/components/about';
-import styles from './page.module.scss';
-import { Education } from '@/components/education';
 import { Title } from '@/components/title';
+import styles from './page.module.scss';
 
 export default function AboutPage() {
     return (
         <Sheet>
             <Content>
-                <Name />
-                <Title />
-                <div className={styles.columns}>
-                    <div className={styles.left}>
-                        {/* <About />
-                        <Experience /> */}
+                <div className={styles.flex}>
+                    <div className={styles.header}>
+                        <Name />
                     </div>
-                    {/* <div className={styles.right}>
+                    <div className={styles.grid}>
+                        <About />
                         <Contact />
+                        <Experience />
                         <Skills />
                         <Work />
-                        <Education />
-                    </div> */}
+                    </div>
                 </div>
             </Content>
         </Sheet>
