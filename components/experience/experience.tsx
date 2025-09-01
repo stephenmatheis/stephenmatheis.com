@@ -1,45 +1,30 @@
-import { Fragment } from 'react';
 import { Heading } from '../heading';
 import experience from '@/data/experience';
 import styles from './experience.module.scss';
+import { Fragment } from 'react';
 
 export function Experience() {
     return (
         <div className={styles.experience}>
-            <Heading>04 Experience</Heading>
+            <Heading>Experience</Heading>
             <div className={styles.jobs}>
-                {experience.map(({ company, location, roles, list }, index) => {
+                {experience.map(({ company, location, roles }, index) => {
                     return (
-                        <div key={index} className={styles.job}>
-                            <div className={styles.roles}>
-                                {roles!.map(({ title, start, end }, index: number) => {
-                                    return (
-                                        <div key={index} className={styles.role}>
-                                            <span className={styles.title}>{title}</span>
-                                            <span className={styles.date}>
-                                                {start}
-                                                {end && <> - {end}</>}
-                                            </span>
+                        <Fragment key={index}>
+                            {roles!.map(({ title, start, end, list }, index: number) => {
+                                return (
+                                    <Fragment key={index}>
+                                        <div className={styles.date}>
+                                            {start} - {end || 'Now'}
                                         </div>
-                                    );
-                                })}
-                            </div>
-                            <div className={styles.className}>
-                                {company}, {location}
-                            </div>
-                            {/* <p className={styles.details}>
-                                {list?.map((line: string, i: number) => (
-                                    <Fragment key={i}>{line}</Fragment>
-                                ))}
-                            </p> */}
-                            <ul className={styles.list}>
-                                {list?.map((line: string, i: number) => (
-                                    <li key={i} className={styles.line}>
-                                        {line}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                                        <div className={styles.company}>{company}</div>
+                                        <div className={styles.title}>{title}</div>
+                                        {/* <div className={styles.location}>{location}</div> */}
+                                        <div className={styles.info}>{list?.join(' ')}</div>
+                                    </Fragment>
+                                );
+                            })}
+                        </Fragment>
                     );
                 })}
             </div>

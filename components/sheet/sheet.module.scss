@@ -1,4 +1,5 @@
 .sheet {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,12 +7,14 @@
     height: 11in;
     padding: 1in;
 
-    &.guide {
-        box-shadow: inset 0px 0px 0px 2px #ff000050;
-    }
+    @media screen {
+        &.guide {
+            box-shadow: inset 0px 0px 0px 2px #ff000050;
+        }
 
-    @media screen and (max-width: 815px) {
-        height: 100%;
-        width: 100%;
+        @media (max-width: 815px) {
+            height: 100%;
+            width: 100%;
+        }
     }
 }

@@ -6,23 +6,58 @@ import { Work } from '@/components/work';
 import { Sheet } from '@/components/sheet';
 import { Content } from '@/components/content';
 import { About } from '@/components/about';
-import styles from './page.module.scss';
 import { Toolbar } from '@/components/toolbar';
+import styles from './page.module.scss';
 
 export default function AboutPage() {
     return (
         <>
             <Sheet>
                 <Content>
-                    <div className={styles.flex}>
-                        {/* <div className={styles.header}>
-                        <Name />
-                    </div> */}
-                        <div className={styles.grid}>
-                            <About />
-                            <Contact />
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'flex-end',
+                            gap: '1in',
+                            height: '100%',
+                        }}
+                    >
+                        <div
+                            style={{
+                                flex: '1',
+                                display: 'flex',
+                                justifyContent: 'flex-end',
+                            }}
+                        >
+                            <Name />
+                        </div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                gap: '1in',
+                            }}
+                        >
+                            <div>
+                                <About />
+                            </div>
+                            <div>
+                                <Skills />
+                            </div>
+                        </div>
+                        <div>
                             <Experience />
-                            <Skills />
+                        </div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'flex-end',
+                                gap: '1in',
+                            }}
+                        >
+                            <Contact />
                             <Work />
                         </div>
                     </div>
