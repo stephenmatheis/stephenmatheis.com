@@ -5,7 +5,7 @@ import styles from './skills.module.scss';
 export function Skills() {
     return (
         <div className={styles.skills}>
-            <Heading>03 Skills</Heading>
+            <Heading>Skills</Heading>
             <div className={styles.groups}>
                 {skills.map(({ items }, index) => {
                     return (

@@ -1,22 +1,18 @@
 const experience = [
-    // {
-    //     company: 'NEXTdotgov',
-    //     location: 'Remote',
-    //     site: 'https://www.nextdotgov.com/',
-    //     stack: ['Next.js', 'TypeScript', 'Vercel'],
-    //     roles: [
-    //         {
-    //             title: 'Founder',
-    //             start: 'Jun 2025',
-    //             end: '',
-    //         },
-    //     ],
-    //     list: [
-    //         'Founded NEXTdotgov, a web consultancy for government.',
-    //         'Developing Pink Draft, a request for proposal aid.',
-    //         'Developing MSR, a program-level status reporting tool.',
-    //     ],
-    // },
+    {
+        company: 'NEXTdotgov',
+        location: 'Remote',
+        site: 'https://www.nextdotgov.com/',
+        stack: ['Next.js', 'TypeScript', 'Vercel'],
+        roles: [
+            {
+                title: 'Founder',
+                start: '06.25',
+                end: '',
+                list: ['Founded a web consultancy for government.'],
+            },
+        ],
+    },
     {
         company: 'TATCS',
         location: 'Remote',
@@ -27,14 +23,15 @@ const experience = [
                 title: 'Director, User Experience',
                 start: '04.24',
                 end: '05.25',
+                list: ['Lead our UI/UX work.'],
             },
             {
                 title: 'Senior Application Solutions Engineer',
                 start: '10.23',
                 end: '03.24',
+                list: ['Redesigned tsunami.gov.'],
             },
         ],
-        list: ['Lead our UI/UX team.', 'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.'],
     },
     {
         company: 'Apple',
@@ -46,28 +43,24 @@ const experience = [
                 title: 'Front-end Developer',
                 start: '08.22',
                 end: '10.23',
+                list: ['Prototyped a new Apple Watch buy flow.'],
             },
         ],
-        list: ['Built a new Apple Watch buy flow.', 'Created a React component scaffolding tool.'],
     },
-    // {
-    //     company: 'GovCIO',
-    //     location: 'Hybrid',
-    //     site: 'https://govcio.com/',
-    //     stack: ['C#', '.NET', 'MongoDB', 'Unity'],
-    //     roles: [
-    //         {
-    //             title: 'Software Programmer 5',
-    //             start: 'May 2022',
-    //             end: 'Jul 2022',
-    //         },
-    //     ],
-    //     list: [
-    //         'Supported a U.S. Air Force Tactical Data Link (TDL) program.',
-    //         'Implemented the MIL-STD-6016 TDL protocol in C#.',
-    //         'Developed a 3D geospatial application with Unity.',
-    //     ],
-    // },
+    {
+        company: 'GovCIO',
+        location: 'Hybrid',
+        site: 'https://govcio.com/',
+        stack: ['C#', '.NET', 'MongoDB', 'Unity'],
+        roles: [
+            {
+                title: 'Software Programmer 5',
+                start: '05.22',
+                end: '07.22',
+                list: ['Wrote Tactical Data Link (TDL) protocol software.'],
+            },
+        ],
+    },
     {
         company: 'Aeyon',
         location: 'Remote',
@@ -78,9 +71,9 @@ const experience = [
                 title: 'Senior Software Engineer',
                 start: '05.21',
                 end: '04.22',
+                list: ['Built a mobile app for the U.S. Marine Corps.'],
             },
         ],
-        list: ['Created a process improvement tracking tool. ', 'Built a mobile app for the U.S. Marine Corps.'],
     },
     {
         company: 'TATCS',
@@ -92,9 +85,9 @@ const experience = [
                 title: 'Senior SharePoint Developer',
                 start: '03.18',
                 end: '05.21',
+                list: ['Developed a required training app for MEDCOM.'],
             },
         ],
-        list: ['Team lead to 3 developers and 2 admins.', 'Designed & developed a MEDCOM required training app.'],
     },
     {
         company: 'HID Global',
@@ -106,9 +99,9 @@ const experience = [
                 title: 'Senior Software Engineer',
                 start: '09.16',
                 end: '10.17',
+                list: ['Migrated Lotus Notes apps to SharePoint 2013.'],
             },
         ],
-        list: ['Upgraded SharePoint 2010 to SharePoint 2013.', 'Migrated Lotus Notes apps to SharePoint 2013.'],
     },
     {
         company: 'Bravo CG',
@@ -120,16 +113,14 @@ const experience = [
                 title: 'Senior Consultant',
                 start: '02.15',
                 end: '05.16',
+                list: ['Created a tool to preserve presidential records.'],
             },
             {
                 title: 'Consultant',
                 start: '11.14',
                 end: '02.15',
+                list: ['Reduced backup storage requirements.'],
             },
-        ],
-        list: [
-            'Team Lead at the Executive Office of the President.',
-            'Created a tool to preserve presidential records.',
         ],
     },
 ];

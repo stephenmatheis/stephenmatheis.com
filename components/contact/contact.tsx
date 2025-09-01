@@ -10,7 +10,7 @@ export function Contact() {
 
     return (
         <div className={styles.contact}>
-            <Heading>02 Contact</Heading>
+            <Heading>Contact</Heading>
             <div className={styles.links}>
                 <motion.a
                     href="mailto:stephen@matheis.email"
@@ -60,7 +60,7 @@ export function Contact() {
                 >
                     (912) 492-2522
                 </motion.a>
-                <motion.a
+                {/* <motion.a
                     href="https://github.com/stephenmatheis"
                     target="_blank"
                     title="My GitHub profile"
@@ -83,8 +83,8 @@ export function Contact() {
                     onHoverEnd={() => resetPosition()}
                 >
                     github.com/stephenmatheis
-                </motion.a>
-                <motion.a
+                </motion.a> */}
+                {/* <motion.a
                     href="https://stephenmatheis.com"
                     target="_blank"
                     title="My GitHub profile"
@@ -107,7 +107,7 @@ export function Contact() {
                     onHoverEnd={() => resetPosition()}
                 >
                     stephenmatheis.com
-                </motion.a>
+                </motion.a> */}
             </div>
         </div>
     );

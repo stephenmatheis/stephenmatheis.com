@@ -1,11 +1,5 @@
 import styles from './name.module.scss';
 
 export function Name() {
-    return (
-        <header className={styles.name}>
-            <h1>
-                Stephen Matheis <span>Software Engineer</span>
-            </h1>
-        </header>
-    );
+    return <h1 className={styles.name}>Stephen Matheis</h1>;
 }

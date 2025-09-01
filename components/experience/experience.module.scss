@@ -1,36 +1,9 @@
 .experience {
+    width: 100%;
+
     .jobs {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
-        .job {
-            .roles {
-                .role {
-                    display: flex;
-                    justify-content: space-between;
-                    gap: 2ch;
-
-                    .title {
-                        font-weight: 700;
-                    }
-
-                    .company {
-                        @media screen and (max-width: 815px) {
-                            display: flex;
-                            flex-direction: column;
-                        }
-                    }
-
-                    .date {
-                        min-width: max-content;
-                    }
-                }
-            }
-
-            .list {
-                //
-            }
-        }
+        display: grid;
+        // grid-template-columns: auto auto auto max-content;
+        grid-template-columns: auto auto auto auto;
     }
 }

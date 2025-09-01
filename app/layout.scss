@@ -8,7 +8,7 @@
     --ramms-red: #bf1b1b;
     --ramms-tan: #ed8008;
 
-    font-size: 12px;
+    font-size: 10px;
     line-height: 1.5;
 }
 
@@ -24,6 +24,7 @@ html {
 
 body {
     font-family: var(--font-sans);
+    // font-family: var(--font-commit-mono);
     display: flex;
     align-items: center;
     justify-content: center;

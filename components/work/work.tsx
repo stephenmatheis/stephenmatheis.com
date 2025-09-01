@@ -12,12 +12,12 @@ export function Work() {
 
     return (
         <div className={styles.work}>
-            <Heading>06 Work</Heading>
+            <Heading>Work</Heading>
             <div className={styles.list}>
-                {work.map(({ name, href, description }) => (
+                {work.map(({ name, href }) => (
                     <div key={name} className={styles.item}>
                         <motion.div
-                            className={styles.href}
+                            className={styles.name}
                             onHoverStart={(event) => {
                                 const rect = (event.target as HTMLElement).querySelector('a')?.getBoundingClientRect();
 
@@ -40,7 +40,6 @@ export function Work() {
                                 {name}
                             </Link>
                         </motion.div>
-                        <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
                     </div>
                 ))}
             </div>
