@@ -1,6 +1,6 @@
 .contact {
     .links {
         display: flex;
-        gap: 0.25in;
+        flex-direction: column;
     }
 }

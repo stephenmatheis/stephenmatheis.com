@@ -17,9 +17,10 @@ export function Experience() {
                                         <div className={styles.date}>
                                             {start} - {end || 'Now'}
                                         </div>
-                                        <div className={styles.company}>{company}</div>
+                                        <div className={styles.company}>
+                                            {company} ({location})
+                                        </div>
                                         <div className={styles.title}>{title}</div>
-                                        {/* <div className={styles.location}>{location}</div> */}
                                         <div className={styles.info}>{list?.join(' ')}</div>
                                     </Fragment>
                                 );

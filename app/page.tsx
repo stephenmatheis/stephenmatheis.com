@@ -14,49 +14,16 @@ export default function AboutPage() {
         <>
             <Sheet>
                 <Content>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'flex-end',
-                            gap: '1in',
-                            height: '100%',
-                        }}
-                    >
-                        <div
-                            style={{
-                                flex: '1',
-                                display: 'flex',
-                                justifyContent: 'flex-end',
-                            }}
-                        >
+                    <div className={styles.column}>
+                        <div className={`${styles.row} ${styles.right} ${styles.flex1}`}>
                             <Name />
                         </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                gap: '1in',
-                            }}
-                        >
-                            <div>
-                                <About />
-                            </div>
-                            <div>
-                                <Skills />
-                            </div>
-                        </div>
-                        <div>
-                            <Experience />
-                        </div>
-                        <div
-                            style={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'flex-end',
-                                gap: '1in',
-                            }}
-                        >
+                        {/* <div className={styles.row}>
+                        <About />
+                    </div> */}
+                        <Experience />
+                        <Skills />
+                        <div className={`${styles.row} ${styles.between}`}>
                             <Contact />
                             <Work />
                         </div>
