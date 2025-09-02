@@ -14,18 +14,17 @@ export default function AboutPage() {
         <>
             <Sheet>
                 <Content>
+                    {/* <About /> */}
+
                     <div className={styles.column}>
                         <div className={`${styles.row} ${styles.right} ${styles.flex1}`}>
                             <Name />
                         </div>
-                        {/* <div className={styles.row}>
-                        <About />
-                    </div> */}
                         <Experience />
                         <Skills />
                         <div className={`${styles.row} ${styles.between}`}>
-                            <Contact />
                             <Work />
+                            <Contact />
                         </div>
                     </div>
                 </Content>
