@@ -10,7 +10,7 @@ export function Contact() {
 
     return (
         <div className={styles.contact}>
-            <Heading>Contact</Heading>
+            {/* <Heading>Contact</Heading> */}
             <div className={styles.links}>
                 <motion.a
                     href="mailto:stephen@matheis.email"
