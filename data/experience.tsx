@@ -113,7 +113,7 @@ const experience = [
                 title: 'Senior Consultant',
                 start: '02.15',
                 end: '05.16',
-                list: ['Created a data export tools.'],
+                list: ['Exported presidential records.'],
             },
             {
                 title: 'Consultant',
