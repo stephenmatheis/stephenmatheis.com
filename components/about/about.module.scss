@@ -1,12 +1,15 @@
 .about {
-    font-size: 14px;
-    text-align: justify;
+    // text-align: justify;
     color: var(--light);
 
-    span {
-        font-size: 14px;
-        text-align: justify;
-        color: var(--color);
-        font-weight: 500;
+    strong {
+        font-weight: 400;
+        color: white;
+    }
+
+    p {
+        &:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
     }
 }

@@ -1,14 +1,13 @@
 :root {
     --background-color: #ffffff;
     --color: #000000;
-    --dark: #000000;
     --light: #767676;
     --name: #ff2040;
     --ramms-orange: #ed3f1d
     --ramms-red: #bf1b1b;
     --ramms-tan: #ed8008;
 
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
 }
 
@@ -17,7 +16,7 @@
     margin: 0;
     padding: 0;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 body {
@@ -50,4 +49,9 @@ ul {
             content: '-';
         }
     }
+}
+
+strong {
+    color: var(--color);
+    font-weight: 400;
 }

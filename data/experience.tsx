@@ -1,18 +1,5 @@
+// TODO: Convert to MD
 const experience = [
-    {
-        company: 'NEXTdotgov',
-        location: 'Washington, D.C.',
-        site: 'https://www.nextdotgov.com/',
-        stack: ['Next.js', 'TypeScript', 'Vercel'],
-        roles: [
-            {
-                title: 'Founder',
-                start: '06.25',
-                end: '',
-                list: ['Founded a web consultancy.'],
-            },
-        ],
-    },
     {
         company: 'TATCS',
         location: 'Remote',
@@ -20,30 +7,36 @@ const experience = [
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
             {
-                title: 'Director, User Experience',
-                start: '04.24',
-                end: '05.25',
-                list: ['Lead our UI/UX work.'],
+                title: 'the Director of User Experience',
+                start: 'April 2024',
+                end: 'May 2025',
+                list: ['I lead our UI/UX work for all of our clients and internal applications.'],
             },
             {
                 title: 'Senior Application Solutions Engineer',
                 start: '10.23',
                 end: '03.24',
-                list: ['Redesigned tsunami.gov.'],
+                list: [
+                    'I designed, developed, and deployed a new tsunami.gov. Next.js on the front. AWS and Node.js for the backend. Everything is stored MongoDB. I hope it goes live soon.',
+                ],
             },
         ],
     },
     {
         company: 'Apple',
-        location: 'Remote',
+        location: '',
         site: 'https://www.apple.com/',
         stack: ['Next.js', 'TypeScript'],
         roles: [
             {
-                title: 'Front-end Developer',
-                start: '08.22',
-                end: '10.23',
-                list: ['Prototyped Apple Watch buy flow.'],
+                title: 'a Front-end Developer',
+                start: 'August 2022',
+                end: 'October 2023',
+                list: [
+                    /*html*/ `
+                        I prototyped a new Apple Watch Series 9 buy flow. I created a React component and Next.js page and route scaffolding tool for rapid prototyping. Our team lead got to present it an annual internal dev forum. I think it's still used today. It's nothing special. I borrowed a lot of ideas from IDEs and yeoman. But I'm proud of it. Reducing the feedback loop from .
+                    `,
+                ],
             },
         ],
     },
@@ -55,8 +48,8 @@ const experience = [
         roles: [
             {
                 title: 'Software Programmer 5',
-                start: '05.22',
-                end: '07.22',
+                start: 'May 2022',
+                end: 'July 2022',
                 list: ['Wrote Tactical Data Link protocols.'],
             },
         ],
@@ -69,8 +62,8 @@ const experience = [
         roles: [
             {
                 title: 'Senior Software Engineer',
-                start: '05.21',
-                end: '04.22',
+                start: 'May 2021',
+                end: 'April 2022',
                 list: ['Built a mobile app for the USMC.'],
             },
         ],
@@ -83,8 +76,8 @@ const experience = [
         roles: [
             {
                 title: 'Senior SharePoint Developer',
-                start: '03.18',
-                end: '05.21',
+                start: 'March 2018',
+                end: 'May 2021',
                 list: ['Developed an app for MEDCOM.'],
             },
         ],
