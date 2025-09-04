@@ -2,7 +2,26 @@
     width: 100%;
 
     .jobs {
-        display: grid;
-        grid-template-columns: auto auto auto max-content;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        .job {
+            .role {
+                display: flex;
+
+                .date {
+                    flex-basis: 20%;
+                }
+
+                .info {
+                    flex: 1;
+                }
+
+                .list {
+                    flex: 1;
+                }
+            }
+        }
     }
 }

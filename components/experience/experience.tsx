@@ -10,22 +10,23 @@ export function Experience() {
             <div className={styles.jobs}>
                 {experience.map(({ company, location, roles }, index) => {
                     return (
-                        <Fragment key={index}>
+                        <div key={index} className={styles.job}>
                             {roles!.map(({ title, start, end, list }, index: number) => {
                                 return (
-                                    <Fragment key={index}>
+                                    <div key={index} className={styles.role}>
                                         <div className={styles.date}>
                                             {start} - {end || 'Now'}
                                         </div>
-                                        <div className={styles.company}>
-                                            {company} ({location})
+                                        <div className={styles.info}>
+                                            {index === 0 && <div className={styles.company}>{company}</div>}
+                                            <div className={styles.title}>{title}</div>
+                                            {index === 0 && <div className={styles.location}> ({location})</div>}
                                         </div>
-                                        <div className={styles.title}>{title}</div>
-                                        <div className={styles.info}>{list?.join(' ')}</div>
-                                    </Fragment>
+                                        <div className={styles.list}>{list?.join(' ')}</div>
+                                    </div>
                                 );
                             })}
-                        </Fragment>
+                        </div>
                     );
                 })}
             </div>

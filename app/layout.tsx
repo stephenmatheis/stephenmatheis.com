@@ -1,12 +1,18 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Nunito } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { GuidesProvider } from '@/providers/guides-provider';
 import { CursorProvider } from '@/providers/cursor-provider';
 import { Cursor } from '@/components/cursor';
 import './layout.scss';
 
-const sans = Inter({
+// const sans = Inter({
+//     subsets: ['latin'],
+//     display: 'swap',
+//     variable: '--font-sans',
+// });
+
+const sans = Nunito({
     subsets: ['latin'],
     display: 'swap',
     variable: '--font-sans',
