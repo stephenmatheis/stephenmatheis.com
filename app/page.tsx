@@ -14,9 +14,9 @@ export default function AboutPage() {
         <>
             <Sheet>
                 <Content>
-                    {/* <About /> */}
+                    <About />
 
-                    <div className={styles.column}>
+                    {/* <div className={styles.column}>
                         <div className={`${styles.row} ${styles.right} ${styles.flex1}`}>
                             <Name />
                         </div>
@@ -26,7 +26,7 @@ export default function AboutPage() {
                             <Work />
                             <Contact />
                         </div>
-                    </div>
+                    </div> */}
                 </Content>
             </Sheet>
             <Toolbar />
