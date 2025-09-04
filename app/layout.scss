@@ -1,20 +1,50 @@
 :root {
+    --font-size: 11px;
+    --line-height: 14px;
     --background-color: #ffffff;
-    --color: #1d1d1d;
+    --color: #000000;
+    --muted: #767676;
+    --light: #aaaaaa;
+    --accent: #f8463a;
+    --accent-background: #f8463a1a;
+    --path: #000000;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    &::selection {
+        color: var(--accent);
+        background-color: var(--accent-background);
+    }
 }
 
-html,
 body {
+    font-family: var(--font-pixel);
     background-color: var(--background-color);
-    color: var(--color);
+    font-size: 64px;
 }
 
-body {
-    font-family: var(--font-sans);
+a {
+    text-decoration: none;
+    color: var(--accent);
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+        color: var(--accent);
+    }
+}
+
+button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color);
+
+    &:hover {
+        color: var(--accent);
+    }
 }
