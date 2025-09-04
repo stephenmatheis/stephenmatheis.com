@@ -18,11 +18,18 @@ export function Experience() {
                                             {start} - {end || 'Now'}
                                         </div>
                                         <div className={styles.info}>
-                                            {index === 0 && <div className={styles.company}>{company}</div>}
-                                            <div className={styles.title}>{title}</div>
-                                            {index === 0 && <div className={styles.location}> ({location})</div>}
+                                            <div className={styles.details}>
+                                                <span className={styles.title}>{title}</span>
+                                                {index === 0 && <span className={styles.company}> at {company}</span>}
+                                                {index === 0 && (
+                                                    <span className={styles.location}>
+                                                        {' '}
+                                                        {location === 'Remote' ? '(Remote)' : ` in ${location}`}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className={styles.list}>{list?.join(' ')}</div>
                                         </div>
-                                        <div className={styles.list}>{list?.join(' ')}</div>
                                     </div>
                                 );
                             })}

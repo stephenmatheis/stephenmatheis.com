@@ -12,7 +12,6 @@ export function Work() {
 
     return (
         <div className={styles.work}>
-            {/* <Heading>Work</Heading> */}
             <div className={styles.list}>
                 {work.map(({ name, href }) => (
                     <div key={name} className={styles.item}>

@@ -7,7 +7,13 @@ export function Skills() {
     return (
         <div className={styles.skills}>
             <Heading>Skills</Heading>
-            <div className={styles.items}>{skills.join(', ')}</div>
+            <div className={styles.items}>
+                {skills.map((skill) => (
+                    <div key={skill} className={styles.skill}>
+                        {skill}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
