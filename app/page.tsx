@@ -8,6 +8,7 @@ import { Content } from '@/components/content';
 import { About } from '@/components/about';
 import { Toolbar } from '@/components/toolbar';
 import styles from './page.module.scss';
+import { Title } from '@/components/title';
 
 export default function AboutPage() {
     return (
@@ -15,16 +16,20 @@ export default function AboutPage() {
             <Sheet>
                 <Content>
                     {/* <About /> */}
-
                     <div className={styles.column}>
-                        <div className={`${styles.row} ${styles.right} ${styles.flex1}`}>
-                            <Name />
-                        </div>
-                        <Experience />
-                        <Skills />
                         <div className={`${styles.row} ${styles.between}`}>
-                            <Work />
+                            <div>
+                                <Name />
+                                <Title />
+                            </div>
                             <Contact />
+                        </div>
+                        <div className={`${styles.row}`}>
+                            <Experience />
+                            <div>
+                                <Skills />
+                                <Work />
+                            </div>
                         </div>
                     </div>
                 </Content>
