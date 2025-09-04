@@ -119,7 +119,7 @@ const experience = [
                 title: 'Consultant',
                 start: '11.14',
                 end: '02.15',
-                list: ['Reduced backup storage needs.'],
+                list: ['Simplified SharePoint backups.'],
             },
         ],
     },
