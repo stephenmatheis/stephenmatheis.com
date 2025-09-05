@@ -1,35 +1,28 @@
 const skills = [
     {
         group: 'Languages',
-        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'Python', 'C#', 'Lua'],
-    },
-    {
-        group: 'Frameworks',
-        items: ['Next.js', 'Payload CMS', 'Express', 'Expo'],
+        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS'],
     },
     {
         group: 'Libraries',
-        items: ['React', 'React Native', 'Motion', 'Three.js', 'R3F', 'ArcGIS'],
+        items: ['React'],
     },
     {
         group: 'Runtimes',
-        items: ['Node.js', 'Blink', 'WebKit', '.NET Core'],
+        items: ['Node.js'],
     },
-    {
-        group: 'Tools',
-        items: ['Docker', 'Git', 'Vite', 'Webpack'],
-    },
+
     {
         group: 'Platforms',
-        items: ['AWS', 'GCP', 'GitHub', 'GitLab', 'Netlify', 'Vercel', 'PICO-8'],
+        items: ['AWS'],
     },
     {
         group: 'Design',
-        items: ['Figma', 'Sketch'],
+        items: ['Figma'],
     },
     {
         group: 'Databases',
-        items: ['MongoDB', 'DynamoDB', 'Firebase', 'Supabase', 'IndexedDB'],
+        items: ['MongoDB'],
     },
 ];
 
