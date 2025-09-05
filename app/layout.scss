@@ -1,6 +1,4 @@
 :root {
-    --font-size: 11px;
-    --line-height: 14px;
     --background-color: #ffffff;
     --color: #000000;
     --muted: #767676;
@@ -8,6 +6,9 @@
     --accent: #f8463a;
     --accent-background: #f8463a1a;
     --path: #000000;
+
+    // font-size: 14px;
+    line-height: 1.5;
 }
 
 * {
@@ -22,14 +23,16 @@
 }
 
 body {
-    font-family: var(--font-pixel);
+    // font-family: var(--font-sans);
+    // font-family: var(--font-serif);
+    // font-family: 'New York';
+    font-family: var(--font-caslon);
     background-color: var(--background-color);
-    font-size: 64px;
 }
 
 a {
     text-decoration: none;
-    color: var(--accent);
+    color: var(--color);
     -webkit-tap-highlight-color: transparent;
 
     &:hover {

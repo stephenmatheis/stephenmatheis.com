@@ -1,7 +1,7 @@
 const experience = [
     {
         company: 'NEXTdotgov',
-        location: 'Remote',
+        location: 'Washington, D.C. (Remote)',
         site: 'https://www.nextdotgov.com/',
         stack: ['Next.js', 'TypeScript', 'Vercel'],
         roles: [
@@ -13,13 +13,13 @@ const experience = [
         ],
         list: [
             'Founded NEXTdotgov, a web consultancy for government.',
-            'Developing Pink Draft, a request for proposal aid.',
-            'Developing MSR, a program-level status reporting tool.',
+            // 'Developing Pink Draft, a request for proposal aid.',
+            // 'Developing MSR, a program-level status reporting tool.',
         ],
     },
     {
-        company: 'T and T Consulting Services',
-        location: 'Remote',
+        company: 'TATCS',
+        location: 'Washington, D.C. (Remote)',
         site: 'https://www.tatcs.com/',
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
@@ -33,21 +33,12 @@ const experience = [
                 start: 'Oct 2023',
                 end: 'Mar 2024',
             },
-            {
-                title: 'Senior SharePoint Developer',
-                start: 'Mar 2018',
-                end: 'May 2021',
-            },
         ],
-        list: [
-            'Led UI/UX.',
-            'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.',
-            'Developed an app for U.S. Army MEDCOM to track required training.',
-        ],
+        list: ['Led UI/UX.', 'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.'],
     },
     {
         company: 'Apple',
-        location: 'Remote',
+        location: 'San Antonio, TX (Remote)',
         site: 'https://www.apple.com/',
         stack: ['Next.js', 'TypeScript'],
         roles: [
@@ -57,15 +48,11 @@ const experience = [
                 end: 'Oct 2023',
             },
         ],
-        list: [
-            'Part of the Marking and Communications (MARCOM) prototyping team.',
-            'Built a new Apple Watch buy flow with Next.js and TypeScript.',
-            'Created Juice, a scaffolding tool.',
-        ],
+        list: ['Built a new Apple Watch buy flow with Next.js and TypeScript.', 'Created Juice, a scaffolding tool.'],
     },
     {
         company: 'GovCIO',
-        location: 'Hybrid',
+        location: 'San Antonio, TX (Remote)',
         site: 'https://govcio.com/',
         stack: ['C#', '.NET', 'MongoDB', 'Unity'],
         roles: [
@@ -76,14 +63,14 @@ const experience = [
             },
         ],
         list: [
-            'Supported a U.S. Air Force Tactical Data Link (TDL) program.',
+            // 'Supported a U.S. Air Force Tactical Data Link (TDL) program.',
             'Implemented the MIL-STD-6016 TDL protocol in C#.',
             'Developed a 3D geospatial application with Unity.',
         ],
     },
     {
         company: 'Aeyon',
-        location: 'Remote',
+        location: 'San Antonio, TX (Remote)',
         site: 'https://aeyon.us/',
         stack: ['React Native', 'TypeScript', 'Expo', 'Firebase', 'GCP'],
         roles: [
@@ -94,20 +81,27 @@ const experience = [
             },
         ],
         list: [
-            'Digitized new Defense Health Agency (DHA) processes.',
             'Developed large internal line-of-business applications for DHA. ',
             'Built a mobile app for the U.S. Marine Corps.',
         ],
     },
     {
-        isBreak: true,
-        start: 'Oct 2017',
-        end: 'Mar 2018',
-        list: ['Started working on what became Robi'],
+        company: 'TATCS',
+        location: 'San Antonio, TX (Remote)',
+        site: 'https://www.tatcs.com/',
+        stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
+        roles: [
+            {
+                title: 'Senior SharePoint Developer',
+                start: 'Mar 2018',
+                end: 'May 2021',
+            },
+        ],
+        list: ['Developed an app for U.S. Army MEDCOM to track required training.'],
     },
     {
         company: 'HID Global',
-        location: 'Austin, TX',
+        location: 'Austin, TX (Remote)',
         site: 'https://www.hidglobal.com/',
         stack: ['jQuery', 'Bootstrap', 'SharePoint', 'ASP.NET'],
         roles: [
@@ -117,11 +111,7 @@ const experience = [
                 end: 'Oct 2017',
             },
         ],
-        list: [
-            'Developed line-of-business application for operations and finance.',
-            'Upgraded SharePoint 2010 to SharePoint 2013.',
-            'Migrated Lotus Notes apps to SharePoint 2013.',
-        ],
+        list: ['Upgraded SharePoint 2010 to SharePoint 2013.', 'Migrated Lotus Notes apps to SharePoint 2013.'],
     },
     {
         company: 'Bravo Consulting Group',
@@ -141,29 +131,28 @@ const experience = [
             },
         ],
         list: [
-            'Team Lead at the Executive Office of the President.',
             'Created a presidential records export tool for National Archives.',
             'Reduced backup requirements at the Department of Veterans Affairs.',
         ],
     },
-    {
-        company: 'National Ground Intelligence Center',
-        location: 'Charlottesville, VA',
-        site: 'https://www.ait-i.com/',
-        stack: ['VBA', 'SharePoint'],
-        roles: [
-            {
-                title: 'Access Control Specialist',
-                start: 'Feb 2011',
-                end: 'Nov 2014',
-            },
-        ],
-        list: [
-            'Used Excel and VBA to analyze physical security infraction data',
-            'SharePoint site administration.',
-            'Created a tool to track and review daily metrics for leadership.',
-        ],
-    },
+    // {
+    //     company: 'National Ground Intelligence Center',
+    //     location: 'Charlottesville, VA',
+    //     site: 'https://www.ait-i.com/',
+    //     stack: ['VBA', 'SharePoint'],
+    //     roles: [
+    //         {
+    //             title: 'Access Control Specialist',
+    //             start: 'Feb 2011',
+    //             end: 'Nov 2014',
+    //         },
+    //     ],
+    //     list: [
+    //         'Used Excel and VBA to analyze physical security infraction data',
+    //         'SharePoint site administration.',
+    //         'Created a tool to track and review daily metrics for leadership.',
+    //     ],
+    // },
 ];
 
 export default experience;

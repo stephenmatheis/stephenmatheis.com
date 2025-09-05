@@ -1,46 +1,13 @@
 .name {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    font-family: var(--font-serif);
+    // font-size: 3rem;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1;
 
-    @media (min-width: 816px) and (min-height: 1056px), print {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 70ch;
-    }
-
-    @media screen {
-        @media (min-width: 1056px) and (min-height: 816px) {
-            top: calc(var(--line-height) * 0);
-            width: 73ch;
-            height: var(--line-height);
-        }
-    }
-
-    .row {
-        display: flex;
-        gap: 1ch;
-    }
-
-    .primary {
-        color: var(--color);
-    }
-
-    .muted {
-        color: var(--muted);
-    }
-
-    .light {
-        color: var(--light);
-    }
-
-    @media screen {
-        @media (min-width: 1056px) and (min-height: 816px) {
-            .row {
-                align-items: center;
-                height: var(--line-height);
-            }
-        }
+    span {
+        font-family: var(--font-sans);
+        font-size: 1rem;
+        // font-size: 1.25rem;
     }
 }

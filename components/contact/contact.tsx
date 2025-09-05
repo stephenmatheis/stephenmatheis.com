@@ -56,9 +56,9 @@ export function Contact() {
                 }}
                 onHoverEnd={() => resetPosition()}
             >
-                912.492.2522
+                (912) 492-2522
             </motion.a>
-            <motion.a
+            {/* <motion.a
                 href="https://github.com/stephenmatheis"
                 target="_blank"
                 title="My GitHub profile"
@@ -81,7 +81,7 @@ export function Contact() {
                 onHoverEnd={() => resetPosition()}
             >
                 github.com/stephenmatheis
-            </motion.a>
+            </motion.a> */}
         </Section>
     );
 }
