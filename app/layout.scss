@@ -1,13 +1,8 @@
 :root {
     --background-color: #ffffff;
     --color: #000000;
-    --muted: #767676;
-    --light: #aaaaaa;
-    --accent: #f8463a;
-    --accent-background: #f8463a1a;
-    --path: #000000;
 
-    // font-size: 14px;
+    font-size: 13px;
     line-height: 1.5;
 }
 
@@ -15,39 +10,23 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
-    &::selection {
-        color: var(--accent);
-        background-color: var(--accent-background);
-    }
 }
 
 body {
-    // font-family: var(--font-sans);
-    // font-family: var(--font-serif);
-    // font-family: 'New York';
-    font-family: var(--font-caslon);
+    font-family: var(--font-instrument-sans);
     background-color: var(--background-color);
 }
 
-a {
-    text-decoration: none;
-    color: var(--color);
-    -webkit-tap-highlight-color: transparent;
-
-    &:hover {
-        color: var(--accent);
-    }
+h1,
+h2 {
+    font-family: var(--font-instrument-serif);
 }
 
-button {
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-size: 1rem;
-    color: var(--color);
+a {
+    color: LinkText;
+    text-decoration: none;
+}
 
-    &:hover {
-        color: var(--accent);
-    }
+ul {
+    padding-left: 0.125in;
 }

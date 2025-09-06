@@ -7,34 +7,33 @@ const experience = [
         roles: [
             {
                 title: 'Founder',
-                start: 'Jun 2025',
-                end: '',
+                start: 'June 2025',
+                end: 'Now',
             },
         ],
-        list: [
-            'Founded NEXTdotgov, a web consultancy for government.',
-            // 'Developing Pink Draft, a request for proposal aid.',
-            // 'Developing MSR, a program-level status reporting tool.',
-        ],
+        list: ['Established NEXTdotgov, a web consultancy serving government clients.'],
     },
     {
-        company: 'TATCS',
+        company: 'T and T Consulting Services',
         location: 'Washington, D.C. (Remote)',
         site: 'https://www.tatcs.com/',
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
             {
                 title: 'Director, User Experience',
-                start: 'Apr 2024',
+                start: 'April 2024',
                 end: 'May 2025',
             },
             {
                 title: 'Senior Application Solutions Engineer',
-                start: 'Oct 2023',
-                end: 'Mar 2024',
+                start: 'October 2023',
+                end: 'March 2024',
             },
         ],
-        list: ['Led UI/UX.', 'Redesigned tsunami.gov with Next.js, MongoDB, & Vercel.'],
+        list: [
+            'Led UI/UX initiatives for clients and internal projects.',
+            'Updated and architected a new U.S. Tsunami Warning System (tsunami.gov).',
+        ],
     },
     {
         company: 'Apple',
@@ -44,30 +43,16 @@ const experience = [
         roles: [
             {
                 title: 'Front-end Developer',
-                start: 'Aug 2022',
-                end: 'Oct 2023',
-            },
-        ],
-        list: ['Built a new Apple Watch buy flow with Next.js and TypeScript.', 'Created Juice, a scaffolding tool.'],
-    },
-    {
-        company: 'GovCIO',
-        location: 'San Antonio, TX (Remote)',
-        site: 'https://govcio.com/',
-        stack: ['C#', '.NET', 'MongoDB', 'Unity'],
-        roles: [
-            {
-                title: 'Software Programmer 5',
-                start: 'May 2022',
-                end: 'Jul 2022',
+                start: 'August 2022',
+                end: 'October 2023',
             },
         ],
         list: [
-            // 'Supported a U.S. Air Force Tactical Data Link (TDL) program.',
-            'Implemented the MIL-STD-6016 TDL protocol in C#.',
-            'Developed a 3D geospatial application with Unity.',
+            'Prototyped a new Apple Watch buy flow.',
+            'Created Juice, a React command palette component and source code scaffolding tool.',
         ],
     },
+
     {
         company: 'Aeyon',
         location: 'San Antonio, TX (Remote)',
@@ -75,14 +60,14 @@ const experience = [
         stack: ['React Native', 'TypeScript', 'Expo', 'Firebase', 'GCP'],
         roles: [
             {
-                title: 'Subject Matter Expert II',
+                title: 'Senior Software Engineer (Subject Matter Expert II)',
                 start: 'May 2021',
-                end: 'Apr 2022',
+                end: 'April 2022',
             },
         ],
         list: [
-            'Developed large internal line-of-business applications for DHA. ',
-            'Built a mobile app for the U.S. Marine Corps.',
+            'Built Measures Library to track patient care metrics for the Defense Health Agency (DHA).',
+            'Delivered a cross-platform mobile app for the U.S. Marine Corps with React Native, Expo, and Firebase.',
         ],
     },
     {
@@ -93,11 +78,14 @@ const experience = [
         roles: [
             {
                 title: 'Senior SharePoint Developer',
-                start: 'Mar 2018',
+                start: 'March 2018',
                 end: 'May 2021',
             },
         ],
-        list: ['Developed an app for U.S. Army MEDCOM to track required training.'],
+        list: [
+            'Created Individual Critical Task List (ICTL) to track medical readiness.',
+            'Upgraded SharePoint 2010 to SharePoint 2016.',
+        ],
     },
     {
         company: 'HID Global',
@@ -107,11 +95,14 @@ const experience = [
         roles: [
             {
                 title: 'Systems Programmer 3',
-                start: 'Sep 2016',
-                end: 'Oct 2017',
+                start: 'September 2016',
+                end: 'October 2017',
             },
         ],
-        list: ['Upgraded SharePoint 2010 to SharePoint 2013.', 'Migrated Lotus Notes apps to SharePoint 2013.'],
+        list: [
+            'Upgraded SharePoint 2010 to SharePoint 2013.',
+            'Migrated Lotus Notes content and applications to SharePoint 2013.',
+        ],
     },
     {
         company: 'Bravo Consulting Group',
@@ -121,18 +112,18 @@ const experience = [
         roles: [
             {
                 title: 'Senior Consultant',
-                start: 'Feb 2015',
+                start: 'February 2015',
                 end: 'May 2016',
             },
             {
                 title: 'Consultant',
-                start: 'Nov 2014',
-                end: 'Feb 2015',
+                start: 'November 2014',
+                end: 'February 2015',
             },
         ],
         list: [
-            'Created a presidential records export tool for National Archives.',
-            'Reduced backup requirements at the Department of Veterans Affairs.',
+            'Created a tool with PowerShell for the National Archives to export and preserve presidential records.',
+            'Reduced on-premise SharePoint farm backup requirements at the Department of Veterans Affairs.',
         ],
     },
     // {
