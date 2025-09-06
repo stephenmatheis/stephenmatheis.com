@@ -1,29 +1,3 @@
-const skills = [
-    {
-        group: 'Languages',
-        items: ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS'],
-    },
-    {
-        group: 'Libraries',
-        items: ['React'],
-    },
-    {
-        group: 'Runtimes',
-        items: ['Node.js'],
-    },
-
-    {
-        group: 'Platforms',
-        items: ['AWS'],
-    },
-    {
-        group: 'Design',
-        items: ['Figma'],
-    },
-    {
-        group: 'Databases',
-        items: ['MongoDB'],
-    },
-];
+const skills = ['JavaScript', 'TypeScript', 'HTML', 'CSS/SCSS', 'React', 'Node.js', 'MongoDB', 'AWS', 'Figma'];
 
 export default skills;

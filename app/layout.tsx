@@ -1,38 +1,30 @@
 import type { Metadata, Viewport } from 'next';
-import Local from 'next/font/local';
-import { Instrument_Serif, Instrument_Sans, Libre_Caslon_Display, Libre_Caslon_Text } from 'next/font/google';
+import { Inter, Instrument_Serif, Instrument_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { CursorProvider } from '@/providers/cursor-provider';
-import { Cursor } from '@/components/cursor';
 import { Viewport as App } from '@/components/viewport';
 import { Content } from '@/components/content';
+import { Cursor } from '@/components/cursor';
 import './layout.scss';
 
-// const caslon = Local({
-//     src: './fonts/LibreCaslonCondensed[wght].woff2',
-//     display: 'swap',
-//     variable: '--font-caslon',
-// });
-
-const caslon = Libre_Caslon_Text({
+const inter = Inter({
     subsets: ['latin'],
     display: 'swap',
-    weight: ['400', '700'],
-    variable: '--font-caslon',
+    variable: '--font-inter',
 });
 
-const serif = Instrument_Serif({
+const instrument_serif = Instrument_Serif({
     subsets: ['latin'],
     display: 'swap',
     weight: ['400'],
-    variable: '--font-serif',
+    variable: '--font-instrument-serif',
 });
 
-const sans = Instrument_Sans({
+const instrument_sans = Instrument_Sans({
     subsets: ['latin'],
     display: 'swap',
-    // weight: ['400'],
-    variable: '--font-sans',
+    weight: ['400'],
+    variable: '--font-instrument-sans',
 });
 
 export const metadata: Metadata = {
@@ -67,7 +59,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${serif.variable} ${sans.variable} ${caslon.variable}`} suppressHydrationWarning>
+            <body
+                className={`${inter.variable} ${instrument_sans.variable} ${instrument_serif.variable}`}
+                suppressHydrationWarning
+            >
                 <CursorProvider>
                     <App>
                         <Content>{children}</Content>

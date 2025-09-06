@@ -5,7 +5,7 @@ const projects = [
         date: '2017',
         description: 'Chrome extension that replaces your new tab page with a focused text editor.',
         links: [
-            { label: 'linewriter.app', href: 'https://linewriter.app/' },
+            { label: 'linewriter.app', href: 'https://linewriter.app' },
             {
                 label: 'chrome extension',
                 href: 'https://chromewebstore.google.com/detail/line-writer/fgfnehceeaiiiimpdlfgnagoggjkdifb',
@@ -14,10 +14,9 @@ const projects = [
     },
     {
         name: 'Juice',
-        href: 'https://www.apple.com/watch',
+        href: 'https://juice-demo.netlify.app',
         date: '2022',
-        description:
-            'React component and Next.js route scaffolding tool. Used to prototype a new Apple Watch buy flow and Today at apple pages.',
+        description: 'Command palette and component scaffolding tool.',
     },
     {
         name: 'Robi',

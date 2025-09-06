@@ -1,42 +1,33 @@
 .experience {
     .jobs {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
         .job {
-            .roles {
-                margin-bottom: 0.25rem;
+            &:not(:last-child) {
+                margin-bottom: 1.5rem;
+            }
 
+            .roles {
                 .role {
                     display: flex;
                     justify-content: space-between;
 
                     .heading {
-                        flex: 1;
+                        flex: 1 1;
+                        font-size: 1rem;
+                        font-weight: 400;
 
                         .title {
-                            color: var(--color);
-                            font-weight: 500;
+                            font-weight: bold;
+                        }
+
+                        .company {
+                            font-weight: 400;
                         }
                     }
 
                     .date {
-                        font-family: var(--font-serif);
+                        font-family: var(--font-instrument-serif);
                     }
                 }
-            }
-
-            .list {
-                list-style-type: none;
-
-                .line {
-                    color: var(--color);
-                }
-            }
-
-            .stack {
-                color: var(--color);
             }
         }
     }
