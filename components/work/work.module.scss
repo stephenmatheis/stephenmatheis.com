@@ -1,6 +1,14 @@
 .work {
     .list {
         .item {
+            @media screen {
+                @media (max-width: 815px) {
+                    &:not(:last-child) {
+                        margin-bottom: 1.5rem;
+                    }
+                }
+            }
+
             p {
                 a {
                     font-weight: bold;

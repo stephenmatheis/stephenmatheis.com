@@ -1,3 +1,11 @@
 .contact {
-    //
+    display: flex;
+    justify-content: space-between;
+    @media screen {
+        @media (max-width: 815px) {
+            a {
+                display: block;
+            }
+        }
+    }
 }
