@@ -1,11 +1,14 @@
 .contact {
-    display: flex;
-    justify-content: space-between;
-    @media screen {
-        @media (max-width: 815px) {
-            a {
-                display: block;
-            }
-        }
+    a {
+        display: block;
     }
+
+    // display: flex;
+    // justify-content: space-between;
+
+    // @media screen {
+    //     @media (max-width: 815px) {
+    //         flex-direction: column;
+    //     }
+    // }
 }

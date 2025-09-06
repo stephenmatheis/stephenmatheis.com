@@ -1,24 +1,12 @@
 .work {
     .list {
         .item {
-            @media screen {
-                @media (max-width: 815px) {
-                    &:not(:last-child) {
-                        margin-bottom: 1.5rem;
-                    }
-                }
+            &:not(:last-child) {
+                margin-bottom: 1.5rem;
             }
 
-            p {
-                a {
-                    font-weight: bold;
-                    color: inherit;
-
-                    span {
-                        font-weight: 400;
-                        color: LinkText;
-                    }
-                }
+            h3 {
+                font-size: 1rem;
             }
         }
     }

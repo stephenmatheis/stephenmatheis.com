@@ -7,27 +7,32 @@ const experience = [
         roles: [
             {
                 title: 'Founder',
-                start: 'June 2025',
+                // start: 'June 2025',
+                start: '2025',
                 end: 'Now',
             },
         ],
         list: ['Established NEXTdotgov, a web consultancy serving government clients.'],
     },
     {
-        company: 'T and T Consulting Services',
+        company: 'TATCS',
         location: 'Washington, D.C. (Remote)',
         site: 'https://www.tatcs.com/',
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
             {
                 title: 'Director, User Experience',
-                start: 'April 2024',
-                end: 'May 2025',
+                // start: 'April 2024',
+                // end: 'May 2025',
+                start: '2024',
+                end: '2025',
             },
             {
                 title: 'Senior Application Solutions Engineer',
-                start: 'October 2023',
-                end: 'March 2024',
+                // start: 'October 2023',
+                // end: 'March 2024',
+                start: '2023',
+                end: '2024',
             },
         ],
         list: [
@@ -43,8 +48,10 @@ const experience = [
         roles: [
             {
                 title: 'Front-end Developer',
-                start: 'August 2022',
-                end: 'October 2023',
+                // start: 'August 2022',
+                // end: 'October 2023',
+                start: '2022',
+                end: '2023',
             },
         ],
         list: [
@@ -60,9 +67,11 @@ const experience = [
         stack: ['React Native', 'TypeScript', 'Expo', 'Firebase', 'GCP'],
         roles: [
             {
-                title: 'Senior Software Engineer (Subject Matter Expert II)',
-                start: 'May 2021',
-                end: 'April 2022',
+                title: 'Senior Software Engineer',
+                // start: 'May 2021',
+                // end: 'April 2022',
+                start: '2021',
+                end: '2022',
             },
         ],
         list: [
@@ -78,8 +87,10 @@ const experience = [
         roles: [
             {
                 title: 'Senior SharePoint Developer',
-                start: 'March 2018',
-                end: 'May 2021',
+                // start: 'March 2018',
+                // end: 'May 2021',
+                start: '2018',
+                end: '2021',
             },
         ],
         list: [
@@ -95,8 +106,10 @@ const experience = [
         roles: [
             {
                 title: 'Systems Programmer 3',
-                start: 'September 2016',
-                end: 'October 2017',
+                // start: 'September 2016',
+                // end: 'October 2017',
+                start: '2016',
+                end: '2017',
             },
         ],
         list: [
@@ -112,13 +125,17 @@ const experience = [
         roles: [
             {
                 title: 'Senior Consultant',
-                start: 'February 2015',
-                end: 'May 2016',
+                // start: 'February 2015',
+                // end: 'May 2016',
+                start: '2015',
+                end: '2016',
             },
             {
                 title: 'Consultant',
-                start: 'November 2014',
-                end: 'February 2015',
+                // start: 'November 2014',
+                // end: 'February 2015',
+                start: '2014',
+                end: '2015',
             },
         ],
         list: [

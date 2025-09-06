@@ -3,7 +3,7 @@ const projects = [
         name: 'Line Writer',
         href: 'https://linewriter.app',
         date: '2017',
-        description: 'Chrome extension that replaces your new tab page with a focused text editor.',
+        description: 'Chrome extension to replace your new tab page with a focused way to write.',
         links: [
             { label: 'linewriter.app', href: 'https://linewriter.app' },
             {
