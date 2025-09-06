@@ -17,8 +17,8 @@ export function Experience() {
                                                 <span className={styles.title}>{title}</span>{' '}
                                                 {index === 0 && (
                                                     <>
-                                                        <span className={styles.company}> at {company}</span>
-                                                        <span className={styles.location}> in {location}</span>
+                                                        <span className={styles.company}>{company}</span>
+                                                        {/* <span className={styles.location}>{location}</span> */}
                                                     </>
                                                 )}
                                             </h3>

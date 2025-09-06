@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Instrument_Serif, Instrument_Sans } from 'next/font/google';
+import { Inter, EB_Garamond } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { CursorProvider } from '@/providers/cursor-provider';
 import { Viewport as App } from '@/components/viewport';
@@ -7,24 +7,16 @@ import { Content } from '@/components/content';
 import { Cursor } from '@/components/cursor';
 import './layout.scss';
 
-const inter = Inter({
+const sans = Inter({
     subsets: ['latin'],
     display: 'swap',
-    variable: '--font-inter',
+    variable: '--font-sans',
 });
 
-const instrument_serif = Instrument_Serif({
+const serif = EB_Garamond({
     subsets: ['latin'],
     display: 'swap',
-    weight: ['400'],
-    variable: '--font-instrument-serif',
-});
-
-const instrument_sans = Instrument_Sans({
-    subsets: ['latin'],
-    display: 'swap',
-    weight: ['400'],
-    variable: '--font-instrument-sans',
+    variable: '--font-serif',
 });
 
 export const metadata: Metadata = {
@@ -59,10 +51,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body
-                className={`${inter.variable} ${instrument_sans.variable} ${instrument_serif.variable}`}
-                suppressHydrationWarning
-            >
+            <body className={`${sans.variable} ${serif.variable}`} suppressHydrationWarning>
                 <CursorProvider>
                     <App>
                         <Content>{children}</Content>
