@@ -1,31 +1,11 @@
 .contact {
     display: flex;
-    gap: 2ch;
-
-    a {
-        width: fit-content;
-    }
-
-    @media (min-width: 816px) and (min-height: 1056px), print {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
+    justify-content: space-between;
     @media screen {
-        @media (min-width: 1056px) and (min-height: 816px) {
-            top: 0;
-            right: 0ch;
-            display: flex;
-            justify-content: flex-end;
-            gap: 4ch;
-            width: 70ch;
-        }
-    }
-
-    @media screen {
-        @media (min-width: 1056px) and (min-height: 816px) {
-            //
+        @media (max-width: 815px) {
+            a {
+                display: block;
+            }
         }
     }
 }

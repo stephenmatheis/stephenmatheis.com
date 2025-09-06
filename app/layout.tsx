@@ -1,21 +1,30 @@
 import type { Metadata, Viewport } from 'next';
-import localFont from 'next/font/local';
+import { Inter, Instrument_Serif, Instrument_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import { CursorProvider } from '@/providers/cursor-provider';
+import { Viewport as App } from '@/components/viewport';
+import { Content } from '@/components/content';
+import { Cursor } from '@/components/cursor';
 import './layout.scss';
 
-const sans = localFont({
-    src: './fonts/sans.woff2',
-    variable: '--font-sans',
+const inter = Inter({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-inter',
 });
 
-const mono = localFont({
-    src: './fonts/DepartureMono.woff2',
-    variable: '--font-mono',
+const instrument_serif = Instrument_Serif({
+    subsets: ['latin'],
+    display: 'swap',
+    weight: ['400'],
+    variable: '--font-instrument-serif',
 });
 
-const pixel = localFont({
-    src: './fonts/AsepriteFont.woff2',
-    variable: '--font-pixel',
+const instrument_sans = Instrument_Sans({
+    subsets: ['latin'],
+    display: 'swap',
+    weight: ['400'],
+    variable: '--font-instrument-sans',
 });
 
 export const metadata: Metadata = {
@@ -50,8 +59,17 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${mono.variable} ${pixel.variable} ${sans.variable}`} suppressHydrationWarning>
-                {children}
+            <body
+                className={`${inter.variable} ${instrument_sans.variable} ${instrument_serif.variable}`}
+                suppressHydrationWarning
+            >
+                <CursorProvider>
+                    <App>
+                        <Content>{children}</Content>
+                        <div id="markup-overlay" />
+                    </App>
+                    <Cursor />
+                </CursorProvider>
                 <Analytics debug={false} />
             </body>
         </html>

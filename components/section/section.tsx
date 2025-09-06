@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import { Comment } from '@/components/comment';
+import { Heading } from '@/components/heading';
 import styles from './section.module.scss';
 
 type SectionProps = HTMLAttributes<HTMLElement> & {
@@ -9,7 +9,7 @@ type SectionProps = HTMLAttributes<HTMLElement> & {
 export function Section({ heading, children, className, ...props }: SectionProps) {
     return (
         <section className={`${styles.section}${className ? ` ${className}` : ''}`} {...props}>
-            {heading && <Comment text={heading} />}
+            {heading && <Heading text={heading} />}
             {children}
         </section>
     );
