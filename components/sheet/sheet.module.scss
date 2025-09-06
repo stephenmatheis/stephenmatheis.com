@@ -6,6 +6,10 @@
     margin: 0 auto;
 
     @media screen {
-        background-color: #ff000010;
+        @media (max-width: 815px) {
+            width: 100%;
+            height: 100%;
+            padding: 0.25in;
+        }
     }
 }
