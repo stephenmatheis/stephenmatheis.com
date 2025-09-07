@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, EB_Garamond } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { CursorProvider } from '@/providers/cursor-provider';
 import { Viewport as App } from '@/components/viewport';
@@ -11,12 +11,6 @@ const sans = Inter({
     subsets: ['latin'],
     display: 'swap',
     variable: '--font-sans',
-});
-
-const serif = EB_Garamond({
-    subsets: ['latin'],
-    display: 'swap',
-    variable: '--font-serif',
 });
 
 export const metadata: Metadata = {
@@ -51,7 +45,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={`${sans.variable} ${serif.variable}`} suppressHydrationWarning>
+            <body className={sans.variable} suppressHydrationWarning>
                 <CursorProvider>
                     <App>
                         <Content>{children}</Content>
