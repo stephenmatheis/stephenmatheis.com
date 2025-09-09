@@ -6,6 +6,8 @@
     margin: 0 auto;
 
     @media screen {
+        box-shadow: inset 0px 0px 0px 2px #0000ff50;
+
         @media (max-width: 815px) {
             width: 100%;
             height: 100%;

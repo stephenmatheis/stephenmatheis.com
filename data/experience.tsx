@@ -7,12 +7,14 @@ const experience = [
         roles: [
             {
                 title: 'Founder',
-                // start: 'June 2025',
                 start: '2025',
                 end: 'Now',
             },
         ],
-        list: ['Established NEXTdotgov, a web consultancy serving government clients.'],
+        list: [
+            /*html*/ `Established NEXTdotgov (<a href="https://nextdotgov.com" target="_blank">nextdotgov.com</a>), a web consultancy serving government clients`,
+            /*html*/ `Piloting a platform to simplify the request-to-award process.`,
+        ],
     },
     {
         company: 'TATCS',
@@ -21,23 +23,19 @@ const experience = [
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
             {
-                title: 'Director, User Experience',
-                // start: 'April 2024',
-                // end: 'May 2025',
+                title: 'Director of User Experience',
                 start: '2024',
                 end: '2025',
             },
             {
                 title: 'Senior Application Solutions Engineer',
-                // start: 'October 2023',
-                // end: 'March 2024',
                 start: '2023',
                 end: '2024',
             },
         ],
         list: [
-            'Led UI/UX initiatives for clients and internal projects.',
-            'Updated and architected a new U.S. Tsunami Warning System (tsunami.gov).',
+            'Led UI/UX work for clients and internal projects.',
+            /*html*/ `Designed a new U.S. Tsunami Warning System (<a href="https://tsunami.gov" target="_blank">tsunami.gov</a>).`,
         ],
     },
     {
@@ -48,15 +46,13 @@ const experience = [
         roles: [
             {
                 title: 'Front-end Developer',
-                // start: 'August 2022',
-                // end: 'October 2023',
                 start: '2022',
                 end: '2023',
             },
         ],
         list: [
             'Prototyped a new Apple Watch buy flow.',
-            'Created Juice, a React command palette component and source code scaffolding tool.',
+            'Created Juice, a CLI and React command palette component and source code scaffolding tool for rapid prototyping with Next.js and Storybook.',
         ],
     },
 
@@ -68,14 +64,12 @@ const experience = [
         roles: [
             {
                 title: 'Senior Software Engineer',
-                // start: 'May 2021',
-                // end: 'April 2022',
                 start: '2021',
                 end: '2022',
             },
         ],
         list: [
-            'Built Measures Library to track patient care metrics for the Defense Health Agency (DHA).',
+            'Built Measures Library to centralize anonymized patient care data for the Defense Health Agency.',
             'Delivered a cross-platform mobile app for the U.S. Marine Corps with React Native, Expo, and Firebase.',
         ],
     },
@@ -87,14 +81,12 @@ const experience = [
         roles: [
             {
                 title: 'Senior SharePoint Developer',
-                // start: 'March 2018',
-                // end: 'May 2021',
                 start: '2018',
                 end: '2021',
             },
         ],
         list: [
-            'Created Individual Critical Task List (ICTL) to track medical readiness.',
+            'Developed Individual Critical Task List, a platform to track medical readiness.',
             'Upgraded SharePoint 2010 to SharePoint 2016.',
         ],
     },
@@ -106,8 +98,6 @@ const experience = [
         roles: [
             {
                 title: 'Systems Programmer 3',
-                // start: 'September 2016',
-                // end: 'October 2017',
                 start: '2016',
                 end: '2017',
             },
@@ -125,42 +115,20 @@ const experience = [
         roles: [
             {
                 title: 'Senior Consultant',
-                // start: 'February 2015',
-                // end: 'May 2016',
                 start: '2015',
                 end: '2016',
             },
             {
                 title: 'Consultant',
-                // start: 'November 2014',
-                // end: 'February 2015',
                 start: '2014',
                 end: '2015',
             },
         ],
         list: [
-            'Created a tool with PowerShell for the National Archives to export and preserve presidential records.',
-            'Reduced on-premise SharePoint farm backup requirements at the Department of Veterans Affairs.',
+            'Wrote a tool to preserve presidential records for the National Archives.',
+            'Reduced SharePoint backup requirements at the Department of Veterans Affairs.',
         ],
     },
-    // {
-    //     company: 'National Ground Intelligence Center',
-    //     location: 'Charlottesville, VA',
-    //     site: 'https://www.ait-i.com/',
-    //     stack: ['VBA', 'SharePoint'],
-    //     roles: [
-    //         {
-    //             title: 'Access Control Specialist',
-    //             start: 'Feb 2011',
-    //             end: 'Nov 2014',
-    //         },
-    //     ],
-    //     list: [
-    //         'Used Excel and VBA to analyze physical security infraction data',
-    //         'SharePoint site administration.',
-    //         'Created a tool to track and review daily metrics for leadership.',
-    //     ],
-    // },
 ];
 
 export default experience;

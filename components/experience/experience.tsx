@@ -6,7 +6,7 @@ export function Experience() {
     return (
         <Section className={styles.experience} heading="Experience">
             <div className={styles.jobs}>
-                {experience.map(({ company, location, roles, stack, list }, index) => {
+                {experience.map(({ company, roles, list }, index) => {
                     return (
                         <div key={index} className={styles.job}>
                             <div className={styles.roles}>
@@ -14,11 +14,10 @@ export function Experience() {
                                     return (
                                         <div key={index} className={styles.role}>
                                             <h3 className={styles.heading}>
-                                                <span className={styles.title}>{title}</span>{' '}
+                                                <span className={styles.title}>{title}</span>
                                                 {index === 0 && (
                                                     <>
-                                                        <span className={styles.company}>{company}</span>
-                                                        {/* <span className={styles.location}>{location}</span> */}
+                                                        <span className={styles.company}>, {company}</span>
                                                     </>
                                                 )}
                                             </h3>
@@ -32,9 +31,11 @@ export function Experience() {
                             </div>
                             <ul className={styles.list}>
                                 {list!.map((line: string, i: number) => (
-                                    <li key={i} className={styles.line}>
-                                        - {line}
-                                    </li>
+                                    <li
+                                        key={i}
+                                        className={styles.line}
+                                        dangerouslySetInnerHTML={{ __html: `- ${line}` }}
+                                    />
                                 ))}
                             </ul>
                         </div>
