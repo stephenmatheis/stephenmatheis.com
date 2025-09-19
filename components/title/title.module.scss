@@ -1,0 +1,13 @@
+.title {
+    padding: 0.5in;
+
+    @media print {
+        display: none;
+    }
+
+    @media screen {
+        @media (max-width: 815px) {
+            padding: 0.25in;
+        }
+    }
+}

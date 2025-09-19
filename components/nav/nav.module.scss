@@ -1,0 +1,18 @@
+.nav {
+    @media print {
+        display: none;
+    }
+
+    ul {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        padding: 0.5in;
+
+        @media screen {
+            @media (max-width: 815px) {
+                padding: 0.25in;
+            }
+        }
+    }
+}
