@@ -1,0 +1,16 @@
+.page {
+    display: flex;
+    gap: 0.5in;
+
+    @media screen and (max-width: 815px) {
+        flex-direction: column;
+    }
+
+    .left {
+        flex: 1;
+    }
+
+    .right {
+        flex: 2;
+    }
+}
