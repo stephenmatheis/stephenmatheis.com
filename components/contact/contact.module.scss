@@ -1,14 +1,7 @@
 .contact {
-    a {
-        display: block;
+    p {
+        a {
+            color: inherit;
+        }
     }
-
-    // display: flex;
-    // justify-content: space-between;
-
-    // @media screen {
-    //     @media (max-width: 815px) {
-    //         flex-direction: column;
-    //     }
-    // }
 }

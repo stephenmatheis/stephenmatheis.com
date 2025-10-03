@@ -2,9 +2,8 @@
     --background-color: #ffffff;
     --color: #000000;
 
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.75;
-    line-height: 24px;
 }
 
 html {
@@ -30,4 +29,8 @@ a {
 
 ul {
     list-style-type: none;
+}
+
+pre {
+    font-family: inherit;
 }
