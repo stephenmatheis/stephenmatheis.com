@@ -3,6 +3,7 @@ import styles from './contact.module.scss';
 export function Contact() {
     return (
         <div className={styles.contact}>
+            <h2>Contact</h2>
             <p>
                 <a href="mailto:stephen@matheis.email" target="_blank" title="My email address">
                     stephen@matheis.email
