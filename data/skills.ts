@@ -7,6 +7,7 @@ const skills = [
     'React',
     'Node.js',
     'Next.js',
+    'PostgreSQL',
     'MongoDB',
     'AWS',
     'Figma',
