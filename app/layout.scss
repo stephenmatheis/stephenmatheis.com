@@ -37,6 +37,18 @@ pre {
     font-family: inherit;
 }
 
+table {
+    border-collapse: collapse;
+    width: fit-content;
+
+    td {
+        &:first-child {
+            white-space: nowrap;
+            padding-right: 16px;
+        }
+    }
+}
+
 ul {
     list-style-type: none;
 }

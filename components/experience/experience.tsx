@@ -5,26 +5,30 @@ export function Experience() {
     return (
         <>
             <h2>Experience</h2>
-            <ul>
-                {experience.map(({ company, roles }, index) => {
-                    return (
-                        <Fragment key={index}>
-                            {roles.map(({ title, start, end }, index: number) => {
-                                return (
-                                    <li key={index}>
-                                        <pre>
-                                            {start}
-                                            {end && <> - {end}</>}
-                                            {'\t'}
-                                            {title}, {company}
-                                        </pre>
-                                    </li>
-                                );
-                            })}
-                        </Fragment>
-                    );
-                })}
-            </ul>
+            <table>
+                <tbody>
+                    {experience.map(({ company, roles }, index) => {
+                        return (
+                            <Fragment key={index}>
+                                {roles.map(({ title, start, end }, index: number) => {
+                                    return (
+                                        <tr key={index}>
+                                            <td>
+                                                {start}
+                                                {end && <> - {end}</>}
+                                                {'    '}
+                                            </td>
+                                            <td>
+                                                {title}, {company}
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </Fragment>
+                        );
+                    })}
+                </tbody>
+            </table>
         </>
     );
 }
