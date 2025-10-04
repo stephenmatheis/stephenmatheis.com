@@ -43,6 +43,7 @@ table {
 
     td {
         &:first-child {
+            vertical-align: baseline;
             white-space: nowrap;
             padding-right: 16px;
         }

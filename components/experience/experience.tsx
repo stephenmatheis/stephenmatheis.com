@@ -15,7 +15,7 @@ export function Experience() {
                                         <tr key={index}>
                                             <td>
                                                 {start}
-                                                {end && <> - {end}</>}
+                                                {end && <>-{end}</>}
                                                 {'    '}
                                             </td>
                                             <td>

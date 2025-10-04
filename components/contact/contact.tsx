@@ -1,7 +1,6 @@
 export function Contact() {
     return (
         <>
-            <h2>Contact</h2>
             <ul>
                 <li>
                     <a href="mailto:stephen@matheis.email" target="_blank" title="My email address">
