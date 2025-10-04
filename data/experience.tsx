@@ -80,7 +80,7 @@ const experience = [
         stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
             {
-                title: 'Senior SharePoint Developer',
+                title: 'Senior Software Engineer',
                 start: '2018',
                 end: '2021',
             },
@@ -97,7 +97,7 @@ const experience = [
         stack: ['jQuery', 'Bootstrap', 'SharePoint', 'ASP.NET'],
         roles: [
             {
-                title: 'Systems Programmer 3',
+                title: 'Systems Programmer',
                 start: '2016',
                 end: '2017',
             },
