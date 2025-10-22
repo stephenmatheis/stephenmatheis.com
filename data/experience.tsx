@@ -12,8 +12,8 @@ const experience = [
             },
         ],
         list: [
-            /*html*/ `Established NEXTdotgov (<a href="https://nextdotgov.com" target="_blank">nextdotgov.com</a>), a web consultancy serving government clients`,
-            /*html*/ `Piloting a platform to simplify the request-to-award process.`,
+            /*html*/ `Established <a href="https://nextdotgov.com" target="_blank">NEXTdotgov</a>, a web consultancy for government`,
+            /*html*/ `Creating a tool to simplify the request-to-award process`,
         ],
     },
     {
@@ -51,8 +51,8 @@ const experience = [
             },
         ],
         list: [
-            'Prototyped a new Apple Watch buy flow.',
-            'Created Juice, a CLI and React command palette component and source code scaffolding tool for rapid prototyping with Next.js and Storybook.',
+            'Prototyped a new Apple Watch buy flow',
+            'Built a source code scaffolding tool for rapid prototyping',
         ],
     },
 
@@ -69,8 +69,8 @@ const experience = [
             },
         ],
         list: [
-            'Built Measures Library to centralize anonymized patient care data for the Defense Health Agency.',
-            'Delivered a cross-platform mobile app for the U.S. Marine Corps with React Native, Expo, and Firebase.',
+            'Built a patient care data platform for the Defense Health Agency',
+            'Delivered a cross-platform mobile app for the U.S. Marine Corps',
         ],
     },
     {
@@ -86,8 +86,8 @@ const experience = [
             },
         ],
         list: [
-            'Developed Individual Critical Task List, a platform to track medical readiness.',
-            'Upgraded SharePoint 2010 to SharePoint 2016.',
+            'Developed a platform to track medical readiness.',
+            'Inherited 15 & created 18 new apps without growing our team size',
         ],
     },
     {
@@ -103,8 +103,8 @@ const experience = [
             },
         ],
         list: [
-            'Upgraded SharePoint 2010 to SharePoint 2013.',
-            'Migrated Lotus Notes content and applications to SharePoint 2013.',
+            'Upgraded SharePoint 2010 to SharePoint 2013',
+            'Migrated Lotus Notes applications to SharePoint 2013',
         ],
     },
     {
@@ -125,8 +125,8 @@ const experience = [
             },
         ],
         list: [
-            'Wrote a tool to preserve presidential records for the National Archives.',
-            'Reduced SharePoint backup requirements at the Department of Veterans Affairs.',
+            'Wrote tools to preserve presidential records for NARA',
+            'Reduced SharePoint backup requirements by > 300% for the VA',
         ],
     },
 ];
