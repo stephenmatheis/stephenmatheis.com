@@ -1,9 +1,9 @@
 .work {
     .list {
         .item {
-            &:not(:last-child) {
-                margin-bottom: 24px;
-            }
+            // &:not(:last-child) {
+            //     margin-bottom: 24px;
+            // }
 
             h3 {
                 font-size: 1rem;

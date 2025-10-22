@@ -14,18 +14,18 @@ export function Experience() {
                                 {roles.map(({ title, start, end }, index: number) => {
                                     return (
                                         <div key={index} className={styles.role}>
-                                            <div className={styles.heading}>
-                                                <span className={styles.title}>{title}</span>
-                                            </div>
                                             <div className={styles.date}>
                                                 {start}
                                                 {end && <> - {end}</>}
+                                            </div>
+                                            <div className={styles.heading}>
+                                                <span className={styles.title}>{title}</span>
                                             </div>
                                         </div>
                                     );
                                 })}
                             </div>
-                            <ul className={styles.list}>
+                            {/* <ul className={styles.list}>
                                 {list!.map((line: string, i: number) => (
                                     <li
                                         key={i}
@@ -33,7 +33,7 @@ export function Experience() {
                                         dangerouslySetInnerHTML={{ __html: `- ${line}` }}
                                     />
                                 ))}
-                            </ul>
+                            </ul> */}
                         </div>
                     );
                 })}
