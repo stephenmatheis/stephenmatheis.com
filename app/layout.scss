@@ -1,9 +1,10 @@
 :root {
     --background-color: #ffffff;
     --color: #000000;
+    --muted: #767676;
 
     font-size: 14px;
-    line-height: 20px;
+    line-height: 1.5rem;
 }
 
 html {
@@ -27,27 +28,14 @@ a {
     text-decoration: none;
 }
 
-h2 {
-    margin-top: 20px;
+h1 {
     font-size: 1rem;
     font-weight: 500;
 }
 
-pre {
-    font-family: inherit;
-}
-
-table {
-    border-collapse: collapse;
-    width: fit-content;
-
-    td {
-        &:first-child {
-            vertical-align: baseline;
-            white-space: nowrap;
-            padding-right: 16px;
-        }
-    }
+h2 {
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 ul {
