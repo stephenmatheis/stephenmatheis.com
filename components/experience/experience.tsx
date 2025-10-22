@@ -9,18 +9,14 @@ export function Experience() {
                 {experience.map(({ company, roles, list }, index) => {
                     return (
                         <div key={index} className={styles.job}>
+                            <h3>{company}</h3>
                             <div className={styles.roles}>
                                 {roles.map(({ title, start, end }, index: number) => {
                                     return (
                                         <div key={index} className={styles.role}>
-                                            <h3 className={styles.heading}>
+                                            <div className={styles.heading}>
                                                 <span className={styles.title}>{title}</span>
-                                                {index === 0 && (
-                                                    <>
-                                                        <span className={styles.company}>, {company}</span>
-                                                    </>
-                                                )}
-                                            </h3>
+                                            </div>
                                             <div className={styles.date}>
                                                 {start}
                                                 {end && <> - {end}</>}

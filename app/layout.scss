@@ -1,10 +1,13 @@
 :root {
     --background-color: #ffffff;
     --color: #000000;
+    --muted: #767676;
+    --bright: #000000;
 
     font-size: 14px;
-    line-height: 1.75;
+    // line-height: 1.75;
     line-height: 24px;
+
 }
 
 html {
@@ -21,11 +24,13 @@ html {
 body {
     font-family: var(--font-sans);
     background-color: var(--background-color);
+    color: var(--color);
 }
 
 a {
-    color: LinkText;
-    text-decoration: none;
+    // color: LinkText;
+    color: var(--color);
+    // text-decoration: none;
 }
 
 ul {
