@@ -1,21 +1,62 @@
 .page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6rem;
+
     @media screen {
-        padding: 20px;
+        width: 100%;
+        max-width: 8.5in;
+        padding: 1in 1rem;
+        margin: 0 auto;
+
+        @media (min-width: 8.5in) {
+            padding: 1in;
+        }
     }
 
-    @media print and (min-width: 8.5in) {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
+    @media print {
         justify-content: flex-end;
         height: 11in;
         width: 8.5in;
         padding: 1in;
     }
 
-    main {
+    .content {
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+
+        h1 {
+            a {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    .muted {
+        color: var(--muted);
+    }
+
+    .roles {
         display: flex;
         flex-direction: column;
 
+        li {
+            span {
+                display: inline-block;
+
+                &:first-child {
+                    width: 100px;
+                }
+            }
+        }
     }
 }

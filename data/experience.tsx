@@ -1,6 +1,6 @@
 const experience = [
     {
-        company: 'NEXTdotgov',
+        company: 'next ( dot ) gov',
         location: 'Washington, D.C. (Remote)',
         site: 'https://www.nextdotgov.com/',
         stack: ['Next.js', 'TypeScript', 'Vercel'],
