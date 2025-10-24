@@ -4,7 +4,8 @@
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-    devIndicators: false
+    devIndicators: false,
+    transpilePackages: ['three'],
 }
 
 export default nextConfig
