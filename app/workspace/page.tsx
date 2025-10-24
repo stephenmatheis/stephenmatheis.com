@@ -3,7 +3,7 @@ import experience from '@/data/experience';
 import styles from './page.module.scss';
 import Link from 'next/link';
 
-export default function AboutPage() {
+export default function Page() {
     return (
         <div className={styles.page}>
             <div className={styles.content}>
