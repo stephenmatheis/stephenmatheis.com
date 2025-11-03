@@ -1,10 +1,7 @@
 :root {
-    --background-color: #ffffff;
-    --color: #000000;
-
-    font-size: 14px;
-    line-height: 1.75;
-    line-height: 24px;
+    --background-color: #16191b;
+    --color: #e2e6e8;
+    --muted: #767676;
 }
 
 html {
@@ -19,12 +16,13 @@ html {
 }
 
 body {
-    font-family: var(--font-sans);
+    font-family: var(--font-mona);
     background-color: var(--background-color);
+    color: var(--color);
 }
 
 a {
-    color: LinkText;
+    color: var(--muted);
     text-decoration: none;
 }
 

@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
-import { CursorProvider } from '@/providers/cursor-provider';
-import { Viewport as App } from '@/components/viewport';
-import { Content } from '@/components/content';
-import { Cursor } from '@/components/cursor';
 import './layout.scss';
+
+const mona = localFont({
+    src: './fonts/MonaspaceNeonVar.woff2',
+    display: 'swap',
+    variable: '--font-mona',
+});
 
 const sans = Inter({
     subsets: ['latin'],
@@ -45,14 +48,8 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={sans.variable} suppressHydrationWarning>
-                <CursorProvider>
-                    <App>
-                        <Content>{children}</Content>
-                        <div id="markup-overlay" />
-                    </App>
-                    <Cursor />
-                </CursorProvider>
+            <body className={`${sans.variable} ${mona.variable}`} suppressHydrationWarning>
+                {children}
                 <Analytics debug={false} />
             </body>
         </html>
