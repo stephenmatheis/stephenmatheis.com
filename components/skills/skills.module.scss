@@ -2,21 +2,11 @@
     .groups {
         display: flex;
         flex-direction: column;
+        gap: 2rem;
 
         .group {
-            .name {
-                position: relative;
-            }
-
-            .items {
-                display: flex;
-                flex-direction: column;
-
-                .item {
-                    display: inline-block;
-                    border-radius: 4px;
-                    color: var(--color);
-                }
+            h3 {
+                color: #888888;
             }
         }
     }

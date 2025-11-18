@@ -16,30 +16,6 @@ export function Contact() {
             <a href="https://stephenmatheis.com" target="_blank" title="My website">
                 stephenmatheis.com
             </a>
-            {/* <motion.a
-                href="https://github.com/stephenmatheis"
-                target="_blank"
-                title="My GitHub profile"
-                onHoverStart={(event) => {
-                    const rect = (event.target as HTMLElement).getBoundingClientRect();
-
-                    if (!rect) return;
-
-                    const { top, left, height, width } = rect;
-
-                    setPosition((prev) => ({
-                        ...prev,
-                        top,
-                        left,
-                        height,
-                        width,
-                        type: 'link',
-                    }));
-                }}
-                onHoverEnd={() => resetPosition()}
-            >
-                github.com/stephenmatheis
-            </motion.a> */}
         </Section>
     );
 }

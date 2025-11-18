@@ -1,10 +1,10 @@
 .experience {
     .jobs {
-        .job {
-            &:not(:last-child) {
-                margin-bottom: 24px;
-            }
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
 
+        .job {
             .roles {
                 .role {
                     display: flex;
@@ -16,16 +16,13 @@
 
                     .heading {
                         flex: 1;
-                        font-size: 1rem;
-                        font-weight: 400;
 
                         .title {
                             font-size: 1rem;
-                            font-weight: normal;
                         }
 
                         .company {
-                            font-weight: 400;
+                            //
                         }
                     }
 

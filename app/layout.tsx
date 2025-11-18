@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { CursorProvider } from '@/providers/cursor-provider';
-import { Viewport as App } from '@/components/viewport';
+import { Viewport as VP } from '@/components/viewport';
 import { Content } from '@/components/content';
 import { Cursor } from '@/components/cursor';
 import './layout.scss';
 
-const sans = Inter({
-    subsets: ['latin'],
+const departureMono = localFont({
+    src: 'fonts/DepartureMono.woff2',
     display: 'swap',
-    variable: '--font-sans',
+    variable: '--font-departure-mono',
 });
 
 export const metadata: Metadata = {
@@ -45,12 +45,12 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={sans.variable} suppressHydrationWarning>
+            <body className={departureMono.variable} suppressHydrationWarning>
                 <CursorProvider>
-                    <App>
+                    <VP>
                         <Content>{children}</Content>
                         <div id="markup-overlay" />
-                    </App>
+                    </VP>
                     <Cursor />
                 </CursorProvider>
                 <Analytics debug={false} />

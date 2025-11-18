@@ -2,7 +2,34 @@
     @media screen {
         min-height: 100dvh;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding-bottom: 10rem;
+    }
+
+    .details {
+        display: flex;
+        justify-content: flex-end;
+        width: 8.5in;
+        padding: 2rem 0;
+
+        ul {
+            li {
+                display: flex;
+                justify-content: space-between;
+                gap: 32px;
+
+                span {
+                    &:first-child {
+                        color: #888888;
+                    }
+                }
+            }
+        }
+
+        @media print {
+            display: none;
+        }
     }
 }

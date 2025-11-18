@@ -1,22 +1,5 @@
 const experience = [
     {
-        company: 'NEXTdotgov',
-        location: 'Washington, D.C. (Remote)',
-        site: 'https://www.nextdotgov.com/',
-        stack: ['Next.js', 'TypeScript', 'Vercel'],
-        roles: [
-            {
-                title: 'Founder',
-                start: '2025',
-                end: 'Now',
-            },
-        ],
-        list: [
-            /*html*/ `Established NEXTdotgov (<a href="https://nextdotgov.com" target="_blank">nextdotgov.com</a>), a web consultancy serving government clients`,
-            /*html*/ `Piloting a platform to simplify the request-to-award process.`,
-        ],
-    },
-    {
         company: 'TATCS',
         location: 'Washington, D.C. (Remote)',
         site: 'https://www.tatcs.com/',

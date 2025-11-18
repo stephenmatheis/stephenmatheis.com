@@ -5,11 +5,18 @@ import styles from './skills.module.scss';
 export function Skills() {
     return (
         <Section className={styles.skills} heading="Skills">
-            {skills.map((skill) => (
-                <p key={skill}>{skill}</p>
-            ))}
-
-            {/* {skills.join(', ')} */}
+            <div className={styles.groups}>
+                {skills.map(({ group, items }) => (
+                    <div key={group} className={styles.group}>
+                        <h3>{group}</h3>
+                        <ul>
+                            {items.map((item) => (
+                                <li key={item}>{item}</li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
         </Section>
     );
 }

@@ -1,33 +1,43 @@
 :root {
-    --background-color: #ffffff;
-    --color: #000000;
+    --background-color: #000000;
+    --color: #ffffff;
 
-    font-size: 14px;
-    line-height: 1.75;
-    line-height: 24px;
-}
-
-html {
+    font-size: 11px;
+    line-height: 22px;
+    letter-spacing: 1px;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    -webkit-text-size-adjust: 100%;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
+    font-size: 1rem;
+    font-weight: normal;
 }
 
 body {
-    font-family: var(--font-sans);
+    font-family: var(--font-departure-mono);
     background-color: var(--background-color);
+    color: var(--color);
 }
 
 a {
-    color: LinkText;
+    // color: #ff0000 // red
+    // color: #dc143c; // crimson
+    color: #ea0e33;
     text-decoration: none;
 }
 
 ul {
     list-style-type: none;
+}
+
+.no-print {
+    @media print {
+        display: none;
+    }
 }
