@@ -1,10 +1,10 @@
 .work {
     .list {
-        .item {
-            &:not(:last-child) {
-                margin-bottom: 24px;
-            }
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
 
+        .item {
             h3 {
                 font-size: 1rem;
                 font-weight: normal;

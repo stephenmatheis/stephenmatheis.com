@@ -7,18 +7,16 @@ import styles from './page.module.scss';
 
 export default function AboutPage() {
     return (
-        <>
-            <div className={styles.page}>
-                <div className={styles.left}>
-                    <Name />
-                    <Contact />
-                    <Skills />
-                    <Work />
-                </div>
-                <div className={styles.right}>
-                    <Experience />
-                </div>
+        <div className={styles.page}>
+            <div className={styles.left}>
+                <Name />
+                <Experience />
             </div>
-        </>
+            <div className={styles.right}>
+                <Contact />
+                <Skills />
+                {/* <Work /> */}
+            </div>
+        </div>
     );
 }

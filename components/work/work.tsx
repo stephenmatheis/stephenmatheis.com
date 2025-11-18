@@ -14,7 +14,7 @@ export function Work() {
                                 {href.replace('https://', '')}
                             </a>
                         </p>
-                        <p className={styles.description}>{description}</p>
+                        {/* <p className={styles.description}>{description}</p> */}
                     </div>
                 ))}
             </div>
