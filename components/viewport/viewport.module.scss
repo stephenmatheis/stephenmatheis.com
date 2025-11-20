@@ -1,11 +1,13 @@
 .viewport {
     @media screen {
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 10rem;
+        @media (min-width: 816px) {
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 10rem;
+        }
     }
 
     .details {
@@ -26,6 +28,10 @@
                     }
                 }
             }
+        }
+
+        @media (max-width: 815px) {
+            display: none;
         }
 
         @media print {

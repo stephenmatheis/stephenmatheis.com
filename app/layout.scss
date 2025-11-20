@@ -1,6 +1,8 @@
 :root {
     --background-color: #000000;
-    --color: #ffffff;
+    --color: #cccccc;
+    --bright: #ffffff;
+    --muted: #888888;
 
     font-size: 11px;
     line-height: 22px;
@@ -26,9 +28,7 @@ body {
 }
 
 a {
-    // color: #ff0000 // red
-    // color: #dc143c; // crimson
-    color: #ea0e33;
+    color: var(--bright);
     text-decoration: none;
 }
 
@@ -38,6 +38,12 @@ ul {
 
 .no-print {
     @media print {
+        display: none;
+    }
+}
+
+.no-mobile {
+    @media screen and (max-width: 815px) {
         display: none;
     }
 }

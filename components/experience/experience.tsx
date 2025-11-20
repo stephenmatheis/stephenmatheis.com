@@ -6,37 +6,22 @@ export function Experience() {
     return (
         <Section className={styles.experience} heading="Experience">
             <div className={styles.jobs}>
-                {experience.map(({ company, roles, list }, index) => {
+                {experience.map(({ company, title, start, end, list }, index) => {
                     return (
                         <div key={index} className={styles.job}>
-                            <div className={styles.roles}>
-                                {roles.map(({ title, start, end }, index: number) => {
-                                    return (
-                                        <div key={index} className={styles.role}>
-                                            <h3 className={styles.heading}>
-                                                <span className={styles.title}>{title}</span>
-                                                {index === 0 && (
-                                                    <>
-                                                        <span className={styles.company}>, {company}</span>
-                                                    </>
-                                                )}
-                                            </h3>
-                                            <div className={styles.date}>
-                                                {start}
-                                                {end && <> - {end}</>}
-                                            </div>
-                                        </div>
-                                    );
+                            <h4 key={index} className={styles.role}>
+                                <span className={styles.title}>
+                                    <span>{title}</span> at {company}
+                                </span>
+                                <span className={styles.date}>
+                                    {start}
+                                    {end && <> - {end}</>}
+                                </span>
+                            </h4>
+                            <ul>
+                                {list.map((item, index) => {
+                                    return <div key={index} dangerouslySetInnerHTML={{ __html: item }} />;
                                 })}
-                            </div>
-                            <ul className={styles.list}>
-                                {list!.map((line: string, i: number) => (
-                                    <li
-                                        key={i}
-                                        className={styles.line}
-                                        dangerouslySetInnerHTML={{ __html: `- ${line}` }}
-                                    />
-                                ))}
                             </ul>
                         </div>
                     );
