@@ -7,7 +7,7 @@ export function Content({ children }: { children: React.ReactNode }) {
 
             {/* Characters */}
             <div
-                className="no-print"
+                className="no-print no-mobile"
                 style={{
                     position: 'absolute',
                     top: '-2rem',
@@ -32,7 +32,7 @@ export function Content({ children }: { children: React.ReactNode }) {
 
             {/* Lines */}
             <div
-                className="no-print"
+                className="no-print no-mobile"
                 style={{
                     position: 'absolute',
                     top: 0,
@@ -48,7 +48,7 @@ export function Content({ children }: { children: React.ReactNode }) {
                             key={i}
                             style={{
                                 height: 22,
-                                background: i % 2 ? '#00000050' : 'transparent',
+                                // background: i % 2 ? '#00000050' : 'transparent',
                             }}
                         >
                             <span

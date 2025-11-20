@@ -4,7 +4,7 @@ import styles from './skills.module.scss';
 
 export function Skills() {
     return (
-        <Section className={styles.skills} heading="Skills">
+        <Section className={styles.skills}>
             <div className={styles.groups}>
                 {skills.map(({ group, items }) => (
                     <div key={group} className={styles.group}>

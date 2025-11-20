@@ -13,6 +13,9 @@ export function Contact() {
             <a href="https://github.com/stephenmatheis" target="_blank" title="My GitHub profile">
                 github.com/stephenmatheis
             </a>
+            <a href="https://codepen.com/stephenmatheis" target="_blank" title="My CodePen profile">
+                codepen.com/stephenmatheis
+            </a>
             <a href="https://stephenmatheis.com" target="_blank" title="My website">
                 stephenmatheis.com
             </a>

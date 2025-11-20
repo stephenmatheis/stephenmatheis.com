@@ -1,34 +1,24 @@
 .experience {
+    width: 100%;
+
     .jobs {
         display: flex;
         flex-direction: column;
         gap: 2rem;
 
         .job {
-            .roles {
-                .role {
-                    display: flex;
-                    justify-content: space-between;
+            .role {
+                display: flex;
+                justify-content: space-between;
 
-                    @media screen and (max-width: 815px) {
-                        flex-direction: column;
+                .title {
+                    span {
+                        color: var(--bright);
                     }
+                }
 
-                    .heading {
-                        flex: 1;
-
-                        .title {
-                            font-size: 1rem;
-                        }
-
-                        .company {
-                            //
-                        }
-                    }
-
-                    .date {
-                        font-family: sans-serif;
-                    }
+                .date {
+                    color: var(--muted);
                 }
             }
         }

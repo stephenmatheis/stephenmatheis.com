@@ -9,7 +9,7 @@ type SectionProps = HTMLAttributes<HTMLElement> & {
 export function Section({ heading, children, className, ...props }: SectionProps) {
     return (
         <section className={`${styles.section}${className ? ` ${className}` : ''}`} {...props}>
-            {/* {heading && <Heading text={heading} />} */}
+            {heading && <Heading text={heading} />}
             {children}
         </section>
     );
