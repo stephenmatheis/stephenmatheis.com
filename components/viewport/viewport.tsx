@@ -4,7 +4,7 @@ import styles from './viewport.module.scss';
 export function Viewport({ children }: { children: React.ReactNode }) {
     return (
         <div className={styles.viewport}>
-            <div className={styles.details}>
+            {/* <div className={styles.details}>
                 <ul>
                     <li>
                         <span>Page Width</span>
@@ -43,7 +43,7 @@ export function Viewport({ children }: { children: React.ReactNode }) {
                         <span>22px</span>
                     </li>
                 </ul>
-            </div>
+            </div> */}
             <Sheet>{children}</Sheet>
         </div>
     );
