@@ -1,10 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
-import { CursorProvider } from '@/providers/cursor-provider';
-import { Viewport as VP } from '@/components/viewport';
-import { Content } from '@/components/content';
-import { Cursor } from '@/components/cursor';
 import './layout.scss';
 
 const departureMono = localFont({
@@ -46,13 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={departureMono.variable} suppressHydrationWarning>
-                <CursorProvider>
-                    <VP>
-                        <Content>{children}</Content>
-                        <div id="markup-overlay" />
-                    </VP>
-                    <Cursor />
-                </CursorProvider>
+                {children}
                 <Analytics debug={false} />
             </body>
         </html>
