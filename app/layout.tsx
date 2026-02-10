@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/react';
 import { CursorProvider } from '@/providers/cursor-provider';
 import { Viewport as App } from '@/components/viewport';
@@ -11,6 +12,11 @@ const sans = Inter({
     subsets: ['latin'],
     display: 'swap',
     variable: '--font-sans',
+});
+
+const departure = localFont({
+    src: './fonts/DepartureMono.woff2',
+    variable: '--font-departure',
 });
 
 export const metadata: Metadata = {
@@ -45,7 +51,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={sans.variable} suppressHydrationWarning>
+            <body className={`${sans.variable} ${departure.variable}`} suppressHydrationWarning>
                 <CursorProvider>
                     <App>
                         <Content>{children}</Content>
