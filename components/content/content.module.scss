@@ -1,3 +1,7 @@
 .content {
     height: 100%;
+
+    @media screen {
+        box-shadow: 0px 0px 0px 1px #ff000050;
+    }
 }
