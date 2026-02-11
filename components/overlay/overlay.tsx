@@ -24,20 +24,20 @@ export function Overlay() {
             });
         }
 
-        window.addEventListener('mousemove', updateMousePosition);
+        window.addEventListener('pointermove', updateMousePosition);
         window.addEventListener('resize', onResize);
 
         onResize();
 
         return () => {
-            window.removeEventListener('mousemove', updateMousePosition);
+            window.removeEventListener('pointermove', updateMousePosition);
             window.removeEventListener('resize', onResize);
         };
     }, []);
 
     return (
         <>
-            <div className={styles.overlay}>
+            <div className={styles.overlay} style={{ display: 'none' }}>
                 {/* Legend */}
                 {/* TODO: Add bidirectional on hover effect for line or legend  */}
                 <div className={styles.legend}>

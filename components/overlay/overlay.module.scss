@@ -25,9 +25,9 @@
         padding-inline: 5ch;
     }
 
-    @media print {
-        display: none;
-    }
+    // @media print {
+    //     display: none;
+    // }
 
     .legend {
         position: fixed;
@@ -70,14 +70,15 @@
     }
 
     .controls {
+        position: fixed;
+        top: calc(var(--line-height) * 2);
+        right: 4ch;
         pointer-events: all;
         display: inline-flex;
         flex-direction: column;
         align-items: flex-end;
         gap: calc(var(--line-height) * 2);
-        position: fixed;
-        top: calc(var(--line-height) * 2);
-        right: 4ch;
+
         width: 35ch;
 
         @media (max-width: 1366px) {
@@ -207,13 +208,20 @@
         box-shadow: 0 0 0 1px red;
     }
 
-    @media screen {
-        margin: calc(var(--line-height) * 2) auto;
+    // @media screen {
+    //     margin: calc(var(--line-height) * 2) auto;
 
-        @media (max-width: 939px) {
-            width: 100%;
-            padding-inline: 5ch;
-        }
+    //     @media (max-width: 939px) {
+    //         width: 100%;
+    //         padding-inline: 5ch;
+    //     }
+    // }
+
+    margin: calc(var(--line-height) * 2) auto;
+
+    @media (max-width: 939px) {
+        width: 100%;
+        padding-inline: 5ch;
     }
 
     .content {
@@ -222,7 +230,12 @@
         justify-content: space-between;
         gap: 4ch;
 
-        @media screen and (max-width: 939px) {
+        // @media screen and (max-width: 939px) {
+        //     flex-direction: column;
+        //     gap: calc(var(--line-height) * 2);
+        // }
+
+        @media (max-width: 939px) {
             flex-direction: column;
             gap: calc(var(--line-height) * 2);
         }
@@ -308,7 +321,11 @@
                 box-shadow: 0 0 0 1px red;
             }
 
-            @media screen and (max-width: 939px) {
+            // @media screen and (max-width: 939px) {
+            //     width: 82ch;
+            // }
+
+            @media (max-width: 939px) {
                 width: 82ch;
             }
         }
@@ -323,7 +340,11 @@
                 box-shadow: 0 0 0 1px red;
             }
 
-            @media screen and (max-width: 939px) {
+            // @media screen and (max-width: 939px) {
+            //     width: 100%;
+            // }
+
+            @media (max-width: 939px) {
                 width: 100%;
             }
         }

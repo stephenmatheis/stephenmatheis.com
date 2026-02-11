@@ -24,9 +24,9 @@
         height: calc(var(--line-height) * 3);
         color: var(--lighter);
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
@@ -57,9 +57,9 @@
         height: calc(var(--line-height) * 58);
         color: var(--lighter);
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
@@ -82,9 +82,9 @@
         height: 11in;
         color: var(--lighter);
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
@@ -105,9 +105,9 @@
         right: 0;
         color: var(--lighter);
 
-        @media (max-width: 939px) {
-            display: none;
-        }
+        // @media (max-width: 939px) {
+        //     display: none;
+        // }
 
         .label {
             position: absolute;
