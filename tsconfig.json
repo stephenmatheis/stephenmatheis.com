@@ -1,8 +1,6 @@
 {
     "compilerOptions": {
-        "typeRoots": [
-            "./node_modules/@types"
-        ],
+        "target": "esnext",
         "lib": [
             "dom",
             "dom.iterable",
@@ -10,25 +8,21 @@
         ],
         "allowJs": true,
         "skipLibCheck": true,
-        "strict": false,
+        "strict": true,
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
-        "incremental": true,
         "esModuleInterop": true,
-        "allowImportingTsExtensions": true,
         "module": "esnext",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "jsx": "preserve",
+        "jsx": "react-jsx",
+        "incremental": true,
         "plugins": [
             {
                 "name": "next"
             }
         ],
-        "strictNullChecks": true,
-        "target": "es6",
-        "baseUrl": ".",
         "paths": {
             "@/*": [
                 "./*"
@@ -40,7 +34,9 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "next.config.mjs"
+        ".next/dev/types/**/*.ts",
+        "**/*.mts",
+        "types/**/*.d.ts"
     ],
     "exclude": [
         "node_modules"
