@@ -7,15 +7,32 @@ import styles from './header.module.scss';
 export function Header() {
     return (
         <section className={styles.name}>
-            <Comment text="Name" />
-            <Link className={styles.website} href="/" title="Go to home">
-                <div>
-                    <span className={styles.primary}>Stephen Matheis</span>{' '}
-                    <span className={styles.color}>Software Engineer</span>
+            <Comment text="Links" />
+
+            <div className={styles.list}>
+                <div className={styles.item}>
+                    <div className={styles.name}>GitHub</div>
+                    <div className={styles.text}>
+                        <Link href="https://github/stephenmatheis">stephenmatheis</Link>
+                    </div>
                 </div>
-                <div className={styles.muted}>stephenmatheis.com</div>
-                <div className={styles.muted}>38° N, 77° W</div>
-            </Link>
+            </div>
+            <div className={styles.list}>
+                <div className={styles.item}>
+                    <div className={styles.name}>CodePen</div>
+                    <div className={styles.text}>
+                        <Link href="https://codepen.io/stephenmatheis">stephenmatheis</Link>
+                    </div>
+                </div>
+            </div>
+            <div className={styles.list}>
+                <div className={styles.item}>
+                    <div className={styles.name}>Site</div>
+                    <div className={styles.text}>
+                        <Link href="https://stephenmatheis.com">stephenmatheis.com</Link>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }

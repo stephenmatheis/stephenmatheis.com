@@ -9,8 +9,6 @@ import { Skills } from '@/components/skills';
 import { Projects } from '@/components/projects';
 import styles from './content.module.scss';
 
-// TODO: Add a console game.
-
 export function Content() {
     const { overlays } = useOverlay();
 
@@ -18,7 +16,7 @@ export function Content() {
         <main className={styles.content}>
             {/* Breadcrumbs */}
             <div className={`${styles.breadcrumbs}${overlays.tabs ? ` ${styles.on}` : ''}`}>
-                {['app', 'page', 'resume'].map((crumb, i, arr) => (
+                {['Resume', 'Stephen Matheis', 'Software Engineer'].map((crumb, i, arr) => (
                     <span key={i}>
                         <Link href="/">{crumb}</Link>
                         {i < arr.length - 1 && ' > '}

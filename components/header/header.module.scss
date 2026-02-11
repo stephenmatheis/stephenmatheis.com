@@ -1,23 +1,22 @@
 .name {
-    .website {
+    .list {
         display: flex;
         flex-direction: column;
-        width: fit-content;
 
-        .primary {
-            color: var(--primary);
-        }
+        .item {
+            flex: 1;
+            display: flex;
 
-        .color {
-            color: var(--color);
-        }
+            .name {
+                color: var(--muted);
+                width: 14ch;
+            }
 
-        .muted {
-            color: var(--muted);
-        }
-
-        .light {
-            color: var(--light);
+            .text {
+                gap: var(--line-height);
+                color: var(--primary);
+                width: 21ch;
+            }
         }
     }
 }
