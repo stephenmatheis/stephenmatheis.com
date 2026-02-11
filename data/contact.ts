@@ -1,17 +1,15 @@
 const contact = [
     {
-        href: 'https://github.com/stephenmatheis',
-        text: 'github.com/stephenmatheis',
-        label: 'My GitHub profile',
-        name: 'GitHub',
-        user: 'stephenmatheis',
-        newTab: true,
-    },
-    {
         href: 'mailto:stephen@matheis.email',
         text: 'stephen@matheis.email',
         label: 'My email address',
         name: 'Email',
+    },
+    {
+        href: 'mailto:stephen@matheis.email',
+        text: 'hey@ndg.dev',
+        label: 'NEXTDOTGOV email address',
+        name: 'Client',
     },
     {
         href: 'tel:9124922522',
