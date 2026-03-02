@@ -9,14 +9,14 @@ export default function AboutPage() {
     return (
         <>
             <div className={styles.page}>
+                <div className={styles.right}>
+                    <Experience />
+                </div>
                 <div className={styles.left}>
                     <Name />
                     <Contact />
                     <Skills />
                     <Work />
-                </div>
-                <div className={styles.right}>
-                    <Experience />
                 </div>
             </div>
         </>
