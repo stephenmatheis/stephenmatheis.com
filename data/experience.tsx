@@ -1,26 +1,21 @@
 const experience = [
     {
-        company: 'NEXTdotgov',
+        company: 'next(dot)gov',
         location: 'Washington, D.C. (Remote)',
         site: 'https://www.nextdotgov.com/',
-        stack: ['Next.js', 'TypeScript', 'Vercel'],
         roles: [
             {
-                title: 'Founder',
+                title: 'Freelance',
                 start: '2025',
                 end: 'Now',
             },
         ],
-        list: [
-            /*html*/ `Established NEXTdotgov (<a href="https://nextdotgov.com" target="_blank">nextdotgov.com</a>), a web consultancy serving government clients`,
-            /*html*/ `Piloting a platform to simplify the request-to-award process.`,
-        ],
+        list: ['Software engineering services.'],
     },
     {
         company: 'TATCS',
         location: 'Washington, D.C. (Remote)',
         site: 'https://www.tatcs.com/',
-        stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
             {
                 title: 'Director of User Experience',
@@ -33,16 +28,12 @@ const experience = [
                 end: '2024',
             },
         ],
-        list: [
-            'Led UI/UX work for clients and internal projects.',
-            /*html*/ `Designed a new U.S. Tsunami Warning System (<a href="https://tsunami.gov" target="_blank">tsunami.gov</a>).`,
-        ],
+        list: ['Built a new U.S. Tsunami Warning System.'],
     },
     {
         company: 'Apple',
         location: 'San Antonio, TX (Remote)',
         site: 'https://www.apple.com/',
-        stack: ['Next.js', 'TypeScript'],
         roles: [
             {
                 title: 'Front-end Developer',
@@ -50,17 +41,13 @@ const experience = [
                 end: '2023',
             },
         ],
-        list: [
-            'Prototyped a new Apple Watch buy flow.',
-            'Created Juice, a CLI and React command palette component and source code scaffolding tool for rapid prototyping with Next.js and Storybook.',
-        ],
+        list: ['Prototyped a new Apple Watch buy flow.'],
     },
 
     {
         company: 'Aeyon',
         location: 'San Antonio, TX (Remote)',
         site: 'https://aeyon.us/',
-        stack: ['React Native', 'TypeScript', 'Expo', 'Firebase', 'GCP'],
         roles: [
             {
                 title: 'Senior Software Engineer',
@@ -77,7 +64,6 @@ const experience = [
         company: 'TATCS',
         location: 'San Antonio, TX (Remote)',
         site: 'https://www.tatcs.com/',
-        stack: ['Next.js', 'TypeScript', 'MongoDB', 'Vercel'],
         roles: [
             {
                 title: 'Senior SharePoint Developer',
@@ -94,7 +80,6 @@ const experience = [
         company: 'HID Global',
         location: 'Austin, TX (Remote)',
         site: 'https://www.hidglobal.com/',
-        stack: ['jQuery', 'Bootstrap', 'SharePoint', 'ASP.NET'],
         roles: [
             {
                 title: 'Systems Programmer 3',
@@ -111,7 +96,6 @@ const experience = [
         company: 'Bravo Consulting Group',
         location: 'Reston, VA',
         site: 'https://bravocg.com/',
-        stack: ['jQuery', 'SharePoint', 'ASP.NET'],
         roles: [
             {
                 title: 'Senior Consultant',
