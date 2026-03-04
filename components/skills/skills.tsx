@@ -5,9 +5,11 @@ import styles from './skills.module.scss';
 export function Skills() {
     return (
         <Section className={styles.skills} heading="Skills">
-            {skills.map((skill) => (
-                <p key={skill}>{skill}</p>
-            ))}
+            <div className={styles.list}>
+                {skills.map((skill) => (
+                    <div key={skill}>{skill}</div>
+                ))}
+            </div>
         </Section>
     );
 }

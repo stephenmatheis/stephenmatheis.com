@@ -33,6 +33,8 @@
                 }
 
                 .left {
+                    width: 35ch;
+
                     @media screen {
                         box-shadow: 0 0 0 2px var(--bg3);
                     }
