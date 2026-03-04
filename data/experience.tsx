@@ -5,12 +5,12 @@ const experience = [
         site: 'https://nextdotgov.com',
         roles: [
             {
-                title: 'Freelance',
+                title: 'Freelance Software Engineer',
                 start: '2025',
                 end: 'Now',
             },
         ],
-        list: ['Providing software engineering services.', 'Private industry and government.'],
+        list: ['Providing software engineering services.', 'Government consulting.'],
     },
     {
         company: 'TATCS',
@@ -41,7 +41,7 @@ const experience = [
                 end: '2023',
             },
         ],
-        list: ['Prototyped a new Apple Watch buy flow.', 'Create a tool to scaffold Next.js apps.'],
+        list: ['Prototyped a new Apple Watch buy flow.', 'Created a tool to scaffold Next.js apps.'],
     },
     {
         company: 'Aeyon',
@@ -113,19 +113,19 @@ const experience = [
         ],
         list: ['SharePoint site admin.', 'Built reports with VBA and Excel.'],
     },
-    {
-        company: 'Self-Employed',
-        location: 'San Antonio, TX',
-        site: '',
-        roles: [
-            {
-                title: 'Freelance',
-                start: '2008',
-                end: '2011',
-            },
-        ],
-        list: ['Web design.', 'Tech support.'],
-    },
+    // {
+    //     company: 'Self-Employed',
+    //     location: 'San Antonio, TX',
+    //     site: '',
+    //     roles: [
+    //         {
+    //             title: 'Freelance',
+    //             start: '2008',
+    //             end: '2011',
+    //         },
+    //     ],
+    //     list: ['Web design.', 'Tech support.'],
+    // },
     // {
     //     company: 'Armstrong Atlantic State University',
     //     location: 'San Antonio, TX',

@@ -5,6 +5,8 @@ import { Skills } from '@/components/skills';
 import { Work } from '@/components/work';
 import { Time } from '@/components/Time';
 import { Education } from '@/components/education';
+import { About } from '@/components/About';
+import { Certifications } from '@/components/Certifications';
 import styles from './page.module.scss';
 
 export default function Page() {
@@ -20,8 +22,10 @@ export default function Page() {
                             <Work />
                         </div>
                         <div className={styles.right}>
+                            <About />
                             <Experience />
-                            {/* <Education /> */}
+                            <Education />
+                            <Certifications />
                         </div>
                     </div>
                     <div className={styles.statusbar}>
