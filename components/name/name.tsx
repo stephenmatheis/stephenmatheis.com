@@ -1,10 +1,12 @@
+import { Section } from '@/components/section';
 import styles from './name.module.scss';
 
 export function Name() {
     return (
-        <div className={styles.name}>
-            <h1>Stephen Matheis</h1>
-            <p>Software Engineer</p>
-        </div>
+        <Section className={styles.name} heading="Name">
+            <h1>
+                Stephen Matheis <span>Software Engineer</span>
+            </h1>
+        </Section>
     );
 }

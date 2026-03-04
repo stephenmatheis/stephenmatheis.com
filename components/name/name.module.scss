@@ -1,9 +1,11 @@
 .name {
-    margin-bottom: 24px;
+    margin-bottom: var(--line-height);
 
-    h1,
-    p {
-        font-size: 1rem;
-        font-weight: normal;
+    h1 {
+        color: var(--fg0);
+
+        span {
+            color: var(--fg2);
+        }
     }
 }

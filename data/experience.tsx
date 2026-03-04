@@ -1,8 +1,8 @@
 const experience = [
     {
-        company: 'next(dot)gov',
+        company: 'NEXTDOTGOV',
         location: 'Washington, D.C. (Remote)',
-        site: 'https://www.nextdotgov.com/',
+        site: 'https://nextdotgov.com',
         roles: [
             {
                 title: 'Freelance',
@@ -10,12 +10,12 @@ const experience = [
                 end: 'Now',
             },
         ],
-        list: ['Software engineering services.'],
+        list: ['Providing software engineering services.', 'Private industry and government.'],
     },
     {
         company: 'TATCS',
         location: 'Washington, D.C. (Remote)',
-        site: 'https://www.tatcs.com/',
+        site: 'https://tatcs.com',
         roles: [
             {
                 title: 'Director of User Experience',
@@ -28,12 +28,12 @@ const experience = [
                 end: '2024',
             },
         ],
-        list: ['Built a new U.S. Tsunami Warning System.'],
+        list: ['Redesigned the U.S. Tsunami Warning System.', 'Trained junior engineers.'],
     },
     {
         company: 'Apple',
         location: 'San Antonio, TX (Remote)',
-        site: 'https://www.apple.com/',
+        site: 'https://apple.com',
         roles: [
             {
                 title: 'Front-end Developer',
@@ -41,13 +41,12 @@ const experience = [
                 end: '2023',
             },
         ],
-        list: ['Prototyped a new Apple Watch buy flow.'],
+        list: ['Prototyped a new Apple Watch buy flow.', 'Create a tool to scaffold Next.js apps.'],
     },
-
     {
         company: 'Aeyon',
         location: 'San Antonio, TX (Remote)',
-        site: 'https://aeyon.us/',
+        site: 'https://aeyon.us',
         roles: [
             {
                 title: 'Senior Software Engineer',
@@ -55,15 +54,12 @@ const experience = [
                 end: '2022',
             },
         ],
-        list: [
-            'Built Measures Library to centralize anonymized patient care data for the Defense Health Agency.',
-            'Delivered a cross-platform mobile app for the U.S. Marine Corps with React Native, Expo, and Firebase.',
-        ],
+        list: ['Built web apps for the Defense Health Agency.', 'Built a mobile app for the U.S. Marine Corps.'],
     },
     {
         company: 'TATCS',
         location: 'San Antonio, TX (Remote)',
-        site: 'https://www.tatcs.com/',
+        site: 'https://tatcs.com',
         roles: [
             {
                 title: 'Senior SharePoint Developer',
@@ -71,15 +67,12 @@ const experience = [
                 end: '2021',
             },
         ],
-        list: [
-            'Developed Individual Critical Task List, a platform to track medical readiness.',
-            'Upgraded SharePoint 2010 to SharePoint 2016.',
-        ],
+        list: ['Built web apps to track medical readiness.', 'Upgraded SharePoint 2010 to SharePoint 2016.'],
     },
     {
         company: 'HID Global',
         location: 'Austin, TX (Remote)',
-        site: 'https://www.hidglobal.com/',
+        site: 'https://hidglobal.com',
         roles: [
             {
                 title: 'Systems Programmer 3',
@@ -87,15 +80,12 @@ const experience = [
                 end: '2017',
             },
         ],
-        list: [
-            'Upgraded SharePoint 2010 to SharePoint 2013.',
-            'Migrated Lotus Notes content and applications to SharePoint 2013.',
-        ],
+        list: ['Upgraded SharePoint 2010 to SharePoint 2013.', 'Migrated Lotus Notes apps to SharePoint 2013.'],
     },
     {
         company: 'Bravo Consulting Group',
         location: 'Reston, VA',
-        site: 'https://bravocg.com/',
+        site: 'https://bravocg.com',
         roles: [
             {
                 title: 'Senior Consultant',
@@ -108,11 +98,47 @@ const experience = [
                 end: '2015',
             },
         ],
-        list: [
-            'Wrote a tool to preserve presidential records for the National Archives.',
-            'Reduced SharePoint backup requirements at the Department of Veterans Affairs.',
-        ],
+        list: ['Preserved presidential records for NARA.', 'Built web apps for the VA.'],
     },
+    {
+        company: 'AIT',
+        location: 'Charlottesville, VA',
+        site: 'https://ait-i.com',
+        roles: [
+            {
+                title: 'Access Control Specialist',
+                start: '2011',
+                end: '2014',
+            },
+        ],
+        list: ['SharePoint site admin.', 'Built reports with VBA and Excel.'],
+    },
+    {
+        company: 'Self-Employed',
+        location: 'San Antonio, TX',
+        site: '',
+        roles: [
+            {
+                title: 'Freelance',
+                start: '2008',
+                end: '2011',
+            },
+        ],
+        list: ['Web design.', 'Tech support.'],
+    },
+    // {
+    //     company: 'Armstrong Atlantic State University',
+    //     location: 'San Antonio, TX',
+    //     site: '',
+    //     roles: [
+    //         {
+    //             title: 'Computer Science',
+    //             start: '2006',
+    //             end: '2007',
+    //         },
+    //     ],
+    //     list: [],
+    // },
 ];
 
 export default experience;

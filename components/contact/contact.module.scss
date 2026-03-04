@@ -1,14 +1,9 @@
 .contact {
-    a {
-        display: block;
+    .line {
+        color: var(--fg3);
+
+        span {
+            color: var(--fg0);
+        }
     }
-
-    // display: flex;
-    // justify-content: space-between;
-
-    // @media screen {
-    //     @media (max-width: 815px) {
-    //         flex-direction: column;
-    //     }
-    // }
 }
