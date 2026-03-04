@@ -3,7 +3,7 @@ import styles from './contact.module.scss';
 
 export function Contact() {
     return (
-        <Section className={styles.contact} heading="Contact">
+        <Section className={styles.contact} heading="">
             <div className={styles.line}>
                 <a href="tel:9124922522" target="_blank" title="My phone number">
                     [<span>phone</span>]((912) 492-2522)
@@ -16,12 +16,12 @@ export function Contact() {
             </div>
             <div className={styles.line}>
                 <a href="https://github.com/stephenmatheis" target="_blank" title="My GitHub profile">
-                    [<span>github</span>](github.com/stephenmatheis)
+                    [<span>github</span>](@stephenmatheis)
                 </a>
             </div>
             <div className={styles.line}>
                 <a href="https://codepen.com/stephenmatheis" target="_blank" title="My CodePen profile">
-                    [<span>codepen</span>](codepen.com/stephenmatheis)
+                    [<span>codepen</span>](@stephenmatheis)
                 </a>
             </div>
             <div className={styles.line}>

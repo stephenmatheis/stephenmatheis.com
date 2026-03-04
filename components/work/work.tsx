@@ -4,7 +4,7 @@ import styles from './work.module.scss';
 
 export function Work() {
     return (
-        <Section className={styles.work} heading="Work">
+        <Section className={styles.work} heading="Projects">
             <div className={styles.list}>
                 {work.map(({ name, href, description }) => (
                     <div key={name} className={styles.item}>

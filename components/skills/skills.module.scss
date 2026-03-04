@@ -1,3 +1,8 @@
 .skills {
     color: var(--fg0);
+
+    .list {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
 }
