@@ -1,0 +1,18 @@
+.certifications {
+    .cert {
+        display: flex;
+        justify-content: space-between;
+
+        .name {
+            color: var(--fg0);
+
+            span {
+                color: var(--fg2);
+            }
+        }
+
+        .date {
+            color: var(--fg3);
+        }
+    }
+}

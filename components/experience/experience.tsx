@@ -9,20 +9,13 @@ export function Experience() {
                 {experience.map(({ company, site, roles, list }, index) => {
                     return (
                         <div key={index} className={styles.job}>
-                            <div className={styles.company}>
-                                {site ? (
-                                    <a href={site}>
-                                        [<span>{company}</span>]({site.replace('https://', '')})
-                                    </a>
-                                ) : (
-                                    <>{company}</>
-                                )}
-                            </div>
                             <div className={styles.roles}>
                                 {roles.map(({ title, start, end }, index: number) => {
                                     return (
                                         <div key={index} className={styles.role}>
-                                            <div className={styles.title}>{title}</div>
+                                            <div className={styles.title}>
+                                                {title} {index === 0 && <span>@ {company}</span>}
+                                            </div>
                                             <div className={styles.date}>
                                                 {start} - {end}
                                             </div>
@@ -46,3 +39,16 @@ export function Experience() {
         </Section>
     );
 }
+
+// {company && (
+//     <div className={styles.company}>
+//         {company}
+//         {/* {site ? (
+//         <a href={site}>
+//             [<span>{company}</span>]({site.replace('https://', '')})
+//         </a>
+//     ) : (
+//         <>{company}</>
+//     )} */}
+//     </div>
+// )}

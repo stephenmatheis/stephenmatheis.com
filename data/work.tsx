@@ -3,7 +3,7 @@ const projects = [
         name: 'v n t r',
         href: 'https://vntr.events',
         date: '2017',
-        description: 'Lead management software.',
+        description: 'Lead management system.',
     },
     {
         name: 'Line Writer',

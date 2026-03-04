@@ -19,7 +19,11 @@
                     justify-content: space-between;
 
                     .title {
-                        color: var(--fg2);
+                        color: var(--fg0);
+
+                        span {
+                            color: var(--fg3);
+                        }
                     }
 
                     .date {

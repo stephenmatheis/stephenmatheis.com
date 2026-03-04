@@ -5,13 +5,13 @@ export function Contact() {
     return (
         <Section className={styles.contact} heading="Contact">
             <div className={styles.line}>
-                <a href="mailto:stephen@matheis.email" target="_blank" title="My email address">
-                    [<span>email</span>](stephen@matheis.email)
+                <a href="tel:9124922522" target="_blank" title="My phone number">
+                    [<span>phone</span>]((912) 492-2522)
                 </a>
             </div>
             <div className={styles.line}>
-                <a href="tel:9124922522" target="_blank" title="My phone number">
-                    [<span>phone</span>]((912) 492-2522)
+                <a href="mailto:stephen@matheis.email" target="_blank" title="My email address">
+                    [<span>email</span>](stephen@matheis.email)
                 </a>
             </div>
             <div className={styles.line}>
