@@ -15,6 +15,16 @@ export default function Page() {
             <div className={styles.sheet}>
                 <div className={styles.content}>
                     <div className={styles.columns}>
+                        <div className={styles.numbers}>
+                            {Array.from({ length: 52 }).map((_, index) => {
+                                return (
+                                    <div key={index} className={styles.number}>
+                                        {index + 1}
+                                    </div>
+                                );
+                            })}
+                        </div>
+
                         <div className={styles.left}>
                             <Name />
                             <Contact />
