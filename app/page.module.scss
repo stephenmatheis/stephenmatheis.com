@@ -80,11 +80,10 @@
         }
     }
 
-    @media screen {
-        // padding: 2rem;
-    }
-
     @media (max-width: 815px) {
+        // height: 100dvh;
+        // width: 100vw;
+        // overflow: auto;
         padding-top: 0;
         padding-inline: 0;
         padding-bottom: calc(var(--line-height) * 3);
