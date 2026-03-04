@@ -20,6 +20,7 @@
             height: calc(var(--line-height) * 54);
 
             .columns {
+                position: relative;
                 flex: 1;
                 display: flex;
                 gap: 0.25in;
@@ -43,6 +44,13 @@
                     @media screen {
                         box-shadow: 0 0 0 2px var(--bg3);
                     }
+                }
+
+                .numbers {
+                    position: absolute;
+                    top: 0;
+                    left: calc(-0.5in + 2ch);
+                    color: var(--fg4);
                 }
             }
 
