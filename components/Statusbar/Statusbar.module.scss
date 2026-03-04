@@ -10,9 +10,16 @@
         line-height: 1;
     }
 
+    .left,
+    .center,
+    .right {
+        flex: 1;
+    }
+
     .left {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         gap: 1ch;
         height: 100%;
 
@@ -54,7 +61,6 @@
     }
 
     .center {
-        flex: 1;
         text-align: center;
 
         a {
@@ -65,6 +71,7 @@
     .right {
         display: flex;
         align-items: center;
+        justify-content: flex-end;
         gap: 1ch;
         height: 100%;
 
@@ -88,6 +95,12 @@
             background-color: var(--bg2);
             padding-left: 2ch;
             clip-path: polygon(var(--arrow-size) 0%, 100% 0%, 100% 100%, var(--arrow-size) 100%, 0% 50%);
+
+            .download {
+                display: flex;
+                align-items: center;
+                gap: 1ch;
+            }
 
             .position {
                 @media (max-width: 815px) {
