@@ -1,11 +1,10 @@
-
 'use client';
 
 import { useEffect, useState } from 'react';
 import styles from './Time.module.scss';
 
 export function Time() {
-    const [time, setTime] = useState<string>('00:00');
+    const [time, setTime] = useState<string>('MMM DD YY HH:MM');
 
     useEffect(() => {
         let timeoutId: NodeJS.Timeout | null = null;
@@ -13,13 +12,20 @@ export function Time() {
 
         function updateTime() {
             const now = new Date();
-            const HH_MM = now.toLocaleTimeString('en-us', {
+            const date = now
+                .toLocaleDateString('en-us', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: '2-digit',
+                })
+                .replaceAll(',', '');
+            const time = now.toLocaleTimeString('en-us', {
                 hour: '2-digit',
                 minute: '2-digit',
                 hour12: false,
             });
 
-            setTime(HH_MM);
+            setTime(`${date} ${time}`);
         }
 
         updateTime();

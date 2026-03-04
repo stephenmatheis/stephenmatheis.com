@@ -111,34 +111,8 @@ const experience = [
                 end: '2014',
             },
         ],
-        list: ['SharePoint site admin.', 'Built reports with VBA and Excel.'],
+        list: ['Built reports with VBA and Excel.', 'SharePoint site admin.'],
     },
-    // {
-    //     company: 'Self-Employed',
-    //     location: 'San Antonio, TX',
-    //     site: '',
-    //     roles: [
-    //         {
-    //             title: 'Freelance',
-    //             start: '2008',
-    //             end: '2011',
-    //         },
-    //     ],
-    //     list: ['Web design.', 'Tech support.'],
-    // },
-    // {
-    //     company: 'Armstrong Atlantic State University',
-    //     location: 'San Antonio, TX',
-    //     site: '',
-    //     roles: [
-    //         {
-    //             title: 'Computer Science',
-    //             start: '2006',
-    //             end: '2007',
-    //         },
-    //     ],
-    //     list: [],
-    // },
 ];
 
 export default experience;

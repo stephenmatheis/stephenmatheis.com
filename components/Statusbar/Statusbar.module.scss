@@ -33,7 +33,7 @@
             );
 
             &.normal {
-                background-color: var(--gray);
+                background-color: var(--fg3);
             }
 
             &.insert {
@@ -85,7 +85,8 @@
                 align-items: center;
                 height: 100%;
                 color: var(--bg0);
-                background-color: var(--bright-green);
+                // background-color: var(--bright-green);
+                background-color: var(--fg3);
                 clip-path: polygon(var(--arrow-size) 0%, 100% 0%, 100% 100%, var(--arrow-size) 100%, 0% 50%);
             }
         }
