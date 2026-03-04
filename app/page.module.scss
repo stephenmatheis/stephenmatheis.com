@@ -1,12 +1,4 @@
 .page {
-    @media screen {
-        padding: 2rem;
-    }
-
-    @media (max-width: 815px) {
-        padding: 0;
-    }
-
     .sheet {
         display: flex;
         align-items: center;
@@ -86,5 +78,15 @@
                 padding: 0.125in;
             }
         }
+    }
+
+    @media screen {
+        // padding: 2rem;
+    }
+
+    @media (max-width: 815px) {
+        padding-top: 0;
+        padding-inline: 0;
+        padding-bottom: calc(var(--line-height) * 3);
     }
 }
