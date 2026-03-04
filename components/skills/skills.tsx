@@ -8,8 +8,6 @@ export function Skills() {
             {skills.map((skill) => (
                 <p key={skill}>{skill}</p>
             ))}
-
-            {/* {skills.join(', ')} */}
         </Section>
     );
 }

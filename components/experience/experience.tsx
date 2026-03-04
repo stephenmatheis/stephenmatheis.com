@@ -6,24 +6,25 @@ export function Experience() {
     return (
         <Section className={styles.experience} heading="Experience">
             <div className={styles.jobs}>
-                {experience.map(({ company, roles, list }, index) => {
+                {experience.map(({ company, site, roles, list }, index) => {
                     return (
                         <div key={index} className={styles.job}>
+                            <div className={styles.company}>
+                                {site ? (
+                                    <a href={site}>
+                                        [<span>{company}</span>]({site.replace('https://', '')})
+                                    </a>
+                                ) : (
+                                    <>{company}</>
+                                )}
+                            </div>
                             <div className={styles.roles}>
                                 {roles.map(({ title, start, end }, index: number) => {
                                     return (
                                         <div key={index} className={styles.role}>
-                                            <h3 className={styles.heading}>
-                                                <span className={styles.title}>{title}</span>
-                                                {index === 0 && (
-                                                    <>
-                                                        <span className={styles.company}>, {company}</span>
-                                                    </>
-                                                )}
-                                            </h3>
+                                            <div className={styles.title}>{title}</div>
                                             <div className={styles.date}>
-                                                {start}
-                                                {end && <> - {end}</>}
+                                                {start} - {end}
                                             </div>
                                         </div>
                                     );

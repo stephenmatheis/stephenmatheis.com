@@ -1,0 +1,17 @@
+.education {
+    .school {
+        .name {
+            color: var(--fg0);
+        }
+
+        .major {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .years {
+                color: var(--fg3);
+            }
+        }
+    }
+}

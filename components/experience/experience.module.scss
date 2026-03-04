@@ -1,8 +1,16 @@
 .experience {
     .jobs {
+        display: flex;
+        flex-direction: column;
+        gap: var(--line-height);
+
         .job {
-            &:not(:last-child) {
-                margin-bottom: 24px;
+            .company {
+                color: var(--fg3);
+
+                span {
+                    color: var(--fg0);
+                }
             }
 
             .roles {
@@ -10,29 +18,23 @@
                     display: flex;
                     justify-content: space-between;
 
-                    @media screen and (max-width: 815px) {
-                        flex-direction: column;
-                    }
-
-                    .heading {
-                        flex: 1;
-                        font-size: 1rem;
-                        font-weight: 400;
-
-                        .title {
-                            font-size: 1rem;
-                            font-weight: normal;
-                        }
-
-                        .company {
-                            font-weight: 400;
-                        }
+                    .title {
+                        color: var(--fg2);
                     }
 
                     .date {
-                        font-family: sans-serif;
+                        color: var(--fg3);
+                        min-width: 11ch;
+                    }
+
+                    @media screen and (max-width: 815px) {
+                        flex-direction: column;
                     }
                 }
+            }
+
+            .list {
+                color: var(--fg1);
             }
         }
     }

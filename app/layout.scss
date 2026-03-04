@@ -1,10 +1,33 @@
 :root {
-    --background-color: #ffffff;
-    --color: #000000;
+    --bg0: #282828;
+    --bg1: #3c3836;
+    --bg2: #504945;
+    --bg3: #665c54;
+    --bg4: #7c6f64;
 
-    font-size: 14px;
-    line-height: 1.75;
-    line-height: 24px;
+    --fg0: #ebdbb2;
+    --fg1: #d5c4a1;
+    --fg2: #bdae93;
+    --fg3: #a89984;
+    --fg4: hsl(35, 17%, 40%);
+
+    --bright-red: #fb4934;
+    --bright-purple: #d3869b;
+    --bright-orange: #fe8019;
+    --bright-aqua: #8ec07c;
+    --bright-blue: #83a598;
+    --bright-green: #a6b758;
+
+    --neutral-orange: #d65d0e;
+    --neutral-yellow: #d79921;
+
+    --faded-orange: #af3a03;
+    --faded-yellow: #b57614;
+
+    --gray: #928374;
+
+    --line-height: 18px;
+    --font-size: 12px;
 }
 
 html {
@@ -16,15 +39,19 @@ html {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    line-height: var(--line-height);
+    font-size: 12px;
+    font-weight: 400;
 }
 
 body {
-    font-family: var(--font-sans);
-    background-color: var(--background-color);
+    font-family: Hack, monospace;
+    background-color: var(--bg0);
+    color: var(--fg1);
 }
 
 a {
-    color: LinkText;
+    color: var(--color);
     text-decoration: none;
 }
 

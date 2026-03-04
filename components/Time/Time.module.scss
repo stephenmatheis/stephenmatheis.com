@@ -1,0 +1,16 @@
+.time {
+    display: flex;
+    align-items: center;
+    padding-left: 2ch;
+    padding-right: 1ch;
+
+    svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    span {
+        padding-left: 1ch;
+        font-weight: 600;
+    }
+}

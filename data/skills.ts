@@ -1,15 +1,27 @@
 const skills = [
     'JavaScript',
     'TypeScript',
+    'Python',
+    'Lua',
+    'C#',
+    'PowerShell',
+    'Bash',
     'HTML',
     'CSS',
     'SCSS',
     'React',
+    'React Native',
     'Node.js',
+    'Vite',
+    'Webpack',
     'Next.js',
+    'Expo',
+    'PostgreSQL',
     'MongoDB',
     'AWS',
+    'Docker',
     'Figma',
+    'Sketch',
 ];
 
 export default skills;

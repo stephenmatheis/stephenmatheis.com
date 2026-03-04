@@ -8,12 +8,11 @@ export function Work() {
             <div className={styles.list}>
                 {work.map(({ name, href, description }) => (
                     <div key={name} className={styles.item}>
-                        <h3>{name}</h3>
-                        <p>
+                        <div className={styles.heading}>
                             <a href={href} target="_blank">
-                                {href.replace('https://', '')}
+                                [<span>{name}</span>]({href.replace('https://', '')})
                             </a>
-                        </p>
+                        </div>
                         <p className={styles.description}>{description}</p>
                     </div>
                 ))}

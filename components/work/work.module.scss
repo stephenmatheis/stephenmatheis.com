@@ -2,12 +2,19 @@
     .list {
         .item {
             &:not(:last-child) {
-                margin-bottom: 24px;
+                margin-bottom: var(--line-height);
             }
 
-            h3 {
-                font-size: 1rem;
-                font-weight: normal;
+            .heading {
+                color: var(--fg3);
+
+                span {
+                    color: var(--fg0);
+                }
+            }
+
+            .description {
+                width: fit-content;
             }
         }
     }
