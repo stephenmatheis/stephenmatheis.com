@@ -80,6 +80,18 @@
             padding-left: 2ch;
             clip-path: polygon(var(--arrow-size) 0%, 100% 0%, 100% 100%, var(--arrow-size) 100%, 0% 50%);
 
+            .position {
+                @media (max-width: 815px) {
+                    display: none;
+                }
+            }
+
+            .line {
+                @media (max-width: 815px) {
+                    display: none;
+                }
+            }
+
             .innerbar {
                 display: flex;
                 align-items: center;
@@ -88,6 +100,10 @@
                 // background-color: var(--bright-green);
                 background-color: var(--fg3);
                 clip-path: polygon(var(--arrow-size) 0%, 100% 0%, 100% 100%, var(--arrow-size) 100%, 0% 50%);
+            }
+
+            @media (max-width: 815px) {
+                height: var(--line-height);
             }
         }
     }
