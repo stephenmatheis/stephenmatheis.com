@@ -106,7 +106,6 @@
                 align-items: center;
                 height: 100%;
                 color: var(--bg0);
-                // background-color: var(--bright-green);
                 background-color: var(--fg3);
                 clip-path: polygon(var(--arrow-size) 0%, 100% 0%, 100% 100%, var(--arrow-size) 100%, 0% 50%);
             }
@@ -129,6 +128,7 @@
         box-shadow: 0px 9px 0px 0px var(--bg0);
 
         @media (max-width: 815px) {
+            bottom: 0;
             width: 100%;
         }
     }
