@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useMode } from '@/providers/ModeProvider';
 import { Statusbar } from '@/components/Statusbar';
 import { Time } from '@/components/Time';
 import { useVimMotions } from '@/hooks/useVimMotions';
 import styles from './page.module.scss';
-import { useMode } from '@/providers/ModeProvider';
 
 const tools = [
     {

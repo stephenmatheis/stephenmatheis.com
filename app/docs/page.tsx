@@ -1,7 +1,8 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useMode } from '@/providers/ModeProvider';
 import { Statusbar } from '@/components/Statusbar';
 import { Time } from '@/components/Time';
 import { useVimMotions } from '@/hooks/useVimMotions';
@@ -119,6 +120,7 @@ function fuzzyRegex(search: string) {
 
 export default function Page() {
     const router = useRouter();
+    const { mode } = useMode();
     const [selected, setSelected] = useState<number>(0);
     const [query, setQuery] = useState<string>('');
     const selectedDocName = tools[0].name;
@@ -135,6 +137,20 @@ export default function Page() {
             router.push(selectedDocs[selected].href);
         },
     });
+
+    useEffect(() => {
+        if (mode === 'INSERT') {
+            inputRef.current?.focus();
+
+            return;
+        }
+
+        if (mode === 'NORMAL') {
+            inputRef.current?.blur();
+
+            return;
+        }
+    }, [mode]);
 
     return (
         <div className={styles.page}>
