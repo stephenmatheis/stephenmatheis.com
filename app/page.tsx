@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Time } from '@/components/Time';
 import styles from './page.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const ascii = `██╗  ██╗███████╗██╗     ██╗      ██████╗    
@@ -76,6 +76,7 @@ const options = [
 
 export default function Page() {
     const router = useRouter();
+    const [selected, setSelected] = useState<number>(0);
 
     useEffect(() => {
         function handleKeydown(event: KeyboardEvent) {
@@ -104,6 +105,32 @@ export default function Page() {
 
                 return;
             }
+
+            if (event.key === 'j') {
+                setSelected((prev) => {
+                    if (prev === options.length - 1) return prev;
+
+                    return prev + 1;
+                });
+
+                return;
+            }
+
+            if (event.key === 'k') {
+                setSelected((prev) => {
+                    if (prev === 0) return prev;
+
+                    return prev - 1;
+                });
+
+                return;
+            }
+
+            if (event.key === 'Enter') {
+                router.push(options[selected].href);
+
+                return;
+            }
         }
 
         window.addEventListener('keydown', handleKeydown);
@@ -111,7 +138,7 @@ export default function Page() {
         return () => {
             window.removeEventListener('keydown', handleKeydown);
         };
-    }, []);
+    }, [selected]);
 
     return (
         <div className={styles.page}>
@@ -123,7 +150,14 @@ export default function Page() {
                             <Link key={index} href={href} className={styles.option}>
                                 <span className={styles.label}>
                                     {icon}
-                                    {label}
+                                    <span>
+                                        <span
+                                            className={`${styles.highlight} ${index === selected ? styles.selected : styles.normal}`}
+                                        >
+                                            {label[0]}
+                                        </span>
+                                        {label.slice(1)}
+                                    </span>
                                 </span>
                                 <span className={styles.cmd}>{cmd}</span>
                             </Link>
