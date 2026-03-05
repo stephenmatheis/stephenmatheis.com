@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import './fonts/hack/hack.css';
 import './layout.scss';
+import { Commands } from '@/components/Commands';
 
 export const metadata: Metadata = {
     title: {
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body suppressHydrationWarning>
                 {children}
                 <Analytics debug={false} />
+                <Commands />
             </body>
         </html>
     );
