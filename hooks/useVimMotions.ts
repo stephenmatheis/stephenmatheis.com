@@ -36,7 +36,8 @@ export function useVimMotions({ max, selected, setSelected, onEnter }: Props) {
             }
 
             if (event.key === 'i') {
-                // if (mode === 'INSERT') return;
+                event.preventDefault();
+                event.stopPropagation();
 
                 setMode('INSERT');
 
