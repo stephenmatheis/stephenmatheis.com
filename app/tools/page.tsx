@@ -1,8 +1,9 @@
 'use client';
 
-import { Statusbar } from '@/components/Statusbar';
-import styles from './page.module.scss';
 import { useState } from 'react';
+import { Statusbar } from '@/components/Statusbar';
+import { Time } from '@/components/Time';
+import styles from './page.module.scss';
 
 const tools = [
     {
@@ -144,7 +145,12 @@ export default function Page() {
                     {selectedToolContent}
                 </div>
             </div>
-            <Statusbar />
+            <Statusbar
+                mode="NORMAL"
+                fileName=""
+                outerBar={<>Showing {selectedTools.length} tools</>}
+                innerBar={<Time />}
+            />
         </div>
     );
 }
