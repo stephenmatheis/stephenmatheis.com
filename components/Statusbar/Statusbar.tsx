@@ -13,8 +13,6 @@ type StatusbarProps = {
 export function Statusbar({ fileName, outerBar, innerBar }: StatusbarProps) {
     const { mode } = useMode();
 
-    console.log(mode);
-
     return (
         <div className={styles.statusbar}>
             <div className={styles.left}>
