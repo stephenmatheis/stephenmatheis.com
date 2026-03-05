@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import { Experience } from '@/components/experience';
 import { Name } from '@/components/name';
 import { Contact } from '@/components/contact';
@@ -8,9 +11,21 @@ import { About } from '@/components/About';
 import { Certifications } from '@/components/Certifications';
 import { Statusbar } from '@/components/Statusbar';
 import { Time } from '@/components/Time';
+import { useVimMotions } from '@/hooks/useVimMotions';
 import styles from './page.module.scss';
 
 export default function Page() {
+    const [selected, setSelected] = useState<number>(0);
+
+    useVimMotions({
+        max: 0,
+        selected,
+        setSelected,
+        onEnter() {
+            console.log('Enter.');
+        },
+    });
+
     return (
         <div className={styles.page}>
             <div className={styles.sheet}>
@@ -40,8 +55,7 @@ export default function Page() {
                         </div>
                     </div>
                     <Statusbar
-                        mode="VERSION"
-                        fileName="2.0.35"
+                        fileName="about"
                         outerBar={
                             <a className={styles.download} href="/stephen-matheis-resume.pdf" target="_blank">
                                 <svg width="12" height="12" viewBox="0 0 16 16" strokeLinejoin="round">

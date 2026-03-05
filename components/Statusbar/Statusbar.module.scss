@@ -33,11 +33,11 @@
                 0% 100%
             );
 
-            &.normal {
+            &.NORMAL {
                 background-color: var(--fg3);
             }
 
-            &.insert {
+            &.INSERT {
                 background-color: var(--bright-green);
             }
 
@@ -89,12 +89,6 @@
             background-color: var(--bg2);
             padding-left: 2ch;
             clip-path: polygon(var(--arrow-size) 0%, 100% 0%, 100% 100%, var(--arrow-size) 100%, 0% 50%);
-
-            .download {
-                display: flex;
-                align-items: center;
-                gap: 1ch;
-            }
 
             .position {
                 @media (max-width: 815px) {

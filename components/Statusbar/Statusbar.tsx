@@ -1,18 +1,24 @@
+'use client';
+
 import { ReactNode } from 'react';
+import { useMode } from '@/providers/ModeProvider';
 import styles from './Statusbar.module.scss';
 
 type StatusbarProps = {
-    mode: string;
     fileName: string;
     outerBar: ReactNode | string;
     innerBar: ReactNode | string;
 };
 
-export function Statusbar({ mode, fileName, outerBar, innerBar }: StatusbarProps) {
+export function Statusbar({ fileName, outerBar, innerBar }: StatusbarProps) {
+    const { mode } = useMode();
+
+    console.log(mode);
+
     return (
         <div className={styles.statusbar}>
             <div className={styles.left}>
-                <div className={`${styles.mode} ${styles.normal}`}>
+                <div className={`${styles.mode} ${styles[mode]}`}>
                     <span>{mode}</span>
                 </div>
                 <div className={styles.file}>
