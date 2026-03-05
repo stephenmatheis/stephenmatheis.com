@@ -4,6 +4,7 @@ import { Commands } from '@/components/Commands';
 import './fonts/hack/hack.css';
 import './layout.scss';
 import { ModeProvider } from '@/providers/ModeProvider';
+import { ControlsGuide } from '@/components/ControlsGuide';
 
 export const metadata: Metadata = {
     title: {
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ModeProvider>{children}</ModeProvider>
                 <Analytics debug={false} />
                 <Commands />
+                <ControlsGuide />
             </body>
         </html>
     );
