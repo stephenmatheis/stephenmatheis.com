@@ -1,0 +1,39 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 96px;
+    max-width: 1800px;
+    margin: 0 auto;
+    height: 100dvh;
+    padding-inline: 24px;
+    padding-top: 96px;
+    padding-bottom: 12px;
+
+    .pane {
+        flex: 1;
+        display: flex;
+        gap: 12px;
+        height: 100%;
+        width: 100%;
+
+        .list {
+            flex: 1;
+            border: solid 1px var(--bg3);
+            padding: 6px;
+
+            .input {
+                width: 100%;
+                border-bottom: solid 1px var(--bg3);
+                padding-block: 6px;
+            }
+        }
+
+        .view {
+            flex: 1;
+            border: solid 1px var(--bg3);
+            padding: 6px;
+        }
+    }
+}
