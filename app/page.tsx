@@ -1,10 +1,11 @@
 'use client';
 
-import Link from 'next/link';
-import { Time } from '@/components/Time';
-import styles from './page.module.scss';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { Time } from '@/components/Time';
+import { useVimMotions } from '@/hooks/useVimMotions';
+import styles from './page.module.scss';
 
 const ascii = `██╗  ██╗███████╗██╗     ██╗      ██████╗    
 ██║  ██║██╔════╝██║     ██║     ██╔═══██╗   
@@ -78,6 +79,15 @@ export default function Page() {
     const router = useRouter();
     const [selected, setSelected] = useState<number>(0);
 
+    useVimMotions({
+        max: options.length - 1,
+        selected,
+        setSelected,
+        onEnter() {
+            router.push(options[selected].href);
+        },
+    });
+
     useEffect(() => {
         function handleKeydown(event: KeyboardEvent) {
             if (event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
@@ -102,32 +112,6 @@ export default function Page() {
 
             if (event.key === 'c') {
                 router.push('/config');
-
-                return;
-            }
-
-            if (event.key === 'j') {
-                setSelected((prev) => {
-                    if (prev === options.length - 1) return prev;
-
-                    return prev + 1;
-                });
-
-                return;
-            }
-
-            if (event.key === 'k') {
-                setSelected((prev) => {
-                    if (prev === 0) return prev;
-
-                    return prev - 1;
-                });
-
-                return;
-            }
-
-            if (event.key === 'Enter') {
-                router.push(options[selected].href);
 
                 return;
             }

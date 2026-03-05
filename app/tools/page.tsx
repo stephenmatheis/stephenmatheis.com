@@ -1,90 +1,112 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Statusbar } from '@/components/Statusbar';
 import { Time } from '@/components/Time';
+import { useVimMotions } from '@/hooks/useVimMotions';
 import styles from './page.module.scss';
 
 const tools = [
     {
         name: 'Tool 1',
+        href: '/tools/test',
         content: <div className={styles.editor}>Tool 1 content.</div>,
     },
     {
         name: 'Tool 2',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 2 content.</div>,
     },
     {
         name: 'Tool 3',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 3 content.</div>,
     },
     {
         name: 'Tool 4',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 4 content.</div>,
     },
     {
         name: 'Tool 5',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 5 content.</div>,
     },
     {
         name: 'Tool 6',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 6 content.</div>,
     },
     {
         name: 'Tool 7',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 7 content.</div>,
     },
     {
         name: 'Tool 8',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 8 content.</div>,
     },
     {
         name: 'Tool 9',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 9 content.</div>,
     },
     {
         name: 'Tool 10',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 10 content.</div>,
     },
     {
         name: 'Tool 11',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 11 content.</div>,
     },
     {
         name: 'Tool 12',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 12 content.</div>,
     },
     {
         name: 'Tool 13',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 13 content.</div>,
     },
     {
         name: 'Tool 14',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 14 content.</div>,
     },
     {
         name: 'Tool 15',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 15 content.</div>,
     },
     {
         name: 'Tool 16',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 16 content.</div>,
     },
     {
         name: 'Tool 17',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 17 content.</div>,
     },
     {
         name: 'Tool 18',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 18 content.</div>,
     },
     {
         name: 'Tool 19',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 19 content.</div>,
     },
     {
         name: 'Tool 20',
-        content: <div className={styles.editor}>Tool 1 content.</div>,
+        href: '/tools/test',
+        content: <div className={styles.editor}>Tool 20 content.</div>,
     },
 ];
 
@@ -96,12 +118,23 @@ function fuzzyRegex(search: string) {
 }
 
 export default function Page() {
+    const router = useRouter();
     const [selected, setSelected] = useState<number>(0);
     const [query, setQuery] = useState<string>('');
     const selectedToolName = tools[0].name;
     const selectedToolContent = tools[0].content;
     const re = fuzzyRegex(query);
     const selectedTools = tools.filter(({ name }) => re.test(name));
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useVimMotions({
+        max: selectedTools.length - 1,
+        selected,
+        setSelected,
+        onEnter() {
+            router.push(selectedTools[selected].href);
+        },
+    });
 
     return (
         <div className={styles.page}>
@@ -118,13 +151,19 @@ export default function Page() {
                             />
                         </svg>
                         <input
+                            ref={inputRef}
                             className={styles.filter}
                             type="text"
                             value={query}
+                            onKeyDown={(event) => {
+                                if (event.key === 'q') {
+                                    event.stopPropagation();
+                                }
+                            }}
                             onChange={(event) => {
+                                setSelected(0);
                                 setQuery(event.target.value);
                             }}
-                            autoFocus
                         />
                     </div>
                     <div className={styles.list}>
@@ -145,12 +184,7 @@ export default function Page() {
                     {selectedToolContent}
                 </div>
             </div>
-            <Statusbar
-                mode="NORMAL"
-                fileName=""
-                outerBar={<>Showing {selectedTools.length} tools</>}
-                innerBar={<Time />}
-            />
+            <Statusbar fileName="" outerBar={<>Showing {selectedTools.length} tools</>} innerBar={<Time />} />
         </div>
     );
 }

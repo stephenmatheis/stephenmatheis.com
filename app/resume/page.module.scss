@@ -89,3 +89,9 @@
         padding-bottom: calc(var(--line-height) * 3);
     }
 }
+
+.download {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+}
