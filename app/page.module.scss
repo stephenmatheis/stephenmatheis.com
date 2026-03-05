@@ -6,12 +6,16 @@
     overflow: hidden;
 
     .splash {
+        user-select: none;
+
         .ascii {
             display: inline-block;
             white-space: pre;
             font-family: monospace;
             line-height: 1;
+            font-size: 13px;
             margin-bottom: calc(var(--line-height) * 2);
+            -webkit-font-smoothing: auto;
         }
 
         .options {
@@ -33,7 +37,7 @@
 
                     .highlight {
                         &.selected {
-                            background-color: var(--fg0);
+                            background-color: var(--fg2);
                             color: var(--bg0);
                         }
 
@@ -58,7 +62,11 @@
         .footer {
             display: flex;
             justify-content: center;
-            font-weight: 600;
+
+            * {
+                font-weight: 400;
+                color: var(--fg2);
+            }
         }
     }
 }
