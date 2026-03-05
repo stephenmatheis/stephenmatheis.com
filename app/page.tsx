@@ -26,9 +26,9 @@ const options = [
                 />
             </svg>
         ),
-        label: 'Resume',
-        href: '/resume',
-        cmd: 'r',
+        label: 'About',
+        href: '/about',
+        cmd: 'a',
     },
     {
         icon: (
@@ -92,8 +92,8 @@ export default function Page() {
         function handleKeydown(event: KeyboardEvent) {
             if (event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
 
-            if (event.key === 'r') {
-                router.push('/resume');
+            if (event.key === 'a') {
+                router.push('/about');
 
                 return;
             }
