@@ -1,39 +1,115 @@
 .page {
+    --half-height: calc(var(--line-height) / 2);
+    --qtr-height: calc(var(--line-height) / 4);
+
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 96px;
-    max-width: 1800px;
-    margin: 0 auto;
     height: 100dvh;
-    padding-inline: 24px;
-    padding-top: 96px;
-    padding-bottom: 12px;
+    padding-bottom: calc(var(--half-height) + (var(--line-height) * 3));
+    padding-top: calc(var(--line-height) * 3);
+    padding-inline: 3rem;
 
-    .pane {
+    .window {
         flex: 1;
         display: flex;
-        gap: 12px;
         height: 100%;
-        width: 100%;
+        gap: 1rem;
+        max-width: 1366px;
 
-        .list {
+        .pane {
+            position: relative;
             flex: 1;
-            border: solid 1px var(--bg3);
-            padding: 6px;
+            padding-top: var(--half-height);
+            height: 100%;
+            border: solid 1px var(--fg4);
 
-            .input {
-                width: 100%;
-                border-bottom: solid 1px var(--bg3);
-                padding-block: 6px;
+            display: flex;
+            flex-direction: column;
+
+            .name {
+                position: absolute;
+                top: calc(var(--half-height) * -1);
+                left: 50%;
+                transform: translateX(-50%);
+                color: var(--fg0);
+                background-color: var(--bg2);
+                padding-inline: 1ch;
+                font-weight: 600;
+            }
+
+            .label {
+                position: absolute;
+                top: -9px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: var(--fg0);
+                background-color: var(--bg0);
+                padding-inline: 1ch;
+                font-weight: 600;
+            }
+
+            .field {
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 2ch;
+                padding-inline: var(--half-height);
+
+                svg {
+                    position: absolute;
+                    top: 2px;
+                    left: 5.87px;
+                    width: 14px;
+                    height: 14px;
+                }
+
+                input {
+                    font-size: var(--font-size);
+                    line-height: var(--line-height);
+                    color: var(--fg1);
+                    font-family: inherit;
+                    width: 100%;
+                    background-color: var(--bg0);
+                    border: none;
+                    padding-bottom: var(--half-height);
+                    padding-left: 2ch;
+                    border-bottom: solid 1px var(--fg4);
+
+                    &:focus,
+                    &:active,
+                    &:focus-visible {
+                        outline: none;
+                    }
+                }
+            }
+
+            .list {
+                flex: 1;
+                height: 100%;
+                padding-inline: var(--half-height);
+                padding-top: var(--half-height);
+
+                overflow: auto;
+
+                .option {
+                    padding-inline: var(--half-height);
+
+                    &.normal {
+                        background-color: var(--bg0);
+                        color: var(--fg1);
+                    }
+
+                    &.selected {
+                        background-color: var(--bg1);
+                        color: var(--fg1);
+                    }
+                }
             }
         }
 
-        .view {
-            flex: 1;
-            border: solid 1px var(--bg3);
-            padding: 6px;
+        .editor {
+            padding-inline: 4ch;
         }
     }
 }
