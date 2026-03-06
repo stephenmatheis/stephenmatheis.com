@@ -108,12 +108,13 @@ export function Viewer({ title, items }: ViewerProps) {
                 </div>
             </div>
             <Statusbar
-                msg={
-                    <>
-                        Showing {selectedItems.length} item{selectedItems.length === 1 ? '' : 's'}
-                    </>
-                }
-                outerBar={<></>}
+                // msg={
+                //     <>
+                //         Showing {selectedItems.length} item{selectedItems.length === 1 ? '' : 's'}
+                //     </>
+                // }
+                msg=""
+                outerBar=""
                 innerBar={<Time />}
             />
         </div>
