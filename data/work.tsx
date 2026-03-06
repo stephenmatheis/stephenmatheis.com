@@ -3,14 +3,14 @@ const projects = [
         name: 'v n t r',
         href: 'https://vntr.events',
         date: '2017',
-        description: 'Lead management system. Real-time dashboards. Syncs with Tripleseat.',
+        description: 'A lead management system for restaurants. Surface hot lates. Real-time dashboards. Syncs with Tripleseat.',
     },
     {
         name: 'Line Writer',
         href: 'https://linewriter.app',
         date: '2017',
         description:
-            'A Chrome extension that replaces your new tab page with a simple notepad that highlights the current line.',
+            'A Chrome extension that replaces the new tab page with a notepad that highlights the current line. Text saved to local storage.',
     },
     {
         name: 'Robi',

@@ -32,7 +32,7 @@ export default function Page() {
                 <div className={styles.content}>
                     <div className={styles.columns}>
                         <div className={styles.numbers}>
-                            {Array.from({ length: 52 }).map((_, index) => {
+                            {Array.from({ length: 54 }).map((_, index) => {
                                 return (
                                     <div key={index} className={styles.number}>
                                         {index + 1}
@@ -55,7 +55,7 @@ export default function Page() {
                         </div>
                     </div>
                     <Statusbar
-                        msg="about"
+                        msg="stephen-matheis-resume"
                         outerBar={
                             <a className={styles.download} href="/stephen-matheis-resume.pdf" target="_blank">
                                 <svg width="12" height="12" viewBox="0 0 16 16" strokeLinejoin="round">

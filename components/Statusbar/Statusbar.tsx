@@ -44,7 +44,8 @@ export function Statusbar({ msg, outerBar, innerBar }: StatusbarProps) {
             {showGuide && <ControlsGuide />}
             <div className={styles.left}>
                 <div className={`${styles.mode} ${styles[mode]}`}>
-                    <span>{mode}</span>
+                    <span className={styles.screen}>{mode}</span>
+                    <span className={styles.print}>VERSION</span>
                 </div>
                 <div className={styles.file}>
                     <span>{msg}</span>
@@ -65,10 +66,11 @@ export function Statusbar({ msg, outerBar, innerBar }: StatusbarProps) {
                     </svg>
                 </span> */}
                 <span className={styles.help} onClick={() => setShowGuide((prev) => !prev)}>
-                    <span>show cmds</span> /
+                    <span className={styles.screen}>show cmds</span> /
                 </span>
                 <div className={styles.outerbar}>
-                    {outerBar}
+                    <span className={styles.screen}>{outerBar}</span>
+                    <div className={styles.print}>thanks for considering me</div>
                     <div className={styles.innerbar}>{innerBar}</div>
                 </div>
             </div>

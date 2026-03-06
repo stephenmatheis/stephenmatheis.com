@@ -60,7 +60,7 @@ export function Viewer({ title, items }: ViewerProps) {
     }, [mode]);
 
     return (
-        <div className={styles.page}>
+        <div className={styles.viewer}>
             <div className={styles.window}>
                 <div className={styles.pane}>
                     <div className={styles.name}>{title || 'Title'}</div>
