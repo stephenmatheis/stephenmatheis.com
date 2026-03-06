@@ -42,7 +42,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ModeProvider>{children}</ModeProvider>
                 <Analytics debug={false} />
                 <Commands />
-                <ControlsGuide />
             </body>
         </html>
     );

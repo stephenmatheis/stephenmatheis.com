@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useMode } from '@/providers/ModeProvider';
+import { ControlsGuide } from '@/components/ControlsGuide';
 import styles from './Statusbar.module.scss';
 
 type StatusbarProps = {
@@ -12,9 +13,35 @@ type StatusbarProps = {
 
 export function Statusbar({ fileName, outerBar, innerBar }: StatusbarProps) {
     const { mode } = useMode();
+    const [showGuide, setShowGuide] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (mode === 'INSERT') {
+            setShowGuide(false);
+
+            return;
+        }
+
+        function handleKeydown(event: KeyboardEvent) {
+            if (event.key === '?') {
+                if (mode === 'NORMAL') {
+                    setShowGuide((prev) => !prev);
+                }
+
+                return;
+            }
+        }
+
+        window.addEventListener('keydown', handleKeydown);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeydown);
+        };
+    }, [mode]);
 
     return (
         <div className={styles.statusbar}>
+            {showGuide && <ControlsGuide />}
             <div className={styles.left}>
                 <div className={`${styles.mode} ${styles[mode]}`}>
                     <span>{mode}</span>
@@ -25,6 +52,9 @@ export function Statusbar({ fileName, outerBar, innerBar }: StatusbarProps) {
             </div>
             <div className={styles.center}></div>
             <div className={styles.right}>
+                <span className={styles.help} onClick={() => setShowGuide((prev) => !prev)}>
+                    <span>help</span> ?
+                </span>
                 <div className={styles.outerbar}>
                     {outerBar}
                     <div className={styles.innerbar}>{innerBar}</div>

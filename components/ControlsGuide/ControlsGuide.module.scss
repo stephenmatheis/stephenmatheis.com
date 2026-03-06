@@ -1,41 +1,29 @@
 .guide {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
+    bottom: calc(100% + var(--half-height));
+    right: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2ch;
-    width: 100%;
-    padding-block: var(--half-height);
-    background-color: var(--bg0);
+    flex-direction: column;
+    gap: var(--half-height);
+    border: solid 1px var(--fg4);
+    background-color: var(--bg1);
+    padding: var(--qtr-height) var(--half-height);
 
     .group {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: var(--qtr-height);
+        justify-content: space-between;
+        gap: 8ch;
 
-        .cmds {
-            display: flex;
-            align-items: center;
-            gap: 1ch;
-
-            .cmd {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding-inline: calc(0.5ch + 1px);
-                color: var(--fg3);
-                border: solid 1px var(--fg4);
-                border-bottom-width: 2px;
-                line-height: var(--line-height);
-            }
+        .cmd {
+            color: var(--fg1);
         }
 
-        .name {
-            color: var(--fg4);
+        .label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--fg3);
 
             svg {
                 width: 12px;

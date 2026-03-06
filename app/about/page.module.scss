@@ -1,7 +1,7 @@
 .page {
     @media screen {
-        padding-top: calc(var(--line-height) * 3);
-        padding-bottom: calc(var(--half-height) + (var(--line-height) * 3));
+        // padding-top: calc(var(--line-height) * 3);
+        // padding-bottom: calc(var(--half-height) + (var(--line-height) * 3));
 
         @media (max-width: 815px) {
             padding-top: 0;

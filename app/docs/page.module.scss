@@ -4,8 +4,7 @@
     align-items: center;
     height: 100dvh;
     padding-bottom: calc(var(--half-height) + (var(--line-height) * 3));
-    // padding-top: calc(var(--line-height) * 3);
-    padding-top: calc(var(--line-height) * 6);
+    padding-top: calc(var(--line-height) * 3);
     padding-inline: 3rem;
 
     .window {
