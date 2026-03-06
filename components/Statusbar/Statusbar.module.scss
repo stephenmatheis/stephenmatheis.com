@@ -1,13 +1,37 @@
 .statusbar {
     --arrow-size: 4px;
 
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: var(--line-height);
 
-    * {
-        line-height: 1;
+    .help {
+        cursor: pointer;
+        color: var(--fg2);
+
+        @media (hover: hover) {
+            &:hover {
+                color: var(--fg0);
+
+                span {
+                    color: var(--fg0);
+                }
+            }
+        }
+
+        span {
+            color: var(--fg3);
+        }
+    }
+
+    .left,
+    .center,
+    .right {
+        * {
+            line-height: 1;
+        }
     }
 
     .left {
