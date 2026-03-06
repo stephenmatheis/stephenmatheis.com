@@ -16,44 +16,55 @@ export function useVimMotions({ max, selected, setSelected, onEnter }: Props) {
             if (event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
 
             if (event.key === 'j') {
-                setSelected((prev) => {
-                    if (prev === max) return prev;
+                if (mode === 'NORMAL') {
+                    setSelected((prev) => {
+                        if (prev === max) return prev;
 
-                    return prev + 1;
-                });
+                        return prev + 1;
+                    });
+                }
 
                 return;
             }
 
             if (event.key === 'k') {
-                setSelected((prev) => {
-                    if (prev === 0) return prev;
+                if (mode === 'NORMAL') {
+                    setSelected((prev) => {
+                        if (prev === 0) return prev;
 
-                    return prev - 1;
-                });
+                        return prev - 1;
+                    });
+                }
 
                 return;
             }
 
             if (event.key === 'i') {
-                event.preventDefault();
-                event.stopPropagation();
+                if (mode === 'NORMAL') {
+                    event.preventDefault();
+                    event.stopPropagation();
 
-                setMode('INSERT');
-
-                return;
-            }
-
-            if (event.key === 'Escape') {
-                if (mode === 'NORMAL') return;
-
-                setMode('NORMAL');
+                    setMode('INSERT');
+                }
 
                 return;
             }
 
             if (event.key === 'Enter') {
-                onEnter?.();
+                if (mode === 'NORMAL') {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    onEnter?.();
+                }
+
+                return;
+            }
+
+            if (event.key === 'Escape') {
+                if (mode === 'INSERT') {
+                    setMode('NORMAL');
+                }
 
                 return;
             }
