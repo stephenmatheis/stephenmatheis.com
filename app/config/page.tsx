@@ -125,7 +125,7 @@ export default function Page() {
                     {selectedContent}
                 </div>
             </div>
-            <Statusbar fileName="" outerBar={<>Showing {selectedTools.length} tools</>} innerBar={<Time />} />
+            <Statusbar msg="" outerBar={<>Showing {selectedTools.length} tools</>} innerBar={<Time />} />
         </div>
     );
 }
