@@ -55,7 +55,7 @@ export default function Page() {
                         </div>
                     </div>
                     <Statusbar
-                        fileName="about"
+                        msg="about"
                         outerBar={
                             <a className={styles.download} href="/stephen-matheis-resume.pdf" target="_blank">
                                 <svg width="12" height="12" viewBox="0 0 16 16" strokeLinejoin="round">
