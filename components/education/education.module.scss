@@ -2,6 +2,10 @@
     .school {
         .name {
             color: var(--fg0);
+
+            span {
+                color: var(--fg3);
+            }
         }
 
         .major {

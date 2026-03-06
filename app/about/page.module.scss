@@ -1,15 +1,4 @@
 .page {
-    @media screen {
-        // padding-top: calc(var(--line-height) * 3);
-        // padding-bottom: calc(var(--half-height) + (var(--line-height) * 3));
-
-        @media (max-width: 815px) {
-            padding-top: 0;
-            padding-inline: 0;
-            padding-bottom: calc(var(--line-height) * 3);
-        }
-    }
-
     .sheet {
         display: flex;
         align-items: center;
@@ -96,4 +85,8 @@
     display: flex;
     align-items: center;
     gap: 1ch;
+
+    @media print {
+        display: none;
+    }
 }
