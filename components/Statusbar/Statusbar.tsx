@@ -6,12 +6,12 @@ import { ControlsGuide } from '@/components/ControlsGuide';
 import styles from './Statusbar.module.scss';
 
 type StatusbarProps = {
-    fileName: string;
+    msg: ReactNode | string;
     outerBar: ReactNode | string;
     innerBar: ReactNode | string;
 };
 
-export function Statusbar({ fileName, outerBar, innerBar }: StatusbarProps) {
+export function Statusbar({ msg, outerBar, innerBar }: StatusbarProps) {
     const { mode } = useMode();
     const [showGuide, setShowGuide] = useState<boolean>(false);
 
@@ -23,10 +23,10 @@ export function Statusbar({ fileName, outerBar, innerBar }: StatusbarProps) {
         }
 
         function handleKeydown(event: KeyboardEvent) {
-            if (event.key === '?') {
-                if (mode === 'NORMAL') {
-                    setShowGuide((prev) => !prev);
-                }
+            if (event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
+
+            if (event.key === '/') {
+                setShowGuide((prev) => !prev);
 
                 return;
             }
@@ -47,13 +47,13 @@ export function Statusbar({ fileName, outerBar, innerBar }: StatusbarProps) {
                     <span>{mode}</span>
                 </div>
                 <div className={styles.file}>
-                    <span>{fileName}</span>
+                    <span>{msg}</span>
                 </div>
             </div>
             <div className={styles.center}></div>
             <div className={styles.right}>
                 <span className={styles.help} onClick={() => setShowGuide((prev) => !prev)}>
-                    <span>help</span> ?
+                    <span>show cmds</span> /
                 </span>
                 <div className={styles.outerbar}>
                     {outerBar}
