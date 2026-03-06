@@ -7,23 +7,43 @@
     gap: var(--half-height);
     border: solid 1px var(--fg4);
     background-color: var(--bg1);
-    padding: var(--qtr-height) var(--half-height);
+    padding: var(--line-height) var(--half-height);
+
+    .title {
+        position: absolute;
+        top: -9px;
+        left: 2ch;
+        background-color: var(--bg1);
+        padding-inline: 1ch;
+        border: solid 1px var(--fg4);
+    }
 
     .group {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 8ch;
+        gap: 1ch;
 
         .cmd {
-            color: var(--fg1);
+            color: var(--fg0);
+        }
+
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--fg3);
+
+            svg {
+                width: 8px;
+                height: 8px;
+            }
         }
 
         .label {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--fg3);
+            color: var(--fg2);
 
             svg {
                 width: 12px;

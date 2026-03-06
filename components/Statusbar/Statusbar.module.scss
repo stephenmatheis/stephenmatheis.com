@@ -7,6 +7,18 @@
     justify-content: space-between;
     height: var(--line-height);
 
+    .chord {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1ch;
+        color: var(--fg2);
+
+        span {
+            color: var(--fg3);
+        }
+    }
+
     .help {
         cursor: pointer;
         color: var(--fg2);
