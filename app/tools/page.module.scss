@@ -1,3 +1,8 @@
 .editor {
     padding-inline: 4ch;
+    overflow: auto;
+
+    pre {
+        color: var(--fg1);
+    }
 }

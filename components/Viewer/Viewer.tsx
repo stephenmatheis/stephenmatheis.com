@@ -10,6 +10,7 @@ import styles from './Viewer.module.scss';
 
 type Item = {
     name: string;
+    description: string;
     href: string;
     content: ReactNode | string;
 };
@@ -90,13 +91,14 @@ export function Viewer({ title, items }: ViewerProps) {
                         />
                     </div>
                     <div className={styles.list}>
-                        {selectedItems.map(({ name }, index) => {
+                        {selectedItems.map(({ name, description }, index) => {
                             return (
                                 <div
                                     key={index}
                                     className={`${styles.option} ${index === selected ? styles.selected : styles.normal}`}
                                 >
-                                    {name}
+                                    <span className={styles.toolname}>{name}</span>{' '}
+                                    {index === selected && <span className={styles.description}>{description}</span>}
                                 </div>
                             );
                         })}
@@ -107,16 +109,7 @@ export function Viewer({ title, items }: ViewerProps) {
                     {content}
                 </div>
             </div>
-            <Statusbar
-                // msg={
-                //     <>
-                //         Showing {selectedItems.length} item{selectedItems.length === 1 ? '' : 's'}
-                //     </>
-                // }
-                msg=""
-                outerBar=""
-                innerBar={<Time />}
-            />
+            <Statusbar msg="" outerBar="" innerBar={<Time />} />
         </div>
     );
 }
