@@ -10,7 +10,7 @@ const experience = [
                 end: 'Now',
             },
         ],
-        list: ['Providing software engineering services.', 'Government consulting.'],
+        list: ['Custom app development.', 'IT Consulting.'],
     },
     {
         company: 'TATCS',
@@ -28,7 +28,7 @@ const experience = [
                 end: '2024',
             },
         ],
-        list: ['Redesigned the U.S. Tsunami Warning System.', 'Trained junior engineers.'],
+        list: ['Redesigned the U.S. Tsunami Warning System.', 'Taught junior engineers.'],
     },
     {
         company: 'Apple',
