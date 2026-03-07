@@ -20,7 +20,7 @@ export function Contact() {
                 </a>
             </div>
             <div className={styles.line}>
-                <a href="https://codepen.com/stephenmatheis" target="_blank" title="My CodePen profile">
+                <a href="https://codepen.io/stephenmatheis" target="_blank" title="My CodePen profile">
                     [<span>codepen</span>](@stephenmatheis)
                 </a>
             </div>
