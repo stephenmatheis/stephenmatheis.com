@@ -40,7 +40,6 @@ export default function Page() {
                                 );
                             })}
                         </div>
-
                         <div className={styles.left}>
                             <Name />
                             <Contact />
