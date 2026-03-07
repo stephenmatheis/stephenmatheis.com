@@ -1,10 +1,8 @@
 .page {
     .sheet {
         display: flex;
-        align-items: center;
         position: relative;
         width: 8.5in;
-        height: 11in;
         padding-inline: 0.5in;
         margin: 0 auto;
 
@@ -72,11 +70,19 @@
         @media screen {
             // box-shadow: 0 0 0 2px var(--bg3);
 
+            padding-top: calc(var(--line-height));
+            padding-bottom: calc(100dvh - (var(--line-height) * 2));
+
             @media (max-width: 815px) {
                 width: 100%;
                 height: 100%;
                 padding: 0.125in;
             }
+        }
+
+        @media print {
+            height: 11in;
+            padding-top: calc((11in - (var(--line-height) * 54) - var(--line-height) - var(--half-height)) / 2);
         }
     }
 }
