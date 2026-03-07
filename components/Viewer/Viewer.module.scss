@@ -17,12 +17,11 @@
         .pane {
             position: relative;
             flex: 1;
-            padding-top: var(--half-height);
-            height: 100%;
-            border: solid 1px var(--fg4);
-
             display: flex;
             flex-direction: column;
+            height: 100%;
+            padding-top: var(--half-height);
+            border: solid 1px var(--fg4);
 
             .name {
                 position: absolute;
@@ -89,6 +88,9 @@
                 overflow: auto;
 
                 .option {
+                    display: flex;
+                    align-items: center;
+                    gap: 1ch;
                     padding-inline: var(--half-height);
 
                     &.normal {
@@ -100,12 +102,20 @@
                         background-color: var(--bg1);
                         color: var(--fg1);
                     }
+
+                    .toolname {
+                        color: var(--fg1);
+                    }
+
+                    .description {
+                        color: var(--fg3);
+                    }
+
+                    svg {
+                        color: var(--fg3);
+                    }
                 }
             }
-        }
-
-        .editor {
-            padding-inline: 4ch;
         }
     }
 }
