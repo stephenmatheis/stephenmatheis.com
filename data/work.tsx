@@ -3,7 +3,8 @@ const projects = [
         name: 'v n t r',
         href: 'https://vntr.events',
         date: '2017',
-        description: 'A lead management system for restaurants. Surface hot lates. Real-time dashboards. Syncs with Tripleseat.',
+        description:
+            'A lead management system for restaurants. Surface hot lates. Real-time dashboards. Syncs with Tripleseat.',
     },
     {
         name: 'Line Writer',
@@ -17,14 +18,14 @@ const projects = [
         href: 'https://robijs.dev',
         date: '2017',
         description:
-            'A SharePoint client-side app framework. Supports offline local development. Automatically creates required lists and Content Types when deployed.',
+            'A SharePoint client-side app framework. Supports offline local development. Automatically creates required lists and Content Types when deployed. ',
     },
-    {
-        name: 'next (dot) gov',
-        href: 'https://nextdotgov.com/',
-        date: '2025',
-        description: 'My web consultancy serving government and private clients. Established June 2025.',
-    },
+    // {
+    //     name: 'next (dot) gov',
+    //     href: 'https://nextdotgov.com/',
+    //     date: '2025',
+    //     description: 'My web consultancy serving government and private clients. Established June 2025.',
+    // },
 ];
 
 export default projects;
