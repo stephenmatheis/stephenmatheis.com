@@ -1,3 +1,5 @@
+import styles from './page.module.scss';
+
 export default function Page() {
-    return <>Hello, world.</>;
+    return <div className={styles.page}>Hello, world.</div>;
 }
