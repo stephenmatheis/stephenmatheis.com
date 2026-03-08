@@ -88,6 +88,7 @@
                 .option {
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     gap: 1ch;
                     padding-inline: var(--half-height);
                     overflow: auto;
