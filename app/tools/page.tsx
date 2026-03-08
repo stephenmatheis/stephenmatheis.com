@@ -1,4 +1,6 @@
 import { Viewer } from '@/components/Viewer';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { gruvboxDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import styles from './page.module.scss';
 
 const mkcom = `#!/bin/bash
@@ -50,8 +52,19 @@ const tools = [
         href: '/tools/color-palettes',
         content: (
             <div className={styles.editor}>
+                <SyntaxHighlighter language="bash" style={gruvboxDark}>
+                    {mkcom}
+                </SyntaxHighlighter>
+
                 {/* <pre>{mkcom}</pre> */}
-                {mkcom}
+
+                {/* {mkcom.split('\n').map((line, index) => {
+                    return (
+                        <div key={index}>
+                            <pre>{line}</pre>
+                        </div>
+                    );
+                })} */}
             </div>
         ),
     },
