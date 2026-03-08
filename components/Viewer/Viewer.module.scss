@@ -1,22 +1,22 @@
 .viewer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100dvh;
     padding-bottom: calc(var(--half-height) + (var(--line-height) * 3));
     padding-top: calc(var(--line-height) * 3);
     padding-inline: 3rem;
 
     .window {
-        flex: 1;
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, calc(50% - 8px));
+        grid-template-rows: calc(
+            100dvh - calc(var(--half-height) + (var(--line-height) * 3)) - calc(var(--line-height) * 3)
+        );
+        gap: 16px;
         height: 100%;
-        gap: 1rem;
         max-width: 1366px;
+        margin: 0 auto;
 
         .pane {
             position: relative;
-            flex: 1;
             display: flex;
             flex-direction: column;
             height: 100%;
@@ -84,7 +84,6 @@
                 height: 100%;
                 padding-inline: var(--half-height);
                 padding-top: var(--half-height);
-
                 overflow: auto;
 
                 .option {
@@ -109,6 +108,7 @@
 
                     .description {
                         color: var(--fg3);
+                        white-space: nowrap;
                     }
 
                     svg {
