@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
+import { ModeProvider } from '@/providers/ModeProvider';
 import { Commands } from '@/components/Commands';
 import './fonts/hack/hack.css';
 import './layout.scss';
-import { ModeProvider } from '@/providers/ModeProvider';
-import { ControlsGuide } from '@/components/ControlsGuide';
 
 export const metadata: Metadata = {
     title: {
