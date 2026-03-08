@@ -1,6 +1,7 @@
 .statusbar {
     --arrow-size: 6px;
 
+    user-select: none;
     position: relative;
     display: flex;
     align-items: center;
