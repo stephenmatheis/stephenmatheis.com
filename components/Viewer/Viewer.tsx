@@ -10,7 +10,7 @@ import styles from './Viewer.module.scss';
 
 type Item = {
     name: string;
-    description: string;
+    description?: string;
     href: string;
     content: ReactNode | string;
 };
