@@ -52,7 +52,12 @@ const tools = [
         href: '/tools/color-palettes',
         content: (
             <div className={styles.editor}>
-                <SyntaxHighlighter language="bash" style={gruvboxDark}>
+                <SyntaxHighlighter
+                    language="bash"
+                    style={gruvboxDark}
+                    showLineNumbers
+                    lineNumberStyle={{ color: 'var(--fg4)' }}
+                >
                     {mkcom}
                 </SyntaxHighlighter>
 
