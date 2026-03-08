@@ -39,6 +39,11 @@ html {
     overscroll-behavior: none;
 }
 
+::selection {
+    color: var(--bg0);
+    background-color: var(--fg1);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;

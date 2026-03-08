@@ -5,12 +5,16 @@
     padding-inline: 3rem;
 
     .window {
-        display: grid;
-        grid-template-columns: repeat(2, calc(50% - 8px));
-        grid-template-rows: calc(
-            100dvh - calc(var(--half-height) + (var(--line-height) * 3)) - calc(var(--line-height) * 3)
-        );
+        // display: grid;
+        // grid-template-columns: repeat(2, calc(50% - 8px));
+        // grid-template-rows: calc(
+        //     100dvh - calc(var(--half-height) + (var(--line-height) * 3)) - calc(var(--line-height) * 3)
+        // );
+        // gap: 16px;
+
+        display: flex;
         gap: 16px;
+
         height: 100%;
         max-width: 1366px;
         margin: 0 auto;
@@ -19,6 +23,9 @@
             position: relative;
             display: flex;
             flex-direction: column;
+            width: 100%;
+            min-width: 50%;
+            max-width: 50%;
             height: 100%;
             padding-top: var(--half-height);
             border: solid 1px var(--fg4);
@@ -84,13 +91,13 @@
                 height: 100%;
                 padding-inline: var(--half-height);
                 padding-top: var(--half-height);
-                overflow: auto;
 
                 .option {
                     display: flex;
                     align-items: center;
                     gap: 1ch;
                     padding-inline: var(--half-height);
+                    overflow: auto;
 
                     &.normal {
                         background-color: var(--bg0);
