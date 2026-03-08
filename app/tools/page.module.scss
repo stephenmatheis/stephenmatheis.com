@@ -1,7 +1,5 @@
 .editor {
+    padding-top: var(--half-height);
+    padding-bottom: var(--line-height);
     overflow: auto;
-
-    pre {
-        color: var(--fg1);
-    }
 }
