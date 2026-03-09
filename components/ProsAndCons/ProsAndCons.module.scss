@@ -57,7 +57,26 @@
                 &:active {
                     outline: none;
                 }
+
+                @media (max-width: 815px) {
+                    width: 100%;
+                }
+            }
+
+            @media (max-width: 815px) {
+                min-width: unset;
+                max-width: unset;
             }
         }
+
+        @media (max-width: 815px) {
+            gap: var(--half-height);
+        }
+    }
+
+    @media (max-width: 815px) {
+        padding-bottom: calc(var(--half-height) + (var(--line-height) * 1));
+        padding-top: var(--half-height);
+        padding-inline: var(--half-height);
     }
 }
