@@ -50,6 +50,7 @@ const skills = [
     'Vite',
     'Webpack',
     'YAML',
+    'USWDS',
 ];
 
 export default skills;
