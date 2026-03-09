@@ -53,6 +53,10 @@
         @media print {
             display: none;
         }
+
+        @media (max-width: 815px) {
+            display: none;
+        }
     }
 
     .left,
