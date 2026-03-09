@@ -1,0 +1,63 @@
+.prosandcons {
+    height: 100dvh;
+    padding-bottom: calc(var(--half-height) + (var(--line-height) * 3));
+    padding-top: calc(var(--line-height) * 3);
+    padding-inline: 3rem;
+
+    .window {
+        display: flex;
+        gap: 16px;
+        height: 100%;
+        max-width: 1366px;
+        margin: 0 auto;
+
+        .pane {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: 50%;
+            max-width: 50%;
+            height: 100%;
+            border: solid 1px var(--fg4);
+
+            .name {
+                position: absolute;
+                top: calc(var(--half-height) * -1);
+                left: 50%;
+                transform: translateX(-50%);
+                color: var(--fg0);
+                background-color: var(--bg2);
+                padding-inline: 1ch;
+                font-weight: 600;
+            }
+
+            .label {
+                position: absolute;
+                top: -9px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: var(--fg0);
+                background-color: var(--bg0);
+                padding-inline: 1ch;
+            }
+
+            textarea {
+                background-color: inherit;
+                border: none;
+                font-family: inherit;
+                font-size: inherit;
+                color: var(--fg1);
+                padding: var(--half-height);
+                height: 100%;
+                resize: none;
+
+                &:focus-visible,
+                &:focus,
+                &:active {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
