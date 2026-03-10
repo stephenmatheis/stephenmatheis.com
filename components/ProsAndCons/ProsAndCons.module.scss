@@ -5,8 +5,11 @@
     padding-inline: 3rem;
 
     .window {
+        --pane-gap: var(--line-height);
+        --pane-offset: calc(var(--pane-gap) / 2);
+
         display: flex;
-        gap: 16px;
+        gap: var(--pane-gap);
         height: 100%;
         max-width: 1366px;
         margin: 0 auto;
@@ -16,8 +19,8 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            min-width: 50%;
-            max-width: 50%;
+            min-width: calc(50% - var(--pane-offset));
+            max-width: calc(50% - var(--pane-offset));
             height: 100%;
             border: solid 1px var(--fg4);
 
@@ -62,21 +65,16 @@
                     width: 100%;
                 }
             }
-
-            @media (max-width: 815px) {
-                min-width: unset;
-                max-width: unset;
-            }
         }
 
         @media (max-width: 815px) {
-            gap: var(--half-height);
+            --pane-gap: var(--half-height);
         }
     }
 
     @media (max-width: 815px) {
         padding-bottom: calc(var(--half-height) + (var(--line-height) * 1));
-        padding-top: var(--half-height);
+        padding-top: var(--line-height);
         padding-inline: var(--half-height);
     }
 }
