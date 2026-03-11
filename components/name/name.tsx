@@ -4,9 +4,9 @@ export function Name() {
     return (
         <div className={styles.name}>
             <h1>Stephen Matheis</h1>
-            <div className={styles.muted}>Software Engineer</div>
-            <div className={styles.muted}>Washington, D.C.</div>
-            <div className={styles.muted}>TS/SCI</div>
+            <div className={styles.light}>Software Engineer</div>
+            <div className={styles.lighter}>Washington, D.C.</div>
+            <div className={styles.lightest}>TS/SCI</div>
         </div>
     );
 }

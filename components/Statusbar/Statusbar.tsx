@@ -45,7 +45,7 @@ export function Statusbar({ msg, outerBar, innerBar }: StatusbarProps) {
             <div className={styles.left}>
                 <div className={`${styles.mode} ${styles[mode]}`}>
                     <span className={styles.screen}>{mode}</span>
-                    <span className={styles.print}>{mode}</span>
+                    <span className={styles.print}>FILE</span>
                 </div>
                 <div className={styles.file}>
                     <span>{msg}</span>
