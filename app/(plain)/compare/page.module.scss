@@ -1,0 +1,72 @@
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+    overflow: hidden;
+
+    .splash {
+        user-select: none;
+
+        .ascii {
+            display: inline-block;
+            white-space: pre;
+            font-family: monospace;
+            line-height: 1;
+            font-size: 13px;
+            margin-bottom: calc(var(--line-height) * 2);
+            -webkit-font-smoothing: auto;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--line-height);
+            margin-bottom: calc(var(--line-height) * 1);
+
+            .option {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .label {
+                    display: flex;
+                    align-items: center;
+                    gap: 2ch;
+                    color: var(--fg0);
+
+                    .highlight {
+                        &.selected {
+                            background-color: var(--fg2);
+                            color: var(--bg0);
+                        }
+
+                        &.normal {
+                            background-color: inherit;
+                            color: inherit;
+                        }
+                    }
+
+                    svg {
+                        width: 12px;
+                        height: 12px;
+                    }
+                }
+
+                .cmd {
+                    color: var(--fg3);
+                }
+            }
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+
+            * {
+                font-weight: 400;
+                color: var(--fg2);
+            }
+        }
+    }
+}
