@@ -1,0 +1,32 @@
+.page {
+    padding-top: calc(50dvh - 24px);
+    padding-bottom: calc(100dvh - (var(--line-height) * 2));
+
+    .maxwidth {
+        max-width: 80ch;
+        margin: 0 auto;
+
+        .title {
+            display: inline-block;
+            white-space: pre;
+            font-family: monospace;
+            line-height: 1;
+            font-size: 8px;
+            margin-bottom: calc(var(--line-height) * 2);
+            -webkit-font-smoothing: auto;
+        }
+
+        .content {
+            section {
+                h2,
+                h3,
+                p,
+                li {
+                    font-size: 16px;
+                    line-height: 1.5;
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                }
+            }
+        }
+    }
+}

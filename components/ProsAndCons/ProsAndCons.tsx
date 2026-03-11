@@ -29,6 +29,7 @@ export function ProsAndCons() {
                 <div className={styles.pane}>
                     <div className={styles.label}>Pros</div>
                     <textarea
+                        autoFocus
                         className={styles.editor}
                         value={pros}
                         onChange={(event) => {
