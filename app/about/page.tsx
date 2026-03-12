@@ -44,7 +44,7 @@ export default function Page() {
                             <Name />
                             <Contact />
                             <Skills />
-                            <Work />
+                            {/* <Work /> */}
                         </div>
                         <div className={styles.right}>
                             <About />
