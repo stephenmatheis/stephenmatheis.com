@@ -1,8 +1,17 @@
 .skills {
-    color: var(--fg0);
+    .groups {
+        display: flex;
+        flex-direction: column;
+        gap: var(--line-height);
 
-    .list {
-        display: grid;
-        grid-template-columns: repeat(3, auto);
+        .group {
+            .name {
+                color: var(--fg0);
+            }
+
+            .items {
+                color: var(--fg2);
+            }
+        }
     }
 }

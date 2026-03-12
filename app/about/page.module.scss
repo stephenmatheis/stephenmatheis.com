@@ -39,6 +39,7 @@
 
                 .left {
                     max-width: 39ch;
+                    min-width: 39ch;
                 }
 
                 @media (max-width: 815px) {
