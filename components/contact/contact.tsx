@@ -25,6 +25,11 @@ export function Contact() {
                 </a>
             </div>
             <div className={styles.line}>
+                <a href="https://nextdotgov.com" target="_blank" title="My consultancy, NEXTDOTGOV.">
+                    [<span>work</span>](nextdotgov.com)
+                </a>
+            </div>
+            <div className={styles.line}>
                 <a href="https://stephenmatheis.com" target="_blank" title="My website">
                     [<span>site</span>](stephenmatheis.com)
                 </a>

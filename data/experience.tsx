@@ -10,7 +10,7 @@ const experience = [
                 end: 'Now',
             },
         ],
-        list: ['Custom app development.', 'IT Consulting.'],
+        list: ['Full-stack software development.', 'IT Consulting for private businesses and government.'],
     },
     {
         company: 'TATCS',

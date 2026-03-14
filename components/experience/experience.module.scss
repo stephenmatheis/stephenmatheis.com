@@ -39,6 +39,12 @@
 
             .list {
                 color: var(--fg2);
+
+                .line {
+                    span {
+                        color: var(--fg4);
+                    }
+                }
             }
         }
     }

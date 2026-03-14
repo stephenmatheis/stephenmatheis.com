@@ -28,7 +28,7 @@ export function Experience() {
                                     <li
                                         key={i}
                                         className={styles.line}
-                                        dangerouslySetInnerHTML={{ __html: `- ${line}` }}
+                                        dangerouslySetInnerHTML={{ __html: `<span>-</span> ${line}` }}
                                     />
                                 ))}
                             </ul>
@@ -39,16 +39,3 @@ export function Experience() {
         </Section>
     );
 }
-
-// {company && (
-//     <div className={styles.company}>
-//         {company}
-//         {/* {site ? (
-//         <a href={site}>
-//             [<span>{company}</span>]({site.replace('https://', '')})
-//         </a>
-//     ) : (
-//         <>{company}</>
-//     )} */}
-//     </div>
-// )}

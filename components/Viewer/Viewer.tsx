@@ -81,6 +81,7 @@ export function Viewer({ title, items }: ViewerProps) {
                             value={query}
                             onKeyDown={(event) => {
                                 if (event.key === 'q') {
+                                    event.preventDefault();
                                     event.stopPropagation();
                                 }
                             }}
