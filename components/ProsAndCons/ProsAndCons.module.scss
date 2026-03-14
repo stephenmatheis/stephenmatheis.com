@@ -45,27 +45,6 @@
                 padding-inline: 1ch;
             }
 
-            textarea {
-                background-color: inherit;
-                border: none;
-                font-family: inherit;
-                font-size: inherit;
-                color: var(--fg1);
-                padding: var(--half-height);
-                height: 100%;
-                resize: none;
-
-                &:focus-visible,
-                &:focus,
-                &:active {
-                    outline: none;
-                }
-
-                @media (max-width: 815px) {
-                    width: 100%;
-                }
-            }
-
             .editor {
                 padding-top: var(--line-height);
 

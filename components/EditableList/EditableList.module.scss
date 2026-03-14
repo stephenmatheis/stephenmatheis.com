@@ -1,0 +1,44 @@
+.list {
+    padding-top: var(--line-height);
+
+    .line {
+        position: relative;
+        padding-left: var(--half-height);
+
+        &.selected {
+            background-color: var(--bg1);
+        }
+
+        &.normal {
+            background-color: var(--bg0);
+        }
+
+        .number {
+            color: var(--fg4);
+            padding-right: var(--half-height);
+        }
+
+        input {
+            font-family: inherit;
+            font-size: inherit;
+            color: var(--fg0);
+            background-color: inherit;
+            padding: 0;
+            border: none;
+
+            &:focus-visible,
+            &:focus,
+            &:active {
+                outline: none;
+            }
+        }
+
+        .muted {
+            color: var(--fg4);
+        }
+
+        .content {
+            color: var(--fg1);
+        }
+    }
+}

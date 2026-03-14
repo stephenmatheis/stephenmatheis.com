@@ -6,15 +6,28 @@ import { useMode } from '@/providers/ModeProvider';
 import { Time } from '@/components/Time';
 import { useVimMotions } from '@/hooks/useVimMotions';
 import styles from './ProsAndCons.module.scss';
+import { EditableList } from '../EditableList';
 
 export function ProsAndCons() {
-    const { mode } = useMode();
     const [pros, setPros] = useState<string[]>(['One', 'Two', 'Three', 'Four']);
-    const [cons, setCons] = useState<string[]>(['']);
-    const [selected, setSelected] = useState<number>(0);
+    const [cons, setCons] = useState<string[]>(['A', 'B', 'C', 'D']);
+    const [selectedList, setSelectedList] = useState<number>(0);
+    const [proSelected, setProSelected] = useState<number>(0);
+    const [conSelected, setConSelected] = useState<number>(0);
+
+    const listsItems = [pros, cons];
+    const listsSetItems = [setPros, setCons];
+    const max = listsItems[selectedList].length - 1;
+    const listSelections = [proSelected, conSelected];
+    const listSetSelections = [setProSelected, setConSelected];
+    const selected = listSelections[selectedList];
+    const setSelected = listSetSelections[selectedList];
 
     useVimMotions({
-        max: pros.length - 1,
+        maxHorizontal: listsItems.length - 1,
+        horizontal: selectedList,
+        setHorizontal: setSelectedList,
+        max,
         selected,
         setSelected,
         onEnter() {
@@ -39,70 +52,18 @@ export function ProsAndCons() {
     return (
         <div className={styles.prosandcons}>
             <div className={styles.window}>
-                <div className={styles.pane}>
-                    <div className={styles.label}>Pros</div>
-                    <div className={styles.editor}>
-                        {pros.map((pro, index) => {
-                            const lineNumber = index + 1;
-                            const isSelected = index === selected;
-
-                            return (
-                                <div
-                                    key={index}
-                                    className={`${styles.line} ${isSelected && mode === 'NORMAL' ? styles.selected : styles.normal}`}
-                                >
-                                    <span className={styles.number}>{lineNumber}</span>{' '}
-                                    {mode === 'INSERT' && isSelected ? (
-                                        <>
-                                            <input
-                                                autoFocus
-                                                type="text"
-                                                value={pro}
-                                                onKeyDown={(event) => {
-                                                    console.log('close and go to next');
-                                                }}
-                                                onChange={(event) => {
-                                                    setPros((prev) => {
-                                                        return prev.map((item, prevIndex) => {
-                                                            if (prevIndex === index) {
-                                                                return event.target.value;
-                                                            }
-
-                                                            return item;
-                                                        });
-                                                    });
-                                                }}
-                                            />
-                                            {/* <div className={styles.border} /> */}
-                                        </>
-                                    ) : (
-                                        <span className={mode === 'INSERT' ? styles.muted : styles.content}>{pro}</span>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-                    {/* <textarea
-                        autoFocus
-                        className={styles.editor}
-                        value={pros}
-                        onChange={(event) => {
-                            setPros(event.target.value);
-                            localStorage.setItem('pros', event.target.value);
-                        }}
-                    /> */}
-                </div>
-                <div className={styles.pane}>
-                    <div className={styles.label}>Cons</div>
-                    {/* <textarea
-                        className={styles.editor}
-                        value={cons}
-                        onChange={(event) => {
-                            setCons(event.target.value);
-                            localStorage.setItem('cons', event.target.value);
-                        }}
-                    /> */}
-                </div>
+                {['Pros', 'Cons'].map((label, index) => {
+                    return (
+                        <div key={index} className={styles.pane}>
+                            <div className={styles.label}>{label}</div>
+                            <EditableList
+                                selected={index === selectedList ? listSelections[index] : null}
+                                items={listsItems[index]}
+                                setItems={listsSetItems[index]}
+                            />
+                        </div>
+                    );
+                })}
             </div>
             <Statusbar msg="" outerBar="" innerBar={<Time />} />
         </div>
