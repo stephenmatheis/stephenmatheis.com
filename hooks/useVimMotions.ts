@@ -4,16 +4,40 @@ import { Dispatch, SetStateAction, useEffect } from 'react';
 type Props = {
     max: number;
     selected: number;
+    horizontal: number;
+    maxHorizontal: number;
+    setHorizontal: Dispatch<SetStateAction<number>>;
     setSelected: Dispatch<SetStateAction<number>>;
     onEnter: () => void;
 };
 
-export function useVimMotions({ max, selected, setSelected, onEnter }: Props) {
+// TODO: replace selected with something like up/down
+export function useVimMotions({
+    max,
+    maxHorizontal,
+    selected,
+    setSelected,
+    horizontal,
+    setHorizontal,
+    onEnter,
+}: Props) {
     const { mode, setMode } = useMode();
 
     useEffect(() => {
         function handleKeydown(event: KeyboardEvent) {
             if (event.shiftKey || event.metaKey || event.ctrlKey || event.altKey) return;
+
+            if (event.key === 'h') {
+                if (mode === 'NORMAL') {
+                    setHorizontal((prev) => {
+                        if (prev === 0) return prev;
+
+                        return prev - 1;
+                    });
+                }
+
+                return;
+            }
 
             if (event.key === 'j') {
                 if (mode === 'NORMAL') {
@@ -33,6 +57,18 @@ export function useVimMotions({ max, selected, setSelected, onEnter }: Props) {
                         if (prev === 0) return prev;
 
                         return prev - 1;
+                    });
+                }
+
+                return;
+            }
+
+            if (event.key === 'l') {
+                if (mode === 'NORMAL') {
+                    setHorizontal((prev) => {
+                        if (prev === maxHorizontal) return prev;
+
+                        return prev + 1;
                     });
                 }
 
@@ -75,5 +111,5 @@ export function useVimMotions({ max, selected, setSelected, onEnter }: Props) {
         return () => {
             window.removeEventListener('keydown', handleKeydown);
         };
-    }, [max, selected, mode, setSelected, onEnter, setMode]);
+    }, [max, maxHorizontal, selected, mode, horizontal, setHorizontal, setSelected, onEnter, setMode]);
 }
