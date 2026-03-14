@@ -11,6 +11,12 @@
 
             .items {
                 color: var(--fg2);
+
+                .item {
+                    .spacer {
+                        color: var(--fg4);
+                    }
+                }
             }
         }
     }

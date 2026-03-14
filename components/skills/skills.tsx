@@ -1,24 +1,29 @@
 import { Section } from '@/components/section';
-import skills, { updatedGroups } from '@/data/skills';
+import { updatedGroups } from '@/data/skills';
 import styles from './skills.module.scss';
 
 export function Skills() {
     return (
         <Section className={styles.skills} heading="Skills">
             <div className={styles.groups}>
-                {/* {skills.map((skill) => (
-                    <div key={skill}>{skill}</div>
-                ))} */}
                 {updatedGroups.map(({ name, items }, index) => {
                     return (
                         <div key={index} className={styles.group}>
                             <div className={styles.name}>{name}</div>
-                            {/* <ul>
-                                {items.map((item, j) => {
-                                    return <li key={j}>{item}</li>;
+                            <div className={styles.items}>
+                                {items.map((item, index) => {
+                                    if (index !== 0) {
+                                        return (
+                                            <span key={index} className={styles.item}>
+                                                {' '}
+                                                <span className={styles.spacer}>*</span> {item}
+                                            </span>
+                                        );
+                                    }
+
+                                    return <span key={index}>{item}</span>;
                                 })}
-                            </ul> */}
-                            <div className={styles.items}>{items.join(', ')}</div>
+                            </div>
                         </div>
                     );
                 })}

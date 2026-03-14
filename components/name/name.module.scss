@@ -1,17 +1,8 @@
-// .name {
-//     white-space: pre;
-//     line-height: 1;
-//     height: calc(var(--line-height) * 2);
-//     display: flex;
-//     align-items: center;
-// }
-
 .name {
     white-space: nowrap;
 
     h1 {
         color: var(--fg0);
-        // margin-bottom: var(--line-height);
     }
 
     .light {
