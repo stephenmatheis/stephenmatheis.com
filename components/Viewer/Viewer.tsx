@@ -36,8 +36,12 @@ export function Viewer({ title, items }: ViewerProps) {
     const re = fuzzyRegex(query);
     const selectedItems = items.filter(({ name }) => re.test(name));
     const inputRef = useRef<HTMLInputElement>(null);
+    const [horizontal, setHorizontal] = useState<number>(0);
 
     useVimMotions({
+        maxHorizontal: 0,
+        horizontal,
+        setHorizontal,
         max: selectedItems.length - 1,
         selected,
         setSelected,

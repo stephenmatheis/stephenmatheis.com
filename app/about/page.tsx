@@ -16,8 +16,12 @@ import styles from './page.module.scss';
 
 export default function Page() {
     const [selected, setSelected] = useState<number>(0);
+    const [horizontal, setHorizontal] = useState<number>(0);
 
     useVimMotions({
+        maxHorizontal: 0,
+        horizontal,
+        setHorizontal,
         max: 0,
         selected,
         setSelected,

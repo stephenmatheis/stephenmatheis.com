@@ -53,8 +53,12 @@ export default function Page() {
     const re = fuzzyRegex(query);
     const selectedTools = tools.filter(({ name }) => re.test(name));
     const inputRef = useRef<HTMLInputElement>(null);
+    const [horizontal, setHorizontal] = useState<number>(0);
 
     useVimMotions({
+        maxHorizontal: 0,
+        horizontal,
+        setHorizontal,
         max: selectedTools.length - 1,
         selected,
         setSelected,
