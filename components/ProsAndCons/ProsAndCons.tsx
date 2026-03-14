@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { Statusbar } from '@/components/Statusbar';
-import { useMode } from '@/providers/ModeProvider';
 import { Time } from '@/components/Time';
+import { EditableList } from '@/components/EditableList';
 import { useVimMotions } from '@/hooks/useVimMotions';
 import styles from './ProsAndCons.module.scss';
-import { EditableList } from '../EditableList';
 
 export function ProsAndCons() {
     const [pros, setPros] = useState<string[]>(['One', 'Two', 'Three', 'Four']);

@@ -123,8 +123,12 @@ const options = [
 export default function Page() {
     const router = useRouter();
     const [selected, setSelected] = useState<number>(0);
+    const [horizontal, setHorizontal] = useState<number>(0);
 
     useVimMotions({
+        maxHorizontal: 0,
+        horizontal,
+        setHorizontal,
         max: options.length - 1,
         selected,
         setSelected,
