@@ -27,7 +27,7 @@ const options = [
             </svg>
         ),
         label: 'New',
-        href: '/compare/new',
+        href: '/test/new',
         cmd: 'n',
     },
     {
@@ -42,7 +42,7 @@ const options = [
             </svg>
         ),
         label: 'Load',
-        href: '/compare/load',
+        href: '/test/load',
         cmd: 'l',
     },
     {
@@ -57,7 +57,7 @@ const options = [
             </svg>
         ),
         label: 'Settings',
-        href: '/compare/settings',
+        href: '/test/settings',
         cmd: 's',
     },
 ];
