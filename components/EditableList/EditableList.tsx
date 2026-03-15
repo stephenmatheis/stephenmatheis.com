@@ -1,8 +1,7 @@
 'use client';
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { useMode } from '@/providers/ModeProvider';
-import { useVimMotions } from '@/hooks/useVimMotions';
 import styles from './EditableList.module.scss';
 
 type EditableListProps = {
@@ -16,18 +15,32 @@ export function EditableList({ name, items, setItems, selected }: EditableListPr
     const { mode } = useMode();
 
     useEffect(() => {
-        const storedPros = localStorage.getItem('pros');
-
-        if (storedPros !== null) {
-            setItems(JSON.parse(storedPros));
-        }
-
-        const storedCons = localStorage.getItem('cons');
-
-        if (storedCons !== null) {
-            setItems(JSON.parse(storedCons));
-        }
+        // const storedPros = localStorage.getItem('pros');
+        // if (storedPros !== null) {
+        //     setItems(JSON.parse(storedPros));
+        // }
+        // const storedCons = localStorage.getItem('cons');
+        // if (storedCons !== null) {
+        //     setItems(JSON.parse(storedCons));
+        // }
     }, []);
+
+    if (selected === null) {
+        return (
+            <div className={styles.readonly}>
+                {items.map((pro, index) => {
+                    const lineNumber = index + 1;
+
+                    return (
+                        <div key={index} className={styles.line}>
+                            <span className={styles.number}>{lineNumber}</span>{' '}
+                            <span className={styles.content}>{pro}</span>
+                        </div>
+                    );
+                })}
+            </div>
+        );
+    }
 
     return (
         <div className={styles.list}>

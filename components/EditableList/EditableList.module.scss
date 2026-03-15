@@ -1,3 +1,20 @@
+.readonly {
+    padding-top: var(--line-height);
+
+    .line {
+        padding-left: var(--half-height);
+
+        .number {
+            color: var(--fg4);
+            padding-right: var(--half-height);
+        }
+
+        .content {
+            color: var(--fg3);
+        }
+    }
+}
+
 .list {
     padding-top: var(--line-height);
 
