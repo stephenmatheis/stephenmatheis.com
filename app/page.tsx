@@ -84,9 +84,9 @@ const options = [
                 />
             </svg>
         ),
-        label: 'Pros & Cons',
-        href: '/prosandcons',
-        cmd: 'p',
+        label: 'Lists',
+        href: '/lists',
+        cmd: 'l',
     },
     {
         icon: (

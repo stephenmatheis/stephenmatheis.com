@@ -7,7 +7,11 @@ import { EditableList } from '@/components/EditableList';
 import { useVimMotions } from '@/hooks/useVimMotions';
 import styles from './ProsAndCons.module.scss';
 
-export function ProsAndCons() {
+type ProsAndConsProps = {
+    itemId: string;
+};
+
+export function ProsAndCons({ itemId }: ProsAndConsProps) {
     const [pros, setPros] = useState<string[]>(['One', 'Two', 'Three', 'Four']);
     const [cons, setCons] = useState<string[]>(['A', 'B', 'C', 'D']);
     const [selectedList, setSelectedList] = useState<number>(0);
