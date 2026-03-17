@@ -8,18 +8,20 @@ import { useVimMotions } from '@/hooks/useVimMotions';
 import styles from './ProsAndCons.module.scss';
 
 type ProsAndConsProps = {
-    itemId: string;
+    itemId: number;
 };
 
 export function ProsAndCons({ itemId }: ProsAndConsProps) {
-    const [pros, setPros] = useState<string[]>(['One', 'Two', 'Three', 'Four']);
-    const [cons, setCons] = useState<string[]>(['A', 'B', 'C', 'D']);
+    const [oneQuestion, setOneQuestion] = useState<string>('Pros');
+    const [twoQuestion, setTwoQuestion] = useState<string>('Cons');
+    const [oneList, setOneList] = useState<string[]>(['']);
+    const [twoList, setTwoList] = useState<string[]>(['']);
     const [selectedList, setSelectedList] = useState<number>(0);
     const [proSelected, setProSelected] = useState<number>(0);
     const [conSelected, setConSelected] = useState<number>(0);
 
-    const listsItems = [pros, cons];
-    const listsSetItems = [setPros, setCons];
+    const listsItems = [oneList, twoList];
+    const listsSetItems = [setOneList, setTwoList];
     const max = listsItems[selectedList].length - 1;
     const listSelections = [proSelected, conSelected];
     const listSetSelections = [setProSelected, setConSelected];
@@ -39,23 +41,29 @@ export function ProsAndCons({ itemId }: ProsAndConsProps) {
     });
 
     useEffect(() => {
-        const storedPros = localStorage.getItem('pros');
+        console.log(itemId);
+        const storedLists = localStorage.getItem('lists');
 
-        if (storedPros !== null) {
-            setPros(JSON.parse(storedPros));
+        if (storedLists) {
+            const lists = JSON.parse(storedLists);
+            const loadedList = lists.find(({ id }) => id === itemId);
+
+            console.log(loadedList);
+
+            if (loadedList) {
+                setOneQuestion(loadedList.one.question);
+                setOneList(loadedList.one.list);
+
+                setTwoQuestion(loadedList.two.question);
+                setTwoList(loadedList.two.list);
+            }
         }
-
-        const storedCons = localStorage.getItem('cons');
-
-        if (storedCons !== null) {
-            setPros(JSON.parse(storedCons));
-        }
-    }, []);
+    }, [itemId]);
 
     return (
         <div className={styles.prosandcons}>
             <div className={styles.window}>
-                {['Pros', 'Cons'].map((label, index) => {
+                {[oneQuestion, twoQuestion].map((label, index) => {
                     return (
                         <div key={index} className={styles.pane}>
                             <div className={styles.label}>{label}</div>
