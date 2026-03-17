@@ -72,3 +72,18 @@ a {
 ul {
     list-style-type: none;
 }
+
+button {
+    color: inherit;
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    border: none;
+
+    &:focus,
+    &:focus-visible,
+    &:active {
+        outline: none;
+    }
+}

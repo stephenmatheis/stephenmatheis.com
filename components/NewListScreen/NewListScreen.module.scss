@@ -1,0 +1,89 @@
+.newlistscreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+
+    .pane {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: var(--line-height);
+        width: 100%;
+        max-width: 80ch;
+        margin: 0 auto;
+        border: solid 1px var(--fg4);
+
+        .label {
+            position: absolute;
+            top: calc(var(--half-height) * -1);
+            left: calc(var(--line-height) * 2);
+            transform: translateX(-50%);
+            color: var(--fg0);
+            background-color: var(--bg0);
+            padding-inline: 1ch;
+        }
+
+        .content {
+            margin-block: var(--line-height);
+
+            .field {
+                display: flex;
+                align-items: center;
+                gap: 1ch;
+                margin-bottom: var(--line-height);
+
+                svg {
+                    width: 14px;
+                    height: 14px;
+                }
+
+                input {
+                    font-size: var(--font-size);
+                    line-height: var(--line-height);
+                    color: var(--fg1);
+                    font-family: inherit;
+                    width: 100%;
+                    background-color: var(--bg0);
+                    border: none;
+
+                    &:focus,
+                    &:active,
+                    &:focus-visible {
+                        outline: none;
+                    }
+
+                    &::placeholder {
+                        color: var(--fg4);
+                    }
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4ch;
+
+            button {
+                color: var(--fg0);
+
+                &[disabled] {
+                    color: var(--fg4);
+
+                    span {
+                        color: var(--fg4);
+                    }
+                }
+
+                span {
+                    text-align: left;
+                    display: inline-block;
+                    width: 6ch;
+                    color: var(--fg3);
+                }
+            }
+        }
+    }
+}
