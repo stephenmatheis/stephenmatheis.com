@@ -10,5 +10,5 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         return <NewListScreen />;
     }
 
-    return <ProsAndCons itemId={slug} />;
+    return <ProsAndCons itemId={parseInt(slug[0])} />;
 }
