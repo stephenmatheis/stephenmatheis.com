@@ -5,6 +5,7 @@ import { Statusbar } from '@/components/Statusbar';
 import { Time } from '@/components/Time';
 import { EditableList } from '@/components/EditableList';
 import { useVimMotions } from '@/hooks/useVimMotions';
+import { ListPair } from '@/lib/types';
 import styles from './ProsAndCons.module.scss';
 
 type ProsAndConsProps = {
@@ -41,14 +42,11 @@ export function ProsAndCons({ itemId }: ProsAndConsProps) {
     });
 
     useEffect(() => {
-        console.log(itemId);
         const storedLists = localStorage.getItem('lists');
 
         if (storedLists) {
             const lists = JSON.parse(storedLists);
             const loadedList = lists.find(({ id }) => id === itemId);
-
-            console.log(loadedList);
 
             if (loadedList) {
                 setOneQuestion(loadedList.one.question);
@@ -59,6 +57,68 @@ export function ProsAndCons({ itemId }: ProsAndConsProps) {
             }
         }
     }, [itemId]);
+
+    useEffect(() => {
+        const storedLists = localStorage.getItem('lists');
+
+        if (storedLists) {
+            const lists = JSON.parse(storedLists);
+            const loadedList = lists.find(({ id }) => id === itemId);
+
+            if (loadedList) {
+                const newValue = {
+                    ...loadedList,
+                    one: {
+                        ...loadedList.one,
+                        list: oneList,
+                    },
+                };
+
+                // console.log(newValue);
+
+                const newLists = lists.map((list: ListPair) => {
+                    if (list.id === itemId) {
+                        return newValue;
+                    }
+
+                    return list;
+                });
+
+                localStorage.setItem('lists', JSON.stringify(newLists));
+            }
+        }
+    }, [oneList]);
+
+    useEffect(() => {
+        const storedLists = localStorage.getItem('lists');
+
+        if (storedLists) {
+            const lists = JSON.parse(storedLists);
+            const loadedList = lists.find(({ id }) => id === itemId);
+
+            if (loadedList) {
+                const newValue = {
+                    ...loadedList,
+                    two: {
+                        ...loadedList.one,
+                        list: twoList,
+                    },
+                };
+
+                // console.log(newValue);
+
+                const newLists = lists.map((list: ListPair) => {
+                    if (list.id === itemId) {
+                        return newValue;
+                    }
+
+                    return list;
+                });
+
+                localStorage.setItem('lists', JSON.stringify(newLists));
+            }
+        }
+    }, [twoList]);
 
     return (
         <div className={styles.prosandcons}>

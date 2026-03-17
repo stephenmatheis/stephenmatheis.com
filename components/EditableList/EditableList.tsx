@@ -5,13 +5,12 @@ import { useMode } from '@/providers/ModeProvider';
 import styles from './EditableList.module.scss';
 
 type EditableListProps = {
-    name?: string;
     selected: number | null;
     items: string[];
     setItems: Dispatch<SetStateAction<string[]>>;
 };
 
-export function EditableList({ name, items, setItems, selected }: EditableListProps) {
+export function EditableList({ items, setItems, selected }: EditableListProps) {
     const { mode } = useMode();
 
     useEffect(() => {
@@ -60,9 +59,9 @@ export function EditableList({ name, items, setItems, selected }: EditableListPr
                                     autoFocus
                                     type="text"
                                     value={pro}
-                                    onKeyDown={(event) => {
-                                        console.log('close and go to next');
-                                    }}
+                                    // onKeyDown={(event) => {
+                                    //     console.log('close and go to next');
+                                    // }}
                                     onChange={(event) => {
                                         setItems((prev) => {
                                             return prev.map((item, prevIndex) => {
