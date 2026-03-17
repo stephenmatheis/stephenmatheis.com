@@ -1,18 +1,9 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import styles from './NewListScreen.module.scss';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-
-type List = {
-    question: string;
-    list: string[];
-};
-
-type ListPair = {
-    one: List;
-    two: List;
-};
+import { ListPair } from '@/lib/types';
+import styles from './NewListScreen.module.scss';
 
 export function NewListScreen() {
     const router = useRouter();
@@ -47,11 +38,11 @@ export function NewListScreen() {
             id,
             one: {
                 question: one,
-                list: [],
+                list: [''],
             },
             two: {
                 question: two,
-                list: [],
+                list: [''],
             },
         };
 
@@ -65,12 +56,27 @@ export function NewListScreen() {
         router.push(`/lists/${id}`);
     }
 
+    useEffect(() => {
+        function onEscape(event: KeyboardEvent) {
+            if (event.key === 'Escape') {
+                event.preventDefault();
+
+                router.back();
+            }
+        }
+
+        window.addEventListener('keydown', onEscape);
+
+        return () => window.removeEventListener('keydown', onEscape);
+    }, []);
+
     return (
         <div className={styles.newlistscreen}>
             <div className={styles.pane}>
                 <div className={styles.label}>New</div>
-                <div className={styles.content}>
-                    <div className={styles.name}>First question</div>
+                <div className={styles.description}>Create a list pair to help decide between two options.</div>
+                <div className={styles.form}>
+                    <div className={styles.name}>Option 1</div>
                     <div className={styles.field}>
                         <svg width="16" height="16" viewBox="0 0 16 16" strokeLinejoin="round">
                             {one ? (
@@ -93,7 +99,7 @@ export function NewListScreen() {
                             ref={oneRef}
                             autoFocus
                             type="text"
-                            placeholder="Ex: What are the pros?"
+                            placeholder="Pros?"
                             value={one}
                             onChange={(event) => setOne(event.target.value)}
                             onKeyDown={(event) => {
@@ -111,7 +117,7 @@ export function NewListScreen() {
                             }}
                         />
                     </div>
-                    <div className={styles.name}>Second question</div>
+                    <div className={styles.name}>Option 2</div>
                     <div className={styles.field}>
                         <svg width="16" height="16" viewBox="0 0 16 16" strokeLinejoin="round">
                             {two ? (
@@ -133,7 +139,7 @@ export function NewListScreen() {
                         <input
                             ref={twoRef}
                             type="text"
-                            placeholder="Ex: What are the cons?"
+                            placeholder="Cons?"
                             value={two}
                             onChange={(event) => setTwo(event.target.value)}
                             onKeyDown={(event) => {

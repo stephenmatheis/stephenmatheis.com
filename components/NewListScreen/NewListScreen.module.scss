@@ -24,8 +24,17 @@
             padding-inline: 1ch;
         }
 
-        .content {
+        .description {
+            text-align: center;
+            color: var(--fg3);
+        }
+
+        .form {
             margin-block: var(--line-height);
+
+            .name {
+                color: var(--fg1);
+            }
 
             .field {
                 display: flex;
