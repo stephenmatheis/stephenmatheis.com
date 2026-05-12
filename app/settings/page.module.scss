@@ -7,6 +7,12 @@
 
     .splash {
         user-select: none;
+        min-width: 60ch;
+
+        @media (max-width: 60ch) {
+            padding-inline: 1ch;
+            min-width: 100%;
+        }
 
         .ascii {
             display: inline-block;

@@ -160,7 +160,7 @@ export default function Page() {
     return (
         <div className={styles.page}>
             <div className={styles.splash}>
-                <div className={styles.ascii}>{ascii}</div>
+                {/* <div className={styles.ascii}>{ascii}</div> */}
                 <div className={styles.options}>
                     {options.map(({ icon, label, href, cmd }, index) => {
                         return (
