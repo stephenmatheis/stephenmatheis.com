@@ -1,0 +1,135 @@
+.lists {
+    height: 100dvh;
+    padding-bottom: calc(var(--half-height) + (var(--line-height) * 3));
+    padding-top: calc(var(--line-height) * 3);
+    padding-inline: 3rem;
+
+    .window {
+        --pane-gap: var(--line-height);
+        --pane-offset: calc(var(--pane-gap) / 2);
+
+        display: flex;
+        gap: var(--pane-gap);
+        height: 100%;
+        max-width: 1366px;
+        margin: 0 auto;
+
+        .pane {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: calc(50% - var(--pane-offset));
+            max-width: calc(50% - var(--pane-offset));
+            height: 100%;
+            border: solid 1px var(--fg4);
+
+            .name {
+                position: absolute;
+                top: calc(var(--half-height) * -1);
+                left: 50%;
+                transform: translateX(-50%);
+                color: var(--fg0);
+                background-color: var(--bg2);
+                padding-inline: 1ch;
+                font-weight: 600;
+            }
+
+            .label {
+                position: absolute;
+                top: -9px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: var(--fg0);
+                background-color: var(--bg0);
+                padding-inline: 1ch;
+            }
+
+            .field {
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 2ch;
+                padding-inline: var(--half-height);
+
+                svg {
+                    position: absolute;
+                    top: calc(2px + var(--half-height));
+                    left: 5.87px;
+                    width: 14px;
+                    height: 14px;
+                }
+
+                input {
+                    font-size: var(--font-size);
+                    line-height: var(--line-height);
+                    color: var(--fg1);
+                    font-family: inherit;
+                    width: 100%;
+                    background-color: var(--bg0);
+                    border: none;
+                    margin-top: var(--half-height);
+                    padding-bottom: var(--half-height);
+                    padding-left: 2ch;
+                    border-bottom: solid 1px var(--fg4);
+
+                    &:focus,
+                    &:active,
+                    &:focus-visible {
+                        outline: none;
+                    }
+                }
+            }
+
+            .list {
+                flex: 1;
+                height: 100%;
+                padding-inline: var(--half-height);
+                padding-top: var(--half-height);
+                overflow: auto;
+
+                .option {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 1ch;
+                    padding-inline: var(--half-height);
+                    overflow: auto;
+
+                    &.normal {
+                        background-color: var(--bg0);
+                        color: var(--fg1);
+                    }
+
+                    &.selected {
+                        background-color: var(--bg1);
+                        color: var(--fg1);
+                    }
+
+                    .toolname {
+                        color: var(--fg1);
+                    }
+
+                    .description {
+                        color: var(--fg3);
+                        white-space: nowrap;
+                    }
+
+                    svg {
+                        color: var(--fg3);
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 815px) {
+            --pane-gap: var(--half-height);
+        }
+    }
+
+    @media (max-width: 815px) {
+        padding-bottom: calc(var(--half-height) + (var(--line-height) * 1));
+        padding-top: var(--line-height);
+        padding-inline: var(--half-height);
+    }
+}
