@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter, IBM_Plex_Mono } from 'next/font/google';
+import { Inter, IBM_Plex_Mono, Instrument_Serif } from 'next/font/google';
 import './globals.scss';
+
+const instrumentSerif = Instrument_Serif({
+    variable: '--font-instrument-serif',
+    weight: '400',
+});
 
 const inter = Inter({
     variable: '--font-inter',
@@ -23,7 +28,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable}`}>
+        <html lang="en" className={`${instrumentSerif.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
             <body>{children}</body>
         </html>
     );
