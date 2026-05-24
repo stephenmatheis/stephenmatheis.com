@@ -1,10 +1,15 @@
 :root {
-    --background: #f1f1f3;
-    --foreground: #171717;
+    // --background: #f1f1f3;
+    --background: hsl(36, 35%, 88%);
+    --foreground: hsl(36, 35%, 35%);
 }
 
 body {
-    font-family: var(--font-inter);
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-instrument-serif);
+    // font-family: var(--font-inter);
+    // font-family: Helvetica, sans-serif;
 }
 
 * {
