@@ -1,20 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter, IBM_Plex_Mono, Instrument_Serif } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.scss';
 
-const instrumentSerif = Instrument_Serif({
-    variable: '--font-instrument-serif',
-    weight: '400',
+const departureMono = localFont({
+    src: './fonts/DepartureMono-Regular.woff2',
+    variable: '--font-departure-mono',
 });
 
-const inter = Inter({
-    variable: '--font-inter',
-    subsets: ['latin'],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-    variable: '--font-ibm-plex-mono',
-    weight: ['400', '500', '600', '700'],
+const pureprog = localFont({
+    src: './fonts/pureprog-12-5x8-pixel-mono-normal.woff2',
+    variable: '--font-pureprog',
 });
 
 export const metadata: Metadata = {
@@ -28,7 +23,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${instrumentSerif.variable} ${inter.variable} ${ibmPlexMono.variable}`}>
+        <html lang="en" className={`${departureMono.variable} ${pureprog.variable}`}>
             <body>{children}</body>
         </html>
     );

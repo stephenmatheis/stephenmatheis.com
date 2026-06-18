@@ -1,96 +1,37 @@
 .page {
     position: relative;
     height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 4rem;
 
-    .top {
-        flex: 1;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 1em;
+        font-weight: normal;
     }
 
-    .middle {
-        flex: 1;
+    .text,
+    .word {
+        width: fit-content;
     }
 
-    .lines {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+    .text {
+        display: grid;
+        grid-template-columns: repeat(13, 1fr);
 
-        .line {
-            width: 100%;
+        .char {
+            display: inline-block;
+            width: 1ch;
+            box-shadow: inset 0 0 0 1px #00000030;
+            height: 100%;
 
-            &.thick {
-                height: 24px;
-                background-color: var(--foreground);
-            }
-
-            &.thin {
-                height: 12px;
-                background-color: var(--foreground);
-            }
-        }
-    }
-
-    .bottom {
-        width: 100%;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-
-        .logo {
-            height: 64px;
-            width: 64px;
-            display: flex;
-            flex-direction: column;
-
-            .band {
-                flex: 1;
-                width: 100%;
-                filter: saturate(0.7);
-
-                &.green {
-                    background-color: green;
-                }
-
-                &.yellow {
-                    background-color: yellow;
-                }
-
-                &.orange {
-                    background-color: orange;
-                }
-
-                &.red {
-                    background-color: red;
-                }
-
-                &.pink {
-                    background-color: pink;
-                }
-
-                &.blue {
-                    background-color: blue;
-                }
-            }
-        }
-
-        .main {
-            line-height: 1.5;
-
-            p {
-                font-size: 24px;
-
-                a {
-                    font-weight: 700;
-
-                    // @media (pointer: fine) {
-                    //     &:hover {
-                    //         color: blue;
-                    //     }
-                    // }
+            &.blank {
+                &::before {
+                    content: 'SP';
+                    font-size: 0.5em;
+                    // visibility: hidden;
                 }
             }
         }
