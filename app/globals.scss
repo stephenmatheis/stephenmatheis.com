@@ -1,15 +1,14 @@
 :root {
-    // --background: #f1f1f3;
-    --background: hsl(36, 35%, 88%);
-    --foreground: hsl(36, 35%, 35%);
+    --background: #ffffff;
+    --foreground: #000000;
 }
 
 body {
+    font-family: var(--font-pureprog);
     background-color: var(--background);
     color: var(--foreground);
-    font-family: var(--font-instrument-serif);
-    // font-family: var(--font-inter);
-    // font-family: Helvetica, sans-serif;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 * {
