@@ -1,33 +1,89 @@
-import pureProgCodepoints from './codepoints/pureprog-12-5x8-pixel-mono-normal.json';
-import departureMonoCodepoints from './codepoints/DepartureMono-Regular.json';
+'use client';
+
+import { useEffect, useRef } from 'react';
 import styles from './page.module.scss';
 
-export default function Home() {
-    return (
-        <div className={styles.page}>
-            <h2 style={{ fontFamily: 'var(--font-pureprog)', fontSize: '48px' }}>Pure Prog 5x8</h2>
-            <div className={styles.text} style={{ fontFamily: 'var(--font-pureprog)', fontSize: '48px' }}>
-                {pureProgCodepoints.map((codepoint, i) => {
-                    if ([32].includes(codepoint)) {
-                        return;
-                    }
+const CELL_HEIGHT = 28;
+const CELL_WIDTH = 14;
+const TEXT = 'Hello, world.';
+const OFFSET = 2;
 
-                    return (
-                        <div key={i} className={styles.char}>
-                            {String.fromCodePoint(codepoint)}
-                        </div>
-                    );
-                })}
-            </div>
-            <h2 style={{ fontFamily: 'var(--font-departure-mono)', fontSize: '33px' }}>Departure Mono</h2>
-            <div className={styles.text} style={{ fontFamily: 'var(--font-departure-mono)', fontSize: '33px' }}>
-                {departureMonoCodepoints.map((codepoint, i) => {
-                    return (
-                        <div key={i} className={styles.char}>
-                            {String.fromCodePoint(codepoint)}
-                        </div>
-                    );
-                })}
+export default function Home() {
+    const pageRef = useRef<HTMLDivElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        if (!ctx) return;
+
+        const rootStyles = window.getComputedStyle(document.documentElement);
+        const fontSize = rootStyles.getPropertyValue('--canvas-font-size').trim();
+        const fontFamily = rootStyles.getPropertyValue('--canvas-font-family').trim();
+        const { innerWidth, innerHeight } = window;
+        const cols = Math.floor(innerWidth / CELL_WIDTH);
+        const rows = Math.floor(innerHeight / CELL_HEIGHT);
+        const width = (cols - OFFSET) * CELL_WIDTH;
+        const height = (rows - OFFSET) * CELL_HEIGHT;
+        const dpr = window.devicePixelRatio || 1;
+
+        console.log(`Viewport:\t${innerWidth}x${innerHeight}`);
+        console.log(`Grid:\t\t${cols}x${rows}`);
+        console.log(`Canvas:\t\t${width}x${height}`);
+
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+
+        ctx.scale(dpr, dpr);
+
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+
+        ctx.font = `${fontSize} ${fontFamily}`;
+        ctx.textBaseline = 'ideographic';
+
+        for (let col = 0; col < cols - OFFSET; col++) {
+            for (let row = 0; row < rows - OFFSET; row++) {
+                const boxX = col * CELL_WIDTH;
+                const boxY = row * CELL_HEIGHT;
+
+                ctx.strokeStyle = '#00000030';
+                ctx.lineWidth = 0.5;
+                ctx.strokeRect(boxX, boxY, CELL_WIDTH, CELL_HEIGHT);
+
+                if (row > 0) continue;
+
+                if (col < TEXT.length) {
+                    ctx.fillStyle = '#000000';
+                    ctx.fillText(TEXT[col], boxX, boxY + CELL_HEIGHT);
+                }
+            }
+        }
+
+        //
+
+        if (!pageRef.current) return;
+
+        pageRef.current.style.opacity = '1';
+    }, []);
+
+    return (
+        <div ref={pageRef} className={styles.page} style={{ opacity: 0 }}>
+            <div className={styles.renderer}>
+                <div className={styles.text}>
+                    {TEXT.split('').map((char, index) => {
+                        return (
+                            <div key={index} className={styles.char}>
+                                {char === ' ' ? <>&nbsp;</> : char}
+                            </div>
+                        );
+                    })}
+                </div>
+                <canvas ref={canvasRef} className={styles.canvas}></canvas>
             </div>
         </div>
     );
