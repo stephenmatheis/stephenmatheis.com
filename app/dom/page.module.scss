@@ -1,0 +1,34 @@
+.page {
+    font-family: var(--font-departure-mono);
+    font-size: 22px;
+    position: relative;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .renderer {
+        position: relative;
+
+        .text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: red;
+            box-shadow: inset 0 0 0 1px #ff0000;
+
+            .char {
+                display: inline-block;
+                box-shadow: inset 0 0 0 0.5px #ff0000;
+            }
+        }
+
+        .grid {
+            box-shadow: inset 0 0 0 1px #cccccc;
+            .cell {
+                box-shadow: inset 0 0 0 0.5px #cccccc;
+            }
+        }
+    }
+}
