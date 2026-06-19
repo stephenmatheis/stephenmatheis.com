@@ -3,10 +3,11 @@
 import { useEffect, useRef } from 'react';
 import styles from './page.module.scss';
 
-const CELL_HEIGHT = 28;
 const CELL_WIDTH = 14;
+const CELL_HEIGHT = 28;
+const ROW_OFFSET = 2;
+const COL_OFFSET = 4;
 const TEXT = 'Hello, world.';
-const OFFSET = 2;
 
 export default function Home() {
     const pageRef = useRef<HTMLDivElement>(null);
@@ -27,8 +28,8 @@ export default function Home() {
         const { innerWidth, innerHeight } = window;
         const cols = Math.floor(innerWidth / CELL_WIDTH);
         const rows = Math.floor(innerHeight / CELL_HEIGHT);
-        const width = (cols - OFFSET) * CELL_WIDTH;
-        const height = (rows - OFFSET) * CELL_HEIGHT;
+        const width = (cols - COL_OFFSET) * CELL_WIDTH;
+        const height = (rows - ROW_OFFSET) * CELL_HEIGHT;
         const dpr = window.devicePixelRatio || 1;
 
         console.log(`Viewport:\t${innerWidth}x${innerHeight}`);
@@ -46,8 +47,8 @@ export default function Home() {
         ctx.font = `${fontSize} ${fontFamily}`;
         ctx.textBaseline = 'ideographic';
 
-        for (let col = 0; col < cols - OFFSET; col++) {
-            for (let row = 0; row < rows - OFFSET; row++) {
+        for (let col = 0; col < cols - COL_OFFSET; col++) {
+            for (let row = 0; row < rows - ROW_OFFSET; row++) {
                 const boxX = col * CELL_WIDTH;
                 const boxY = row * CELL_HEIGHT;
 
