@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Box, compose, isInSelection, getSelectedText } from '@/lib/tui';
+import { Box, compose, isInSelection, getSelectedText, isWordChar, clearSelected } from '@/lib/tui';
 import type { CellPos, Selected } from '@/lib/tui';
 import styles from './page.module.scss';
 
@@ -24,6 +24,7 @@ export default function Home() {
     const cursorVisibleRef = useRef(true);
     const isDraggingRef = useRef(false);
     const selectionAnchorRef = useRef<CellPos | null>(null);
+    const keyboardAnchorRef = useRef<CellPos | null>(null);
 
     function draw() {
         const ctx = ctxRef.current;
@@ -104,6 +105,79 @@ export default function Home() {
         moveCursor(-cursorRef.current.x, 1);
     }
 
+    function withSelection(moveFn: () => void, extending: boolean) {
+        if (extending) {
+            if (!keyboardAnchorRef.current) {
+                keyboardAnchorRef.current = { ...cursorRef.current };
+            }
+
+            moveFn();
+
+            selectedRef.current = {
+                start: keyboardAnchorRef.current,
+                end: { ...cursorRef.current },
+            };
+        } else {
+            keyboardAnchorRef.current = null;
+            selectedRef.current = null;
+            moveFn();
+        }
+    }
+
+    function wordJumpRight() {
+        const { x, y } = cursorRef.current;
+        const row = charsRef.current[y] || [];
+        let col = x;
+
+        while (col < colsRef.current - 1 && isWordChar(row[col])) col++;
+        while (col < colsRef.current - 1 && !isWordChar(row[col])) col++;
+
+        cursorRef.current = { x: col, y };
+        cursorVisibleRef.current = true;
+    }
+
+    function wordJumpLeft() {
+        const { x, y } = cursorRef.current;
+        const row = charsRef.current[y] || [];
+
+        let col = x;
+
+        if (col === 0) return;
+
+        col--;
+
+        while (col > 0 && !isWordChar(row[col])) {
+            col--;
+        }
+
+        while (col > 0 && isWordChar(row[col - 1])) {
+            col--;
+        }
+
+        cursorRef.current = { x: col, y };
+        cursorVisibleRef.current = true;
+    }
+
+    function lineStart() {
+        cursorRef.current = { x: 0, y: cursorRef.current.y };
+        cursorVisibleRef.current = true;
+    }
+
+    function lineEnd() {
+        cursorRef.current = { x: colsRef.current - 1, y: cursorRef.current.y };
+        cursorVisibleRef.current = true;
+    }
+
+    function docStart() {
+        cursorRef.current = { x: 0, y: 0 };
+        cursorVisibleRef.current = true;
+    }
+
+    function docEnd() {
+        cursorRef.current = { x: 0, y: rowsRef.current - 1 };
+        cursorVisibleRef.current = true;
+    }
+
     function pixelToCell(clientX: number, clientY: number): CellPos {
         const canvas = canvasRef.current;
 
@@ -125,6 +199,7 @@ export default function Home() {
         cursorRef.current = cell;
         selectedRef.current = null;
         selectionAnchorRef.current = cell;
+        keyboardAnchorRef.current = null;
         isDraggingRef.current = true;
         cursorVisibleRef.current = true;
         textareaRef.current?.focus();
@@ -152,13 +227,17 @@ export default function Home() {
     }
 
     function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
-        const metaOrCtrl = event.metaKey || event.ctrlKey;
+        const { shiftKey, altKey, metaKey, ctrlKey } = event;
+        const extending = shiftKey;
+        const isMovementKey = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key);
 
-        if (metaOrCtrl) {
+        // non-movement + cmd/ctrl modifier — handle and return, or pass through to the browser
+        if (!isMovementKey && (metaKey || ctrlKey) && !altKey) {
             switch (event.key) {
                 case 'a':
                     event.preventDefault();
 
+                    keyboardAnchorRef.current = null;
                     selectedRef.current = {
                         start: { x: 0, y: 0 },
                         end: { x: colsRef.current - 1, y: rowsRef.current - 1 },
@@ -166,65 +245,118 @@ export default function Home() {
 
                     draw();
 
-                    break;
+                    return;
                 case 'c':
                     event.preventDefault();
 
                     if (selectedRef.current) {
-                        const text = getSelectedText(charsRef.current, selectedRef.current);
-
-                        navigator.clipboard.writeText(text).catch(() => {});
+                        navigator.clipboard
+                            .writeText(getSelectedText(charsRef.current, selectedRef.current))
+                            .catch(() => {});
                     }
 
-                    break;
+                    return;
                 case 'v':
                     event.preventDefault();
 
                     navigator.clipboard
                         .readText()
                         .then((text) => {
+                            keyboardAnchorRef.current = null;
                             selectedRef.current = null;
+
                             for (const char of text) {
                                 if (char === '\n') handleEnter();
                                 else if (char !== '\r') writeChar(char);
                             }
+
                             draw();
                         })
                         .catch(() => {});
+
+                    return;
                 case 'x':
-                    // TODO: Implement 'cut' operation.
-                    break;
+                    event.preventDefault();
+
+                    if (selectedRef.current) {
+                        navigator.clipboard
+                            .writeText(getSelectedText(charsRef.current, selectedRef.current))
+                            .catch(() => {});
+
+                        cursorRef.current = clearSelected(charsRef.current, selectedRef.current);
+                        selectedRef.current = null;
+                        keyboardAnchorRef.current = null;
+
+                        draw();
+                    }
+
+                    return;
+                default:
+                    return;
             }
-            return;
         }
 
         event.preventDefault();
 
-        selectedRef.current = null;
+        const wordJump = (altKey || ctrlKey) && !metaKey; // opt/alt = word jump on macOS; ctrl = word jump on Windows/Linux.
+        const lineOrDocJump = metaKey && !altKey; // cmd = line/doc jump on Mac.
 
         // TODO: Vim mode.
         switch (event.key) {
             case 'ArrowRight':
-                moveCursor(1, 0);
+                if (wordJump) withSelection(wordJumpRight, extending);
+                else if (lineOrDocJump) withSelection(lineEnd, extending);
+                else withSelection(() => moveCursor(1, 0), extending);
+
                 break;
             case 'ArrowLeft':
-                moveCursor(-1, 0);
+                if (wordJump) withSelection(wordJumpLeft, extending);
+                else if (lineOrDocJump) withSelection(lineStart, extending);
+                else withSelection(() => moveCursor(-1, 0), extending);
+
                 break;
             case 'ArrowDown':
-                moveCursor(0, 1);
+                if (lineOrDocJump) withSelection(docEnd, extending);
+                else withSelection(() => moveCursor(0, 1), extending);
+
                 break;
             case 'ArrowUp':
-                moveCursor(0, -1);
+                if (lineOrDocJump) withSelection(docStart, extending);
+                else withSelection(() => moveCursor(0, -1), extending);
+
+                break;
+            case 'Home':
+                withSelection(ctrlKey ? docStart : lineStart, extending);
+                break;
+            case 'End':
+                withSelection(ctrlKey ? docEnd : lineEnd, extending);
                 break;
             case 'Enter':
+                keyboardAnchorRef.current = null;
+                selectedRef.current = null;
+
                 handleEnter();
+
                 break;
             case 'Backspace':
-                deleteChar();
+                if (selectedRef.current) {
+                    cursorRef.current = clearSelected(charsRef.current, selectedRef.current);
+                    selectedRef.current = null;
+                    keyboardAnchorRef.current = null;
+                } else {
+                    deleteChar();
+                }
+
                 break;
             default:
-                if (event.key.length === 1) writeChar(event.key);
-                break;
+                if (event.key.length === 1) {
+                    keyboardAnchorRef.current = null;
+                    selectedRef.current = null;
+                    writeChar(event.key);
+
+                    break;
+                }
+                return;
         }
 
         draw();
