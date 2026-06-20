@@ -20,6 +20,8 @@ type BoxProps = {
     title?: string;
     titleAlignment?: 'left' | 'center' | 'right';
     padding?: number;
+    paddingX?: number;
+    paddingY?: number;
 };
 
 type BoxNode = BoxProps & { children: BoxNode[] };
@@ -39,6 +41,8 @@ function render(
         title,
         titleAlignment = 'left',
         padding = 1,
+        paddingX,
+        paddingY,
         children,
     }: BoxNode,
     chars: string[][],
@@ -86,13 +90,16 @@ function render(
     }
 
     for (const child of children) {
+        const px = paddingX ?? padding;
+        const py = paddingY ?? padding;
+
         render(
             {
                 ...child,
-                x: x + padding + (child.x ?? 0),
-                y: y + padding + (child.y ?? 0),
-                width: child.width ?? (width || 0) - padding * 2,
-                height: child.height ?? (height || 0) - padding * 2,
+                x: x + px + (child.x ?? 0),
+                y: y + py + (child.y ?? 0),
+                width: child.width ?? (width || 0) - px * 2,
+                height: child.height ?? (height || 0) - py * 2,
             },
             chars,
         );
@@ -123,11 +130,13 @@ export default function Home() {
                 Box(
                     {
                         title: 'Outer',
+                        paddingX: 2,
                     },
                     Box(
                         {
                             title: 'Inner',
                             titleAlignment: 'right',
+                            paddingX: 2,
                         },
                         Box({
                             title: 'Center',
