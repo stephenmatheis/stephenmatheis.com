@@ -74,21 +74,23 @@ export default function Home() {
                 const selected = selection ? isInSelection(col, row, selection) : false;
 
                 if (selected) {
-                    ctx.fillStyle = '#0066ff33';
+                    // TODO: Invert background and foreground colors
+                    ctx.fillStyle = '#181616';
                     ctx.fillRect(x, y, CELL_WIDTH, CELL_HEIGHT);
                 }
 
                 if (isCursor) {
-                    ctx.fillStyle = '#000000';
+                    ctx.fillStyle = '#181616';
                     ctx.fillRect(x, y, CELL_WIDTH, CELL_HEIGHT);
                 }
 
+                // TODO: Be able to toggle on/off
                 ctx.strokeStyle = '#00000030';
                 ctx.lineWidth = 0.5;
                 ctx.strokeRect(x, y, CELL_WIDTH, CELL_HEIGHT);
 
                 if (char) {
-                    ctx.fillStyle = isCursor ? '#ffffff' : '#000000';
+                    ctx.fillStyle = isCursor || selected ? '#ede9e9' : '#181616';
                     ctx.fillText(char, x, y + CELL_HEIGHT);
                 }
             }
