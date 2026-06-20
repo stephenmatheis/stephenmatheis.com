@@ -12,9 +12,12 @@ export type BoxProps = {
     padding?: number;
     paddingX?: number;
     paddingY?: number;
+    interactive?: boolean;
 };
 
 export type BoxNode = BoxProps & { children: BoxNode[] };
+
+export type Region = { x: number; y: number; width: number; height: number };
 
 export function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
     return {
@@ -27,7 +30,7 @@ export function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
     };
 }
 
-export function compose(
+function composeNode(
     {
         x = 0,
         y = 0,
@@ -40,9 +43,11 @@ export function compose(
         padding = 1,
         paddingX,
         paddingY,
+        interactive,
         children,
     }: BoxNode,
     chars: string[][],
+    regions: Region[],
 ) {
     if (border) {
         const corners = {
@@ -83,13 +88,17 @@ export function compose(
                 chars[y][startX + i] = paddedTitle[i];
             }
         }
+
+        if (interactive) {
+            regions.push({ x: x + 1, y: y + 1, width: width - 2, height: height - 2 });
+        }
     }
 
     for (const child of children) {
         const px = paddingX ?? padding;
         const py = paddingY ?? padding;
 
-        compose(
+        composeNode(
             {
                 ...child,
                 x: x + px + (child.x ?? 0),
@@ -98,6 +107,15 @@ export function compose(
                 height: child.height ?? (height || 0) - py * 2,
             },
             chars,
+            regions,
         );
     }
+}
+
+export function compose(node: BoxNode, chars: string[][]): Region[] {
+    const regions: Region[] = [];
+
+    composeNode(node, chars, regions);
+
+    return regions;
 }

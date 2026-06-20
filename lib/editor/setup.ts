@@ -1,3 +1,4 @@
+import type { Region } from '@/lib/tui';
 import type { EditorState } from './editor';
 import type { DrawAction } from './render';
 
@@ -26,7 +27,7 @@ export function createSetup(
     ctx: CanvasRenderingContext2D,
     state: EditorState,
     actions: DrawAction,
-    layout: (chars: string[][]) => void,
+    layout: (chars: string[][]) => Region[],
 ) {
     function setupCanvas() {
         const { innerWidth, innerHeight } = window;
