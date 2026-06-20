@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { createEditor, Box } from '@/lib/editor';
+import { createEditor, Box, Text } from '@/lib/editor';
 import styles from './page.module.scss';
 
 export default function Home() {
@@ -21,9 +21,10 @@ export default function Home() {
 
         editor.root.add(
             Box(
-                { border: false, padding: 0, width: editor.cols, height: editor.rows },
+                { border: false, padding: 0 },
                 Box({ title: 'One', interactive: true, width: half }),
                 Box({ title: 'Two', interactive: true, x: half, width: editor.cols - half }),
+                Text({ y: editor.rows - 1, align: 'right', content: 'Ln {ln}/{rows}, Col {col}/{cols}' }),
             ),
         );
 
@@ -38,7 +39,7 @@ export default function Home() {
         <div ref={pageRef} className={styles.page} style={{ opacity: 0 }}>
             <div ref={containerRef} className={styles.renderer}>
                 <canvas ref={canvasRef} />
-                <textarea ref={textareaRef} className={styles.input} tabIndex={0} autoFocus suppressHydrationWarning />
+                <textarea ref={textareaRef} className={styles.input} name="input" tabIndex={0} autoFocus suppressHydrationWarning />
             </div>
         </div>
     );
