@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { createEditor } from './editor';
+import { createEditor } from '@/lib/editor';
 import styles from './page.module.scss';
 
 export default function Home() {
