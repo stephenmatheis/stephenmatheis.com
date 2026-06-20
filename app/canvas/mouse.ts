@@ -3,6 +3,9 @@ import type { EditorState } from './editor';
 
 export type MouseActions = {
     draw(): void;
+    startMouseSelection(cell: CellPos): void;
+    extendMouseSelection(cell: CellPos): void;
+    endMouseSelection(): void;
 };
 
 function pixelToCell(
@@ -29,11 +32,9 @@ export function createMouseHandlers(
         const cell = pixelToCell(event.clientX, event.clientY, canvas, state);
 
         state.cursor = cell;
-        state.selected = null;
-        state.selectionAnchor = cell;
-        state.keyboardAnchor = null;
         state.isDragging = true;
         state.cursorVisible = true;
+        actions.startMouseSelection(cell);
         textarea.focus();
 
         actions.draw();
@@ -46,8 +47,8 @@ export function createMouseHandlers(
         const anchor = state.selectionAnchor;
 
         if (cell.x !== anchor.x || cell.y !== anchor.y) {
-            state.selected = { start: anchor, end: cell };
             state.cursor = cell;
+            actions.extendMouseSelection(cell);
 
             actions.draw();
         }
@@ -55,7 +56,7 @@ export function createMouseHandlers(
 
     function handleMouseUp() {
         state.isDragging = false;
-        state.selectionAnchor = null;
+        actions.endMouseSelection();
     }
 
     return { handleMouseDown, handleMouseMove, handleMouseUp };

@@ -1,12 +1,9 @@
 import { Box, compose } from '@/lib/tui';
 import type { EditorState } from './editor';
+import type { DrawAction } from './render';
 
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;
-
-export type SetupActions = {
-    draw(): void;
-};
 
 function getEmSquare(element: HTMLElement) {
     const style = getComputedStyle(element);
@@ -29,7 +26,7 @@ export function createSetup(
     canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D,
     state: EditorState,
-    actions: SetupActions,
+    actions: DrawAction,
 ) {
     function setupCanvas() {
         const { innerWidth, innerHeight } = window;

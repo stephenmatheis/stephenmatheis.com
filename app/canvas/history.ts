@@ -5,6 +5,7 @@ const MAX_HISTORY = 100;
 
 export type HistoryActions = {
     draw(): void;
+    clearSelection(): void;
 };
 
 export function createHistory(state: EditorState, actions: HistoryActions) {
@@ -33,8 +34,7 @@ export function createHistory(state: EditorState, actions: HistoryActions) {
 
         state.chars = prev.chars;
         state.cursor = prev.cursor;
-        state.selected = null;
-        state.keyboardAnchor = null;
+        actions.clearSelection();
 
         actions.draw();
     }
@@ -51,8 +51,7 @@ export function createHistory(state: EditorState, actions: HistoryActions) {
 
         state.chars = next.chars;
         state.cursor = next.cursor;
-        state.selected = null;
-        state.keyboardAnchor = null;
+        actions.clearSelection();
 
         actions.draw();
     }

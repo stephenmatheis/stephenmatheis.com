@@ -1,6 +1,8 @@
 import { isInSelection } from '@/lib/tui';
 import type { EditorState } from './editor';
 
+export type DrawAction = { draw(): void };
+
 export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
     const rootStyles = window.getComputedStyle(document.documentElement);
     const background = rootStyles.getPropertyValue('--background').trim();
@@ -17,7 +19,6 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
             const isSelected = state.selected ? isInSelection(col, row, state.selected) : false;
 
             if (isSelected) {
-                // TODO: Invert background and foreground colors
                 ctx.fillStyle = foreground;
                 ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
             }
