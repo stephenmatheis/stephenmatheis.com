@@ -16,16 +16,6 @@ export type BoxProps = {
 
 export type BoxNode = BoxProps & { children: BoxNode[] };
 
-export type CellPos = {
-    x: number;
-    y: number;
-};
-
-export type Selected = {
-    start: CellPos;
-    end: CellPos;
-};
-
 export function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
     return {
         border: true,
@@ -110,87 +100,4 @@ export function compose(
             chars,
         );
     }
-}
-
-export function normalizeSelection(selection: Selected): Selected {
-    const { start, end } = selection;
-    const reversed = end.y < start.y || (end.y === start.y && end.x < start.x);
-
-    return reversed ? { start: end, end: start } : selection;
-}
-
-export function isInSelection(col: number, row: number, selection: Selected): boolean {
-    const { start, end } = normalizeSelection(selection);
-
-    if (row < start.y || row > end.y) {
-        return false;
-    }
-
-    if (row === start.y && col < start.x) {
-        return false;
-    }
-
-    if (row === end.y && col > end.x) {
-        return false;
-    }
-
-    return true;
-}
-
-export function getSelectedText(chars: string[][], selection: Selected): string {
-    const { start, end } = normalizeSelection(selection);
-    const lines: string[] = [];
-
-    for (let row = start.y; row <= end.y; row++) {
-        const startCol = row === start.y ? start.x : 0;
-        const endCol = row === end.y ? end.x : (chars[row]?.length ?? 1) - 1;
-
-        lines.push(
-            (chars[row] || [])
-                .slice(startCol, endCol + 1)
-                .join('')
-                .trimEnd(),
-        );
-    }
-
-    return lines.join('\n');
-}
-
-export function isWordChar(char: string): boolean {
-    if (!char || char.trim() === '') return false;
-
-    const code = char.codePointAt(0) ?? 0;
-
-    // Exclude box-drawing characters (U+2500–U+257F)
-    return !(code >= 0x2500 && code <= 0x257f);
-}
-
-// Creates a fully independent copy of the character buffer.
-//
-// Why not just spread the outer array (`[...chars]`)? That gives you a new
-// array but the same inner row arrays — mutating chars[0][5] in the copy would
-// also mutate the original. Undo snapshots need to be completely isolated from
-// the live buffer, so every row must be its own new array.
-//
-// We spread each row one level deep (rather than using structuredClone) because
-// each cell is a primitive string. Strings are immutable in JavaScript — once
-// created, they can't be changed in place — so a shallow per-row copy is enough
-// to fully isolate the snapshot.
-export function cloneChars(chars: string[][]): string[][] {
-    return chars.map((row) => [...row]);
-}
-
-export function clearSelected(chars: string[][], selection: Selected): CellPos {
-    const { start, end } = normalizeSelection(selection);
-
-    for (let row = start.y; row <= end.y; row++) {
-        const startCol = row === start.y ? start.x : 0;
-        const endCol = row === end.y ? end.x : chars[row].length - 1;
-
-        for (let col = startCol; col <= endCol; col++) {
-            chars[row][col] = '';
-        }
-    }
-
-    return start;
 }

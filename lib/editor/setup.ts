@@ -1,4 +1,3 @@
-import { Box, compose } from '@/lib/tui';
 import type { EditorState } from './editor';
 import type { DrawAction } from './render';
 
@@ -27,6 +26,7 @@ export function createSetup(
     ctx: CanvasRenderingContext2D,
     state: EditorState,
     actions: DrawAction,
+    layout: (chars: string[][]) => void,
 ) {
     function setupCanvas() {
         const { innerWidth, innerHeight } = window;
@@ -46,16 +46,7 @@ export function createSetup(
 
         state.chars = Array.from({ length: state.rows }, () => Array.from({ length: state.cols }, () => ''));
 
-        compose(
-            Box(
-                { title: 'Outer', paddingX: 2 },
-                Box(
-                    { title: 'Inner', titleAlignment: 'right', paddingX: 2 },
-                    Box({ title: 'Center', titleAlignment: 'center' }),
-                ),
-            ),
-            state.chars,
-        );
+        layout(state.chars);
 
         // TODO: Keep on resize.
         state.undoStack = [];

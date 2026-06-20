@@ -1,4 +1,4 @@
-import { getSelectedText, clearSelected } from '@/lib/tui';
+import { getSelectedText, clearSelected } from './selection';
 import type { EditorState } from './editor';
 import type { createCursor } from './cursor';
 import type { createBuffer } from './buffer';

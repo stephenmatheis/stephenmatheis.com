@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { Box } from '@/lib/tui';
 import { createEditor } from '@/lib/editor';
 import styles from './page.module.scss';
 
@@ -16,6 +17,16 @@ export default function Home() {
             textarea: textareaRef.current!,
             container: containerRef.current!,
         });
+
+        editor.root.add(
+            Box(
+                { title: 'Outer', paddingX: 2 },
+                Box(
+                    { title: 'Inner', titleAlignment: 'right', paddingX: 2 },
+                    Box({ title: 'Center', titleAlignment: 'center' }),
+                ),
+            ),
+        );
 
         if (pageRef.current) {
             pageRef.current.style.opacity = '1';

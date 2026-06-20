@@ -1,5 +1,13 @@
-import { isWordChar } from '@/lib/tui';
 import type { EditorState } from './editor';
+
+function isWordChar(char: string): boolean {
+    if (!char || char.trim() === '') return false;
+
+    const code = char.codePointAt(0) ?? 0;
+
+    // Exclude box-drawing characters (U+2500–U+257F)
+    return !(code >= 0x2500 && code <= 0x257f);
+}
 
 export function createCursor(state: EditorState) {
     function moveCursor(dx: number, dy: number) {
