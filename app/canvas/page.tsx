@@ -5,8 +5,6 @@ import { Box, compose, isInSelection, getSelectedText, isWordChar, clearSelected
 import type { CellPos, Selected } from '@/lib/tui';
 import styles from './page.module.scss';
 
-const CELL_WIDTH = 14;
-const CELL_HEIGHT = 28;
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;
 
@@ -28,6 +26,8 @@ type Snapshot = {
 };
 
 export default function Home() {
+    const cellWidthRef = useRef<number>(0);
+    const cellHeightRef = useRef<number>(0);
     const pageRef = useRef<HTMLDivElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -56,42 +56,48 @@ export default function Home() {
 
         if (!ctx) return;
 
+        const rootStyles = window.getComputedStyle(document.documentElement);
+        const background = rootStyles.getPropertyValue('--background').trim();
+        const foreground = rootStyles.getPropertyValue('--foreground').trim();
+
         const cols = colsRef.current;
         const rows = rowsRef.current;
         const chars = charsRef.current;
         const cursor = cursorRef.current;
         const selection = selectedRef.current;
         const cursorVisible = cursorVisibleRef.current;
+        const cellWidth = cellWidthRef.current;
+        const cellHeight = cellHeightRef.current;
 
-        ctx.clearRect(0, 0, cols * CELL_WIDTH, rows * CELL_HEIGHT);
+        ctx.clearRect(0, 0, cols * cellWidth, rows * cellHeight);
 
         for (let row = 0; row < rows; row++) {
             for (let col = 0; col < cols; col++) {
-                const x = col * CELL_WIDTH;
-                const y = row * CELL_HEIGHT;
+                const x = col * cellWidth;
+                const y = row * cellHeight;
                 const char = chars[row]?.[col] || '';
                 const isCursor = cursorVisible && col === cursor.x && row === cursor.y;
                 const selected = selection ? isInSelection(col, row, selection) : false;
 
                 if (selected) {
                     // TODO: Invert background and foreground colors
-                    ctx.fillStyle = '#181616';
-                    ctx.fillRect(x, y, CELL_WIDTH, CELL_HEIGHT);
+                    ctx.fillStyle = foreground;
+                    ctx.fillRect(x, y, cellWidth, cellHeight);
                 }
 
                 if (isCursor) {
-                    ctx.fillStyle = '#181616';
-                    ctx.fillRect(x, y, CELL_WIDTH, CELL_HEIGHT);
+                    ctx.fillStyle = foreground;
+                    ctx.fillRect(x, y, cellWidth, cellHeight);
                 }
 
                 // TODO: Be able to toggle on/off
                 ctx.strokeStyle = '#00000030';
                 ctx.lineWidth = 0.5;
-                ctx.strokeRect(x, y, CELL_WIDTH, CELL_HEIGHT);
+                ctx.strokeRect(x, y, cellWidth, cellHeight);
 
                 if (char) {
-                    ctx.fillStyle = isCursor || selected ? '#ede9e9' : '#181616';
-                    ctx.fillText(char, x, y + CELL_HEIGHT);
+                    ctx.fillStyle = isCursor || selected ? background : foreground;
+                    ctx.fillText(char, x, y + cellHeight);
                 }
             }
         }
@@ -293,8 +299,8 @@ export default function Home() {
         const { left, top } = canvas.getBoundingClientRect();
 
         return {
-            x: Math.max(0, Math.min(Math.floor((clientX - left) / CELL_WIDTH), colsRef.current - 1)),
-            y: Math.max(0, Math.min(Math.floor((clientY - top) / CELL_HEIGHT), rowsRef.current - 1)),
+            x: Math.max(0, Math.min(Math.floor((clientX - left) / cellWidthRef.current), colsRef.current - 1)),
+            y: Math.max(0, Math.min(Math.floor((clientY - top) / cellHeightRef.current), rowsRef.current - 1)),
         };
     }
 
@@ -511,6 +517,23 @@ export default function Home() {
         draw();
     }
 
+    function getEmSquare(element: HTMLElement) {
+        const style = getComputedStyle(element);
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        if (!ctx) return { width: 0, height: 0 };
+
+        ctx.font = `${parseFloat(style.fontSize)}px ${style.fontFamily}`;
+
+        const metrics = ctx.measureText('M');
+
+        return {
+            width: metrics.width,
+            height: metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent,
+        };
+    }
+
     useEffect(() => {
         const canvas = canvasRef.current;
 
@@ -525,6 +548,7 @@ export default function Home() {
         const rootStyles = window.getComputedStyle(document.documentElement);
         const fontSize = rootStyles.getPropertyValue('--canvas-font-size').trim();
         const fontFamily = rootStyles.getPropertyValue('--canvas-font-family').trim();
+        const emSquare = getEmSquare(document.body);
 
         fontStrRef.current = `${fontSize} ${fontFamily}`;
 
@@ -532,17 +556,17 @@ export default function Home() {
             if (!canvas || !ctx) return;
 
             const { innerWidth, innerHeight } = window;
-            const cols = Math.floor(innerWidth / CELL_WIDTH) - COL_OFFSET;
-            const rows = Math.floor(innerHeight / CELL_HEIGHT) - ROW_OFFSET;
+            const cols = Math.floor(innerWidth / emSquare.width) - COL_OFFSET;
+            const rows = Math.floor(innerHeight / emSquare.height) - ROW_OFFSET;
             const dpr = window.devicePixelRatio || 1;
 
             colsRef.current = cols;
             rowsRef.current = rows;
 
-            canvas.width = cols * CELL_WIDTH * dpr;
-            canvas.height = rows * CELL_HEIGHT * dpr;
-            canvas.style.width = `${cols * CELL_WIDTH}px`;
-            canvas.style.height = `${rows * CELL_HEIGHT}px`;
+            canvas.width = cols * emSquare.width * dpr;
+            canvas.height = rows * emSquare.height * dpr;
+            canvas.style.width = `${cols * emSquare.width}px`;
+            canvas.style.height = `${rows * emSquare.height}px`;
 
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             ctx.font = fontStrRef.current;
@@ -579,6 +603,8 @@ export default function Home() {
             draw();
         }
 
+        cellWidthRef.current = emSquare.width;
+        cellHeightRef.current = emSquare.height;
         setSize();
 
         window.addEventListener('resize', setSize);
