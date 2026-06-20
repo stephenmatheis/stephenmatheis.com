@@ -7,7 +7,6 @@ const CELL_WIDTH = 14;
 const CELL_HEIGHT = 28;
 const ROW_OFFSET = 4;
 const COL_OFFSET = ROW_OFFSET * 2;
-// const TEXT = 'Hello, world.';
 
 type DrawBoxProps = {
     chars: string[][];
@@ -17,63 +16,23 @@ type DrawBoxProps = {
     height: number;
 };
 
-// eslint-disable-next-line
 function DrawBox({ chars, x: startX, y: startY, width, height }: DrawBoxProps) {
-    // top left
-    chars[0][0] = '\u256D';
+    chars[startY][startX] = '\u256D';
+    chars[startY][startX + width - 1] = '\u256E';
+    chars[startY + height - 1][startX] = '\u2570';
+    chars[startY + height - 1][startX + width - 1] = '\u256F';
 
-    // top edge
-    chars = chars.map((row, y) => {
-        return row.map((col, x) => {
-            if (y === startY && x > startX && x < width - 1) {
-                return '\u2500';
-            }
+    for (let x = startX + 1; x < startX + width - 1; x++) {
+        chars[startY][x] = '\u2500';
+        chars[startY + height - 1][x] = '\u2500';
+    }
 
-            return col;
-        });
-    });
+    for (let y = startY + 1; y < startY + height - 1; y++) {
+        chars[y][startX] = '\u2502';
+        chars[y][startX + width - 1] = '\u2502';
+    }
 
-    // top right
-    chars[0][width - 1] = '\u256E';
-
-    // bottom left
-    chars[height - 1][0] = '\u2570';
-
-    // bottom edge
-    chars = chars.map((row, y) => {
-        return row.map((col, x) => {
-            if (y === height - 1 && x > startX && x < width - 1) {
-                return '\u2500';
-            }
-
-            return col;
-        });
-    });
-
-    // bottom right
-    chars[height - 1][width - 1] = '\u256F';
-
-    // left edge
-    chars = chars.map((row, y) => {
-        return row.map((col, x) => {
-            if (x === startX && y > startX && y < height - 1) {
-                return '\u2502';
-            }
-
-            return col;
-        });
-    });
-
-    // right edge
-    chars = chars.map((row, y) => {
-        return row.map((col, x) => {
-            if (x === width - 1 && y > startY && y < height - 1) {
-                return '\u2502';
-            }
-
-            return col;
-        });
-    });
+    return chars;
 }
 
 export default function Home() {
@@ -96,68 +55,26 @@ export default function Home() {
             const rows = raw_rows - ROW_OFFSET;
             const width = cols * CELL_WIDTH;
             const height = rows * CELL_HEIGHT;
-
-            let chars = Array.from({ length: rows }).map(() => Array.from({ length: cols }, () => ''));
-
-            // top left
-            chars[0][0] = '\u256D';
-
-            // top edge
-            chars = chars.map((row, y) => {
-                return row.map((col, x) => {
-                    if (y === 0 && x > 0 && x < cols - 1) {
-                        return '\u2500';
-                    }
-
-                    return col;
-                });
+            const chars = Array.from({ length: rows }).map(() => Array.from({ length: cols }, () => ''));
+            const outer = DrawBox({
+                chars,
+                x: 0,
+                y: 0,
+                width: cols,
+                height: rows,
             });
 
-            // top right
-            chars[0][cols - 1] = '\u256E';
-
-            // bottom left
-            chars[rows - 1][0] = '\u2570';
-
-            // bottom edge
-            chars = chars.map((row, y) => {
-                return row.map((col, x) => {
-                    if (y === rows - 1 && x > 0 && x < cols - 1) {
-                        return '\u2500';
-                    }
-
-                    return col;
-                });
-            });
-
-            // bottom right
-            chars[rows - 1][cols - 1] = '\u256F';
-
-            // left edge
-            chars = chars.map((row, y) => {
-                return row.map((col, x) => {
-                    if (x === 0 && y > 0 && y < rows - 1) {
-                        return '\u2502';
-                    }
-
-                    return col;
-                });
-            });
-
-            // right edge
-            chars = chars.map((row, y) => {
-                return row.map((col, x) => {
-                    if (x === cols - 1 && y > 0 && y < rows - 1) {
-                        return '\u2502';
-                    }
-
-                    return col;
-                });
+            const inner = DrawBox({
+                chars: outer,
+                x: 2,
+                y: 2,
+                width: cols - 4,
+                height: rows - 4,
             });
 
             setCols(cols);
             setRows(rows);
-            setCells(chars);
+            setCells(inner);
 
             console.log(`Viewport:\t${innerWidth}x${innerHeight}`);
             console.log(`Grid:\t\t${cols}x${rows}`);
@@ -181,25 +98,6 @@ export default function Home() {
     return (
         <div ref={pageRef} className={styles.page} style={{ opacity: 0 }}>
             <div className={styles.renderer}>
-                {/* <div className={styles.text}>
-                    {TEXT.split('').map((char, index) => {
-                        return (
-                            <div key={index} className={styles.char}>
-                                {char === ' ' ? <>&nbsp;</> : char}
-                            </div>
-                        );
-                    })}
-                </div> */}
-                {/* <div
-                    className={styles.flex}
-                    style={{
-                        width: `calc(${cols} * ${CELL_WIDTH}px)`,
-                        height: `calc(${rows} * ${CELL_HEIGHT}px)`,
-                        padding: `${CELL_HEIGHT}px ${CELL_WIDTH}px`,
-                    }}
-                >
-                    {TEXT}
-                </div> */}
                 <div
                     ref={gridRef}
                     className={styles.grid}
@@ -209,22 +107,10 @@ export default function Home() {
                         gridTemplateRows: `repeat(${rows}, ${CELL_HEIGHT}px)`,
                     }}
                 >
-                    {/* {Array.from({ length: cols * rows }).map((_, index) => {
-                        const char = index < TEXT.length ? TEXT[index] : '';
-
-                        return (
-                            <div key={index} className={styles.cell}>
-                                {char}
-                            </div>
-                        );
-                    })} */}
                     {cells.map((row, y) => {
                         return (
                             <Fragment key={y}>
                                 {row.map((char, x) => {
-                                    if (char !== '') {
-                                        console.log(x, y, char);
-                                    }
                                     return (
                                         <div key={x} className={styles.cell}>
                                             {char}
