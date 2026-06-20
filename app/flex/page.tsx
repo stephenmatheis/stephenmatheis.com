@@ -100,16 +100,28 @@ export default function Home() {
             render(
                 Box(
                     {
+                        title: 'Outer',
+                        titleAlignment: 'right',
                         width: cols,
                         height: rows,
                     },
-                    Box({
-                        title: 'Hello',
-                        x: 2,
-                        y: 1,
-                        width: cols - 4,
-                        height: rows - 2,
-                    }),
+                    Box(
+                        {
+                            title: 'Inner',
+                            x: 2,
+                            y: 1,
+                            width: cols - 4,
+                            height: rows - 2,
+                        },
+                        Box({
+                            title: 'Center',
+                            titleAlignment: 'center',
+                            x: 4,
+                            y: 2,
+                            width: cols - 8,
+                            height: rows - 4,
+                        }),
+                    ),
                 ),
                 chars,
             );
