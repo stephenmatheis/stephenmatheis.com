@@ -8,31 +8,55 @@ const CELL_HEIGHT = 28;
 const ROW_OFFSET = 4;
 const COL_OFFSET = ROW_OFFSET * 2;
 
-type DrawBoxProps = {
-    chars: string[][];
-    x: number;
-    y: number;
+type BorderStyle = 'rounded' | 'single' | 'double';
+
+type BoxProps = {
+    x?: number;
+    y?: number;
     width: number;
     height: number;
+    border?: boolean;
+    borderStyle?: BorderStyle;
 };
 
-function DrawBox({ chars, x: startX, y: startY, width, height }: DrawBoxProps) {
-    chars[startY][startX] = '\u256D';
-    chars[startY][startX + width - 1] = '\u256E';
-    chars[startY + height - 1][startX] = '\u2570';
-    chars[startY + height - 1][startX + width - 1] = '\u256F';
+type BoxNode = BoxProps & { children: BoxNode[] };
 
-    for (let x = startX + 1; x < startX + width - 1; x++) {
-        chars[startY][x] = '\u2500';
-        chars[startY + height - 1][x] = '\u2500';
+function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
+    return { border: true, borderStyle: 'rounded', x: 0, y: 0, ...props, children };
+}
+
+function render(node: BoxNode, chars: string[][]): void {
+    const { x = 0, y = 0, width, height, border, borderStyle, children } = node;
+
+    if (border) {
+        const corners =
+            borderStyle === 'double'
+                ? ['\u2554', '\u2557', '\u255A', '\u255D']
+                : borderStyle === 'single'
+                ? ['\u250C', '\u2510', '\u2514', '\u2518']
+                : ['\u256D', '\u256E', '\u2570', '\u256F'];
+        const h = borderStyle === 'double' ? '\u2550' : '\u2500';
+        const v = borderStyle === 'double' ? '\u2551' : '\u2502';
+
+        chars[y][x] = corners[0];
+        chars[y][x + width - 1] = corners[1];
+        chars[y + height - 1][x] = corners[2];
+        chars[y + height - 1][x + width - 1] = corners[3];
+
+        for (let cx = x + 1; cx < x + width - 1; cx++) {
+            chars[y][cx] = h;
+            chars[y + height - 1][cx] = h;
+        }
+
+        for (let cy = y + 1; cy < y + height - 1; cy++) {
+            chars[cy][x] = v;
+            chars[cy][x + width - 1] = v;
+        }
     }
 
-    for (let y = startY + 1; y < startY + height - 1; y++) {
-        chars[y][startX] = '\u2502';
-        chars[y][startX + width - 1] = '\u2502';
+    for (const child of children) {
+        render(child, chars);
     }
-
-    return chars;
 }
 
 export default function Home() {
@@ -56,25 +80,17 @@ export default function Home() {
             const width = cols * CELL_WIDTH;
             const height = rows * CELL_HEIGHT;
             const chars = Array.from({ length: rows }).map(() => Array.from({ length: cols }, () => ''));
-            const outer = DrawBox({
-                chars,
-                x: 0,
-                y: 0,
-                width: cols,
-                height: rows,
-            });
 
-            const inner = DrawBox({
-                chars: outer,
-                x: 2,
-                y: 2,
-                width: cols - 4,
-                height: rows - 4,
-            });
+            render(
+                Box({ width: cols, height: rows },
+                    Box({ x: 2, y: 2, width: cols - 4, height: rows - 4 })
+                ),
+                chars
+            );
 
             setCols(cols);
             setRows(rows);
-            setCells(inner);
+            setCells(chars);
 
             console.log(`Viewport:\t${innerWidth}x${innerHeight}`);
             console.log(`Grid:\t\t${cols}x${rows}`);
