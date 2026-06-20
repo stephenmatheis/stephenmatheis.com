@@ -1,4 +1,4 @@
-import departureMonoCodepoints from '../codepoints/DepartureMono-Regular.json';
+import departureMonoCodepoints from '@/codepoints/DepartureMono-Regular.json';
 import styles from './page.module.scss';
 
 export default function Home() {

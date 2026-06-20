@@ -1,170 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { Box, compose, isInSelection, getSelectedText } from '@/lib/tui';
+import type { CellPos, Selected } from '@/lib/tui';
 import styles from './page.module.scss';
 
 const CELL_WIDTH = 14;
 const CELL_HEIGHT = 28;
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;
-
-type BorderStyle = 'rounded' | 'single' | 'double';
-
-type BoxProps = {
-    x?: number;
-    y?: number;
-    width?: number;
-    height?: number;
-    border?: boolean;
-    borderStyle?: BorderStyle;
-    title?: string;
-    titleAlignment?: 'left' | 'center' | 'right';
-    padding?: number;
-    paddingX?: number;
-    paddingY?: number;
-};
-
-type BoxNode = BoxProps & { children: BoxNode[] };
-
-type CellPos = {
-    x: number;
-    y: number;
-};
-
-type Selection = {
-    start: CellPos;
-    end: CellPos;
-};
-
-function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
-    return {
-        border: true,
-        borderStyle: 'rounded',
-        x: 0,
-        y: 0,
-        ...props,
-        children,
-    };
-}
-
-function renderBox(
-    {
-        x = 0,
-        y = 0,
-        width,
-        height,
-        border,
-        borderStyle = 'rounded',
-        title,
-        titleAlignment = 'left',
-        padding = 1,
-        paddingX,
-        paddingY,
-        children,
-    }: BoxNode,
-    chars: string[][],
-) {
-    if (border) {
-        const corners = {
-            double: ['╔', '╗', '╚', '╝'],
-            single: ['┌', '┐', '└', '┘'],
-            rounded: ['╭', '╮', '╰', '╯'],
-        }[borderStyle];
-        const horizontalEdge = borderStyle === 'double' ? '═' : '─';
-        const verticalEdge = borderStyle === 'double' ? '║' : '│';
-
-        height = height || chars.length;
-        width = width || chars[0].length;
-
-        chars[y][x] = corners[0];
-        chars[y][x + width - 1] = corners[1];
-        chars[y + height - 1][x] = corners[2];
-        chars[y + height - 1][x + width - 1] = corners[3];
-
-        for (let cx = x + 1; cx < x + width - 1; cx++) {
-            chars[y][cx] = horizontalEdge;
-            chars[y + height - 1][cx] = horizontalEdge;
-        }
-
-        for (let cy = y + 1; cy < y + height - 1; cy++) {
-            chars[cy][x] = verticalEdge;
-            chars[cy][x + width - 1] = verticalEdge;
-        }
-
-        if (title) {
-            const paddedTitle = ` ${title} `;
-            const startX = {
-                left: x + 2,
-                center: x + Math.floor((width - paddedTitle.length) / 2),
-                right: x + width - 2 - paddedTitle.length,
-            }[titleAlignment];
-
-            for (let i = 0; i < paddedTitle.length; i++) {
-                chars[y][startX + i] = paddedTitle[i];
-            }
-        }
-    }
-
-    for (const child of children) {
-        const px = paddingX ?? padding;
-        const py = paddingY ?? padding;
-
-        renderBox(
-            {
-                ...child,
-                x: x + px + (child.x ?? 0),
-                y: y + py + (child.y ?? 0),
-                width: child.width ?? (width || 0) - px * 2,
-                height: child.height ?? (height || 0) - py * 2,
-            },
-            chars,
-        );
-    }
-}
-
-function normalizeSelection(selection: Selection): Selection {
-    const { start, end } = selection;
-    const reversed = end.y < start.y || (end.y === start.y && end.x < start.x);
-
-    return reversed ? { start: end, end: start } : selection;
-}
-
-function isInSelection(col: number, row: number, selection: Selection): boolean {
-    const { start, end } = normalizeSelection(selection);
-
-    if (row < start.y || row > end.y) {
-        return false;
-    }
-
-    if (row === start.y && col < start.x) {
-        return false;
-    }
-
-    if (row === end.y && col > end.x) {
-        return false;
-    }
-
-    return true;
-}
-
-function getSelectedText(chars: string[][], selection: Selection): string {
-    const { start, end } = normalizeSelection(selection);
-    const lines: string[] = [];
-
-    for (let row = start.y; row <= end.y; row++) {
-        const startCol = row === start.y ? start.x : 0;
-        const endCol = row === end.y ? end.x : (chars[row]?.length ?? 1) - 1;
-
-        lines.push(
-            (chars[row] || [])
-                .slice(startCol, endCol + 1)
-                .join('')
-                .trimEnd(),
-        );
-    }
-
-    return lines.join('\n');
-}
 
 export default function Home() {
     const pageRef = useRef<HTMLDivElement>(null);
@@ -176,7 +20,7 @@ export default function Home() {
     const colsRef = useRef(0);
     const rowsRef = useRef(0);
     const cursorRef = useRef<CellPos>({ x: 0, y: 0 });
-    const selectionRef = useRef<Selection | null>(null);
+    const selectedRef = useRef<Selected | null>(null);
     const cursorVisibleRef = useRef(true);
     const isDraggingRef = useRef(false);
     const selectionAnchorRef = useRef<CellPos | null>(null);
@@ -190,7 +34,7 @@ export default function Home() {
         const rows = rowsRef.current;
         const chars = charsRef.current;
         const cursor = cursorRef.current;
-        const selection = selectionRef.current;
+        const selection = selectedRef.current;
         const cursorVisible = cursorVisibleRef.current;
 
         ctx.clearRect(0, 0, cols * CELL_WIDTH, rows * CELL_HEIGHT);
@@ -267,11 +111,11 @@ export default function Home() {
             return { x: 0, y: 0 };
         }
 
-        const rect = canvas.getBoundingClientRect();
+        const { left, top } = canvas.getBoundingClientRect();
 
         return {
-            x: Math.max(0, Math.min(Math.floor((clientX - rect.left) / CELL_WIDTH), colsRef.current - 1)),
-            y: Math.max(0, Math.min(Math.floor((clientY - rect.top) / CELL_HEIGHT), rowsRef.current - 1)),
+            x: Math.max(0, Math.min(Math.floor((clientX - left) / CELL_WIDTH), colsRef.current - 1)),
+            y: Math.max(0, Math.min(Math.floor((clientY - top) / CELL_HEIGHT), rowsRef.current - 1)),
         };
     }
 
@@ -279,7 +123,7 @@ export default function Home() {
         const cell = pixelToCell(event.clientX, event.clientY);
 
         cursorRef.current = cell;
-        selectionRef.current = null;
+        selectedRef.current = null;
         selectionAnchorRef.current = cell;
         isDraggingRef.current = true;
         cursorVisibleRef.current = true;
@@ -295,7 +139,7 @@ export default function Home() {
         const anchor = selectionAnchorRef.current;
 
         if (cell.x !== anchor.x || cell.y !== anchor.y) {
-            selectionRef.current = { start: anchor, end: cell };
+            selectedRef.current = { start: anchor, end: cell };
             cursorRef.current = cell;
 
             draw();
@@ -315,7 +159,7 @@ export default function Home() {
                 case 'a':
                     event.preventDefault();
 
-                    selectionRef.current = {
+                    selectedRef.current = {
                         start: { x: 0, y: 0 },
                         end: { x: colsRef.current - 1, y: rowsRef.current - 1 },
                     };
@@ -326,8 +170,8 @@ export default function Home() {
                 case 'c':
                     event.preventDefault();
 
-                    if (selectionRef.current) {
-                        const text = getSelectedText(charsRef.current, selectionRef.current);
+                    if (selectedRef.current) {
+                        const text = getSelectedText(charsRef.current, selectedRef.current);
 
                         navigator.clipboard.writeText(text).catch(() => {});
                     }
@@ -339,7 +183,7 @@ export default function Home() {
                     navigator.clipboard
                         .readText()
                         .then((text) => {
-                            selectionRef.current = null;
+                            selectedRef.current = null;
                             for (const char of text) {
                                 if (char === '\n') handleEnter();
                                 else if (char !== '\r') writeChar(char);
@@ -356,7 +200,7 @@ export default function Home() {
 
         event.preventDefault();
 
-        selectionRef.current = null;
+        selectedRef.current = null;
 
         // TODO: Vim mode.
         switch (event.key) {
@@ -425,7 +269,7 @@ export default function Home() {
 
             const chars = Array.from({ length: rows }, () => Array.from({ length: cols }, () => ''));
 
-            renderBox(
+            compose(
                 Box(
                     { title: 'Outer', paddingX: 2 },
                     Box(
