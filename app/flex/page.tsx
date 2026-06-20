@@ -50,7 +50,6 @@ function render(
             rounded: ['\u256D', '\u256E', '\u2570', '\u256F'],
         };
         const corners = borderStyles[borderStyle];
-
         const horizontalEdge = borderStyle === 'double' ? '\u2550' : '\u2500';
         const verticalEdge = borderStyle === 'double' ? '\u2551' : '\u2502';
 
@@ -74,7 +73,6 @@ function render(
 
         if (title) {
             const paddedTitle = ` ${title} `;
-
             const startX = {
                 left: x + 2,
                 center: x + Math.floor((width - paddedTitle.length) / 2),
@@ -88,13 +86,16 @@ function render(
     }
 
     for (const child of children) {
-        render({
-            ...child,
-            x: x + padding + (child.x ?? 0),
-            y: y + padding + (child.y ?? 0),
-            width: child.width ?? (width || 0) - padding * 2,
-            height: child.height ?? (height || 0) - padding * 2,
-        }, chars);
+        render(
+            {
+                ...child,
+                x: x + padding + (child.x ?? 0),
+                y: y + padding + (child.y ?? 0),
+                width: child.width ?? (width || 0) - padding * 2,
+                height: child.height ?? (height || 0) - padding * 2,
+            },
+            chars,
+        );
     }
 }
 
