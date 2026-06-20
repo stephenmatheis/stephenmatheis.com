@@ -155,3 +155,27 @@ export function getSelectedText(chars: string[][], selection: Selected): string 
 
     return lines.join('\n');
 }
+
+export function isWordChar(char: string): boolean {
+    if (!char || char.trim() === '') return false;
+
+    const code = char.codePointAt(0) ?? 0;
+
+    // Exclude box-drawing characters (U+2500–U+257F)
+    return !(code >= 0x2500 && code <= 0x257f);
+}
+
+export function clearSelected(chars: string[][], selection: Selected): CellPos {
+    const { start, end } = normalizeSelection(selection);
+
+    for (let row = start.y; row <= end.y; row++) {
+        const startCol = row === start.y ? start.x : 0;
+        const endCol = row === end.y ? end.x : chars[row].length - 1;
+
+        for (let col = startCol; col <= endCol; col++) {
+            chars[row][col] = '';
+        }
+    }
+
+    return start;
+}
