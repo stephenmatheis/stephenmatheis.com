@@ -1,3 +1,5 @@
+import { compose } from '@/lib/tui';
+import type { BoxNode } from '@/lib/tui';
 import { render } from './render';
 import { createKeyboard } from './keyboard';
 import { createMouseHandlers } from './mouse';
@@ -6,7 +8,16 @@ import { createCursor } from './cursor';
 import { createBuffer } from './buffer';
 import { createSelection } from './selection';
 import { createSetup } from './setup';
-import type { CellPos, Selected } from '@/lib/tui';
+
+export type CellPos = {
+    x: number;
+    y: number;
+};
+
+export type Selected = {
+    start: CellPos;
+    end: CellPos;
+};
 
 export type Snapshot = {
     chars: string[][];
@@ -60,6 +71,8 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         redoStack: [],
     };
 
+    let currentNode: BoxNode | null = null;
+
     const draw = () => render(ctx, state);
     const cursor = createCursor(state);
     const buffer = createBuffer(state, { moveCursor: cursor.moveCursor });
@@ -72,7 +85,9 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         extendMouseSelection: selection.extendMouseSelection,
         endMouseSelection: selection.endMouseSelection,
     });
-    const { setSize } = createSetup(canvas, ctx, state, { draw });
+    const { setSize } = createSetup(canvas, ctx, state, { draw }, (chars) => {
+        if (currentNode) compose(currentNode, chars);
+    });
 
     container.addEventListener('mousedown', handleMouseDown);
     container.addEventListener('mousemove', handleMouseMove);
@@ -82,6 +97,13 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     textarea.focus();
 
     return {
+        root: {
+            add(node: BoxNode) {
+                currentNode = node;
+                compose(node, state.chars);
+                draw();
+            },
+        },
         destroy() {
             container.removeEventListener('mousedown', handleMouseDown);
             container.removeEventListener('mousemove', handleMouseMove);

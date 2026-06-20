@@ -1,4 +1,4 @@
-import { isInSelection } from '@/lib/tui';
+import { isInSelection } from './selection';
 import type { EditorState } from './editor';
 
 export type DrawAction = { draw(): void };

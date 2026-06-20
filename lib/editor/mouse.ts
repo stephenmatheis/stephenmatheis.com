@@ -1,4 +1,4 @@
-import type { CellPos } from '@/lib/tui';
+import type { CellPos } from './editor';
 import type { EditorState } from './editor';
 
 export type MouseActions = {
