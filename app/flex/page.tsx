@@ -13,12 +13,13 @@ type BorderStyle = 'rounded' | 'single' | 'double';
 type BoxProps = {
     x?: number;
     y?: number;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     border?: boolean;
     borderStyle?: BorderStyle;
     title?: string;
     titleAlignment?: 'left' | 'center' | 'right';
+    padding?: number;
 };
 
 type BoxNode = BoxProps & { children: BoxNode[] };
@@ -28,7 +29,18 @@ function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
 }
 
 function render(
-    { x = 0, y = 0, width, height, border, borderStyle = 'rounded', title, titleAlignment = 'left', children }: BoxNode,
+    {
+        x = 0,
+        y = 0,
+        width,
+        height,
+        border,
+        borderStyle = 'rounded',
+        title,
+        titleAlignment = 'left',
+        padding = 1,
+        children,
+    }: BoxNode,
     chars: string[][],
 ) {
     if (border) {
@@ -41,6 +53,9 @@ function render(
 
         const horizontalEdge = borderStyle === 'double' ? '\u2550' : '\u2500';
         const verticalEdge = borderStyle === 'double' ? '\u2551' : '\u2502';
+
+        height = height || chars.length;
+        width = width || chars[0].length;
 
         chars[y][x] = corners[0];
         chars[y][x + width - 1] = corners[1];
@@ -73,7 +88,13 @@ function render(
     }
 
     for (const child of children) {
-        render(child, chars);
+        render({
+            ...child,
+            x: x + padding + (child.x ?? 0),
+            y: y + padding + (child.y ?? 0),
+            width: child.width ?? (width || 0) - padding * 2,
+            height: child.height ?? (height || 0) - padding * 2,
+        }, chars);
     }
 }
 
@@ -101,25 +122,15 @@ export default function Home() {
                 Box(
                     {
                         title: 'Outer',
-                        titleAlignment: 'right',
-                        width: cols,
-                        height: rows,
                     },
                     Box(
                         {
                             title: 'Inner',
-                            x: 2,
-                            y: 1,
-                            width: cols - 4,
-                            height: rows - 2,
+                            titleAlignment: 'right',
                         },
                         Box({
                             title: 'Center',
                             titleAlignment: 'center',
-                            x: 4,
-                            y: 2,
-                            width: cols - 8,
-                            height: rows - 4,
                         }),
                     ),
                 ),
