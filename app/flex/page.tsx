@@ -3,8 +3,11 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import styles from './page.module.scss';
 
-const CELL_WIDTH = 14;
-const CELL_HEIGHT = 28;
+// const CELL_WIDTH = 14;
+// const CELL_HEIGHT = 28;
+const FONT_SIZE = 16.5;
+const CELL_WIDTH = 10.5;
+const CELL_HEIGHT = 21;
 const ROW_OFFSET = 4;
 const COL_OFFSET = ROW_OFFSET * 2;
 
@@ -169,7 +172,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div ref={pageRef} className={styles.page} style={{ opacity: 0 }}>
+        <div ref={pageRef} className={styles.page} style={{ opacity: 0, fontSize: `${FONT_SIZE}px` }}>
             <div className={styles.renderer}>
                 <div
                     ref={gridRef}
