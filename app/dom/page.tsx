@@ -53,7 +53,7 @@ export default function Home() {
     return (
         <div ref={pageRef} className={styles.page} style={{ opacity: 0 }}>
             <div className={styles.renderer}>
-                <div className={styles.text}>
+                {/* <div className={styles.text}>
                     {TEXT.split('').map((char, index) => {
                         return (
                             <div key={index} className={styles.char}>
@@ -61,7 +61,7 @@ export default function Home() {
                             </div>
                         );
                     })}
-                </div>
+                </div> */}
                 <div
                     ref={gridRef}
                     className={styles.grid}
@@ -71,8 +71,9 @@ export default function Home() {
                         gridTemplateRows: `repeat(${rows}, ${CELL_HEIGHT}px)`,
                     }}
                 >
-                    {Array.from({ length: cols * rows }).map((cell, index) => {
+                    {Array.from({ length: cols * rows }).map((_, index) => {
                         const char = index < TEXT.length ? TEXT[index] : '';
+
                         return (
                             <div key={index} className={styles.cell}>
                                 {char}
