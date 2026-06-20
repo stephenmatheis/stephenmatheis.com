@@ -17,6 +17,8 @@ type BoxProps = {
     height: number;
     border?: boolean;
     borderStyle?: BorderStyle;
+    title?: string;
+    titleAlignment?: 'left' | 'center' | 'right';
 };
 
 type BoxNode = BoxProps & { children: BoxNode[] };
@@ -25,14 +27,17 @@ function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
     return { border: true, borderStyle: 'rounded', x: 0, y: 0, ...props, children };
 }
 
-function render({ x = 0, y = 0, width, height, border, borderStyle, children }: BoxNode, chars: string[][]) {
+function render(
+    { x = 0, y = 0, width, height, border, borderStyle = 'rounded', title, titleAlignment = 'left', children }: BoxNode,
+    chars: string[][],
+) {
     if (border) {
         const borderStyles = {
             double: ['\u2554', '\u2557', '\u255A', '\u255D'],
             single: ['\u250C', '\u2510', '\u2514', '\u2518'],
             rounded: ['\u256D', '\u256E', '\u2570', '\u256F'],
         };
-        const corners = borderStyles[borderStyle || 'rounded'];
+        const corners = borderStyles[borderStyle];
 
         const horizontalEdge = borderStyle === 'double' ? '\u2550' : '\u2500';
         const verticalEdge = borderStyle === 'double' ? '\u2551' : '\u2502';
@@ -50,6 +55,20 @@ function render({ x = 0, y = 0, width, height, border, borderStyle, children }: 
         for (let cy = y + 1; cy < y + height - 1; cy++) {
             chars[cy][x] = verticalEdge;
             chars[cy][x + width - 1] = verticalEdge;
+        }
+
+        if (title) {
+            const paddedTitle = ` ${title} `;
+
+            const startX = {
+                left: x + 2,
+                center: x + Math.floor((width - paddedTitle.length) / 2),
+                right: x + width - 2 - paddedTitle.length,
+            };
+
+            for (let i = 0; i < paddedTitle.length; i++) {
+                chars[y][startX[titleAlignment] + i] = paddedTitle[i];
+            }
         }
     }
 
@@ -85,6 +104,7 @@ export default function Home() {
                         height: rows,
                     },
                     Box({
+                        title: 'Hello',
                         x: 2,
                         y: 1,
                         width: cols - 4,
