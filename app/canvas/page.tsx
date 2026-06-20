@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Box } from '@/lib/tui';
-import { createEditor } from '@/lib/editor';
+import { createEditor, Box } from '@/lib/editor';
 import styles from './page.module.scss';
 
 export default function Home() {
