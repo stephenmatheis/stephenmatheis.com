@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Box, compose, isInSelection, getSelectedText, isWordChar, clearSelected } from '@/lib/tui';
+import { Box, compose, isInSelection, getSelectedText, isWordChar, clearSelected, cloneChars } from '@/lib/tui';
 import type { CellPos, Selected } from '@/lib/tui';
 import styles from './page.module.scss';
 
@@ -9,6 +9,23 @@ const CELL_WIDTH = 14;
 const CELL_HEIGHT = 28;
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;
+
+// How many undo steps to retain. Each entry is a full copy of the character
+// buffer plus the cursor position, so this trades memory for undo depth.
+// At 88×22 cells (~1,900 strings per snapshot) and 100 steps, the ceiling is
+// roughly 190k strings — negligible on a modern machine.
+const MAX_HISTORY = 100;
+
+// A point-in-time copy of everything needed to restore the editor to a
+// previous state. We snapshot chars and cursor together so that undo
+// restores not just the text but also where the cursor was — which is
+// what users expect ("undo" means "go back to exactly before I did that").
+// Selection is intentionally excluded: it's transient UI state, not
+// document content.
+type Snapshot = {
+    chars: string[][];
+    cursor: CellPos;
+};
 
 export default function Home() {
     const pageRef = useRef<HTMLDivElement>(null);
@@ -25,6 +42,14 @@ export default function Home() {
     const isDraggingRef = useRef(false);
     const selectionAnchorRef = useRef<CellPos | null>(null);
     const keyboardAnchorRef = useRef<CellPos | null>(null);
+
+    // Undo/redo use two stacks instead of a single array + pointer.
+    // The two-stack model is simpler to reason about: undoStack holds states
+    // you can go back to; redoStack holds states you can go forward to.
+    // Any new edit clears the redo stack — once you write something new,
+    // the "future" you were in no longer exists.
+    const undoStackRef = useRef<Snapshot[]>([]);
+    const redoStackRef = useRef<Snapshot[]>([]);
 
     function draw() {
         const ctx = ctxRef.current;
@@ -178,6 +203,84 @@ export default function Home() {
         cursorVisibleRef.current = true;
     }
 
+    // Saves the current buffer and cursor onto the undo stack before a
+    // mutation is applied. Call this immediately before any change to chars —
+    // never after — so the snapshot captures the state the user would want to
+    // return to if they pressed Cmd+Z.
+    //
+    // The MAX_HISTORY cap prevents unbounded memory growth: once the stack is
+    // full, we drop the oldest entry (shift from the front) to make room. This
+    // means very long editing sessions lose their earliest history, which is
+    // the standard trade-off text editors make.
+    //
+    // Clearing redoStackRef here is what makes the history linear: if you undo
+    // three steps and then type a character, the three "future" states are gone.
+    // You've started a new branch. This matches every mainstream editor's behavior
+    // and is the simplest model to understand.
+    function snapshot() {
+        undoStackRef.current.push({
+            chars: cloneChars(charsRef.current),
+            cursor: { ...cursorRef.current },
+        });
+
+        if (undoStackRef.current.length > MAX_HISTORY) {
+            undoStackRef.current.shift();
+        }
+
+        redoStackRef.current = [];
+    }
+
+    // Restores the most recent snapshot from the undo stack.
+    //
+    // Before restoring, we push the *current* state onto the redo stack so
+    // that a subsequent Cmd+Shift+Z can bring it back. This is the key
+    // symmetry of the two-stack model: undo moves a snapshot from the undo
+    // stack to the redo stack; redo does the reverse.
+    //
+    // We clear selection on restore because the selection referenced cell
+    // coordinates that may now hold different characters — keeping it would
+    // be misleading.
+    function undo() {
+        const prev = undoStackRef.current.pop();
+
+        if (!prev) return;
+
+        redoStackRef.current.push({
+            chars: cloneChars(charsRef.current),
+            cursor: { ...cursorRef.current },
+        });
+
+        charsRef.current = prev.chars;
+        cursorRef.current = prev.cursor;
+        selectedRef.current = null;
+        keyboardAnchorRef.current = null;
+
+        draw();
+    }
+
+    // Mirror of undo: moves a snapshot from the redo stack back into view.
+    //
+    // Note that redo pushes to the *undo* stack before restoring — this keeps
+    // the stacks in sync and means you can undo a redo, which is the expected
+    // behavior.
+    function redo() {
+        const next = redoStackRef.current.pop();
+
+        if (!next) return;
+
+        undoStackRef.current.push({
+            chars: cloneChars(charsRef.current),
+            cursor: { ...cursorRef.current },
+        });
+
+        charsRef.current = next.chars;
+        cursorRef.current = next.cursor;
+        selectedRef.current = null;
+        keyboardAnchorRef.current = null;
+
+        draw();
+    }
+
     function pixelToCell(clientX: number, clientY: number): CellPos {
         const canvas = canvasRef.current;
 
@@ -262,6 +365,10 @@ export default function Home() {
                     navigator.clipboard
                         .readText()
                         .then((text) => {
+                            // Snapshot before the paste so the entire paste is
+                            // one undo step, not one step per character.
+                            snapshot();
+
                             keyboardAnchorRef.current = null;
                             selectedRef.current = null;
 
@@ -283,12 +390,37 @@ export default function Home() {
                             .writeText(getSelectedText(charsRef.current, selectedRef.current))
                             .catch(() => {});
 
+                        snapshot();
+
                         cursorRef.current = clearSelected(charsRef.current, selectedRef.current);
                         selectedRef.current = null;
                         keyboardAnchorRef.current = null;
 
                         draw();
                     }
+
+                    return;
+                case 'z':
+                    event.preventDefault();
+
+                    // Cmd+Shift+Z = redo on macOS (mirrors the Shift convention
+                    // used by most Mac apps). Plain Cmd+Z = undo on both macOS
+                    // and Windows. Ctrl+Z on Windows is handled by the same
+                    // branch since ctrlKey is true in both cases.
+                    if (shiftKey) {
+                        redo();
+                    } else {
+                        undo();
+                    }
+
+                    return;
+                case 'y':
+                    event.preventDefault();
+
+                    // Ctrl+Y is the redo shortcut on Windows and Linux.
+                    // On macOS Cmd+Y is rarely used for redo, but it's harmless
+                    // to handle it here since we intercept it anyway.
+                    redo();
 
                     return;
                 default:
@@ -339,6 +471,11 @@ export default function Home() {
 
                 break;
             case 'Backspace':
+                // Snapshot before either branch: both delete content, and
+                // the user should be able to undo both the "delete selection"
+                // and the "delete one character" cases.
+                snapshot();
+
                 if (selectedRef.current) {
                     cursorRef.current = clearSelected(charsRef.current, selectedRef.current);
                     selectedRef.current = null;
@@ -350,8 +487,18 @@ export default function Home() {
                 break;
             default:
                 if (event.key.length === 1) {
+                    // Each keystroke is its own undo step. This is the most
+                    // granular approach — some editors group consecutive
+                    // characters into a single undo step (typing a whole word
+                    // undoes the whole word). We keep it simple for now: one
+                    // character = one step.
+                    //
+                    // TODO: Explore how other editors handle word undo/restore.
+                    snapshot();
+
                     keyboardAnchorRef.current = null;
                     selectedRef.current = null;
+
                     writeChar(event.key);
 
                     break;
@@ -413,6 +560,16 @@ export default function Home() {
             );
 
             charsRef.current = chars;
+
+            // Snapshots reference absolute cell coordinates, so they become
+            // meaningless if the grid changes dimensions. A snapshot taken at
+            // 88×22 that gets restored onto a 120×30 grid would leave most
+            // rows untouched and could corrupt the border layout. It's
+            // simpler and safer to just start fresh on every resize.
+            //
+            // TODO: Fine for now. But I think we should figure out how to do this properly.
+            undoStackRef.current = [];
+            redoStackRef.current = [];
         }
 
         function setSize() {

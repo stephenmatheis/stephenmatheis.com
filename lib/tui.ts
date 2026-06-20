@@ -165,6 +165,21 @@ export function isWordChar(char: string): boolean {
     return !(code >= 0x2500 && code <= 0x257f);
 }
 
+// Creates a fully independent copy of the character buffer.
+//
+// Why not just spread the outer array (`[...chars]`)? That gives you a new
+// array but the same inner row arrays — mutating chars[0][5] in the copy would
+// also mutate the original. Undo snapshots need to be completely isolated from
+// the live buffer, so every row must be its own new array.
+//
+// We spread each row one level deep (rather than using structuredClone) because
+// each cell is a primitive string. Strings are immutable in JavaScript — once
+// created, they can't be changed in place — so a shallow per-row copy is enough
+// to fully isolate the snapshot.
+export function cloneChars(chars: string[][]): string[][] {
+    return chars.map((row) => [...row]);
+}
+
 export function clearSelected(chars: string[][], selection: Selected): CellPos {
     const { start, end } = normalizeSelection(selection);
 
