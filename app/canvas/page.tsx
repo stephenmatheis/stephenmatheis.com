@@ -17,13 +17,13 @@ export default function Home() {
             container: containerRef.current!,
         });
 
+        const half = Math.floor(editor.cols / 2);
+
         editor.root.add(
             Box(
-                { title: 'Outer', paddingX: 2 },
-                Box(
-                    { title: 'Inner', titleAlignment: 'right', paddingX: 2 },
-                    Box({ title: 'Center', titleAlignment: 'center' }),
-                ),
+                { border: false, padding: 0, width: editor.cols, height: editor.rows },
+                Box({ title: 'One', interactive: true, width: half }),
+                Box({ title: 'Two', interactive: true, x: half, width: editor.cols - half }),
             ),
         );
 

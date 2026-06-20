@@ -39,4 +39,18 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
             }
         }
     }
+
+    if (state.activeRegion) {
+        const r = state.activeRegion;
+        const ln = state.cursor.y - r.y + 1;
+        const col = state.cursor.x - r.x + 1;
+        const text = `Ln ${ln}, Col ${col}`;
+        const startCol = state.cols - text.length - 2;
+        const statusY = (state.rows - 1) * state.cellHeight;
+
+        ctx.fillStyle = background;
+        ctx.fillRect(startCol * state.cellWidth, statusY, (text.length + 2) * state.cellWidth, state.cellHeight);
+        ctx.fillStyle = foreground;
+        ctx.fillText(text, (startCol + 1) * state.cellWidth, statusY + state.cellHeight);
+    }
 }

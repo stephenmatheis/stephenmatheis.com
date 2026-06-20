@@ -12,6 +12,7 @@ export function createKeyboard(
     buffer: ReturnType<typeof createBuffer>,
     history: ReturnType<typeof createHistory>,
     selection: ReturnType<typeof createSelection>,
+    focus: { focusNext(): void; focusPrev(): void },
 ) {
     function handleKeyDown(event: KeyboardEvent) {
         const { shiftKey, altKey, metaKey, ctrlKey } = event;
@@ -142,6 +143,11 @@ export function createKeyboard(
             case 'Enter':
                 selection.clearSelection();
                 buffer.handleEnter();
+
+                break;
+            case 'Tab':
+                if (shiftKey) focus.focusPrev();
+                else focus.focusNext();
 
                 break;
             case 'Backspace':

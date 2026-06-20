@@ -1,5 +1,5 @@
 import { compose } from '@/lib/tui';
-import type { BoxNode } from '@/lib/tui';
+import type { BoxNode, Region } from '@/lib/tui';
 import { render } from './render';
 import { createKeyboard } from './keyboard';
 import { createMouseHandlers } from './mouse';
@@ -36,6 +36,8 @@ export type EditorState = {
     cols: number;
     rows: number;
     cursor: CellPos;
+    regions: Region[];
+    activeRegion: Region | null;
     selected: Selected | null;
     cursorVisible: boolean;
     isDragging: boolean;
@@ -62,6 +64,8 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         cols: 0,
         rows: 0,
         cursor: { x: 0, y: 0 },
+        regions: [],
+        activeRegion: null,
         selected: null,
         cursorVisible: true,
         isDragging: false,
@@ -78,15 +82,56 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     const buffer = createBuffer(state, { moveCursor: cursor.moveCursor });
     const selection = createSelection(state);
     const history = createHistory(state, { draw, clearSelection: selection.clearSelection });
-    const { handleKeyDown } = createKeyboard(state, draw, cursor, buffer, history, selection);
+
+    function focusRegion(index: number) {
+        if (state.regions.length === 0) return;
+        const i = ((index % state.regions.length) + state.regions.length) % state.regions.length;
+        state.activeRegion = state.regions[i];
+        state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+    }
+
+    function focusNext() {
+        const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : -1;
+        focusRegion(i + 1);
+    }
+
+    function focusPrev() {
+        const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : 0;
+        focusRegion(i - 1);
+    }
+
+    function focusAtCell(x: number, y: number): boolean {
+        const index = state.regions.findIndex(
+            (r) => x >= r.x && x < r.x + r.width && y >= r.y && y < r.y + r.height,
+        );
+        if (index === -1) return false;
+        state.activeRegion = state.regions[index];
+        return true;
+    }
+
+    const { handleKeyDown } = createKeyboard(state, draw, cursor, buffer, history, selection, { focusNext, focusPrev });
     const { handleMouseDown, handleMouseMove, handleMouseUp } = createMouseHandlers(canvas, textarea, state, {
         draw,
         startMouseSelection: selection.startMouseSelection,
         extendMouseSelection: selection.extendMouseSelection,
         endMouseSelection: selection.endMouseSelection,
+        focusAtCell,
     });
     const { setSize } = createSetup(canvas, ctx, state, { draw }, (chars) => {
-        if (currentNode) compose(currentNode, chars);
+        if (!currentNode) {
+            return [];
+        }
+
+        const regions = compose(currentNode, chars);
+
+        state.regions = regions;
+        state.activeRegion = regions[0] ?? null;
+
+        if (state.activeRegion) {
+            state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+        }
+
+        return regions;
     });
 
     container.addEventListener('mousedown', handleMouseDown);
@@ -97,10 +142,21 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     textarea.focus();
 
     return {
+        get cols() { return state.cols; },
+        get rows() { return state.rows; },
         root: {
             add(node: BoxNode) {
                 currentNode = node;
-                compose(node, state.chars);
+
+                const regions = compose(node, state.chars);
+
+                state.regions = regions;
+                state.activeRegion = regions[0] ?? null;
+
+                if (state.activeRegion) {
+                    state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+                }
+
                 draw();
             },
         },

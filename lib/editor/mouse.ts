@@ -6,6 +6,7 @@ export type MouseActions = {
     startMouseSelection(cell: CellPos): void;
     extendMouseSelection(cell: CellPos): void;
     endMouseSelection(): void;
+    focusAtCell(x: number, y: number): boolean;
 };
 
 function pixelToCell(
@@ -30,6 +31,8 @@ export function createMouseHandlers(
 ) {
     function handleMouseDown(event: MouseEvent) {
         const cell = pixelToCell(event.clientX, event.clientY, canvas, state);
+
+        if (!actions.focusAtCell(cell.x, cell.y)) return;
 
         state.cursor = cell;
         state.isDragging = true;

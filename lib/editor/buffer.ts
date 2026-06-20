@@ -14,7 +14,9 @@ export function createBuffer(state: EditorState, actions: BufferActions) {
     }
 
     function deleteChar() {
-        if (state.cursor.x > 0) {
+        const minX = state.activeRegion ? state.activeRegion.x : 0;
+
+        if (state.cursor.x > minX) {
             actions.moveCursor(-1, 0);
 
             state.chars[state.cursor.y][state.cursor.x] = '';
@@ -22,7 +24,9 @@ export function createBuffer(state: EditorState, actions: BufferActions) {
     }
 
     function handleEnter() {
-        actions.moveCursor(-state.cursor.x, 1);
+        const minX = state.activeRegion ? state.activeRegion.x : 0;
+
+        actions.moveCursor(-(state.cursor.x - minX), 1);
     }
 
     return { writeChar, deleteChar, handleEnter };
