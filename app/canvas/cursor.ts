@@ -11,25 +11,6 @@ export function createCursor(state: EditorState) {
         state.cursorVisible = true;
     }
 
-    function withSelection(moveFn: () => void, extending: boolean) {
-        if (extending) {
-            if (!state.keyboardAnchor) {
-                state.keyboardAnchor = { ...state.cursor };
-            }
-
-            moveFn();
-
-            state.selected = {
-                start: state.keyboardAnchor,
-                end: { ...state.cursor },
-            };
-        } else {
-            state.keyboardAnchor = null;
-            state.selected = null;
-            moveFn();
-        }
-    }
-
     function wordJumpRight() {
         const row = state.chars[state.cursor.y] || [];
         let col = state.cursor.x;
@@ -81,5 +62,5 @@ export function createCursor(state: EditorState) {
         state.cursorVisible = true;
     }
 
-    return { moveCursor, withSelection, wordJumpRight, wordJumpLeft, lineStart, lineEnd, docStart, docEnd };
+    return { moveCursor, wordJumpRight, wordJumpLeft, lineStart, lineEnd, docStart, docEnd };
 }

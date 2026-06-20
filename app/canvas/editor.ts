@@ -1,9 +1,10 @@
 import { render } from './render';
-import { handleKeyDown } from './keyboard';
+import { createKeyboard } from './keyboard';
 import { createMouseHandlers } from './mouse';
 import { createHistory } from './history';
 import { createCursor } from './cursor';
 import { createBuffer } from './buffer';
+import { createSelection } from './selection';
 import { createSetup } from './setup';
 import type { CellPos, Selected } from '@/lib/tui';
 
@@ -12,6 +13,10 @@ export type Snapshot = {
     cursor: CellPos;
 };
 
+// All mutable editor state in one place. Keeping it as an explicit object
+// (rather than loose `let` variables) means any module can be handed this
+// object and immediately read or write shared state without needing a
+// long parameter list or a closure.
 export type EditorState = {
     cellWidth: number;
     cellHeight: number;
@@ -56,37 +61,23 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     };
 
     const draw = () => render(ctx, state);
-    const { moveCursor, withSelection, wordJumpRight, wordJumpLeft, lineStart, lineEnd, docStart, docEnd } =
-        createCursor(state);
-    const { writeChar, deleteChar, handleEnter } = createBuffer(state, { moveCursor });
-    const { snapshot, undo, redo } = createHistory(state, { draw });
-    const { handleMouseDown, handleMouseMove, handleMouseUp } = createMouseHandlers(canvas, textarea, state, { draw });
+    const cursor = createCursor(state);
+    const buffer = createBuffer(state, { moveCursor: cursor.moveCursor });
+    const selection = createSelection(state);
+    const history = createHistory(state, { draw, clearSelection: selection.clearSelection });
+    const { handleKeyDown } = createKeyboard(state, draw, cursor, buffer, history, selection);
+    const { handleMouseDown, handleMouseMove, handleMouseUp } = createMouseHandlers(canvas, textarea, state, {
+        draw,
+        startMouseSelection: selection.startMouseSelection,
+        extendMouseSelection: selection.extendMouseSelection,
+        endMouseSelection: selection.endMouseSelection,
+    });
     const { setSize } = createSetup(canvas, ctx, state, { draw });
-
-    function onKeyDown(event: KeyboardEvent) {
-        return handleKeyDown(event, state, {
-            draw,
-            snapshot,
-            undo,
-            redo,
-            writeChar,
-            deleteChar,
-            handleEnter,
-            withSelection,
-            moveCursor,
-            wordJumpRight,
-            wordJumpLeft,
-            lineStart,
-            lineEnd,
-            docStart,
-            docEnd,
-        });
-    }
 
     container.addEventListener('mousedown', handleMouseDown);
     container.addEventListener('mousemove', handleMouseMove);
     container.addEventListener('mouseup', handleMouseUp);
-    textarea.addEventListener('keydown', onKeyDown);
+    textarea.addEventListener('keydown', handleKeyDown);
     window.addEventListener('resize', setSize);
     textarea.focus();
 
@@ -95,7 +86,7 @@ export function createEditor({ canvas, textarea, container }: Editor) {
             container.removeEventListener('mousedown', handleMouseDown);
             container.removeEventListener('mousemove', handleMouseMove);
             container.removeEventListener('mouseup', handleMouseUp);
-            textarea.removeEventListener('keydown', onKeyDown);
+            textarea.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('resize', setSize);
         },
     };
