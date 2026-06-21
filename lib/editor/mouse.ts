@@ -11,6 +11,7 @@ type MouseHandlersProps = {
         extendMouseSelection(cell: CellPos): void;
         endMouseSelection(): void;
         focusAtCell(x: number, y: number): boolean;
+        dismissFloatIfOutside?(cell: CellPos): boolean;
     };
 };
 
@@ -27,14 +28,21 @@ export function MouseHandlers({ canvas, textarea, state, actions }: MouseHandler
     function handleMouseDown(event: MouseEvent) {
         const cell = pixelToCell(event.clientX, event.clientY, canvas, state);
 
-        if (!actions.focusAtCell(cell.x, cell.y)) return;
+        const floatDismissed = actions.dismissFloatIfOutside?.(cell) ?? false;
+
+        if (!actions.focusAtCell(cell.x, cell.y)) {
+            if (floatDismissed) {
+                actions.draw();
+            }
+
+            return;
+        }
 
         state.cursor = cell;
         state.isDragging = true;
         state.cursorVisible = true;
         actions.startMouseSelection(cell);
         textarea.focus();
-
         actions.draw();
     }
 

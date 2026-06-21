@@ -1,10 +1,10 @@
+import type { InputEventName } from '@/lib/editor/tui';
 import { getSelectedText, clearSelected } from './selection';
 import type { EditorState } from './editor';
 import type { Cursor } from './cursor';
 import type { Buffer } from './buffer';
 import type { History } from './history';
 import type { Selection } from './selection';
-import type { InputEventName } from '@/lib/editor/tui';
 
 type InputActions = {
     isActiveInput(): boolean;
@@ -17,9 +17,13 @@ type ModalActions = {
     dismiss(): void;
 };
 
+type FloatActions = {
+    isOpen(): boolean;
+    dismiss(): void;
+};
+
 type KeyboardProps = {
     state: EditorState;
-    draw: () => void;
     cursor: ReturnType<typeof Cursor>;
     buffer: ReturnType<typeof Buffer>;
     history: ReturnType<typeof History>;
@@ -27,11 +31,12 @@ type KeyboardProps = {
     focus: { focusNext(): void; focusPrev(): void };
     inputActions: InputActions;
     modalActions: ModalActions;
+    floatActions?: FloatActions;
+    draw: () => void;
 };
 
 export function Keyboard({
     state,
-    draw,
     cursor,
     buffer,
     history,
@@ -39,6 +44,8 @@ export function Keyboard({
     focus,
     inputActions,
     modalActions,
+    floatActions,
+    draw,
 }: KeyboardProps) {
     function handleKeyDown(event: KeyboardEvent) {
         const { shiftKey, altKey, metaKey, ctrlKey } = event;
@@ -187,6 +194,8 @@ export function Keyboard({
             case 'Escape':
                 if (modalActions.isOpen()) {
                     modalActions.dismiss();
+                } else if (floatActions?.isOpen()) {
+                    floatActions.dismiss();
                 }
 
                 break;
