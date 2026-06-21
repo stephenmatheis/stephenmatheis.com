@@ -38,10 +38,9 @@ export function MouseHandlers({ canvas, textarea, state, actions }: MouseHandler
             return;
         }
 
-        state.cursor = cell;
         state.isDragging = true;
         state.cursorVisible = true;
-        actions.startMouseSelection(cell);
+        actions.startMouseSelection(state.cursor);
         textarea.focus();
         actions.draw();
     }
