@@ -52,7 +52,6 @@ export function Keyboard({
         const extending = shiftKey;
         const isMovementKey = ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key);
 
-        // non-movement + cmd/ctrl modifier — handle and return, or pass through to the browser
         if (!isMovementKey && (metaKey || ctrlKey) && !altKey) {
             switch (event.key) {
                 case 'a':
@@ -130,7 +129,6 @@ export function Keyboard({
         const wordJump = (altKey || ctrlKey) && !metaKey;
         const lineOrDocJump = metaKey && !altKey;
 
-        // TODO: Vim mode.
         switch (event.key) {
             case 'ArrowRight':
                 if (wordJump) selection.withSelection(cursor.wordJumpRight, extending);
@@ -176,8 +174,11 @@ export function Keyboard({
             case 'Tab':
                 selection.clearSelection();
 
-                if (shiftKey) focus.focusPrev();
-                else focus.focusNext();
+                if (shiftKey) {
+                    focus.focusPrev();
+                } else {
+                    focus.focusNext();
+                }
 
                 break;
             case 'Backspace':

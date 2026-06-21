@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import { Editor, Box, Textarea, Input, Text } from '@/lib/editor';
-import styles from './page.module.scss';
 import { log, loggingOff } from '@/lib/utils';
+import styles from './page.module.scss';
 
 export default function Page() {
     const pageRef = useRef<HTMLDivElement>(null);
@@ -61,8 +61,8 @@ export default function Page() {
                 { flexDirection: 'row', border: false, padding: 0 },
                 Box(
                     { title: 'Form', flexDirection: 'column', flex: 1, paddingY: 1, paddingX: 2 },
-                    Box({ title: 'Name', height: 5 }, nameInput),
-                    Box({ title: 'Email', height: 5 }, emailInput),
+                    Box({ title: 'Name', height: 3 }, nameInput),
+                    Box({ title: 'Email', height: 3 }, emailInput),
                 ),
                 Textarea({ title: 'Notes', flex: 2 }),
             ),
