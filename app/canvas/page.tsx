@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Editor, Box, Textarea, Input } from '@/lib/editor';
+import { Editor, Box, Textarea, Input, Text } from '@/lib/editor';
 import styles from './page.module.scss';
 import { log, loggingOff } from '@/lib/utils';
 
@@ -31,7 +31,16 @@ export default function Page() {
         const nameInput = Input({ flex: 1, placeholder: 'Your name…' });
         const emailInput = Input({ flex: 1, placeholder: 'you@example.com' });
 
-        nameInput.on('change', (v) => console.log('name:', v)).on('enter', (v) => console.log('name submitted:', v));
+        nameInput
+            .on('change', (v) => console.log('name:', v))
+            .on('enter', (v) => {
+                editor.modal.show(
+                    Box(
+                        { title: 'Confirm', width: 50, height: 7, flexDirection: 'column', padding: 2 },
+                        Text({ content: `Submit "${v}"?  Press Escape to cancel.` }),
+                    ),
+                );
+            });
 
         emailInput.on('change', (v) => console.log('email:', v));
 
