@@ -29,11 +29,55 @@ export type TextProps = {
     flex?: number;
 };
 
+export type InputEventName = 'input' | 'change' | 'enter';
+
+export type InputProps = {
+    x?: number;
+    y?: number;
+    width?: number;
+    height?: number;
+    flex?: number;
+};
+
+// Internal state bag for each Input instance. Lives outside the node so it
+// isn't copied by the object spreads the flex loop uses to assign positions.
+export type InputRef = {
+    chars: string[][] | null;
+    region: Region | null;
+    valueOnFocus: string;
+    draw: (() => void) | null;
+    handlers: Partial<Record<InputEventName, (value: string) => void>>;
+};
+
+// InputNode is the plain data shape that goes into LayoutNode / Box children.
+// No methods — clean for spreads and type narrowing.
+export type InputNode = InputProps & { kind: 'input' };
+
+// InputHandle is what Input() returns to the caller. It extends InputNode so
+// it's assignable to LayoutNode, but also carries the interactive API.
+export type InputHandle = InputNode & {
+    on(event: InputEventName, cb: (value: string) => void): InputHandle;
+    value: string;
+};
+
 export type BoxNode = BoxProps & { kind: 'box'; children: LayoutNode[] };
 export type TextNode = TextProps & { kind: 'text' };
-export type LayoutNode = BoxNode | TextNode;
+export type LayoutNode = BoxNode | TextNode | InputNode;
 
 export type Region = { x: number; y: number; width: number; height: number };
+
+// Enumerable Symbol key — survives `{ ...node }` spreads so the registry
+// lookup works on positional copies created by the flex layout loop.
+const INPUT_ID = Symbol('tui.input');
+
+const inputRegistry = new Map<number, InputRef>();
+let nextInputId = 0;
+
+export function getInputRef(node: InputNode): InputRef | undefined {
+    const id = (node as InputNode & { [INPUT_ID]?: number })[INPUT_ID];
+
+    return id != null ? inputRegistry.get(id) : undefined;
+}
 
 export function Box(props: BoxProps, ...children: LayoutNode[]): BoxNode {
     return {
@@ -49,6 +93,66 @@ export function Box(props: BoxProps, ...children: LayoutNode[]): BoxNode {
 
 export function Text(props: TextProps): TextNode {
     return { kind: 'text', align: 'left', content: '', ...props };
+}
+
+export function Input(props: InputProps): InputHandle {
+    const id = nextInputId++;
+    const ref: InputRef = {
+        chars: null,
+        region: null,
+        valueOnFocus: '',
+        draw: null,
+        handlers: {},
+    };
+
+    inputRegistry.set(id, ref);
+
+    // Plain data node — matches InputNode type, spreads cleanly.
+    const node = { kind: 'input' as const, ...props } as InputNode & { [INPUT_ID]: number };
+
+    // Assign as enumerable so the symbol key copies with `{ ...node }`.
+    node[INPUT_ID] = id;
+
+    // `.on()` and `.value` are non-enumerable so they don't pollute spreads.
+    Object.defineProperty(node, 'on', {
+        value(event: InputEventName, cb: (value: string) => void): InputHandle {
+            ref.handlers[event] = cb;
+            return node as unknown as InputHandle;
+        },
+        enumerable: false,
+        writable: false,
+        configurable: true,
+    });
+
+    Object.defineProperty(node, 'value', {
+        get(): string {
+            if (!ref.chars || !ref.region) return '';
+
+            return (ref.chars[ref.region.y] ?? [])
+                .slice(ref.region.x, ref.region.x + ref.region.width)
+                .join('')
+                .trimEnd();
+        },
+        set(v: string) {
+            if (!ref.chars || !ref.region) return;
+
+            const { chars, region } = ref;
+
+            for (let i = region.x; i < region.x + region.width; i++) {
+                chars[region.y][i] = '';
+            }
+
+            for (let i = 0; i < v.length && i < region.width; i++) {
+                chars[region.y][region.x + i] = v[i];
+            }
+
+            ref.draw?.();
+        },
+        enumerable: false,
+        configurable: true,
+    });
+
+    return node as unknown as InputHandle;
 }
 
 function writeText(
@@ -82,6 +186,25 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
         const width = node.width ?? chars[0].length - x;
 
         writeText(x, y, width, node.align ?? 'left', node.content ?? '', chars);
+
+        return;
+    }
+
+    if (node.kind === 'input') {
+        const x = node.x ?? 0;
+        const y = node.y ?? 0;
+        const width = node.width ?? chars[0].length - x;
+        const height = node.height ?? 1;
+        const region: Region = { x, y, width, height };
+
+        regions.push(region);
+
+        const ref = getInputRef(node);
+
+        if (ref) {
+            ref.chars = chars;
+            ref.region = region;
+        }
 
         return;
     }
@@ -164,8 +287,10 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
 
             if (isRow) return sum + (child.width ?? 0);
 
-            // TextNode defaults to 1 row tall in column layouts.
-            return sum + (child.height ?? (child.kind === 'text' ? 1 : 0));
+            // TextNode and InputNode both default to 1 row in column layouts.
+            const defaultH = child.kind === 'text' || child.kind === 'input' ? 1 : 0;
+
+            return sum + (child.height ?? defaultH);
         }, 0);
 
         const flexTotal = children.reduce((sum, child) => sum + (child.flex ?? 0), 0);
@@ -187,7 +312,9 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
             } else if (isRow) {
                 childAxisSize = child.width ?? 0;
             } else {
-                childAxisSize = child.height ?? (child.kind === 'text' ? 1 : 0);
+                const defaultH = child.kind === 'text' || child.kind === 'input' ? 1 : 0;
+
+                childAxisSize = child.height ?? defaultH;
             }
 
             log('recurse > composeNode()');
@@ -198,7 +325,7 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
                     y: innerY + (isRow ? (child.y ?? 0) : cursor),
                     width: isRow ? childAxisSize : (child.width ?? innerWidth),
                     height: isRow ? (child.height ?? innerHeight) : childAxisSize,
-                },
+                } as LayoutNode,
                 chars,
                 regions,
             );
@@ -214,8 +341,10 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
                     x: innerX + (child.x ?? 0),
                     y: innerY + (child.y ?? 0),
                     width: child.width ?? innerWidth,
-                    height: child.height ?? (child.kind === 'text' ? 1 : innerHeight),
-                },
+                    height:
+                        child.height ??
+                        (child.kind === 'text' || child.kind === 'input' ? 1 : innerHeight),
+                } as LayoutNode,
                 chars,
                 regions,
             );

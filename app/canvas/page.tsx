@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Editor, Box, Text } from '@/lib/editor';
+import { Editor, Box, Input } from '@/lib/editor';
 import styles from './page.module.scss';
 import { log, loggingOff } from '@/lib/utils';
 
@@ -28,22 +28,43 @@ export default function Home() {
             right: 'Ln {ln}, Col {col}',
         });
 
+        const nameInput = Input({ flex: 1 });
+
+        nameInput
+            .on('input', (v) => console.log('typing:', v))
+            .on('enter', (v) => console.log('submitted:', v))
+            .on('change', (v) => console.log('committed:', v));
+
         editor.root.add(
-            Box(
-                { flexDirection: 'row', border: false, padding: 0 },
-                Box({ title: 'Nav', width: 10 }),
-                Box({ title: 'One', interactive: true, flex: 1 }),
-                Box(
-                    {
-                        title: 'Two',
-                        flex: 1,
-                    },
-                    Text({
-                        content: 'Hello, world!',
-                    }),
-                ),
-            ),
+            Box({ flexDirection: 'column', border: false, padding: 0 }, Box({ title: 'Name', flex: 1 }, nameInput)),
         );
+
+        console.log(nameInput.value);
+
+        nameInput.value = 'Placeholder';
+
+        // editor.root.add(
+        //     Box(
+        //         { flexDirection: 'column', border: false, padding: 3 },
+        //         Text({
+        //             content: 'Hello, world!',
+        //         }),
+        //     ),
+        //     // Box(
+        //     //     { flexDirection: 'row', border: false, padding: 0 },
+        //     //     Box({ title: 'Nav', width: 10 }),
+        //     //     Box({ title: 'One', interactive: true, flex: 1 }),
+        //     //     Box(
+        //     //         {
+        //     //             title: 'Two',
+        //     //             flex: 1,
+        //     //         },
+        //     //         Text({
+        //     //             content: 'Hello, world!',
+        //     //         }),
+        //     //     ),
+        //     // ),
+        // );
 
         log('END');
 

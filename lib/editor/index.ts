@@ -1,4 +1,4 @@
-export { Box, Text } from '@/lib/editor/tui';
-export type { BoxNode, TextNode, LayoutNode, Region } from '@/lib/editor/tui';
+export { Box, Text, Input } from '@/lib/editor/tui';
+export type { BoxNode, TextNode, InputNode, InputHandle, InputEventName, LayoutNode, Region } from '@/lib/editor/tui';
 export { Editor } from './editor';
 export type { CellPos, Selected, StatusBar } from './editor';
