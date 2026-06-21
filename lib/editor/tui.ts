@@ -14,7 +14,6 @@ export type BoxProps = {
     padding?: number;
     paddingX?: number;
     paddingY?: number;
-    interactive?: boolean;
     flexDirection?: 'row' | 'column';
     flex?: number;
 };
@@ -27,6 +26,21 @@ export type TextProps = {
     align?: 'left' | 'center' | 'right';
     content?: string;
     flex?: number;
+};
+
+export type TextareaProps = {
+    x?: number;
+    y?: number;
+    width?: number;
+    height?: number;
+    flex?: number;
+    border?: boolean;
+    borderStyle?: BorderStyle;
+    title?: string;
+    titleAlignment?: 'left' | 'center' | 'right';
+    padding?: number;
+    paddingX?: number;
+    paddingY?: number;
 };
 
 export type InputEventName = 'input' | 'change' | 'enter';
@@ -67,7 +81,8 @@ export type InputHandle = InputNode & {
 
 export type BoxNode = BoxProps & { kind: 'box'; children: LayoutNode[] };
 export type TextNode = TextProps & { kind: 'text' };
-export type LayoutNode = BoxNode | TextNode | InputNode;
+export type TextareaNode = TextareaProps & { kind: 'textarea' };
+export type LayoutNode = BoxNode | TextNode | TextareaNode | InputNode;
 
 export type Region = { x: number; y: number; width: number; height: number };
 
@@ -98,6 +113,10 @@ export function Box(props: BoxProps, ...children: LayoutNode[]): BoxNode {
 
 export function Text(props: TextProps): TextNode {
     return { kind: 'text', align: 'left', content: '', ...props };
+}
+
+export function Textarea(props: TextareaProps): TextareaNode {
+    return { kind: 'textarea', border: true, borderStyle: 'rounded', ...props };
 }
 
 export function Input(props: InputProps): InputHandle {
@@ -160,6 +179,53 @@ export function Input(props: InputProps): InputHandle {
     return node as unknown as InputHandle;
 }
 
+function drawBorder(
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    borderStyle: BorderStyle,
+    title: string | undefined,
+    titleAlignment: 'left' | 'center' | 'right',
+    chars: string[][],
+) {
+    const corners = {
+        double: ['╔', '╗', '╚', '╝'],
+        single: ['┌', '┐', '└', '┘'],
+        rounded: ['╭', '╮', '╰', '╯'],
+    }[borderStyle];
+    const hEdge = borderStyle === 'double' ? '═' : '─';
+    const vEdge = borderStyle === 'double' ? '║' : '│';
+
+    chars[y][x] = corners[0];
+    chars[y][x + width - 1] = corners[1];
+    chars[y + height - 1][x] = corners[2];
+    chars[y + height - 1][x + width - 1] = corners[3];
+
+    for (let cx = x + 1; cx < x + width - 1; cx++) {
+        chars[y][cx] = hEdge;
+        chars[y + height - 1][cx] = hEdge;
+    }
+
+    for (let cy = y + 1; cy < y + height - 1; cy++) {
+        chars[cy][x] = vEdge;
+        chars[cy][x + width - 1] = vEdge;
+    }
+
+    if (title) {
+        const paddedTitle = ` ${title} `;
+        const startX = {
+            left: x + 2,
+            center: x + Math.floor((width - paddedTitle.length) / 2),
+            right: x + width - 2 - paddedTitle.length,
+        }[titleAlignment];
+
+        for (let i = 0; i < paddedTitle.length; i++) {
+            chars[y][startX + i] = paddedTitle[i];
+        }
+    }
+}
+
 function writeText(
     x: number,
     y: number,
@@ -195,6 +261,29 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
         return;
     }
 
+    if (node.kind === 'textarea') {
+        const x = node.x ?? 0;
+        const y = node.y ?? 0;
+        const width = node.width ?? chars[0].length - x;
+        const height = node.height ?? chars.length - y;
+        const border = node.border ?? true;
+        const px = node.paddingX ?? node.padding ?? 0;
+        const py = node.paddingY ?? node.padding ?? 0;
+
+        if (border) {
+            drawBorder(x, y, width, height, node.borderStyle ?? 'rounded', node.title, node.titleAlignment ?? 'left', chars);
+        }
+
+        const innerX = x + (border ? 1 : 0) + px;
+        const innerY = y + (border ? 1 : 0) + py;
+        const innerW = width - (border ? 2 : 0) - px * 2;
+        const innerH = height - (border ? 2 : 0) - py * 2;
+
+        regions.push({ x: innerX, y: innerY, width: innerW, height: innerH });
+
+        return;
+    }
+
     if (node.kind === 'input') {
         const x = node.x ?? 0;
         const y = node.y ?? 0;
@@ -202,29 +291,7 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
         const height = node.height ?? (node.border ? 3 : 1);
 
         if (node.border) {
-            const style = node.borderStyle ?? 'rounded';
-            const corners = {
-                double: ['╔', '╗', '╚', '╝'],
-                single: ['┌', '┐', '└', '┘'],
-                rounded: ['╭', '╮', '╰', '╯'],
-            }[style];
-            const hEdge = style === 'double' ? '═' : '─';
-            const vEdge = style === 'double' ? '║' : '│';
-
-            chars[y][x] = corners[0];
-            chars[y][x + width - 1] = corners[1];
-            chars[y + height - 1][x] = corners[2];
-            chars[y + height - 1][x + width - 1] = corners[3];
-
-            for (let cx = x + 1; cx < x + width - 1; cx++) {
-                chars[y][cx] = hEdge;
-                chars[y + height - 1][cx] = hEdge;
-            }
-
-            for (let cy = y + 1; cy < y + height - 1; cy++) {
-                chars[cy][x] = vEdge;
-                chars[cy][x + width - 1] = vEdge;
-            }
+            drawBorder(x, y, width, height, node.borderStyle ?? 'rounded', undefined, 'left', chars);
         }
 
         // The interactive region is inset by 1 on all sides when bordered.
@@ -256,7 +323,6 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
         padding = 1,
         paddingX,
         paddingY,
-        interactive,
         flexDirection,
         children,
     } = node;
@@ -267,45 +333,7 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
     width = width || chars[0].length;
 
     if (border) {
-        const corners = {
-            double: ['╔', '╗', '╚', '╝'],
-            single: ['┌', '┐', '└', '┘'],
-            rounded: ['╭', '╮', '╰', '╯'],
-        }[borderStyle];
-        const horizontalEdge = borderStyle === 'double' ? '═' : '─';
-        const verticalEdge = borderStyle === 'double' ? '║' : '│';
-
-        chars[y][x] = corners[0];
-        chars[y][x + width - 1] = corners[1];
-        chars[y + height - 1][x] = corners[2];
-        chars[y + height - 1][x + width - 1] = corners[3];
-
-        for (let cx = x + 1; cx < x + width - 1; cx++) {
-            chars[y][cx] = horizontalEdge;
-            chars[y + height - 1][cx] = horizontalEdge;
-        }
-
-        for (let cy = y + 1; cy < y + height - 1; cy++) {
-            chars[cy][x] = verticalEdge;
-            chars[cy][x + width - 1] = verticalEdge;
-        }
-
-        if (title) {
-            const paddedTitle = ` ${title} `;
-            const startX = {
-                left: x + 2,
-                center: x + Math.floor((width - paddedTitle.length) / 2),
-                right: x + width - 2 - paddedTitle.length,
-            }[titleAlignment];
-
-            for (let i = 0; i < paddedTitle.length; i++) {
-                chars[y][startX + i] = paddedTitle[i];
-            }
-        }
-
-        if (interactive) {
-            regions.push({ x: x + 1, y: y + 1, width: width - 2, height: height - 2 });
-        }
+        drawBorder(x, y, width, height, borderStyle, title, titleAlignment, chars);
     }
 
     const px = paddingX ?? padding;

@@ -1,7 +1,7 @@
 import departureMonoCodepoints from '@/codepoints/DepartureMono-Regular.json';
 import styles from './page.module.scss';
 
-export default function Home() {
+export default function Page() {
     return (
         <div className={styles.page}>
             <div>Departure Mono</div>
