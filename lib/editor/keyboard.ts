@@ -139,6 +139,8 @@ export function Keyboard({ state, draw, cursor, buffer, history, selection, focu
 
                 break;
             case 'Tab':
+                selection.clearSelection();
+
                 if (shiftKey) focus.focusPrev();
                 else focus.focusNext();
 
