@@ -22,7 +22,7 @@ export default function Home() {
             container: containerRef.current!,
         });
 
-        editor.statusBar({ right: 'Ln {ln}/{rows}, Col {col}/{cols}' });
+        editor.statusBar({ right: 'Ln {ln}, Col {col}', left: '{cols}x{rows}' });
 
         editor.root.add(
             Box(
