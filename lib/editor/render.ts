@@ -54,5 +54,5 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
         }
     }
 
-    console.log(state);
+    // console.log(state);
 }
