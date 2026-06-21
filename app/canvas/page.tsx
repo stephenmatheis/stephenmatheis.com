@@ -42,7 +42,19 @@ export default function Page() {
                 );
             });
 
-        emailInput.on('change', (v) => console.log('email:', v));
+        emailInput.on('input', (v) => {
+            if (v) {
+                editor.float.show(
+                    Box(
+                        { title: 'Hint', width: 30, height: 4, flexDirection: 'column', padding: 1 },
+                        Text({ content: 'Press Tab to continue' }),
+                    ),
+                    { type: 'corner', corner: 'top-right', offsetX: 2, offsetY: 2 },
+                );
+            } else {
+                editor.float.hide();
+            }
+        });
 
         editor.root.add(
             Box(

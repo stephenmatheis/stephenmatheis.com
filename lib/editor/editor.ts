@@ -65,6 +65,16 @@ export type StatusBar = {
     right?: string;
 };
 
+export type FloatAnchor =
+    | { type: 'absolute'; x: number; y: number }
+    | { type: 'cell'; cell: CellPos; side: 'below' | 'above' | 'right' | 'left' }
+    | {
+          type: 'corner';
+          corner: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+          offsetX?: number;
+          offsetY?: number;
+      };
+
 function Content(template: string, state: EditorState): string {
     const r = state.activeRegion;
 
@@ -174,25 +184,33 @@ export function Editor({ canvas, textarea, container }: Editor) {
     let mainCellStyles: Array<Array<CellStyle | null>> = [];
     let savedRegions: Region[] = [];
     let modalRect: { x: number; y: number; w: number; h: number } | null = null;
+    let currentFloat: LayoutNode | null = null;
+    let floatChars: string[][] | null = null;
+    let floatRect: { x: number; y: number; w: number; h: number } | null = null;
 
     function createGrid<T>(fill: T): T[][] {
         return Array.from({ length: state.rows }, () => Array(state.cols).fill(fill));
     }
 
-    // Merge modal layer on top of main layer into the display buffers.
-    // Inside the modal's bounding rect, only modal chars show — main chars
-    // don't backfill empty interior cells, which would bleed through.
+    function inRect(r: number, c: number, rect: { x: number; y: number; w: number; h: number } | null): boolean {
+        if (!rect) return false;
+        return r >= rect.y && r < rect.y + rect.h && c >= rect.x && c < rect.x + rect.w;
+    }
+
+    // Merge layers into display buffers. Priority (highest first): modal → float → main.
+    // Each layer's bounding rect suppresses backfill from lower layers so empty interior
+    // cells don't bleed through from the layer beneath.
     function compositeChars() {
         for (let r = 0; r < state.rows; r++) {
             for (let c = 0; c < state.cols; c++) {
-                const inModal =
-                    modalRect != null &&
-                    r >= modalRect.y &&
-                    r < modalRect.y + modalRect.h &&
-                    c >= modalRect.x &&
-                    c < modalRect.x + modalRect.w;
-
-                state.displayChars[r][c] = state.chars[r]?.[c] || (inModal ? '' : mainChars[r]?.[c]) || '';
+                if (inRect(r, c, modalRect)) {
+                    // state.chars is the modal write layer when a modal is open.
+                    state.displayChars[r][c] = state.chars[r]?.[c] || '';
+                } else if (inRect(r, c, floatRect)) {
+                    state.displayChars[r][c] = floatChars![r]?.[c] || '';
+                } else {
+                    state.displayChars[r][c] = mainChars[r]?.[c] || '';
+                }
             }
         }
     }
@@ -200,15 +218,14 @@ export function Editor({ canvas, textarea, container }: Editor) {
     function compositeStyles() {
         for (let r = 0; r < state.rows; r++) {
             for (let c = 0; c < state.cols; c++) {
-                const inModal =
-                    modalRect != null &&
-                    r >= modalRect.y &&
-                    r < modalRect.y + modalRect.h &&
-                    c >= modalRect.x &&
-                    c < modalRect.x + modalRect.w;
-
-                state.displayCellStyles[r][c] =
-                    state.cellStyles[r]?.[c] ?? (inModal ? null : mainCellStyles[r]?.[c]) ?? null;
+                if (inRect(r, c, modalRect)) {
+                    state.displayCellStyles[r][c] = state.cellStyles[r]?.[c] ?? null;
+                } else if (inRect(r, c, floatRect)) {
+                    // Floats are visual-only in v1 — no cellStyles layer.
+                    state.displayCellStyles[r][c] = null;
+                } else {
+                    state.displayCellStyles[r][c] = mainCellStyles[r]?.[c] ?? null;
+                }
             }
         }
     }
@@ -267,13 +284,18 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
         // Snapshot main input styles before we swap inputMap to the modal.
         const priorCellStyles = state.cellStyles;
+
         mainCellStyles = createGrid<CellStyle | null>(null);
+
         state.cellStyles = mainCellStyles;
+
         applyInputOverlays();
+
         state.cellStyles = priorCellStyles;
 
         // Redirect the active write layer to a fresh modal buffer.
         mainChars = state.chars;
+
         state.chars = createGrid('');
         state.cellStyles = createGrid<CellStyle | null>(null);
         state.displayChars = createGrid('');
@@ -301,15 +323,87 @@ export function Editor({ canvas, textarea, container }: Editor) {
         modalRect = null;
 
         state.chars = mainChars;
-        state.displayChars = mainChars;
         state.cellStyles = mainCellStyles;
-        state.displayCellStyles = mainCellStyles;
+
+        if (!currentFloat) {
+            state.displayChars = mainChars;
+            state.displayCellStyles = mainCellStyles;
+        }
+
         state.regions = savedRegions;
 
         inputMap.clear();
 
         collectInputs(currentNode!);
         focusRegion(savedRegionIndex);
+        draw();
+    }
+
+    function positionFloat(node: LayoutNode, anchor?: FloatAnchor) {
+        const w = (node as { width?: number }).width ?? 40;
+        const h = (node as { height?: number }).height ?? 10;
+        let x = 0,
+            y = 0;
+        const a: FloatAnchor = anchor ?? { type: 'corner', corner: 'top-right' };
+
+        if (a.type === 'absolute') {
+            x = a.x;
+            y = a.y;
+        } else if (a.type === 'cell') {
+            x = a.side === 'right' ? a.cell.x + 1 : a.side === 'left' ? a.cell.x - w : a.cell.x;
+            y = a.side === 'below' ? a.cell.y + 1 : a.side === 'above' ? a.cell.y - h : a.cell.y;
+        } else {
+            const ox = a.offsetX ?? 1;
+            const oy = a.offsetY ?? 1;
+            x = a.corner.includes('right') ? state.cols - w - ox : ox;
+            y = a.corner.includes('bottom') ? state.rows - h - oy : oy;
+        }
+
+        x = Math.max(0, Math.min(x, state.cols - w));
+        y = Math.max(0, Math.min(y, state.rows - h));
+
+        return { positioned: { ...node, x, y, width: w, height: h } as LayoutNode, x, y, w, h };
+    }
+
+    function showFloat(node: LayoutNode, anchor?: FloatAnchor) {
+        currentFloat = node;
+        // Capture current main styles before allocating the composite buffer.
+        // mainCellStyles is only set in the modal path, so without a prior modal
+        // it stays as [] and compositeStyles would return null for every cell.
+        mainCellStyles = state.cellStyles;
+        floatChars = createGrid('');
+
+        const { positioned, x, y, w, h } = positionFloat(node, anchor);
+
+        floatRect = { x, y, w, h };
+
+        compose(positioned, floatChars);
+
+        // Float doesn't redirect state.chars, change regions, or trap focus.
+        // Allocate a separate composite buffer if display still points at mainChars.
+        if (state.displayChars === mainChars) {
+            state.displayChars = createGrid('');
+            state.displayCellStyles = createGrid<CellStyle | null>(null);
+        }
+
+        draw();
+    }
+
+    // State-only teardown, no draw. Used by both hideFloat() and dismissFloatIfOutside
+    // so the latter can let handleMouseDown's own draw() cover the render.
+    function clearFloat() {
+        currentFloat = null;
+        floatChars = null;
+        floatRect = null;
+
+        if (!currentModal) {
+            state.displayChars = mainChars;
+            state.displayCellStyles = mainCellStyles;
+        }
+    }
+
+    function hideFloat() {
+        clearFloat();
         draw();
     }
 
@@ -323,7 +417,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
             composeStatusBar(statusBarConfig, state, mainChars);
         }
 
-        if (currentModal) {
+        if (currentModal || currentFloat) {
             compositeChars();
             compositeStyles();
         }
@@ -398,7 +492,6 @@ export function Editor({ canvas, textarea, container }: Editor) {
         state.activeRegion = state.regions[i];
         state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
 
-        // Record the current value so we can detect a change when focus leaves.
         const input = inputMap.get(state.activeRegion);
 
         if (input) {
@@ -486,6 +579,10 @@ export function Editor({ canvas, textarea, container }: Editor) {
             isOpen: () => currentModal !== null,
             dismiss: hideModal,
         },
+        floatActions: {
+            isOpen: () => currentFloat !== null,
+            dismiss: hideFloat,
+        },
     });
     const { handleMouseDown, handleMouseMove, handleMouseUp } = MouseHandlers({
         canvas,
@@ -497,6 +594,15 @@ export function Editor({ canvas, textarea, container }: Editor) {
             extendMouseSelection: selection.extendMouseSelection,
             endMouseSelection: selection.endMouseSelection,
             focusAtCell,
+            dismissFloatIfOutside(cell: CellPos): boolean {
+                if (currentFloat && floatRect && !inRect(cell.y, cell.x, floatRect)) {
+                    clearFloat();
+
+                    return true;
+                }
+
+                return false;
+            },
         },
     });
     const { setSize } = Canvas({
@@ -508,13 +614,11 @@ export function Editor({ canvas, textarea, container }: Editor) {
             log('? createSetup() > layout()');
 
             if (currentModal) {
-                // Rebuild both layers for the new canvas dimensions.
                 mainChars = createGrid('');
 
                 if (currentNode) {
                     applyLayout(currentNode, statusBarConfig ? mainChars.slice(0, -1) : mainChars);
 
-                    // Snapshot fresh main styles before switching inputMap to modal.
                     const savedCellStyles = state.cellStyles;
 
                     mainCellStyles = createGrid<CellStyle | null>(null);
@@ -528,11 +632,13 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
                 state.chars = createGrid('');
                 state.cellStyles = createGrid<CellStyle | null>(null);
-                state.displayChars = chars; // fresh array from setup becomes composite output
+                state.displayChars = chars;
                 state.displayCellStyles = state.cellStyles;
 
                 const { positioned, x, y, w, h } = positionModal(currentModal);
+
                 modalRect = { x, y, w, h };
+
                 const modalRegions = compose(positioned, state.chars);
 
                 state.regions = modalRegions;
@@ -549,7 +655,6 @@ export function Editor({ canvas, textarea, container }: Editor) {
                 }
             } else {
                 mainChars = chars;
-
                 state.displayChars = chars;
                 state.displayCellStyles = state.cellStyles;
 
@@ -557,6 +662,29 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
                 log('! createSetup() > layout() > compose()');
                 applyLayout(currentNode, statusBarConfig ? mainChars.slice(0, -1) : mainChars);
+
+                if (currentFloat) {
+                    state.displayChars = createGrid('');
+                    state.displayCellStyles = createGrid<CellStyle | null>(null);
+
+                    floatChars = createGrid('');
+
+                    const { positioned: fp, x: fx, y: fy, w: fw, h: fh } = positionFloat(currentFloat);
+
+                    floatRect = { x: fx, y: fy, w: fw, h: fh };
+
+                    compose(fp, floatChars);
+                }
+            }
+
+            if (currentModal && currentFloat) {
+                floatChars = createGrid('');
+
+                const { positioned: fp, x: fx, y: fy, w: fw, h: fh } = positionFloat(currentFloat);
+
+                floatRect = { x: fx, y: fy, w: fw, h: fh };
+
+                compose(fp, floatChars);
             }
         },
     });
@@ -596,6 +724,10 @@ export function Editor({ canvas, textarea, container }: Editor) {
         modal: {
             show: showModal,
             hide: hideModal,
+        },
+        float: {
+            show: showFloat,
+            hide: hideFloat,
         },
         statusBar(config: StatusBar) {
             statusBarConfig = config;
