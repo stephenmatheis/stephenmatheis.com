@@ -22,7 +22,11 @@ export default function Home() {
             container: containerRef.current!,
         });
 
-        editor.statusBar({ right: 'Ln {ln}, Col {col}', left: '{cols}x{rows}' });
+        editor.statusBar({
+            left: 'Grid {cols} x {rows}',
+            center: 'Region {r_cols} x {r_rows}',
+            right: 'Ln {ln}, Col {col}',
+        });
 
         editor.root.add(
             Box(

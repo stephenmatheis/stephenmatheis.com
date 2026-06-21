@@ -68,10 +68,14 @@ function Content(template: string, state: EditorState): string {
                 return String(state.cursor.y - r.y + 1);
             case 'col':
                 return String(state.cursor.x - r.x + 1);
-            case 'rows':
+            case 'r_rows':
                 return String(r.height);
-            case 'cols':
+            case 'r_cols':
                 return String(r.width);
+            case 'rows':
+                return String(state.rows);
+            case 'cols':
+                return String(state.cols);
             default:
                 return `{${token}}`;
         }
