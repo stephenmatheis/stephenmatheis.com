@@ -15,6 +15,8 @@ export type BoxProps = {
     paddingX?: number;
     paddingY?: number;
     interactive?: boolean;
+    flexDirection?: 'row' | 'column';
+    flex?: number;
 };
 
 export type BoxNode = BoxProps & { children: BoxNode[] };
@@ -44,6 +46,7 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
         paddingX,
         paddingY,
         interactive,
+        flexDirection,
         children,
     } = node;
 
@@ -96,22 +99,71 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
 
     const px = paddingX ?? padding;
     const py = paddingY ?? padding;
+    const innerX = x + px;
+    const innerY = y + py;
     const innerWidth = width - px * 2;
     const innerHeight = height - py * 2;
 
-    for (const child of children) {
-        log('recurse > composeNode()');
-        composeNode(
-            {
-                ...child,
-                x: x + px + (child.x ?? 0),
-                y: y + py + (child.y ?? 0),
-                width: child.width ?? innerWidth,
-                height: child.height ?? innerHeight,
-            },
-            chars,
-            regions,
-        );
+    if (flexDirection) {
+        const isRow = flexDirection === 'row';
+        const axis = isRow ? innerWidth : innerHeight;
+        const flexTotal = children.reduce((sum, child) => sum + (child.flex ?? 0), 0);
+        const fixedTotal = children.reduce((sum, child) => {
+            if (child.flex != null) {
+                return sum;
+            }
+
+            return sum + (isRow ? (child.width ?? 0) : (child.height ?? 0));
+        }, 0);
+        const remaining = axis - fixedTotal;
+        const lastFlexIndex = children.reduce((last, child, i) => (child.flex != null ? i : last), -1);
+
+        let cursor = 0;
+        let flexUsed = 0;
+
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
+
+            let childAxisSize: number;
+
+            if (child.flex != null && flexTotal > 0) {
+                childAxisSize =
+                    i === lastFlexIndex ? remaining - flexUsed : Math.floor((child.flex / flexTotal) * remaining);
+                flexUsed += childAxisSize;
+            } else {
+                childAxisSize = isRow ? (child.width ?? 0) : (child.height ?? 0);
+            }
+
+            log('recurse > composeNode()');
+            composeNode(
+                {
+                    ...child,
+                    x: innerX + (isRow ? cursor : (child.x ?? 0)),
+                    y: innerY + (isRow ? (child.y ?? 0) : cursor),
+                    width: isRow ? childAxisSize : (child.width ?? innerWidth),
+                    height: isRow ? (child.height ?? innerHeight) : childAxisSize,
+                },
+                chars,
+                regions,
+            );
+
+            cursor += childAxisSize;
+        }
+    } else {
+        for (const child of children) {
+            log('recurse > composeNode()');
+            composeNode(
+                {
+                    ...child,
+                    x: innerX + (child.x ?? 0),
+                    y: innerY + (child.y ?? 0),
+                    width: child.width ?? innerWidth,
+                    height: child.height ?? innerHeight,
+                },
+                chars,
+                regions,
+            );
+        }
     }
 }
 

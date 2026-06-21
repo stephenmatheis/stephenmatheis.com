@@ -20,15 +20,13 @@ export default function Home() {
             container: containerRef.current!,
         });
 
-        const half = Math.floor(editor.cols / 2);
-
         editor.statusBar({ right: 'Ln {ln}/{rows}, Col {col}/{cols}' });
 
         editor.root.add(
             Box(
-                { border: false, padding: 0 },
-                Box({ title: 'One', interactive: true, width: half }),
-                Box({ title: 'Two', interactive: true, x: half, width: editor.cols - half }),
+                { flexDirection: 'column', border: false, padding: 0 },
+                Box({ title: 'One', interactive: true, flex: 1 }),
+                Box({ title: 'Two', interactive: true, flex: 1 }),
             ),
         );
 
