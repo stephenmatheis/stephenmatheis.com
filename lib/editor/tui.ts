@@ -19,12 +19,25 @@ export type BoxProps = {
     flex?: number;
 };
 
-export type BoxNode = BoxProps & { children: BoxNode[] };
+export type TextProps = {
+    x?: number;
+    y?: number;
+    width?: number;
+    height?: number;
+    align?: 'left' | 'center' | 'right';
+    content?: string;
+    flex?: number;
+};
+
+export type BoxNode = BoxProps & { kind: 'box'; children: LayoutNode[] };
+export type TextNode = TextProps & { kind: 'text' };
+export type LayoutNode = BoxNode | TextNode;
 
 export type Region = { x: number; y: number; width: number; height: number };
 
-export function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
+export function Box(props: BoxProps, ...children: LayoutNode[]): BoxNode {
     return {
+        kind: 'box',
         border: true,
         borderStyle: 'rounded',
         x: 0,
@@ -34,7 +47,45 @@ export function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
     };
 }
 
-function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
+export function Text(props: TextProps): TextNode {
+    return { kind: 'text', align: 'left', content: '', ...props };
+}
+
+function writeText(
+    x: number,
+    y: number,
+    width: number,
+    align: 'left' | 'center' | 'right',
+    content: string,
+    chars: string[][],
+) {
+    if (y < 0 || y >= chars.length || !content) return;
+
+    const writeX =
+        align === 'right' ? x + width - content.length
+        : align === 'center' ? x + Math.floor((width - content.length) / 2)
+        : x;
+
+    for (let i = 0; i < content.length; i++) {
+        const col = writeX + i;
+
+        if (col >= x && col < x + width && col >= 0 && col < chars[0].length) {
+            chars[y][col] = content[i];
+        }
+    }
+}
+
+function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
+    if (node.kind === 'text') {
+        const x = node.x ?? 0;
+        const y = node.y ?? 0;
+        const width = node.width ?? chars[0].length - x;
+
+        writeText(x, y, width, node.align ?? 'left', node.content ?? '', chars);
+
+        return;
+    }
+
     const {
         x = 0,
         y = 0,
@@ -107,14 +158,17 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
     if (flexDirection) {
         const isRow = flexDirection === 'row';
         const axis = isRow ? innerWidth : innerHeight;
-        const flexTotal = children.reduce((sum, child) => sum + (child.flex ?? 0), 0);
-        const fixedTotal = children.reduce((sum, child) => {
-            if (child.flex != null) {
-                return sum;
-            }
 
-            return sum + (isRow ? (child.width ?? 0) : (child.height ?? 0));
+        const fixedTotal = children.reduce((sum, child) => {
+            if (child.flex != null) return sum;
+
+            if (isRow) return sum + (child.width ?? 0);
+
+            // TextNode defaults to 1 row tall in column layouts.
+            return sum + (child.height ?? (child.kind === 'text' ? 1 : 0));
         }, 0);
+
+        const flexTotal = children.reduce((sum, child) => sum + (child.flex ?? 0), 0);
         const lastFlexIndex = children.findLastIndex((child) => child.flex != null);
         const remaining = axis - fixedTotal;
 
@@ -130,8 +184,10 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
                 childAxisSize =
                     i === lastFlexIndex ? remaining - flexUsed : Math.floor((child.flex / flexTotal) * remaining);
                 flexUsed += childAxisSize;
+            } else if (isRow) {
+                childAxisSize = child.width ?? 0;
             } else {
-                childAxisSize = isRow ? (child.width ?? 0) : (child.height ?? 0);
+                childAxisSize = child.height ?? (child.kind === 'text' ? 1 : 0);
             }
 
             log('recurse > composeNode()');
@@ -158,7 +214,7 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
                     x: innerX + (child.x ?? 0),
                     y: innerY + (child.y ?? 0),
                     width: child.width ?? innerWidth,
-                    height: child.height ?? innerHeight,
+                    height: child.height ?? (child.kind === 'text' ? 1 : innerHeight),
                 },
                 chars,
                 regions,
@@ -167,7 +223,7 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
     }
 }
 
-export function compose(node: BoxNode, chars: string[][]): Region[] {
+export function compose(node: LayoutNode, chars: string[][]): Region[] {
     const regions: Region[] = [];
 
     log('compose() > composeNode()');

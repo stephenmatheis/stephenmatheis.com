@@ -8,7 +8,7 @@ import { Selection } from './selection';
 import { Canvas } from './setup';
 import { log } from '@/lib/utils';
 import { compose } from '@/lib/editor/tui';
-import type { BoxNode, Region } from '@/lib/editor/tui';
+import type { LayoutNode, Region } from '@/lib/editor/tui';
 
 export type CellPos = {
     x: number;
@@ -148,7 +148,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         redoStack: [],
     };
 
-    let currentNode: BoxNode | null = null;
+    let currentNode: LayoutNode | null = null;
     let statusBarConfig: StatusBar | null = null;
 
     function draw() {
@@ -199,7 +199,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         return statusBarConfig ? state.chars.slice(0, -1) : state.chars;
     }
 
-    function applyLayout(node: BoxNode, chars: string[][]): void {
+    function applyLayout(node: LayoutNode, chars: string[][]): void {
         const regions = compose(node, chars);
 
         state.regions = regions;
@@ -275,7 +275,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
             return state.activeRegion;
         },
         root: {
-            add(node: BoxNode) {
+            add(node: LayoutNode) {
                 currentNode = node;
 
                 log('editor.root.add() > compose()');
