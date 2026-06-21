@@ -1,5 +1,4 @@
 import { log } from '@/lib/utils';
-import type { Region } from '@/lib/editor/tui';
 import type { EditorState } from './editor';
 import type { DrawAction } from './render';
 
@@ -28,7 +27,7 @@ export function createSetup(
     ctx: CanvasRenderingContext2D,
     state: EditorState,
     actions: DrawAction,
-    layout: (chars: string[][]) => Region[],
+    layout: (chars: string[][]) => void,
 ) {
     const rootStyles = window.getComputedStyle(document.documentElement);
     const fontSize = rootStyles.getPropertyValue('--canvas-font-size').trim();

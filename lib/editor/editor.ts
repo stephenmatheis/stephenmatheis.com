@@ -166,7 +166,7 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
 
         log('! createSetup() > layout() > compose()');
-        return applyLayout(currentNode, composeChars);
+        applyLayout(currentNode, composeChars);
     });
 
     function draw() {
@@ -217,7 +217,7 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         return statusBarConfig ? state.chars.slice(0, -1) : state.chars;
     }
 
-    function applyLayout(node: BoxNode, chars: string[][]): Region[] {
+    function applyLayout(node: BoxNode, chars: string[][]): void {
         const regions = compose(node, chars);
 
         state.regions = regions;
@@ -226,8 +226,6 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         if (state.activeRegion) {
             state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
         }
-
-        return regions;
     }
 
     log('Attach event listeners.');
