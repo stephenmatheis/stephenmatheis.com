@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Editor, Box } from '@/lib/editor';
+import { Editor, Box, Text } from '@/lib/editor';
 import styles from './page.module.scss';
 import { log, loggingOff } from '@/lib/utils';
 
@@ -33,7 +33,15 @@ export default function Home() {
                 { flexDirection: 'row', border: false, padding: 0 },
                 Box({ title: 'Nav', width: 10 }),
                 Box({ title: 'One', interactive: true, flex: 1 }),
-                Box({ title: 'Two', interactive: true, flex: 1 }),
+                Box(
+                    {
+                        title: 'Two',
+                        flex: 1,
+                    },
+                    Text({
+                        content: 'Hello, world!',
+                    }),
+                ),
             ),
         );
 
