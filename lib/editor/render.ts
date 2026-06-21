@@ -42,4 +42,7 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
             }
         }
     }
+
+    // Log state
+    console.log(state);
 }
