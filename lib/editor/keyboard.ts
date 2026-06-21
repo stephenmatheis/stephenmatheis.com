@@ -4,6 +4,13 @@ import type { Cursor } from './cursor';
 import type { Buffer } from './buffer';
 import type { History } from './history';
 import type { Selection } from './selection';
+import type { InputEventName } from '@/lib/editor/tui';
+
+type InputActions = {
+    isActiveInput(): boolean;
+    emitEvent(event: InputEventName): void;
+    emitChangeIfChanged(): void;
+};
 
 type KeyboardProps = {
     state: EditorState;
@@ -13,9 +20,10 @@ type KeyboardProps = {
     history: ReturnType<typeof History>;
     selection: ReturnType<typeof Selection>;
     focus: { focusNext(): void; focusPrev(): void };
+    inputActions: InputActions;
 };
 
-export function Keyboard({ state, draw, cursor, buffer, history, selection, focus }: KeyboardProps) {
+export function Keyboard({ state, draw, cursor, buffer, history, selection, focus, inputActions }: KeyboardProps) {
     function handleKeyDown(event: KeyboardEvent) {
         const { shiftKey, altKey, metaKey, ctrlKey } = event;
         const extending = shiftKey;
@@ -135,7 +143,13 @@ export function Keyboard({ state, draw, cursor, buffer, history, selection, focu
                 break;
             case 'Enter':
                 selection.clearSelection();
-                buffer.handleEnter();
+
+                if (inputActions.isActiveInput()) {
+                    inputActions.emitEvent('enter');
+                    inputActions.emitChangeIfChanged();
+                } else {
+                    buffer.handleEnter();
+                }
 
                 break;
             case 'Tab':
@@ -161,6 +175,7 @@ export function Keyboard({ state, draw, cursor, buffer, history, selection, focu
                     history.snapshot();
                     selection.clearSelection();
                     buffer.writeChar(event.key);
+                    inputActions.emitEvent('input');
 
                     break;
                 }

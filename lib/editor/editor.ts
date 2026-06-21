@@ -7,8 +7,8 @@ import { Buffer } from './buffer';
 import { Selection } from './selection';
 import { Canvas } from './setup';
 import { log } from '@/lib/utils';
-import { compose } from '@/lib/editor/tui';
-import type { LayoutNode, Region } from '@/lib/editor/tui';
+import { compose, getInputRef } from '@/lib/editor/tui';
+import type { InputEventName, InputNode, InputRef, LayoutNode, Region } from '@/lib/editor/tui';
 
 export type CellPos = {
     x: number;
@@ -150,6 +150,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
     let currentNode: LayoutNode | null = null;
     let statusBarConfig: StatusBar | null = null;
+    const inputMap = new Map<Region, InputNode>();
 
     function draw() {
         if (!currentNode) return;
@@ -164,13 +165,48 @@ export function Editor({ canvas, textarea, container }: Editor) {
         render(ctx, state);
     }
 
+    function readInputValue(ref: InputRef): string {
+        if (!ref.chars || !ref.region) return '';
+
+        return (ref.chars[ref.region.y] ?? [])
+            .slice(ref.region.x, ref.region.x + ref.region.width)
+            .join('')
+            .trimEnd();
+    }
+
+    function getActiveInput(): InputNode | null {
+        return state.activeRegion ? (inputMap.get(state.activeRegion) ?? null) : null;
+    }
+
+    function emitInputEvent(event: InputEventName) {
+        const input = getActiveInput();
+        if (!input) return;
+        const ref = getInputRef(input);
+        if (!ref) return;
+        ref.handlers[event]?.(readInputValue(ref));
+    }
+
+    function checkAndEmitChange() {
+        const input = getActiveInput();
+        if (!input) return;
+        const ref = getInputRef(input);
+        if (!ref) return;
+        const current = readInputValue(ref);
+        if (current !== ref.valueOnFocus) {
+            ref.handlers.change?.(current);
+            ref.valueOnFocus = current;
+        }
+    }
+
     function focusNext() {
+        checkAndEmitChange();
         const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : -1;
 
         focusRegion(i + 1);
     }
 
     function focusPrev() {
+        checkAndEmitChange();
         const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : 0;
 
         focusRegion(i - 1);
@@ -183,20 +219,46 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
         state.activeRegion = state.regions[i];
         state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+
+        // Record the current value so we can detect a change when focus leaves.
+        const input = inputMap.get(state.activeRegion);
+        if (input) {
+            const ref = getInputRef(input);
+            if (ref) ref.valueOnFocus = readInputValue(ref);
+        }
     }
 
     function focusAtCell(x: number, y: number): boolean {
+        checkAndEmitChange();
         const index = state.regions.findIndex((r) => x >= r.x && x < r.x + r.width && y >= r.y && y < r.y + r.height);
 
         if (index === -1) return false;
 
         state.activeRegion = state.regions[index];
 
+        const input = inputMap.get(state.activeRegion);
+        if (input) {
+            const ref = getInputRef(input);
+            if (ref) ref.valueOnFocus = readInputValue(ref);
+        }
+
         return true;
     }
 
     function getComposeChars() {
         return statusBarConfig ? state.chars.slice(0, -1) : state.chars;
+    }
+
+    function collectInputs(node: LayoutNode) {
+        if (node.kind === 'input') {
+            const ref = getInputRef(node);
+            if (ref?.region) {
+                ref.draw = draw;
+                inputMap.set(ref.region, node);
+            }
+        } else if (node.kind === 'box') {
+            for (const child of node.children) collectInputs(child);
+        }
     }
 
     function applyLayout(node: LayoutNode, chars: string[][]): void {
@@ -208,6 +270,9 @@ export function Editor({ canvas, textarea, container }: Editor) {
         if (state.activeRegion) {
             state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
         }
+
+        inputMap.clear();
+        collectInputs(node);
     }
 
     const cursor = Cursor(state);
@@ -223,6 +288,11 @@ export function Editor({ canvas, textarea, container }: Editor) {
         history,
         selection,
         focus: { focusNext, focusPrev },
+        inputActions: {
+            isActiveInput: () => inputMap.has(state.activeRegion!),
+            emitEvent: emitInputEvent,
+            emitChangeIfChanged: checkAndEmitChange,
+        },
     });
     const { handleMouseDown, handleMouseMove, handleMouseUp } = MouseHandlers({
         canvas,
