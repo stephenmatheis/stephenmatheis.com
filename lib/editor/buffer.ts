@@ -15,16 +15,20 @@ export function Buffer({ state, actions }: BufferProps) {
             const minX = r ? r.x : 0;
             const maxY = r ? r.y + r.height - 1 : state.rows - 1;
 
-            if (state.cursor.x === maxX) return;
+            if (state.cursor.x === maxX) {
+                if (state.cursor.y < maxY) {
+                    state.cursor = { x: minX, y: state.cursor.y + 1 };
+                    state.cursorVisible = true;
+                    state.chars[state.cursor.y][state.cursor.x] = char;
+                    actions.moveCursor(1, 0);
+                }
+
+                return;
+            }
 
             state.chars[state.cursor.y][state.cursor.x] = char;
 
-            if (state.cursor.x >= maxX && state.cursor.y < maxY) {
-                state.cursor = { x: minX, y: state.cursor.y + 1 };
-                state.cursorVisible = true;
-            } else {
-                actions.moveCursor(1, 0);
-            }
+            actions.moveCursor(1, 0);
         }
     }
 

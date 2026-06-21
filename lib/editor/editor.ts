@@ -510,7 +510,24 @@ export function Editor({ canvas, textarea, container }: Editor) {
                 };
             }
         } else {
-            state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+            const r = state.activeRegion;
+            let cx = r.x;
+            let cy = r.y;
+
+            for (let row = r.y + r.height - 1; row >= r.y; row--) {
+                const text = (state.chars[row] ?? [])
+                    .slice(r.x, r.x + r.width)
+                    .join('')
+                    .trimEnd();
+
+                if (text.length > 0) {
+                    cx = Math.min(r.x + text.length, r.x + r.width - 1);
+                    cy = row;
+                    break;
+                }
+            }
+
+            state.cursor = { x: cx, y: cy };
         }
     }
 
