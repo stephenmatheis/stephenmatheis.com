@@ -22,13 +22,15 @@ function getEmSquare(element: HTMLElement) {
     };
 }
 
-export function createSetup(
-    canvas: HTMLCanvasElement,
-    ctx: CanvasRenderingContext2D,
-    state: EditorState,
-    actions: DrawAction,
-    layout: (chars: string[][]) => void,
-) {
+type CanvasProps = {
+    canvas: HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
+    state: EditorState;
+    actions: DrawAction;
+    layout: (chars: string[][]) => void;
+};
+
+export function Canvas({ canvas, ctx, state, actions, layout }: CanvasProps) {
     const rootStyles = window.getComputedStyle(document.documentElement);
     const fontSize = rootStyles.getPropertyValue('--canvas-font-size').trim();
     const fontFamily = rootStyles.getPropertyValue('--canvas-font-family').trim();

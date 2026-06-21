@@ -1,11 +1,11 @@
 import { render } from './render';
-import { createKeyboard } from './keyboard';
-import { createMouseHandlers } from './mouse';
-import { createHistory } from './history';
-import { createCursor } from './cursor';
-import { createBuffer } from './buffer';
-import { createSelection } from './selection';
-import { createSetup } from './setup';
+import { Keyboard } from './keyboard';
+import { MouseHandlers } from './mouse';
+import { History } from './history';
+import { Cursor } from './cursor';
+import { Buffer } from './buffer';
+import { Selection } from './selection';
+import { Canvas } from './setup';
 import { log } from '@/lib/utils';
 import { compose } from '@/lib/editor/tui';
 import type { BoxNode, Region } from '@/lib/editor/tui';
@@ -56,7 +56,7 @@ export type StatusBar = {
     right?: string;
 };
 
-function resolveContent(template: string, state: EditorState): string {
+function Content(template: string, state: EditorState): string {
     const r = state.activeRegion;
 
     return template.replace(/\{(\w+)\}/g, (_, token: string) => {
@@ -77,7 +77,7 @@ function resolveContent(template: string, state: EditorState): string {
     });
 }
 
-function writeStatusBar(config: StatusBar, state: EditorState) {
+function StatusBar(config: StatusBar, state: EditorState) {
     const row = state.rows - 1;
 
     if (row < 0 || row >= state.chars.length) return;
@@ -87,7 +87,7 @@ function writeStatusBar(config: StatusBar, state: EditorState) {
     }
 
     if (config.left) {
-        const content = resolveContent(config.left, state);
+        const content = Content(config.left, state);
 
         for (let i = 0; i < content.length && i < state.cols; i++) {
             state.chars[row][i] = content[i];
@@ -95,7 +95,7 @@ function writeStatusBar(config: StatusBar, state: EditorState) {
     }
 
     if (config.center) {
-        const content = resolveContent(config.center, state);
+        const content = Content(config.center, state);
         const startX = Math.floor((state.cols - content.length) / 2);
 
         for (let i = 0; i < content.length; i++) {
@@ -108,7 +108,7 @@ function writeStatusBar(config: StatusBar, state: EditorState) {
     }
 
     if (config.right) {
-        const content = resolveContent(config.right, state);
+        const content = Content(config.right, state);
         const startX = state.cols - content.length;
 
         for (let i = 0; i < content.length; i++) {
@@ -120,7 +120,7 @@ function writeStatusBar(config: StatusBar, state: EditorState) {
     }
 }
 
-export function createEditor({ canvas, textarea, container }: Editor) {
+export function Editor({ canvas, textarea, container }: Editor) {
     const ctx = canvas.getContext('2d')!;
 
     log('EditorState created.');
@@ -146,36 +146,13 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     let currentNode: BoxNode | null = null;
     let statusBarConfig: StatusBar | null = null;
 
-    const cursor = createCursor(state);
-    const buffer = createBuffer(state, { moveCursor: cursor.moveCursor });
-    const selection = createSelection(state);
-    const history = createHistory(state, { draw, clearSelection: selection.clearSelection });
-    const { handleKeyDown } = createKeyboard(state, draw, cursor, buffer, history, selection, { focusNext, focusPrev });
-    const { handleMouseDown, handleMouseMove, handleMouseUp } = createMouseHandlers(canvas, textarea, state, {
-        draw,
-        startMouseSelection: selection.startMouseSelection,
-        extendMouseSelection: selection.extendMouseSelection,
-        endMouseSelection: selection.endMouseSelection,
-        focusAtCell,
-    });
-    const { setSize } = createSetup(canvas, ctx, state, { draw }, (chars) => {
-        log('? createSetup() > layout()');
-
-        if (!currentNode) return [];
-
-        const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
-
-        log('! createSetup() > layout() > compose()');
-        applyLayout(currentNode, composeChars);
-    });
-
     function draw() {
         if (!currentNode) return;
 
         if (statusBarConfig) {
             log('draw() > writeStatusBar()');
 
-            writeStatusBar(statusBarConfig, state);
+            StatusBar(statusBarConfig, state);
         }
 
         log('draw() > render()');
@@ -227,6 +204,49 @@ export function createEditor({ canvas, textarea, container }: Editor) {
             state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
         }
     }
+
+    const cursor = Cursor(state);
+    const buffer = Buffer({ state, actions: { moveCursor: cursor.moveCursor } });
+    const selection = Selection(state);
+    const history = History({ state, actions: { draw, clearSelection: selection.clearSelection } });
+
+    const { handleKeyDown } = Keyboard({
+        state,
+        draw,
+        cursor,
+        buffer,
+        history,
+        selection,
+        focus: { focusNext, focusPrev },
+    });
+    const { handleMouseDown, handleMouseMove, handleMouseUp } = MouseHandlers({
+        canvas,
+        textarea,
+        state,
+        actions: {
+            draw,
+            startMouseSelection: selection.startMouseSelection,
+            extendMouseSelection: selection.extendMouseSelection,
+            endMouseSelection: selection.endMouseSelection,
+            focusAtCell,
+        },
+    });
+    const { setSize } = Canvas({
+        canvas,
+        ctx,
+        state,
+        actions: { draw },
+        layout(chars) {
+            log('? createSetup() > layout()');
+
+            if (!currentNode) return [];
+
+            const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
+
+            log('! createSetup() > layout() > compose()');
+            applyLayout(currentNode, composeChars);
+        },
+    });
 
     log('Attach event listeners.');
     container.addEventListener('mousedown', handleMouseDown);

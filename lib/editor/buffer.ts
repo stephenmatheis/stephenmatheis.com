@@ -1,10 +1,13 @@
 import type { EditorState } from './editor';
 
-export type BufferActions = {
-    moveCursor(dx: number, dy: number): void;
+export type BufferProps = {
+    state: EditorState;
+    actions: {
+        moveCursor(dx: number, dy: number): void;
+    };
 };
 
-export function createBuffer(state: EditorState, actions: BufferActions) {
+export function Buffer({ state, actions }: BufferProps) {
     function writeChar(char: string) {
         if (state.cursor.y < state.rows && state.cursor.x < state.cols) {
             state.chars[state.cursor.y][state.cursor.x] = char;

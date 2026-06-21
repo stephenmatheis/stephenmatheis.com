@@ -1,20 +1,20 @@
 import type { CellPos } from './editor';
 import type { EditorState } from './editor';
 
-export type MouseActions = {
-    draw(): void;
-    startMouseSelection(cell: CellPos): void;
-    extendMouseSelection(cell: CellPos): void;
-    endMouseSelection(): void;
-    focusAtCell(x: number, y: number): boolean;
+type MouseHandlersProps = {
+    canvas: HTMLCanvasElement;
+    textarea: HTMLTextAreaElement;
+    state: EditorState;
+    actions: {
+        draw(): void;
+        startMouseSelection(cell: CellPos): void;
+        extendMouseSelection(cell: CellPos): void;
+        endMouseSelection(): void;
+        focusAtCell(x: number, y: number): boolean;
+    };
 };
 
-function pixelToCell(
-    clientX: number,
-    clientY: number,
-    canvas: HTMLCanvasElement,
-    state: EditorState,
-): CellPos {
+function pixelToCell(clientX: number, clientY: number, canvas: HTMLCanvasElement, state: EditorState): CellPos {
     const { left, top } = canvas.getBoundingClientRect();
 
     return {
@@ -23,12 +23,7 @@ function pixelToCell(
     };
 }
 
-export function createMouseHandlers(
-    canvas: HTMLCanvasElement,
-    textarea: HTMLTextAreaElement,
-    state: EditorState,
-    actions: MouseActions,
-) {
+export function MouseHandlers({ canvas, textarea, state, actions }: MouseHandlersProps) {
     function handleMouseDown(event: MouseEvent) {
         const cell = pixelToCell(event.clientX, event.clientY, canvas, state);
 

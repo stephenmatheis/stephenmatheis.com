@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { createEditor, Box } from '@/lib/editor';
+import { Editor, Box } from '@/lib/editor';
 import styles from './page.module.scss';
 import { log, loggingOff } from '@/lib/utils';
 
@@ -16,7 +16,7 @@ export default function Home() {
 
         log('START: Editor created.');
 
-        const editor = createEditor({
+        const editor = Editor({
             canvas: canvasRef.current!,
             textarea: textareaRef.current!,
             container: containerRef.current!,
