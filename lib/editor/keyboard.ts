@@ -12,6 +12,11 @@ type InputActions = {
     emitChangeIfChanged(): void;
 };
 
+type ModalActions = {
+    isOpen(): boolean;
+    dismiss(): void;
+};
+
 type KeyboardProps = {
     state: EditorState;
     draw: () => void;
@@ -21,9 +26,20 @@ type KeyboardProps = {
     selection: ReturnType<typeof Selection>;
     focus: { focusNext(): void; focusPrev(): void };
     inputActions: InputActions;
+    modalActions: ModalActions;
 };
 
-export function Keyboard({ state, draw, cursor, buffer, history, selection, focus, inputActions }: KeyboardProps) {
+export function Keyboard({
+    state,
+    draw,
+    cursor,
+    buffer,
+    history,
+    selection,
+    focus,
+    inputActions,
+    modalActions,
+}: KeyboardProps) {
     function handleKeyDown(event: KeyboardEvent) {
         const { shiftKey, altKey, metaKey, ctrlKey } = event;
         const extending = shiftKey;
@@ -53,8 +69,6 @@ export function Keyboard({ state, draw, cursor, buffer, history, selection, focu
                     navigator.clipboard
                         .readText()
                         .then((text) => {
-                            // Snapshot before the paste so the entire paste is
-                            // one undo step, not one step per character.
                             history.snapshot();
                             selection.clearSelection();
 
@@ -167,6 +181,12 @@ export function Keyboard({ state, draw, cursor, buffer, history, selection, focu
                     selection.clearSelection();
                 } else {
                     buffer.deleteChar();
+                }
+
+                break;
+            case 'Escape':
+                if (modalActions.isOpen()) {
+                    modalActions.dismiss();
                 }
 
                 break;

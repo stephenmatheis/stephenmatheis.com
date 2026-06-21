@@ -19,12 +19,11 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
         for (let col = 0; col < state.cols; col++) {
             const x = col * state.cellWidth;
             const y = row * state.cellHeight;
-            const char = state.chars[row]?.[col] || '';
-            const cellStyle = state.cellStyles?.[row]?.[col];
+            const char = state.displayChars[row]?.[col] || '';
+            const cellStyle = state.displayCellStyles?.[row]?.[col];
             const isCursor = state.cursorVisible && col === state.cursor.x && row === state.cursor.y;
             const isSelected = state.selected ? isInSelection(col, row, state.selected) : false;
 
-            // Input region background. bg === null → use CSS var default; string → custom color.
             if (cellStyle && 'bg' in cellStyle) {
                 ctx.fillStyle = cellStyle.bg ?? inputBg;
                 ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
@@ -49,13 +48,11 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
                 ctx.fillStyle = isCursor || isSelected ? background : foreground;
                 ctx.fillText(char, x, y + state.cellHeight);
             } else if (cellStyle?.placeholder && !isCursor) {
-                // Placeholder never lives in state.chars — render-only ghost text.
                 ctx.fillStyle = placeholderColor;
                 ctx.fillText(cellStyle.placeholder, x, y + state.cellHeight);
             }
         }
     }
 
-    // Log state
     console.log(state);
 }

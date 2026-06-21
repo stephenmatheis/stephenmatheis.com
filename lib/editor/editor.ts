@@ -11,9 +11,7 @@ import { compose, getInputRef } from '@/lib/editor/tui';
 import type { InputEventName, InputNode, InputRef, LayoutNode, Region } from '@/lib/editor/tui';
 
 export type CellStyle = {
-    // string = fill with this color; null = fill with --input-background default; absent = no fill
     bg?: string | null;
-    // char to display in this cell when it is empty (placeholder text)
     placeholder?: string;
 };
 
@@ -38,12 +36,14 @@ export type EditorState = {
     cellHeight: number;
     fontStr: string;
     chars: string[][];
+    displayChars: string[][];
     cols: number;
     rows: number;
     cursor: CellPos;
     regions: Region[];
     activeRegion: Region | null;
     cellStyles: Array<Array<CellStyle | null>>;
+    displayCellStyles: Array<Array<CellStyle | null>>;
     selected: Selected | null;
     cursorVisible: boolean;
     isDragging: boolean;
@@ -90,20 +90,21 @@ function Content(template: string, state: EditorState): string {
     });
 }
 
-function composeStatusBar(config: StatusBar, state: EditorState) {
+// chars param is always mainChars — status bar must live in the main layer, not the active write layer.
+function composeStatusBar(config: StatusBar, state: EditorState, chars: string[][]) {
     const row = state.rows - 1;
 
-    if (row < 0 || row >= state.chars.length) return;
+    if (row < 0 || row >= chars.length) return;
 
     for (let col = 0; col < state.cols; col++) {
-        state.chars[row][col] = '';
+        chars[row][col] = '';
     }
 
     if (config.left) {
         const content = Content(config.left, state);
 
         for (let i = 0; i < content.length && i < state.cols; i++) {
-            state.chars[row][i] = content[i];
+            chars[row][i] = content[i];
         }
     }
 
@@ -115,7 +116,7 @@ function composeStatusBar(config: StatusBar, state: EditorState) {
             const col = startX + i;
 
             if (col >= 0 && col < state.cols) {
-                state.chars[row][col] = content[i];
+                chars[row][col] = content[i];
             }
         }
     }
@@ -127,7 +128,7 @@ function composeStatusBar(config: StatusBar, state: EditorState) {
         for (let i = 0; i < content.length; i++) {
             const col = startX + i;
             if (col >= 0 && col < state.cols) {
-                state.chars[row][col] = content[i];
+                chars[row][col] = content[i];
             }
         }
     }
@@ -142,12 +143,14 @@ export function Editor({ canvas, textarea, container }: Editor) {
         cellHeight: 0,
         fontStr: '',
         chars: [],
+        displayChars: [],
         cols: 0,
         rows: 0,
         cursor: { x: 0, y: 0 },
         regions: [],
         activeRegion: null,
         cellStyles: [],
+        displayCellStyles: [],
         selected: null,
         cursorVisible: true,
         isDragging: false,
@@ -157,9 +160,40 @@ export function Editor({ canvas, textarea, container }: Editor) {
         redoStack: [],
     };
 
+    const inputMap = new Map<Region, InputNode>();
+
     let currentNode: LayoutNode | null = null;
     let statusBarConfig: StatusBar | null = null;
-    const inputMap = new Map<Region, InputNode>();
+    let currentModal: LayoutNode | null = null;
+    let savedRegionIndex = 0;
+
+    // Layer buffers: mainChars is always the main layout; state.chars is the active write target
+    // (= mainChars when no modal, = fresh modal buffer when modal is open).
+    // state.displayChars is the composited output that render reads.
+    let mainChars: string[][] = [];
+    let mainCellStyles: Array<Array<CellStyle | null>> = [];
+    let savedRegions: Region[] = [];
+
+    function createGrid<T>(fill: T): T[][] {
+        return Array.from({ length: state.rows }, () => Array(state.cols).fill(fill));
+    }
+
+    // Merge modal layer on top of main layer into the display buffers.
+    function compositeChars() {
+        for (let r = 0; r < state.rows; r++) {
+            for (let c = 0; c < state.cols; c++) {
+                state.displayChars[r][c] = state.chars[r]?.[c] || mainChars[r]?.[c] || '';
+            }
+        }
+    }
+
+    function compositeStyles() {
+        for (let r = 0; r < state.rows; r++) {
+            for (let c = 0; c < state.cols; c++) {
+                state.displayCellStyles[r][c] = state.cellStyles[r]?.[c] ?? mainCellStyles[r]?.[c] ?? null;
+            }
+        }
+    }
 
     // Rebuild the per-cell style grid every draw so placeholder/background stay
     // in sync with live input values without touching state.chars.
@@ -186,7 +220,6 @@ export function Editor({ canvas, textarea, container }: Editor) {
                     const style: CellStyle = {};
 
                     if (node.background !== false) {
-                        // null = let render use --input-background; string = caller's color
                         style.bg = typeof node.background === 'string' ? node.background : null;
                     }
 
@@ -201,6 +234,59 @@ export function Editor({ canvas, textarea, container }: Editor) {
         }
     }
 
+    function positionModal(node: LayoutNode) {
+        const w = (node as { width?: number }).width ?? 60;
+        const h = (node as { height?: number }).height ?? 20;
+        const x = Math.max(0, Math.floor((state.cols - w) / 2));
+        const y = Math.max(0, Math.floor((state.rows - h) / 2));
+
+        return { positioned: { ...node, x, y, width: w, height: h } as LayoutNode, x, y, w, h };
+    }
+
+    function showModal(node: LayoutNode) {
+        savedRegionIndex = state.activeRegion ? Math.max(0, state.regions.indexOf(state.activeRegion)) : 0;
+        savedRegions = state.regions;
+
+        // Snapshot main input styles before we swap inputMap to the modal.
+        const priorCellStyles = state.cellStyles;
+        mainCellStyles = createGrid<CellStyle | null>(null);
+        state.cellStyles = mainCellStyles;
+        applyInputOverlays();
+        state.cellStyles = priorCellStyles;
+
+        // Redirect the active write layer to a fresh modal buffer.
+        mainChars = state.chars;
+        state.chars = createGrid('');
+        state.cellStyles = createGrid<CellStyle | null>(null);
+        state.displayChars = createGrid('');
+        state.displayCellStyles = createGrid<CellStyle | null>(null);
+
+        currentModal = node;
+        const { positioned } = positionModal(node);
+        const modalRegions = compose(positioned, state.chars);
+        state.regions = modalRegions;
+        inputMap.clear();
+        collectInputs(positioned);
+        focusRegion(0);
+        draw();
+    }
+
+    function hideModal() {
+        currentModal = null;
+
+        state.chars = mainChars;
+        state.displayChars = mainChars;
+        state.cellStyles = mainCellStyles;
+        state.displayCellStyles = mainCellStyles;
+        state.regions = savedRegions;
+
+        inputMap.clear();
+
+        collectInputs(currentNode!);
+        focusRegion(savedRegionIndex);
+        draw();
+    }
+
     function draw() {
         if (!currentNode) return;
 
@@ -208,8 +294,12 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
         if (statusBarConfig) {
             log('draw() > writeStatusBar()');
+            composeStatusBar(statusBarConfig, state, mainChars);
+        }
 
-            composeStatusBar(statusBarConfig, state);
+        if (currentModal) {
+            compositeChars();
+            compositeStyles();
         }
 
         log('draw() > render()');
@@ -231,18 +321,27 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
     function emitInputEvent(event: InputEventName) {
         const input = getActiveInput();
+
         if (!input) return;
+
         const ref = getInputRef(input);
+
         if (!ref) return;
+
         ref.handlers[event]?.(readInputValue(ref));
     }
 
     function checkAndEmitChange() {
         const input = getActiveInput();
+
         if (!input) return;
+
         const ref = getInputRef(input);
+
         if (!ref) return;
+
         const current = readInputValue(ref);
+
         if (current !== ref.valueOnFocus) {
             ref.handlers.change?.(current);
             ref.valueOnFocus = current;
@@ -251,6 +350,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
     function focusNext() {
         checkAndEmitChange();
+
         const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : -1;
 
         focusRegion(i + 1);
@@ -258,6 +358,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
     function focusPrev() {
         checkAndEmitChange();
+
         const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : 0;
 
         focusRegion(i - 1);
@@ -273,14 +374,17 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
         // Record the current value so we can detect a change when focus leaves.
         const input = inputMap.get(state.activeRegion);
+
         if (input) {
             const ref = getInputRef(input);
+
             if (ref) ref.valueOnFocus = readInputValue(ref);
         }
     }
 
     function focusAtCell(x: number, y: number): boolean {
         checkAndEmitChange();
+
         const index = state.regions.findIndex((r) => x >= r.x && x < r.x + r.width && y >= r.y && y < r.y + r.height);
 
         if (index === -1) return false;
@@ -288,27 +392,34 @@ export function Editor({ canvas, textarea, container }: Editor) {
         state.activeRegion = state.regions[index];
 
         const input = inputMap.get(state.activeRegion);
+
         if (input) {
             const ref = getInputRef(input);
-            if (ref) ref.valueOnFocus = readInputValue(ref);
+
+            if (ref) {
+                ref.valueOnFocus = readInputValue(ref);
+            }
         }
 
         return true;
     }
 
     function getComposeChars() {
-        return statusBarConfig ? state.chars.slice(0, -1) : state.chars;
+        return statusBarConfig ? mainChars.slice(0, -1) : mainChars;
     }
 
     function collectInputs(node: LayoutNode) {
         if (node.kind === 'input') {
             const ref = getInputRef(node);
+
             if (ref?.region) {
                 ref.draw = draw;
                 inputMap.set(ref.region, node);
             }
         } else if (node.kind === 'box') {
-            for (const child of node.children) collectInputs(child);
+            for (const child of node.children) {
+                collectInputs(child);
+            }
         }
     }
 
@@ -323,6 +434,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         }
 
         inputMap.clear();
+
         collectInputs(node);
     }
 
@@ -343,6 +455,10 @@ export function Editor({ canvas, textarea, container }: Editor) {
             isActiveInput: () => inputMap.has(state.activeRegion!),
             emitEvent: emitInputEvent,
             emitChangeIfChanged: checkAndEmitChange,
+        },
+        modalActions: {
+            isOpen: () => currentModal !== null,
+            dismiss: hideModal,
         },
     });
     const { handleMouseDown, handleMouseMove, handleMouseUp } = MouseHandlers({
@@ -365,12 +481,56 @@ export function Editor({ canvas, textarea, container }: Editor) {
         layout(chars) {
             log('? createSetup() > layout()');
 
-            if (!currentNode) return;
+            if (currentModal) {
+                // Rebuild both layers for the new canvas dimensions.
+                mainChars = createGrid('');
 
-            const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
+                if (currentNode) {
+                    applyLayout(currentNode, statusBarConfig ? mainChars.slice(0, -1) : mainChars);
 
-            log('! createSetup() > layout() > compose()');
-            applyLayout(currentNode, composeChars);
+                    // Snapshot fresh main styles before switching inputMap to modal.
+                    const savedCellStyles = state.cellStyles;
+
+                    mainCellStyles = createGrid<CellStyle | null>(null);
+
+                    state.cellStyles = mainCellStyles;
+
+                    applyInputOverlays();
+
+                    state.cellStyles = savedCellStyles;
+                }
+
+                state.chars = createGrid('');
+                state.cellStyles = createGrid<CellStyle | null>(null);
+                state.displayChars = chars; // fresh array from setup becomes composite output
+                state.displayCellStyles = state.cellStyles;
+
+                const { positioned } = positionModal(currentModal);
+                const modalRegions = compose(positioned, state.chars);
+
+                state.regions = modalRegions;
+
+                inputMap.clear();
+
+                collectInputs(positioned);
+
+                if (state.activeRegion) {
+                    state.cursor = {
+                        x: state.activeRegion.x,
+                        y: state.activeRegion.y,
+                    };
+                }
+            } else {
+                mainChars = chars;
+
+                state.displayChars = chars;
+                state.displayCellStyles = state.cellStyles;
+
+                if (!currentNode) return;
+
+                log('! createSetup() > layout() > compose()');
+                applyLayout(currentNode, statusBarConfig ? mainChars.slice(0, -1) : mainChars);
+            }
         },
     });
 
@@ -405,6 +565,10 @@ export function Editor({ canvas, textarea, container }: Editor) {
                 log('editor.root.add() > draw()');
                 draw();
             },
+        },
+        modal: {
+            show: showModal,
+            hide: hideModal,
         },
         statusBar(config: StatusBar) {
             statusBarConfig = config;
