@@ -37,6 +37,11 @@ export type InputProps = {
     width?: number;
     height?: number;
     flex?: number;
+    placeholder?: string;
+    // CSS color string, or false to suppress the default input background fill.
+    background?: string | false;
+    border?: boolean;
+    borderStyle?: BorderStyle;
 };
 
 // Internal state bag for each Input instance. Lives outside the node so it
@@ -194,8 +199,40 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
         const x = node.x ?? 0;
         const y = node.y ?? 0;
         const width = node.width ?? chars[0].length - x;
-        const height = node.height ?? 1;
-        const region: Region = { x, y, width, height };
+        const height = node.height ?? (node.border ? 3 : 1);
+
+        if (node.border) {
+            const style = node.borderStyle ?? 'rounded';
+            const corners = {
+                double: ['╔', '╗', '╚', '╝'],
+                single: ['┌', '┐', '└', '┘'],
+                rounded: ['╭', '╮', '╰', '╯'],
+            }[style];
+            const hEdge = style === 'double' ? '═' : '─';
+            const vEdge = style === 'double' ? '║' : '│';
+
+            chars[y][x] = corners[0];
+            chars[y][x + width - 1] = corners[1];
+            chars[y + height - 1][x] = corners[2];
+            chars[y + height - 1][x + width - 1] = corners[3];
+
+            for (let cx = x + 1; cx < x + width - 1; cx++) {
+                chars[y][cx] = hEdge;
+                chars[y + height - 1][cx] = hEdge;
+            }
+
+            for (let cy = y + 1; cy < y + height - 1; cy++) {
+                chars[cy][x] = vEdge;
+                chars[cy][x + width - 1] = vEdge;
+            }
+        }
+
+        // The interactive region is inset by 1 on all sides when bordered.
+        const regionX = node.border ? x + 1 : x;
+        const regionY = node.border ? y + 1 : y;
+        const regionW = node.border ? width - 2 : width;
+        const regionH = node.border ? height - 2 : height;
+        const region: Region = { x: regionX, y: regionY, width: regionW, height: regionH };
 
         regions.push(region);
 
@@ -287,8 +324,10 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
 
             if (isRow) return sum + (child.width ?? 0);
 
-            // TextNode and InputNode both default to 1 row in column layouts.
-            const defaultH = child.kind === 'text' || child.kind === 'input' ? 1 : 0;
+            const defaultH =
+                child.kind === 'text' ? 1
+                : child.kind === 'input' ? (child.border ? 3 : 1)
+                : 0;
 
             return sum + (child.height ?? defaultH);
         }, 0);
@@ -312,7 +351,10 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
             } else if (isRow) {
                 childAxisSize = child.width ?? 0;
             } else {
-                const defaultH = child.kind === 'text' || child.kind === 'input' ? 1 : 0;
+                const defaultH =
+                    child.kind === 'text' ? 1
+                    : child.kind === 'input' ? (child.border ? 3 : 1)
+                    : 0;
 
                 childAxisSize = child.height ?? defaultH;
             }
@@ -343,7 +385,9 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
                     width: child.width ?? innerWidth,
                     height:
                         child.height ??
-                        (child.kind === 'text' || child.kind === 'input' ? 1 : innerHeight),
+                        (child.kind === 'text' ? 1
+                         : child.kind === 'input' ? (child.border ? 3 : 1)
+                         : innerHeight),
                 } as LayoutNode,
                 chars,
                 regions,
