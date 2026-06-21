@@ -484,6 +484,38 @@ export function Editor({ canvas, textarea, container }: Editor) {
         focusRegion(i - 1);
     }
 
+    function endOfContent(r: Region): CellPos {
+        const input = inputMap.get(r);
+
+        if (input) {
+            const ref = getInputRef(input);
+
+            if (ref) {
+                const value = readInputValue(ref);
+
+                return { x: Math.min(r.x + value.length, r.x + r.width - 1), y: r.y };
+            }
+        }
+
+        let cx = r.x;
+        let cy = r.y;
+
+        for (let row = r.y + r.height - 1; row >= r.y; row--) {
+            const text = (state.chars[row] ?? [])
+                .slice(r.x, r.x + r.width)
+                .join('')
+                .trimEnd();
+
+            if (text.length > 0) {
+                cx = Math.min(r.x + text.length, r.x + r.width - 1);
+                cy = row;
+                break;
+            }
+        }
+
+        return { x: cx, y: cy };
+    }
+
     function focusRegion(index: number) {
         if (state.regions.length === 0) return;
 
@@ -496,39 +528,10 @@ export function Editor({ canvas, textarea, container }: Editor) {
         if (input) {
             const ref = getInputRef(input);
 
-            if (ref) {
-                const value = readInputValue(ref);
-
-                ref.valueOnFocus = value;
-
-                state.cursor = {
-                    x: Math.min(
-                        state.activeRegion.x + value.length,
-                        state.activeRegion.x + state.activeRegion.width - 1,
-                    ),
-                    y: state.activeRegion.y,
-                };
-            }
-        } else {
-            const r = state.activeRegion;
-            let cx = r.x;
-            let cy = r.y;
-
-            for (let row = r.y + r.height - 1; row >= r.y; row--) {
-                const text = (state.chars[row] ?? [])
-                    .slice(r.x, r.x + r.width)
-                    .join('')
-                    .trimEnd();
-
-                if (text.length > 0) {
-                    cx = Math.min(r.x + text.length, r.x + r.width - 1);
-                    cy = row;
-                    break;
-                }
-            }
-
-            state.cursor = { x: cx, y: cy };
+            if (ref) ref.valueOnFocus = readInputValue(ref);
         }
+
+        state.cursor = endOfContent(state.activeRegion);
     }
 
     function focusAtCell(x: number, y: number): boolean {
@@ -545,10 +548,12 @@ export function Editor({ canvas, textarea, container }: Editor) {
         if (input) {
             const ref = getInputRef(input);
 
-            if (ref) {
-                ref.valueOnFocus = readInputValue(ref);
-            }
+            if (ref) ref.valueOnFocus = readInputValue(ref);
         }
+
+        const char = (state.chars[y] ?? [])[x] ?? '';
+
+        state.cursor = char !== '' ? { x, y } : endOfContent(state.activeRegion);
 
         return true;
     }
