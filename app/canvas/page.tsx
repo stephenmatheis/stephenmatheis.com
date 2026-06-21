@@ -22,6 +22,8 @@ export default function Home() {
 
         const half = Math.floor(editor.cols / 2);
 
+        editor.statusBar({ right: 'Ln {ln}/{rows}, Col {col}/{cols}' });
+
         editor.root.add(
             Box(
                 { border: false, padding: 0 },
@@ -29,8 +31,6 @@ export default function Home() {
                 Box({ title: 'Two', interactive: true, x: half, width: editor.cols - half }),
             ),
         );
-
-        editor.statusBar({ right: 'Ln {ln}/{rows}, Col {col}/{cols}' });
 
         log('END');
 

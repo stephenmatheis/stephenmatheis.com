@@ -179,6 +179,8 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     });
 
     function draw() {
+        if (!currentNode) return;
+
         if (statusBarConfig) {
             log('draw() > writeStatusBar()');
 
