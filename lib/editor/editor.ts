@@ -166,16 +166,7 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
 
         log('! createSetup() > layout() > compose()');
-        const regions = compose(currentNode, composeChars);
-
-        state.regions = regions;
-        state.activeRegion = regions[0] ?? null;
-
-        if (state.activeRegion) {
-            state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
-        }
-
-        return regions;
+        return applyLayout(currentNode, composeChars);
     });
 
     function draw() {
@@ -226,6 +217,19 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         return statusBarConfig ? state.chars.slice(0, -1) : state.chars;
     }
 
+    function applyLayout(node: BoxNode, chars: string[][]): Region[] {
+        const regions = compose(node, chars);
+
+        state.regions = regions;
+        state.activeRegion = regions[0] ?? null;
+
+        if (state.activeRegion) {
+            state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+        }
+
+        return regions;
+    }
+
     log('Attach event listeners.');
     container.addEventListener('mousedown', handleMouseDown);
     container.addEventListener('mousemove', handleMouseMove);
@@ -252,14 +256,7 @@ export function createEditor({ canvas, textarea, container }: Editor) {
                 currentNode = node;
 
                 log('editor.root.add() > compose()');
-                const regions = compose(node, getComposeChars());
-
-                state.regions = regions;
-                state.activeRegion = regions[0] ?? null;
-
-                if (state.activeRegion) {
-                    state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
-                }
+                applyLayout(node, getComposeChars());
 
                 log('editor.root.add() > draw()');
                 draw();
@@ -270,14 +267,7 @@ export function createEditor({ canvas, textarea, container }: Editor) {
 
             if (currentNode) {
                 log('editor.statusBar() > compose()');
-                const regions = compose(currentNode, getComposeChars());
-
-                state.regions = regions;
-                state.activeRegion = regions[0] ?? null;
-
-                if (state.activeRegion) {
-                    state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
-                }
+                applyLayout(currentNode, getComposeChars());
             }
 
             log('editor.statusBar() > draw()');
