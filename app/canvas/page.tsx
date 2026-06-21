@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { createEditor, Box } from '@/lib/editor';
 import styles from './page.module.scss';
+import { log } from '@/lib/utils';
 
 export default function Home() {
     const pageRef = useRef<HTMLDivElement>(null);
@@ -11,6 +12,8 @@ export default function Home() {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
+        log('START: Editor created.');
+
         const editor = createEditor({
             canvas: canvasRef.current!,
             textarea: textareaRef.current!,
@@ -29,6 +32,8 @@ export default function Home() {
 
         editor.statusBar({ right: 'Ln {ln}/{rows}, Col {col}/{cols}' });
 
+        log('END');
+
         if (pageRef.current) {
             pageRef.current.style.opacity = '1';
         }
@@ -40,7 +45,14 @@ export default function Home() {
         <div ref={pageRef} className={styles.page} style={{ opacity: 0 }}>
             <div ref={containerRef} className={styles.renderer}>
                 <canvas ref={canvasRef} />
-                <textarea ref={textareaRef} className={styles.input} name="input" tabIndex={0} autoFocus suppressHydrationWarning />
+                <textarea
+                    ref={textareaRef}
+                    className={styles.input}
+                    name="input"
+                    tabIndex={0}
+                    autoFocus
+                    suppressHydrationWarning
+                />
             </div>
         </div>
     );

@@ -6,8 +6,9 @@ import { createCursor } from './cursor';
 import { createBuffer } from './buffer';
 import { createSelection } from './selection';
 import { createSetup } from './setup';
-import { compose } from '@/lib/tui';
-import type { BoxNode, Region } from '@/lib/tui';
+import { log } from '@/lib/utils';
+import { compose } from '@/lib/editor/tui';
+import type { BoxNode, Region } from '@/lib/editor/tui';
 
 export type CellPos = {
     x: number;
@@ -62,11 +63,16 @@ function resolveContent(template: string, state: EditorState): string {
         if (!r) return '';
 
         switch (token) {
-            case 'ln': return String(state.cursor.y - r.y + 1);
-            case 'col': return String(state.cursor.x - r.x + 1);
-            case 'rows': return String(r.height);
-            case 'cols': return String(r.width);
-            default: return `{${token}}`;
+            case 'ln':
+                return String(state.cursor.y - r.y + 1);
+            case 'col':
+                return String(state.cursor.x - r.x + 1);
+            case 'rows':
+                return String(r.height);
+            case 'cols':
+                return String(r.width);
+            default:
+                return `{${token}}`;
         }
     });
 }
@@ -94,7 +100,10 @@ function writeStatusBar(config: StatusBar, state: EditorState) {
 
         for (let i = 0; i < content.length; i++) {
             const col = startX + i;
-            if (col >= 0 && col < state.cols) state.chars[row][col] = content[i];
+
+            if (col >= 0 && col < state.cols) {
+                state.chars[row][col] = content[i];
+            }
         }
     }
 
@@ -104,7 +113,9 @@ function writeStatusBar(config: StatusBar, state: EditorState) {
 
         for (let i = 0; i < content.length; i++) {
             const col = startX + i;
-            if (col >= 0 && col < state.cols) state.chars[row][col] = content[i];
+            if (col >= 0 && col < state.cols) {
+                state.chars[row][col] = content[i];
+            }
         }
     }
 }
@@ -112,6 +123,7 @@ function writeStatusBar(config: StatusBar, state: EditorState) {
 export function createEditor({ canvas, textarea, container }: Editor) {
     const ctx = canvas.getContext('2d')!;
 
+    log('EditorState created.');
     const state: EditorState = {
         cellWidth: 0,
         cellHeight: 0,
@@ -134,34 +146,68 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     let currentNode: BoxNode | null = null;
     let statusBarConfig: StatusBar | null = null;
 
-    const draw = () => {
-        if (statusBarConfig) {
-            writeStatusBar(statusBarConfig, state);
-        }
-
-        render(ctx, state);
-    };
-
     const cursor = createCursor(state);
     const buffer = createBuffer(state, { moveCursor: cursor.moveCursor });
     const selection = createSelection(state);
     const history = createHistory(state, { draw, clearSelection: selection.clearSelection });
+    const { handleKeyDown } = createKeyboard(state, draw, cursor, buffer, history, selection, { focusNext, focusPrev });
+    const { handleMouseDown, handleMouseMove, handleMouseUp } = createMouseHandlers(canvas, textarea, state, {
+        draw,
+        startMouseSelection: selection.startMouseSelection,
+        extendMouseSelection: selection.extendMouseSelection,
+        endMouseSelection: selection.endMouseSelection,
+        focusAtCell,
+    });
+    const { setSize } = createSetup(canvas, ctx, state, { draw }, (chars) => {
+        log('? createSetup() > layout()');
 
-    function focusRegion(index: number) {
-        if (state.regions.length === 0) return;
-        const i = ((index % state.regions.length) + state.regions.length) % state.regions.length;
-        state.activeRegion = state.regions[i];
-        state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+        if (!currentNode) return [];
+
+        const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
+
+        log('! createSetup() > layout() > compose()');
+        const regions = compose(currentNode, composeChars);
+
+        state.regions = regions;
+        state.activeRegion = regions[0] ?? null;
+
+        if (state.activeRegion) {
+            state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+        }
+
+        return regions;
+    });
+
+    function draw() {
+        if (statusBarConfig) {
+            log('draw() > writeStatusBar()');
+
+            writeStatusBar(statusBarConfig, state);
+        }
+
+        log('draw() > render()');
+        render(ctx, state);
     }
 
     function focusNext() {
         const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : -1;
+
         focusRegion(i + 1);
     }
 
     function focusPrev() {
         const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : 0;
+
         focusRegion(i - 1);
+    }
+
+    function focusRegion(index: number) {
+        if (state.regions.length === 0) return;
+
+        const i = ((index % state.regions.length) + state.regions.length) % state.regions.length;
+
+        state.activeRegion = state.regions[i];
+        state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
     }
 
     function focusAtCell(x: number, y: number): boolean {
@@ -178,30 +224,7 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         return statusBarConfig ? state.chars.slice(0, -1) : state.chars;
     }
 
-    const { handleKeyDown } = createKeyboard(state, draw, cursor, buffer, history, selection, { focusNext, focusPrev });
-    const { handleMouseDown, handleMouseMove, handleMouseUp } = createMouseHandlers(canvas, textarea, state, {
-        draw,
-        startMouseSelection: selection.startMouseSelection,
-        extendMouseSelection: selection.extendMouseSelection,
-        endMouseSelection: selection.endMouseSelection,
-        focusAtCell,
-    });
-    const { setSize } = createSetup(canvas, ctx, state, { draw }, (chars) => {
-        if (!currentNode) return [];
-
-        const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
-        const regions = compose(currentNode, composeChars);
-
-        state.regions = regions;
-        state.activeRegion = regions[0] ?? null;
-
-        if (state.activeRegion) {
-            state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
-        }
-
-        return regions;
-    });
-
+    log('Attach event listeners.');
     container.addEventListener('mousedown', handleMouseDown);
     container.addEventListener('mousemove', handleMouseMove);
     container.addEventListener('mouseup', handleMouseUp);
@@ -210,14 +233,23 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     textarea.focus();
 
     return {
-        get cols() { return state.cols; },
-        get rows() { return state.rows; },
-        get cursor() { return state.cursor; },
-        get activeRegion() { return state.activeRegion; },
+        get cols() {
+            return state.cols;
+        },
+        get rows() {
+            return state.rows;
+        },
+        get cursor() {
+            return state.cursor;
+        },
+        get activeRegion() {
+            return state.activeRegion;
+        },
         root: {
             add(node: BoxNode) {
                 currentNode = node;
 
+                log('editor.root.add() > compose()');
                 const regions = compose(node, getComposeChars());
 
                 state.regions = regions;
@@ -227,6 +259,7 @@ export function createEditor({ canvas, textarea, container }: Editor) {
                     state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
                 }
 
+                log('editor.root.add() > draw()');
                 draw();
             },
         },
@@ -234,14 +267,18 @@ export function createEditor({ canvas, textarea, container }: Editor) {
             statusBarConfig = config;
 
             if (currentNode) {
+                log('editor.statusBar() > compose()');
                 const regions = compose(currentNode, getComposeChars());
+
                 state.regions = regions;
                 state.activeRegion = regions[0] ?? null;
+
                 if (state.activeRegion) {
                     state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
                 }
             }
 
+            log('editor.statusBar() > draw()');
             draw();
         },
         destroy() {

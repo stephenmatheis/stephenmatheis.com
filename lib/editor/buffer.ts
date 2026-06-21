@@ -29,5 +29,9 @@ export function createBuffer(state: EditorState, actions: BufferActions) {
         actions.moveCursor(-(state.cursor.x - minX), 1);
     }
 
-    return { writeChar, deleteChar, handleEnter };
+    return {
+        writeChar,
+        deleteChar,
+        handleEnter,
+    };
 }

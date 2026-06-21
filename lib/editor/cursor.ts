@@ -80,5 +80,13 @@ export function createCursor(state: EditorState) {
         state.cursorVisible = true;
     }
 
-    return { moveCursor, wordJumpRight, wordJumpLeft, lineStart, lineEnd, docStart, docEnd };
+    return {
+        moveCursor,
+        wordJumpRight,
+        wordJumpLeft,
+        lineStart,
+        lineEnd,
+        docStart,
+        docEnd,
+    };
 }
