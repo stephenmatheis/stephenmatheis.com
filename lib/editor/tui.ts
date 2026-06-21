@@ -115,8 +115,8 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
 
             return sum + (isRow ? (child.width ?? 0) : (child.height ?? 0));
         }, 0);
+        const lastFlexIndex = children.findLastIndex((child) => child.flex != null);
         const remaining = axis - fixedTotal;
-        const lastFlexIndex = children.reduce((last, child, i) => (child.flex != null ? i : last), -1);
 
         let cursor = 0;
         let flexUsed = 0;
