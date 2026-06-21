@@ -28,43 +28,31 @@ export default function Home() {
             right: 'Ln {ln}, Col {col}',
         });
 
-        const nameInput = Input({ flex: 1 });
+        const nameInput = Input({ flex: 1, placeholder: 'Your name…', width: 30 });
+        const emailInput = Input({ flex: 1, placeholder: 'you@example.com', border: true });
+        const noteInput = Input({ flex: 1, placeholder: 'No background…', background: false });
 
         nameInput
-            .on('input', (v) => console.log('typing:', v))
-            .on('enter', (v) => console.log('submitted:', v))
-            .on('change', (v) => console.log('committed:', v));
+            .on('input', (v) => console.log('name typing:', v))
+            .on('enter', (v) => console.log('name submitted:', v))
+            .on('change', (v) => console.log('name committed:', v));
+
+        emailInput
+            .on('input', (v) => console.log('email typing:', v))
+            .on('change', (v) => console.log('email committed:', v));
+
+        noteInput
+            .on('input', (v) => console.log('note typing:', v))
+            .on('change', (v) => console.log('note committed:', v));
 
         editor.root.add(
-            Box({ flexDirection: 'column', border: false, padding: 0 }, Box({ title: 'Name', flex: 1 }, nameInput)),
+            Box(
+                { flexDirection: 'column', border: false, paddingX: 2, paddingY: 1 },
+                Box({ title: 'Name', flex: 1 }, nameInput),
+                Box({ title: 'Email', flex: 1 }, emailInput),
+                Box({ title: 'Note', flex: 1 }, noteInput),
+            ),
         );
-
-        console.log(nameInput.value);
-
-        nameInput.value = 'Placeholder';
-
-        // editor.root.add(
-        //     Box(
-        //         { flexDirection: 'column', border: false, padding: 3 },
-        //         Text({
-        //             content: 'Hello, world!',
-        //         }),
-        //     ),
-        //     // Box(
-        //     //     { flexDirection: 'row', border: false, padding: 0 },
-        //     //     Box({ title: 'Nav', width: 10 }),
-        //     //     Box({ title: 'One', interactive: true, flex: 1 }),
-        //     //     Box(
-        //     //         {
-        //     //             title: 'Two',
-        //     //             flex: 1,
-        //     //         },
-        //     //         Text({
-        //     //             content: 'Hello, world!',
-        //     //         }),
-        //     //     ),
-        //     // ),
-        // );
 
         log('END');
 

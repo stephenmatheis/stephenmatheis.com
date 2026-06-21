@@ -10,6 +10,13 @@ import { log } from '@/lib/utils';
 import { compose, getInputRef } from '@/lib/editor/tui';
 import type { InputEventName, InputNode, InputRef, LayoutNode, Region } from '@/lib/editor/tui';
 
+export type CellStyle = {
+    // string = fill with this color; null = fill with --input-background default; absent = no fill
+    bg?: string | null;
+    // char to display in this cell when it is empty (placeholder text)
+    placeholder?: string;
+};
+
 export type CellPos = {
     x: number;
     y: number;
@@ -36,6 +43,7 @@ export type EditorState = {
     cursor: CellPos;
     regions: Region[];
     activeRegion: Region | null;
+    cellStyles: Array<Array<CellStyle | null>>;
     selected: Selected | null;
     cursorVisible: boolean;
     isDragging: boolean;
@@ -139,6 +147,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         cursor: { x: 0, y: 0 },
         regions: [],
         activeRegion: null,
+        cellStyles: [],
         selected: null,
         cursorVisible: true,
         isDragging: false,
@@ -152,8 +161,50 @@ export function Editor({ canvas, textarea, container }: Editor) {
     let statusBarConfig: StatusBar | null = null;
     const inputMap = new Map<Region, InputNode>();
 
+    // Rebuild the per-cell style grid every draw so placeholder/background stay
+    // in sync with live input values without touching state.chars.
+    function applyInputOverlays() {
+        if (!state.cellStyles.length) return;
+
+        for (let r = 0; r < state.rows; r++) {
+            for (let c = 0; c < state.cols; c++) {
+                state.cellStyles[r][c] = null;
+            }
+        }
+
+        for (const [region, node] of inputMap) {
+            const ref = getInputRef(node);
+            if (!ref) continue;
+
+            const isEmpty = readInputValue(ref) === '';
+            const placeholder = node.placeholder ?? '';
+
+            for (let y = region.y; y < region.y + region.height; y++) {
+                for (let x = region.x; x < region.x + region.width; x++) {
+                    if (y < 0 || y >= state.rows || x < 0 || x >= state.cols) continue;
+
+                    const style: CellStyle = {};
+
+                    if (node.background !== false) {
+                        // null = let render use --input-background; string = caller's color
+                        style.bg = typeof node.background === 'string' ? node.background : null;
+                    }
+
+                    if (placeholder && isEmpty) {
+                        const idx = x - region.x;
+                        if (idx < placeholder.length) style.placeholder = placeholder[idx];
+                    }
+
+                    state.cellStyles[y][x] = style;
+                }
+            }
+        }
+    }
+
     function draw() {
         if (!currentNode) return;
+
+        applyInputOverlays();
 
         if (statusBarConfig) {
             log('draw() > writeStatusBar()');

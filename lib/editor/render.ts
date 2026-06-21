@@ -10,6 +10,8 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
 
     const background = rootStyles.getPropertyValue('--background').trim();
     const foreground = rootStyles.getPropertyValue('--foreground').trim();
+    const inputBg = rootStyles.getPropertyValue('--input-background').trim() || 'rgba(128,128,128,0.15)';
+    const placeholderColor = rootStyles.getPropertyValue('--placeholder-color').trim() || 'rgba(128,128,128,0.5)';
 
     ctx.clearRect(0, 0, state.cols * state.cellWidth, state.rows * state.cellHeight);
 
@@ -18,8 +20,15 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
             const x = col * state.cellWidth;
             const y = row * state.cellHeight;
             const char = state.chars[row]?.[col] || '';
+            const cellStyle = state.cellStyles?.[row]?.[col];
             const isCursor = state.cursorVisible && col === state.cursor.x && row === state.cursor.y;
             const isSelected = state.selected ? isInSelection(col, row, state.selected) : false;
+
+            // Input region background. bg === null → use CSS var default; string → custom color.
+            if (cellStyle && 'bg' in cellStyle) {
+                ctx.fillStyle = cellStyle.bg ?? inputBg;
+                ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
+            }
 
             if (isSelected) {
                 ctx.fillStyle = foreground;
@@ -32,13 +41,17 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
             }
 
             // TODO: Be able to toggle on/off
-            ctx.strokeStyle = '#00000030';
+            ctx.strokeStyle = '#00000015';
             ctx.lineWidth = 0.5;
             ctx.strokeRect(x, y, state.cellWidth, state.cellHeight);
 
             if (char) {
                 ctx.fillStyle = isCursor || isSelected ? background : foreground;
                 ctx.fillText(char, x, y + state.cellHeight);
+            } else if (cellStyle?.placeholder && !isCursor) {
+                // Placeholder never lives in state.chars — render-only ghost text.
+                ctx.fillStyle = placeholderColor;
+                ctx.fillText(cellStyle.placeholder, x, y + state.cellHeight);
             }
         }
     }

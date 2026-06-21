@@ -60,6 +60,7 @@ export function Canvas({ canvas, ctx, state, actions, layout }: CanvasProps) {
         ctx.textBaseline = 'ideographic';
 
         state.chars = Array.from({ length: state.rows }, () => Array.from({ length: state.cols }, () => ''));
+        state.cellStyles = Array.from({ length: state.rows }, () => Array.from({ length: state.cols }, () => null));
 
         log('setupCanvas() > layout()');
         layout(state.chars);
