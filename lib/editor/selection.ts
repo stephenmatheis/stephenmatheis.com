@@ -2,16 +2,21 @@ import type { CellPos, Selected } from './editor';
 import type { EditorState } from './editor';
 
 function normalizeSelection(selection: Selected): Selected {
-    const { start, end } = selection;
+    const { start, end, rect } = selection;
     const reversed = end.y < start.y || (end.y === start.y && end.x < start.x);
 
-    return reversed ? { start: end, end: start } : selection;
+    return reversed ? { start: end, end: start, rect } : selection;
 }
 
 export function isInSelection(col: number, row: number, selection: Selected): boolean {
-    const { start, end } = normalizeSelection(selection);
+    const { start, end, rect } = normalizeSelection(selection);
 
     if (row < start.y || row > end.y) return false;
+
+    if (rect) {
+        return col >= start.x && col <= end.x;
+    }
+
     if (row === start.y && col < start.x) return false;
     if (row === end.y && col > end.x) return false;
 
@@ -19,12 +24,12 @@ export function isInSelection(col: number, row: number, selection: Selected): bo
 }
 
 export function getSelectedText(chars: string[][], selection: Selected): string {
-    const { start, end } = normalizeSelection(selection);
+    const { start, end, rect } = normalizeSelection(selection);
     const lines: string[] = [];
 
     for (let row = start.y; row <= end.y; row++) {
-        const startCol = row === start.y ? start.x : 0;
-        const endCol = row === end.y ? end.x : (chars[row]?.length ?? 1) - 1;
+        const startCol = rect || row === start.y ? start.x : 0;
+        const endCol = rect || row === end.y ? end.x : (chars[row]?.length ?? 1) - 1;
 
         lines.push(
             (chars[row] || [])
@@ -38,11 +43,11 @@ export function getSelectedText(chars: string[][], selection: Selected): string 
 }
 
 export function clearSelected(chars: string[][], selection: Selected): CellPos {
-    const { start, end } = normalizeSelection(selection);
+    const { start, end, rect } = normalizeSelection(selection);
 
     for (let row = start.y; row <= end.y; row++) {
-        const startCol = row === start.y ? start.x : 0;
-        const endCol = row === end.y ? end.x : chars[row].length - 1;
+        const startCol = rect || row === start.y ? start.x : 0;
+        const endCol = rect || row === end.y ? end.x : chars[row].length - 1;
 
         for (let col = startCol; col <= endCol; col++) {
             chars[row][col] = '';
@@ -94,10 +99,19 @@ export function Selection(state: EditorState) {
     }
 
     function selectAll() {
+        const r = state.activeRegion;
+
         state.keyboardAnchor = null;
         state.selected = {
-            start: { x: 0, y: 0 },
-            end: { x: state.cols - 1, y: state.rows - 1 },
+            start: {
+                x: r ? r.x : 0,
+                y: r ? r.y : 0,
+            },
+            end: {
+                x: r ? r.x + r.width - 1 : state.cols - 1,
+                y: r ? r.y + r.height - 1 : state.rows - 1,
+            },
+            rect: !!r,
         };
     }
 

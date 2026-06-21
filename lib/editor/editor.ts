@@ -18,6 +18,7 @@ export type CellPos = {
 export type Selected = {
     start: CellPos;
     end: CellPos;
+    rect?: boolean;
 };
 
 export type Snapshot = {
