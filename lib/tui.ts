@@ -15,25 +15,12 @@ export type BoxProps = {
     interactive?: boolean;
 };
 
-export type TextProps = {
-    x?: number;
-    y?: number;
-    width?: number;
-    align?: 'left' | 'center' | 'right';
-    content?: string;
-};
-
-export type TextNode = TextProps & { kind: 'text' };
-
-export type BoxNode = BoxProps & { kind: 'box'; children: LayoutNode[] };
-
-export type LayoutNode = BoxNode | TextNode;
+export type BoxNode = BoxProps & { children: BoxNode[] };
 
 export type Region = { x: number; y: number; width: number; height: number };
 
-export function Box(props: BoxProps, ...children: LayoutNode[]): BoxNode {
+export function Box(props: BoxProps, ...children: BoxNode[]): BoxNode {
     return {
-        kind: 'box',
         border: true,
         borderStyle: 'rounded',
         x: 0,
@@ -43,49 +30,7 @@ export function Box(props: BoxProps, ...children: LayoutNode[]): BoxNode {
     };
 }
 
-export function Text(props: TextProps): TextNode {
-    return { kind: 'text', x: 0, y: 0, align: 'left', content: '', ...props };
-}
-
-function composeTextNode(
-    x: number,
-    y: number,
-    clearWidth: number,
-    align: 'left' | 'center' | 'right',
-    content: string,
-    chars: string[][],
-) {
-    if (y < 0 || y >= chars.length) return;
-
-    for (let i = 0; i < clearWidth && x + i < chars[0].length; i++) {
-        chars[y][x + i] = '';
-    }
-
-    const writeX = {
-        left: x + Math.floor((clearWidth - content.length) / 2),
-        center: x,
-        right: x + clearWidth - content.length,
-    }[align];
-
-    for (let i = 0; i < content.length; i++) {
-        const col = writeX + i;
-
-        if (col >= 0 && col < chars[0].length) {
-            chars[y][col] = content[i];
-        }
-    }
-}
-
-function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
-    if (node.kind === 'text') {
-        const x = node.x ?? 0;
-        const y = node.y ?? 0;
-
-        composeTextNode(x, y, node.width ?? chars[0].length - x, node.align ?? 'left', node.content ?? '', chars);
-
-        return;
-    }
-
+function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
     const {
         x = 0,
         y = 0,
@@ -153,38 +98,22 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
     const innerHeight = height - py * 2;
 
     for (const child of children) {
-        const childX = x + px + (child.x ?? 0);
-        const childY = y + py + (child.y ?? 0);
-
-        if (child.kind === 'text') {
-            composeTextNode(
-                childX,
-                childY,
-                child.width ?? innerWidth,
-                child.align ?? 'left',
-                child.content ?? '',
-                chars,
-            );
-        } else {
-            composeNode(
-                {
-                    ...child,
-                    x: childX,
-                    y: childY,
-                    width: child.width ?? innerWidth,
-                    height: child.height ?? innerHeight,
-                },
-                chars,
-                regions,
-            );
-        }
+        composeNode(
+            {
+                ...child,
+                x: x + px + (child.x ?? 0),
+                y: y + py + (child.y ?? 0),
+                width: child.width ?? innerWidth,
+                height: child.height ?? innerHeight,
+            },
+            chars,
+            regions,
+        );
     }
 }
 
-export function compose(node: LayoutNode, chars: string[][]): Region[] {
+export function compose(node: BoxNode, chars: string[][]): Region[] {
     const regions: Region[] = [];
-
     composeNode(node, chars, regions);
-
     return regions;
 }

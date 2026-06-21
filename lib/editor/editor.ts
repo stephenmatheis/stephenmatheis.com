@@ -7,7 +7,7 @@ import { createBuffer } from './buffer';
 import { createSelection } from './selection';
 import { createSetup } from './setup';
 import { compose } from '@/lib/tui';
-import type { LayoutNode, Region } from '@/lib/tui';
+import type { BoxNode, Region } from '@/lib/tui';
 
 export type CellPos = {
     x: number;
@@ -49,36 +49,64 @@ type Editor = {
     container: HTMLElement;
 };
 
-// Walk the layout tree and replace template tokens in TextNode content
-// strings with live state values. Returns a new tree; does not mutate
-// the original node the caller passed to root.add.
-function resolveTokens(node: LayoutNode, state: EditorState): LayoutNode {
-    if (node.kind === 'text') {
-        const r = state.activeRegion;
-        const content = (node.content ?? '').replace(/\{(\w+)\}/g, (_, token: string) => {
-            if (!r) return '';
+export type StatusBar = {
+    left?: string;
+    center?: string;
+    right?: string;
+};
 
-            switch (token) {
-                case 'ln':
-                    return String(state.cursor.y - r.y + 1);
-                case 'col':
-                    return String(state.cursor.x - r.x + 1);
-                case 'rows':
-                    return String(r.height);
-                case 'cols':
-                    return String(r.width);
-                default:
-                    return `{${token}}`;
-            }
-        });
+function resolveContent(template: string, state: EditorState): string {
+    const r = state.activeRegion;
 
-        return { ...node, content };
+    return template.replace(/\{(\w+)\}/g, (_, token: string) => {
+        if (!r) return '';
+
+        switch (token) {
+            case 'ln': return String(state.cursor.y - r.y + 1);
+            case 'col': return String(state.cursor.x - r.x + 1);
+            case 'rows': return String(r.height);
+            case 'cols': return String(r.width);
+            default: return `{${token}}`;
+        }
+    });
+}
+
+function writeStatusBar(config: StatusBar, state: EditorState) {
+    const row = state.rows - 1;
+
+    if (row < 0 || row >= state.chars.length) return;
+
+    for (let col = 0; col < state.cols; col++) {
+        state.chars[row][col] = '';
     }
 
-    return {
-        ...node,
-        children: node.children.map((child) => resolveTokens(child, state)),
-    };
+    if (config.left) {
+        const content = resolveContent(config.left, state);
+
+        for (let i = 0; i < content.length && i < state.cols; i++) {
+            state.chars[row][i] = content[i];
+        }
+    }
+
+    if (config.center) {
+        const content = resolveContent(config.center, state);
+        const startX = Math.floor((state.cols - content.length) / 2);
+
+        for (let i = 0; i < content.length; i++) {
+            const col = startX + i;
+            if (col >= 0 && col < state.cols) state.chars[row][col] = content[i];
+        }
+    }
+
+    if (config.right) {
+        const content = resolveContent(config.right, state);
+        const startX = state.cols - content.length;
+
+        for (let i = 0; i < content.length; i++) {
+            const col = startX + i;
+            if (col >= 0 && col < state.cols) state.chars[row][col] = content[i];
+        }
+    }
 }
 
 export function createEditor({ canvas, textarea, container }: Editor) {
@@ -103,15 +131,14 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         redoStack: [],
     };
 
-    let currentNode: LayoutNode | null = null;
+    let currentNode: BoxNode | null = null;
+    let statusBarConfig: StatusBar | null = null;
 
-    // Resolve template tokens, re-compose the layout, then render. Running
-    // compose on every draw keeps Text node content fresh without requiring
-    // a separate update step.
     const draw = () => {
-        if (currentNode) {
-            compose(resolveTokens(currentNode, state), state.chars);
+        if (statusBarConfig) {
+            writeStatusBar(statusBarConfig, state);
         }
+
         render(ctx, state);
     };
 
@@ -147,6 +174,10 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         return true;
     }
 
+    function getComposeChars() {
+        return statusBarConfig ? state.chars.slice(0, -1) : state.chars;
+    }
+
     const { handleKeyDown } = createKeyboard(state, draw, cursor, buffer, history, selection, { focusNext, focusPrev });
     const { handleMouseDown, handleMouseMove, handleMouseUp } = createMouseHandlers(canvas, textarea, state, {
         draw,
@@ -156,11 +187,10 @@ export function createEditor({ canvas, textarea, container }: Editor) {
         focusAtCell,
     });
     const { setSize } = createSetup(canvas, ctx, state, { draw }, (chars) => {
-        if (!currentNode) {
-            return [];
-        }
+        if (!currentNode) return [];
 
-        const regions = compose(resolveTokens(currentNode, state), chars);
+        const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
+        const regions = compose(currentNode, composeChars);
 
         state.regions = regions;
         state.activeRegion = regions[0] ?? null;
@@ -180,23 +210,15 @@ export function createEditor({ canvas, textarea, container }: Editor) {
     textarea.focus();
 
     return {
-        get cols() {
-            return state.cols;
-        },
-        get rows() {
-            return state.rows;
-        },
-        get cursor() {
-            return state.cursor;
-        },
-        get activeRegion() {
-            return state.activeRegion;
-        },
+        get cols() { return state.cols; },
+        get rows() { return state.rows; },
+        get cursor() { return state.cursor; },
+        get activeRegion() { return state.activeRegion; },
         root: {
-            add(node: LayoutNode) {
+            add(node: BoxNode) {
                 currentNode = node;
 
-                const regions = compose(resolveTokens(node, state), state.chars);
+                const regions = compose(node, getComposeChars());
 
                 state.regions = regions;
                 state.activeRegion = regions[0] ?? null;
@@ -207,6 +229,20 @@ export function createEditor({ canvas, textarea, container }: Editor) {
 
                 draw();
             },
+        },
+        statusBar(config: StatusBar) {
+            statusBarConfig = config;
+
+            if (currentNode) {
+                const regions = compose(currentNode, getComposeChars());
+                state.regions = regions;
+                state.activeRegion = regions[0] ?? null;
+                if (state.activeRegion) {
+                    state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
+                }
+            }
+
+            draw();
         },
         destroy() {
             container.removeEventListener('mousedown', handleMouseDown);

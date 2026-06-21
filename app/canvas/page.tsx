@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { createEditor, Box, Text } from '@/lib/editor';
+import { createEditor, Box } from '@/lib/editor';
 import styles from './page.module.scss';
 
 export default function Home() {
@@ -24,9 +24,10 @@ export default function Home() {
                 { border: false, padding: 0 },
                 Box({ title: 'One', interactive: true, width: half }),
                 Box({ title: 'Two', interactive: true, x: half, width: editor.cols - half }),
-                Text({ y: editor.rows - 1, align: 'right', content: 'Ln {ln}/{rows}, Col {col}/{cols}' }),
             ),
         );
+
+        editor.statusBar({ right: 'Ln {ln}/{rows}, Col {col}/{cols}' });
 
         if (pageRef.current) {
             pageRef.current.style.opacity = '1';
