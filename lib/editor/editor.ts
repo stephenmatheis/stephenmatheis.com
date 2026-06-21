@@ -173,16 +173,26 @@ export function Editor({ canvas, textarea, container }: Editor) {
     let mainChars: string[][] = [];
     let mainCellStyles: Array<Array<CellStyle | null>> = [];
     let savedRegions: Region[] = [];
+    let modalRect: { x: number; y: number; w: number; h: number } | null = null;
 
     function createGrid<T>(fill: T): T[][] {
         return Array.from({ length: state.rows }, () => Array(state.cols).fill(fill));
     }
 
     // Merge modal layer on top of main layer into the display buffers.
+    // Inside the modal's bounding rect, only modal chars show — main chars
+    // don't backfill empty interior cells, which would bleed through.
     function compositeChars() {
         for (let r = 0; r < state.rows; r++) {
             for (let c = 0; c < state.cols; c++) {
-                state.displayChars[r][c] = state.chars[r]?.[c] || mainChars[r]?.[c] || '';
+                const inModal =
+                    modalRect != null &&
+                    r >= modalRect.y &&
+                    r < modalRect.y + modalRect.h &&
+                    c >= modalRect.x &&
+                    c < modalRect.x + modalRect.w;
+
+                state.displayChars[r][c] = state.chars[r]?.[c] || (inModal ? '' : mainChars[r]?.[c]) || '';
             }
         }
     }
@@ -190,7 +200,15 @@ export function Editor({ canvas, textarea, container }: Editor) {
     function compositeStyles() {
         for (let r = 0; r < state.rows; r++) {
             for (let c = 0; c < state.cols; c++) {
-                state.displayCellStyles[r][c] = state.cellStyles[r]?.[c] ?? mainCellStyles[r]?.[c] ?? null;
+                const inModal =
+                    modalRect != null &&
+                    r >= modalRect.y &&
+                    r < modalRect.y + modalRect.h &&
+                    c >= modalRect.x &&
+                    c < modalRect.x + modalRect.w;
+
+                state.displayCellStyles[r][c] =
+                    state.cellStyles[r]?.[c] ?? (inModal ? null : mainCellStyles[r]?.[c]) ?? null;
             }
         }
     }
@@ -262,10 +280,17 @@ export function Editor({ canvas, textarea, container }: Editor) {
         state.displayCellStyles = createGrid<CellStyle | null>(null);
 
         currentModal = node;
-        const { positioned } = positionModal(node);
+
+        const { positioned, x, y, w, h } = positionModal(node);
+
+        modalRect = { x, y, w, h };
+
         const modalRegions = compose(positioned, state.chars);
+
         state.regions = modalRegions;
+
         inputMap.clear();
+
         collectInputs(positioned);
         focusRegion(0);
         draw();
@@ -273,6 +298,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
     function hideModal() {
         currentModal = null;
+        modalRect = null;
 
         state.chars = mainChars;
         state.displayChars = mainChars;
@@ -505,7 +531,8 @@ export function Editor({ canvas, textarea, container }: Editor) {
                 state.displayChars = chars; // fresh array from setup becomes composite output
                 state.displayCellStyles = state.cellStyles;
 
-                const { positioned } = positionModal(currentModal);
+                const { positioned, x, y, w, h } = positionModal(currentModal);
+                modalRect = { x, y, w, h };
                 const modalRegions = compose(positioned, state.chars);
 
                 state.regions = modalRegions;
