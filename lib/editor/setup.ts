@@ -1,4 +1,5 @@
-import type { Region } from '@/lib/tui';
+import { log } from '@/lib/utils';
+import type { Region } from '@/lib/editor/tui';
 import type { EditorState } from './editor';
 import type { DrawAction } from './render';
 
@@ -29,6 +30,18 @@ export function createSetup(
     actions: DrawAction,
     layout: (chars: string[][]) => Region[],
 ) {
+    const rootStyles = window.getComputedStyle(document.documentElement);
+    const fontSize = rootStyles.getPropertyValue('--canvas-font-size').trim();
+    const fontFamily = rootStyles.getPropertyValue('--canvas-font-family').trim();
+    const emSquare = getEmSquare(document.body);
+
+    state.fontStr = `${fontSize} ${fontFamily}`;
+    state.cellWidth = emSquare.width;
+    state.cellHeight = emSquare.height;
+
+    log('createSetup() > setSize()');
+    setSize();
+
     function setupCanvas() {
         const { innerWidth, innerHeight } = window;
         const dpr = window.devicePixelRatio || 1;
@@ -47,6 +60,7 @@ export function createSetup(
 
         state.chars = Array.from({ length: state.rows }, () => Array.from({ length: state.cols }, () => ''));
 
+        log('setupCanvas() > layout()');
         layout(state.chars);
 
         // TODO: Keep on resize.
@@ -55,22 +69,12 @@ export function createSetup(
     }
 
     function setSize() {
+        log('setSize() > setupCanvas()');
         setupCanvas();
+
+        log('setSize() > draw()');
         actions.draw();
     }
-
-    /* Initialize */
-
-    const rootStyles = window.getComputedStyle(document.documentElement);
-    const fontSize = rootStyles.getPropertyValue('--canvas-font-size').trim();
-    const fontFamily = rootStyles.getPropertyValue('--canvas-font-family').trim();
-    const emSquare = getEmSquare(document.body);
-
-    state.fontStr = `${fontSize} ${fontFamily}`;
-    state.cellWidth = emSquare.width;
-    state.cellHeight = emSquare.height;
-
-    setSize();
 
     return { setSize };
 }

@@ -1,10 +1,13 @@
 import { isInSelection } from './selection';
 import type { EditorState } from './editor';
 
-export type DrawAction = { draw(): void };
+export type DrawAction = {
+    draw(): void;
+};
 
 export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
     const rootStyles = window.getComputedStyle(document.documentElement);
+
     const background = rootStyles.getPropertyValue('--background').trim();
     const foreground = rootStyles.getPropertyValue('--foreground').trim();
 

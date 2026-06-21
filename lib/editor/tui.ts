@@ -1,3 +1,5 @@
+import { log } from '@/lib/utils';
+
 export type BorderStyle = 'rounded' | 'single' | 'double';
 
 export type BoxProps = {
@@ -98,6 +100,7 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
     const innerHeight = height - py * 2;
 
     for (const child of children) {
+        log('recurse > composeNode()');
         composeNode(
             {
                 ...child,
@@ -114,6 +117,9 @@ function composeNode(node: BoxNode, chars: string[][], regions: Region[]) {
 
 export function compose(node: BoxNode, chars: string[][]): Region[] {
     const regions: Region[] = [];
+
+    log('compose() > composeNode()');
     composeNode(node, chars, regions);
+
     return regions;
 }
