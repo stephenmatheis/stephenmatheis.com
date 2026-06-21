@@ -490,14 +490,27 @@ export function Editor({ canvas, textarea, container }: Editor) {
         const i = ((index % state.regions.length) + state.regions.length) % state.regions.length;
 
         state.activeRegion = state.regions[i];
-        state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
 
         const input = inputMap.get(state.activeRegion);
 
         if (input) {
             const ref = getInputRef(input);
 
-            if (ref) ref.valueOnFocus = readInputValue(ref);
+            if (ref) {
+                const value = readInputValue(ref);
+
+                ref.valueOnFocus = value;
+
+                state.cursor = {
+                    x: Math.min(
+                        state.activeRegion.x + value.length,
+                        state.activeRegion.x + state.activeRegion.width - 1,
+                    ),
+                    y: state.activeRegion.y,
+                };
+            }
+        } else {
+            state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
         }
     }
 
