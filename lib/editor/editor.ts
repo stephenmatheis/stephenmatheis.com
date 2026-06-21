@@ -77,7 +77,7 @@ function Content(template: string, state: EditorState): string {
     });
 }
 
-function StatusBar(config: StatusBar, state: EditorState) {
+function composeStatusBar(config: StatusBar, state: EditorState) {
     const row = state.rows - 1;
 
     if (row < 0 || row >= state.chars.length) return;
@@ -152,7 +152,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         if (statusBarConfig) {
             log('draw() > writeStatusBar()');
 
-            StatusBar(statusBarConfig, state);
+            composeStatusBar(statusBarConfig, state);
         }
 
         log('draw() > render()');
@@ -239,7 +239,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         layout(chars) {
             log('? createSetup() > layout()');
 
-            if (!currentNode) return [];
+            if (!currentNode) return;
 
             const composeChars = statusBarConfig ? chars.slice(0, -1) : chars;
 
