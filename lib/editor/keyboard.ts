@@ -1,19 +1,21 @@
 import { getSelectedText, clearSelected } from './selection';
 import type { EditorState } from './editor';
-import type { createCursor } from './cursor';
-import type { createBuffer } from './buffer';
-import type { createHistory } from './history';
-import type { createSelection } from './selection';
+import type { Cursor } from './cursor';
+import type { Buffer } from './buffer';
+import type { History } from './history';
+import type { Selection } from './selection';
 
-export function createKeyboard(
-    state: EditorState,
-    draw: () => void,
-    cursor: ReturnType<typeof createCursor>,
-    buffer: ReturnType<typeof createBuffer>,
-    history: ReturnType<typeof createHistory>,
-    selection: ReturnType<typeof createSelection>,
-    focus: { focusNext(): void; focusPrev(): void },
-) {
+type KeyboardProps = {
+    state: EditorState;
+    draw: () => void;
+    cursor: ReturnType<typeof Cursor>;
+    buffer: ReturnType<typeof Buffer>;
+    history: ReturnType<typeof History>;
+    selection: ReturnType<typeof Selection>;
+    focus: { focusNext(): void; focusPrev(): void };
+};
+
+export function Keyboard({ state, draw, cursor, buffer, history, selection, focus }: KeyboardProps) {
     function handleKeyDown(event: KeyboardEvent) {
         const { shiftKey, altKey, metaKey, ctrlKey } = event;
         const extending = shiftKey;
@@ -33,9 +35,7 @@ export function createKeyboard(
                     event.preventDefault();
 
                     if (state.selected) {
-                        navigator.clipboard
-                            .writeText(getSelectedText(state.chars, state.selected))
-                            .catch(() => {});
+                        navigator.clipboard.writeText(getSelectedText(state.chars, state.selected)).catch(() => {});
                     }
 
                     return;
@@ -64,9 +64,7 @@ export function createKeyboard(
                     event.preventDefault();
 
                     if (state.selected) {
-                        navigator.clipboard
-                            .writeText(getSelectedText(state.chars, state.selected))
-                            .catch(() => {});
+                        navigator.clipboard.writeText(getSelectedText(state.chars, state.selected)).catch(() => {});
 
                         history.snapshot();
 
@@ -80,10 +78,6 @@ export function createKeyboard(
                 case 'z':
                     event.preventDefault();
 
-                    // Cmd+Shift+Z = redo on macOS (mirrors the Shift convention
-                    // used by most Mac apps). Plain Cmd+Z = undo on both macOS
-                    // and Windows. Ctrl+Z on Windows is handled by the same
-                    // branch since ctrlKey is true in both cases.
                     if (shiftKey) {
                         history.redo();
                     } else {
@@ -94,7 +88,6 @@ export function createKeyboard(
                 case 'y':
                     event.preventDefault();
 
-                    // Ctrl+Y is the redo shortcut on Windows and Linux.
                     history.redo();
 
                     return;
@@ -105,8 +98,8 @@ export function createKeyboard(
 
         event.preventDefault();
 
-        const wordJump = (altKey || ctrlKey) && !metaKey; // opt/alt = word jump on macOS; ctrl = word jump on Windows/Linux.
-        const lineOrDocJump = metaKey && !altKey; // cmd = line/doc jump on Mac.
+        const wordJump = (altKey || ctrlKey) && !metaKey;
+        const lineOrDocJump = metaKey && !altKey;
 
         // TODO: Vim mode.
         switch (event.key) {
@@ -151,9 +144,6 @@ export function createKeyboard(
 
                 break;
             case 'Backspace':
-                // Snapshot before either branch: both delete content, and
-                // the user should be able to undo both the "delete selection"
-                // and the "delete one character" cases.
                 history.snapshot();
 
                 if (state.selected) {

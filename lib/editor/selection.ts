@@ -52,7 +52,7 @@ export function clearSelected(chars: string[][], selection: Selected): CellPos {
     return start;
 }
 
-export function createSelection(state: EditorState) {
+export function Selection(state: EditorState) {
     function withSelection(moveFn: () => void, extending: boolean) {
         if (extending) {
             if (!state.keyboardAnchor) {

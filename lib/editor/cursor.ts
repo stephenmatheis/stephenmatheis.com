@@ -9,7 +9,7 @@ function isWordChar(char: string): boolean {
     return !(code >= 0x2500 && code <= 0x257f);
 }
 
-export function createCursor(state: EditorState) {
+export function Cursor(state: EditorState) {
     function moveCursor(dx: number, dy: number) {
         const r = state.activeRegion;
         const minX = r ? r.x : 0;

@@ -17,12 +17,15 @@ function cloneChars(chars: string[][]): string[][] {
 
 const MAX_HISTORY = 100;
 
-export type HistoryActions = {
-    draw(): void;
-    clearSelection(): void;
+export type HistoryProps = {
+    state: EditorState;
+    actions: {
+        draw(): void;
+        clearSelection(): void;
+    };
 };
 
-export function createHistory(state: EditorState, actions: HistoryActions) {
+export function History({ state, actions }: HistoryProps) {
     function snapshot() {
         state.undoStack.push({
             chars: cloneChars(state.chars),
