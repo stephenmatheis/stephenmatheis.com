@@ -10,13 +10,14 @@ export type Theme = {
 };
 
 export function readTheme(): Theme {
-    const s = window.getComputedStyle(document.documentElement);
+    const styles = window.getComputedStyle(document.documentElement);
+
     return {
-        background: s.getPropertyValue('--background').trim(),
-        foreground: s.getPropertyValue('--foreground').trim(),
-        inputBg: s.getPropertyValue('--input-background').trim() || 'rgba(128,128,128,0.15)',
-        placeholderColor: s.getPropertyValue('--placeholder-color').trim() || 'rgba(128,128,128,0.5)',
-        gridLine: s.getPropertyValue('--grid-line').trim() || '#00000015',
+        background: styles.getPropertyValue('--background').trim(),
+        foreground: styles.getPropertyValue('--foreground').trim(),
+        inputBg: styles.getPropertyValue('--input-background').trim() || 'rgba(128,128,128,0.15)',
+        placeholderColor: styles.getPropertyValue('--placeholder-color').trim() || 'rgba(128,128,128,0.5)',
+        gridLine: styles.getPropertyValue('--grid-line').trim() || '#00000015',
     };
 }
 
@@ -43,6 +44,7 @@ export function createRenderer() {
 
             if (!curRow || !prevRow) {
                 dirty.add(r);
+
                 continue;
             }
 
@@ -51,6 +53,7 @@ export function createRenderer() {
             for (let c = 0; c < state.cols; c++) {
                 if (curRow[c] !== prevRow[c]) {
                     rowDirty = true;
+
                     break;
                 }
 
@@ -61,6 +64,7 @@ export function createRenderer() {
                     // Shallow compare the style fields that affect rendering.
                     if (!cs || !ps || cs.bg !== ps.bg || cs.placeholder !== ps.placeholder) {
                         rowDirty = true;
+
                         break;
                     }
                 }
@@ -74,7 +78,9 @@ export function createRenderer() {
             const markSelection = (sel: Selected | null) => {
                 if (!sel) return;
 
-                for (let r = sel.start.y; r <= sel.end.y; r++) dirty.add(r);
+                for (let r = sel.start.y; r <= sel.end.y; r++) {
+                    dirty.add(r);
+                }
             };
 
             markSelection(state.selected);
@@ -127,11 +133,13 @@ export function createRenderer() {
 
                 if (cellStyle && 'bg' in cellStyle) {
                     ctx.fillStyle = cellStyle.bg ?? inputBg;
+                    
                     ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
                 }
 
                 if (isSelected) {
                     ctx.fillStyle = foreground;
+                    
                     ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
                 }
 
@@ -141,13 +149,16 @@ export function createRenderer() {
                 // on partial repaints — inset keeps all pixels inside the clearRect zone.
                 ctx.strokeStyle = gridLine;
                 ctx.lineWidth = 0.5;
+                
                 ctx.strokeRect(x + 0.25, y + 0.25, state.cellWidth - 0.5, state.cellHeight - 0.5);
 
                 if (char) {
                     ctx.fillStyle = isSelected ? background : foreground;
+                
                     ctx.fillText(char, x, y + state.cellHeight);
                 } else if (cellStyle?.placeholder) {
                     ctx.fillStyle = placeholderColor;
+                
                     ctx.fillText(cellStyle.placeholder, x, y + state.cellHeight);
                 }
             }
