@@ -1,5 +1,4 @@
-import type { CellPos, Selected } from './editor';
-import type { EditorState } from './editor';
+import type { CellPos, Selected, SelectionState, CursorState, RegionState, GeometryState } from './types';
 
 function normalizeSelection(selection: Selected): Selected {
     const { start, end, rect } = selection;
@@ -64,7 +63,7 @@ export function clearSelected(chars: string[][], selection: Selected): CellPos {
     return start;
 }
 
-export function Selection(state: EditorState) {
+export function Selection(state: SelectionState & CursorState & RegionState & GeometryState) {
     function withSelection(moveFn: () => void, extending: boolean) {
         if (extending) {
             if (!state.keyboardAnchor) {

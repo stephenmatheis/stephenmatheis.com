@@ -1,10 +1,9 @@
-import type { CellPos } from './editor';
-import type { EditorState } from './editor';
+import type { CellPos, SelectionState, RegionState, CursorState, GeometryState } from './types';
 
 type MouseHandlersProps = {
     canvas: HTMLCanvasElement;
     textarea: HTMLTextAreaElement;
-    state: EditorState;
+    state: SelectionState & RegionState & CursorState & GeometryState;
     actions: {
         draw(): void;
         startMouseSelection(cell: CellPos): void;
@@ -17,7 +16,7 @@ type MouseHandlersProps = {
     };
 };
 
-function pixelToCell(clientX: number, clientY: number, canvas: HTMLCanvasElement, state: EditorState): CellPos {
+function pixelToCell(clientX: number, clientY: number, canvas: HTMLCanvasElement, state: GeometryState): CellPos {
     const { left, top } = canvas.getBoundingClientRect();
 
     return {

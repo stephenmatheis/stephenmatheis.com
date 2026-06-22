@@ -1,4 +1,4 @@
-import type { EditorState } from './editor';
+import type { CursorState, RegionState, GeometryState, ContentState } from './types';
 
 function isWordChar(char: string): boolean {
     if (!char || char.trim() === '') return false;
@@ -9,7 +9,7 @@ function isWordChar(char: string): boolean {
     return !(code >= 0x2500 && code <= 0x257f);
 }
 
-export function Cursor(state: EditorState) {
+export function Cursor(state: CursorState & RegionState & GeometryState & Pick<ContentState, 'chars'>) {
     function moveCursor(dx: number, dy: number) {
         const r = state.activeRegion;
         const minX = r ? r.x : 0;

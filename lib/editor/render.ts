@@ -1,5 +1,5 @@
 import { isInSelection } from './selection';
-import type { EditorState } from './editor';
+import type { EditorState } from './types';
 
 export type Theme = {
     background: string;
