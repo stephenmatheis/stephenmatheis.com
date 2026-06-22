@@ -12,6 +12,7 @@ type MouseHandlersProps = {
         endMouseSelection(): void;
         focusAtCell(x: number, y: number): boolean;
         endOfContent(): CellPos;
+        setCursor(pos: CellPos): void;
         dismissFloatIfOutside?(cell: CellPos): boolean;
     };
 };
@@ -63,7 +64,7 @@ export function MouseHandlers({ canvas, textarea, state, actions }: MouseHandler
         const anchor = state.selectionAnchor;
 
         if (endpoint.x !== anchor.x || endpoint.y !== anchor.y) {
-            state.cursor = endpoint;
+            actions.setCursor(endpoint);
 
             actions.extendMouseSelection(endpoint);
             actions.draw();

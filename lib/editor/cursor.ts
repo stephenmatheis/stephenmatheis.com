@@ -68,15 +68,32 @@ export function Cursor(state: EditorState) {
         state.cursorVisible = true;
     }
 
-    function docStart() {
+    function regionStart() {
         const r = state.activeRegion;
         state.cursor = { x: r ? r.x : 0, y: r ? r.y : 0 };
         state.cursorVisible = true;
     }
 
-    function docEnd() {
+    // Goes to the geometric bottom-left of the region, not the end of typed content.
+    // For content-aware end-of-text, see endOfContent() in editor.ts.
+    function regionEnd() {
         const r = state.activeRegion;
         state.cursor = { x: r ? r.x : 0, y: r ? r.y + r.height - 1 : state.rows - 1 };
+        state.cursorVisible = true;
+    }
+
+    // Moves cursor to an absolute position, applying region bounds and setting cursorVisible.
+    function jumpTo(pos: { x: number; y: number }) {
+        const r = state.activeRegion;
+        const minX = r ? r.x : 0;
+        const maxX = r ? r.x + r.width - 1 : state.cols - 1;
+        const minY = r ? r.y : 0;
+        const maxY = r ? r.y + r.height - 1 : state.rows - 1;
+
+        state.cursor = {
+            x: Math.max(minX, Math.min(pos.x, maxX)),
+            y: Math.max(minY, Math.min(pos.y, maxY)),
+        };
         state.cursorVisible = true;
     }
 
@@ -86,7 +103,8 @@ export function Cursor(state: EditorState) {
         wordJumpLeft,
         lineStart,
         lineEnd,
-        docStart,
-        docEnd,
+        regionStart,
+        regionEnd,
+        jumpTo,
     };
 }

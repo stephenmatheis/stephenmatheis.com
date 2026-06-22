@@ -1,6 +1,5 @@
 import { log } from '@/lib/utils';
 import type { EditorState } from './editor';
-import type { DrawAction } from './render';
 
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;
@@ -26,7 +25,10 @@ type CanvasProps = {
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
     state: EditorState;
-    actions: DrawAction;
+    actions: {
+        draw(): void;
+        onResize(): void;
+    };
     layout: (chars: string[][]) => void;
 };
 
@@ -73,6 +75,8 @@ export function Canvas({ canvas, ctx, state, actions, layout }: CanvasProps) {
     function setSize() {
         log('setSize() > setupCanvas()');
         setupCanvas();
+
+        actions.onResize();
 
         log('setSize() > draw()');
         actions.draw();

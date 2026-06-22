@@ -99,6 +99,12 @@ export function getInputRef(node: InputNode): InputRef | undefined {
     return id != null ? inputRegistry.get(id) : undefined;
 }
 
+export function disposeInput(node: InputNode): void {
+    const id = (node as InputNode & { [INPUT_ID]?: number })[INPUT_ID];
+
+    if (id != null) inputRegistry.delete(id);
+}
+
 export function Box(props: BoxProps, ...children: LayoutNode[]): BoxNode {
     return {
         kind: 'box',

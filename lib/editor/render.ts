@@ -1,17 +1,27 @@
 import { isInSelection } from './selection';
 import type { EditorState } from './editor';
 
-export type DrawAction = {
-    draw(): void;
+export type Theme = {
+    background: string;
+    foreground: string;
+    inputBg: string;
+    placeholderColor: string;
+    gridLine: string;
 };
 
-export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
-    const rootStyles = window.getComputedStyle(document.documentElement);
+export function readTheme(): Theme {
+    const s = window.getComputedStyle(document.documentElement);
+    return {
+        background: s.getPropertyValue('--background').trim(),
+        foreground: s.getPropertyValue('--foreground').trim(),
+        inputBg: s.getPropertyValue('--input-background').trim() || 'rgba(128,128,128,0.15)',
+        placeholderColor: s.getPropertyValue('--placeholder-color').trim() || 'rgba(128,128,128,0.5)',
+        gridLine: s.getPropertyValue('--grid-line').trim() || '#00000015',
+    };
+}
 
-    const background = rootStyles.getPropertyValue('--background').trim();
-    const foreground = rootStyles.getPropertyValue('--foreground').trim();
-    const inputBg = rootStyles.getPropertyValue('--input-background').trim() || 'rgba(128,128,128,0.15)';
-    const placeholderColor = rootStyles.getPropertyValue('--placeholder-color').trim() || 'rgba(128,128,128,0.5)';
+export function render(ctx: CanvasRenderingContext2D, state: EditorState, theme: Theme) {
+    const { background, foreground, inputBg, placeholderColor, gridLine } = theme;
 
     ctx.clearRect(0, 0, state.cols * state.cellWidth, state.rows * state.cellHeight);
 
@@ -40,7 +50,7 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
             }
 
             // TODO: Be able to toggle on/off
-            ctx.strokeStyle = '#00000015';
+            ctx.strokeStyle = gridLine;
             ctx.lineWidth = 0.5;
             ctx.strokeRect(x, y, state.cellWidth, state.cellHeight);
 
@@ -54,5 +64,4 @@ export function render(ctx: CanvasRenderingContext2D, state: EditorState) {
         }
     }
 
-    // console.log(state);
 }

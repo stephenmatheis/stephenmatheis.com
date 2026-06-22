@@ -96,7 +96,7 @@ export function Keyboard({
 
                         history.snapshot();
 
-                        state.cursor = clearSelected(state.chars, state.selected);
+                        cursor.jumpTo(clearSelected(state.chars, state.selected));
                         selection.clearSelection();
 
                         draw();
@@ -143,21 +143,21 @@ export function Keyboard({
 
                 break;
             case 'ArrowDown':
-                if (lineOrDocJump) selection.withSelection(cursor.docEnd, extending);
+                if (lineOrDocJump) selection.withSelection(cursor.regionEnd, extending);
                 else selection.withSelection(() => cursor.moveCursor(0, 1), extending);
 
                 break;
             case 'ArrowUp':
-                if (lineOrDocJump) selection.withSelection(cursor.docStart, extending);
+                if (lineOrDocJump) selection.withSelection(cursor.regionStart, extending);
                 else selection.withSelection(() => cursor.moveCursor(0, -1), extending);
 
                 break;
             case 'Home':
-                selection.withSelection(ctrlKey ? cursor.docStart : cursor.lineStart, extending);
+                selection.withSelection(ctrlKey ? cursor.regionStart : cursor.lineStart, extending);
 
                 break;
             case 'End':
-                selection.withSelection(ctrlKey ? cursor.docEnd : cursor.lineEnd, extending);
+                selection.withSelection(ctrlKey ? cursor.regionEnd : cursor.lineEnd, extending);
 
                 break;
             case 'Enter':
