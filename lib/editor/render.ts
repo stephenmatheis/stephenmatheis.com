@@ -115,7 +115,6 @@ export function createRenderer() {
 
             const y = row * state.cellHeight;
 
-            // Clear only this row when doing a partial repaint.
             if (dirty !== null) {
                 ctx.clearRect(0, y, state.cols * state.cellWidth, state.cellHeight);
             }
@@ -137,9 +136,12 @@ export function createRenderer() {
                 }
 
                 // TODO: Be able to toggle on/off
+                // Inset by lineWidth/2 so the stroke stays within [x,x+w)×[y,y+h).
+                // strokeRect centered on the rect edge bleeds outside and accumulates
+                // on partial repaints — inset keeps all pixels inside the clearRect zone.
                 ctx.strokeStyle = gridLine;
                 ctx.lineWidth = 0.5;
-                ctx.strokeRect(x, y, state.cellWidth, state.cellHeight);
+                ctx.strokeRect(x + 0.25, y + 0.25, state.cellWidth - 0.5, state.cellHeight - 0.5);
 
                 if (char) {
                     ctx.fillStyle = isSelected ? background : foreground;
