@@ -1,6 +1,6 @@
 import type { InputEventName } from '@/lib/editor/tui';
 import { getSelectedText, clearSelected } from './selection';
-import type { EditorState } from './editor';
+import type { SelectionState, ContentState } from './types';
 import type { Cursor } from './cursor';
 import type { Buffer } from './buffer';
 import type { History } from './history';
@@ -23,7 +23,7 @@ type FloatActions = {
 };
 
 type KeyboardProps = {
-    state: EditorState;
+    state: Pick<SelectionState, 'selected'> & Pick<ContentState, 'chars'>;
     cursor: ReturnType<typeof Cursor>;
     buffer: ReturnType<typeof Buffer>;
     history: ReturnType<typeof History>;
@@ -112,11 +112,14 @@ export function Keyboard({
                         history.undo();
                     }
 
+                    draw();
+
                     return;
                 case 'y':
                     event.preventDefault();
 
                     history.redo();
+                    draw();
 
                     return;
                 default:
@@ -185,7 +188,7 @@ export function Keyboard({
                 history.snapshot();
 
                 if (state.selected) {
-                    state.cursor = clearSelected(state.chars, state.selected);
+                    cursor.jumpTo(clearSelected(state.chars, state.selected));
                     selection.clearSelection();
                 } else {
                     buffer.deleteChar();

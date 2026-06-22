@@ -1,4 +1,5 @@
-import type { EditorState } from './editor';
+import type { HistoryState, ContentState, CursorState } from './types';
+import type { Selection } from './selection';
 
 // Creates a fully independent copy of the character buffer.
 //
@@ -18,14 +19,11 @@ function cloneChars(chars: string[][]): string[][] {
 const MAX_HISTORY = 100;
 
 export type HistoryProps = {
-    state: EditorState;
-    actions: {
-        draw(): void;
-        clearSelection(): void;
-    };
+    state: HistoryState & Pick<ContentState, 'chars'> & CursorState;
+    selection: ReturnType<typeof Selection>;
 };
 
-export function History({ state, actions }: HistoryProps) {
+export function History({ state, selection }: HistoryProps) {
     function snapshot() {
         state.undoStack.push({
             chars: cloneChars(state.chars),
@@ -51,9 +49,7 @@ export function History({ state, actions }: HistoryProps) {
 
         state.chars = prev.chars;
         state.cursor = prev.cursor;
-        actions.clearSelection();
-
-        actions.draw();
+        selection.clearSelection();
     }
 
     function redo() {
@@ -68,9 +64,7 @@ export function History({ state, actions }: HistoryProps) {
 
         state.chars = next.chars;
         state.cursor = next.cursor;
-        actions.clearSelection();
-
-        actions.draw();
+        selection.clearSelection();
     }
 
     return { snapshot, undo, redo };

@@ -1,5 +1,5 @@
 import { log } from '@/lib/utils';
-import type { EditorState } from './editor';
+import type { EditorState } from './types';
 
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;

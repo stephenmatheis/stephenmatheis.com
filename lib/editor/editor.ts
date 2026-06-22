@@ -7,148 +7,19 @@ import { Cursor } from './cursor';
 import { Buffer } from './buffer';
 import { Selection } from './selection';
 import { Canvas } from './setup';
+import { Focus, readInputValue } from './focus';
+import { composeStatusBar } from './statusbar';
 import { log } from '@/lib/utils';
 import { compose, getInputRef, disposeInput } from '@/lib/editor/tui';
-import type { InputEventName, InputNode, InputRef, LayoutNode, Region } from '@/lib/editor/tui';
-
-export type CellStyle = {
-    bg?: string | null;
-    placeholder?: string;
-};
-
-export type CellPos = {
-    x: number;
-    y: number;
-};
-
-export type Selected = {
-    start: CellPos;
-    end: CellPos;
-    rect?: boolean;
-    bounds?: { x: number; width: number };
-};
-
-export type Snapshot = {
-    chars: string[][];
-    cursor: CellPos;
-};
-
-export type EditorState = {
-    cellWidth: number;
-    cellHeight: number;
-    fontStr: string;
-    chars: string[][];
-    displayChars: string[][];
-    cols: number;
-    rows: number;
-    cursor: CellPos;
-    regions: Region[];
-    activeRegion: Region | null;
-    cellStyles: Array<Array<CellStyle | null>>;
-    displayCellStyles: Array<Array<CellStyle | null>>;
-    // Three separate selection-state fields serve distinct lifecycles:
-    //   selected       — the rendered highlight; set by both keyboard and mouse paths, null when nothing is selected.
-    //   selectionAnchor — mouse-only; set on mousedown, cleared on mouseup.
-    //   keyboardAnchor  — keyboard-only; set on the first Shift+arrow, cleared by any non-extending move or Tab.
-    selected: Selected | null;
-    cursorVisible: boolean;
-    isDragging: boolean;
-    selectionAnchor: CellPos | null;
-    keyboardAnchor: CellPos | null;
-    undoStack: Snapshot[];
-    redoStack: Snapshot[];
-};
+import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
+import type { CellPos, CellStyle, Selected, EditorState, StatusBar, FloatAnchor } from './types';
+export type { CellPos, CellStyle, Selected, Snapshot, EditorState, StatusBar, FloatAnchor } from './types';
 
 type Editor = {
     canvas: HTMLCanvasElement;
     textarea: HTMLTextAreaElement;
     container: HTMLElement;
 };
-
-export type StatusBar = {
-    left?: string;
-    center?: string;
-    right?: string;
-};
-
-export type FloatAnchor =
-    | { type: 'absolute'; x: number; y: number }
-    | { type: 'cell'; cell: CellPos; side: 'below' | 'above' | 'right' | 'left' }
-    | {
-          type: 'corner';
-          corner: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-          offsetX?: number;
-          offsetY?: number;
-      };
-
-function Content(template: string, state: EditorState): string {
-    const r = state.activeRegion;
-
-    return template.replace(/\{(\w+)\}/g, (_, token: string) => {
-        if (!r) return '';
-
-        switch (token) {
-            case 'ln':
-                return String(state.cursor.y - r.y + 1);
-            case 'col':
-                return String(state.cursor.x - r.x + 1);
-            case 'r_rows':
-                return String(r.height);
-            case 'r_cols':
-                return String(r.width);
-            case 'rows':
-                return String(state.rows);
-            case 'cols':
-                return String(state.cols);
-            default:
-                return `{${token}}`;
-        }
-    });
-}
-
-// chars param is always mainChars — status bar must live in the main layer, not the active write layer.
-function composeStatusBar(config: StatusBar, state: EditorState, chars: string[][]) {
-    const row = state.rows - 1;
-
-    if (row < 0 || row >= chars.length) return;
-
-    for (let col = 0; col < state.cols; col++) {
-        chars[row][col] = '';
-    }
-
-    if (config.left) {
-        const content = Content(config.left, state);
-
-        for (let i = 0; i < content.length && i < state.cols; i++) {
-            chars[row][i] = content[i];
-        }
-    }
-
-    if (config.center) {
-        const content = Content(config.center, state);
-        const startX = Math.floor((state.cols - content.length) / 2);
-
-        for (let i = 0; i < content.length; i++) {
-            const col = startX + i;
-
-            if (col >= 0 && col < state.cols) {
-                chars[row][col] = content[i];
-            }
-        }
-    }
-
-    if (config.right) {
-        const content = Content(config.right, state);
-        const startX = state.cols - content.length;
-
-        for (let i = 0; i < content.length; i++) {
-            const col = startX + i;
-            if (col >= 0 && col < state.cols) {
-                chars[row][col] = content[i];
-            }
-        }
-    }
-}
 
 export function Editor({ canvas, textarea, container }: Editor) {
     const ctx = canvas.getContext('2d')!;
@@ -327,8 +198,8 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
         inputMap.clear();
 
-        collectInputs(positioned);
-        focusRegion(0);
+        focus.collectInputs(positioned);
+        focus.focusRegion(0);
         draw();
     }
 
@@ -348,8 +219,8 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
         inputMap.clear();
 
-        collectInputs(currentNode!);
-        focusRegion(savedRegionIndex);
+        focus.collectInputs(currentNode!);
+        focus.focusRegion(savedRegionIndex);
         draw();
     }
 
@@ -440,155 +311,8 @@ export function Editor({ canvas, textarea, container }: Editor) {
         render(ctx, state, theme);
     }
 
-    function readInputValue(ref: InputRef): string {
-        if (!ref.chars || !ref.region) return '';
-
-        return (ref.chars[ref.region.y] ?? [])
-            .slice(ref.region.x, ref.region.x + ref.region.width)
-            .join('')
-            .trimEnd();
-    }
-
-    function getActiveInput(): InputNode | null {
-        return state.activeRegion ? (inputMap.get(state.activeRegion) ?? null) : null;
-    }
-
-    function emitInputEvent(event: InputEventName) {
-        const input = getActiveInput();
-
-        if (!input) return;
-
-        const ref = getInputRef(input);
-
-        if (!ref) return;
-
-        ref.handlers[event]?.(readInputValue(ref));
-    }
-
-    function checkAndEmitChange() {
-        const input = getActiveInput();
-
-        if (!input) return;
-
-        const ref = getInputRef(input);
-
-        if (!ref) return;
-
-        const current = readInputValue(ref);
-
-        if (current !== ref.valueOnFocus) {
-            ref.handlers.change?.(current);
-            ref.valueOnFocus = current;
-        }
-    }
-
-    function focusNext() {
-        checkAndEmitChange();
-
-        const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : -1;
-
-        focusRegion(i + 1);
-    }
-
-    function focusPrev() {
-        checkAndEmitChange();
-
-        const i = state.activeRegion ? state.regions.indexOf(state.activeRegion) : 0;
-
-        focusRegion(i - 1);
-    }
-
-    function endOfContent(r: Region): CellPos {
-        const input = inputMap.get(r);
-
-        if (input) {
-            const ref = getInputRef(input);
-
-            if (ref) {
-                const value = readInputValue(ref);
-
-                return { x: Math.min(r.x + value.length, r.x + r.width - 1), y: r.y };
-            }
-        }
-
-        let cx = r.x;
-        let cy = r.y;
-
-        for (let row = r.y + r.height - 1; row >= r.y; row--) {
-            const text = (state.chars[row] ?? [])
-                .slice(r.x, r.x + r.width)
-                .join('')
-                .trimEnd();
-
-            if (text.length > 0) {
-                cx = Math.min(r.x + text.length, r.x + r.width - 1);
-                cy = row;
-                break;
-            }
-        }
-
-        return { x: cx, y: cy };
-    }
-
-    function focusRegion(index: number) {
-        if (state.regions.length === 0) return;
-
-        const i = ((index % state.regions.length) + state.regions.length) % state.regions.length;
-
-        state.activeRegion = state.regions[i];
-
-        const input = inputMap.get(state.activeRegion);
-
-        if (input) {
-            const ref = getInputRef(input);
-
-            if (ref) ref.valueOnFocus = readInputValue(ref);
-        }
-
-        state.cursor = endOfContent(state.activeRegion);
-    }
-
-    function focusAtCell(x: number, y: number): boolean {
-        checkAndEmitChange();
-
-        const index = state.regions.findIndex((r) => x >= r.x && x < r.x + r.width && y >= r.y && y < r.y + r.height);
-
-        if (index === -1) return false;
-
-        state.activeRegion = state.regions[index];
-
-        const input = inputMap.get(state.activeRegion);
-
-        if (input) {
-            const ref = getInputRef(input);
-
-            if (ref) ref.valueOnFocus = readInputValue(ref);
-        }
-
-        const char = (state.chars[y] ?? [])[x] ?? '';
-
-        state.cursor = char !== '' ? { x, y } : endOfContent(state.activeRegion);
-
-        return true;
-    }
-
     function getComposeChars() {
         return statusBarConfig ? mainChars.slice(0, -1) : mainChars;
-    }
-
-    function collectInputs(node: LayoutNode) {
-        if (node.kind === 'input') {
-            const ref = getInputRef(node);
-
-            if (ref?.region) {
-                ref.draw = draw;
-                inputMap.set(ref.region, node);
-            }
-        } else if (node.kind === 'box') {
-            for (const child of node.children) {
-                collectInputs(child);
-            }
-        }
     }
 
     function applyLayout(node: LayoutNode, chars: string[][]): void {
@@ -603,13 +327,14 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
         inputMap.clear();
 
-        collectInputs(node);
+        focus.collectInputs(node);
     }
 
+    const focus = Focus({ state, inputMap, draw });
     const cursor = Cursor(state);
-    const buffer = Buffer({ state, actions: { moveCursor: cursor.moveCursor } });
+    const buffer = Buffer({ state, cursor });
     const selection = Selection(state);
-    const history = History({ state, actions: { draw, clearSelection: selection.clearSelection } });
+    const history = History({ state, selection });
 
     const { handleKeyDown } = Keyboard({
         state,
@@ -618,11 +343,11 @@ export function Editor({ canvas, textarea, container }: Editor) {
         buffer,
         history,
         selection,
-        focus: { focusNext, focusPrev },
+        focus: { focusNext: focus.focusNext, focusPrev: focus.focusPrev },
         inputActions: {
             isActiveInput: () => inputMap.has(state.activeRegion!),
-            emitEvent: emitInputEvent,
-            emitChangeIfChanged: checkAndEmitChange,
+            emitEvent: focus.emitInputEvent,
+            emitChangeIfChanged: focus.checkAndEmitChange,
         },
         modalActions: {
             isOpen: () => currentModal !== null,
@@ -642,8 +367,8 @@ export function Editor({ canvas, textarea, container }: Editor) {
             startMouseSelection: selection.startMouseSelection,
             extendMouseSelection: selection.extendMouseSelection,
             endMouseSelection: selection.endMouseSelection,
-            focusAtCell,
-            endOfContent: () => (state.activeRegion ? endOfContent(state.activeRegion) : { x: 0, y: 0 }),
+            focusAtCell: focus.focusAtCell,
+            endOfContent: () => (state.activeRegion ? focus.endOfContent(state.activeRegion) : { x: 0, y: 0 }),
             setCursor: cursor.jumpTo,
             dismissFloatIfOutside(cell: CellPos): boolean {
                 if (currentFloat && floatRect && !inRect(cell.y, cell.x, floatRect)) {
@@ -701,7 +426,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
                 inputMap.clear();
 
-                collectInputs(positioned);
+                focus.collectInputs(positioned);
 
                 if (state.activeRegion) {
                     state.cursor = {
