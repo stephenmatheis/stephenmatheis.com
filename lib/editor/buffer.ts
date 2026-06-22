@@ -17,8 +17,9 @@ export function Buffer({ state, actions }: BufferProps) {
 
             if (state.cursor.x === maxX) {
                 if (state.cursor.y < maxY) {
-                    state.cursor = { x: minX, y: state.cursor.y + 1 };
-                    state.cursorVisible = true;
+                    // Move to the first column of the next row via moveCursor so bounds-clamping
+                    // and cursorVisible tracking stay in the Cursor module.
+                    actions.moveCursor(minX - state.cursor.x, 1);
                     state.chars[state.cursor.y][state.cursor.x] = char;
                     actions.moveCursor(1, 0);
                 }

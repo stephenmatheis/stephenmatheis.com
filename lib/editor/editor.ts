@@ -1,4 +1,5 @@
-import { render } from './render';
+import { render, readTheme } from './render';
+import type { Theme } from './render';
 import { Keyboard } from './keyboard';
 import { MouseHandlers } from './mouse';
 import { History } from './history';
@@ -7,7 +8,7 @@ import { Buffer } from './buffer';
 import { Selection } from './selection';
 import { Canvas } from './setup';
 import { log } from '@/lib/utils';
-import { compose, getInputRef } from '@/lib/editor/tui';
+import { compose, getInputRef, disposeInput } from '@/lib/editor/tui';
 import type { InputEventName, InputNode, InputRef, LayoutNode, Region } from '@/lib/editor/tui';
 
 export type CellStyle = {
@@ -45,6 +46,10 @@ export type EditorState = {
     activeRegion: Region | null;
     cellStyles: Array<Array<CellStyle | null>>;
     displayCellStyles: Array<Array<CellStyle | null>>;
+    // Three separate selection-state fields serve distinct lifecycles:
+    //   selected       — the rendered highlight; set by both keyboard and mouse paths, null when nothing is selected.
+    //   selectionAnchor — mouse-only; set on mousedown, cleared on mouseup.
+    //   keyboardAnchor  — keyboard-only; set on the first Shift+arrow, cleared by any non-extending move or Tab.
     selected: Selected | null;
     cursorVisible: boolean;
     isDragging: boolean;
@@ -173,14 +178,22 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
     const inputMap = new Map<Region, InputNode>();
 
+    let theme: Theme = readTheme();
     let currentNode: LayoutNode | null = null;
     let statusBarConfig: StatusBar | null = null;
     let currentModal: LayoutNode | null = null;
     let savedRegionIndex = 0;
 
-    // Layer buffers: mainChars is always the main layout; state.chars is the active write target
-    // (= mainChars when no modal, = fresh modal buffer when modal is open).
-    // state.displayChars is the composited output that render reads.
+    // Buffer layer invariant:
+    //   mainChars        — the permanent main-layout buffer; always holds the composed main content.
+    //   state.chars      — the active write target. Equals mainChars in normal operation; redirected to
+    //                      a fresh grid when a modal is open so modal edits don't corrupt main content.
+    //   state.displayChars — the composited output render() reads. Equals mainChars when no overlays are
+    //                        active; a separate merged grid when a modal or float is visible. Layering
+    //                        priority (highest first): modal > float > main.
+    //
+    // Six sites perform ref-swaps: showModal, hideModal, showFloat, clearFloat, hideFloat, and the Canvas
+    // layout callback. All must leave these three pointers consistent when they return.
     let mainChars: string[][] = [];
     let mainCellStyles: Array<Array<CellStyle | null>> = [];
     let savedRegions: Region[] = [];
@@ -424,7 +437,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         }
 
         log('draw() > render()');
-        render(ctx, state);
+        render(ctx, state, theme);
     }
 
     function readInputValue(ref: InputRef): string {
@@ -631,6 +644,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
             endMouseSelection: selection.endMouseSelection,
             focusAtCell,
             endOfContent: () => (state.activeRegion ? endOfContent(state.activeRegion) : { x: 0, y: 0 }),
+            setCursor: cursor.jumpTo,
             dismissFloatIfOutside(cell: CellPos): boolean {
                 if (currentFloat && floatRect && !inRect(cell.y, cell.x, floatRect)) {
                     clearFloat();
@@ -646,7 +660,12 @@ export function Editor({ canvas, textarea, container }: Editor) {
         canvas,
         ctx,
         state,
-        actions: { draw },
+        actions: {
+            draw,
+            onResize() {
+                theme = readTheme();
+            },
+        },
         layout(chars) {
             log('? createSetup() > layout()');
 
@@ -783,6 +802,12 @@ export function Editor({ canvas, textarea, container }: Editor) {
             container.removeEventListener('mouseup', handleMouseUp);
             textarea.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('resize', setSize);
+
+            for (const node of inputMap.values()) {
+                disposeInput(node);
+            }
+
+            inputMap.clear();
         },
     };
 }
