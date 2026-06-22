@@ -81,6 +81,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
 
         rafId = requestAnimationFrame(() => {
             rafId = null;
+
             actualDraw();
         });
     }
@@ -182,7 +183,9 @@ export function Editor({ canvas, textarea, container }: Editor) {
         }
 
         log('draw() > render()');
+        
         renderer.render(ctx, state, theme);
+        
         renderCursor();
     }
 

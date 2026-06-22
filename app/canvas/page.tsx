@@ -28,8 +28,8 @@ export default function Page() {
             right: 'Ln {ln}, Col {col}',
         });
 
-        const nameInput = Input({ flex: 1, placeholder: 'Your name…' });
-        const emailInput = Input({ flex: 1, placeholder: 'you@example.com' });
+        const nameInput = Input({ flex: 1, placeholder: 'First Last' });
+        const emailInput = Input({ flex: 1, placeholder: 'me@email.com' });
 
         nameInput
             .on('change', (v) => console.log('name:', v))
