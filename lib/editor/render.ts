@@ -1,5 +1,5 @@
 import { isInSelection } from './selection';
-import type { EditorState } from './types';
+import type { Selected, EditorState } from './types';
 
 export type Theme = {
     background: string;
@@ -20,48 +20,139 @@ export function readTheme(): Theme {
     };
 }
 
-export function render(ctx: CanvasRenderingContext2D, state: EditorState, theme: Theme) {
-    const { background, foreground, inputBg, placeholderColor, gridLine } = theme;
+// Per-instance renderer — holds the previous-frame snapshots used for dirty-row diffing.
+// Returns render() (draws only dirty rows) and invalidateAll() (forces full redraw next call).
+export function createRenderer() {
+    let prevChars: string[][] = [];
+    let prevStyles: Array<Array<{ bg?: string | null; placeholder?: string } | null>> = [];
+    let prevSelected: Selected | null = null;
+    let allDirty = true;
 
-    ctx.clearRect(0, 0, state.cols * state.cellWidth, state.rows * state.cellHeight);
+    // Compute which rows need repainting by diffing current display state against the last frame.
+    function computeDirtyRows(state: EditorState): Set<number> | null {
+        if (allDirty) return null; // null = render everything
 
-    for (let row = 0; row < state.rows; row++) {
-        for (let col = 0; col < state.cols; col++) {
-            const x = col * state.cellWidth;
-            const y = row * state.cellHeight;
-            const char = state.displayChars[row]?.[col] || '';
-            const cellStyle = state.displayCellStyles?.[row]?.[col];
-            const isCursor = state.cursorVisible && col === state.cursor.x && row === state.cursor.y;
-            const isSelected = state.selected ? isInSelection(col, row, state.selected) : false;
+        const dirty = new Set<number>();
 
-            if (cellStyle && 'bg' in cellStyle) {
-                ctx.fillStyle = cellStyle.bg ?? inputBg;
-                ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
+        // Text or cell-style changes.
+        for (let r = 0; r < state.rows; r++) {
+            const curRow = state.displayChars[r];
+            const prevRow = prevChars[r];
+            const curStyles = state.displayCellStyles[r];
+            const prevStyleRow = prevStyles[r];
+
+            if (!curRow || !prevRow) {
+                dirty.add(r);
+                continue;
             }
 
-            if (isSelected) {
-                ctx.fillStyle = foreground;
-                ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
+            let rowDirty = false;
+
+            for (let c = 0; c < state.cols; c++) {
+                if (curRow[c] !== prevRow[c]) {
+                    rowDirty = true;
+                    break;
+                }
+
+                const cs = curStyles?.[c];
+                const ps = prevStyleRow?.[c];
+
+                if (cs !== ps) {
+                    // Shallow compare the style fields that affect rendering.
+                    if (!cs || !ps || cs.bg !== ps.bg || cs.placeholder !== ps.placeholder) {
+                        rowDirty = true;
+                        break;
+                    }
+                }
             }
 
-            if (isCursor) {
-                ctx.fillStyle = foreground;
-                ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
-            }
-
-            // TODO: Be able to toggle on/off
-            ctx.strokeStyle = gridLine;
-            ctx.lineWidth = 0.5;
-            ctx.strokeRect(x, y, state.cellWidth, state.cellHeight);
-
-            if (char) {
-                ctx.fillStyle = isCursor || isSelected ? background : foreground;
-                ctx.fillText(char, x, y + state.cellHeight);
-            } else if (cellStyle?.placeholder && !isCursor) {
-                ctx.fillStyle = placeholderColor;
-                ctx.fillText(cellStyle.placeholder, x, y + state.cellHeight);
-            }
+            if (rowDirty) dirty.add(r);
         }
+
+        // Selection changes — mark all previously and currently selected rows.
+        if (state.selected !== prevSelected) {
+            const markSelection = (sel: Selected | null) => {
+                if (!sel) return;
+
+                for (let r = sel.start.y; r <= sel.end.y; r++) dirty.add(r);
+            };
+
+            markSelection(state.selected);
+            markSelection(prevSelected);
+        }
+
+        return dirty;
     }
 
+    function snapshotState(state: EditorState): void {
+        prevChars = state.displayChars.map((row) => row.slice());
+        prevStyles = state.displayCellStyles.map((row) =>
+            row.map((s) => (s ? { bg: s.bg, placeholder: s.placeholder } : null)),
+        );
+        prevSelected = state.selected;
+        allDirty = false;
+    }
+
+    // Force the next render() call to repaint every row — call after resize.
+    function invalidateAll(): void {
+        allDirty = true;
+    }
+
+    // Renders the canvas. The cursor is NOT drawn here — it lives on a separate overlay
+    // so it can blink via CSS animation without triggering a main-canvas repaint.
+    function render(ctx: CanvasRenderingContext2D, state: EditorState, theme: Theme): void {
+        const { background, foreground, inputBg, placeholderColor, gridLine } = theme;
+
+        const dirty = computeDirtyRows(state);
+
+        if (dirty === null) {
+            // Full repaint — clear once and redraw everything.
+            ctx.clearRect(0, 0, state.cols * state.cellWidth, state.rows * state.cellHeight);
+        }
+
+        for (let row = 0; row < state.rows; row++) {
+            if (dirty !== null && !dirty.has(row)) continue;
+
+            const y = row * state.cellHeight;
+
+            // Clear only this row when doing a partial repaint.
+            if (dirty !== null) {
+                ctx.clearRect(0, y, state.cols * state.cellWidth, state.cellHeight);
+            }
+
+            for (let col = 0; col < state.cols; col++) {
+                const x = col * state.cellWidth;
+                const char = state.displayChars[row]?.[col] || '';
+                const cellStyle = state.displayCellStyles?.[row]?.[col];
+                const isSelected = state.selected ? isInSelection(col, row, state.selected) : false;
+
+                if (cellStyle && 'bg' in cellStyle) {
+                    ctx.fillStyle = cellStyle.bg ?? inputBg;
+                    ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
+                }
+
+                if (isSelected) {
+                    ctx.fillStyle = foreground;
+                    ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
+                }
+
+                // TODO: Be able to toggle on/off
+                ctx.strokeStyle = gridLine;
+                ctx.lineWidth = 0.5;
+                ctx.strokeRect(x, y, state.cellWidth, state.cellHeight);
+
+                if (char) {
+                    ctx.fillStyle = isSelected ? background : foreground;
+                    ctx.fillText(char, x, y + state.cellHeight);
+                } else if (cellStyle?.placeholder) {
+                    ctx.fillStyle = placeholderColor;
+                    ctx.fillText(cellStyle.placeholder, x, y + state.cellHeight);
+                }
+            }
+        }
+
+        snapshotState(state);
+    }
+
+    return { render, invalidateAll };
 }
