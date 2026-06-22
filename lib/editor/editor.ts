@@ -24,6 +24,7 @@ export type Selected = {
     start: CellPos;
     end: CellPos;
     rect?: boolean;
+    bounds?: { x: number; width: number };
 };
 
 export type Snapshot = {
@@ -629,6 +630,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
             extendMouseSelection: selection.extendMouseSelection,
             endMouseSelection: selection.endMouseSelection,
             focusAtCell,
+            endOfContent: () => (state.activeRegion ? endOfContent(state.activeRegion) : { x: 0, y: 0 }),
             dismissFloatIfOutside(cell: CellPos): boolean {
                 if (currentFloat && floatRect && !inRect(cell.y, cell.x, floatRect)) {
                     clearFloat();
