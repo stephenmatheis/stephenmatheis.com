@@ -9,7 +9,7 @@ function normalizeSelection(selection: Selected): Selected {
 }
 
 export function isInSelection(col: number, row: number, selection: Selected): boolean {
-    const { start, end, rect } = normalizeSelection(selection);
+    const { start, end, rect, bounds } = normalizeSelection(selection);
 
     if (row < start.y || row > end.y) return false;
 
@@ -18,18 +18,25 @@ export function isInSelection(col: number, row: number, selection: Selected): bo
     }
 
     if (row === start.y && col < start.x) return false;
+    if (row === start.y && bounds && col > bounds.x + bounds.width - 1) return false;
     if (row === end.y && col > end.x) return false;
+    if (row === end.y && bounds && col < bounds.x) return false;
+
+    if (row > start.y && row < end.y && bounds) {
+        return col >= bounds.x && col <= bounds.x + bounds.width - 1;
+    }
 
     return true;
 }
 
 export function getSelectedText(chars: string[][], selection: Selected): string {
-    const { start, end, rect } = normalizeSelection(selection);
+    const { start, end, rect, bounds } = normalizeSelection(selection);
     const lines: string[] = [];
 
     for (let row = start.y; row <= end.y; row++) {
-        const startCol = rect || row === start.y ? start.x : 0;
-        const endCol = rect || row === end.y ? end.x : (chars[row]?.length ?? 1) - 1;
+        const startCol = rect || row === start.y ? start.x : (bounds?.x ?? 0);
+        const endCol =
+            rect || row === end.y ? end.x : bounds ? bounds.x + bounds.width - 1 : (chars[row]?.length ?? 1) - 1;
 
         lines.push(
             (chars[row] || [])
@@ -43,11 +50,11 @@ export function getSelectedText(chars: string[][], selection: Selected): string 
 }
 
 export function clearSelected(chars: string[][], selection: Selected): CellPos {
-    const { start, end, rect } = normalizeSelection(selection);
+    const { start, end, rect, bounds } = normalizeSelection(selection);
 
     for (let row = start.y; row <= end.y; row++) {
-        const startCol = rect || row === start.y ? start.x : 0;
-        const endCol = rect || row === end.y ? end.x : chars[row].length - 1;
+        const startCol = rect || row === start.y ? start.x : (bounds?.x ?? 0);
+        const endCol = rect || row === end.y ? end.x : bounds ? bounds.x + bounds.width - 1 : chars[row].length - 1;
 
         for (let col = startCol; col <= endCol; col++) {
             chars[row][col] = '';
@@ -73,6 +80,7 @@ export function Selection(state: EditorState) {
         } else {
             state.keyboardAnchor = null;
             state.selected = null;
+
             moveFn();
         }
     }
@@ -86,7 +94,13 @@ export function Selection(state: EditorState) {
     function extendMouseSelection(cell: CellPos) {
         if (!state.selectionAnchor) return;
 
-        state.selected = { start: state.selectionAnchor, end: cell };
+        const r = state.activeRegion;
+
+        state.selected = {
+            start: state.selectionAnchor,
+            end: cell,
+            bounds: r ? { x: r.x, width: r.width } : undefined,
+        };
     }
 
     function endMouseSelection() {

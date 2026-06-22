@@ -11,6 +11,7 @@ type MouseHandlersProps = {
         extendMouseSelection(cell: CellPos): void;
         endMouseSelection(): void;
         focusAtCell(x: number, y: number): boolean;
+        endOfContent(): CellPos;
         dismissFloatIfOutside?(cell: CellPos): boolean;
     };
 };
@@ -48,19 +49,30 @@ export function MouseHandlers({ canvas, textarea, state, actions }: MouseHandler
     function handleMouseMove(event: MouseEvent) {
         if (!state.isDragging || !state.selectionAnchor) return;
 
-        const cell = pixelToCell(event.clientX, event.clientY, canvas, state);
+        const raw = pixelToCell(event.clientX, event.clientY, canvas, state);
+        const r = state.activeRegion;
+        const cell = r
+            ? {
+                  x: Math.max(r.x, Math.min(raw.x, r.x + r.width - 1)),
+                  y: Math.max(r.y, Math.min(raw.y, r.y + r.height - 1)),
+              }
+            : raw;
+        const eoc = actions.endOfContent();
+        const isAfterContent = cell.y > eoc.y || (cell.y === eoc.y && cell.x > eoc.x);
+        const endpoint = isAfterContent ? eoc : cell;
         const anchor = state.selectionAnchor;
 
-        if (cell.x !== anchor.x || cell.y !== anchor.y) {
-            state.cursor = cell;
-            actions.extendMouseSelection(cell);
+        if (endpoint.x !== anchor.x || endpoint.y !== anchor.y) {
+            state.cursor = endpoint;
 
+            actions.extendMouseSelection(endpoint);
             actions.draw();
         }
     }
 
     function handleMouseUp() {
         state.isDragging = false;
+
         actions.endMouseSelection();
     }
 
