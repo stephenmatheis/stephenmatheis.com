@@ -4,14 +4,13 @@ import type { EditorState } from './types';
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;
 
-function getEmSquare(element: HTMLElement) {
-    const style = getComputedStyle(element);
+function getEmSquare(fontStr: string) {
     const scratch = document.createElement('canvas');
     const ctx = scratch.getContext('2d');
 
     if (!ctx) return { width: 0, height: 0 };
 
-    ctx.font = `${parseFloat(style.fontSize)}px ${style.fontFamily}`;
+    ctx.font = fontStr;
 
     const metrics = ctx.measureText('M');
 
@@ -33,19 +32,21 @@ type CanvasProps = {
 };
 
 export function Canvas({ canvas, ctx, state, actions, layout }: CanvasProps) {
-    const rootStyles = window.getComputedStyle(document.documentElement);
-    const fontSize = rootStyles.getPropertyValue('--canvas-font-size').trim();
-    const fontFamily = rootStyles.getPropertyValue('--canvas-font-family').trim();
-    const emSquare = getEmSquare(document.body);
-
-    state.fontStr = `${fontSize} ${fontFamily}`;
-    state.cellWidth = emSquare.width;
-    state.cellHeight = emSquare.height;
-
     log('createSetup() > setSize()');
     setSize();
 
     function setupCanvas() {
+        // Re-read CSS vars on every call so font/size changes via setProperty() take effect.
+        const rootStyles = window.getComputedStyle(document.documentElement);
+        const fontSize = rootStyles.getPropertyValue('--canvas-font-size').trim();
+        const fontFamily = rootStyles.getPropertyValue('--canvas-font-family').trim();
+        const fontStr = `${fontSize} ${fontFamily}`;
+        const emSquare = getEmSquare(fontStr);
+
+        state.fontStr = fontStr;
+        state.cellWidth = emSquare.width;
+        state.cellHeight = emSquare.height;
+
         const { innerWidth, innerHeight } = window;
         const dpr = window.devicePixelRatio || 1;
 

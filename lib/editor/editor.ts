@@ -10,12 +10,15 @@ import { Canvas } from './setup';
 import { Focus } from './focus';
 import { Layers } from './layers';
 import { composeStatusBar } from './statusbar';
+import { saveSnapshot, loadSnapshot, listSnapshots } from './db';
+import type { SnapshotMeta } from './db';
 import { log } from '@/lib/utils';
 import { compose, disposeInput } from '@/lib/editor/tui';
 import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
 import type { EditorState, StatusBar, FloatAnchor } from './types';
 
 export type { CellPos, CellStyle, Selected, Snapshot, EditorState, StatusBar, FloatAnchor } from './types';
+export type { SnapshotMeta } from './db';
 
 type Editor = {
     canvas: HTMLCanvasElement;
@@ -62,6 +65,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         keyboardAnchor: null,
         undoStack: [],
         redoStack: [],
+        showGrid: true,
     };
 
     const inputMap = new Map<Region, InputNode>();
@@ -183,9 +187,9 @@ export function Editor({ canvas, textarea, container }: Editor) {
         }
 
         log('draw() > render()');
-        
+
         renderer.render(ctx, state, theme);
-        
+
         renderCursor();
     }
 
@@ -323,6 +327,57 @@ export function Editor({ canvas, textarea, container }: Editor) {
             log('editor.statusBar() > draw()');
             scheduleDraw();
         },
+        theme(name: 'light' | 'dark') {
+            document.documentElement.dataset.theme = name;
+
+            theme = readTheme();
+
+            renderer.invalidateAll();
+
+            scheduleDraw();
+        },
+        toggleGrid() {
+            state.showGrid = !state.showGrid;
+
+            renderer.invalidateAll();
+
+            scheduleDraw();
+        },
+        setFont(family: string) {
+            document.documentElement.style.setProperty('--canvas-font-family', family);
+
+            setSize();
+        },
+        setFontSize(px: number) {
+            document.documentElement.style.setProperty('--canvas-font-size', `${px}px`);
+
+            setSize();
+        },
+        async save(name?: string): Promise<string> {
+            const id = typeof crypto.randomUUID === 'function'
+                ? crypto.randomUUID()
+                : `snap-${Date.now()}`;
+            const label = name ?? new Date().toLocaleString();
+
+            await saveSnapshot(id, label, state.cols, state.rows, state.displayChars, state.displayCellStyles);
+
+            return id;
+        },
+        async load(id: string): Promise<boolean> {
+            const snap = await loadSnapshot(id);
+
+            if (!snap) return false;
+
+            state.displayChars = snap.chars;
+            state.displayCellStyles = snap.cellStyles;
+            renderer.invalidateAll();
+            scheduleDraw();
+
+            return true;
+        },
+        listSaves(): Promise<SnapshotMeta[]> {
+            return listSnapshots();
+        },
         destroy() {
             container.removeEventListener('mousedown', handleMouseDown);
             container.removeEventListener('mousemove', handleMouseMove);
@@ -330,7 +385,9 @@ export function Editor({ canvas, textarea, container }: Editor) {
             textarea.removeEventListener('keydown', handleKeyDown);
             window.removeEventListener('resize', setSize);
 
-            if (rafId !== null) cancelAnimationFrame(rafId);
+            if (rafId !== null) {
+                cancelAnimationFrame(rafId);
+            }
 
             cursorCanvas.remove();
 
