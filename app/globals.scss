@@ -1,12 +1,22 @@
 :root {
     --background: #fdfcfc;
     --foreground: #201d1d;
-    // --canvas-font-size: 13.75px;
     // --canvas-font-size: 12.375px;
     --canvas-font-size: 22px;
     --canvas-font-family: var(--font-departure-mono);
     --input-background: #e5e5e8;
     --placeholder-color: #606070;
+    --grid-line: #00000015;
+    --active-region-color: #2266cc;
+}
+
+:root[data-theme="dark"] {
+    --background: #151212;
+    --foreground: #f2eeee;
+    --input-background: #2a2525;
+    --placeholder-color: #7a7080;
+    --grid-line: #ffffff18;
+    --active-region-color: #5599ff;
 }
 
 body {

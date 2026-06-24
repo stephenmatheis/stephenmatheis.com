@@ -86,5 +86,9 @@ export type HistoryState = {
     redoStack: Snapshot[];
 };
 
+export type DisplayState = {
+    showGrid: boolean;
+};
+
 // Full editor state — the intersection of all owned slices.
-export type EditorState = GeometryState & ContentState & CursorState & SelectionState & RegionState & HistoryState;
+export type EditorState = GeometryState & ContentState & CursorState & SelectionState & RegionState & HistoryState & DisplayState;

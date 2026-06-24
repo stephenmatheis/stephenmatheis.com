@@ -1,5 +1,6 @@
 import { isInSelection } from './selection';
 import type { Selected, EditorState } from './types';
+import type { Region } from '@/lib/editor/tui';
 
 export type Theme = {
     background: string;
@@ -7,6 +8,7 @@ export type Theme = {
     inputBg: string;
     placeholderColor: string;
     gridLine: string;
+    activeRegionBorderColor: string;
 };
 
 export function readTheme(): Theme {
@@ -18,7 +20,16 @@ export function readTheme(): Theme {
         inputBg: styles.getPropertyValue('--input-background').trim() || 'rgba(128,128,128,0.15)',
         placeholderColor: styles.getPropertyValue('--placeholder-color').trim() || 'rgba(128,128,128,0.5)',
         gridLine: styles.getPropertyValue('--grid-line').trim() || '#00000015',
+        activeRegionBorderColor: styles.getPropertyValue('--active-region-color').trim() || '#2266cc',
     };
+}
+
+// Value-equal comparison so reference changes from recompose don't spuriously dirty rows.
+function regionsEqual(a: Region | null, b: Region | null): boolean {
+    if (a === b) return true;
+    if (!a || !b) return false;
+
+    return a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height;
 }
 
 // Per-instance renderer — holds the previous-frame snapshots used for dirty-row diffing.
@@ -27,6 +38,7 @@ export function createRenderer() {
     let prevChars: string[][] = [];
     let prevStyles: Array<Array<{ bg?: string | null; placeholder?: string } | null>> = [];
     let prevSelected: Selected | null = null;
+    let prevActiveRegion: Region | null = null;
     let allDirty = true;
 
     // Compute which rows need repainting by diffing current display state against the last frame.
@@ -87,6 +99,26 @@ export function createRenderer() {
             markSelection(prevSelected);
         }
 
+        // Active region change — mark all rows touched by the border characters of the old
+        // and new active region so colors update immediately on focus change.
+        // Border chars sit 1 cell outside the region (r.y-1, r.y+r.height, and the
+        // left/right cols span rows r.y..r.y+r.height-1), so mark r.y-1 through r.y+r.height.
+        if (!regionsEqual(state.activeRegion, prevActiveRegion)) {
+            const markRegion = (r: Region | null) => {
+                if (!r) return;
+
+                const top = Math.max(0, r.y - 1);
+                const bottom = Math.min(state.rows - 1, r.y + r.height);
+
+                for (let row = top; row <= bottom; row++) {
+                    dirty.add(row);
+                }
+            };
+
+            markRegion(state.activeRegion);
+            markRegion(prevActiveRegion);
+        }
+
         return dirty;
     }
 
@@ -96,6 +128,7 @@ export function createRenderer() {
             row.map((s) => (s ? { bg: s.bg, placeholder: s.placeholder } : null)),
         );
         prevSelected = state.selected;
+        prevActiveRegion = state.activeRegion;
         allDirty = false;
     }
 
@@ -107,7 +140,7 @@ export function createRenderer() {
     // Renders the canvas. The cursor is NOT drawn here — it lives on a separate overlay
     // so it can blink via CSS animation without triggering a main-canvas repaint.
     function render(ctx: CanvasRenderingContext2D, state: EditorState, theme: Theme): void {
-        const { background, foreground, inputBg, placeholderColor, gridLine } = theme;
+        const { background, foreground, inputBg, placeholderColor, gridLine, activeRegionBorderColor } = theme;
 
         const dirty = computeDirtyRows(state);
 
@@ -133,32 +166,39 @@ export function createRenderer() {
 
                 if (cellStyle && 'bg' in cellStyle) {
                     ctx.fillStyle = cellStyle.bg ?? inputBg;
-                    
                     ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
                 }
 
                 if (isSelected) {
                     ctx.fillStyle = foreground;
-                    
                     ctx.fillRect(x, y, state.cellWidth, state.cellHeight);
                 }
 
-                // TODO: Be able to toggle on/off
-                // Inset by lineWidth/2 so the stroke stays within [x,x+w)×[y,y+h).
-                // strokeRect centered on the rect edge bleeds outside and accumulates
-                // on partial repaints — inset keeps all pixels inside the clearRect zone.
-                ctx.strokeStyle = gridLine;
-                ctx.lineWidth = 0.5;
-                
-                ctx.strokeRect(x + 0.25, y + 0.25, state.cellWidth - 0.5, state.cellHeight - 0.5);
+                if (state.showGrid) {
+                    ctx.strokeStyle = gridLine;
+                    ctx.lineWidth = 0.5;
+                    ctx.strokeRect(x + 0.25, y + 0.25, state.cellWidth - 0.5, state.cellHeight - 0.5);
+                }
 
                 if (char) {
-                    ctx.fillStyle = isSelected ? background : foreground;
-                
+                    // The active region's border characters sit 1 cell outside the region rect.
+                    // Top/bottom rows: row === ar.y - 1 or ar.y + ar.height.
+                    // Left/right cols: col === ar.x - 1 or ar.x + ar.width, on rows ar.y..ar.y+ar.height-1.
+                    const ar = state.activeRegion;
+                    const isRegionBorder = ar !== null && (
+                        ((row === ar.y - 1 || row === ar.y + ar.height) && col >= ar.x - 1 && col <= ar.x + ar.width) ||
+                        ((col === ar.x - 1 || col === ar.x + ar.width) && row >= ar.y && row < ar.y + ar.height)
+                    );
+
+                    ctx.fillStyle = isSelected
+                        ? background
+                        : isRegionBorder
+                          ? activeRegionBorderColor
+                          : foreground;
+
                     ctx.fillText(char, x, y + state.cellHeight);
                 } else if (cellStyle?.placeholder) {
                     ctx.fillStyle = placeholderColor;
-                
                     ctx.fillText(cellStyle.placeholder, x, y + state.cellHeight);
                 }
             }
