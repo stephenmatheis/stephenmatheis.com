@@ -90,5 +90,21 @@ export type DisplayState = {
     showGrid: boolean;
 };
 
+// Theme
+export type Theme = {
+    background: string;
+    foreground: string;
+    inputBg: string;
+    placeholderColor: string;
+    gridLine: string;
+    activeRegionBorderColor: string;
+};
+
 // Full editor state — the intersection of all owned slices.
-export type EditorState = GeometryState & ContentState & CursorState & SelectionState & RegionState & HistoryState & DisplayState;
+export type EditorState = GeometryState &
+    ContentState &
+    CursorState &
+    SelectionState &
+    RegionState &
+    HistoryState &
+    DisplayState;
