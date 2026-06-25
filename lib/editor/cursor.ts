@@ -1,9 +1,9 @@
-import type { EditorState, ContentState, Theme } from './types';
+import type { EditorState, ContentState, ThemeColors } from './types';
 
 type CursorProps = {
     container: HTMLElement;
     state: EditorState & Pick<ContentState, 'chars'>;
-    theme: Theme;
+    getTheme: () => ThemeColors;
 };
 
 function isWordChar(char: string): boolean {
@@ -15,7 +15,7 @@ function isWordChar(char: string): boolean {
     return !(code >= 0x2500 && code <= 0x257f);
 }
 
-export function Cursor({ container, state, theme }: CursorProps) {
+export function Cursor({ container, state, getTheme }: CursorProps) {
     function moveCursor(dx: number, dy: number) {
         const r = state.activeRegion;
         const minX = r ? r.x : 0;
@@ -145,19 +145,21 @@ export function Cursor({ container, state, theme }: CursorProps) {
         cursorCanvas.width = Math.round(cw * dpr);
         cursorCanvas.height = Math.round(ch * dpr);
 
+        const { foreground, background } = getTheme();
+
         cursorCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
         cursorCtx.font = state.fontStr;
         cursorCtx.textBaseline = 'ideographic';
 
         // Cursor block.
-        cursorCtx.fillStyle = theme.foreground;
+        cursorCtx.fillStyle = foreground;
         cursorCtx.fillRect(0, 0, cw, ch);
 
         // Character in background color so it remains readable through the cursor.
         const char = state.displayChars[state.cursor.y]?.[state.cursor.x] || '';
 
         if (char) {
-            cursorCtx.fillStyle = theme.background;
+            cursorCtx.fillStyle = background;
             cursorCtx.fillText(char, 0, ch);
         }
 

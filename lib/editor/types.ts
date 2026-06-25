@@ -91,7 +91,7 @@ export type DisplayState = {
 };
 
 // Theme
-export type Theme = {
+export type ThemeColors = {
     background: string;
     foreground: string;
     inputBg: string;

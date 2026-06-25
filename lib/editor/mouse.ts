@@ -95,9 +95,9 @@ export function Mouse({
             container.addEventListener('mouseup', handleMouseUp);
         },
         remove() {
-            container.addEventListener('mousedown', handleMouseDown);
-            container.addEventListener('mousemove', handleMouseMove);
-            container.addEventListener('mouseup', handleMouseUp);
+            container.removeEventListener('mousedown', handleMouseDown);
+            container.removeEventListener('mousemove', handleMouseMove);
+            container.removeEventListener('mouseup', handleMouseUp);
         },
     };
 }
