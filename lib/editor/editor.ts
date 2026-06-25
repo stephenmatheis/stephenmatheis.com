@@ -9,7 +9,6 @@ import { ResponsiveCanvas } from './canvas';
 import { Focus } from './focus';
 import { Layers } from './layers';
 import { composeStatusBar } from './statusbar';
-import { log } from '@/lib/utils';
 import { compose, disposeInput } from '@/lib/editor/tui';
 import { saveSnapshot, loadSnapshot, listSnapshots } from './db';
 import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
@@ -19,17 +18,14 @@ import type { EditorState, StatusBar, FloatAnchor, Theme } from './types';
 export type { CellPos, CellStyle, Selected, Snapshot, EditorState, StatusBar, FloatAnchor } from './types';
 export type { SnapshotMeta } from './db';
 
-type Editor = {
+type EditorProps = {
     canvas: HTMLCanvasElement;
     textarea: HTMLTextAreaElement;
     container: HTMLElement;
 };
 
-export function Editor({ canvas, textarea, container }: Editor) {
+export function Editor({ canvas, textarea, container }: EditorProps) {
     const ctx = canvas.getContext('2d')!;
-
-    log('EditorState created.');
-
     const state: EditorState = {
         cellWidth: 0,
         cellHeight: 0,
@@ -57,10 +53,6 @@ export function Editor({ canvas, textarea, container }: Editor) {
     let theme: Theme = readTheme();
     let currentNode: LayoutNode | null = null;
     let statusBarConfig: StatusBar | null = null;
-
-    // ===== G2: RAF-batched draw scheduler =====
-
-    // scheduleDraw() coalesces multiple draw requests in a single tick into one RAF frame.
     let rafId: number | null = null;
 
     function draw(): void {
@@ -74,7 +66,6 @@ export function Editor({ canvas, textarea, container }: Editor) {
             layers.applyInputOverlays();
 
             if (statusBarConfig) {
-                log('draw() > writeStatusBar()');
                 composeStatusBar(statusBarConfig, state, layers.mainChars);
             }
 
@@ -82,8 +73,6 @@ export function Editor({ canvas, textarea, container }: Editor) {
                 layers.compositeChars();
                 layers.compositeStyles();
             }
-
-            log('draw() > render()');
 
             renderer.render(ctx, state, theme);
 
@@ -110,34 +99,28 @@ export function Editor({ canvas, textarea, container }: Editor) {
         return statusBarConfig ? layers.mainChars.slice(0, -1) : layers.mainChars;
     }
 
-    // ===== Module construction =====
-
-    // focus is created first because it needs draw (scheduleDraw) for InputRef.draw.
+    // Modules
     const focus = Focus({
         state,
         inputMap,
         draw,
     });
-
-    // layers is created after focus so applyLayout (which uses focus) is defined first.
     const layers = Layers({ state, inputMap, focus, applyLayout });
-
-    // renderer is stateful — tracks previous-frame snapshots for dirty-row diffing (G1).
     const renderer = Renderer();
-
-    // ===== G3: Cursor canvas overlay =====
-
     const cursor = Cursor({
         container,
         state,
         theme,
     });
-
-    // ===== Remaining modules =====
-
-    const buffer = Buffer({ state, cursor });
-    const selection = Selection(state);
-    const history = History({ state, selection });
+    const buffer = Buffer({
+        state,
+        cursor,
+    });
+    const selection = Selection({ state });
+    const history = History({
+        state,
+        selection,
+    });
     const keyboard = Keyboard({
         textarea,
         state,
@@ -182,7 +165,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
         extendMouseSelection: selection.extendMouseSelection,
         endMouseSelection: selection.endMouseSelection,
         focusAtCell: focus.focusAtCell,
-        endOfContent: () => (state.activeRegion ? focus.endOfContent(state.activeRegion) : { x: 0, y: 0 }),
+        endOfContent: focus.endOfContent,
         setCursor: cursor.jumpTo,
         dismissFloatIfOutside: layers.dismissFloatIfOutside,
     });
@@ -196,15 +179,14 @@ export function Editor({ canvas, textarea, container }: Editor) {
             renderer.invalidateAll();
         },
         layout(chars) {
-            log('? createSetup() > layout()');
             layers.handleLayout(chars, currentNode, statusBarConfig !== null);
         },
     });
 
-    cursor.render();
     mouse.add();
     keyboard.add();
     responsiveCanvas.add();
+    cursor.render();
 
     textarea.focus();
 
@@ -225,10 +207,7 @@ export function Editor({ canvas, textarea, container }: Editor) {
             add(node: LayoutNode) {
                 currentNode = node;
 
-                log('editor.root.add() > compose()');
                 applyLayout(node, getComposeChars());
-
-                log('editor.root.add() > draw()');
                 draw();
             },
         },
@@ -256,11 +235,9 @@ export function Editor({ canvas, textarea, container }: Editor) {
             statusBarConfig = config;
 
             if (currentNode) {
-                log('editor.statusBar() > compose()');
                 applyLayout(currentNode, getComposeChars());
             }
 
-            log('editor.statusBar() > draw()');
             draw();
         },
         theme(name: 'light' | 'dark') {
