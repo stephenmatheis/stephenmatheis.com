@@ -23,6 +23,7 @@ type FloatActions = {
 };
 
 type KeyboardProps = {
+    textarea: HTMLTextAreaElement;
     state: Pick<SelectionState, 'selected'> & Pick<ContentState, 'chars'>;
     cursor: ReturnType<typeof Cursor>;
     buffer: ReturnType<typeof Buffer>;
@@ -36,6 +37,7 @@ type KeyboardProps = {
 };
 
 export function Keyboard({
+    textarea,
     state,
     cursor,
     buffer,
@@ -218,5 +220,12 @@ export function Keyboard({
         draw();
     }
 
-    return { handleKeyDown };
+    return {
+        add() {
+            textarea.addEventListener('keydown', handleKeyDown);
+        },
+        remove() {
+            textarea.removeEventListener('keydown', handleKeyDown);
+        },
+    };
 }

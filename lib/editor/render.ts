@@ -1,15 +1,6 @@
 import { isInSelection } from './selection';
-import type { Selected, EditorState } from './types';
 import type { Region } from '@/lib/editor/tui';
-
-export type Theme = {
-    background: string;
-    foreground: string;
-    inputBg: string;
-    placeholderColor: string;
-    gridLine: string;
-    activeRegionBorderColor: string;
-};
+import type { Selected, EditorState, Theme } from './types';
 
 export function readTheme(): Theme {
     const styles = window.getComputedStyle(document.documentElement);
@@ -32,9 +23,9 @@ function regionsEqual(a: Region | null, b: Region | null): boolean {
     return a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height;
 }
 
-// Per-instance renderer — holds the previous-frame snapshots used for dirty-row diffing.
+// Per-instance Renderer — holds the previous-frame snapshots used for dirty-row diffing.
 // Returns render() (draws only dirty rows) and invalidateAll() (forces full redraw next call).
-export function createRenderer() {
+export function Renderer() {
     let prevChars: string[][] = [];
     let prevStyles: Array<Array<{ bg?: string | null; placeholder?: string } | null>> = [];
     let prevSelected: Selected | null = null;
@@ -185,16 +176,14 @@ export function createRenderer() {
                     // Top/bottom rows: row === ar.y - 1 or ar.y + ar.height.
                     // Left/right cols: col === ar.x - 1 or ar.x + ar.width, on rows ar.y..ar.y+ar.height-1.
                     const ar = state.activeRegion;
-                    const isRegionBorder = ar !== null && (
-                        ((row === ar.y - 1 || row === ar.y + ar.height) && col >= ar.x - 1 && col <= ar.x + ar.width) ||
-                        ((col === ar.x - 1 || col === ar.x + ar.width) && row >= ar.y && row < ar.y + ar.height)
-                    );
+                    const isRegionBorder =
+                        ar !== null &&
+                        (((row === ar.y - 1 || row === ar.y + ar.height) &&
+                            col >= ar.x - 1 &&
+                            col <= ar.x + ar.width) ||
+                            ((col === ar.x - 1 || col === ar.x + ar.width) && row >= ar.y && row < ar.y + ar.height));
 
-                    ctx.fillStyle = isSelected
-                        ? background
-                        : isRegionBorder
-                          ? activeRegionBorderColor
-                          : foreground;
+                    ctx.fillStyle = isSelected ? background : isRegionBorder ? activeRegionBorderColor : foreground;
 
                     ctx.fillText(char, x, y + state.cellHeight);
                 } else if (cellStyle?.placeholder) {

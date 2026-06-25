@@ -1,16 +1,18 @@
 :root {
     --background: #fdfcfc;
     --foreground: #201d1d;
-    // --canvas-font-size: 12.375px;
-    --canvas-font-size: 22px;
-    --canvas-font-family: var(--font-departure-mono);
+
     --input-background: #e5e5e8;
     --placeholder-color: #606070;
     --grid-line: #00000015;
     --active-region-color: #2266cc;
+
+    // --canvas-font-size: 12.375px; // 11 * 1.125 = 12.375
+    --canvas-font-size: 22px;
+    --canvas-font-family: var(--font-departure-mono);
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
     --background: #151212;
     --foreground: #f2eeee;
     --input-background: #2a2525;
@@ -21,7 +23,7 @@
 
 body {
     font-size: var(--canvas-font-size);
-    font-family: var(--font-departure-mono);
+    font-family: var(--canvas-font-family);
     background-color: var(--background);
     color: var(--foreground);
     font-synthesis: none;

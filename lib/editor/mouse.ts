@@ -1,19 +1,18 @@
 import type { CellPos, SelectionState, RegionState, CursorState, GeometryState } from './types';
 
 type MouseHandlersProps = {
+    container: HTMLElement;
     canvas: HTMLCanvasElement;
     textarea: HTMLTextAreaElement;
     state: SelectionState & RegionState & CursorState & GeometryState;
-    actions: {
-        draw(): void;
-        startMouseSelection(cell: CellPos): void;
-        extendMouseSelection(cell: CellPos): void;
-        endMouseSelection(): void;
-        focusAtCell(x: number, y: number): boolean;
-        endOfContent(): CellPos;
-        setCursor(pos: CellPos): void;
-        dismissFloatIfOutside?(cell: CellPos): boolean;
-    };
+    draw(): void;
+    startMouseSelection(cell: CellPos): void;
+    extendMouseSelection(cell: CellPos): void;
+    endMouseSelection(): void;
+    focusAtCell(x: number, y: number): boolean;
+    endOfContent(): CellPos;
+    setCursor(pos: CellPos): void;
+    dismissFloatIfOutside?(cell: CellPos): boolean;
 };
 
 function pixelToCell(clientX: number, clientY: number, canvas: HTMLCanvasElement, state: GeometryState): CellPos {
@@ -25,15 +24,28 @@ function pixelToCell(clientX: number, clientY: number, canvas: HTMLCanvasElement
     };
 }
 
-export function MouseHandlers({ canvas, textarea, state, actions }: MouseHandlersProps) {
+export function Mouse({
+    container,
+    canvas,
+    textarea,
+    state,
+    draw,
+    startMouseSelection,
+    extendMouseSelection,
+    endMouseSelection,
+    focusAtCell,
+    endOfContent,
+    setCursor,
+    dismissFloatIfOutside,
+}: MouseHandlersProps) {
+    // FIXME: Border click should set region to active
     function handleMouseDown(event: MouseEvent) {
         const cell = pixelToCell(event.clientX, event.clientY, canvas, state);
+        const floatDismissed = dismissFloatIfOutside?.(cell) ?? false;
 
-        const floatDismissed = actions.dismissFloatIfOutside?.(cell) ?? false;
-
-        if (!actions.focusAtCell(cell.x, cell.y)) {
+        if (!focusAtCell(cell.x, cell.y)) {
             if (floatDismissed) {
-                actions.draw();
+                draw();
             }
 
             return;
@@ -41,9 +53,9 @@ export function MouseHandlers({ canvas, textarea, state, actions }: MouseHandler
 
         state.isDragging = true;
         state.cursorVisible = true;
-        actions.startMouseSelection(state.cursor);
+        startMouseSelection(state.cursor);
         textarea.focus();
-        actions.draw();
+        draw();
     }
 
     function handleMouseMove(event: MouseEvent) {
@@ -57,24 +69,35 @@ export function MouseHandlers({ canvas, textarea, state, actions }: MouseHandler
                   y: Math.max(r.y, Math.min(raw.y, r.y + r.height - 1)),
               }
             : raw;
-        const eoc = actions.endOfContent();
+        const eoc = endOfContent();
         const isAfterContent = cell.y > eoc.y || (cell.y === eoc.y && cell.x > eoc.x);
         const endpoint = isAfterContent ? eoc : cell;
         const anchor = state.selectionAnchor;
 
         if (endpoint.x !== anchor.x || endpoint.y !== anchor.y) {
-            actions.setCursor(endpoint);
+            setCursor(endpoint);
 
-            actions.extendMouseSelection(endpoint);
-            actions.draw();
+            extendMouseSelection(endpoint);
+            draw();
         }
     }
 
     function handleMouseUp() {
         state.isDragging = false;
 
-        actions.endMouseSelection();
+        endMouseSelection();
     }
 
-    return { handleMouseDown, handleMouseMove, handleMouseUp };
+    return {
+        add() {
+            container.addEventListener('mousedown', handleMouseDown);
+            container.addEventListener('mousemove', handleMouseMove);
+            container.addEventListener('mouseup', handleMouseUp);
+        },
+        remove() {
+            container.addEventListener('mousedown', handleMouseDown);
+            container.addEventListener('mousemove', handleMouseMove);
+            container.addEventListener('mouseup', handleMouseUp);
+        },
+    };
 }

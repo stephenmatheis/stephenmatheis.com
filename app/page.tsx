@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { Editor, Box } from '@/lib/editor';
+import { Editor, Box, Textarea } from '@/lib/editor';
 import { log, loggingOff } from '@/lib/utils';
 import styles from './page.module.scss';
 
@@ -20,7 +20,16 @@ export default function Home() {
             container: containerRef.current!,
         });
 
-        editor.root.add(Box({ flexDirection: 'column', paddingX: 2, paddingY: 1 }));
+        editor.root.add(
+            Box(
+                {
+                    flexDirection: 'column',
+                    paddingX: 2,
+                    paddingY: 1,
+                },
+                Textarea({ flex: 1, border: false }),
+            ),
+        );
 
         log('END');
 

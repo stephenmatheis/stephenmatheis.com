@@ -121,6 +121,8 @@ export function Text(props: TextProps): TextNode {
     return { kind: 'text', align: 'left', content: '', ...props };
 }
 
+// FIXME: Shouldn't be able to move cursor down if there is no new line.
+// FIXME: If border is false, don't highlight on focus region
 export function Textarea(props: TextareaProps): TextareaNode {
     return { kind: 'textarea', border: true, borderStyle: 'rounded', ...props };
 }
@@ -243,9 +245,11 @@ function writeText(
     if (y < 0 || y >= chars.length || !content) return;
 
     const writeX =
-        align === 'right' ? x + width - content.length
-        : align === 'center' ? x + Math.floor((width - content.length) / 2)
-        : x;
+        align === 'right'
+            ? x + width - content.length
+            : align === 'center'
+              ? x + Math.floor((width - content.length) / 2)
+              : x;
 
     for (let i = 0; i < content.length; i++) {
         const col = writeX + i;
@@ -277,7 +281,16 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
         const py = node.paddingY ?? node.padding ?? 0;
 
         if (border) {
-            drawBorder(x, y, width, height, node.borderStyle ?? 'rounded', node.title, node.titleAlignment ?? 'left', chars);
+            drawBorder(
+                x,
+                y,
+                width,
+                height,
+                node.borderStyle ?? 'rounded',
+                node.title,
+                node.titleAlignment ?? 'left',
+                chars,
+            );
         }
 
         const innerX = x + (border ? 1 : 0) + px;
@@ -358,10 +371,7 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
 
             if (isRow) return sum + (child.width ?? 0);
 
-            const defaultH =
-                child.kind === 'text' ? 1
-                : child.kind === 'input' ? (child.border ? 3 : 1)
-                : 0;
+            const defaultH = child.kind === 'text' ? 1 : child.kind === 'input' ? (child.border ? 3 : 1) : 0;
 
             return sum + (child.height ?? defaultH);
         }, 0);
@@ -385,10 +395,7 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
             } else if (isRow) {
                 childAxisSize = child.width ?? 0;
             } else {
-                const defaultH =
-                    child.kind === 'text' ? 1
-                    : child.kind === 'input' ? (child.border ? 3 : 1)
-                    : 0;
+                const defaultH = child.kind === 'text' ? 1 : child.kind === 'input' ? (child.border ? 3 : 1) : 0;
 
                 childAxisSize = child.height ?? defaultH;
             }
@@ -419,9 +426,7 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
                     width: child.width ?? innerWidth,
                     height:
                         child.height ??
-                        (child.kind === 'text' ? 1
-                         : child.kind === 'input' ? (child.border ? 3 : 1)
-                         : innerHeight),
+                        (child.kind === 'text' ? 1 : child.kind === 'input' ? (child.border ? 3 : 1) : innerHeight),
                 } as LayoutNode,
                 chars,
                 regions,

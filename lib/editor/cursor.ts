@@ -1,4 +1,10 @@
-import type { CursorState, RegionState, GeometryState, ContentState } from './types';
+import type { EditorState, ContentState, Theme } from './types';
+
+type CursorProps = {
+    container: HTMLElement;
+    state: EditorState & Pick<ContentState, 'chars'>;
+    theme: Theme;
+};
 
 function isWordChar(char: string): boolean {
     if (!char || char.trim() === '') return false;
@@ -9,7 +15,7 @@ function isWordChar(char: string): boolean {
     return !(code >= 0x2500 && code <= 0x257f);
 }
 
-export function Cursor(state: CursorState & RegionState & GeometryState & Pick<ContentState, 'chars'>) {
+export function Cursor({ container, state, theme }: CursorProps) {
     function moveCursor(dx: number, dy: number) {
         const r = state.activeRegion;
         const minX = r ? r.x : 0;
@@ -97,7 +103,79 @@ export function Cursor(state: CursorState & RegionState & GeometryState & Pick<C
         state.cursorVisible = true;
     }
 
+    function ensureCursorStyles(): void {
+        if (document.querySelector('#editor-cursor-style')) return;
+
+        const style = document.createElement('style');
+
+        style.id = 'editor-cursor-style';
+        style.textContent = [
+            '.editor-cursor{position:absolute;pointer-events:none;z-index:1;}',
+            // TODO: when to blink? should be user toggle?
+            // '.editor-cursor.visible{animation:editor-cursor-blink 1.2s step-end infinite;}',
+            // '@keyframes editor-cursor-blink{0%,100%{opacity:1}50%{opacity:0}}',
+        ].join('');
+        document.head.appendChild(style);
+    }
+
+    const cursorCanvas = document.createElement('canvas');
+    const cursorCtx = cursorCanvas.getContext('2d')!;
+
+    cursorCanvas.className = 'editor-cursor';
+
+    container.style.position = 'relative';
+    container.appendChild(cursorCanvas);
+
+    function render(): void {
+        if (!state.cursorVisible || !state.cellWidth || !state.cellHeight) {
+            cursorCanvas.classList.remove('visible');
+
+            return;
+        }
+
+        const dpr = window.devicePixelRatio || 1;
+        const cw = state.cellWidth;
+        const ch = state.cellHeight;
+
+        // Position the cursor canvas over the cursor cell.
+        cursorCanvas.style.left = `${state.cursor.x * cw}px`;
+        cursorCanvas.style.top = `${state.cursor.y * ch}px`;
+        cursorCanvas.style.width = `${cw}px`;
+        cursorCanvas.style.height = `${ch}px`;
+        cursorCanvas.width = Math.round(cw * dpr);
+        cursorCanvas.height = Math.round(ch * dpr);
+
+        cursorCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cursorCtx.font = state.fontStr;
+        cursorCtx.textBaseline = 'ideographic';
+
+        // Cursor block.
+        cursorCtx.fillStyle = theme.foreground;
+        cursorCtx.fillRect(0, 0, cw, ch);
+
+        // Character in background color so it remains readable through the cursor.
+        const char = state.displayChars[state.cursor.y]?.[state.cursor.x] || '';
+
+        if (char) {
+            cursorCtx.fillStyle = theme.background;
+            cursorCtx.fillText(char, 0, ch);
+        }
+
+        // Reset the blink animation so the cursor appears immediately after moving.
+        cursorCanvas.classList.remove('visible');
+        void cursorCanvas.offsetWidth; // force reflow to restart animation
+        cursorCanvas.classList.add('visible');
+    }
+
+    function remove() {
+        cursorCanvas.remove();
+    }
+
+    ensureCursorStyles();
+
     return {
+        render,
+        remove,
         moveCursor,
         wordJumpRight,
         wordJumpLeft,

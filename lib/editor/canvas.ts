@@ -20,18 +20,16 @@ function getEmSquare(fontStr: string) {
     };
 }
 
-type CanvasProps = {
+type ResponsiveCanvasProps = {
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
     state: EditorState;
-    actions: {
-        draw(): void;
-        onResize(): void;
-    };
+    draw(): void;
+    onResize(): void;
     layout: (chars: string[][]) => void;
 };
 
-export function Canvas({ canvas, ctx, state, actions, layout }: CanvasProps) {
+export function ResponsiveCanvas({ canvas, ctx, state, draw, onResize, layout }: ResponsiveCanvasProps) {
     log('createSetup() > setSize()');
     setSize();
 
@@ -77,11 +75,19 @@ export function Canvas({ canvas, ctx, state, actions, layout }: CanvasProps) {
         log('setSize() > setupCanvas()');
         setupCanvas();
 
-        actions.onResize();
+        onResize();
 
         log('setSize() > draw()');
-        actions.draw();
+        draw();
     }
 
-    return { setSize };
+    return {
+        add() {
+            window.addEventListener('resize', setSize);
+        },
+        remove() {
+            window.removeEventListener('resize', setSize);
+        },
+        setSize,
+    };
 }
