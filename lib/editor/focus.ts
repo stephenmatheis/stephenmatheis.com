@@ -21,11 +21,10 @@ export function Focus({
     inputMap,
     draw,
 }: {
-    state: FocusState;
+    state: FocusState & RegionState;
     inputMap: Map<Region, InputNode>;
     draw: () => void;
 }) {
-
     function getActiveInput(): InputNode | null {
         return state.activeRegion ? (inputMap.get(state.activeRegion) ?? null) : null;
     }
@@ -63,7 +62,13 @@ export function Focus({
 
     // ===== Focus navigation =====
 
-    function endOfContent(r: Region): CellPos {
+    function endOfContent(): CellPos {
+        if (!state.activeRegion) {
+            return { x: 0, y: 0 };
+        }
+
+        const r = state.activeRegion;
+
         const input = inputMap.get(r);
 
         if (input) {
@@ -72,7 +77,10 @@ export function Focus({
             if (ref) {
                 const value = readInputValue(ref);
 
-                return { x: Math.min(r.x + value.length, r.x + r.width - 1), y: r.y };
+                return {
+                    x: Math.min(r.x + value.length, r.x + r.width - 1),
+                    y: r.y,
+                };
             }
         }
 
@@ -110,15 +118,13 @@ export function Focus({
             if (ref) ref.valueOnFocus = readInputValue(ref);
         }
 
-        state.cursor = endOfContent(state.activeRegion);
+        state.cursor = endOfContent();
     }
 
     function focusAtCell(x: number, y: number): boolean {
         checkAndEmitChange();
 
-        const index = state.regions.findIndex(
-            (r) => x >= r.x && x < r.x + r.width && y >= r.y && y < r.y + r.height,
-        );
+        const index = state.regions.findIndex((r) => x >= r.x && x < r.x + r.width && y >= r.y && y < r.y + r.height);
 
         if (index === -1) return false;
 
@@ -134,7 +140,7 @@ export function Focus({
 
         const char = (state.chars[y] ?? [])[x] ?? '';
 
-        state.cursor = char !== '' ? { x, y } : endOfContent(state.activeRegion);
+        state.cursor = char !== '' ? { x, y } : endOfContent();
 
         return true;
     }

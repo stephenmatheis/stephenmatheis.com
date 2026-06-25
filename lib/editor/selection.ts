@@ -1,5 +1,9 @@
 import type { CellPos, Selected, SelectionState, CursorState, RegionState, GeometryState } from './types';
 
+type SelectionProps = {
+    state: SelectionState & CursorState & RegionState & GeometryState;
+};
+
 function normalizeSelection(selection: Selected): Selected {
     const { start, end, rect } = selection;
     const reversed = end.y < start.y || (end.y === start.y && end.x < start.x);
@@ -63,7 +67,7 @@ export function clearSelected(chars: string[][], selection: Selected): CellPos {
     return start;
 }
 
-export function Selection(state: SelectionState & CursorState & RegionState & GeometryState) {
+export function Selection({ state }: SelectionProps) {
     function withSelection(moveFn: () => void, extending: boolean) {
         if (extending) {
             if (!state.keyboardAnchor) {
