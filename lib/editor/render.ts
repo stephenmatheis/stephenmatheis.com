@@ -1,19 +1,6 @@
 import { isInSelection } from './selection';
 import type { Region } from '@/lib/editor/tui';
-import type { Selected, EditorState, Theme } from './types';
-
-export function readTheme(): Theme {
-    const styles = window.getComputedStyle(document.documentElement);
-
-    return {
-        background: styles.getPropertyValue('--background').trim(),
-        foreground: styles.getPropertyValue('--foreground').trim(),
-        inputBg: styles.getPropertyValue('--input-background').trim() || 'rgba(128,128,128,0.15)',
-        placeholderColor: styles.getPropertyValue('--placeholder-color').trim() || 'rgba(128,128,128,0.5)',
-        gridLine: styles.getPropertyValue('--grid-line').trim() || '#00000015',
-        activeRegionBorderColor: styles.getPropertyValue('--active-region-color').trim() || '#2266cc',
-    };
-}
+import type { Selected, EditorState, ThemeColors } from './types';
 
 // Value-equal comparison so reference changes from recompose don't spuriously dirty rows.
 function regionsEqual(a: Region | null, b: Region | null): boolean {
@@ -130,7 +117,7 @@ export function Renderer() {
 
     // Renders the canvas. The cursor is NOT drawn here — it lives on a separate overlay
     // so it can blink via CSS animation without triggering a main-canvas repaint.
-    function render(ctx: CanvasRenderingContext2D, state: EditorState, theme: Theme): void {
+    function render(ctx: CanvasRenderingContext2D, state: EditorState, theme: ThemeColors): void {
         const { background, foreground, inputBg, placeholderColor, gridLine, activeRegionBorderColor } = theme;
 
         const dirty = computeDirtyRows(state);

@@ -1,4 +1,5 @@
-import { Renderer, readTheme } from './render';
+import { Renderer } from './render';
+import { Theme } from './theme';
 import { Keyboard } from './keyboard';
 import { Mouse } from './mouse';
 import { History } from './history';
@@ -13,7 +14,7 @@ import { compose, disposeInput } from '@/lib/editor/tui';
 import { saveSnapshot, loadSnapshot, listSnapshots } from './db';
 import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
 import type { SnapshotMeta } from './db';
-import type { EditorState, StatusBar, FloatAnchor, Theme } from './types';
+import type { EditorState, StatusBar, FloatAnchor } from './types';
 
 export type { CellPos, CellStyle, Selected, Snapshot, EditorState, StatusBar, FloatAnchor } from './types';
 export type { SnapshotMeta } from './db';
@@ -50,7 +51,6 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     };
     const inputMap = new Map<Region, InputNode>();
 
-    let theme: Theme = readTheme();
     let currentNode: LayoutNode | null = null;
     let statusBarConfig: StatusBar | null = null;
     let rafId: number | null = null;
@@ -74,7 +74,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
                 layers.compositeStyles();
             }
 
-            renderer.render(ctx, state, theme);
+            renderer.render(ctx, state, theme.get());
 
             cursor.render();
         });
@@ -100,6 +100,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     }
 
     // Modules
+    const theme = Theme();
     const focus = Focus({
         state,
         inputMap,
@@ -110,7 +111,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     const cursor = Cursor({
         container,
         state,
-        theme,
+        getTheme: theme.get,
     });
     const buffer = Buffer({
         state,
@@ -175,7 +176,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         state,
         draw,
         onResize() {
-            theme = readTheme();
+            theme.refresh();
             renderer.invalidateAll();
         },
         layout(chars) {
@@ -241,9 +242,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             draw();
         },
         theme(name: 'light' | 'dark') {
-            document.documentElement.dataset.theme = name;
-
-            theme = readTheme();
+            theme.set(name);
 
             renderer.invalidateAll();
 
