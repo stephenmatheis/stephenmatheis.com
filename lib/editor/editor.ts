@@ -206,7 +206,6 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             return state.rows;
         },
         get r_cols() {
-            console.log(state.activeRegion);
             return state.activeRegion?.width || '';
         },
         get r_rows() {
