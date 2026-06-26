@@ -68,9 +68,9 @@ export default function Page() {
                         border: false,
                         padding: 0,
                     },
-                    Text({ content: `Grid ${editor.cols} x ${editor.rows}`, flex: 1 }),
-                    Text({ content: '', flex: 1, align: 'center' }),
-                    Text({ content: '', flex: 1, align: 'right' }),
+                    Text({ content: () => `Grid ${editor.cols} x ${editor.rows}`, flex: 1 }),
+                    Text({ content: () => `Ln ${editor.ln}  Col ${editor.col}`, flex: 1, align: 'center' }),
+                    Text({ content: () => `${editor.r_cols} x ${editor.r_rows}`, flex: 1, align: 'right' }),
                 ),
             ),
         );

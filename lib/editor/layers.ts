@@ -209,7 +209,7 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
         rebuildOwnership();
 
-        const modalRegions = compose(positioned, state.chars);
+        const [modalRegions] = compose(positioned, state.chars);
 
         state.regions = modalRegions;
 
@@ -365,7 +365,7 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
             rebuildOwnership();
 
-            const modalRegions = compose(positioned, state.chars);
+            const [modalRegions] = compose(positioned, state.chars);
 
             state.regions = modalRegions;
 

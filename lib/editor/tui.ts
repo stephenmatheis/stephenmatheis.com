@@ -24,8 +24,13 @@ export type TextProps = {
     width?: number;
     height?: number;
     align?: 'left' | 'center' | 'right';
-    content?: string;
+    content?: string | (() => string);
     flex?: number;
+};
+
+type DynamicText = {
+    getter: () => string;
+    write: (content: string) => void;
 };
 
 export type TextareaProps = {
@@ -149,6 +154,7 @@ export function Input(props: InputProps): InputHandle {
     Object.defineProperty(node, 'on', {
         value(event: InputEventName, cb: (value: string) => void): InputHandle {
             ref.handlers[event] = cb;
+
             return node as unknown as InputHandle;
         },
         enumerable: false,
@@ -260,13 +266,30 @@ function writeText(
     }
 }
 
-function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
+function composeNode(node: LayoutNode, chars: string[][], regions: Region[], dynamicTexts?: DynamicText[]) {
     if (node.kind === 'text') {
         const x = node.x ?? 0;
         const y = node.y ?? 0;
         const width = node.width ?? chars[0].length - x;
+        const align = node.align ?? 'left';
+        const { content } = node;
 
-        writeText(x, y, width, node.align ?? 'left', node.content ?? '', chars);
+        if (typeof content === 'function') {
+            dynamicTexts?.push({
+                getter: content,
+                write(text: string) {
+                    for (let col = x; col < x + width; col++) {
+                        if (chars[y]) chars[y][col] = '';
+                    }
+
+                    writeText(x, y, width, align, text, chars);
+                },
+            });
+
+            writeText(x, y, width, align, content(), chars);
+        } else {
+            writeText(x, y, width, align, content ?? '', chars);
+        }
 
         return;
     }
@@ -411,6 +434,7 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
                 } as LayoutNode,
                 chars,
                 regions,
+                dynamicTexts,
             );
 
             cursor += childAxisSize;
@@ -430,16 +454,22 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[]) {
                 } as LayoutNode,
                 chars,
                 regions,
+                dynamicTexts,
             );
         }
     }
 }
 
-export function compose(node: LayoutNode, chars: string[][]): Region[] {
+export function compose(node: LayoutNode, chars: string[][]): [Region[], (() => void) | null] {
     const regions: Region[] = [];
+    const dynamicTexts: DynamicText[] = [];
 
     log('compose() > composeNode()');
-    composeNode(node, chars, regions);
+    composeNode(node, chars, regions, dynamicTexts);
 
-    return regions;
+    const redraw = dynamicTexts.length > 0
+        ? () => { for (const { getter, write } of dynamicTexts) write(getter()); }
+        : null;
+
+    return [regions, redraw];
 }
