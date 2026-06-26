@@ -24,6 +24,10 @@ type EditorProps = {
     container: HTMLElement;
 };
 
+type EditorEvents = {
+    draw: (() => void) | null;
+};
+
 export function Editor({ canvas, textarea, container }: EditorProps) {
     const ctx = canvas.getContext('2d')!;
     const state: EditorState = {
@@ -49,8 +53,12 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         showGrid: true,
     };
     const inputMap = new Map<Region, InputNode>();
+    const editorEvents: EditorEvents = {
+        draw: null,
+    };
 
     let currentNode: LayoutNode | null = null;
+    let redraw: (() => void) | null = null;
     let rafId: number | null = null;
 
     function draw() {
@@ -62,6 +70,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             if (!currentNode) return;
 
             layers.applyInputOverlays();
+            redraw?.();
 
             if (layers.isModalOpen() || layers.isFloatOpen()) {
                 layers.compositeChars();
@@ -71,14 +80,17 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             renderer.render(ctx, state, theme.get());
 
             cursor.render();
+
+            editorEvents.draw?.();
         });
     }
 
     function applyLayout(node: LayoutNode, chars: string[][]) {
-        const regions = compose(node, chars);
+        const [regions, newRedraw] = compose(node, chars);
 
         state.regions = regions;
         state.activeRegion = regions[0] ?? null;
+        redraw = newRedraw;
 
         if (state.activeRegion) {
             state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
@@ -205,6 +217,11 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         },
         get activeRegion() {
             return state.activeRegion;
+        },
+        on(event: string, action: () => void) {
+            if (event === 'draw') {
+                editorEvents.draw = action;
+            }
         },
         root: {
             add(node: LayoutNode) {
