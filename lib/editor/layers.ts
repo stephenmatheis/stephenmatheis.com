@@ -333,18 +333,15 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
     // ===== Resize handler =====
 
     // Called by the Canvas layout callback on every resize. Rebuilds all layer state
-    // to fit the new grid dimensions. hasStatusBar must be true if the status bar is
-    // active so the layout chars slice excludes the reserved bottom row.
-    function handleLayout(chars: string[][], currentNode: LayoutNode | null, hasStatusBar: boolean): void {
+    // to fit the new grid dimensions.
+    function handleLayout(chars: string[][], currentNode: LayoutNode | null): void {
         if (currentModal) {
             // On resize during a modal: rebuild main layout into a fresh main buffer,
             // then reallocate modal buffers at the new size.
             mainChars = createGrid('');
 
             if (currentNode) {
-                const composeChars = hasStatusBar ? mainChars.slice(0, -1) : mainChars;
-
-                applyLayout(currentNode, composeChars);
+                applyLayout(currentNode, mainChars);
 
                 const savedCellStyles = state.cellStyles;
 
@@ -387,9 +384,7 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
             if (!currentNode) return;
 
-            const composeChars = hasStatusBar ? mainChars.slice(0, -1) : mainChars;
-
-            applyLayout(currentNode, composeChars);
+            applyLayout(currentNode, mainChars);
 
             if (currentFloat) {
                 state.displayChars = createGrid('');

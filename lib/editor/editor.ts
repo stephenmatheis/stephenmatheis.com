@@ -9,14 +9,13 @@ import { Selection } from './selection';
 import { ResponsiveCanvas } from './canvas';
 import { Focus } from './focus';
 import { Layers } from './layers';
-import { composeStatusBar } from './statusbar';
 import { compose, disposeInput } from '@/lib/editor/tui';
 import { saveSnapshot, loadSnapshot, listSnapshots } from './db';
 import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
 import type { SnapshotMeta } from './db';
-import type { EditorState, StatusBar, FloatAnchor } from './types';
+import type { EditorState, FloatAnchor } from './types';
 
-export type { CellPos, CellStyle, Selected, Snapshot, EditorState, StatusBar, FloatAnchor } from './types';
+export type { CellPos, CellStyle, Selected, Snapshot, EditorState, FloatAnchor } from './types';
 export type { SnapshotMeta } from './db';
 
 type EditorProps = {
@@ -52,10 +51,9 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     const inputMap = new Map<Region, InputNode>();
 
     let currentNode: LayoutNode | null = null;
-    let statusBarConfig: StatusBar | null = null;
     let rafId: number | null = null;
 
-    function draw(): void {
+    function draw() {
         if (rafId !== null) return;
 
         rafId = requestAnimationFrame(() => {
@@ -64,10 +62,6 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             if (!currentNode) return;
 
             layers.applyInputOverlays();
-
-            if (statusBarConfig) {
-                composeStatusBar(statusBarConfig, state, layers.mainChars);
-            }
 
             if (layers.isModalOpen() || layers.isFloatOpen()) {
                 layers.compositeChars();
@@ -80,7 +74,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         });
     }
 
-    function applyLayout(node: LayoutNode, chars: string[][]): void {
+    function applyLayout(node: LayoutNode, chars: string[][]) {
         const regions = compose(node, chars);
 
         state.regions = regions;
@@ -95,11 +89,6 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         focus.collectInputs(node);
     }
 
-    function getComposeChars(): string[][] {
-        return statusBarConfig ? layers.mainChars.slice(0, -1) : layers.mainChars;
-    }
-
-    // Modules
     const theme = Theme();
     const focus = Focus({
         state,
@@ -180,7 +169,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             renderer.invalidateAll();
         },
         layout(chars) {
-            layers.handleLayout(chars, currentNode, statusBarConfig !== null);
+            layers.handleLayout(chars, currentNode);
         },
     });
 
@@ -192,11 +181,24 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     textarea.focus();
 
     return {
+        get ln() {
+            return state.cursor.y - (state.activeRegion?.y || 0) + 1;
+        },
+        get col() {
+            return state.cursor.x - (state.activeRegion?.x || 0) + 1;
+        },
         get cols() {
             return state.cols;
         },
         get rows() {
             return state.rows;
+        },
+        get r_cols() {
+            console.log(state.activeRegion);
+            return state.activeRegion?.width || '';
+        },
+        get r_rows() {
+            return state.activeRegion?.height || '';
         },
         get cursor() {
             return state.cursor;
@@ -208,7 +210,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             add(node: LayoutNode) {
                 currentNode = node;
 
-                applyLayout(node, getComposeChars());
+                applyLayout(node, layers.mainChars);
                 draw();
             },
         },
@@ -231,15 +233,6 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
                 layers.hideFloat();
                 draw();
             },
-        },
-        statusBar(config: StatusBar) {
-            statusBarConfig = config;
-
-            if (currentNode) {
-                applyLayout(currentNode, getComposeChars());
-            }
-
-            draw();
         },
         theme(name: 'light' | 'dark') {
             theme.set(name);

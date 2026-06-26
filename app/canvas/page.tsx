@@ -21,13 +21,6 @@ export default function Page() {
             textarea: textareaRef.current!,
             container: containerRef.current!,
         });
-
-        editor.statusBar({
-            left: 'Grid {cols} x {rows}',
-            center: 'Region {r_cols} x {r_rows}',
-            right: 'Ln {ln}, Col {col}',
-        });
-
         const nameInput = Input({ flex: 1, placeholder: 'First Last' });
         const emailInput = Input({ flex: 1, placeholder: 'me@email.com' });
 
@@ -58,13 +51,27 @@ export default function Page() {
 
         editor.root.add(
             Box(
-                { flexDirection: 'row', border: false, padding: 0 },
+                { flexDirection: 'column', border: false, padding: 0 },
                 Box(
-                    { title: 'Form', flexDirection: 'column', flex: 1, paddingY: 1, paddingX: 2 },
-                    Box({ title: 'Name', height: 3 }, nameInput),
-                    Box({ title: 'Email', height: 3 }, emailInput),
+                    { flexDirection: 'row', border: false, padding: 0, flex: 1 },
+                    Box(
+                        { title: 'Form', flexDirection: 'column', flex: 1, paddingY: 1, paddingX: 2 },
+                        Box({ title: 'Name', height: 3 }, nameInput),
+                        Box({ title: 'Email', height: 3 }, emailInput),
+                    ),
+                    Textarea({ title: 'Notes', flex: 2 }),
                 ),
-                Textarea({ title: 'Notes', flex: 2 }),
+                Box(
+                    {
+                        flexDirection: 'row',
+                        height: 1,
+                        border: false,
+                        padding: 0,
+                    },
+                    Text({ content: `Grid ${editor.cols} x ${editor.rows}`, flex: 1 }),
+                    Text({ content: '', flex: 1, align: 'center' }),
+                    Text({ content: '', flex: 1, align: 'right' }),
+                ),
             ),
         );
 
