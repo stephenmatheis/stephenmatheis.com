@@ -19,12 +19,6 @@ export type Selected = {
     bounds?: { x: number; width: number };
 };
 
-export type StatusBar = {
-    left?: string;
-    center?: string;
-    right?: string;
-};
-
 export type FloatAnchor =
     | { type: 'absolute'; x: number; y: number }
     | { type: 'cell'; cell: CellPos; side: 'below' | 'above' | 'right' | 'left' }
