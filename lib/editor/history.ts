@@ -1,4 +1,4 @@
-import type { HistoryState, ContentState, CursorState } from './types';
+import type { HistoryState, LayerContent, CursorState } from './types';
 import type { Selection } from './selection';
 
 // Creates a fully independent copy of the character buffer.
@@ -19,14 +19,14 @@ function cloneChars(chars: string[][]): string[][] {
 const MAX_HISTORY = 100;
 
 export type HistoryProps = {
-    state: HistoryState & Pick<ContentState, 'chars'> & CursorState;
+    state: HistoryState & Pick<LayerContent, 'activeLayer'> & CursorState;
     selection: ReturnType<typeof Selection>;
 };
 
 export function History({ state, selection }: HistoryProps) {
     function snapshot() {
         state.undoStack.push({
-            chars: cloneChars(state.chars),
+            chars: cloneChars(state.activeLayer.chars),
             cursor: { ...state.cursor },
         });
 
@@ -43,11 +43,11 @@ export function History({ state, selection }: HistoryProps) {
         if (!prev) return;
 
         state.redoStack.push({
-            chars: cloneChars(state.chars),
+            chars: cloneChars(state.activeLayer.chars),
             cursor: { ...state.cursor },
         });
 
-        state.chars = prev.chars;
+        state.activeLayer.chars = prev.chars;
         state.cursor = prev.cursor;
         selection.clearSelection();
     }
@@ -58,11 +58,11 @@ export function History({ state, selection }: HistoryProps) {
         if (!next) return;
 
         state.undoStack.push({
-            chars: cloneChars(state.chars),
+            chars: cloneChars(state.activeLayer.chars),
             cursor: { ...state.cursor },
         });
 
-        state.chars = next.chars;
+        state.activeLayer.chars = next.chars;
         state.cursor = next.cursor;
         selection.clearSelection();
     }

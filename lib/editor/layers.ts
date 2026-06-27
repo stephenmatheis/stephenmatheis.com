@@ -1,11 +1,10 @@
 import { compose, getInputRef } from '@/lib/editor/tui';
 import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
 import { readInputValue } from './focus';
-import type { CellPos, CellStyle, FloatAnchor } from './types';
-import type { ContentState, GeometryState, RegionState, CursorState } from './types';
+import type { CellPos, CellStyle, FloatAnchor, Layer } from './types';
+import type { GeometryState, LayerContent, RegionState, CursorState } from './types';
 
-// The full set of state fields the layer system reads and writes.
-export type LayerState = ContentState & Pick<GeometryState, 'cols' | 'rows'> & RegionState & Pick<CursorState, 'cursor'>;
+export type LayerState = LayerContent & Pick<GeometryState, 'cols' | 'rows'> & RegionState & Pick<CursorState, 'cursor'>;
 
 type Rect = { x: number; y: number; w: number; h: number };
 
@@ -18,39 +17,30 @@ export type LayersProps = {
     state: LayerState;
     inputMap: Map<Region, InputNode>;
     focus: FocusHandle;
-    // Called during hideModal and handleLayout to rebuild main-layer regions.
-    applyLayout: (node: LayoutNode, chars: string[][]) => void;
+    // Called when the main layer's node tree needs to be re-composed.
+    // Updates state.regions, state.activeRegion, the dynamic-text redraw closure, and inputMap.
+    rebuildMainContent: (node: LayoutNode, mainLayer: Layer) => void;
 };
 
-// Buffer layer invariant:
-//   mainChars        — the permanent main-layout buffer; always holds the composed main content.
-//   state.chars      — the active write target. Equals mainChars in normal operation; redirected to
-//                      a fresh grid when a modal is open so modal edits don't corrupt main content.
-//   state.displayChars — the composited output render() reads. Equals mainChars when no overlays are
-//                        active; a separate merged grid when a modal or float is visible. Layering
-//                        priority (highest first): modal > float > main.
-//
-// All public methods leave these three pointers in a consistent state when they return.
-// Callers are responsible for invoking draw() after any mutation.
-export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
-    let mainChars: string[][] = [];
-    let mainCellStyles: Array<Array<CellStyle | null>> = [];
+export function Layers({ state, inputMap, focus, rebuildMainContent }: LayersProps) {
     let savedRegions: Region[] = [];
     let savedRegionIndex = 0;
     let modalRect: Rect | null = null;
     let currentModal: LayoutNode | null = null;
     let currentFloat: LayoutNode | null = null;
-    let floatChars: string[][] | null = null;
     let floatRect: Rect | null = null;
 
     // Pre-computed layer ownership bitmap. Values: 0 = main, 1 = float, 2 = modal.
-    // Rebuilt whenever any rect changes — eliminates per-cell inRect() calls in compositeChars/Styles.
+    // Rebuilt whenever any rect changes — eliminates per-cell inRect() calls in compositeIntoDisplay.
     let layerOwnership = new Uint8Array(0);
 
     // ===== Grid utilities =====
 
-    function createGrid<T>(fill: T): T[][] {
-        return Array.from({ length: state.rows }, () => Array(state.cols).fill(fill));
+    function createLayer(): Layer {
+        return {
+            chars: Array.from({ length: state.rows }, () => Array(state.cols).fill('')),
+            cellStyles: Array.from({ length: state.rows }, () => Array(state.cols).fill(null)),
+        };
     }
 
     // Used only for dismissFloatIfOutside — not in the hot compositing path.
@@ -88,50 +78,39 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
     // ===== Compositing =====
 
-    // Merge layers into display buffers. Priority (highest first): modal → float → main.
+    // Merge all active layers into state.displayLayer.
+    // Priority (highest first): modal → float → main.
     // Uses the pre-computed layerOwnership bitmap instead of per-cell rect tests.
-    function compositeChars(): void {
+    // Only called from flushRenderPipeline when modalLayer or floatLayer is non-null.
+    function compositeIntoDisplay(): void {
         for (let r = 0; r < state.rows; r++) {
             for (let c = 0; c < state.cols; c++) {
                 const owner = layerOwnership[r * state.cols + c];
 
                 if (owner === 2) {
-                    // state.chars is the modal write layer when a modal is open.
-                    state.displayChars[r][c] = state.chars[r]?.[c] || '';
+                    state.displayLayer.chars[r][c] = state.modalLayer!.chars[r]?.[c] ?? '';
+                    state.displayLayer.cellStyles[r][c] = state.modalLayer!.cellStyles[r]?.[c] ?? null;
                 } else if (owner === 1) {
-                    state.displayChars[r][c] = floatChars![r]?.[c] || '';
-                } else {
-                    state.displayChars[r][c] = mainChars[r]?.[c] || '';
-                }
-            }
-        }
-    }
-
-    function compositeStyles(): void {
-        for (let r = 0; r < state.rows; r++) {
-            for (let c = 0; c < state.cols; c++) {
-                const owner = layerOwnership[r * state.cols + c];
-
-                if (owner === 2) {
-                    state.displayCellStyles[r][c] = state.cellStyles[r]?.[c] ?? null;
-                } else if (owner === 1) {
+                    state.displayLayer.chars[r][c] = state.floatLayer!.chars[r]?.[c] ?? '';
                     // Floats are visual-only in v1 — no cellStyles layer.
-                    state.displayCellStyles[r][c] = null;
+                    state.displayLayer.cellStyles[r][c] = null;
                 } else {
-                    state.displayCellStyles[r][c] = mainCellStyles[r]?.[c] ?? null;
+                    state.displayLayer.chars[r][c] = state.mainLayer.chars[r]?.[c] ?? '';
+                    state.displayLayer.cellStyles[r][c] = state.mainLayer.cellStyles[r]?.[c] ?? null;
                 }
             }
         }
     }
 
-    // Rebuild the per-cell style grid every draw so placeholder/background stay
-    // in sync with live input values without touching state.chars.
-    function applyInputOverlays(): void {
-        if (!state.cellStyles.length) return;
+    // Rebuild the per-cell style grid for the given layer every draw so
+    // placeholder/background stay in sync with live input values without
+    // touching the chars grid.
+    function applyInputOverlays(layer: Layer): void {
+        if (!layer.cellStyles.length) return;
 
         for (let r = 0; r < state.rows; r++) {
             for (let c = 0; c < state.cols; c++) {
-                state.cellStyles[r][c] = null;
+                layer.cellStyles[r][c] = null;
             }
         }
 
@@ -159,7 +138,7 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
                         if (idx < placeholder.length) style.placeholder = placeholder[idx];
                     }
 
-                    state.cellStyles[y][x] = style;
+                    layer.cellStyles[y][x] = style;
                 }
             }
         }
@@ -176,30 +155,21 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
         return { positioned: { ...node, x, y, width: w, height: h } as LayoutNode, x, y, w, h };
     }
 
-    // Snapshot current main layer, then redirect write buffers to a fresh modal grid.
-    // Caller must call draw() after.
+    // Opens a modal overlay. Freezes the main layer's input styles for compositing,
+    // then allocates a fresh modal layer and redirects all writes to it.
+    // Caller must call requestRender() after.
     function showModal(node: LayoutNode): void {
         savedRegionIndex = state.activeRegion ? Math.max(0, state.regions.indexOf(state.activeRegion)) : 0;
         savedRegions = state.regions;
 
-        // Capture main input styles before swapping inputMap to the modal.
-        const priorCellStyles = state.cellStyles;
+        // Freeze the main layer's input styles before modal takes over as the active layer.
+        // activeLayer still equals mainLayer here, so applyInputOverlays writes to mainLayer.cellStyles.
+        applyInputOverlays(state.mainLayer);
 
-        mainCellStyles = createGrid<CellStyle | null>(null);
-
-        state.cellStyles = mainCellStyles;
-
-        applyInputOverlays();
-
-        state.cellStyles = priorCellStyles;
-
-        // Redirect the active write layer to a fresh modal buffer.
-        mainChars = state.chars;
-
-        state.chars = createGrid('');
-        state.cellStyles = createGrid<CellStyle | null>(null);
-        state.displayChars = createGrid('');
-        state.displayCellStyles = createGrid<CellStyle | null>(null);
+        // Allocate a fresh modal layer and redirect all writes to it.
+        state.modalLayer = createLayer();
+        state.activeLayer = state.modalLayer;
+        state.displayLayer = createLayer();
 
         currentModal = node;
 
@@ -209,7 +179,7 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
         rebuildOwnership();
 
-        const [modalRegions] = compose(positioned, state.chars);
+        const [modalRegions] = compose(positioned, state.modalLayer.chars);
 
         state.regions = modalRegions;
 
@@ -219,20 +189,19 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
         focus.focusRegion(0);
     }
 
-    // Restore main layer buffers and regions after the modal closes.
-    // Caller must call draw() after.
+    // Restores the main layer as the active write target after the modal closes.
+    // Caller must call requestRender() after.
     function hideModal(currentNode: LayoutNode | null): void {
         currentModal = null;
         modalRect = null;
 
         rebuildOwnership();
 
-        state.chars = mainChars;
-        state.cellStyles = mainCellStyles;
+        state.modalLayer = null;
+        state.activeLayer = state.mainLayer;
 
-        if (!currentFloat) {
-            state.displayChars = mainChars;
-            state.displayCellStyles = mainCellStyles;
+        if (!state.floatLayer) {
+            state.displayLayer = state.mainLayer;
         }
 
         state.regions = savedRegions;
@@ -276,14 +245,12 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
         return { positioned: { ...node, x, y, width: w, height: h } as LayoutNode, x, y, w, h };
     }
 
-    // Compose a float overlay without redirecting state.chars or trapping focus.
-    // Caller must call draw() after.
+    // Composes a float overlay without redirecting activeLayer or trapping focus.
+    // Caller must call requestRender() after.
     function showFloat(node: LayoutNode, anchor?: FloatAnchor): void {
         currentFloat = node;
-        // Capture current main styles before allocating the composite buffer.
-        mainCellStyles = state.cellStyles;
 
-        floatChars = createGrid('');
+        state.floatLayer = createLayer();
 
         const { positioned, x, y, w, h } = positionFloat(node, anchor);
 
@@ -291,31 +258,30 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
         rebuildOwnership();
 
-        compose(positioned, floatChars);
+        compose(positioned, state.floatLayer.chars);
 
-        // Allocate a composite display buffer only if display still points at mainChars.
-        if (state.displayChars === mainChars) {
-            state.displayChars = createGrid('');
-            state.displayCellStyles = createGrid<CellStyle | null>(null);
+        // Allocate a composite display buffer only if displayLayer still aliases mainLayer.
+        if (state.displayLayer === state.mainLayer) {
+            state.displayLayer = createLayer();
         }
     }
 
-    // Tear down float state without rendering. Used by hideFloat and dismissFloatIfOutside
-    // so the latter can let the calling mousedown handler's own draw() cover the render.
+    // Tears down float state without triggering a render.
+    // Used by hideFloat and dismissFloatIfOutside so the calling mousedown
+    // handler's own requestRender() covers the repaint.
     function clearFloat(): void {
         currentFloat = null;
-        floatChars = null;
+        state.floatLayer = null;
         floatRect = null;
 
         rebuildOwnership();
 
         if (!currentModal) {
-            state.displayChars = mainChars;
-            state.displayCellStyles = mainCellStyles;
+            state.displayLayer = state.mainLayer;
         }
     }
 
-    // Caller must call draw() after.
+    // Caller must call requestRender() after.
     function hideFloat(): void {
         clearFloat();
     }
@@ -332,32 +298,22 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
     // ===== Resize handler =====
 
-    // Called by the Canvas layout callback on every resize. Rebuilds all layer state
-    // to fit the new grid dimensions.
-    function handleLayout(chars: string[][], currentNode: LayoutNode | null): void {
+    // Called by the Canvas layout callback after canvas.ts has allocated a fresh mainLayer.
+    // Rebuilds all layer state to fit the new grid dimensions.
+    function handleLayout(currentNode: LayoutNode | null): void {
         if (currentModal) {
-            // On resize during a modal: rebuild main layout into a fresh main buffer,
-            // then reallocate modal buffers at the new size.
-            mainChars = createGrid('');
-
+            // On resize during a modal: rebuild main layout into the fresh mainLayer,
+            // then reallocate modal and display layers at the new size.
             if (currentNode) {
-                applyLayout(currentNode, mainChars);
+                rebuildMainContent(currentNode, state.mainLayer);
 
-                const savedCellStyles = state.cellStyles;
-
-                mainCellStyles = createGrid<CellStyle | null>(null);
-
-                state.cellStyles = mainCellStyles;
-
-                applyInputOverlays();
-
-                state.cellStyles = savedCellStyles;
+                // Freeze the main layer's input styles now that main content is rebuilt.
+                applyInputOverlays(state.mainLayer);
             }
 
-            state.chars = createGrid('');
-            state.cellStyles = createGrid<CellStyle | null>(null);
-            state.displayChars = chars;
-            state.displayCellStyles = state.cellStyles;
+            state.modalLayer = createLayer();
+            state.activeLayer = state.modalLayer;
+            state.displayLayer = createLayer();
 
             const { positioned, x, y, w, h } = positionModal(currentModal);
 
@@ -365,7 +321,7 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
             rebuildOwnership();
 
-            const [modalRegions] = compose(positioned, state.chars);
+            const [modalRegions] = compose(positioned, state.modalLayer.chars);
 
             state.regions = modalRegions;
 
@@ -377,20 +333,14 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
                 state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
             }
         } else {
-            // Normal resize: main layer takes the fresh chars grid.
-            mainChars = chars;
-            state.displayChars = chars;
-            state.displayCellStyles = state.cellStyles;
-
+            // Normal resize: canvas.ts already set activeLayer and displayLayer to mainLayer.
             if (!currentNode) return;
 
-            applyLayout(currentNode, mainChars);
+            rebuildMainContent(currentNode, state.mainLayer);
 
             if (currentFloat) {
-                state.displayChars = createGrid('');
-                state.displayCellStyles = createGrid<CellStyle | null>(null);
-
-                floatChars = createGrid('');
+                state.displayLayer = createLayer();
+                state.floatLayer = createLayer();
 
                 const { positioned: fp, x: fx, y: fy, w: fw, h: fh } = positionFloat(currentFloat);
 
@@ -398,13 +348,13 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
                 rebuildOwnership();
 
-                compose(fp, floatChars);
+                compose(fp, state.floatLayer.chars);
             }
         }
 
-        // If both a modal and float are active, rebuild the float at the new size.
+        // If both a modal and float are active, rebuild the float at the new size too.
         if (currentModal && currentFloat) {
-            floatChars = createGrid('');
+            state.floatLayer = createLayer();
 
             const { positioned: fp, x: fx, y: fy, w: fw, h: fh } = positionFloat(currentFloat);
 
@@ -412,19 +362,15 @@ export function Layers({ state, inputMap, focus, applyLayout }: LayersProps) {
 
             rebuildOwnership();
 
-            compose(fp, floatChars);
+            compose(fp, state.floatLayer.chars);
         }
     }
 
     return {
-        get mainChars(): string[][] {
-            return mainChars;
-        },
         isModalOpen: (): boolean => currentModal !== null,
         isFloatOpen: (): boolean => currentFloat !== null,
         applyInputOverlays,
-        compositeChars,
-        compositeStyles,
+        compositeIntoDisplay,
         showModal,
         hideModal,
         showFloat,

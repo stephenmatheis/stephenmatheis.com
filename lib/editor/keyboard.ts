@@ -1,6 +1,6 @@
 import type { InputEventName } from '@/lib/editor/tui';
 import { getSelectedText, clearSelected } from './selection';
-import type { SelectionState, ContentState } from './types';
+import type { SelectionState, LayerContent } from './types';
 import type { Cursor } from './cursor';
 import type { Buffer } from './buffer';
 import type { History } from './history';
@@ -24,7 +24,7 @@ type FloatActions = {
 
 type KeyboardProps = {
     textarea: HTMLTextAreaElement;
-    state: Pick<SelectionState, 'selected'> & Pick<ContentState, 'chars'>;
+    state: Pick<SelectionState, 'selected'> & Pick<LayerContent, 'activeLayer'>;
     cursor: ReturnType<typeof Cursor>;
     buffer: ReturnType<typeof Buffer>;
     history: ReturnType<typeof History>;
@@ -33,7 +33,7 @@ type KeyboardProps = {
     inputActions: InputActions;
     modalActions: ModalActions;
     floatActions?: FloatActions;
-    draw: () => void;
+    requestRender: () => void;
 };
 
 export function Keyboard({
@@ -47,7 +47,7 @@ export function Keyboard({
     inputActions,
     modalActions,
     floatActions,
-    draw,
+    requestRender,
 }: KeyboardProps) {
     function handleKeyDown(event: KeyboardEvent) {
         const { shiftKey, altKey, metaKey, ctrlKey } = event;
@@ -60,14 +60,16 @@ export function Keyboard({
                     event.preventDefault();
 
                     selection.selectAll();
-                    draw();
+                    requestRender();
 
                     return;
                 case 'c':
                     event.preventDefault();
 
                     if (state.selected) {
-                        navigator.clipboard.writeText(getSelectedText(state.chars, state.selected)).catch(() => {});
+                        navigator.clipboard
+                            .writeText(getSelectedText(state.activeLayer.chars, state.selected))
+                            .catch(() => {});
                     }
 
                     return;
@@ -85,7 +87,7 @@ export function Keyboard({
                                 else if (char !== '\r') buffer.writeChar(char);
                             }
 
-                            draw();
+                            requestRender();
                         })
                         .catch(() => {});
 
@@ -94,14 +96,16 @@ export function Keyboard({
                     event.preventDefault();
 
                     if (state.selected) {
-                        navigator.clipboard.writeText(getSelectedText(state.chars, state.selected)).catch(() => {});
+                        navigator.clipboard
+                            .writeText(getSelectedText(state.activeLayer.chars, state.selected))
+                            .catch(() => {});
 
                         history.snapshot();
 
-                        cursor.jumpTo(clearSelected(state.chars, state.selected));
+                        cursor.jumpTo(clearSelected(state.activeLayer.chars, state.selected));
                         selection.clearSelection();
 
-                        draw();
+                        requestRender();
                     }
 
                     return;
@@ -114,14 +118,14 @@ export function Keyboard({
                         history.undo();
                     }
 
-                    draw();
+                    requestRender();
 
                     return;
                 case 'y':
                     event.preventDefault();
 
                     history.redo();
-                    draw();
+                    requestRender();
 
                     return;
                 default:
@@ -190,7 +194,7 @@ export function Keyboard({
                 history.snapshot();
 
                 if (state.selected) {
-                    cursor.jumpTo(clearSelected(state.chars, state.selected));
+                    cursor.jumpTo(clearSelected(state.activeLayer.chars, state.selected));
                     selection.clearSelection();
                 } else {
                     buffer.deleteChar();
@@ -217,7 +221,7 @@ export function Keyboard({
                 return;
         }
 
-        draw();
+        requestRender();
     }
 
     return {

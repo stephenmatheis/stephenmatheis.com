@@ -1,5 +1,5 @@
 import { log } from '@/lib/utils';
-import type { EditorState } from './types';
+import type { EditorState, Layer } from './types';
 
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;
@@ -24,12 +24,14 @@ type ResponsiveCanvasProps = {
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
     state: EditorState;
-    draw(): void;
+    requestRender(): void;
     onResize(): void;
-    layout: (chars: string[][]) => void;
+    // Called after state.mainLayer, state.activeLayer, and state.displayLayer are reset
+    // with fresh grids. Layers and focus rebuild their state to match the new dimensions.
+    layout: () => void;
 };
 
-export function ResponsiveCanvas({ canvas, ctx, state, draw, onResize, layout }: ResponsiveCanvasProps) {
+export function ResponsiveCanvas({ canvas, ctx, state, requestRender, onResize, layout }: ResponsiveCanvasProps) {
     log('createSetup() > setSize()');
     setSize();
 
@@ -60,15 +62,24 @@ export function ResponsiveCanvas({ canvas, ctx, state, draw, onResize, layout }:
         ctx.font = state.fontStr;
         ctx.textBaseline = 'ideographic';
 
-        state.chars = Array.from({ length: state.rows }, () => Array.from({ length: state.cols }, () => ''));
-        state.cellStyles = Array.from({ length: state.rows }, () => Array.from({ length: state.cols }, () => null));
+        // Allocate a fresh main layer for the new dimensions and point the
+        // active/display pointers at it. Layers.handleLayout will adjust these
+        // if a modal or float is currently open.
+        const freshLayer: Layer = {
+            chars: Array.from({ length: state.rows }, () => Array.from({ length: state.cols }, () => '')),
+            cellStyles: Array.from({ length: state.rows }, () => Array.from({ length: state.cols }, () => null)),
+        };
 
-        log('setupCanvas() > layout()');
-        layout(state.chars);
+        state.mainLayer = freshLayer;
+        state.activeLayer = freshLayer;
+        state.displayLayer = freshLayer;
 
         // TODO: Keep on resize.
         state.undoStack = [];
         state.redoStack = [];
+
+        log('setupCanvas() > layout()');
+        layout();
     }
 
     function setSize() {
@@ -77,8 +88,8 @@ export function ResponsiveCanvas({ canvas, ctx, state, draw, onResize, layout }:
 
         onResize();
 
-        log('setSize() > draw()');
-        draw();
+        log('setSize() > requestRender()');
+        requestRender();
     }
 
     return {
