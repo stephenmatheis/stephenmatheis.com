@@ -1,8 +1,8 @@
 import { getInputRef } from '@/lib/editor/tui';
 import type { InputEventName, InputNode, InputRef, LayoutNode, Region } from '@/lib/editor/tui';
-import type { CellPos, RegionState, CursorState, ContentState } from './types';
+import type { CellPos, LayerContent, RegionState, CursorState } from './types';
 
-export type FocusState = RegionState & CursorState & Pick<ContentState, 'chars'>;
+export type FocusState = RegionState & CursorState & Pick<LayerContent, 'activeLayer'>;
 
 // Pure utility — reads the current value of an Input from the char grid.
 // Exported separately so other modules (e.g. applyInputOverlays) can use it without
@@ -19,11 +19,11 @@ export function readInputValue(ref: InputRef): string {
 export function Focus({
     state,
     inputMap,
-    draw,
+    requestRender,
 }: {
     state: FocusState & RegionState;
     inputMap: Map<Region, InputNode>;
-    draw: () => void;
+    requestRender: () => void;
 }) {
     function getActiveInput(): InputNode | null {
         return state.activeRegion ? (inputMap.get(state.activeRegion) ?? null) : null;
@@ -88,7 +88,7 @@ export function Focus({
         let cy = r.y;
 
         for (let row = r.y + r.height - 1; row >= r.y; row--) {
-            const text = (state.chars[row] ?? [])
+            const text = (state.activeLayer.chars[row] ?? [])
                 .slice(r.x, r.x + r.width)
                 .join('')
                 .trimEnd();
@@ -138,7 +138,7 @@ export function Focus({
             if (ref) ref.valueOnFocus = readInputValue(ref);
         }
 
-        const char = (state.chars[y] ?? [])[x] ?? '';
+        const char = (state.activeLayer.chars[y] ?? [])[x] ?? '';
 
         state.cursor = char !== '' ? { x, y } : endOfContent();
 
@@ -164,13 +164,13 @@ export function Focus({
     // ===== Input registration =====
 
     // Walk a layout tree and register all Input nodes into inputMap.
-    // Sets ref.draw so the Input's .value setter can trigger a render from outside the event loop.
+    // Sets ref.requestRender so the Input's .value setter can trigger a render from outside the event loop.
     function collectInputs(node: LayoutNode): void {
         if (node.kind === 'input') {
             const ref = getInputRef(node);
 
             if (ref?.region) {
-                ref.draw = draw;
+                ref.requestRender = requestRender;
                 inputMap.set(ref.region, node);
             }
         } else if (node.kind === 'box') {

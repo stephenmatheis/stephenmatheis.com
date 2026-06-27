@@ -1,8 +1,8 @@
-import type { ContentState, CursorState, GeometryState, RegionState } from './types';
+import type { LayerContent, CursorState, GeometryState, RegionState } from './types';
 import type { Cursor } from './cursor';
 
 export type BufferProps = {
-    state: ContentState & CursorState & GeometryState & RegionState;
+    state: Pick<LayerContent, 'activeLayer'> & CursorState & GeometryState & RegionState;
     cursor: ReturnType<typeof Cursor>;
 };
 
@@ -19,14 +19,14 @@ export function Buffer({ state, cursor }: BufferProps) {
                     // Move to the first column of the next row via moveCursor so bounds-clamping
                     // and cursorVisible tracking stay in the Cursor module.
                     cursor.moveCursor(minX - state.cursor.x, 1);
-                    state.chars[state.cursor.y][state.cursor.x] = char;
+                    state.activeLayer.chars[state.cursor.y][state.cursor.x] = char;
                     cursor.moveCursor(1, 0);
                 }
 
                 return;
             }
 
-            state.chars[state.cursor.y][state.cursor.x] = char;
+            state.activeLayer.chars[state.cursor.y][state.cursor.x] = char;
 
             cursor.moveCursor(1, 0);
         }
@@ -38,7 +38,7 @@ export function Buffer({ state, cursor }: BufferProps) {
         if (state.cursor.x > minX) {
             cursor.moveCursor(-1, 0);
 
-            state.chars[state.cursor.y][state.cursor.x] = '';
+            state.activeLayer.chars[state.cursor.y][state.cursor.x] = '';
         }
     }
 

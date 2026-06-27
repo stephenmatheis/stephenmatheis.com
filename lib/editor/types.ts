@@ -36,6 +36,16 @@ export type Snapshot = {
     cursor: CellPos;
 };
 
+// ===== Layer =====
+// A Layer bundles the two grids that always travel together.
+// Grouping them makes the write target explicit: readers see `state.activeLayer.chars`
+// and know immediately which buffer is receiving keystrokes.
+
+export type Layer = {
+    chars: string[][];
+    cellStyles: Array<Array<CellStyle | null>>;
+};
+
 // ===== EditorState slices =====
 // Each slice documents the fields a specific module owns and is responsible for.
 
@@ -47,11 +57,28 @@ export type GeometryState = {
     rows: number;
 };
 
-export type ContentState = {
-    chars: string[][];
-    displayChars: string[][];
-    cellStyles: Array<Array<CellStyle | null>>;
-    displayCellStyles: Array<Array<CellStyle | null>>;
+// LayerContent replaces the old flat ContentState fields (chars, displayChars,
+// cellStyles, displayCellStyles). Named layers make the write-target redirect
+// that used to happen silently in layers.ts visible in the state itself.
+export type LayerContent = {
+    mainLayer: Layer;
+
+    // Non-null while a modal is open. Becomes activeLayer during that period.
+    modalLayer: Layer | null;
+
+    // Non-null while a float overlay is visible. Does not take over activeLayer —
+    // floats are read-only overlays composed into displayLayer.
+    floatLayer: Layer | null;
+
+    // The active write target. Equals mainLayer in normal operation;
+    // equals modalLayer while a modal is open.
+    // All writes (buffer, cursor, history) go through activeLayer.chars.
+    activeLayer: Layer;
+
+    // The composited output the renderer reads.
+    // Aliases mainLayer when no overlays are active (no allocation needed).
+    // Points at a separate merged Layer when a modal or float is visible.
+    displayLayer: Layer;
 };
 
 export type CursorState = {
@@ -96,7 +123,7 @@ export type ThemeColors = {
 
 // Full editor state — the intersection of all owned slices.
 export type EditorState = GeometryState &
-    ContentState &
+    LayerContent &
     CursorState &
     SelectionState &
     RegionState &

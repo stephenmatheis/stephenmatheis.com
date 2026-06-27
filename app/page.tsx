@@ -20,7 +20,7 @@ export default function Home() {
             container: containerRef.current!,
         });
 
-        editor.root.add(
+        editor.root.set(
             Box(
                 {
                     flexDirection: 'column',

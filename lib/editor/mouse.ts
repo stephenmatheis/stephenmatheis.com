@@ -5,7 +5,7 @@ type MouseHandlersProps = {
     canvas: HTMLCanvasElement;
     textarea: HTMLTextAreaElement;
     state: SelectionState & RegionState & CursorState & GeometryState;
-    draw(): void;
+    requestRender(): void;
     startMouseSelection(cell: CellPos): void;
     extendMouseSelection(cell: CellPos): void;
     endMouseSelection(): void;
@@ -29,7 +29,7 @@ export function Mouse({
     canvas,
     textarea,
     state,
-    draw,
+    requestRender,
     startMouseSelection,
     extendMouseSelection,
     endMouseSelection,
@@ -45,7 +45,7 @@ export function Mouse({
 
         if (!focusAtCell(cell.x, cell.y)) {
             if (floatDismissed) {
-                draw();
+                requestRender();
             }
 
             return;
@@ -55,7 +55,7 @@ export function Mouse({
         state.cursorVisible = true;
         startMouseSelection(state.cursor);
         textarea.focus();
-        draw();
+        requestRender();
     }
 
     function handleMouseMove(event: MouseEvent) {
@@ -78,7 +78,7 @@ export function Mouse({
             setCursor(endpoint);
 
             extendMouseSelection(endpoint);
-            draw();
+            requestRender();
         }
     }
 

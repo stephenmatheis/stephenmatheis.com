@@ -1,4 +1,4 @@
-import { Renderer } from './render';
+import { Renderer, CanvasRenderTarget } from './render';
 import { Theme } from './theme';
 import { Keyboard } from './keyboard';
 import { Mouse } from './mouse';
@@ -13,10 +13,11 @@ import { compose, disposeInput } from '@/lib/editor/tui';
 import { saveSnapshot, loadSnapshot, listSnapshots } from './db';
 import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
 import type { SnapshotMeta } from './db';
-import type { EditorState, FloatAnchor } from './types';
+import type { EditorState, FloatAnchor, Layer } from './types';
 
 export type { CellPos, CellStyle, Selected, Snapshot, EditorState, FloatAnchor } from './types';
 export type { SnapshotMeta } from './db';
+export type { RenderTarget, RenderedCell } from './render';
 
 type EditorProps = {
     canvas: HTMLCanvasElement;
@@ -25,24 +26,29 @@ type EditorProps = {
 };
 
 type EditorEvents = {
-    draw: (() => void) | null;
+    afterRender: (() => void) | null;
 };
 
 export function Editor({ canvas, textarea, container }: EditorProps) {
     const ctx = canvas.getContext('2d')!;
+
+    // Placeholder Layer used as the initial value before canvas.ts allocates real grids.
+    const emptyLayer: Layer = { chars: [], cellStyles: [] };
+
     const state: EditorState = {
         cellWidth: 0,
         cellHeight: 0,
         fontStr: '',
-        chars: [],
-        displayChars: [],
         cols: 0,
         rows: 0,
         cursor: { x: 0, y: 0 },
         regions: [],
         activeRegion: null,
-        cellStyles: [],
-        displayCellStyles: [],
+        mainLayer: emptyLayer,
+        modalLayer: null,
+        floatLayer: null,
+        activeLayer: emptyLayer,
+        displayLayer: emptyLayer,
         selected: null,
         cursorVisible: true,
         isDragging: false,
@@ -52,45 +58,65 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         redoStack: [],
         showGrid: true,
     };
+
     const inputMap = new Map<Region, InputNode>();
     const editorEvents: EditorEvents = {
-        draw: null,
+        afterRender: null,
     };
 
     let currentNode: LayoutNode | null = null;
-    let redraw: (() => void) | null = null;
+    let dynamicTextRedraw: (() => void) | null = null;
     let rafId: number | null = null;
 
-    function draw() {
-        if (rafId !== null) return;
+    // ===== Render pipeline =====
+    //
+    // requestRender() enqueues a repaint via requestAnimationFrame.
+    // flushRenderPipeline() is the RAF callback — it runs the five named phases below.
+    // No module other than editor.ts knows about the phase ordering; all they do is call requestRender().
 
-        rafId = requestAnimationFrame(() => {
-            rafId = null;
+    function flushRenderPipeline(): void {
+        rafId = null;
 
-            if (!currentNode) return;
+        if (!currentNode) return;
 
-            layers.applyInputOverlays();
-            redraw?.();
+        // Phase 1 — Refresh input overlays and dynamic text.
+        // Writes input backgrounds and placeholder text into the active layer's cellStyles.
+        // Calls any dynamic Text node closures to refresh their chars.
+        layers.applyInputOverlays(state.activeLayer);
+        dynamicTextRedraw?.();
 
-            if (layers.isModalOpen() || layers.isFloatOpen()) {
-                layers.compositeChars();
-                layers.compositeStyles();
-            }
+        // Phase 2 — Composite layers into displayLayer.
+        // Only needed when a modal or float is visible; otherwise displayLayer aliases mainLayer.
+        if (state.modalLayer || state.floatLayer) {
+            layers.compositeIntoDisplay();
+        }
 
-            renderer.render(ctx, state, theme.get());
+        // Phase 3 — Paint the display layer to the render target.
+        renderer.render(state, theme.get());
 
-            cursor.render();
+        // Phase 4 — Paint the cursor overlay.
+        // The cursor lives on a separate canvas so it can blink via CSS animation
+        // without triggering a main-canvas repaint.
+        cursor.render();
 
-            editorEvents.draw?.();
-        });
+        // Phase 5 — Post-render hook for external consumers.
+        editorEvents.afterRender?.();
     }
 
-    function applyLayout(node: LayoutNode, chars: string[][]) {
-        const [regions, newRedraw] = compose(node, chars);
+    function requestRender(): void {
+        if (rafId !== null) return;
+
+        rafId = requestAnimationFrame(flushRenderPipeline);
+    }
+
+    // Rebuilds the main layer's content from a node tree. Called by root.add,
+    // layers.hideModal, and layers.handleLayout (via the rebuildMainContent callback).
+    function rebuildMainContent(node: LayoutNode, mainLayer: Layer): void {
+        const [regions, newDynamicTextRedraw] = compose(node, mainLayer.chars);
 
         state.regions = regions;
         state.activeRegion = regions[0] ?? null;
-        redraw = newRedraw;
+        dynamicTextRedraw = newDynamicTextRedraw;
 
         if (state.activeRegion) {
             state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
@@ -105,10 +131,11 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     const focus = Focus({
         state,
         inputMap,
-        draw,
+        requestRender,
     });
-    const layers = Layers({ state, inputMap, focus, applyLayout });
-    const renderer = Renderer();
+    const layers = Layers({ state, inputMap, focus, rebuildMainContent });
+    const canvasTarget = CanvasRenderTarget(ctx);
+    const renderer = Renderer(canvasTarget);
     const cursor = Cursor({
         container,
         state,
@@ -126,7 +153,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     const keyboard = Keyboard({
         textarea,
         state,
-        draw,
+        requestRender,
         cursor,
         buffer,
         history,
@@ -146,14 +173,14 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             isOpen: layers.isModalOpen,
             dismiss() {
                 layers.hideModal(currentNode);
-                draw();
+                requestRender();
             },
         },
         floatActions: {
             isOpen: layers.isFloatOpen,
             dismiss() {
                 layers.hideFloat();
-                draw();
+                requestRender();
             },
         },
     });
@@ -162,7 +189,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         canvas,
         textarea,
         state,
-        draw,
+        requestRender,
         startMouseSelection: selection.startMouseSelection,
         extendMouseSelection: selection.extendMouseSelection,
         endMouseSelection: selection.endMouseSelection,
@@ -175,13 +202,13 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         canvas,
         ctx,
         state,
-        draw,
+        requestRender,
         onResize() {
             theme.refresh();
             renderer.invalidateAll();
         },
-        layout(chars) {
-            layers.handleLayout(chars, currentNode);
+        layout() {
+            layers.handleLayout(currentNode);
         },
     });
 
@@ -205,10 +232,10 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         get rows() {
             return state.rows;
         },
-        get r_cols() {
+        get regionCols() {
             return state.activeRegion?.width || '';
         },
-        get r_rows() {
+        get regionRows() {
             return state.activeRegion?.height || '';
         },
         get cursor() {
@@ -217,37 +244,37 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         get activeRegion() {
             return state.activeRegion;
         },
-        on(event: string, action: () => void) {
-            if (event === 'draw') {
-                editorEvents.draw = action;
+        on(event: 'afterRender', action: () => void) {
+            if (event === 'afterRender') {
+                editorEvents.afterRender = action;
             }
         },
         root: {
-            add(node: LayoutNode) {
+            set(node: LayoutNode) {
                 currentNode = node;
 
-                applyLayout(node, layers.mainChars);
-                draw();
+                rebuildMainContent(node, state.mainLayer);
+                requestRender();
             },
         },
         modal: {
             show(node: LayoutNode) {
                 layers.showModal(node);
-                draw();
+                requestRender();
             },
             hide() {
                 layers.hideModal(currentNode);
-                draw();
+                requestRender();
             },
         },
         float: {
             show(node: LayoutNode, anchor?: FloatAnchor) {
                 layers.showFloat(node, anchor);
-                draw();
+                requestRender();
             },
             hide() {
                 layers.hideFloat();
-                draw();
+                requestRender();
             },
         },
         theme(name: 'light' | 'dark') {
@@ -255,14 +282,14 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
 
             renderer.invalidateAll();
 
-            draw();
+            requestRender();
         },
         toggleGrid() {
             state.showGrid = !state.showGrid;
 
             renderer.invalidateAll();
 
-            draw();
+            requestRender();
         },
         setFont(family: string) {
             document.documentElement.style.setProperty('--canvas-font-family', family);
@@ -278,7 +305,14 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             const id = typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `snap-${Date.now()}`;
             const label = name ?? new Date().toLocaleString();
 
-            await saveSnapshot(id, label, state.cols, state.rows, state.displayChars, state.displayCellStyles);
+            await saveSnapshot(
+                id,
+                label,
+                state.cols,
+                state.rows,
+                state.displayLayer.chars,
+                state.displayLayer.cellStyles,
+            );
 
             return id;
         },
@@ -287,12 +321,11 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
 
             if (!snap) return false;
 
-            state.displayChars = snap.chars;
-            state.displayCellStyles = snap.cellStyles;
+            state.displayLayer = { chars: snap.chars, cellStyles: snap.cellStyles };
 
             renderer.invalidateAll();
 
-            draw();
+            requestRender();
 
             return true;
         },

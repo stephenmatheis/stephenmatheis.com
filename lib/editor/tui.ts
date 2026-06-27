@@ -69,7 +69,10 @@ export type InputRef = {
     chars: string[][] | null;
     region: Region | null;
     valueOnFocus: string;
-    draw: (() => void) | null;
+    // Calling requestRender() triggers the editor's RAF render pipeline.
+    // Set by focus.collectInputs() so the Input's .value setter can cause
+    // a repaint from outside the event loop without knowing about the pipeline.
+    requestRender: (() => void) | null;
     handlers: Partial<Record<InputEventName, (value: string) => void>>;
 };
 
@@ -138,7 +141,7 @@ export function Input(props: InputProps): InputHandle {
         chars: null,
         region: null,
         valueOnFocus: '',
-        draw: null,
+        requestRender: null,
         handlers: {},
     };
 
@@ -184,7 +187,7 @@ export function Input(props: InputProps): InputHandle {
                 chars[region.y][region.x + i] = v[i];
             }
 
-            ref.draw?.();
+            ref.requestRender?.();
         },
         enumerable: false,
         configurable: true,
@@ -467,7 +470,7 @@ export function compose(node: LayoutNode, chars: string[][]): [Region[], (() => 
     log('compose() > composeNode()');
     composeNode(node, chars, regions, dynamicTexts);
 
-    const redraw =
+    const dynamicTextRedraw =
         dynamicTexts.length > 0
             ? () => {
                   for (const { getter, write } of dynamicTexts) {
@@ -476,5 +479,5 @@ export function compose(node: LayoutNode, chars: string[][]): [Region[], (() => 
               }
             : null;
 
-    return [regions, redraw];
+    return [regions, dynamicTextRedraw];
 }

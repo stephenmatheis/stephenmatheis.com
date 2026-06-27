@@ -1,8 +1,8 @@
-import type { EditorState, ContentState, ThemeColors } from './types';
+import type { EditorState, LayerContent, ThemeColors } from './types';
 
 type CursorProps = {
     container: HTMLElement;
-    state: EditorState & Pick<ContentState, 'chars'>;
+    state: EditorState & Pick<LayerContent, 'activeLayer' | 'displayLayer'>;
     getTheme: () => ThemeColors;
 };
 
@@ -32,7 +32,7 @@ export function Cursor({ container, state, getTheme }: CursorProps) {
     }
 
     function wordJumpRight() {
-        const row = state.chars[state.cursor.y] || [];
+        const row = state.activeLayer.chars[state.cursor.y] || [];
         const r = state.activeRegion;
         const maxX = r ? r.x + r.width - 1 : state.cols - 1;
         let col = state.cursor.x;
@@ -45,7 +45,7 @@ export function Cursor({ container, state, getTheme }: CursorProps) {
     }
 
     function wordJumpLeft() {
-        const row = state.chars[state.cursor.y] || [];
+        const row = state.activeLayer.chars[state.cursor.y] || [];
         const r = state.activeRegion;
         const minX = r ? r.x : 0;
         let col = state.cursor.x;
@@ -81,7 +81,7 @@ export function Cursor({ container, state, getTheme }: CursorProps) {
     }
 
     // Goes to the geometric bottom-left of the region, not the end of typed content.
-    // For content-aware end-of-text, see endOfContent() in editor.ts.
+    // For content-aware end-of-text, see endOfContent() in focus.ts.
     function regionEnd() {
         const r = state.activeRegion;
         state.cursor = { x: r ? r.x : 0, y: r ? r.y + r.height - 1 : state.rows - 1 };
@@ -156,7 +156,7 @@ export function Cursor({ container, state, getTheme }: CursorProps) {
         cursorCtx.fillRect(0, 0, cw, ch);
 
         // Character in background color so it remains readable through the cursor.
-        const char = state.displayChars[state.cursor.y]?.[state.cursor.x] || '';
+        const char = state.displayLayer.chars[state.cursor.y]?.[state.cursor.x] || '';
 
         if (char) {
             cursorCtx.fillStyle = background;

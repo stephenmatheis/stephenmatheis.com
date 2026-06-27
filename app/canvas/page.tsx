@@ -49,7 +49,7 @@ export default function Page() {
             }
         });
 
-        editor.root.add(
+        editor.root.set(
             Box(
                 { flexDirection: 'column', border: false, padding: 0 },
                 Box(
@@ -70,7 +70,7 @@ export default function Page() {
                     },
                     Text({ content: () => `Grid ${editor.cols} x ${editor.rows}`, flex: 1 }),
                     Text({ content: () => `Ln ${editor.ln}  Col ${editor.col}`, flex: 1, align: 'center' }),
-                    Text({ content: () => `${editor.r_cols} x ${editor.r_rows}`, flex: 1, align: 'right' }),
+                    Text({ content: () => `${editor.regionCols} x ${editor.regionRows}`, flex: 1, align: 'right' }),
                 ),
             ),
         );
