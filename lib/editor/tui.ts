@@ -470,7 +470,7 @@ export function compose(node: LayoutNode, chars: string[][]): [Region[], (() => 
     log('compose() > composeNode()');
     composeNode(node, chars, regions, dynamicTexts);
 
-    const dynamicTextRedraw =
+    const dynamicTextWillRedraw =
         dynamicTexts.length > 0
             ? () => {
                   for (const { getter, write } of dynamicTexts) {
@@ -479,5 +479,5 @@ export function compose(node: LayoutNode, chars: string[][]): [Region[], (() => 
               }
             : null;
 
-    return [regions, dynamicTextRedraw];
+    return [regions, dynamicTextWillRedraw];
 }
