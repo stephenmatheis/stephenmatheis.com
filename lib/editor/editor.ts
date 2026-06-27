@@ -31,10 +31,6 @@ type EditorEvents = {
 
 export function Editor({ canvas, textarea, container }: EditorProps) {
     const ctx = canvas.getContext('2d')!;
-
-    // Placeholder Layer used as the initial value before canvas.ts allocates real grids.
-    const emptyLayer: Layer = { chars: [], cellStyles: [] };
-
     const state: EditorState = {
         cellWidth: 0,
         cellHeight: 0,
@@ -44,11 +40,11 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         cursor: { x: 0, y: 0 },
         regions: [],
         activeRegion: null,
-        mainLayer: emptyLayer,
+        mainLayer: { chars: [], cellStyles: [] },
         modalLayer: null,
         floatLayer: null,
-        activeLayer: emptyLayer,
-        displayLayer: emptyLayer,
+        activeLayer: { chars: [], cellStyles: [] },
+        displayLayer: { chars: [], cellStyles: [] },
         selected: null,
         cursorVisible: true,
         isDragging: false,
@@ -58,7 +54,6 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         redoStack: [],
         showGrid: true,
     };
-
     const inputMap = new Map<Region, InputNode>();
     const editorEvents: EditorEvents = {
         afterRender: null,
@@ -112,11 +107,12 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     // Rebuilds the main layer's content from a node tree. Called by root.add,
     // layers.hideModal, and layers.handleLayout (via the rebuildMainContent callback).
     function rebuildMainContent(node: LayoutNode, mainLayer: Layer): void {
-        const [regions, newDynamicTextRedraw] = compose(node, mainLayer.chars);
+        const [regions, dynamicTextWillRedraw] = compose(node, mainLayer.chars);
 
         state.regions = regions;
         state.activeRegion = regions[0] ?? null;
-        dynamicTextRedraw = newDynamicTextRedraw;
+
+        dynamicTextRedraw = dynamicTextWillRedraw;
 
         if (state.activeRegion) {
             state.cursor = { x: state.activeRegion.x, y: state.activeRegion.y };
@@ -153,11 +149,11 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
     const keyboard = Keyboard({
         textarea,
         state,
-        requestRender,
         cursor,
         buffer,
         history,
         selection,
+        requestRender,
         focus: {
             focusNext: focus.focusNext,
             focusPrev: focus.focusPrev,
