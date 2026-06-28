@@ -21,9 +21,12 @@ const MAX_HISTORY = 100;
 export type HistoryProps = {
     state: HistoryState & Pick<LayerContent, 'activeLayer'> & CursorState;
     selection: ReturnType<typeof Selection>;
+    // Called after undo/redo restores a chars snapshot so callers can
+    // rebuild any derived state (e.g. input/textarea buffers) from the grid.
+    afterChange?: () => void;
 };
 
-export function History({ state, selection }: HistoryProps) {
+export function History({ state, selection, afterChange }: HistoryProps) {
     function snapshot() {
         state.undoStack.push({
             chars: cloneChars(state.activeLayer.chars),
@@ -50,6 +53,7 @@ export function History({ state, selection }: HistoryProps) {
         state.activeLayer.chars = prev.chars;
         state.cursor = prev.cursor;
         selection.clearSelection();
+        afterChange?.();
     }
 
     function redo() {
@@ -65,6 +69,7 @@ export function History({ state, selection }: HistoryProps) {
         state.activeLayer.chars = next.chars;
         state.cursor = next.cursor;
         selection.clearSelection();
+        afterChange?.();
     }
 
     return { snapshot, undo, redo };

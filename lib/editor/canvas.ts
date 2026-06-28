@@ -1,5 +1,5 @@
 import { log } from '@/lib/utils';
-import type { EditorState, Layer } from './types';
+import type { EditorState, Layer, Snapshot } from './types';
 
 const ROW_OFFSET = 2;
 const COL_OFFSET = 4;
@@ -20,14 +20,34 @@ function getEmSquare(fontStr: string) {
     };
 }
 
+function resizeSnapshot(snap: Snapshot, rows: number, cols: number): Snapshot {
+    const chars = Array.from({ length: rows }, (_, r) => {
+        const oldRow = snap.chars[r];
+
+        if (!oldRow) return Array<string>(cols).fill('');
+        if (oldRow.length === cols) return oldRow;
+        if (oldRow.length > cols) return oldRow.slice(0, cols);
+
+        return [...oldRow, ...Array<string>(cols - oldRow.length).fill('')];
+    });
+
+    return {
+        chars,
+        cursor: {
+            x: Math.min(snap.cursor.x, cols - 1),
+            y: Math.min(snap.cursor.y, rows - 1),
+        },
+    };
+}
+
 type ResponsiveCanvasProps = {
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
     state: EditorState;
     requestRender(): void;
     onResize(): void;
-    // Called after state.mainLayer, state.activeLayer, and state.displayLayer are reset
-    // with fresh grids. Layers and focus rebuild their state to match the new dimensions.
+    // Called after state.mainLayer/activeLayer/displayLayer are reset with fresh grids.
+    // Responsible for rebuilding layout and restoring cursor position.
     layout: () => void;
 };
 
@@ -74,10 +94,12 @@ export function ResponsiveCanvas({ canvas, ctx, state, requestRender, onResize, 
         state.activeLayer = freshLayer;
         state.displayLayer = freshLayer;
 
-        // TODO: Keep on resize.
-        state.undoStack = [];
-        state.redoStack = [];
+        state.undoStack = state.undoStack.map((snap) => resizeSnapshot(snap, state.rows, state.cols));
+        state.redoStack = state.redoStack.map((snap) => resizeSnapshot(snap, state.rows, state.cols));
 
+        // layout() rebuilds the node tree into the fresh grid and restores cursor position.
+        // Buffer content (InputRef.buffer, TextareaRef.buffer) survives the grid reallocation
+        // because it lives in the module-level registries, not in the chars grid.
         log('setupCanvas() > layout()');
         layout();
     }
