@@ -1,9 +1,13 @@
+import { getInputRef, getTextareaRef } from '@/lib/editor/tui';
+import type { InputNode, Region, TextareaNode } from '@/lib/editor/tui';
 import type { EditorState, LayerContent, ThemeColors } from './types';
 
 type CursorProps = {
     container: HTMLElement;
     state: EditorState & Pick<LayerContent, 'activeLayer' | 'displayLayer'>;
     getTheme: () => ThemeColors;
+    inputMap: Map<Region, InputNode>;
+    textareaMap: Map<Region, TextareaNode>;
 };
 
 function isWordChar(char: string): boolean {
@@ -15,7 +19,7 @@ function isWordChar(char: string): boolean {
     return !(code >= 0x2500 && code <= 0x257f);
 }
 
-export function Cursor({ container, state, getTheme }: CursorProps) {
+export function Cursor({ container, state, getTheme, inputMap, textareaMap }: CursorProps) {
     function moveCursor(dx: number, dy: number) {
         const r = state.activeRegion;
         const minX = r ? r.x : 0;
@@ -23,6 +27,122 @@ export function Cursor({ container, state, getTheme }: CursorProps) {
         const minY = r ? r.y : 0;
         const maxY = r ? r.y + r.height - 1 : state.rows - 1;
 
+        if (r) {
+            // ===== Input: horizontal scroll instead of clamp =====
+            const inputNode = inputMap.get(r);
+
+            if (inputNode) {
+                const ref = getInputRef(inputNode);
+
+                if (ref && dx !== 0) {
+                    const newX = state.cursor.x + dx;
+
+                    if (dx > 0) {
+                        if (newX > maxX) {
+                            // Scroll right if buffer extends beyond visible window
+                            if (ref.scrollOffset + r.width < ref.buffer.length) {
+                                ref.scrollOffset++;
+                            }
+                            // cursor.x stays at maxX — already there or clamped
+                        } else {
+                            state.cursor.x = newX;
+                        }
+                    } else {
+                        if (newX < minX) {
+                            // Scroll left if there's hidden content to the left
+                            if (ref.scrollOffset > 0) {
+                                ref.scrollOffset--;
+                            }
+                            // cursor.x stays at minX
+                        } else {
+                            state.cursor.x = newX;
+                        }
+                    }
+
+                    state.cursorVisible = true;
+
+                    return;
+                }
+            }
+
+            // ===== Textarea: wrap + vertical scroll instead of clamp =====
+            const textareaNode = textareaMap.get(r);
+
+            if (textareaNode) {
+                const ref = getTextareaRef(textareaNode);
+
+                if (ref) {
+                    const totalLogicalRows = ref.buffer.length === 0 ? 0 : Math.ceil(ref.buffer.length / r.width);
+
+                    if (dx !== 0 && dy === 0) {
+                        const newX = state.cursor.x + dx;
+
+                        if (dx > 0) {
+                            if (newX > maxX) {
+                                // Wrap to next row
+                                if (state.cursor.y < maxY) {
+                                    state.cursor.x = minX;
+                                    state.cursor.y++;
+                                } else if (ref.scrollOffset + r.height < totalLogicalRows) {
+                                    // Scroll down and wrap
+                                    ref.scrollOffset++;
+                                    state.cursor.x = minX;
+                                }
+                                // else: at logical end, don't move
+                            } else {
+                                state.cursor.x = newX;
+                            }
+                        } else {
+                            if (newX < minX) {
+                                // Wrap to end of previous row
+                                if (state.cursor.y > minY) {
+                                    state.cursor.x = maxX;
+                                    state.cursor.y--;
+                                } else if (ref.scrollOffset > 0) {
+                                    ref.scrollOffset--;
+                                    state.cursor.x = maxX;
+                                }
+                                // else: at logical start, don't move
+                            } else {
+                                state.cursor.x = newX;
+                            }
+                        }
+
+                        state.cursorVisible = true;
+
+                        return;
+                    }
+
+                    if (dy !== 0 && dx === 0) {
+                        const newY = state.cursor.y + dy;
+
+                        if (dy > 0) {
+                            if (newY > maxY) {
+                                if (ref.scrollOffset + r.height < totalLogicalRows) {
+                                    ref.scrollOffset++;
+                                }
+                            } else {
+                                state.cursor.y = newY;
+                            }
+                        } else {
+                            if (newY < minY) {
+                                if (ref.scrollOffset > 0) {
+                                    ref.scrollOffset--;
+                                }
+                            } else {
+                                state.cursor.y = newY;
+                            }
+                        }
+
+                        state.cursorVisible = true;
+
+                        return;
+                    }
+                }
+            }
+        }
+
+        // ===== Default: clamp to region bounds =====
         state.cursor = {
             x: Math.max(minX, Math.min(state.cursor.x + dx, maxX)),
             y: Math.max(minY, Math.min(state.cursor.y + dy, maxY)),

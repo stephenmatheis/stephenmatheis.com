@@ -9,9 +9,9 @@ import { Selection } from './selection';
 import { ResponsiveCanvas } from './canvas';
 import { Focus } from './focus';
 import { Layers } from './layers';
-import { compose, disposeInput } from '@/lib/editor/tui';
+import { compose, disposeInput, disposeTextarea, getInputRef, getTextareaRef } from '@/lib/editor/tui';
 import { saveSnapshot, loadSnapshot, listSnapshots } from './db';
-import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
+import type { InputNode, LayoutNode, Region, TextareaNode } from '@/lib/editor/tui';
 import type { SnapshotMeta } from './db';
 import type { EditorState, FloatAnchor, Layer } from './types';
 
@@ -55,6 +55,7 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         showGrid: true,
     };
     const inputMap = new Map<Region, InputNode>();
+    const textareaMap = new Map<Region, TextareaNode>();
     const editorEvents: EditorEvents = {
         afterRender: null,
     };
@@ -104,6 +105,44 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         rafId = requestAnimationFrame(flushRenderPipeline);
     }
 
+    // After undo/redo restores a chars snapshot, rebuild input/textarea buffers from
+    // the visible chars grid. This keeps buffer state in sync with what's displayed.
+    function syncBuffersFromChars(): void {
+        for (const [region, node] of inputMap) {
+            const ref = getInputRef(node);
+
+            if (!ref) continue;
+
+            const rowSlice = (state.activeLayer.chars[region.y] ?? []).slice(region.x, region.x + region.width);
+            const value = rowSlice.join('').trimEnd();
+
+            ref.buffer = value ? value.split('') : [];
+            ref.scrollOffset = 0;
+        }
+
+        for (const [region, node] of textareaMap) {
+            const ref = getTextareaRef(node);
+
+            if (!ref) continue;
+
+            const chars: string[] = [];
+
+            for (let dy = 0; dy < region.height; dy++) {
+                const row = region.y + dy;
+                const rowSlice = (state.activeLayer.chars[row] ?? []).slice(region.x, region.x + region.width);
+
+                chars.push(...rowSlice);
+            }
+
+            while (chars.length > 0 && chars[chars.length - 1] === '') {
+                chars.pop();
+            }
+
+            ref.buffer = chars;
+            ref.scrollOffset = 0;
+        }
+    }
+
     // Rebuilds the main layer's content from a node tree. Called by root.add,
     // layers.hideModal, and layers.handleLayout (via the rebuildMainContent callback).
     function rebuildMainContent(node: LayoutNode, mainLayer: Layer): void {
@@ -119,32 +158,40 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
         }
 
         inputMap.clear();
+        textareaMap.clear();
 
         focus.collectInputs(node);
+        focus.collectTextareas(node);
     }
 
     const theme = Theme();
     const focus = Focus({
         state,
         inputMap,
+        textareaMap,
         requestRender,
     });
-    const layers = Layers({ state, inputMap, focus, rebuildMainContent });
+    const layers = Layers({ state, inputMap, textareaMap, focus, rebuildMainContent });
     const canvasTarget = CanvasRenderTarget(ctx);
     const renderer = Renderer(canvasTarget);
     const cursor = Cursor({
         container,
         state,
         getTheme: theme.get,
+        inputMap,
+        textareaMap,
     });
     const buffer = Buffer({
         state,
         cursor,
+        inputMap,
+        textareaMap,
     });
     const selection = Selection({ state });
     const history = History({
         state,
         selection,
+        afterChange: syncBuffersFromChars,
     });
     const keyboard = Keyboard({
         textarea,
@@ -204,7 +251,14 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
             renderer.invalidateAll();
         },
         layout() {
+            // Save logical cursor offset before recompose wipes and rebuilds regions.
+            // Buffer content survives in the registries; only cursor position needs saving.
+            const savedRegionIndex = state.regions.indexOf(state.activeRegion!);
+            const savedLogical = focus.saveCursorLogical();
+
             layers.handleLayout(currentNode);
+
+            focus.restoreCursorLogical(savedRegionIndex, savedLogical);
         },
     });
 
@@ -342,7 +396,12 @@ export function Editor({ canvas, textarea, container }: EditorProps) {
                 disposeInput(node);
             }
 
+            for (const node of textareaMap.values()) {
+                disposeTextarea(node);
+            }
+
             inputMap.clear();
+            textareaMap.clear();
         },
     };
 }

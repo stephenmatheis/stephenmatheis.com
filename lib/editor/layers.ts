@@ -1,5 +1,5 @@
-import { compose, getInputRef } from '@/lib/editor/tui';
-import type { InputNode, LayoutNode, Region } from '@/lib/editor/tui';
+import { compose, getInputRef, getTextareaRef } from '@/lib/editor/tui';
+import type { InputNode, LayoutNode, Region, TextareaNode } from '@/lib/editor/tui';
 import { readInputValue } from './focus';
 import type { CellPos, CellStyle, FloatAnchor, Layer } from './types';
 import type { GeometryState, LayerContent, RegionState, CursorState } from './types';
@@ -16,13 +16,14 @@ type FocusHandle = {
 export type LayersProps = {
     state: LayerState;
     inputMap: Map<Region, InputNode>;
+    textareaMap: Map<Region, TextareaNode>;
     focus: FocusHandle;
     // Called when the main layer's node tree needs to be re-composed.
     // Updates state.regions, state.activeRegion, the dynamic-text redraw closure, and inputMap.
     rebuildMainContent: (node: LayoutNode, mainLayer: Layer) => void;
 };
 
-export function Layers({ state, inputMap, focus, rebuildMainContent }: LayersProps) {
+export function Layers({ state, inputMap, textareaMap, focus, rebuildMainContent }: LayersProps) {
     let savedRegions: Region[] = [];
     let savedRegionIndex = 0;
     let modalRect: Rect | null = null;
@@ -102,9 +103,9 @@ export function Layers({ state, inputMap, focus, rebuildMainContent }: LayersPro
         }
     }
 
-    // Rebuild the per-cell style grid for the given layer every draw so
-    // placeholder/background stay in sync with live input values without
-    // touching the chars grid.
+    // Sync all editable region buffers into the char grid, and rebuild the per-cell
+    // style grid (placeholder/background). Called every frame before rendering so the
+    // display always reflects the live buffer state.
     function applyInputOverlays(layer: Layer): void {
         if (!layer.cellStyles.length) return;
 
@@ -114,12 +115,32 @@ export function Layers({ state, inputMap, focus, rebuildMainContent }: LayersPro
             }
         }
 
+        // ===== Inputs =====
         for (const [region, node] of inputMap) {
             const ref = getInputRef(node);
 
             if (!ref) continue;
 
-            const isEmpty = readInputValue(ref) === '';
+            // Clear the single display row for this input
+            for (let x = region.x; x < region.x + region.width; x++) {
+                if (region.y >= 0 && region.y < state.rows && x >= 0 && x < state.cols) {
+                    layer.chars[region.y][x] = '';
+                }
+            }
+
+            // Write the visible slice of the buffer into the display row
+            const visibleChars = ref.buffer.slice(ref.scrollOffset, ref.scrollOffset + region.width);
+
+            for (let i = 0; i < visibleChars.length; i++) {
+                const x = region.x + i;
+
+                if (x >= 0 && x < state.cols) {
+                    layer.chars[region.y][x] = visibleChars[i];
+                }
+            }
+
+            // Apply background and placeholder cell styles
+            const isEmpty = ref.buffer.length === 0;
             const placeholder = node.placeholder ?? '';
 
             for (let y = region.y; y < region.y + region.height; y++) {
@@ -139,6 +160,40 @@ export function Layers({ state, inputMap, focus, rebuildMainContent }: LayersPro
                     }
 
                     layer.cellStyles[y][x] = style;
+                }
+            }
+        }
+
+        // ===== Textareas =====
+        for (const [region, _node] of textareaMap) {
+            const ref = getTextareaRef(_node);
+
+            if (!ref) continue;
+
+            // Clear the region's display rows
+            for (let dy = 0; dy < region.height; dy++) {
+                const row = region.y + dy;
+
+                for (let x = region.x; x < region.x + region.width; x++) {
+                    if (row >= 0 && row < state.rows && x >= 0 && x < state.cols) {
+                        layer.chars[row][x] = '';
+                    }
+                }
+            }
+
+            // Write the visible rows from the flat buffer (word-wrap at region.width)
+            for (let dy = 0; dy < region.height; dy++) {
+                const logicalRow = dy + ref.scrollOffset;
+                const startIdx = logicalRow * region.width;
+                const rowChars = ref.buffer.slice(startIdx, startIdx + region.width);
+                const physicalRow = region.y + dy;
+
+                for (let i = 0; i < rowChars.length; i++) {
+                    const x = region.x + i;
+
+                    if (physicalRow >= 0 && physicalRow < state.rows && x >= 0 && x < state.cols) {
+                        layer.chars[physicalRow][x] = rowChars[i];
+                    }
                 }
             }
         }

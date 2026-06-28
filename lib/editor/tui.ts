@@ -68,12 +68,22 @@ export type InputProps = {
 export type InputRef = {
     chars: string[][] | null;
     region: Region | null;
+    buffer: string[];        // source of truth for input content
+    scrollOffset: number;    // chars hidden to the left of the visible window
     valueOnFocus: string;
     // Calling requestRender() triggers the editor's RAF render pipeline.
     // Set by focus.collectInputs() so the Input's .value setter can cause
     // a repaint from outside the event loop without knowing about the pipeline.
     requestRender: (() => void) | null;
     handlers: Partial<Record<InputEventName, (value: string) => void>>;
+};
+
+// Internal state bag for each Textarea instance. Parallel to InputRef.
+export type TextareaRef = {
+    region: Region | null;
+    buffer: string[];        // flat linear buffer of chars, no newlines
+    scrollOffset: number;    // display rows hidden above the visible window
+    requestRender: (() => void) | null;
 };
 
 // InputNode is the plain data shape that goes into LayoutNode / Box children.
@@ -94,12 +104,16 @@ export type LayoutNode = BoxNode | TextNode | TextareaNode | InputNode;
 
 export type Region = { x: number; y: number; width: number; height: number };
 
-// Enumerable Symbol key — survives `{ ...node }` spreads so the registry
-// lookup works on positional copies created by the flex layout loop.
+// Enumerable Symbol keys — survive `{ ...node }` spreads so registry lookups
+// work on positional copies created by the flex layout loop.
 const INPUT_ID = Symbol('tui.input');
+const TEXTAREA_ID = Symbol('tui.textarea');
 
 const inputRegistry = new Map<number, InputRef>();
 let nextInputId = 0;
+
+const textareaRegistry = new Map<number, TextareaRef>();
+let nextTextareaId = 0;
 
 export function getInputRef(node: InputNode): InputRef | undefined {
     const id = (node as InputNode & { [INPUT_ID]?: number })[INPUT_ID];
@@ -111,6 +125,18 @@ export function disposeInput(node: InputNode): void {
     const id = (node as InputNode & { [INPUT_ID]?: number })[INPUT_ID];
 
     if (id != null) inputRegistry.delete(id);
+}
+
+export function getTextareaRef(node: TextareaNode): TextareaRef | undefined {
+    const id = (node as TextareaNode & { [TEXTAREA_ID]?: number })[TEXTAREA_ID];
+
+    return id != null ? textareaRegistry.get(id) : undefined;
+}
+
+export function disposeTextarea(node: TextareaNode): void {
+    const id = (node as TextareaNode & { [TEXTAREA_ID]?: number })[TEXTAREA_ID];
+
+    if (id != null) textareaRegistry.delete(id);
 }
 
 export function Box(props: BoxProps, ...children: LayoutNode[]): BoxNode {
@@ -132,7 +158,26 @@ export function Text(props: TextProps): TextNode {
 // FIXME: Shouldn't be able to move cursor down if there is no new line.
 // FIXME: If border is false, don't highlight on focus region
 export function Textarea(props: TextareaProps): TextareaNode {
-    return { kind: 'textarea', border: true, borderStyle: 'rounded', ...props };
+    const id = nextTextareaId++;
+    const ref: TextareaRef = {
+        region: null,
+        buffer: [],
+        scrollOffset: 0,
+        requestRender: null,
+    };
+
+    textareaRegistry.set(id, ref);
+
+    const node = {
+        kind: 'textarea' as const,
+        border: true,
+        borderStyle: 'rounded' as const,
+        ...props,
+    } as TextareaNode & { [TEXTAREA_ID]: number };
+
+    node[TEXTAREA_ID] = id;
+
+    return node as TextareaNode;
 }
 
 export function Input(props: InputProps): InputHandle {
@@ -140,6 +185,8 @@ export function Input(props: InputProps): InputHandle {
     const ref: InputRef = {
         chars: null,
         region: null,
+        buffer: [],
+        scrollOffset: 0,
         valueOnFocus: '',
         requestRender: null,
         handlers: {},
@@ -167,26 +214,11 @@ export function Input(props: InputProps): InputHandle {
 
     Object.defineProperty(node, 'value', {
         get(): string {
-            if (!ref.chars || !ref.region) return '';
-
-            return (ref.chars[ref.region.y] ?? [])
-                .slice(ref.region.x, ref.region.x + ref.region.width)
-                .join('')
-                .trimEnd();
+            return ref.buffer.join('');
         },
         set(v: string) {
-            if (!ref.chars || !ref.region) return;
-
-            const { chars, region } = ref;
-
-            for (let i = region.x; i < region.x + region.width; i++) {
-                chars[region.y][i] = '';
-            }
-
-            for (let i = 0; i < v.length && i < region.width; i++) {
-                chars[region.y][region.x + i] = v[i];
-            }
-
+            ref.buffer = v.split('');
+            ref.scrollOffset = 0;
             ref.requestRender?.();
         },
         enumerable: false,
@@ -324,7 +356,15 @@ function composeNode(node: LayoutNode, chars: string[][], regions: Region[], dyn
         const innerW = width - (border ? 2 : 0) - px * 2;
         const innerH = height - (border ? 2 : 0) - py * 2;
 
-        regions.push({ x: innerX, y: innerY, width: innerW, height: innerH });
+        const region: Region = { x: innerX, y: innerY, width: innerW, height: innerH };
+
+        regions.push(region);
+
+        const taRef = getTextareaRef(node);
+
+        if (taRef) {
+            taRef.region = region;
+        }
 
         return;
     }
