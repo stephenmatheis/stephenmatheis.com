@@ -8,7 +8,7 @@ const departureMono = localFont({
 });
 
 const pureprog = localFont({
-    src: './fonts/pureprog-12-5x8-pixel-mono-normal.woff2',
+    src: './fonts/pureprog.woff2',
     variable: '--font-pureprog',
 });
 
