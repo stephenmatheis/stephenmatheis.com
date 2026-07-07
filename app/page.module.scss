@@ -1,6 +1,5 @@
 .page {
-    font-family: var(--font-departure-mono);
-    padding: 2ch 4ch;
+    font-size: 1.5em;
 
     h1,
     h2,
@@ -12,13 +11,11 @@
         font-weight: normal;
     }
 
-    h1 {
-        color: #767676;
-    }
-
-    nav {
-        ul {
-            list-style: none;
+    .line {
+        .gutter {
+            display: inline-block;
+            width: 4ch;
+            color: var(--ash);
         }
     }
 }

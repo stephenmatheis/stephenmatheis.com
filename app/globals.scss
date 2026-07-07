@@ -1,15 +1,33 @@
 :root {
-    --background: #ffffff;
-    --foreground: #000000;
-    --canvas-font-size: 22px;
-    --canvas-font-family: var(--font-departure-mono);
-}
+    --font-size: 11px;
+    --font-family: var(--font-departure-mono);
+    // --font-family: var(--font-pureprog);
 
-body {
-    font-size: var(--canvas-font-size);
-    font-family: var(--font-departure-mono);
-    background-color: var(--background);
-    color: var(--foreground);
+    --amber: #ffa133;
+    --pumpkin: #e47b1a;
+    --flux: #c8be50;
+    --foam: #bccabb;
+    --enamel: #eeeeee;
+    --cement: #c0c0c0;
+    --aluminum: #cccccc;
+    --ash: #8e8e8e;
+    --mud: #8a8a6f;
+    --clay: #6c6c58;
+    --smoke: #666666;
+    --dark: #444444;
+    --soot: #333333;
+    --carbon: #222222;
+    --black: #141414;
+    --accent: var(--amber);
+    --fg: var(--dark);
+    --bg: var(--enamel);
+
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+    color: var(--fg);
+    background-color: var(--bg);
+
+    color-scheme: light dark;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -22,7 +40,19 @@ body {
     margin: 0;
 }
 
+::selection {
+    color: var(--enamel);
+    background-color: var(--carbon);
+}
+
 a {
     color: inherit;
     text-decoration: none;
+}
+
+body {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
