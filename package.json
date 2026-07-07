@@ -59,5 +59,14 @@
         "sass": "^1.69.5",
         "tsx": "^3.14.0",
         "typescript": "^5.2.2"
+    },
+    "allowScripts": {
+        "esbuild@0.18.20": true,
+        "fsevents@2.3.3": true,
+        "pre-commit@1.2.2": true,
+        "sharp@0.32.6": true,
+        "spawn-sync@1.0.15": true,
+        "@parcel/watcher@2.5.6": true,
+        "unrs-resolver@1.12.2": true
     }
 }
