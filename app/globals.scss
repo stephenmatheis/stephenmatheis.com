@@ -10,6 +10,7 @@
     --enamel: #eeeeee;
     --cement: #c0c0c0;
     --aluminum: #cccccc;
+    --birch: #aaaaaa;
     --ash: #8e8e8e;
     --mud: #8a8a6f;
     --clay: #6c6c58;
@@ -35,6 +36,9 @@
 }
 
 * {
+    cursor:
+        url('/cursor.svg') 0 0,
+        auto;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -46,8 +50,12 @@
 }
 
 a {
-    color: inherit;
     text-decoration: none;
+    color: var(--fg);
+
+    &:hover {
+        color: var(--pumpkin);
+    }
 }
 
 body {
