@@ -10,7 +10,7 @@ export default function Icon() {
     return new ImageResponse(
         <div
             style={{
-                fontSize: 20,
+                fontSize: 32,
                 width: '100%',
                 height: '100%',
                 display: 'flex',
@@ -19,7 +19,7 @@ export default function Icon() {
                 color: 'black',
             }}
         >
-            {'///'}
+            🥱
         </div>,
         {
             ...size,

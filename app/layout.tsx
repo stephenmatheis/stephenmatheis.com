@@ -1,16 +1,5 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
 import './globals.scss';
-
-const departureMono = localFont({
-    src: './fonts/DepartureMono-Regular.woff2',
-    variable: '--font-departure-mono',
-});
-
-const pureprog = localFont({
-    src: './fonts/pureprog.woff2',
-    variable: '--font-pureprog',
-});
 
 export const metadata: Metadata = {
     title: 'Stephen Matheis',
@@ -23,7 +12,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={`${departureMono.variable} ${pureprog.variable}`}>
+        <html lang="en">
             <body>{children}</body>
         </html>
     );
