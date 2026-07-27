@@ -1,13 +1,9 @@
 .frame {
     position: relative;
-    width: min(60ch, 100%);
     padding: 3lh 2ch 2lh;
     background: var(--bg, #ffffff);
 }
 
-// Corner brackets stand in for a border — always brackets, never a solid
-// line. "square" vs "rounded" only changes the shape of the bracket's own
-// joint, not whether it's a bracket at all.
 .corner {
     position: absolute;
     width: 9px;
@@ -65,6 +61,7 @@
     position: absolute;
     top: 3px;
     left: 3ch;
+    font-family: var(--font-ibm-plex-mono);
     font-size: 9px;
     font-weight: 400;
     letter-spacing: 0.12em;
@@ -96,7 +93,7 @@
 
 .body {
     padding: var(--padding, 0px);
-    font-size: var(--content-font-size, 14px);
+    font-size: var(--content-font-size, 12px);
     font-weight: var(--content-font-weight, 400);
     line-height: 1.7;
     color: var(--fg, #000000);
