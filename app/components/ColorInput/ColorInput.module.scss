@@ -1,4 +1,6 @@
 .colorInput {
+    --height: 25px;
+
     display: flex;
     flex-direction: column;
     gap: 0.4lh;
@@ -21,9 +23,10 @@
 // Just a plain swatch — brackets here read as chrome around a color
 // preview rather than "this is an input," which was the point of them.
 .swatch {
+    position: relative;
     flex-shrink: 0;
-    width: 16px;
-    height: 16px;
+    width: var(--height);
+    height: var(--height);
 }
 
 // Brackets, not a border — matches Frame's own corner treatment instead
@@ -73,7 +76,9 @@
 
 .input {
     width: 100%;
-    padding: 0.35lh 0.6ch;
+    // padding: 0.35lh 0.6ch;
+    height: var(--height);
+    padding-inline: 1ch;
     border: none;
     background: var(--bg, #ffffff);
     color: var(--fg, #000000);

@@ -65,7 +65,9 @@ export function ColorInput({
         >
             <div className={styles.label}>{label}</div>
             <div className={styles.row}>
-                <span className={styles.swatch} style={{ background: value }} />
+                <span className={styles.swatch} style={{ background: value }}>
+                    <Corners />
+                </span>
                 <div className={styles.field}>
                     <Corners />
                     <input

@@ -9,25 +9,19 @@ import { Hotspot } from '@/app/components/Hotspot/Hotspot';
 import { useStoredState } from '@/app/hooks/useStoredState';
 import styles from './page.module.scss';
 
-// Five hotspots, each sitting on the actual part of Frame it controls:
-// the border hotspot right on a corner bracket, padding on the edge,
-// font size on the body copy, corner labels down where they'd render,
-// and colors tucked at the bottom-left corner (out of the way of the
-// others) — the one property every hotspot-enabled component needs a
-// home for now that there's no controls list to hold it.
 export function SystemFrame() {
     const [background, setBackground] = useStoredState('system:frame.bg', '#ffffff');
     const [foreground, setForeground] = useStoredState('system:frame.fg', '#000000');
     const [accent, setAccent] = useStoredState('system:frame.accent', '#ff0000');
     const [border, setBorder] = useStoredState<FrameBorder>('system:frame.border', 'square');
     const [padding, setPadding] = useStoredState('system:frame.padding', 0);
-    const [fontSize, setFontSize] = useStoredState('system:frame.fontSize', 14);
+    const [fontSize, setFontSize] = useStoredState('system:frame.fontSize', 12);
     const [cornerLabels, setCornerLabels] = useStoredState('system:frame.cornerLabels', false);
 
     const colors = { background, foreground, accent };
 
     return (
-        <div className={styles.stage} style={{ width: 'min(60ch, 100%)' } as React.CSSProperties}>
+        <div className={styles.stage}>
             <Frame
                 label="FRAME .01"
                 labelBL={cornerLabels ? 'SYS' : undefined}

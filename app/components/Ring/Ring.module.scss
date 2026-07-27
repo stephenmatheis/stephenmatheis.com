@@ -45,6 +45,7 @@
 }
 
 .value {
+    font-family: var(--font-ibm-plex-mono);
     font-size: var(--value-font-size, 20px);
     font-weight: var(--value-font-weight, 400);
     font-variant-numeric: tabular-nums;
@@ -53,6 +54,7 @@
 
 .label {
     margin-top: 4px;
+    font-family: var(--font-ibm-plex-mono);
     font-size: 9px;
     font-weight: 400;
     letter-spacing: 0.12em;
