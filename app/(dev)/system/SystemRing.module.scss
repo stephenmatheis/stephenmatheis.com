@@ -1,0 +1,48 @@
+// Adding a ring isn't attached to any existing visual part the way tuning
+// one is, so it's a plain button instead of a hotspot — the one place this
+// catalog deliberately breaks its own "everything is a hotspot" rule.
+.addRing {
+    display: block;
+    width: 100%;
+    margin-top: 0.75lh;
+    text-align: right;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--fg, #000000);
+    font: inherit;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--accent, #ff0000);
+    }
+
+    &:disabled {
+        opacity: 0.35;
+        cursor: default;
+
+        &:hover {
+            color: var(--fg, #000000);
+        }
+    }
+}
+
+.removeRing {
+    display: block;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--fg, #000000);
+    font: inherit;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--accent, #ff0000);
+    }
+}

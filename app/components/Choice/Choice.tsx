@@ -49,6 +49,10 @@ export function Choice({
                         data-active={option.value === value}
                         onClick={() => onChange(option.value)}
                     >
+                        <span className={`${styles.corner} ${styles.tl}`} />
+                        <span className={`${styles.corner} ${styles.tr}`} />
+                        <span className={`${styles.corner} ${styles.bl}`} />
+                        <span className={`${styles.corner} ${styles.br}`} />
                         {option.label}
                     </button>
                 ))}

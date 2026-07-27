@@ -1,0 +1,100 @@
+.hotspot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    padding: 0;
+    border: none;
+    background: var(--accent, #ff0000);
+    cursor: pointer;
+    transition: transform 0.15s ease;
+
+    &:hover {
+        transform: scale(1.4);
+    }
+
+    &[data-open='true'] {
+        transform: scale(1.4);
+    }
+
+    &:focus-visible {
+        outline: 1px solid var(--accent, #ff0000);
+        outline-offset: 3px;
+    }
+}
+
+// The elbow: out horizontally from the hotspot, then vertically to the
+// panel — a blueprint-style leader line rather than a diagonal pointer.
+// Position/length are per-instance (see Hotspot.tsx); this only fixes
+// the thickness.
+.legH {
+    position: absolute;
+    height: 1px;
+    background: var(--accent, #ff0000);
+    pointer-events: none;
+}
+
+.legV {
+    position: absolute;
+    width: 1px;
+    background: var(--accent, #ff0000);
+    pointer-events: none;
+}
+
+.panel {
+    position: absolute;
+    width: 180px;
+    max-height: calc(100vh - 32px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75lh;
+    padding: 1.5lh 1.5ch;
+    background: var(--bg, #ffffff);
+    overflow-y: auto;
+    animation: calloutIn 0.15s ease;
+}
+
+@keyframes calloutIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.corner {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border: 0 solid var(--accent, #ff0000);
+}
+
+.tl {
+    top: 0;
+    left: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.tr {
+    top: 0;
+    right: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.bl {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.br {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}

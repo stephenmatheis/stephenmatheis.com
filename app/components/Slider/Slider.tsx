@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { colorVars, ColorProps } from '../colors';
 import { EventProps } from '../events';
 import styles from './Slider.module.scss';
@@ -21,9 +21,10 @@ function clamp(n: number, min: number, max: number) {
     return Math.min(max, Math.max(min, n));
 }
 
-// A caret crossing a hairline track, not a thumb riding a filled bar —
-// keeps the same tick/rule vocabulary as Frame and Ring instead of
-// reaching for the generic rounded-track slider every UI kit ships.
+// One tick per step, not a decorative fixed-pixel pattern — the thumb
+// should always land exactly on a mark. Some ranges (a large max over a
+// small step) pack ticks close together; that's fine, it's honest about
+// how many stops the slider actually has.
 export function Slider({
     label,
     value,
@@ -43,6 +44,15 @@ export function Slider({
 }: SliderProps) {
     const trackRef = useRef<HTMLDivElement>(null);
     const percent = ((value - min) / (max - min)) * 100;
+
+    // Positions only depend on the range, not the current value — memoized
+    // separately so dragging (which changes percent on every move) doesn't
+    // regenerate this array on every frame.
+    const tickPositions = useMemo(() => {
+        const stepCount = Math.max(1, Math.round((max - min) / step));
+
+        return Array.from({ length: stepCount + 1 }, (_, i) => (i / stepCount) * 100);
+    }, [min, max, step]);
 
     function valueFromPointer(clientX: number, clientY: number) {
         const bounds = trackRef.current!.getBoundingClientRect();
@@ -103,6 +113,14 @@ export function Slider({
                 onPointerMove={handlePointerMove}
                 onKeyDown={handleKeyDown}
             >
+                {tickPositions.map((pos, i) => (
+                    <span
+                        key={i}
+                        className={styles.tick}
+                        data-active={pos <= percent + 0.001}
+                        style={{ '--pos': `${pos}%` } as React.CSSProperties}
+                    />
+                ))}
                 <span className={styles.handle} style={{ '--percent': `${percent}%` } as React.CSSProperties} />
             </div>
         </div>

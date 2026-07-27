@@ -13,10 +13,51 @@
     color: var(--accent, #ff0000);
 }
 
+// Brackets, not a border — matches Frame's own corner treatment instead
+// of the generic full-rectangle text field every UI kit ships.
+.field {
+    position: relative;
+}
+
+.corner {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 0 solid var(--accent, #ff0000);
+}
+
+.tl {
+    top: 0;
+    left: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.tr {
+    top: 0;
+    right: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.bl {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.br {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}
+
 .input {
     width: 100%;
-    padding: 0.3lh 0.5ch;
-    border: 1px solid color-mix(in srgb, var(--fg, #000000) 30%, transparent);
+    padding: 0.3lh 0.6ch;
+    border: none;
     background: var(--bg, #ffffff);
     color: var(--fg, #000000);
     font: inherit;

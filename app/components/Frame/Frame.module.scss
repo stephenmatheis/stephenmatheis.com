@@ -3,20 +3,11 @@
     width: min(60ch, 100%);
     padding: 3lh 2ch 2lh;
     background: var(--bg, #ffffff);
-
-    // Border is one of four registers. Brackets (the default) draw nothing
-    // here — the four corner spans stand in for it instead.
-    &[data-border='square'] {
-        border: 1px solid var(--accent, #ff0000);
-    }
-
-    &[data-border='rounded'] {
-        border: 1px solid var(--accent, #ff0000);
-        border-radius: 8px;
-    }
 }
 
-// Corner brackets stand in for a border — the frame is implied, not drawn.
+// Corner brackets stand in for a border — always brackets, never a solid
+// line. "square" vs "rounded" only changes the shape of the bracket's own
+// joint, not whether it's a bracket at all.
 .corner {
     position: absolute;
     width: 9px;
@@ -52,6 +43,24 @@
     border-right-width: 1px;
 }
 
+.frame[data-border='rounded'] {
+    .tl {
+        border-top-left-radius: 6px;
+    }
+
+    .tr {
+        border-top-right-radius: 6px;
+    }
+
+    .bl {
+        border-bottom-left-radius: 6px;
+    }
+
+    .br {
+        border-bottom-right-radius: 6px;
+    }
+}
+
 .label {
     position: absolute;
     top: 3px;
@@ -82,11 +91,7 @@
     left: 2ch;
     right: 2ch;
     height: 3px;
-    background-image: repeating-linear-gradient(
-        to right,
-        color-mix(in srgb, var(--fg, #000000) 35%, transparent) 0 1px,
-        transparent 1px 8px
-    );
+    background-image: repeating-linear-gradient(to right, var(--fg, #000000) 0 1px, transparent 1px 8px);
 }
 
 .body {
