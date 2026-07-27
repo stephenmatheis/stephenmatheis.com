@@ -1,0 +1,30 @@
+.numberInput {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3lh;
+    width: 56px;
+}
+
+.label {
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent, #ff0000);
+}
+
+.input {
+    width: 100%;
+    padding: 0.3lh 0.5ch;
+    border: 1px solid color-mix(in srgb, var(--fg, #000000) 30%, transparent);
+    background: var(--bg, #ffffff);
+    color: var(--fg, #000000);
+    font: inherit;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+
+    &:focus-visible {
+        outline: 1px solid var(--accent, #ff0000);
+        outline-offset: 1px;
+    }
+}

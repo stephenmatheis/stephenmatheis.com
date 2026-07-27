@@ -1,0 +1,66 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2lh;
+    min-height: 100dvh;
+    padding: 4lh 4ch;
+}
+
+// Whole entries are the only boundary worth a line — inside one, a label
+// tag does the separating instead, so it never turns into another box.
+.entry {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1lh;
+    width: 100%;
+}
+
+.divider {
+    display: block;
+    height: 1px;
+    width: min(60ch, 100%);
+    background: light-dark(#00000015, #ffffff15);
+}
+
+.tag {
+    margin-top: 1lh;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: light-dark(#00000060, #ffffff60);
+}
+
+.description {
+    max-width: 60ch;
+    font-size: 13px;
+    line-height: 1.6;
+    color: light-dark(#00000090, #ffffff90);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5lh;
+    padding: 1.5lh 0;
+}
+
+.lastEvent {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: light-dark(#00000060, #ffffff60);
+}
+
+.addRing {
+    align-self: flex-start;
+    padding: 0.5lh 1.5ch;
+    border: 1px solid light-dark(#00000030, #ffffff30);
+    background: none;
+    color: light-dark(#000000, #ffffff);
+    font: inherit;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
