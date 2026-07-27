@@ -18,18 +18,63 @@
     gap: 0.75ch;
 }
 
+// Just a plain swatch — brackets here read as chrome around a color
+// preview rather than "this is an input," which was the point of them.
 .swatch {
     flex-shrink: 0;
-    width: 14px;
-    height: 14px;
-    border: 1px solid color-mix(in srgb, var(--fg, #000000) 30%, transparent);
+    width: 16px;
+    height: 16px;
+}
+
+// Brackets, not a border — matches Frame's own corner treatment instead
+// of the generic full-rectangle field every UI kit ships.
+.corner {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 0 solid var(--accent, #ff0000);
+}
+
+.tl {
+    top: 0;
+    left: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.tr {
+    top: 0;
+    right: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.bl {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.br {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}
+
+.field {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
 }
 
 .input {
-    flex: 1;
-    min-width: 0;
-    padding: 0.35lh 0.5ch;
-    border: 1px solid color-mix(in srgb, var(--fg, #000000) 30%, transparent);
+    width: 100%;
+    padding: 0.35lh 0.6ch;
+    border: none;
     background: var(--bg, #ffffff);
     color: var(--fg, #000000);
     font: inherit;

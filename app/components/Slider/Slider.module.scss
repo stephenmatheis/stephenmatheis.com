@@ -30,10 +30,26 @@
     position: relative;
     cursor: pointer;
     outline: none;
+    // Without this, touch drags get stolen by the page's own scroll —
+    // the whole reason this needed to be redesigned for touch at all.
+    touch-action: none;
 
     &:focus-visible {
         outline: 1px solid var(--accent, #ff0000);
         outline-offset: 4px;
+    }
+}
+
+// One per step (see Slider.tsx) rather than a decorative fixed-pixel
+// pattern — the mark under the thumb should always be a real stop, not a
+// texture that happens to look close.
+.tick {
+    position: absolute;
+    background: var(--fg, #000000);
+    pointer-events: none;
+
+    &[data-active='true'] {
+        background: var(--accent, #ff0000);
     }
 }
 
@@ -44,23 +60,21 @@
 
 .horizontal {
     .track {
-        height: 16px;
+        height: 28px;
+    }
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: color-mix(in srgb, var(--fg, #000000) 30%, transparent);
-        }
+    .tick {
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        left: var(--pos);
     }
 
     .handle {
-        top: -2px;
-        width: 1px;
-        height: 20px;
+        top: -4px;
+        bottom: -4px;
+        width: 6px;
+        // border: solid 1px var(--accent);
         left: var(--percent);
         transform: translateX(-50%);
     }
@@ -70,25 +84,22 @@
     width: max-content;
 
     .track {
-        width: 16px;
+        width: 28px;
         height: 120px;
         margin: 0 auto;
+    }
 
-        &::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: color-mix(in srgb, var(--fg, #000000) 30%, transparent);
-        }
+    .tick {
+        left: 0;
+        right: 0;
+        height: 1px;
+        bottom: var(--pos);
     }
 
     .handle {
-        left: -2px;
-        height: 1px;
-        width: 20px;
+        left: -4px;
+        right: -4px;
+        height: 16px;
         top: calc(100% - var(--percent));
         transform: translateY(-50%);
     }

@@ -10,12 +10,13 @@
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.2em;
-    color: light-dark(#00000080, #ffffff80);
+    color: light-dark(#000000, #ffffff);
 }
 
 .entry {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 1lh;
 }
 
@@ -29,5 +30,27 @@
     max-width: 60ch;
     font-size: 13px;
     line-height: 1.6;
-    color: light-dark(#00000090, #ffffff90);
+    color: light-dark(#000000, #ffffff);
+}
+
+// Wrap any component in this to host Hotspot children positioned against
+// it. Sizing is deliberately left to the caller: a component with a
+// definite width (Ring's --size, a fixed px) can just add
+// display:inline-block to shrink-to-fit. A component whose width is
+// itself a percentage (Frame's min(60ch,100%)) can't — shrink-to-fit and
+// a percentage-width child fight over which one resolves first, and the
+// child's "100%" ends up resolving against the outer block context
+// instead of this wrapper. Give the stage the same explicit width formula
+// as the component in that case instead.
+.stage {
+    position: relative;
+}
+
+// Lays out several stages side by side — each still its own independent
+// positioning context for its own hotspots.
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 4ch;
 }

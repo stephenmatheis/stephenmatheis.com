@@ -2,7 +2,7 @@ import { colorVars, ColorProps } from '../colors';
 import { EventProps } from '../events';
 import styles from './Frame.module.scss';
 
-export type FrameBorder = 'brackets' | 'square' | 'rounded' | 'none';
+export type FrameBorder = 'square' | 'rounded' | 'none';
 
 type FrameProps = ColorProps &
     EventProps & {
@@ -20,11 +20,11 @@ type FrameProps = ColorProps &
 
 // The base unit of the design system: a label and an optional live readout
 // sit above a tick strip, with any of the four corners able to carry a
-// label of its own. Border is one of four registers — corner brackets
-// (the original, and the default), a real square or rounded border, or
-// none at all. Colors come from the shared background/foreground/accent
-// contract — Frame only supplies the system defaults so it still looks
-// right unstyled.
+// label of its own. Border is always a corner bracket, never a solid
+// line — "square" vs "rounded" only changes the bracket's own joint shape,
+// or "none" omits it entirely. Colors come from the shared
+// background/foreground/accent contract — Frame only supplies the system
+// defaults so it still looks right unstyled.
 export function Frame({
     label,
     value,
@@ -32,7 +32,7 @@ export function Frame({
     labelBR,
     children,
     className,
-    border = 'brackets',
+    border = 'square',
     padding,
     fontSize,
     fontWeight,
@@ -61,7 +61,7 @@ export function Frame({
             onMouseOver={onMouseOver}
             onClick={onClick}
         >
-            {border === 'brackets' && (
+            {border !== 'none' && (
                 <>
                     <span className={`${styles.corner} ${styles.tl}`} />
                     <span className={`${styles.corner} ${styles.tr}`} />

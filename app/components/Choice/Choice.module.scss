@@ -18,9 +18,13 @@
     gap: 0.5ch;
 }
 
+// No chrome by default — the option's own text is the only affordance.
+// The active one gets corner brackets, not a border or a fill, so
+// "selected" reads the same way "this is a Frame" does everywhere else.
 .option {
+    position: relative;
     padding: 0.35lh 1ch;
-    border: 1px solid color-mix(in srgb, var(--fg, #000000) 30%, transparent);
+    border: none;
     background: none;
     color: var(--fg, #000000);
     font: inherit;
@@ -30,7 +34,6 @@
     cursor: pointer;
 
     &[data-active='true'] {
-        border-color: var(--accent, #ff0000);
         color: var(--accent, #ff0000);
     }
 
@@ -38,4 +41,43 @@
         outline: 1px solid var(--accent, #ff0000);
         outline-offset: 1px;
     }
+}
+
+.corner {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 0 solid transparent;
+}
+
+.option[data-active='true'] .corner {
+    border-color: var(--accent, #ff0000);
+}
+
+.tl {
+    top: 0;
+    left: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.tr {
+    top: 0;
+    right: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.bl {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.br {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
 }
