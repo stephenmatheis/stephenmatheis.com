@@ -1,0 +1,32 @@
+.cluster {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    padding: 1lh 0;
+    border-top: 1px solid light-dark(#00000015, #ffffff15);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.heading {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: light-dark(#00000090, #ffffff90);
+}
+
+.remove {
+    padding: 0.3lh 1ch;
+    border: 1px solid light-dark(#00000030, #ffffff30);
+    background: none;
+    color: light-dark(#000000, #ffffff);
+    font: inherit;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+}

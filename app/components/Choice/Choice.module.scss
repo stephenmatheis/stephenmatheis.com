@@ -1,0 +1,41 @@
+.choice {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4lh;
+    background: var(--bg, #ffffff);
+}
+
+.label {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent, #ff0000);
+}
+
+.options {
+    display: flex;
+    gap: 0.5ch;
+}
+
+.option {
+    padding: 0.35lh 1ch;
+    border: 1px solid color-mix(in srgb, var(--fg, #000000) 30%, transparent);
+    background: none;
+    color: var(--fg, #000000);
+    font: inherit;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &[data-active='true'] {
+        border-color: var(--accent, #ff0000);
+        color: var(--accent, #ff0000);
+    }
+
+    &:focus-visible {
+        outline: 1px solid var(--accent, #ff0000);
+        outline-offset: 1px;
+    }
+}

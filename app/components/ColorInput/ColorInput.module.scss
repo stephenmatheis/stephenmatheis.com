@@ -1,0 +1,42 @@
+.colorInput {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4lh;
+    width: 140px;
+}
+
+.label {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--accent, #ff0000);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 0.75ch;
+}
+
+.swatch {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid color-mix(in srgb, var(--fg, #000000) 30%, transparent);
+}
+
+.input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.35lh 0.5ch;
+    border: 1px solid color-mix(in srgb, var(--fg, #000000) 30%, transparent);
+    background: var(--bg, #ffffff);
+    color: var(--fg, #000000);
+    font: inherit;
+    font-size: 11px;
+
+    &:focus-visible {
+        outline: 1px solid var(--accent, #ff0000);
+        outline-offset: 1px;
+    }
+}

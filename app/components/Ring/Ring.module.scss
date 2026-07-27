@@ -1,0 +1,66 @@
+.wrap {
+    position: relative;
+    width: var(--size, 160px);
+    height: var(--size, 160px);
+    padding: 0;
+    perspective: 800px;
+    background: var(--bg, #ffffff);
+}
+
+.stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.4s ease-out;
+}
+
+.layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: var(--accent, #ff0000);
+    transform-origin: 50% 50%;
+    transform: translateZ(var(--z, 0px));
+}
+
+// Only the farthest ring idles — it reads as the plane furthest from the
+// viewer, slowly turning like a mechanism underneath the readout rather
+// than decorating it.
+.spinning {
+    animation: spin var(--spin-duration, 90s) linear infinite;
+}
+
+.layerNear {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(var(--z, 15px));
+}
+
+.value {
+    font-size: var(--value-font-size, 20px);
+    font-weight: var(--value-font-weight, 400);
+    font-variant-numeric: tabular-nums;
+    color: var(--fg, #000000);
+}
+
+.label {
+    margin-top: 4px;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--accent, #ff0000);
+}
+
+@keyframes spin {
+    to {
+        transform: translateZ(var(--z, 0px)) rotate(360deg);
+    }
+}

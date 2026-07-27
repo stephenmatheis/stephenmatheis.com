@@ -1,0 +1,33 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 3lh;
+    min-height: 100dvh;
+    padding: 4lh 4ch;
+}
+
+.heading {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: light-dark(#00000080, #ffffff80);
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 400;
+    color: light-dark(#000000, #ffffff);
+}
+
+.description {
+    max-width: 60ch;
+    font-size: 13px;
+    line-height: 1.6;
+    color: light-dark(#00000090, #ffffff90);
+}

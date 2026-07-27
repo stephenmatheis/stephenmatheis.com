@@ -1,0 +1,45 @@
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 1ch;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+
+    &:focus-visible .track {
+        outline: 1px solid var(--accent, #ff0000);
+        outline-offset: 2px;
+    }
+}
+
+.track {
+    position: relative;
+    width: 26px;
+    height: 13px;
+    border: 1px solid var(--accent, #ff0000);
+    background: var(--bg, #ffffff);
+    overflow: hidden;
+}
+
+.blade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--accent, #ff0000);
+    transition: transform 0.15s ease;
+}
+
+.track[data-checked='true'] .blade {
+    transform: translateX(100%);
+}
+
+.label {
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--fg, #000000);
+}
