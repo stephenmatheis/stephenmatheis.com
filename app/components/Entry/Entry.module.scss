@@ -1,0 +1,67 @@
+.entry {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1lh;
+    max-width: 50vw;
+    padding: 1lh 4ch;
+}
+
+.name {
+    font-size: 12px;
+    font-weight: 400;
+    color: light-dark(#000000, #ffffff);
+}
+
+.description {
+    max-width: 60ch;
+    font-size: 12px;
+    line-height: 1.6;
+    color: light-dark(#000000, #ffffff);
+}
+
+.stage {
+    position: relative;
+
+    &[data-inline='true'] {
+        display: inline-block;
+    }
+}
+
+// Brackets, not a border — matches Frame's own corner treatment instead
+// of the generic full-rectangle field every UI kit ships.
+.corner {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 0 solid var(--fg, #000000);
+}
+
+.tl {
+    top: 0;
+    left: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.tr {
+    top: 0;
+    right: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.bl {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.br {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}

@@ -1,15 +1,14 @@
 'use client';
 
-import { Frame, FrameBorder } from '@/app/components/Frame/Frame';
-import { Slider } from '@/app/components/Slider/Slider';
-import { Choice } from '@/app/components/Choice/Choice';
-import { Toggle } from '@/app/components/Toggle/Toggle';
-import { ColorInput } from '@/app/components/ColorInput/ColorInput';
-import { Hotspot } from '@/app/components/Hotspot/Hotspot';
+import { Frame, FrameBorder } from './Frame';
+import { Hotspot } from '../Hotspot';
+import { Toggle } from '../Toggle';
+import { Slider } from '../Slider';
+import { Choice } from '../Choice';
+import { ColorInput } from '../ColorInput';
 import { useStoredState } from '@/app/hooks/useStoredState';
-import styles from './page.module.scss';
 
-export function SystemFrame() {
+export function FrameDemo() {
     const [background, setBackground] = useStoredState('system:frame.bg', '#ffffff');
     const [foreground, setForeground] = useStoredState('system:frame.fg', '#000000');
     const [accent, setAccent] = useStoredState('system:frame.accent', '#ff0000');
@@ -21,7 +20,7 @@ export function SystemFrame() {
     const colors = { background, foreground, accent };
 
     return (
-        <div className={styles.stage}>
+        <>
             <Frame
                 label="FRAME .01"
                 labelBL={cornerLabels ? 'SYS' : undefined}
@@ -73,6 +72,6 @@ export function SystemFrame() {
                 <ColorInput label="FOREGROUND" value={foreground} onChange={setForeground} />
                 <ColorInput label="ACCENT" value={accent} onChange={setAccent} />
             </Hotspot>
-        </div>
+        </>
     );
 }

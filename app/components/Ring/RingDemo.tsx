@@ -1,14 +1,13 @@
 'use client';
 
-import { Ring, RingLayer, DEFAULT_RING_LAYERS } from '@/app/components/Ring/Ring';
-import { Slider } from '@/app/components/Slider/Slider';
-import { Toggle } from '@/app/components/Toggle/Toggle';
-import { ColorInput } from '@/app/components/ColorInput/ColorInput';
-import { Hotspot } from '@/app/components/Hotspot/Hotspot';
-import { colorVars } from '@/app/components/colors';
+import { Ring, RingLayer, DEFAULT_RING_LAYERS } from './Ring';
+import { Hotspot } from '../Hotspot';
+import { Toggle } from '../Toggle';
+import { Slider } from '../Slider';
+import { ColorInput } from '../ColorInput';
+import { colorVars } from '../colors';
 import { useStoredState } from '@/app/hooks/useStoredState';
-import styles from './page.module.scss';
-import ringStyles from './SystemRing.module.scss';
+import styles from './RingDemo.module.scss';
 
 // Angle 0 = right (3 o'clock), 90 = top, increasing counterclockwise —
 // standard math convention, flipped for CSS top growing downward.
@@ -69,7 +68,7 @@ function nextLayer(layers: Layer[]): Layer {
 // many properties each one has. Diameter, tilt, and colors stay as their
 // own fixed hotspots; adding a ring is a plain button, since it isn't
 // attached to an existing visual part the way tuning one is.
-export function SystemRing() {
+export function RingDemo() {
     const [background, setBackground] = useStoredState('system:ring.bg', '#ffffff');
     const [foreground, setForeground] = useStoredState('system:ring.fg', '#000000');
     const [accent, setAccent] = useStoredState('system:ring.accent', '#ff0000');
@@ -96,7 +95,7 @@ export function SystemRing() {
     const colorsPos = polar(0, 1);
 
     return (
-        <div className={styles.stage} style={{ display: 'inline-block' }}>
+        <>
             <Ring label="RING .01" value="72%" size={size} layers={layers} tiltStrength={tiltStrength} {...colors} />
 
             <Hotspot
@@ -181,11 +180,7 @@ export function SystemRing() {
                             {...colors}
                         />
                         {layers.length > 1 && (
-                            <button
-                                type="button"
-                                className={ringStyles.removeRing}
-                                onClick={() => removeLayer(layer.id)}
-                            >
+                            <button type="button" className={styles.removeRing} onClick={() => removeLayer(layer.id)}>
                                 − Remove ring
                             </button>
                         )}
@@ -227,13 +222,13 @@ export function SystemRing() {
 
             <button
                 type="button"
-                className={ringStyles.addRing}
+                className={styles.addRing}
                 style={colorVars(colors)}
                 onClick={addLayer}
                 disabled={!hasRoomForLayer(layers)}
             >
                 + Add ring
             </button>
-        </div>
+        </>
     );
 }
