@@ -1,0 +1,34 @@
+.field {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.layer {
+    position: absolute;
+    inset: -15%;
+    background-image: radial-gradient(circle, light-dark(#00000035, #ffffff35) 1px, transparent 1.4px);
+    transition: transform 0.2s ease-out;
+}
+
+// Smaller / dimmer / faster-moving as depth increases — the near layer
+// reads closest because it both looks closest and drifts the most.
+.layer[data-depth='1'] {
+    background-size: 130px 130px;
+    opacity: 0.35;
+    transform: translate(calc(var(--mx, 0) * -10px), calc(var(--my, 0) * -10px));
+}
+
+.layer[data-depth='2'] {
+    background-size: 80px 80px;
+    opacity: 0.25;
+    transform: translate(calc(var(--mx, 0) * -20px), calc(var(--my, 0) * -20px));
+}
+
+.layer[data-depth='3'] {
+    background-size: 46px 46px;
+    opacity: 0.18;
+    transform: translate(calc(var(--mx, 0) * -34px), calc(var(--my, 0) * -34px));
+}

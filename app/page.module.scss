@@ -1,0 +1,398 @@
+// Taken out of document flow entirely (fixed, not just 100dvh) so body's
+// own padding never adds enough extra height to trigger a page scrollbar
+// — the whole point is that nothing above this scrolls except the
+// windows that opt into it.
+.page {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #0a0d10;
+}
+
+.grid {
+    position: fixed;
+    inset: -10%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+    background-image:
+        repeating-linear-gradient(to right, #ffffff09 0 1px, transparent 1px 40px),
+        repeating-linear-gradient(to bottom, #ffffff09 0 1px, transparent 1px 40px);
+    transform: translate(calc(var(--mx, 0) * -20px), calc(var(--my, 0) * -20px));
+    transition: transform 0.2s ease-out;
+}
+
+.layout {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    gap: 1.5ch;
+    padding: 2lh 2ch 1lh;
+    overflow: hidden;
+}
+
+// Each column parallaxes at its own depth — col1 goes highest because
+// it's the one with a Hotspot that needs to float above its neighbors;
+// same stacking-context issue as before (transform makes every column
+// its own paint layer, so DOM order alone can't be trusted).
+.col1,
+.col2,
+.col3 {
+    display: flex;
+    flex-direction: column;
+    gap: 1lh;
+    min-height: 0;
+    min-width: 0;
+    transition: transform 0.15s ease-out;
+}
+
+.col1 {
+    position: relative;
+    z-index: 4;
+    flex: 1.3;
+    transform: translate(calc(var(--mx, 0) * 6px), calc(var(--my, 0) * 6px));
+}
+
+.col2 {
+    z-index: 1;
+    flex: 1;
+    transform: translate(calc(var(--mx, 0) * 10px), calc(var(--my, 0) * 10px));
+}
+
+.col3 {
+    z-index: 1;
+    flex: 1.1;
+    transform: translate(calc(var(--mx, 0) * 8px), calc(var(--my, 0) * 8px));
+}
+
+.hero {
+    position: relative;
+    flex: none;
+}
+
+.bio {
+    max-width: 44ch;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 1lh;
+    color: var(--accent, #7d838a);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.tagList {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tag {
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: #e9e6e0;
+}
+
+.log {
+    flex: 1;
+    min-height: 0;
+}
+
+.terminal {
+    height: 100%;
+    overflow-y: auto;
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 9px;
+    line-height: 1.8;
+}
+
+.terminalLine {
+    white-space: nowrap;
+}
+
+.terminalTime {
+    opacity: 0.45;
+}
+
+.terminalPrompt {
+    opacity: 0.6;
+}
+
+.cursor {
+    display: inline-block;
+    width: 5px;
+    height: 1em;
+    margin-left: 2px;
+    background: var(--accent, #7d838a);
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.rings {
+    flex: none;
+    display: flex;
+    gap: 1.5ch;
+}
+
+.scrollRing {
+    position: relative;
+    width: 106px;
+    height: 106px;
+
+    svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+    }
+}
+
+.scrollRingTrack {
+    stroke: #ffffff20;
+}
+
+.scrollRingProgress {
+    stroke: var(--accent, #7d838a);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.15s ease-out;
+}
+
+.scrollRingValue {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    color: #e9e6e0;
+}
+
+.scrollRingLabel {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--accent, #7d838a);
+}
+
+.system {
+    flex: 1;
+    min-height: 0;
+}
+
+.input {
+    flex: none;
+    max-height: 30%;
+}
+
+.readout {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.3lh 1.5ch;
+}
+
+.readout dt {
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    color: var(--accent, #7d838a);
+}
+
+.readout dd {
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 9px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: #e9e6e0;
+}
+
+.orbitPanel {
+    flex: none;
+    display: flex;
+    justify-content: center;
+    padding: 0.5lh 0;
+}
+
+.waveformPanel {
+    flex: none;
+}
+
+.waveform {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 40px;
+}
+
+.waveformBar {
+    flex: 1;
+    min-width: 2px;
+    height: 20%;
+    background: var(--accent, #7d838a);
+    opacity: 0.7;
+    animation: bounce 1s ease-in-out infinite alternate;
+}
+
+@keyframes bounce {
+    from {
+        height: 12%;
+    }
+
+    to {
+        height: 90%;
+    }
+}
+
+.identSection {
+    flex: 1.4;
+    min-height: 0;
+}
+
+.identGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+    gap: 4px;
+}
+
+.identCell {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: 3px 4px;
+    border: 1px solid #ffffff1c;
+    text-decoration: none;
+    transition: border-color 0.15s;
+
+    &:hover {
+        border-color: var(--accent, #5fd3e6);
+    }
+}
+
+.identCode {
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 9px;
+    font-variant-numeric: tabular-nums;
+    color: #e9e6e0;
+}
+
+.identLang {
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 7px;
+    letter-spacing: 0.03em;
+    color: #e9e6e080;
+}
+
+// The one horizontally-scrolling window — a curated strip rather than the
+// full IDENT list, so it stays legible as a row instead of a grid.
+.projectsStrip {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    display: flex;
+    gap: 1.5ch;
+    padding: 0 2ch 1.5lh;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.projectsCard {
+    flex: 0 0 180px;
+}
+
+.floaters {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.floater {
+    position: absolute;
+    padding: 2px 6px;
+    border: 1px solid var(--accent, #5fd3e6);
+    background: #0a0d10;
+    color: var(--accent, #5fd3e6);
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    animation: float 6s ease-in-out infinite;
+
+    &[data-index='0'] {
+        top: 10%;
+        right: 4%;
+        animation-delay: 0s;
+    }
+
+    &[data-index='1'] {
+        top: 45%;
+        right: 2%;
+        animation-delay: 1.5s;
+    }
+
+    &[data-index='2'] {
+        bottom: 14%;
+        right: 5%;
+        animation-delay: 3s;
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 900px) {
+    .page {
+        position: static;
+        overflow: visible;
+        min-height: 100dvh;
+    }
+
+    .layout {
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .col1,
+    .col2,
+    .col3 {
+        flex: none;
+    }
+
+    .log,
+    .system,
+    .identSection {
+        flex: none;
+        max-height: 40vh;
+    }
+
+    .floaters {
+        display: none;
+    }
+}

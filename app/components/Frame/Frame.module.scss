@@ -1,5 +1,12 @@
+// display:flex + height:100% let .body flex to fill whatever's left of a
+// fixed-height parent slot and scroll internally — a no-op everywhere
+// Frame is used in normal document flow, since a percentage height
+// against an auto-height ancestor resolves to auto per spec.
 .frame {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 3lh 2ch 2lh;
     background: var(--bg, #ffffff);
 }
@@ -92,11 +99,24 @@
 }
 
 .body {
+    flex: 1;
+    min-height: 0;
     padding: var(--padding, 0px);
     font-size: var(--content-font-size, 12px);
     font-weight: var(--content-font-weight, 400);
     line-height: 1.7;
     color: var(--fg, #000000);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent, #ff0000) transparent;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--accent, #ff0000);
+    }
 }
 
 .labelBL {
