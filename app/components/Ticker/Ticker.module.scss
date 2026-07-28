@@ -1,0 +1,38 @@
+.ticker {
+    overflow: hidden;
+    border-top: 1px solid light-dark(#00000020, #ffffff20);
+    background: var(--bg, #ffffff);
+}
+
+.track {
+    display: flex;
+    width: max-content;
+    padding: 0.8lh 0;
+    animation: scroll 26s linear infinite;
+}
+
+.ticker:hover .track {
+    animation-play-state: paused;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 0 2ch;
+    white-space: nowrap;
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: light-dark(#000000, #ffffff);
+}
+
+.sep {
+    margin-left: 2ch;
+    color: var(--accent, #e8963c);
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}

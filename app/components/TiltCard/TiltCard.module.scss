@@ -1,0 +1,110 @@
+.wrap {
+    display: block;
+    perspective: 700px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.card {
+    position: relative;
+    padding: 1.5lh 1.5ch;
+    overflow: hidden;
+    background: var(--bg, #ffffff);
+    border: 1px solid light-dark(#00000025, #ffffff25);
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(var(--tz, 0px));
+    transition:
+        transform 0.2s ease-out,
+        border-color 0.2s;
+}
+
+.wrap:hover .card {
+    border-color: var(--accent, #e8963c);
+}
+
+.corner {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border: 0 solid var(--accent, #e8963c);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.wrap:hover .corner {
+    opacity: 1;
+}
+
+.tl {
+    top: 0;
+    left: 0;
+    border-top-width: 1px;
+    border-left-width: 1px;
+}
+
+.tr {
+    top: 0;
+    right: 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+}
+
+.bl {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.br {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+}
+
+// Tracks the same point the tilt is computed from, so the highlight
+// reads as a reflection of the cursor rather than a decoration bolted on
+// top of it.
+.sheen {
+    position: absolute;
+    inset: -50%;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), var(--accent, #e8963c) 0%, transparent 45%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.wrap:hover .sheen {
+    opacity: 0.16;
+}
+
+.title {
+    font-size: 13px;
+    color: light-dark(#000000, #ffffff);
+}
+
+.meta {
+    margin-top: 6px;
+    font-family: var(--font-ibm-plex-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: var(--accent, #e8963c);
+}
+
+.arrow {
+    position: absolute;
+    top: 1.4lh;
+    right: 1.5ch;
+    color: var(--accent, #e8963c);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+        opacity 0.2s,
+        transform 0.2s;
+}
+
+.wrap:hover .arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
