@@ -1,3 +1,0 @@
-# stephenmatheis.com
-
-My site.
