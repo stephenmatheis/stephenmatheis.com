@@ -26,7 +26,7 @@ export const iosevka = localFont({
 
 export const metadata: Metadata = {
     title: 'Stephen Matheis',
-    description: "Stephen Matheis' personal site",
+    description: 'My website.',
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
