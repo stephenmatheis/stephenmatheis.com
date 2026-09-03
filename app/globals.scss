@@ -15,8 +15,10 @@ body {
     padding: 2lh 8ch;
     display: flex;
     flex-direction: column;
-    gap: 4lh;
+    gap: 1lh;
     min-height: 100dvh;
+    background-color: #f7f7f8;
+    color: #070707;
 }
 
 main {

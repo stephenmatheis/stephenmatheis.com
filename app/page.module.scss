@@ -1,12 +1,8 @@
 .terminal {
-    // Containing block for the absolutely-positioned .input, so it scopes to
-    // the terminal rather than the viewport.
     position: relative;
 }
 
 .line {
-    // Preserve the spaces a user types; HTML would otherwise collapse runs of
-    // whitespace and the line wouldn't read back the way it was entered.
     white-space: pre-wrap;
     word-break: break-word;
 }
@@ -16,9 +12,6 @@
 }
 
 .cursor {
-    // Sit on the glyph and invert it, the way a TTY block cursor does. Canvas /
-    // CanvasText are the system colors for the page background and text, so
-    // this stays correct in dark mode and forced-colors mode.
     animation: blink 1000ms infinite;
 
     @keyframes blink {
@@ -37,10 +30,6 @@
 }
 
 .input {
-    // A real, focusable input that is invisible and inert: it holds the value
-    // and feeds assistive tech, while we draw the line ourselves. pointer-events
-    // is off so clicks fall through to the text behind it and the scrollback
-    // stays selectable — focus is forwarded from a window click handler.
     position: absolute;
     inset: 0;
     border: 0;
