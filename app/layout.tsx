@@ -5,22 +5,12 @@ import './globals.scss';
 export const iosevka = localFont({
     src: [
         {
-            path: './fonts/iosevka-latin-400-normal.woff2',
+            path: './fonts/pico-8-mono.otf.woff2/pico-8-mono.otf.woff2',
             weight: '400',
-            style: 'normal',
-        },
-        {
-            path: './fonts/iosevka-latin-400-italic.woff2',
-            weight: '400',
-            style: 'italic',
-        },
-        {
-            path: './fonts/iosevka-latin-700-normal.woff2',
-            weight: '700',
             style: 'normal',
         },
     ],
-    variable: '--font-iosevka',
+    variable: '--font-pico-8',
     display: 'swap',
 });
 
