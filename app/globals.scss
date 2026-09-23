@@ -1,0 +1,15 @@
+* {
+    --black: #000000;
+    --white: #ffffff;
+    --red: #ff0000;
+
+    margin: 0;
+    padding: 0;
+    font-size: 16.5px;
+}
+
+body {
+    font-family: var(--font-departure-mono), monospace;
+    background-color: var(--black);
+    color: var(--white);
+}
