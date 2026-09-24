@@ -1,0 +1,12 @@
+/*
+ * Just enough to get out of the way. Most views fill the whole window, so the
+ * browser's default 8px body margin would leave a white frame around them.
+ */
+html,
+body {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}

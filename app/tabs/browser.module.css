@@ -1,0 +1,197 @@
+.window {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #dee1e6;
+    font-family: system-ui, sans-serif;
+    font-size: 12px;
+}
+
+.tabStrip {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    height: 38px;
+    padding: 0 8px;
+}
+
+.trafficLights {
+    display: flex;
+    flex: none;
+    gap: 8px;
+    align-self: center;
+    margin-right: 12px;
+}
+
+.trafficLights span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f57;
+}
+
+.trafficLights span:nth-child(2) {
+    background: #febc2e;
+}
+
+.trafficLights span:nth-child(3) {
+    background: #28c840;
+}
+
+/*
+ * Every tab starts from zero width and shares the space equally (`flex: 1 1
+ * 0`), shrinking all the way down if it has to (`min-width: 0`). With 42 of
+ * them, each gets just enough room for its icon, which is the joke.
+ */
+.tab {
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    max-width: 220px;
+    height: 32px;
+    padding: 0 6px;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    color: #3c4043;
+    cursor: default;
+    user-select: none;
+}
+
+.tab:hover {
+    background: rgb(255 255 255 / 0.5);
+}
+
+/* The active tab gets real room back, so its title is readable. */
+.tab[aria-selected='true'] {
+    flex: 0 0 160px;
+    background: white;
+}
+
+/* Stand-in favicons: the version number in a little badge. */
+.favicon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    background: #5f6368;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.tabTitle {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.closeTab {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: inherit;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.closeTab:hover {
+    background: rgb(0 0 0 / 0.1);
+}
+
+/*
+ * Real browsers hide close buttons on tabs too narrow to fit them, except on
+ * the active tab. Container queries would be the precise way; hiding them on
+ * inactive tabs is close enough here.
+ */
+.tab:not([aria-selected='true']) .closeTab {
+    display: none;
+}
+
+.newTab {
+    flex: none;
+    align-self: center;
+    width: 28px;
+    height: 28px;
+    margin-left: 4px;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: #3c4043;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.newTab:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    background: white;
+}
+
+.navigation {
+    color: #9aa0a6;
+    font-size: 14px;
+    letter-spacing: 6px;
+}
+
+.addressBar {
+    flex: 1;
+    padding: 6px 14px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #f1f3f4;
+    color: #202124;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.content {
+    flex: 1;
+    min-height: 0;
+    background: white;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.empty {
+    display: grid;
+    place-content: center;
+    height: 100%;
+    color: #5f6368;
+    font-size: 16px;
+    text-align: center;
+}
+
+.empty p {
+    margin: 4px 0;
+}
+
+.empty button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: 1px solid #dadce0;
+    border-radius: 16px;
+    background: white;
+    font: inherit;
+    cursor: pointer;
+}

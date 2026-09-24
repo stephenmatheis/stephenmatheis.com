@@ -1,0 +1,156 @@
+.room {
+    min-height: 100vh;
+    padding: 12px 12px 40px;
+    background: #050505;
+    color: #cfcfcf;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px 10px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+}
+
+/* As many 16:10 monitors per row as fit at 220px or wider. */
+.wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 4px;
+}
+
+.camera {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    background: black;
+    cursor: pointer;
+}
+
+/*
+ * Old CCTV look: no color, a bit more contrast, slightly dim, a touch of
+ * blur like a cheap lens. On hover, the feed brightens as if you leaned in.
+ */
+.feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(1) contrast(1.25) brightness(0.85) blur(0.4px);
+    transition: filter 150ms;
+}
+
+.camera:hover .feed,
+.camera:focus-visible .feed {
+    filter: grayscale(1) contrast(1.25) brightness(1.1);
+}
+
+/* Scanlines and a dark edge over every feed, including the live one. */
+.overlay {
+    position: absolute;
+    inset: 0;
+    padding: 8px 10px;
+    background:
+        repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.22) 0 1px, transparent 1px 3px),
+        radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.55));
+    color: white;
+    font-size: 11px;
+    text-align: left;
+    text-shadow: 0 0 3px black;
+    pointer-events: none;
+}
+
+.overlay > span {
+    position: absolute;
+}
+
+.cameraNumber {
+    top: 8px;
+    left: 10px;
+}
+
+.recording {
+    top: 8px;
+    right: 10px;
+    color: #ff4040;
+    animation: blink 1s steps(1) infinite;
+}
+
+.recording::before {
+    content: '● ';
+}
+
+.cameraName {
+    bottom: 22px;
+    left: 10px;
+}
+
+.timestamp {
+    bottom: 8px;
+    left: 10px;
+}
+
+/* On for half a second, off for half a second. steps(1) makes it snap. */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .recording {
+        animation: none;
+    }
+}
+
+/*
+ * The live feed dialog, filling the window. Browsers give <dialog> a border,
+ * padding, and a max size by default, so those are reset. `[open]` matters:
+ * without it, `display: flex` would show the dialog even while it's closed.
+ */
+.liveFeed[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+    margin: 0;
+    padding: 16px 16px 40px;
+    border: 0;
+    background: black;
+    color: #cfcfcf;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.liveScreen {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
+.liveScreen .overlay {
+    font-size: 16px;
+}
+
+.liveControls {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+}
+
+.liveControls button,
+.liveControls a {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #cfcfcf;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}

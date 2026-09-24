@@ -1,0 +1,70 @@
+.terminal {
+    min-height: 100vh;
+    padding: 20px 20px 48px;
+    background: #0b0e0b;
+    color: #b8f5b8;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: text;
+}
+
+.screen {
+    max-width: 960px;
+}
+
+.command {
+    margin-bottom: 8px;
+}
+
+.dim {
+    color: #5c7a5c;
+}
+
+/* Preserve spaces, so padded columns in the output line up. */
+.line {
+    min-height: 1.5em;
+    white-space: pre-wrap;
+}
+
+.prompt {
+    color: #56d364;
+    font-weight: 700;
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.link:hover {
+    background: #1f3a1f;
+}
+
+/* `ls` output: names flow into as many columns as fit, like a real ls. */
+.columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    column-gap: 16px;
+}
+
+.inputLine {
+    display: flex;
+    gap: 1ch;
+}
+
+/*
+ * The input is invisible as a box: no border, no background, same font and
+ * color as the output. It looks like you're typing straight onto the screen.
+ * caret-color gives it a terminal-green cursor.
+ */
+.input {
+    flex: 1;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    caret-color: #56d364;
+}

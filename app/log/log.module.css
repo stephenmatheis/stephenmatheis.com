@@ -1,0 +1,65 @@
+/*
+ * A plain, readable document: warm paper, a comfortable line length, and a
+ * serif for the prose. The deadpan tone works best in a format that takes
+ * itself completely seriously.
+ */
+.page {
+    max-width: 680px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+    color: #2b2a27;
+    font-family: Charter, 'Iowan Old Style', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+/* The paper color goes on the whole page, not just the centered column. */
+:global(body):has(.page) {
+    background: #faf8f3;
+}
+
+.header {
+    margin-bottom: 48px;
+}
+
+.header h1 {
+    margin: 0 0 8px;
+    font-size: 36px;
+}
+
+.header p {
+    margin: 0;
+    color: #6b675f;
+}
+
+.release {
+    padding: 28px 0;
+    border-top: 1px solid #e4dfd3;
+}
+
+.release h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.release h2 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.meta {
+    margin: 4px 0 12px;
+    color: #8a857b;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+}
+
+.release ul {
+    margin: 0 0 12px;
+    padding-left: 20px;
+}
+
+.release a {
+    color: #2b5f9e;
+}

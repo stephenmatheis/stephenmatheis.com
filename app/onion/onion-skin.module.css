@@ -1,0 +1,57 @@
+.onion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-height: 100vh;
+    padding: 24px 16px 40px;
+    background: #808080;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+}
+
+/*
+ * Every layer sits in the same 16:10 box, as big as fits in the window. The
+ * box's size comes from whichever runs out first: the window's width, or its
+ * height minus room for the caption and numbers.
+ */
+.stack {
+    position: relative;
+    width: min(100%, calc((100vh - 140px) * 1.6));
+    aspect-ratio: 16 / 10;
+    box-shadow: 0 10px 40px rgb(0 0 0 / 0.35);
+}
+
+.layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 200ms;
+}
+
+.caption {
+    margin: 0;
+    color: #111;
+}
+
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2px;
+    max-width: 900px;
+}
+
+.numbers a {
+    width: 28px;
+    padding: 4px 0;
+    color: #222;
+    text-align: center;
+    text-decoration: none;
+}
+
+.numbers a[aria-current='true'] {
+    background: #111;
+    color: white;
+}

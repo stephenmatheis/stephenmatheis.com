@@ -1,0 +1,74 @@
+.casino {
+    position: relative;
+    height: 100vh;
+    background: radial-gradient(ellipse at center, #5a0f14 0%, #1a0406 75%);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.machine {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 12px;
+    height: 100%;
+    color: #f5d27a;
+}
+
+.machine p {
+    min-height: 1em;
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+}
+
+/* The reel window: gold frame, dark glass, big glowing digits. */
+.reel {
+    padding: 16px 40px;
+    border: 6px solid #d4a73c;
+    border-radius: 12px;
+    background: linear-gradient(#0d0d0d, #262626 50%, #0d0d0d);
+    box-shadow:
+        inset 0 0 20px black,
+        0 0 40px rgb(245 210 122 / 0.25);
+    color: #fff3d1;
+    font-size: clamp(64px, 18vw, 160px);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgb(255 220 150 / 0.6);
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: white;
+}
+
+/*
+ * A small floating panel with the result. Bottom left: sites tend to put
+ * their content top left, and the switcher has the bottom right.
+ */
+.result {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: rgb(26 4 6 / 0.9);
+    color: #f5d27a;
+    font-size: 12px;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.4);
+}
+
+.result button {
+    padding: 4px 10px;
+    border: 1px solid #d4a73c;
+    border-radius: 4px;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}

@@ -1,0 +1,161 @@
+.room {
+    display: grid;
+    place-content: center;
+    gap: 16px;
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+
+    /* A dim room, lit mostly by the TV. */
+    background: radial-gradient(ellipse at center, #2b2621 0%, #0f0d0b 70%);
+}
+
+/* The cabinet: screen on the left, control panel on the right. */
+.television {
+    display: flex;
+    gap: 20px;
+    width: min(92vw, 960px);
+    padding: 28px;
+    border-radius: 28px;
+    background: linear-gradient(160deg, #4a3f35, #2a231d);
+    box-shadow:
+        inset 0 2px 0 rgb(255 255 255 / 0.08),
+        0 30px 60px rgb(0 0 0 / 0.6);
+}
+
+/*
+ * The CRT screen. 4:3 like an old set, so a 16:10 site gets letterboxed with
+ * black bars, the way widescreen shows looked on old TVs. The large, uneven
+ * border radius suggests the curved glass.
+ */
+.screen {
+    position: relative;
+    flex: 1;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 36px / 28px;
+    background: black;
+
+    /* Watch-only, like a real TV. The remote is the only way to interact. */
+    pointer-events: none;
+}
+
+/* Darker toward the edges, like the glow of a tube falling off at the glass. */
+.screen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 80px rgb(0 0 0 / 0.85);
+    border-radius: inherit;
+}
+
+.static {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    transition: opacity 120ms;
+}
+
+/* Thin horizontal lines across the picture, like the gaps between scanlines. */
+.scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.25) 0 1px, transparent 1px 3px);
+}
+
+/* The green channel number TVs flashed in the corner. */
+.onScreenDisplay {
+    position: absolute;
+    top: 6%;
+    right: 7%;
+    color: #6dff6d;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: clamp(16px, 3vw, 32px);
+    font-weight: 700;
+    text-shadow: 0 0 8px rgb(109 255 109 / 0.8);
+}
+
+.caption {
+    position: absolute;
+    bottom: 7%;
+    left: 7%;
+    color: white;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: clamp(11px, 1.6vw, 16px);
+    text-shadow: 0 0 6px black;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+}
+
+.readout {
+    padding: 6px;
+    border-radius: 4px;
+    background: #140404;
+    color: #ff3b2f;
+    font-size: 24px;
+    text-align: center;
+    text-shadow: 0 0 6px rgb(255 59 47 / 0.7);
+}
+
+.controls button,
+.controls a {
+    padding: 8px 0;
+    border: 0;
+    border-radius: 6px;
+    background: linear-gradient(#5c5046, #3a3029);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.12);
+    color: #d8cfc4;
+    font: inherit;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.controls button:active {
+    background: #2e2621;
+}
+
+/* Speaker grille: tightly repeated dark stripes filling the rest of the panel. */
+.speaker {
+    flex: 1;
+    min-height: 60px;
+    border-radius: 6px;
+    background: repeating-linear-gradient(to bottom, #1c1713 0 3px, #3a3029 3px 6px);
+}
+
+.hint {
+    margin: 0;
+    color: #8b8178;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* On narrow screens the panel moves under the screen and lays out in a row. */
+@media (max-width: 640px) {
+    .television {
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .controls {
+        flex-direction: row;
+        width: auto;
+    }
+
+    .controls > * {
+        flex: 1;
+    }
+
+    .speaker {
+        display: none;
+    }
+}
