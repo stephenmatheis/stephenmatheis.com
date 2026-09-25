@@ -68,3 +68,37 @@
     font: inherit;
     caret-color: #56d364;
 }
+
+/*
+ * neofetch: the logo on the left, specs on the right. On a narrow screen the
+ * specs wrap underneath the logo instead of squeezing it.
+ */
+.neofetch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em 4ch;
+    align-items: flex-start;
+    padding: 0.5em 0;
+}
+
+.neofetchLogo {
+    margin: 0;
+    color: #56b6c2;
+    font: inherit;
+    font-weight: 700;
+}
+
+.neofetchTitle {
+    color: #56b6c2;
+    font-weight: 700;
+}
+
+.neofetchLabel {
+    color: #56b6c2;
+    font-weight: 700;
+}
+
+.swatches {
+    margin-top: 1em;
+    line-height: 1.1;
+}

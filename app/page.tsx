@@ -1,5 +1,5 @@
 import { headCommit } from './head-commit';
-import { versions, versionUrl, type Version } from './versions';
+import { firstCommit, versions, versionUrl, type Version } from './versions';
 import styles from './graph.module.css';
 
 /**
@@ -14,16 +14,6 @@ import styles from './graph.module.css';
  * cycles through six terminal colors, and so does this.
  */
 const laneColors = ['red', 'green', 'yellow', 'blue', 'magenta', 'cyan'];
-
-/**
- * The first commit in this repo's history, which is where every branch
- * ultimately comes from. It's the bottom of the graph.
- */
-const rootCommit = {
-    sha: '8291e21',
-    date: '2020-02-16',
-    message: 'init',
-};
 
 export default function Home() {
     // git log prints newest first.
@@ -55,8 +45,9 @@ export default function Home() {
                 {newestFirst.map((version, index) => (
                     <VersionRow key={version.number} version={version} color={laneColors[index % laneColors.length]} />
                 ))}
-                <Trunk>*</Trunk> <span className={styles.sha}>{rootCommit.sha}</span>{' '}
-                <span className={styles.date}>{rootCommit.date}</span> {rootCommit.message}
+                {/* The bottom of the graph: where every branch ultimately comes from. */}
+                <Trunk>*</Trunk> <span className={styles.sha}>{firstCommit.sha}</span>{' '}
+                <span className={styles.date}>{firstCommit.date}</span> {firstCommit.message}
                 {'\n'}
             </pre>
         </main>

@@ -1,0 +1,228 @@
+.cockpit {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+    background: radial-gradient(ellipse at center, #2a2a2e 0%, #0b0b0d 70%);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* The brushed-metal housing around the three rows. */
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: min(100%, 860px);
+    padding: 22px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #5d5f63, #3a3c40);
+    box-shadow:
+        inset 0 1px 0 rgb(255 255 255 / 0.25),
+        0 20px 50px rgb(0 0 0 / 0.6);
+}
+
+/* A shudder while accelerating, the car rattling as it speeds up. */
+.panel[data-accelerating] {
+    animation: shake 90ms linear infinite;
+}
+
+@keyframes shake {
+    25% {
+        transform: translate(1px, -1px);
+    }
+
+    75% {
+        transform: translate(-1px, 1px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .panel[data-accelerating] {
+        animation: none;
+    }
+}
+
+/*
+ * Each row picks its color from data-color, and everything inside uses
+ * --glow, so one variable recolors the digits, the lights, and the glow.
+ */
+.row[data-color='red'] {
+    --glow: #ff3b30;
+}
+
+.row[data-color='green'] {
+    --glow: #3dff6e;
+}
+
+.row[data-color='amber'] {
+    --glow: #ffb020;
+}
+
+.cells {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background: #121212;
+}
+
+.cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.cellLabel {
+    padding: 1px 6px;
+    background: #7a1a14;
+    color: #f0e6d0;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+}
+
+/* The glowing digits: dark glass behind, a bright color with a soft halo. */
+.digits {
+    min-width: 2.6ch;
+    padding: 4px 8px;
+    border-radius: 3px;
+    background: #1c0a09;
+    color: var(--glow);
+    font-size: clamp(22px, 4vw, 36px);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-align: center;
+    text-shadow:
+        0 0 6px var(--glow),
+        0 0 14px var(--glow);
+}
+
+.lights {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    font-size: 10px;
+}
+
+.lights span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #9a9a9a;
+}
+
+/* An indicator bulb before each of AM and PM. Lit when it's that half of the day. */
+.lights span::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #333;
+}
+
+.lights span[data-on]::before {
+    background: var(--glow);
+    box-shadow: 0 0 6px var(--glow);
+}
+
+.rowLabel {
+    margin-top: 6px;
+    padding: 2px 10px;
+    background: #1a1a1a;
+    color: #e8e1d0;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.controls label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: #e8e1d0;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+}
+
+.controls input {
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 4px;
+    background: #121212;
+    color: #ff3b30;
+    font: inherit;
+    font-size: 16px;
+    letter-spacing: normal;
+    color-scheme: dark;
+}
+
+.go {
+    padding: 12px 22px;
+    border: 0;
+    border-radius: 6px;
+    background: linear-gradient(#ff8a2b, #d4430f);
+    box-shadow: 0 4px 0 #7a2508;
+    color: white;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+}
+
+.go:disabled {
+    cursor: default;
+}
+
+.hint {
+    margin: 0;
+    color: #c7c2b5;
+    font-size: 12px;
+}
+
+/* After the jump: the version fills the screen under a status line. */
+.arrival {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: calc(100vh - 72px);
+}
+
+.arrivalText {
+    margin: 0;
+    color: #e8e1d0;
+    font-size: 13px;
+}
+
+.arrivalText a {
+    color: #ffb020;
+}
+
+.arrivalText button {
+    margin-left: 16px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #9a9a9a;
+    font: inherit;
+    cursor: pointer;
+}
+
+.arrivalScreen {
+    flex: 1;
+    min-height: 0;
+    background: black;
+}

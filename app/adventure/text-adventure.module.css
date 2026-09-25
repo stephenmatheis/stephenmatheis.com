@@ -1,0 +1,44 @@
+/*
+ * An amber monochrome monitor, the kind Zork was played on in the '80s:
+ * everything in one warm orange, with a faint glow.
+ */
+.monitor {
+    min-height: 100vh;
+    padding: 28px 24px 56px;
+    background: #140c02;
+    color: #ffb000;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 15px;
+    line-height: 1.55;
+    text-shadow: 0 0 4px rgb(255 176 0 / 0.45);
+    cursor: text;
+}
+
+.screen {
+    max-width: 780px;
+    white-space: pre-wrap;
+}
+
+/* What you typed is dimmer than what the game says back. */
+.input {
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+.prompt {
+    display: flex;
+    gap: 1ch;
+    margin-top: 10px;
+}
+
+.prompt input {
+    flex: 1;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-shadow: inherit;
+    caret-color: #ffb000;
+}

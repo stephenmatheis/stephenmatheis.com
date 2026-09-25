@@ -1,0 +1,141 @@
+/* Transit map style: white background, bold sans-serif, thick colored lines. */
+.page {
+    min-height: 100vh;
+    padding: 24px 0 56px;
+    background: #ffffff;
+    color: #1a1a1a;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.title {
+    margin: 0 24px 8px;
+    font-size: 20px;
+}
+
+/* The map is wider than most screens, so it scrolls sideways. */
+.scroller {
+    overflow-x: auto;
+}
+
+.map {
+    position: relative;
+}
+
+.track {
+    position: absolute;
+    inset: 0;
+}
+
+.year {
+    fill: #888;
+    font-size: 12px;
+}
+
+.lineLabel {
+    position: absolute;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    transform: translateY(-50%);
+}
+
+/* The round colored line bullet, with its number or letters in white. */
+.bullet {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/*
+ * A station: a white dot with a dark ring, centered on its point on the
+ * track. Interchanges (where the framework changes) are bigger, like
+ * transfer stations on a real map.
+ */
+.station {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border: 3px solid #1a1a1a;
+    border-radius: 50%;
+    background: white;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.station[data-interchange] {
+    width: 20px;
+    height: 20px;
+    border-width: 4px;
+}
+
+.station[data-selected] {
+    background: #ffd100;
+    box-shadow: 0 0 0 4px rgb(255 209 0 / 0.45);
+}
+
+.station:focus-visible {
+    outline: 3px solid #0039a6;
+    outline-offset: 3px;
+}
+
+/*
+ * Station names run diagonally up and to the right, the classic way transit
+ * maps fit many labels close together. The label hangs off the dot's
+ * center and is rotated around its own bottom-left corner.
+ */
+.stationName {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+    pointer-events: none;
+}
+
+.panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    margin: 20px 24px 0;
+    padding: 16px;
+    border: 3px solid #1a1a1a;
+    border-radius: 8px;
+}
+
+.shot {
+    position: relative;
+    width: 320px;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.panel h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 6px;
+    font-size: 20px;
+}
+
+.panel p {
+    margin: 0 0 10px;
+    color: #555;
+}
+
+.panel a {
+    color: #0039a6;
+    font-weight: 700;
+}

@@ -1,0 +1,268 @@
+/*
+ * Windows 95's look comes down to two things: flat gray surfaces, and bevels
+ * made of a light edge on the top and left and a dark edge on the bottom and
+ * right, so everything looks raised. These shadows fake those edges.
+ */
+.desktop {
+    --gray: #c0c0c0;
+    --raised: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+    --sunken: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: #008080;
+    font-family: Tahoma, Verdana, 'Segoe UI', sans-serif;
+    font-size: 12px;
+}
+
+.taskbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 900;
+    display: flex;
+    gap: 4px;
+    height: 32px;
+    padding: 3px 4px;
+    background: var(--gray);
+    box-shadow: var(--raised);
+}
+
+.startButton,
+.task {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 8px;
+    border: 0;
+    background: var(--gray);
+    box-shadow: var(--raised);
+    font: inherit;
+    cursor: pointer;
+}
+
+.startButton {
+    font-weight: 700;
+}
+
+.startButton[aria-expanded='true'],
+.task[aria-pressed='true'] {
+    box-shadow: var(--sunken);
+}
+
+/* A four-color square standing in for the Windows flag. */
+.logo {
+    width: 14px;
+    height: 14px;
+    background: conic-gradient(#3cb04a 0 25%, #fdd835 0 50%, #1e88e5 0 75%, #e53935 0);
+}
+
+.tasks {
+    display: flex;
+    flex: 1;
+    gap: 4px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.task {
+    flex: 0 1 160px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.clock {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: var(--sunken);
+}
+
+.startMenu {
+    position: absolute;
+    top: 32px;
+    left: 4px;
+    z-index: 950;
+    display: flex;
+    max-height: calc(100vh - 80px);
+    background: var(--gray);
+    box-shadow: var(--raised);
+}
+
+/* The vertical banner down the side of the Start menu. */
+.startBanner {
+    padding: 8px 4px;
+    background: linear-gradient(#000080, #1084d0);
+    color: #c0c0c0;
+    font-size: 18px;
+    font-weight: 700;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.startBanner b {
+    color: white;
+}
+
+.startItems {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    padding: 2px;
+    overflow-y: auto;
+}
+
+.startYear {
+    padding: 4px 8px;
+    font-weight: 700;
+}
+
+.startItems button {
+    display: block;
+    width: 100%;
+    padding: 3px 8px 3px 26px;
+    border: 0;
+    background: none;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.startItems button:hover,
+.startItems button:focus-visible {
+    background: #000080;
+    color: white;
+    outline: none;
+}
+
+/*
+ * Desktop icons flow top to bottom, then into the next column, the way
+ * Windows arranges them.
+ */
+.icons {
+    position: absolute;
+    inset: 40px 0 36px 8px;
+    display: grid;
+    grid-auto-columns: 84px;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(auto-fill, 74px);
+    gap: 4px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 2px;
+    border: 0;
+    background: none;
+    color: white;
+    font: inherit;
+    cursor: default;
+}
+
+.iconImage {
+    position: relative;
+    width: 44px;
+    height: 34px;
+    overflow: hidden;
+    border: 1px solid white;
+    box-shadow: 1px 1px 0 black;
+}
+
+.iconImage img {
+    object-fit: cover;
+    object-position: top;
+}
+
+.iconLabel {
+    display: -webkit-box;
+    max-width: 80px;
+    overflow: hidden;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/* Selected icons get the navy highlight and a dotted focus box. */
+.icon[aria-pressed='true'] .iconLabel {
+    background: #000080;
+    outline: 1px dotted white;
+}
+
+.window {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: min(640px, 90vw);
+    height: min(440px, 70vh);
+    padding: 3px;
+    background: var(--gray);
+    box-shadow: var(--raised);
+}
+
+.titleBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 22px;
+    padding: 0 3px 0 6px;
+    background: linear-gradient(90deg, #808080, #b5b5b5);
+    color: #dcdcdc;
+    font-weight: 700;
+    cursor: move;
+    user-select: none;
+
+    /* Pointer events drive dragging, so stop the page from scrolling instead. */
+    touch-action: none;
+}
+
+/* The active window's title bar is navy; inactive ones are gray. */
+.titleBar[data-active] {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: white;
+}
+
+.titleBar > span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.titleButtons {
+    display: flex;
+    gap: 2px;
+}
+
+.titleButtons a,
+.titleButtons button {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 16px;
+    padding: 0;
+    border: 0;
+    background: var(--gray);
+    box-shadow: var(--raised);
+    color: black;
+    font: inherit;
+    font-size: 11px;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.windowBody {
+    flex: 1;
+    min-height: 0;
+    margin-top: 3px;
+    background: white;
+    box-shadow: var(--sunken);
+}

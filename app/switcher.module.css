@@ -1,4 +1,4 @@
-.switcher {
+.bar {
     position: fixed;
     right: 12px;
     bottom: 10px;
@@ -7,10 +7,8 @@
     z-index: 1000;
 
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 0 10px;
-    max-width: calc(100vw - 24px);
+    align-items: baseline;
+    gap: 10px;
 
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 12px;
@@ -25,26 +23,91 @@
     mix-blend-mode: difference;
 }
 
-.switcher a {
+.bar a,
+.bar button {
+    padding: 0;
+    border: 0;
+    background: none;
     color: inherit;
+    font: inherit;
     text-decoration: none;
     opacity: 0.6;
+    cursor: pointer;
 }
 
-.switcher a:hover,
-.switcher a:focus-visible {
+.bar a:hover,
+.bar a:focus-visible,
+.bar button:hover,
+.bar button:focus-visible,
+.bar button[aria-expanded='true'] {
     opacity: 1;
 }
 
-/* The current view, bracketed like a selected menu item in a terminal UI. */
-.switcher a[aria-current='page'] {
+.current {
     opacity: 1;
 }
 
-.switcher a[aria-current='page']::before {
+/*
+ * The full menu: one column per group, on a solid dark panel just above the
+ * bar. No blending here; a whole menu of inverted text would be hard to read.
+ */
+.menu {
+    position: fixed;
+    right: 12px;
+    bottom: 38px;
+    z-index: 1001;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+    max-width: calc(100vw - 24px);
+    padding: 14px 18px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: rgb(16 16 16 / 0.96);
+    box-shadow: 0 8px 30px rgb(0 0 0 / 0.5);
+    color: #ddd;
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    min-width: 90px;
+}
+
+.group h2 {
+    margin: 0 0 4px;
+    color: #777;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.group a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.group a:hover,
+.group a:focus-visible {
+    color: white;
+    text-decoration: underline;
+}
+
+/* The current view, bracketed like a selected item in a terminal menu. */
+.group a[aria-current='page'] {
+    color: white;
+}
+
+.group a[aria-current='page']::before {
     content: '[';
 }
 
-.switcher a[aria-current='page']::after {
+.group a[aria-current='page']::after {
     content: ']';
 }

@@ -1,0 +1,116 @@
+.room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+    background: radial-gradient(ellipse at top, #2a1f18 0%, #0d0a08 70%);
+    color: #eadfce;
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+.screen {
+    position: relative;
+    width: min(100%, 720px);
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 16px 40px rgb(0 0 0 / 0.5);
+}
+
+.screen img {
+    object-fit: cover;
+}
+
+.label {
+    margin: 0;
+}
+
+.label a {
+    color: #fff4e0;
+}
+
+.label span {
+    color: #b9a78f;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+}
+
+/*
+ * The keyboard. White keys are a flex row filling the width. Black keys are
+ * absolutely positioned: each one's `left` is set inline to the boundary
+ * between two white keys, then pulled back half its own width to center it
+ * on that boundary.
+ *
+ * Absolute positions are measured from the padding edge, so the inline
+ * `left` adds the 10px of padding back in, and divides only the space inside
+ * the padding (100% - 20px) among the white keys.
+ */
+.piano {
+    position: relative;
+    display: flex;
+    width: min(100%, 1100px);
+    height: 200px;
+    padding: 10px 10px 0;
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(#3b2416, #1f130b);
+    box-shadow: 0 20px 40px rgb(0 0 0 / 0.5);
+}
+
+.whiteKey,
+.blackKey {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 0 8px;
+    border: 0;
+    font: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.whiteKey {
+    flex: 1;
+    margin: 0 1px;
+    border-radius: 0 0 5px 5px;
+    background: linear-gradient(#ffffff, #eeeae2);
+    box-shadow: inset 0 -6px 0 #d5cfc3;
+    color: #8a8070;
+}
+
+.blackKey {
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+    width: calc((100% - 20px) / var(--white-keys) * 0.6);
+    height: 60%;
+    border-radius: 0 0 4px 4px;
+    background: linear-gradient(#2b2b2b, #0c0c0c);
+    box-shadow: inset 0 -4px 0 #444;
+    color: #999;
+    transform: translateX(-50%);
+}
+
+/* Pressed keys dip down; the current version's key keeps a warm glow. */
+.whiteKey[data-pressed],
+.blackKey[data-pressed] {
+    box-shadow: none;
+    filter: brightness(0.92);
+}
+
+.whiteKey[data-current] {
+    background: linear-gradient(#fff4d6, #f3dc9d);
+}
+
+.blackKey[data-current] {
+    background: linear-gradient(#6b4b1c, #3a270c);
+}
+
+.hint {
+    max-width: 760px;
+    margin: 0;
+    color: #9c8c76;
+    font-size: 13px;
+    text-align: center;
+}

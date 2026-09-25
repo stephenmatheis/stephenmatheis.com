@@ -1,0 +1,171 @@
+/* GitHub's dark theme, with its five contribution greens. */
+.page {
+    --level-0: #151b23;
+    --level-1: #033a16;
+    --level-2: #196c2e;
+    --level-3: #2ea043;
+    --level-4: #56d364;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    min-height: 100vh;
+    padding: 32px 16px 56px;
+    background: #0d1117;
+    color: #f0f6fc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 100%;
+}
+
+.heading {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.readout {
+    min-height: 1.4em;
+    margin: 0;
+    color: #9198a1;
+}
+
+.year {
+    padding: 12px 14px;
+    overflow-x: auto;
+    border: 1px solid #3d444d;
+    border-radius: 6px;
+}
+
+.year h2 {
+    margin: 0 0 8px;
+    color: #9198a1;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* Squares are 11px with a 3px gap, so each week column is 14px wide. */
+.calendar {
+    --square: 11px;
+    --gap: 3px;
+}
+
+.months {
+    display: flex;
+    gap: var(--gap);
+    margin-bottom: 4px;
+    color: #9198a1;
+    font-size: 10px;
+}
+
+.months span {
+    width: var(--square);
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.weeks {
+    display: flex;
+    gap: var(--gap);
+}
+
+.week {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+
+.day,
+.blank {
+    display: block;
+    width: var(--square);
+    height: var(--square);
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+}
+
+.day {
+    background: var(--level-0);
+    outline: 1px solid rgb(255 255 255 / 0.04);
+    outline-offset: -1px;
+}
+
+.day[data-level='1'] {
+    background: var(--level-1);
+}
+
+.day[data-level='2'] {
+    background: var(--level-2);
+}
+
+.day[data-level='3'] {
+    background: var(--level-3);
+}
+
+.day[data-level='4'] {
+    background: var(--level-4);
+}
+
+button.day {
+    cursor: pointer;
+}
+
+button.day:hover,
+button.day:focus-visible {
+    outline: 1px solid #f0f6fc;
+}
+
+/* Days belonging to the selected version get a bright ring. */
+.day[data-selected] {
+    outline: 2px solid #f0f6fc;
+    outline-offset: 0;
+}
+
+.legend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    align-self: flex-end;
+    color: #9198a1;
+    font-size: 11px;
+}
+
+.panel {
+    position: sticky;
+    top: 32px;
+    width: 320px;
+    padding: 16px;
+    border: 1px solid #3d444d;
+    border-radius: 6px;
+    background: #151b23;
+}
+
+.shot {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.panel h2 {
+    margin: 12px 0 4px;
+    font-size: 16px;
+}
+
+.panel p {
+    margin: 0 0 12px;
+    color: #9198a1;
+}
+
+.panel a {
+    color: #4493f8;
+}

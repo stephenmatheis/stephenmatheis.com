@@ -1,0 +1,47 @@
+.arcade {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+    background: linear-gradient(#0f1c2e, #07101b);
+    color: #dbe4ee;
+    font-family: ui-rounded, 'SF Pro Rounded', system-ui, sans-serif;
+    font-size: 14px;
+}
+
+/* The canvas keeps its drawing size but shrinks to fit narrow screens. */
+.board {
+    width: min(100%, 882px);
+    height: auto;
+    border-radius: 12px;
+    background: linear-gradient(#162a44, #0f1f33);
+    box-shadow:
+        inset 0 0 0 4px #2d4a6d,
+        0 20px 50px rgb(0 0 0 / 0.5);
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.result {
+    width: 280px;
+}
+
+.result p {
+    margin: 10px 0 0;
+    line-height: 1.5;
+}
+
+.result a {
+    color: #ffd166;
+}
+
+.shot {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 0 0 3px #ffd166;
+}

@@ -62,6 +62,17 @@ export type Version = {
     aliases?: string[];
 };
 
+/**
+ * The first commit in this repo's history. Every version's branch ultimately
+ * grew out of it. The graph draws it at the bottom, and the terminal's
+ * `neofetch` counts the site's "uptime" from it.
+ */
+export const firstCommit = {
+    sha: '8291e21',
+    date: '2020-02-16',
+    message: 'init',
+};
+
 export const versions: Version[] = [
     {
         number: 1,

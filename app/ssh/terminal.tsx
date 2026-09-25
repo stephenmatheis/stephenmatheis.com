@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { versions, versionUrl, type Version } from '../versions';
+import { Neofetch } from './neofetch';
+import { effort } from '../facts';
 import styles from './terminal.module.css';
 
 /**
@@ -104,6 +106,7 @@ export function Terminal() {
                     'cat <version>    everything about one version, e.g. cat 14',
                     'open <version>   go to it, e.g. open v14',
                     'random           go to a random version',
+                    'neofetch         show off',
                     'whoami, date, history, clear, exit',
                     '',
                 );
@@ -149,7 +152,7 @@ export function Terminal() {
                     `branch      ${version.branch} @ ${version.commit}`,
                     `built with  ${version.framework}`,
                     `worked on   ${version.started} → ${version.frozen}`,
-                    `effort      ${version.commits} commits over ${version.activeDays} days`,
+                    `effort      ${effort(version)}`,
                     `last words  "${version.lastCommitMessage}"`,
                     '',
                 );
@@ -175,6 +178,11 @@ export function Terminal() {
 
                 print(`Rolling… ${versionName(version)}. Connecting…`);
                 window.location.assign(versionUrl(version));
+                break;
+            }
+
+            case 'neofetch': {
+                print(<Neofetch />, '');
                 break;
             }
 

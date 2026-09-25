@@ -1,3 +1,4 @@
+import { count, daysBetween, daysLasted, effort, isPaused, isUnfinished, parseFramework } from '../facts';
 import { versions, type Version } from '../versions';
 
 /**
@@ -12,30 +13,6 @@ import { versions, type Version } from '../versions';
  * These are generated so every version has notes on day one. Any version
  * could later get hand-written notes that replace or add to these.
  */
-
-const millisecondsPerDay = 24 * 60 * 60 * 1000;
-
-function daysBetween(earlier: string, later: string) {
-    return Math.round((Date.parse(later) - Date.parse(earlier)) / millisecondsPerDay);
-}
-
-/** "1 commit", "2 commits". */
-function count(amount: number, singular: string) {
-    return `${amount} ${singular}${amount === 1 ? '' : 's'}`;
-}
-
-/**
- * Splits "Next.js 16" into its family and major version, so "Next.js 15" to
- * "Next.js 16" reads as an upgrade, not a switch.
- */
-function parseFramework(framework: string) {
-    const match = framework.match(/^(.*) (\d+)$/);
-
-    return {
-        family: match?.[1] ?? framework,
-        major: Number(match?.[2] ?? 0),
-    };
-}
 
 function frameworkNote(version: Version, previous: Version | undefined) {
     if (!previous) {
@@ -71,10 +48,10 @@ function effortNote(version: Version) {
     // v1 has no previous version to compare with, so its count is its whole
     // history, all the way back to the repo's first commit.
     if (version.number === 1) {
-        return `Everything since ${version.started}: ${count(version.commits, 'commit')} over ${count(version.activeDays, 'day')}.`;
+        return `Everything since ${version.started}: ${effort(version)}.`;
     }
 
-    return `${count(version.commits, 'commit')} over ${count(version.activeDays, 'day')}.`;
+    return `${effort(version)}.`;
 }
 
 function timingNote(version: Version) {
@@ -82,9 +59,7 @@ function timingNote(version: Version) {
         return 'Made in a single day.';
     }
 
-    const days = daysBetween(version.started, version.frozen) + 1;
-
-    return `Worked on for ${count(days, 'day')}, ${version.started} to ${version.frozen}.`;
+    return `Worked on for ${count(daysLasted(version), 'day')}, ${version.started} to ${version.frozen}.`;
 }
 
 function gapNote(version: Version, previous: Version | undefined) {
@@ -103,11 +78,11 @@ function gapNote(version: Version, previous: Version | undefined) {
 }
 
 function stateNote(version: Version) {
-    if (/\bwip\b/i.test(version.lastCommitMessage)) {
+    if (isUnfinished(version)) {
         return 'Left unfinished.';
     }
 
-    if (/\bpaused\b/i.test(version.lastCommitMessage)) {
+    if (isPaused(version)) {
         return 'Paused.';
     }
 

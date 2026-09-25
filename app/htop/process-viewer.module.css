@@ -1,0 +1,110 @@
+/* htop's default look: black background and its handful of bright colors. */
+.htop {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px 12px 34px;
+    background: #000;
+    color: #d3d7cf;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px;
+    line-height: 1.35;
+    white-space: pre;
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 40px;
+    margin-bottom: 10px;
+}
+
+.meterLabel {
+    color: #34e2e2;
+}
+
+.dim {
+    color: #8a8a8a;
+}
+
+.zombie {
+    color: #ef2929;
+    font-weight: 700;
+}
+
+.tableWrapper {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* The column header bar: green background, black text. */
+.table th {
+    position: sticky;
+    top: 0;
+    padding: 0 6px;
+    background: #4e9a06;
+    color: #000;
+    font-weight: 400;
+    text-align: right;
+}
+
+/* The column it's sorted by is highlighted, as in htop. */
+.table th[data-sorted] {
+    background: #34e2e2;
+}
+
+.table td {
+    padding: 0 6px;
+    text-align: right;
+}
+
+.table .commandColumn {
+    width: 100%;
+    text-align: left;
+}
+
+.table tbody tr {
+    cursor: default;
+}
+
+/* The selected process: a full-width cyan bar. */
+.table tbody tr[data-selected] {
+    background: #34e2e2;
+    color: #000;
+}
+
+.table tbody tr[data-selected] .zombie {
+    color: #a40000;
+}
+
+.status {
+    margin: 8px 0 4px;
+    color: #8ae234;
+}
+
+/*
+ * The function key bar: each key name in plain text, then its label on a
+ * cyan background, like htop's bottom row.
+ */
+.functionKeys {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.functionKeys span {
+    background: #06989a;
+    color: #000;
+}
+
+.functionKeys b {
+    padding-left: 6px;
+    background: #000;
+    color: #d3d7cf;
+    font-weight: 400;
+}

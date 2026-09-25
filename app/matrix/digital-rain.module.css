@@ -1,0 +1,76 @@
+.matrix {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.rain {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/*
+ * A falling version name, written top to bottom like the rain. It falls from
+ * just above the screen to just below it, once. When the animation ends,
+ * the component swaps in a new version, which restarts it.
+ */
+.name {
+    position: absolute;
+    top: 0;
+    padding: 4px 2px;
+    color: #d8ffd8;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow:
+        0 0 8px #00ff41,
+        0 0 16px #00ff41;
+    writing-mode: vertical-rl;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    cursor: pointer;
+}
+
+.name:hover,
+.name:focus-visible {
+    color: white;
+    animation-play-state: paused;
+    outline: none;
+    text-shadow:
+        0 0 10px white,
+        0 0 20px #00ff41;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(-110%);
+    }
+
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* Reduced motion: the names stand still, scattered down the screen. */
+@media (prefers-reduced-motion: reduce) {
+    .name {
+        top: 20%;
+        animation: none;
+    }
+}
+
+.hint {
+    position: absolute;
+    bottom: 10px;
+    left: 16px;
+    margin: 0;
+    color: #00ff41;
+    font-size: 12px;
+    opacity: 0.7;
+}

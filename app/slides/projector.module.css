@@ -1,0 +1,155 @@
+.room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-height: 100vh;
+    padding: 28px 16px 48px;
+    background: #0c0a08;
+    color: #cbbfae;
+    font-family: 'American Typewriter', 'Courier New', monospace;
+    font-size: 13px;
+}
+
+/*
+ * The projection screen. It's a button so it can be clicked or activated by
+ * keyboard, with all the button styling stripped off.
+ */
+.screen {
+    position: relative;
+    width: min(100%, calc((100vh - 230px) * 1.6));
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    background: #1a1612;
+    box-shadow: 0 0 80px rgb(255 214 150 / 0.12);
+    cursor: pointer;
+}
+
+/*
+ * The projected slide: warmed up with a touch of sepia, a hair soft, and
+ * flickering very slightly, like a hot bulb.
+ */
+.slide {
+    position: absolute;
+    inset: 0;
+    filter: sepia(0.25) saturate(1.1) brightness(1.05) contrast(1.05) blur(0.3px);
+    animation: flicker 3s infinite;
+    transition: opacity 80ms;
+}
+
+.slide img {
+    object-fit: cover;
+}
+
+/* Mid-swap, the screen goes dark: no slide in the gate. */
+.screen[data-dark] .slide {
+    opacity: 0;
+}
+
+/*
+ * Brighter in the middle, dimmer at the edges, the way a projector lamp
+ * lights the screen. Drawn over the slide with a radial gradient.
+ */
+.screen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 45%, rgb(0 0 0 / 0.55) 100%);
+    pointer-events: none;
+}
+
+/*
+ * Dust on the lens: a few soft specks and a hair, drawn with gradients so
+ * there's no image to load.
+ */
+.dust {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 27%, rgb(0 0 0 / 0.35) 0 1.5px, transparent 2.5px),
+        radial-gradient(circle at 71% 64%, rgb(0 0 0 / 0.3) 0 1px, transparent 2px),
+        radial-gradient(circle at 43% 81%, rgb(0 0 0 / 0.25) 0 2px, transparent 3px),
+        radial-gradient(circle at 86% 19%, rgb(0 0 0 / 0.3) 0 1px, transparent 2px),
+        linear-gradient(115deg, transparent 58%, rgb(0 0 0 / 0.18) 58.1% 58.3%, transparent 58.4%);
+    pointer-events: none;
+}
+
+@keyframes flicker {
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    47% {
+        opacity: 0.985;
+    }
+
+    50% {
+        opacity: 0.95;
+    }
+
+    53% {
+        opacity: 0.99;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .slide {
+        animation: none;
+    }
+}
+
+.caption {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+/* Like a label handwritten on the white cardboard mount of a slide. */
+.label {
+    padding: 3px 10px;
+    background: #efe9dc;
+    color: #2a2520;
+    transform: rotate(-1deg);
+}
+
+.caption a {
+    color: #cbbfae;
+}
+
+.tray {
+    width: 90px;
+    height: 90px;
+}
+
+.trayRim {
+    fill: #2b2621;
+    stroke: #4a4139;
+    stroke-width: 1.5;
+}
+
+.trayHub {
+    fill: #1a1612;
+    stroke: #4a4139;
+}
+
+/* The tray turns smoothly between slides, rotating around its center. */
+.trayTurn {
+    transition: transform 260ms ease-in-out;
+}
+
+.slot {
+    fill: #6d6257;
+}
+
+.slotCurrent {
+    fill: #ffd98f;
+}
+
+.hint {
+    margin: 0;
+    color: #6d6257;
+    font-size: 12px;
+}
