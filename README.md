@@ -1,46 +1,44 @@
 <!-- markdownlint-disable-file MD013 MD033 MD041 -->
 
-<pre>
-<a href="https://v1.stephenmatheis.com">v1</a>  <a href="https://v1.stephenmatheis.com">Archive</a>           [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v01/archive">code</a> ]
-<a href="https://v2.stephenmatheis.com">v2</a>  <a href="https://v2.stephenmatheis.com">Black and White</a>   [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v02/black-and-white">code</a> ]
-<a href="https://v3.stephenmatheis.com">v3</a>  <a href="https://v3.stephenmatheis.com">CRT</a>               [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v03/crt">code</a> ]
-<a href="https://v4.stephenmatheis.com">v4</a>  <a href="https://v4.stephenmatheis.com">Blog</a>              [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v04/blog">code</a> ]
-<a href="https://v5.stephenmatheis.com">v5</a>  <a href="https://v5.stephenmatheis.com">Words</a>             [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v05/words">code</a> ]
-<a href="https://v6.stephenmatheis.com">v6</a>  <a href="https://v6.stephenmatheis.com">Nav</a>               [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v06/nav">code</a> ]
-<a href="https://v7.stephenmatheis.com">v7</a>  <a href="https://v7.stephenmatheis.com">Black and White</a>   [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v07/black-and-white">code</a> ]
-<a href="https://v8.stephenmatheis.com">v8</a>  <a href="https://v8.stephenmatheis.com">Print</a>             [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v08/print">code</a> ]
-<a href="https://v9.stephenmatheis.com">v9</a>  <a href="https://v9.stephenmatheis.com">Positions</a>         [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v09/positions">code</a> ]
-<a href="https://v10.stephenmatheis.com">v10</a> <a href="https://v10.stephenmatheis.com">Layout</a>            [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v10/layout">code</a> ]
-<a href="https://v11.stephenmatheis.com">v11</a> <a href="https://v11.stephenmatheis.com">New Print Layout</a>  [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v11/new-print-layout">code</a> ]
-<a href="https://v12.stephenmatheis.com">v12</a> <a href="https://v12.stephenmatheis.com">Toolbar</a>           [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v12/toolbar">code</a> ]
-<a href="https://v13.stephenmatheis.com">v13</a> <a href="https://v13.stephenmatheis.com">Fun</a>               [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v13/fun">code</a> ]
-<a href="https://v14.stephenmatheis.com">v14</a> <a href="https://v14.stephenmatheis.com">8-Bit</a>             [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v14/8-bit">code</a> ]
-<a href="https://v15.stephenmatheis.com">v15</a> <a href="https://v15.stephenmatheis.com">Simple</a>            [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v15/simple">code</a> ]
-<a href="https://v16.stephenmatheis.com">v16</a> <a href="https://v16.stephenmatheis.com">Cybertruck</a>        [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v16/cybertruck">code</a> ]
-<a href="https://v17.stephenmatheis.com">v17</a> <a href="https://v17.stephenmatheis.com">Mono</a>              [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v17/mono">code</a> ]
-<a href="https://v18.stephenmatheis.com">v18</a> <a href="https://v18.stephenmatheis.com">New Home</a>          [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v18/new-home">code</a> ]
-<a href="https://v19.stephenmatheis.com">v19</a> <a href="https://v19.stephenmatheis.com">Fiber</a>             [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v19/fiber">code</a> ]
-<a href="https://v20.stephenmatheis.com">v20</a> <a href="https://v20.stephenmatheis.com">New</a>               [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v20/new">code</a> ]
-<a href="https://v21.stephenmatheis.com">v21</a> <a href="https://v21.stephenmatheis.com">Grid</a>              [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v21/grid">code</a> ]
-<a href="https://v22.stephenmatheis.com">v22</a> <a href="https://v22.stephenmatheis.com">Old Skool</a>         [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v22/old-skool">code</a> ]
-<a href="https://v23.stephenmatheis.com">v23</a> <a href="https://v23.stephenmatheis.com">Flex</a>              [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v23/flex">code</a> ]
-<a href="https://v24.stephenmatheis.com">v24</a> <a href="https://v24.stephenmatheis.com">Motion</a>            [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v24/motion">code</a> ]
-<a href="https://v25.stephenmatheis.com">v25</a> <a href="https://v25.stephenmatheis.com">Orientation</a>       [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v25/orientation">code</a> ]
-<a href="https://v26.stephenmatheis.com">v26</a> <a href="https://v26.stephenmatheis.com">Narrative Format</a>  [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v26/narrative-format">code</a> ]
-<a href="https://v27.stephenmatheis.com">v27</a> <a href="https://v27.stephenmatheis.com">Resume</a>            [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v27/resume">code</a> ]
-<a href="https://v28.stephenmatheis.com">v28</a> <a href="https://v28.stephenmatheis.com">Pages</a>             [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v28/pages">code</a> ]
-<a href="https://v29.stephenmatheis.com">v29</a> <a href="https://v29.stephenmatheis.com">Update</a>            [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v29/update">code</a> ]
-<a href="https://v30.stephenmatheis.com">v30</a> <a href="https://v30.stephenmatheis.com">Listless</a>          [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v30/listless">code</a> ]
-<a href="https://v31.stephenmatheis.com">v31</a> <a href="https://v31.stephenmatheis.com">Godly</a>             [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v31/godly">code</a> ]
-<a href="https://v32.stephenmatheis.com">v32</a> <a href="https://v32.stephenmatheis.com">Back in Black</a>     [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v32/back-in-black">code</a> ]
-<a href="https://v33.stephenmatheis.com">v33</a> <a href="https://v33.stephenmatheis.com">Invoice</a>           [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v33/invoice">code</a> ]
-<a href="https://v34.stephenmatheis.com">v34</a> <a href="https://v34.stephenmatheis.com">Overlay</a>           [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v34/overlay">code</a> ]
-<a href="https://v35.stephenmatheis.com">v35</a> <a href="https://v35.stephenmatheis.com">FUI</a>               [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v35/fui">code</a> ]
-<a href="https://v36.stephenmatheis.com">v36</a> <a href="https://v36.stephenmatheis.com">Update Next</a>       [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v36/update-next">code</a> ]
-<a href="https://v37.stephenmatheis.com">v37</a> <a href="https://v37.stephenmatheis.com">Vite</a>              [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v37/vite">code</a> ]
-<a href="https://v38.stephenmatheis.com">v38</a> <a href="https://v38.stephenmatheis.com">Archive Main</a>      [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v38/archive-main">code</a> ]
-<a href="https://v39.stephenmatheis.com">v39</a> <a href="https://v39.stephenmatheis.com">TUI</a>               [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v39/tui">code</a> ]
-<a href="https://v40.stephenmatheis.com">v40</a> <a href="https://v40.stephenmatheis.com">Archive 2</a>         [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v40/archive-2">code</a> ]
-<a href="https://v41.stephenmatheis.com">v41</a> <a href="https://v41.stephenmatheis.com">System</a>            [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v41/system">code</a> ]
-<a href="https://v42.stephenmatheis.com">v42</a> <a href="https://v42.stephenmatheis.com">ASCII</a>             [ <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/v42/ascii">code</a> ]
-</pre>
+<samp>[v1](https://v1.stephenmatheis.com)  [Archive](https://v1.stephenmatheis.com)           [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v01/archive) ]\
+[v2](https://v2.stephenmatheis.com)  [Black and White](https://v2.stephenmatheis.com)   [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v02/black-and-white) ]\
+[v3](https://v3.stephenmatheis.com)  [CRT](https://v3.stephenmatheis.com)               [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v03/crt) ]\
+[v4](https://v4.stephenmatheis.com)  [Blog](https://v4.stephenmatheis.com)              [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v04/blog) ]\
+[v5](https://v5.stephenmatheis.com)  [Words](https://v5.stephenmatheis.com)             [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v05/words) ]\
+[v6](https://v6.stephenmatheis.com)  [Nav](https://v6.stephenmatheis.com)               [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v06/nav) ]\
+[v7](https://v7.stephenmatheis.com)  [Black and White](https://v7.stephenmatheis.com)   [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v07/black-and-white) ]\
+[v8](https://v8.stephenmatheis.com)  [Print](https://v8.stephenmatheis.com)             [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v08/print) ]\
+[v9](https://v9.stephenmatheis.com)  [Positions](https://v9.stephenmatheis.com)         [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v09/positions) ]\
+[v10](https://v10.stephenmatheis.com) [Layout](https://v10.stephenmatheis.com)            [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v10/layout) ]\
+[v11](https://v11.stephenmatheis.com) [New Print Layout](https://v11.stephenmatheis.com)  [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v11/new-print-layout) ]\
+[v12](https://v12.stephenmatheis.com) [Toolbar](https://v12.stephenmatheis.com)           [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v12/toolbar) ]\
+[v13](https://v13.stephenmatheis.com) [Fun](https://v13.stephenmatheis.com)               [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v13/fun) ]\
+[v14](https://v14.stephenmatheis.com) [8-Bit](https://v14.stephenmatheis.com)             [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v14/8-bit) ]\
+[v15](https://v15.stephenmatheis.com) [Simple](https://v15.stephenmatheis.com)            [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v15/simple) ]\
+[v16](https://v16.stephenmatheis.com) [Cybertruck](https://v16.stephenmatheis.com)        [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v16/cybertruck) ]\
+[v17](https://v17.stephenmatheis.com) [Mono](https://v17.stephenmatheis.com)              [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v17/mono) ]\
+[v18](https://v18.stephenmatheis.com) [New Home](https://v18.stephenmatheis.com)          [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v18/new-home) ]\
+[v19](https://v19.stephenmatheis.com) [Fiber](https://v19.stephenmatheis.com)             [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v19/fiber) ]\
+[v20](https://v20.stephenmatheis.com) [New](https://v20.stephenmatheis.com)               [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v20/new) ]\
+[v21](https://v21.stephenmatheis.com) [Grid](https://v21.stephenmatheis.com)              [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v21/grid) ]\
+[v22](https://v22.stephenmatheis.com) [Old Skool](https://v22.stephenmatheis.com)         [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v22/old-skool) ]\
+[v23](https://v23.stephenmatheis.com) [Flex](https://v23.stephenmatheis.com)              [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v23/flex) ]\
+[v24](https://v24.stephenmatheis.com) [Motion](https://v24.stephenmatheis.com)            [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v24/motion) ]\
+[v25](https://v25.stephenmatheis.com) [Orientation](https://v25.stephenmatheis.com)       [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v25/orientation) ]\
+[v26](https://v26.stephenmatheis.com) [Narrative Format](https://v26.stephenmatheis.com)  [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v26/narrative-format) ]\
+[v27](https://v27.stephenmatheis.com) [Resume](https://v27.stephenmatheis.com)            [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v27/resume) ]\
+[v28](https://v28.stephenmatheis.com) [Pages](https://v28.stephenmatheis.com)             [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v28/pages) ]\
+[v29](https://v29.stephenmatheis.com) [Update](https://v29.stephenmatheis.com)            [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v29/update) ]\
+[v30](https://v30.stephenmatheis.com) [Listless](https://v30.stephenmatheis.com)          [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v30/listless) ]\
+[v31](https://v31.stephenmatheis.com) [Godly](https://v31.stephenmatheis.com)             [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v31/godly) ]\
+[v32](https://v32.stephenmatheis.com) [Back in Black](https://v32.stephenmatheis.com)     [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v32/back-in-black) ]\
+[v33](https://v33.stephenmatheis.com) [Invoice](https://v33.stephenmatheis.com)           [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v33/invoice) ]\
+[v34](https://v34.stephenmatheis.com) [Overlay](https://v34.stephenmatheis.com)           [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v34/overlay) ]\
+[v35](https://v35.stephenmatheis.com) [FUI](https://v35.stephenmatheis.com)               [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v35/fui) ]\
+[v36](https://v36.stephenmatheis.com) [Update Next](https://v36.stephenmatheis.com)       [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v36/update-next) ]\
+[v37](https://v37.stephenmatheis.com) [Vite](https://v37.stephenmatheis.com)              [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v37/vite) ]\
+[v38](https://v38.stephenmatheis.com) [Archive Main](https://v38.stephenmatheis.com)      [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v38/archive-main) ]\
+[v39](https://v39.stephenmatheis.com) [TUI](https://v39.stephenmatheis.com)               [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v39/tui) ]\
+[v40](https://v40.stephenmatheis.com) [Archive 2](https://v40.stephenmatheis.com)         [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v40/archive-2) ]\
+[v41](https://v41.stephenmatheis.com) [System](https://v41.stephenmatheis.com)            [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v41/system) ]\
+[v42](https://v42.stephenmatheis.com) [ASCII](https://v42.stephenmatheis.com)             [ [code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v42/ascii) ]</samp>
