@@ -1,3 +1,11 @@
+import styles from "./page.module.scss";
+
 export default function Home() {
-    return <a href="https://github.com/stephenmatheis">My GitHub</a>;
+    return (
+        <div className={styles.page}>
+            <div>
+                <input type="text" autoFocus />
+            </div>
+        </div>
+    );
 }
