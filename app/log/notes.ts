@@ -94,7 +94,7 @@ function aliasNote(version: Version) {
         return null;
     }
 
-    return `Also lives on ${version.aliases.join(' and ')}, which turned out to be the same site.`;
+    return `Also lived on ${version.aliases.join(' and ')}, which turned out to be the same site.`;
 }
 
 /** The notes for one version, in reading order, skipping ones that don't apply. */

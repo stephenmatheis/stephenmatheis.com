@@ -40,7 +40,7 @@
     color: #7a7a7a;
 }
 
-/* The "(tag: v42, feat/ascii)" part. git draws the parens in yellow too. */
+/* The "(tag: v42, v42/ascii)" part. git draws the parens in yellow too. */
 .decoration {
     color: var(--yellow);
 }

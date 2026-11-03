@@ -3,8 +3,8 @@
  *
  * Each one is a git branch in this repo. Vercel builds every branch as a
  * preview deployment, and each version's number is a custom domain attached
- * to its branch: v1.stephenmatheis.com → `archive`, and so on. Nothing gets
- * copied or exported. A version stays whatever its branch last deployed.
+ * to its branch: v1.stephenmatheis.com → `v01/archive`, and so on. Nothing
+ * gets copied or exported. A version stays whatever its branch last deployed.
  *
  * The number is the order the versions were frozen, meaning the date of each
  * branch's last real commit (package bumps and deploy fixes don't count).
@@ -15,10 +15,13 @@
  *
  * To add a version:
  *
- * 1. Attach `v<next number>.stephenmatheis.com` to its branch in the Vercel
+ * 1. Rename its branch to `v<next number>/<name>`. Pad the number to two
+ *    digits (`v05/words`, not `v5/words`) so `git branch` lists the
+ *    versions in order. The subdomain stays unpadded.
+ * 2. Attach `v<next number>.stephenmatheis.com` to its branch in the Vercel
  *    project's domain settings.
- * 2. Add an entry here.
- * 3. Run `npm run screenshots -- <next number>` to capture its screenshot.
+ * 3. Add an entry here.
+ * 4. Run `npm run screenshots -- <next number>` to capture its screenshot.
  */
 
 export type Version = {
@@ -57,7 +60,8 @@ export type Version = {
 
     /**
      * Other branches with the same code, folded into this number when the
-     * archive was numbered.
+     * archive was numbered. Those branches have since been deleted, so these
+     * names are history, not something you can check out.
      */
     aliases?: string[];
 };
@@ -77,7 +81,7 @@ export const versions: Version[] = [
     {
         number: 1,
         name: 'Archive',
-        branch: 'archive',
+        branch: 'v01/archive',
         commit: '21a5356',
         framework: 'Next.js 13',
         started: '2020-02-16',
@@ -89,7 +93,7 @@ export const versions: Version[] = [
     {
         number: 2,
         name: 'Black and White',
-        branch: 'black-and-white',
+        branch: 'v02/black-and-white',
         commit: '991c279',
         framework: 'Next.js 13',
         started: '2023-11-25',
@@ -101,7 +105,7 @@ export const versions: Version[] = [
     {
         number: 3,
         name: 'CRT',
-        branch: 'crt',
+        branch: 'v03/crt',
         commit: '10a4d04',
         framework: 'Next.js 13',
         started: '2023-12-08',
@@ -113,7 +117,7 @@ export const versions: Version[] = [
     {
         number: 4,
         name: 'Blog',
-        branch: 'blog',
+        branch: 'v04/blog',
         commit: 'd7f10bf',
         framework: 'Next.js 13',
         started: '2023-12-12',
@@ -126,7 +130,7 @@ export const versions: Version[] = [
     {
         number: 5,
         name: 'Words',
-        branch: 'feat/words',
+        branch: 'v05/words',
         commit: '130730e',
         framework: 'Next.js 13',
         started: '2024-02-17',
@@ -138,7 +142,7 @@ export const versions: Version[] = [
     {
         number: 6,
         name: 'Nav',
-        branch: 'feat/nav',
+        branch: 'v06/nav',
         commit: 'cab36af',
         framework: 'Next.js 14',
         started: '2024-03-08',
@@ -150,7 +154,7 @@ export const versions: Version[] = [
     {
         number: 7,
         name: 'Black and White',
-        branch: 'feat/black-and-white',
+        branch: 'v07/black-and-white',
         commit: 'e0fd267',
         framework: 'Next.js 13',
         started: '2024-08-14',
@@ -162,7 +166,7 @@ export const versions: Version[] = [
     {
         number: 8,
         name: 'Print',
-        branch: 'feat/print',
+        branch: 'v08/print',
         commit: 'c4c7f1f',
         framework: 'Next.js 14',
         started: '2024-08-14',
@@ -174,7 +178,7 @@ export const versions: Version[] = [
     {
         number: 9,
         name: 'Positions',
-        branch: 'feat/positions',
+        branch: 'v09/positions',
         commit: 'a66c6dd',
         framework: 'Next.js 14',
         started: '2024-08-14',
@@ -186,7 +190,7 @@ export const versions: Version[] = [
     {
         number: 10,
         name: 'Layout',
-        branch: 'feat/layout',
+        branch: 'v10/layout',
         commit: '231a287',
         framework: 'Next.js 14',
         started: '2024-08-25',
@@ -198,7 +202,7 @@ export const versions: Version[] = [
     {
         number: 11,
         name: 'New Print Layout',
-        branch: 'feat/new-print-layout',
+        branch: 'v11/new-print-layout',
         commit: '5c9f109',
         framework: 'Next.js 14',
         started: '2024-08-26',
@@ -210,7 +214,7 @@ export const versions: Version[] = [
     {
         number: 12,
         name: 'Toolbar',
-        branch: 'feat/toolbar',
+        branch: 'v12/toolbar',
         commit: '6d7e0d2',
         framework: 'Next.js 14',
         started: '2024-09-02',
@@ -222,7 +226,7 @@ export const versions: Version[] = [
     {
         number: 13,
         name: 'Fun',
-        branch: 'feat/fun',
+        branch: 'v13/fun',
         commit: '3b9fd55',
         framework: 'Next.js 14',
         started: '2024-09-03',
@@ -234,7 +238,7 @@ export const versions: Version[] = [
     {
         number: 14,
         name: '8-Bit',
-        branch: 'feat/8-bit',
+        branch: 'v14/8-bit',
         commit: 'ad1e504',
         framework: 'Next.js 14',
         started: '2024-10-11',
@@ -247,7 +251,7 @@ export const versions: Version[] = [
     {
         number: 15,
         name: 'Simple',
-        branch: 'feat/simple',
+        branch: 'v15/simple',
         commit: 'ff3d029',
         framework: 'Next.js 14',
         started: '2024-10-19',
@@ -259,7 +263,7 @@ export const versions: Version[] = [
     {
         number: 16,
         name: 'Cybertruck',
-        branch: 'feat/cybertruck',
+        branch: 'v16/cybertruck',
         commit: '0a06f64',
         framework: 'Next.js 14',
         started: '2024-11-13',
@@ -271,7 +275,7 @@ export const versions: Version[] = [
     {
         number: 17,
         name: 'Mono',
-        branch: 'feat/mono',
+        branch: 'v17/mono',
         commit: '69d9860',
         framework: 'Next.js 14',
         started: '2024-11-15',
@@ -283,7 +287,7 @@ export const versions: Version[] = [
     {
         number: 18,
         name: 'New Home',
-        branch: 'feat/new-home',
+        branch: 'v18/new-home',
         commit: '5d24371',
         framework: 'Next.js 15',
         started: '2024-11-26',
@@ -295,7 +299,7 @@ export const versions: Version[] = [
     {
         number: 19,
         name: 'Fiber',
-        branch: 'feat/fiber',
+        branch: 'v19/fiber',
         commit: '01e5b1c',
         framework: 'Next.js 15',
         started: '2025-01-22',
@@ -307,7 +311,7 @@ export const versions: Version[] = [
     {
         number: 20,
         name: 'New',
-        branch: 'feat/new',
+        branch: 'v20/new',
         commit: 'ff17e3c',
         framework: 'Next.js 14',
         started: '2025-04-12',
@@ -319,7 +323,7 @@ export const versions: Version[] = [
     {
         number: 21,
         name: 'Grid',
-        branch: 'feat/grid',
+        branch: 'v21/grid',
         commit: '98532a3',
         framework: 'Next.js 15',
         started: '2025-04-13',
@@ -331,7 +335,7 @@ export const versions: Version[] = [
     {
         number: 22,
         name: 'Old Skool',
-        branch: 'feat/old-skool',
+        branch: 'v22/old-skool',
         commit: 'd40a784',
         framework: 'Next.js 15',
         started: '2025-04-20',
@@ -343,7 +347,7 @@ export const versions: Version[] = [
     {
         number: 23,
         name: 'Flex',
-        branch: 'feat/flex',
+        branch: 'v23/flex',
         commit: '87466b9',
         framework: 'Next.js 15',
         started: '2025-07-09',
@@ -355,7 +359,7 @@ export const versions: Version[] = [
     {
         number: 24,
         name: 'Motion',
-        branch: 'feat/motion',
+        branch: 'v24/motion',
         commit: 'fcdedca',
         framework: 'Next.js 15',
         started: '2025-08-01',
@@ -367,7 +371,7 @@ export const versions: Version[] = [
     {
         number: 25,
         name: 'Orientation',
-        branch: 'feat/orientation',
+        branch: 'v25/orientation',
         commit: '93bbe5c',
         framework: 'Next.js 15',
         started: '2025-08-10',
@@ -379,7 +383,7 @@ export const versions: Version[] = [
     {
         number: 26,
         name: 'Narrative Format',
-        branch: 'feat/narrative-format',
+        branch: 'v26/narrative-format',
         commit: 'd97d225',
         framework: 'Next.js 15',
         started: '2025-08-18',
@@ -391,7 +395,7 @@ export const versions: Version[] = [
     {
         number: 27,
         name: 'Resume',
-        branch: 'feat/resume',
+        branch: 'v27/resume',
         commit: '39e4423',
         framework: 'Next.js 15',
         started: '2025-09-04',
@@ -403,7 +407,7 @@ export const versions: Version[] = [
     {
         number: 28,
         name: 'Pages',
-        branch: 'feat/pages',
+        branch: 'v28/pages',
         commit: '65655e6',
         framework: 'Next.js 15',
         started: '2025-09-04',
@@ -415,7 +419,7 @@ export const versions: Version[] = [
     {
         number: 29,
         name: 'Update',
-        branch: 'feat/update',
+        branch: 'v29/update',
         commit: '891e069',
         framework: 'Next.js 15',
         started: '2025-10-22',
@@ -427,7 +431,7 @@ export const versions: Version[] = [
     {
         number: 30,
         name: 'Listless',
-        branch: 'feat/listless',
+        branch: 'v30/listless',
         commit: 'dda7290',
         framework: 'Next.js 16',
         started: '2025-10-03',
@@ -439,7 +443,7 @@ export const versions: Version[] = [
     {
         number: 31,
         name: 'Godly',
-        branch: 'feat/godly',
+        branch: 'v31/godly',
         commit: '07a8dd2',
         framework: 'Next.js 15',
         started: '2025-11-03',
@@ -451,7 +455,7 @@ export const versions: Version[] = [
     {
         number: 32,
         name: 'Back in Black',
-        branch: 'feat/back-in-black',
+        branch: 'v32/back-in-black',
         commit: 'e597464',
         framework: 'Next.js 16',
         started: '2025-11-17',
@@ -463,7 +467,7 @@ export const versions: Version[] = [
     {
         number: 33,
         name: 'Invoice',
-        branch: 'feat/invoice',
+        branch: 'v33/invoice',
         commit: '36e9ea4',
         framework: 'Next.js 16',
         started: '2025-12-27',
@@ -475,7 +479,7 @@ export const versions: Version[] = [
     {
         number: 34,
         name: 'Overlay',
-        branch: 'feat/overlay',
+        branch: 'v34/overlay',
         commit: '8bccf8b',
         framework: 'Next.js 16',
         started: '2026-02-11',
@@ -487,7 +491,7 @@ export const versions: Version[] = [
     {
         number: 35,
         name: 'FUI',
-        branch: 'fui',
+        branch: 'v35/fui',
         commit: '8211e00',
         framework: 'Next.js 16',
         started: '2025-07-23',
@@ -500,7 +504,7 @@ export const versions: Version[] = [
     {
         number: 36,
         name: 'Update Next',
-        branch: 'update-next',
+        branch: 'v36/update-next',
         commit: '564b8e8',
         framework: 'Next.js 16',
         started: '2026-05-22',
@@ -512,7 +516,7 @@ export const versions: Version[] = [
     {
         number: 37,
         name: 'Vite',
-        branch: 'vite',
+        branch: 'v37/vite',
         commit: 'c3e8f2d',
         framework: 'React Router 7',
         started: '2026-05-22',
@@ -524,7 +528,7 @@ export const versions: Version[] = [
     {
         number: 38,
         name: 'Archive Main',
-        branch: 'archive-main',
+        branch: 'v38/archive-main',
         commit: 'b0e2028',
         framework: 'Next.js 16',
         started: '2026-05-22',
@@ -536,7 +540,7 @@ export const versions: Version[] = [
     {
         number: 39,
         name: 'TUI',
-        branch: 'feat/tui',
+        branch: 'v39/tui',
         commit: 'e3245ff',
         framework: 'Next.js 16',
         started: '2026-06-22',
@@ -548,7 +552,7 @@ export const versions: Version[] = [
     {
         number: 40,
         name: 'Archive 2',
-        branch: 'archive-2',
+        branch: 'v40/archive-2',
         commit: '9e3493f',
         framework: 'Next.js 16',
         started: '2026-07-07',
@@ -560,7 +564,7 @@ export const versions: Version[] = [
     {
         number: 41,
         name: 'System',
-        branch: 'feat/system',
+        branch: 'v41/system',
         commit: '6b6d52a',
         framework: 'Next.js 16',
         started: '2026-07-25',
@@ -572,7 +576,7 @@ export const versions: Version[] = [
     {
         number: 42,
         name: 'ASCII',
-        branch: 'feat/ascii',
+        branch: 'v42/ascii',
         commit: '1e8dd0f',
         framework: 'Next.js 16',
         started: '2026-08-17',

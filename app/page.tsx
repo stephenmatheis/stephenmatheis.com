@@ -62,7 +62,7 @@ function Trunk({ children }: { children: string }) {
 /**
  * Two lines per version, the same shape git draws for a side branch:
  *
- *     | * 1e8dd0f 2026-09-22 (tag: v42, feat/ascii) feat: wrapped boxes
+ *     | * 1e8dd0f 2026-09-22 (tag: v42, v42/ascii) feat: wrapped boxes
  *     |/
  *
  * The `*` is the branch's commit, and `|/` is it joining back into the trunk
