@@ -11,6 +11,7 @@
     },
     "ignorePatterns": [".next/**", "out/**", "build/**", "next-env.d.ts"],
     "rules": {
-        "react/exhaustive-deps": "warn"
+        "react/exhaustive-deps": "warn",
+        "jsx-a11y/no-autofocus": "off"
     }
 }
