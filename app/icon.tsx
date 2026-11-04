@@ -1,11 +1,11 @@
-import { ImageResponse } from "next/og";
+import { ImageResponse } from 'next/og';
 
 export const size = {
     width: 32,
     height: 32,
 };
 
-export const contentType = "image/png";
+export const contentType = 'image/png';
 
 export default function Icon() {
     return new ImageResponse(
@@ -14,7 +14,7 @@ export default function Icon() {
             height={size.height}
             viewBox="0 0 32 32"
             style={{
-                backgroundColor: "#000000",
+                backgroundColor: '#000000',
             }}
         />,
         {
