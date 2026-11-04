@@ -9,8 +9,7 @@
         "lint": "oxlint",
         "lint:fix": "oxlint --fix",
         "format": "oxfmt",
-        "format:check": "oxfmt --check",
-        "readme": "node scripts/align-readme.mts"
+        "format:check": "oxfmt --check"
     },
     "dependencies": {
         "next": "16.4.2",
