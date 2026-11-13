@@ -1,13 +1,27 @@
-import { Header } from '@/app/components/Header';
+import { PageHeader } from '@/app/components/PageHeader';
 import { Syntax } from '@/app/components/Syntax';
+import { Heading } from '@/app/components/Heading';
 import Link from 'next/link';
-import { Heading } from './components/Heading';
 
 export default function Home() {
     return (
         <>
-            <Header />
+            <PageHeader title="Stephen Matheis" details={['Front-End Software Engineer', 'Apple']} />
             <main>
+                <section>
+                    <h2>
+                        <Heading />
+                        Pages
+                    </h2>
+                    <ul>
+                        <li>
+                            - [Library](<Link href="/library">/library</Link>)
+                        </li>
+                        <li>
+                            - [Test](<Link href="/test">/test</Link>)
+                        </li>
+                    </ul>
+                </section>
                 <section>
                     <h2>
                         <Heading />
@@ -27,20 +41,6 @@ export default function Home() {
                                 <Syntax>https://</Syntax>github.com/stephenmatheis
                             </a>
                             <Syntax>)</Syntax>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <h2>
-                        <Heading />
-                        Pages
-                    </h2>
-                    <ul>
-                        <li>
-                            - [Library](<Link href="/library">/library</Link>)
-                        </li>
-                        <li>
-                            - [Test](<Link href="/test">/test</Link>)
                         </li>
                     </ul>
                 </section>

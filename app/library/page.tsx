@@ -1,13 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Syntax } from '@/app/components/Syntax';
-import { Header } from '@/app/components/Header';
+import { PageHeader } from '@/app/components/PageHeader';
 import { formatDate, getEntries, getTopics, isDate } from './entries';
 import styles from './page.module.scss';
 
 export const metadata: Metadata = {
     title: 'Library · Stephen Matheis',
 };
+
+function plural(count: number, one: string, many: string) {
+    return `${count} ${count === 1 ? one : many}`;
+}
 
 export default function Library() {
     const entries = getEntries();
@@ -17,19 +21,18 @@ export default function Library() {
 
     return (
         <>
-            <Header
-                pageTitle="Library"
-                subHeading={
-                    <>
-                        {entries.length} entries in {topics.length} topics
-                    </>
-                }
+            <PageHeader
+                parent={{
+                    label: 'Stephen Matheis',
+                    href: '/',
+                }}
+                title="Library"
+                details={[plural(entries.length, 'entry', 'entries'), plural(topics.length, 'topic', 'topics')]}
             />
             <main
                 className={styles.library}
                 style={{ '--index-width': `${indexWidth}ch`, '--date-width': `${dateWidth}ch` } as React.CSSProperties}
             >
-                <h1 className={styles.h1}>~ Topics ~</h1>
                 {topics.map(([topic, topicEntries]) => (
                     <section key={topic} className={styles.topic}>
                         <h2>

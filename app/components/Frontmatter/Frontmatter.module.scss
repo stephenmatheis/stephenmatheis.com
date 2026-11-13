@@ -1,0 +1,53 @@
+.frontmatter {
+    display: flex;
+    justify-content: space-between;
+    gap: 4ch;
+    margin-bottom: 4lh;
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .line {
+        display: flex;
+
+        > :first-child {
+            white-space: pre;
+        }
+
+        .value {
+            min-width: 0;
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .value a {
+        text-decoration: underline;
+    }
+
+    [aria-current='page'] {
+        text-decoration: none;
+    }
+
+    .column {
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        li {
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+    }
+}

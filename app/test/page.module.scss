@@ -1,0 +1,59 @@
+.comparison {
+    display: flex;
+    flex-direction: column;
+
+    .columnLabels,
+    .row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        column-gap: 4ch;
+    }
+
+    .columnLabels {
+        margin-bottom: 1lh;
+
+        h2 {
+            margin-bottom: 0;
+        }
+    }
+
+    .row {
+        padding-top: 1lh;
+        border-top: 1px dashed currentColor;
+
+        &:not(:last-child) {
+            margin-bottom: 1lh;
+        }
+
+        .rowLabel {
+            grid-column: 1 / -1;
+            margin-bottom: 1lh;
+            text-transform: uppercase;
+        }
+
+        .cell {
+            min-width: 0;
+
+            > header {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .currentEntry {
+        h1 {
+            text-transform: none;
+        }
+    }
+
+    @media (max-width: 160ch) {
+        .columnLabels {
+            display: none;
+        }
+
+        .row {
+            grid-template-columns: minmax(0, 1fr);
+            row-gap: 2lh;
+        }
+    }
+}
