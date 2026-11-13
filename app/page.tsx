@@ -1,12 +1,7 @@
 import { Header } from '@/app/components/Header';
 import { Syntax } from '@/app/components/Syntax';
 import Link from 'next/link';
-
-const updated = new Date().toLocaleDateString('en-US', {
-    month: 'short',
-    year: 'numeric',
-    timeZone: 'America/Chicago',
-});
+import { Heading } from './components/Heading';
 
 export default function Home() {
     return (
@@ -15,7 +10,7 @@ export default function Home() {
             <main>
                 <section>
                     <h2>
-                        <Syntax muted>## </Syntax>
+                        <Heading />
                         Contact
                     </h2>
                     <ul>
@@ -37,7 +32,7 @@ export default function Home() {
                 </section>
                 <section>
                     <h2>
-                        <Syntax muted>## </Syntax>
+                        <Heading />
                         Pages
                     </h2>
                     <ul>
@@ -52,10 +47,7 @@ export default function Home() {
             </main>
             <footer>
                 <p>
-                    v43{' '}
-                    <span className="muted">
-                        <Syntax>//</Syntax> updated {updated}
-                    </span>
+                    <a href="https://github.com/stephenmatheis/stephenmatheis.com/tree/main">v43</a>
                 </p>
             </footer>
         </>

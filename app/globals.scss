@@ -137,6 +137,10 @@ footer {
     flex-direction: column;
     justify-content: flex-end;
     margin-top: 4lh;
+
+    a {
+        text-decoration: none;
+    }
 }
 
 //   █ ▉ ▊ ▋ ▌ ▍ ▎ ▏ ▎ ▍ ▌ ▋ ▊ ▉   (14 frames, then it repeats)
