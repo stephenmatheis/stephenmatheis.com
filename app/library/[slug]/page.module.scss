@@ -1,0 +1,44 @@
+.article {
+    .h1 {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 2lh;
+    }
+
+    .entry {
+        display: flex;
+        flex-direction: column;
+        gap: 1lh;
+
+        h1,
+        h2,
+        h3 {
+            text-transform: none;
+        }
+
+        code {
+            &::before,
+            &::after {
+                content: '`' / '';
+            }
+        }
+
+        pre {
+            overflow-x: auto;
+            padding-left: 2ch;
+            border-left: 1px solid currentColor;
+
+            code {
+                &::before,
+                &::after {
+                    content: none;
+                }
+            }
+        }
+
+        ul,
+        ol {
+            padding-left: 2ch;
+        }
+    }
+}

@@ -2,10 +2,33 @@
 @use 'sass:math';
 
 :root {
+    // --fg: #070709;
+    // --bg: #fdfdff;
+    // --muted: #ababad;
+    --selection-bg: #000000;
+    --selection-fg: #ffffff;
     --fg: #000000;
     --bg: #ffffff;
+    --muted: #000000;
     --font-size: 12px;
     --line-height: 20px;
+
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selection-bg: #ffffff;
+        --selection-fg: #000000;
+        --fg: #ffffff;
+        --bg: #000000;
+        --muted: #ffffff;
+    }
+}
+
+::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-fg);
 }
 
 * {
@@ -16,6 +39,12 @@
     line-height: var(--line-height);
 }
 
+html,
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
 body {
     font-family: var(--font-commit-mono);
     padding: 2lh 6ch;
@@ -24,18 +53,15 @@ body {
     flex-direction: column;
 }
 
-strong {
-    font-weight: 500;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-weight: 400;
     text-transform: uppercase;
+    font-weight: 400;
+    // font-weight: 700;
 }
 
 a {
@@ -43,21 +69,25 @@ a {
     text-decoration: underline;
 }
 
-main {
-    max-width: 60ch;
+ul {
+    list-style: none;
 }
 
-header {
-    text-transform: uppercase;
-    margin-bottom: 4lh;
-}
+// main {
+//     max-width: 60ch;
+// }
 
 section {
     &:not(:last-child) {
         margin-bottom: 1lh;
     }
 
-    h2 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         margin-bottom: 1lh;
     }
 }
@@ -124,7 +154,7 @@ $bar-frame-count: list.length($bar-frames);
 $bar-frame-duration: 100ms;
 
 .spinner {
-    font-weight: 500;
+    // font-weight: 500;
 
     &::after {
         content: list.nth($bar-frames, 1);
@@ -151,7 +181,12 @@ $bar-frame-duration: 100ms;
 }
 
 @media (max-width: 68ch) {
-    // body {
-    //     padding: 1lh 2ch;
-    // }
+    body {
+        padding: 1lh 2ch;
+    }
+}
+
+.muted {
+    // opacity: 0.6;
+    color: var(--muted);
 }

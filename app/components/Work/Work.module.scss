@@ -1,0 +1,40 @@
+.work {
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+
+        li {
+            display: grid;
+            grid-column: 1 / -1;
+            grid-template-columns: subgrid;
+        }
+
+        div {
+            &:not(:last-child) {
+                padding-right: 4ch;
+            }
+        }
+
+        @media (max-width: 68ch) {
+            display: flex;
+            flex-direction: column;
+
+            li {
+                display: flex;
+                flex-direction: column;
+
+                &:not(:last-child) {
+                    margin-bottom: 1lh;
+                }
+            }
+
+            div {
+                &:first-child {
+                    &::before {
+                        content: '~ ' / '';
+                    }
+                }
+            }
+        }
+    }
+}

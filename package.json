@@ -13,9 +13,11 @@
         "readme": "node scripts/readme.mts"
     },
     "dependencies": {
+        "marked": "^18.2.0",
         "next": "16.4.2",
         "react": "19.3.1",
-        "react-dom": "19.3.1"
+        "react-dom": "19.3.1",
+        "yaml": "^2.9.1"
     },
     "devDependencies": {
         "@types/node": "^26",
