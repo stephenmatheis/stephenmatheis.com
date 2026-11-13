@@ -1,0 +1,8 @@
+{
+    "MD007": {
+        "indent": 4
+    },
+    "MD033": {
+        "allowed_elements": ["kbd", "mark", "sub", "sup", "u", "details", "summary"]
+    }
+}
