@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Home() {
     return (
         <>
-            <PageHeader title="Stephen Matheis" details={['Front-End Software Engineer', 'Apple']} />
+            <PageHeader title="Stephen Matheis" details={['Front-End Software Engineer', 'Apple', 'Austin, TX']} />
             <main>
                 <section>
                     <h2>
