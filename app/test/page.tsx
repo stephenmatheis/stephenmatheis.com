@@ -40,7 +40,7 @@ const libraryLines = [
 ];
 
 const homeParent = {
-    label: 'Stephen Matheis',
+    label: 'Home',
     href: '/',
 };
 

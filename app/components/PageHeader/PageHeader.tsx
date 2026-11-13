@@ -40,11 +40,9 @@ export function PageHeader({ parent, title, details, spinner = true }: PageHeade
     return (
         <header className={styles.header}>
             <nav aria-label="Parent page">
-                <Link href={parent.href}>
-                    <Syntax muted>
-                        ‹{' '}
-                    </Syntax>
-                    {parent.label}
+                <Link href={parent.href} aria-label={parent.label}>
+                    <Syntax muted>../</Syntax>
+                    {parent.href !== '/' && parent.label}
                 </Link>
             </nav>
             <h1>

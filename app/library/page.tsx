@@ -23,7 +23,7 @@ export default function Library() {
         <>
             <PageHeader
                 parent={{
-                    label: 'Stephen Matheis',
+                    label: 'Home',
                     href: '/',
                 }}
                 title="Library"
