@@ -13,8 +13,8 @@
         "readme": "node scripts/readme.mts"
     },
     "dependencies": {
-        "marked": "^18.2.0",
-        "next": "16.4.2",
+        "marked": "^18.3.0",
+        "next": "16.4.6",
         "react": "19.3.1",
         "react-dom": "19.3.1",
         "yaml": "^2.9.1"
@@ -24,9 +24,9 @@
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "babel-plugin-react-compiler": "1.0.0",
-        "oxfmt": "^0.73.0",
-        "oxlint": "^1.88.0",
-        "sass": "^1.105.2",
+        "oxfmt": "^0.80.0",
+        "oxlint": "^1.95.0",
+        "sass": "^1.108.2",
         "typescript": "^7"
     },
     "allowScripts": {
