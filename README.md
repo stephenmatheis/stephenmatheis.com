@@ -5,8 +5,7 @@
 
 <samp>[v43](https://stephenmatheis.com) [Live](https://stephenmatheis.com)                [[code](https://github.com/stephenmatheis/stephenmatheis.com/tree/main)]</samp>
 
-<samp>Previous versions are branches with the format &grave;vNN/name&grave; and are deployed at &grave;vN.stephenmatheis.com&grave;.\
-&grave;main&grave; is live at stephenmatheis.com.</samp>
+<samp>Previous versions</samp>
 
 <samp>[v42](https://v42.stephenmatheis.com) [ASCII](https://v42.stephenmatheis.com)               [[code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v42/ascii)]\
 [v41](https://v41.stephenmatheis.com) [System](https://v41.stephenmatheis.com)              [[code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v41/system)]\
@@ -50,15 +49,3 @@
 [v3](https://v3.stephenmatheis.com)  [CRT](https://v3.stephenmatheis.com)                 [[code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v03/crt)]\
 [v2](https://v2.stephenmatheis.com)  [Black and White](https://v2.stephenmatheis.com)     [[code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v02/black-and-white)]\
 [v1](https://v1.stephenmatheis.com)  [Archive](https://v1.stephenmatheis.com)             [[code](https://github.com/stephenmatheis/stephenmatheis.com/tree/v01/archive)]</samp>
-
-<samp>To archive the live version:\
-1\. Push &grave;main&grave; to a new branch named &grave;vNN/name&grave;.\
-2\. In Vercel, add &grave;vN.stephenmatheis.com&grave; as a domain for that branch.\
-3\. In &grave;scripts/readme.mts&grave;, move live into the archive object array, give it a name, then increment live's number.\
-4\. Run &grave;npm run readme&grave;.</samp>
-
-<samp>&grave;&grave;&grave;sh\
-    npm run dev\
-    npm run build\
-    npm run readme\
-&grave;&grave;&grave;</samp>
