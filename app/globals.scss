@@ -6,7 +6,7 @@
 body {
     padding-block: 3lh;
     padding-inline: 8ch;
-    width: fit-content;
+    // width: fit-content;
 
     @media (max-width: 500px) {
         padding-block: 2lh;
@@ -16,13 +16,22 @@ body {
 
 pre {
     position: relative;
+    width: auto;
+    overflow: auto;
     padding: 1lh 2ch;
     font-size: 12px;
     line-height: 18px;
+    // border: solid 1px #cccccc;
 
     &.gutter {
         padding-left: calc(var(--gutter-width) + 6ch);
         padding-bottom: 2lh;
+    }
+
+    &.play {
+        cursor: pointer;
+        // padding-left: 4ch;
+        padding-bottom: 1lh;
     }
 
     .line-numbers {
@@ -31,5 +40,21 @@ pre {
         left: 2ch;
         text-align: right;
         color: #aaaaaa;
+    }
+
+    .play {
+        position: absolute;
+        top: 1lh;
+        left: 0ch;
+        text-align: right;
+        color: #000000;
+        font-size: 18px;
+
+        &.circle {
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            background-color: #000000;
+        }
     }
 }

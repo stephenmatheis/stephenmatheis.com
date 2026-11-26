@@ -2,7 +2,7 @@
 
 import { CSSProperties } from 'react';
 
-const pageCode = `/* 
+const codeBlock = `/* 
     Write a program that prints the numbers from 1 to 100.
     But for multiples of three print “Fizz” instead of the
     number and for the multiples of five print “Buzz”.
@@ -23,29 +23,12 @@ function fizzBuzz() {
         }
     }
 }
-
-fizzBuzz();
 `;
 
-const lineNumbers = pageCode.split('\n').length;
-const gutterWidth = lineNumbers.toString().length;
+const runBlock = `fizzBuzz();`;
 
 function fizzBuzzForLoop() {
     let html = `Results\n-------\n\n`;
-
-    // for (let i = 1; i <= 100; i++) {
-    //     html += `${i}. `;
-
-    //     if (i % 3 === 0 && i % 5 === 0) {
-    //         html += `FizzBuzz (${i} is a multiple of 3 and 5)`;
-    //     } else if (i % 3 === 0) {
-    //         html += `Fizz (${i} is a multiple of 3 but not 5)`;
-    //     } else if (i % 5 === 0) {
-    //         html += `Buzz (${i} is a multiple of 5 but not 3)`;
-    //     }
-
-    //     html += `\n`;
-    // }
 
     for (let i = 1; i <= 100; i++) {
         if (i % 3 === 0 && i % 5 === 0) {
@@ -64,23 +47,60 @@ function fizzBuzzForLoop() {
     return html;
 }
 
+function Gutter({ length }: { length: number }) {
+    return (
+        <div className="line-numbers">
+            {Array.from({ length }, (_, index) => (
+                <div key={index} className="line-number">
+                    {index + 1}
+                </div>
+            ))}
+        </div>
+    );
+}
+
+function Block({ text, gutter = true, play = false }: { text: string; gutter?: boolean; play?: boolean }) {
+    if (gutter) {
+        const lineNumbers = text.split('\n').length;
+        const gutterWidth = lineNumbers.toString().length;
+
+        return (
+            <pre className="gutter" style={{ '--gutter-width': `${gutterWidth}ch` } as CSSProperties}>
+                <Gutter length={lineNumbers} />
+                <code>{text}</code>
+            </pre>
+        );
+    }
+
+    if (play) {
+        return (
+            <pre className="play">
+                {/* {play && <span className="play">▶</span>} */}
+                {play && <span className="play">▷</span>}
+                {/* {play && <span className="play circle"></span>} */}
+                <code>{text}</code>
+            </pre>
+        );
+    }
+
+    return (
+        <pre>
+            <code>{text}</code>
+        </pre>
+    );
+}
+
 export default function Home() {
     return (
         <>
-            <pre className="gutter" style={{ '--gutter-width': `${gutterWidth}ch` } as CSSProperties}>
-                <div className="line-numbers">
-                    {Array.from({ length: lineNumbers }, (_, index) => (
-                        <div key={index} className="line-number">
-                            {index + 1}
-                        </div>
-                    ))}
-                </div>
-                <code>{pageCode}</code>
-            </pre>
+            <Block text={codeBlock} />
             <br />
-            <pre>
+            {/* <Block text={runBlock} gutter={false} play={true} /> */}
+            {/* <Block text={runBlock} gutter={false} /> */}
+            {/* <br /> */}
+            {/* <pre>
                 <code>{fizzBuzzForLoop()}</code>
-            </pre>
+            </pre> */}
         </>
     );
 }
