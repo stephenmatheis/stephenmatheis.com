@@ -1,196 +1,32 @@
-@use 'sass:list';
-@use 'sass:math';
-
-:root {
-    // --fg: #070709;
-    // --bg: #fdfdff;
-    // --muted: #ababad;
-    --selection-bg: #000000;
-    --selection-fg: #ffffff;
-    --fg: #000000;
-    --bg: #ffffff;
-    --muted: #000000;
-    --font-size: 12px;
-    --line-height: 20px;
-
-    color-scheme: light dark;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --selection-bg: #ffffff;
-        --selection-fg: #000000;
-        --fg: #ffffff;
-        --bg: #000000;
-        --muted: #ffffff;
-    }
-}
-
-::selection {
-    background-color: var(--selection-bg);
-    color: var(--selection-fg);
-}
-
 * {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
-}
-
-html,
-body {
-    background-color: var(--bg);
-    color: var(--fg);
 }
 
 body {
-    font-family: var(--font-commit-mono);
-    padding: 2lh 6ch;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-}
+    padding-block: 3lh;
+    padding-inline: 8ch;
+    width: fit-content;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    text-transform: uppercase;
-    font-weight: 400;
-    // font-weight: 700;
-}
-
-a {
-    color: inherit;
-    text-decoration: underline;
-}
-
-ul {
-    list-style: none;
-}
-
-// main {
-//     max-width: 60ch;
-// }
-
-section {
-    &:not(:last-child) {
-        margin-bottom: 1lh;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin-bottom: 1lh;
+    @media (max-width: 500px) {
+        padding-block: 2lh;
+        padding-inline: 4ch;
     }
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
+pre {
+    position: relative;
+    padding: 1lh 2ch;
 
-    li {
-        display: grid;
-        grid-column: 1 / -1;
-        grid-template-columns: subgrid;
+    &.gutter {
+        padding-left: calc(var(--gutter-width) + 5ch);
+        padding-bottom: 2lh;
     }
 
-    div {
-        &:not(:last-child) {
-            padding-right: 4ch;
-        }
+    .line-numbers {
+        position: absolute;
+        top: 1lh;
+        left: 1ch;
+        text-align: right;
     }
-
-    @media (max-width: 68ch) {
-        display: flex;
-        flex-direction: column;
-
-        li {
-            display: flex;
-            flex-direction: column;
-
-            &:not(:last-child) {
-                margin-bottom: 1lh;
-            }
-        }
-
-        div {
-            &:first-child {
-                &::before {
-                    content: '~ ' / '';
-                }
-            }
-        }
-    }
-}
-
-footer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-top: 4lh;
-
-    a {
-        text-decoration: none;
-    }
-}
-
-//   █ ▉ ▊ ▋ ▌ ▍ ▎ ▏ ▎ ▍ ▌ ▋ ▊ ▉   (14 frames, then it repeats)
-// $bar-frames: '█' '▉' '▊' '▋' '▌' '▍' '▎' '▏' '▎' '▍' '▌' '▋' '▊' '▉';
-// $bar-frames: '{' '}' '[' ']' '(' ')' '<' '/' '>' '=';
-// $bar-frames: '←', '↖', '↑', '↗', '→', '↘', '↓', '↙';
-// $bar-frames: '▁', '▃', '▄', '▅', '▆', '▇', '█', '▇', '▆', '▅', '▄', '▃';
-// $bar-frames: '◐', '◓', '◑', '◒';
-// $bar-frames: 'x', '+';
-// $bar-frames: '|', '/', '—', '\\';
-$bar-frames:
-    '⠁', '⠂', '⠄', '⡀', '⡈', '⡐', '⡠', '⣀', '⣁', '⣂', '⣄', '⣌', '⣔', '⣤', '⣥', '⣦', '⣮', '⣶', '⣷', '⣿', '⡿', '⠿', '⢟',
-    '⠟', '⡛', '⠛', '⠫', '⢋', '⠋', '⠍', '⡉', '⠉', '⠑', '⠡', '⢁';
-$bar-frame-count: list.length($bar-frames);
-$bar-frame-duration: 100ms;
-
-.spinner {
-    // font-weight: 500;
-
-    &::after {
-        content: list.nth($bar-frames, 1);
-        font-family: var(--font-commit-mono);
-        font-size: var(--font-size);
-        animation: spin-bar ($bar-frame-duration * $bar-frame-count) step-end infinite;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .spinner {
-        &::after {
-            animation: none;
-        }
-    }
-}
-
-@keyframes spin-bar {
-    @for $index from 1 through $bar-frame-count {
-        #{math.percentage(math.div($index - 1, $bar-frame-count))} {
-            content: list.nth($bar-frames, $index);
-        }
-    }
-}
-
-@media (max-width: 68ch) {
-    body {
-        padding: 1lh 2ch;
-    }
-}
-
-.muted {
-    // opacity: 0.6;
-    color: var(--muted);
 }

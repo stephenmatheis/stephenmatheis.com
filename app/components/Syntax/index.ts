@@ -1,1 +1,0 @@
-export { Syntax } from './Syntax';
