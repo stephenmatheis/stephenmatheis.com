@@ -6,7 +6,7 @@
 body {
     padding-block: 3lh;
     padding-inline: 8ch;
-    // width: fit-content;
+    width: fit-content;
 
     @media (max-width: 500px) {
         padding-block: 2lh;
@@ -16,8 +16,8 @@ body {
 
 pre {
     position: relative;
-    width: auto;
-    overflow: auto;
+    // width: auto;
+    // overflow: auto;
     padding: 1lh 2ch;
     font-size: 12px;
     line-height: 18px;
