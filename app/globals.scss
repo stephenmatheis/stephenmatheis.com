@@ -30,24 +30,25 @@ html,
 body {
     background-color: var(--bg);
     color: var(--fg);
+    font-size: 11px;
 }
 
 body {
+    font-family: var(--font-departure-mono);
     padding-block: 3lh;
     padding-inline: 8ch;
     width: fit-content;
 
     @media (max-width: 500px) {
-        padding-block: 2lh;
-        padding-inline: 4ch;
+        padding-block: 0lh;
+        padding-inline: 0ch;
     }
 }
 
 pre {
+    font-family: var(--font-departure-mono);
     position: relative;
     padding: 1lh 2ch;
-    font-size: 12px;
-    line-height: 18px;
 
     &.gutter {
         padding-left: calc(var(--gutter-width) + 6ch);
@@ -57,6 +58,10 @@ pre {
     &.play {
         cursor: pointer;
         padding-bottom: 1lh;
+    }
+
+    code {
+        font-family: var(--font-departure-mono);
     }
 
     .line-numbers {
