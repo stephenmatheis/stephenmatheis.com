@@ -25,27 +25,27 @@ function fizzBuzz() {
 }
 `;
 
-const runBlock = `fizzBuzz();`;
+// const runBlock = `fizzBuzz();`;
 
-function fizzBuzzForLoop() {
-    let html = `Results\n-------\n\n`;
+// function fizzBuzzForLoop() {
+//     let html = `Results\n-------\n\n`;
 
-    for (let i = 1; i <= 100; i++) {
-        if (i % 3 === 0 && i % 5 === 0) {
-            html += 'FizzBuzz';
-        } else if (i % 3 === 0) {
-            html += 'Fizz';
-        } else if (i % 5 === 0) {
-            html += 'Buzz';
-        } else {
-            html += i;
-        }
+//     for (let i = 1; i <= 100; i++) {
+//         if (i % 3 === 0 && i % 5 === 0) {
+//             html += 'FizzBuzz';
+//         } else if (i % 3 === 0) {
+//             html += 'Fizz';
+//         } else if (i % 5 === 0) {
+//             html += 'Buzz';
+//         } else {
+//             html += i;
+//         }
 
-        html += `\n`;
-    }
+//         html += `\n`;
+//     }
 
-    return html;
-}
+//     return html;
+// }
 
 function Gutter({ length }: { length: number }) {
     return (
