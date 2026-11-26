@@ -1,6 +1,6 @@
 'use client';
 
-import { CSSProperties } from 'react';
+import { CSSProperties, useEffect } from 'react';
 
 const codeBlock = `/* 
     Write a program that prints the numbers from 1 to 100.
@@ -67,6 +67,24 @@ function Block({ text, gutter = true, play = false }: { text: string; gutter?: b
 }
 
 export default function Home() {
+    useEffect(() => {
+        function fizzBuzz() {
+            for (let i = 1; i <= 100; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    console.log('FizzBuzz');
+                } else if (i % 3 === 0) {
+                    console.log('Fizz');
+                } else if (i % 5 === 0) {
+                    console.log('Buzz');
+                } else {
+                    console.log(i);
+                }
+            }
+        }
+
+        (window as Window & { fizzBuzz?: typeof fizzBuzz }).fizzBuzz = fizzBuzz;
+    }, []);
+
     return (
         <>
             <Block text={codeBlock} />
