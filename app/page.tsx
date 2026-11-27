@@ -1,75 +1,49 @@
-'use client';
-
-import { useEffect } from 'react';
-
-// const codeBlock = `/*
-//     Write a program that prints the numbers from 1 to 100.
-//     But for multiples of three print “Fizz” instead of the
-//     number and for the multiples of five print “Buzz”.
-//     For numbers which are multiples of both three and five
-//     print “FizzBuzz”.
-// */
-
-// function fizzBuzz() {
-//     for (let i = 1; i <= 100; i++) {
-//         if (i % 3 === 0 && i % 5 === 0) {
-//             console.log('FizzBuzz');
-//         } else if (i % 3 === 0) {
-//             console.log('Fizz');
-//         } else if (i % 5 === 0) {
-//             console.log('Buzz');
-//         } else {
-//             console.log(i);
-//         }
-//     }
-// }
-// `;
-
-const codeBlock = `// Write a program that prints the numbers from 1 to 100.
-// But for multiples of three print “Fizz” instead of the
-// number and for the multiples of five print “Buzz”. For 
-// numbers which are multiples of both three and five
-// print “FizzBuzz”.
-
-function fizzBuzz() {
-    for (let i = 1; i <= 100; i++) {
-        if (i % 3 === 0 && i % 5 === 0) {
-            console.log('FizzBuzz');
-        } else if (i % 3 === 0) {
-            console.log('Fizz');
-        } else if (i % 5 === 0) {
-            console.log('Buzz');
-        } else {
-            console.log(i);
-        }
-    }
-}
-`;
+import Link from 'next/link';
+import { mutedLight } from '@/app/theme';
+import { html } from './html';
 
 export default function Home() {
-    useEffect(() => {
-        function fizzBuzz() {
-            for (let i = 1; i <= 100; i++) {
-                if (i % 3 === 0 && i % 5 === 0) {
-                    console.log('FizzBuzz');
-                } else if (i % 3 === 0) {
-                    console.log('Fizz');
-                } else if (i % 5 === 0) {
-                    console.log('Buzz');
-                } else {
-                    console.log(i);
-                }
-            }
-        }
-
-        (window as Window & { fizzBuzz?: typeof fizzBuzz }).fizzBuzz = fizzBuzz;
-    }, []);
+    const highlightedHtml = html({
+        file: 'app/page.tsx',
+        themes: {
+            light: mutedLight,
+        },
+    });
 
     return (
-        <>
-            <pre>
-                <code>{codeBlock}</code>
-            </pre>
-        </>
+        <main>
+            <div className="code-block" aria-hidden="true" dangerouslySetInnerHTML={{ __html: highlightedHtml }} />
+            <section className="cloaked">
+                <h1>Stephen Matheis</h1>
+                <p>Front-End Software Engineer</p>
+                <p>Apple</p>
+                <p>Austin, TX</p>
+            </section>
+            <section className="cloaked">
+                <h2>Links</h2>
+                <ul>
+                    <li>
+                        <a href="https://github.com/stephenmatheis">GitHub</a>
+                    </li>
+                    <li>
+                        <a href="https://codepen.io/stephenmatheis">CodePen</a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/stephenmatheis">LinkedIn</a>
+                    </li>
+                </ul>
+            </section>
+            <section className="cloaked">
+                <h2>Code</h2>
+                <ul>
+                    <li>
+                        <Link href="/fizzbuzz">FizzBuzz</Link>
+                    </li>
+                    <li>
+                        <Link href="/blank">Blank</Link>
+                    </li>
+                </ul>
+            </section>
+        </main>
     );
 }

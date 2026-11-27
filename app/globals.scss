@@ -1,46 +1,75 @@
 :root {
-    --selection-bg: #000000;
-    --selection-fg: #ffffff;
-    --fg: #000000;
-    --bg: #ffffff;
-
     color-scheme: light dark;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --selection-bg: #ffffff;
-        --selection-fg: #000000;
-        --fg: #ffffff;
-        --bg: #000000;
-    }
-}
-
-::selection {
-    background-color: var(--selection-bg);
-    color: var(--selection-fg);
-}
-
 * {
-    padding: 0;
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
 }
 
 html,
 body {
-    background-color: var(--bg);
-    color: var(--fg);
+    min-height: 100%;
+    background-color: light-dark(#ffffff, #000000);
 }
 
 body {
     padding-block: 4lh;
-    padding-inline: 12ch;
-    width: fit-content;
     font-size: 12px;
     line-height: 18px;
 
-    @media (max-width: 500px) {
-        padding-block: 2lh;
-        padding-inline: 4ch;
+    @media (max-width: 768px) {
+        padding-block: 1lh;
+    }
+}
+
+.code-block {
+    overflow-x: auto;
+
+    pre {
+        display: inline-block;
+        min-width: 100%;
+        padding-inline: 12ch;
+        background-color: transparent !important;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+
+        @media (max-width: 768px) {
+            padding-inline: 2ch;
+        }
+    }
+
+    a {
+        color: #ff0000;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+.cloaked {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.divider {
+    position: relative;
+    padding-inline: 12ch;
+    color: #aaaaaa;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: '';
+
+    @media (max-width: 768px) {
+        padding-inline: 2ch;
     }
 }
