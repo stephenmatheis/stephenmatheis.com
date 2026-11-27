@@ -25,9 +25,11 @@ code {
 }
 
 pre {
-    font-size: 12px;
-    line-height: 18px;
     padding-inline: 12ch;
+
+    @media (max-width: 768px) {
+        padding-inline: 4ch;
+    }
 }
 
 .code-block {
@@ -35,17 +37,13 @@ pre {
     overflow-x: auto;
 
     @media (max-width: 768px) {
-        padding-block: 1lh;
+        padding-block: 2lh;
     }
 
     pre {
         display: inline-block;
         min-width: 100%;
         background-color: transparent !important;
-
-        @media (max-width: 768px) {
-            padding-inline: 2ch;
-        }
     }
 
     a {
@@ -73,13 +71,9 @@ pre {
 }
 
 .divider {
+    padding-block: 1lh;
     color: #aaaaaa;
-    overflow: hidden;
     white-space: nowrap;
     text-overflow: '';
-    padding-block: 1lh;
-
-    @media (max-width: 768px) {
-        padding-inline: 2ch;
-    }
+    overflow: hidden;
 }

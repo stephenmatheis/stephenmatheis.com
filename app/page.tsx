@@ -28,9 +28,6 @@ export default function Home() {
                     <li>
                         <a href="https://codepen.io/stephenmatheis">CodePen</a>
                     </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/stephenmatheis">LinkedIn</a>
-                    </li>
                 </ul>
             </section>
             <section className="cloaked">
