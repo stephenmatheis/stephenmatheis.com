@@ -15,26 +15,33 @@ body {
 }
 
 body {
-    padding-block: 4lh;
     font-size: 12px;
     line-height: 18px;
+}
+
+pre,
+code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+pre {
+    font-size: 12px;
+    line-height: 18px;
+    padding-inline: 12ch;
+}
+
+.code-block {
+    padding-block: 4lh;
+    overflow-x: auto;
 
     @media (max-width: 768px) {
         padding-block: 1lh;
     }
-}
-
-.code-block {
-    overflow-x: auto;
 
     pre {
         display: inline-block;
         min-width: 100%;
-        padding-inline: 12ch;
         background-color: transparent !important;
-        font-family: inherit;
-        font-size: inherit;
-        line-height: inherit;
 
         @media (max-width: 768px) {
             padding-inline: 2ch;
@@ -56,18 +63,21 @@ body {
     position: absolute;
     width: 1px;
     height: 1px;
+    padding: 0;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
     white-space: nowrap;
+    border: 0;
 }
 
 .divider {
-    position: relative;
-    padding-inline: 12ch;
     color: #aaaaaa;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: '';
+    padding-block: 1lh;
 
     @media (max-width: 768px) {
         padding-inline: 2ch;

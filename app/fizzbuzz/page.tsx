@@ -26,9 +26,7 @@ export default function FizzBuzzPage() {
         <main>
             <Client />
             <div className="code-block" aria-hidden="true" dangerouslySetInnerHTML={{ __html: pageHtml }} />
-            <br />
             <pre className="divider">{Array.from({ length: 80 }, () => '/')}</pre>
-            <br />
             <div className="code-block" aria-hidden="true" dangerouslySetInnerHTML={{ __html: fizzBuzzHtml }} />
             <section className="cloaked">
                 <h1>FizzBuzz</h1>

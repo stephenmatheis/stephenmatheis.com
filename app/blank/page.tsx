@@ -24,9 +24,7 @@ export default function BlankPage() {
     return (
         <main>
             <div className="code-block" aria-hidden="true" dangerouslySetInnerHTML={{ __html: pageHtml }} />
-            <br />
-            {/* <pre className="divider">{Array.from({ length: 80 }, () => '/')}</pre> */}
-            <br />
+            <pre className="divider">{Array.from({ length: 80 }, () => '/')}</pre>
             <div className="code-block" aria-hidden="true" dangerouslySetInnerHTML={{ __html: blankCSS }} />
             <section className="cloaked">
                 <h1>Blank</h1>
